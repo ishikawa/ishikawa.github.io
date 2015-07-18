@@ -2,64 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Javascript on METAREAL</title>
-    <link>http://www.metareal.org/tags/javascript/</link>
+    <link>http://ishikawa.github.io/tags/javascript/</link>
     <description>Recent content in Javascript on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 07 Jul 2015 08:02:21 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>JavaScript API Response object</title>
-      <link>http://www.metareal.org/post/2015/07/javascript-api-response-object/</link>
-      <pubDate>Tue, 07 Jul 2015 08:02:21 +0900</pubDate>
-      
-      <guid>http://www.metareal.org/post/2015/07/javascript-api-response-object/</guid>
-      <description>&lt;p&gt;JavaScript (TypeScript) でサーバーとの通信には JSON-RPC 2.0 を用いて、受け取った JSON レスポンスをオブジェクトに変換して使っている。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Tweet {
-
-  constructor(
-    userId: string,
-    screenName: string,
-    text: string,
-    favorited: boolean,
-  ) {}
-
-  static fromJsonResponse(response: any): Tweet {
-    return new Tweet(
-      response[&amp;quot;userId&amp;quot;],
-      response[&amp;quot;screenName&amp;quot;],
-      response[&amp;quot;text&amp;quot;],
-      response[&amp;quot;favorited&amp;quot;]
-    );
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/Microsoft/TypeScript/wiki/Classes#using-a-class-as-an-interface&#34;&gt;TypeScript のクラスはインターフェースとしても使える&lt;/a&gt; ので、JSON レスポンスを変換したオブジェクトをそのまま使える気がしてきた。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;
-class Tweet {
-    userId: string;
-    screenName: string;
-    text: string;
-    favorited: boolean;
-
-}
-
-
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
+    <lastBuildDate>Wed, 24 Dec 2008 01:06:00 +0900</lastBuildDate>
+    <atom:link href="http://ishikawa.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>WEB&#43;DB PRESS Vol.48</title>
-      <link>http://www.metareal.org/2008/12/24/web-db-press-vol48/</link>
+      <link>http://ishikawa.github.io/2008/12/24/web-db-press-vol48/</link>
       <pubDate>Wed, 24 Dec 2008 01:06:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/12/24/web-db-press-vol48/</guid>
+      <guid>http://ishikawa.github.io/2008/12/24/web-db-press-vol48/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://raku.to/&#34;&gt;古谷楽人&lt;/a&gt;氏より &lt;a href=&#34;http://gihyo.jp/magazine/wdpress/archive/2009/vol48&#34;&gt;WEB+DB PRESS Vol.48&lt;/a&gt; (&lt;a href=&#34;http://www.amazon.co.jp/exec/obidos/ASIN/4774136913/&#34;&gt;amazon.co.jp&lt;/a&gt;) を献本いただきました。ありがとうございます。わたしは当雑誌、というか雑誌全般の熱心な読者ではないのですが（ごめんなさい）、ひさしぶりの技術系雑誌を楽しく読ませてもらいました。&lt;/p&gt;
@@ -91,10 +47,10 @@ class Tweet {
     
     <item>
       <title>Google Chrome に搭載されたオープンソースの JavaScript エンジン &#34;v8&#34; を試す</title>
-      <link>http://www.metareal.org/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</link>
+      <link>http://ishikawa.github.io/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</link>
       <pubDate>Wed, 03 Sep 2008 09:28:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</guid>
+      <guid>http://ishikawa.github.io/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://googlejapan.blogspot.com/2008/09/blog-post.html&#34;&gt;その発表&lt;/a&gt;から世間を騒がせた、Google の Web ブラウザ &lt;strong&gt;Chrome&lt;/strong&gt; が遂に&lt;a href=&#34;http://www.google.com/chrome&#34;&gt;公開された&lt;/a&gt;。&lt;/p&gt;
@@ -259,10 +215,10 @@ fib(10)
     
     <item>
       <title>Flickr の JSON フィードで自作ブログパーツ</title>
-      <link>http://www.metareal.org/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</link>
+      <link>http://ishikawa.github.io/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</link>
       <pubDate>Sun, 15 Jun 2008 10:09:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</guid>
+      <guid>http://ishikawa.github.io/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</guid>
       <description>
 
 &lt;p&gt;写真を撮るのが好きじゃない。&lt;/p&gt;
@@ -271,7 +227,7 @@ fib(10)
 
 &lt;p&gt;では、何が楽しくて写真を撮るのかといえば、補正が楽しい。&lt;a href=&#34;http://www.adobe.com/jp/products/photoshopelwin/&#34;&gt;Photoshop Elements&lt;/a&gt; の自動補正がよく出来ていて、何も考えずにボタンを押していくだけで、それなりの見栄えになってくれる。これは楽しい（ただし、たまに自力で補正に挑戦しても、自動補正の方がキレイで気分が悪い）。&lt;/p&gt;
 
-&lt;p&gt;そのうち、出来上がった写真を他人に見せびらかしたくなるのが自然の流れ。写真を &lt;a href=&#34;http://www.flickr.com/&#34;&gt;Flickr&lt;/a&gt; にアップロードするようになった。さらに、&lt;a href=&#34;http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;このブログをリニューアル&lt;/a&gt;するさいには、&lt;a href=&#34;http://www.flickr.com/&#34;&gt;Flickr&lt;/a&gt; にアップロードした写真を表示するブログパーツを追加するつもりだった。&lt;/p&gt;
+&lt;p&gt;そのうち、出来上がった写真を他人に見せびらかしたくなるのが自然の流れ。写真を &lt;a href=&#34;http://www.flickr.com/&#34;&gt;Flickr&lt;/a&gt; にアップロードするようになった。さらに、&lt;a href=&#34;http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;このブログをリニューアル&lt;/a&gt;するさいには、&lt;a href=&#34;http://www.flickr.com/&#34;&gt;Flickr&lt;/a&gt; にアップロードした写真を表示するブログパーツを追加するつもりだった。&lt;/p&gt;
 
 &lt;p&gt;公式のブログパーツは &lt;a href=&#34;http://www.flickr.com/badge.gne&#34;&gt;Flickr Badge&lt;/a&gt; という名前で Flash 版と HTML 版が用意されている。しかし、いくつかの理由により、どちらも使う気になれなかった。幸い、Flickr では&lt;a href=&#34;http://www.flickr.com/services/feeds/&#34;&gt;さまざまなフィードが提供されている&lt;/a&gt;。これらを利用すれば、&lt;strong&gt;自作のブログパーツをつくるのは難しくない&lt;/strong&gt;。&lt;/p&gt;
 
@@ -407,10 +363,10 @@ document.write(b_txt)
     
     <item>
       <title>280Slides in Objective-J</title>
-      <link>http://www.metareal.org/2008/06/06/280slides-in-objective-j/</link>
+      <link>http://ishikawa.github.io/2008/06/06/280slides-in-objective-j/</link>
       <pubDate>Fri, 06 Jun 2008 12:42:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/06/06/280slides-in-objective-j/</guid>
+      <guid>http://ishikawa.github.io/2008/06/06/280slides-in-objective-j/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://280slides.com/&#34;&gt;280Slides&lt;/a&gt; という Web サービスがすごい。&lt;/p&gt;
@@ -493,10 +449,10 @@ import &amp;quot;WelcomePanel.j&amp;quot;
     
     <item>
       <title>JavaScript ベンチマーク SunSpider 0.9</title>
-      <link>http://www.metareal.org/2007/12/19/new-javascript-benchmark-sunspider/</link>
+      <link>http://ishikawa.github.io/2007/12/19/new-javascript-benchmark-sunspider/</link>
       <pubDate>Thu, 20 Dec 2007 08:28:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/19/new-javascript-benchmark-sunspider/</guid>
+      <guid>http://ishikawa.github.io/2007/12/19/new-javascript-benchmark-sunspider/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://webkit.org/&#34;&gt;WebKit&lt;/a&gt; の開発者たちは素晴らしいレンダリング・エンジンだけではなく、&lt;a href=&#34;http://webkit.org/blog/61/introducing-drosera/&#34;&gt;Drosera&lt;/a&gt; や &lt;a href=&#34;http://webkit.org/blog/108/yet-another-one-more-thing-a-new-web-inspector/&#34;&gt;Web Inspector&lt;/a&gt; などの Web 開発者向けツールも提供してきたが、今度は JavaScript ベンチマークをリリースしたようだ。&lt;/p&gt;
@@ -526,10 +482,10 @@ import &amp;quot;WelcomePanel.j&amp;quot;
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API（目次）</title>
-      <link>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</link>
+      <link>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</link>
       <pubDate>Mon, 24 Sep 2007 12:10:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</guid>
+      <guid>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; の変更点、特にイベント周りの API の変更についてまとめた記事のインデックス。&lt;/p&gt;
 
 &lt;ul&gt;
@@ -544,10 +500,10 @@ import &amp;quot;WelcomePanel.j&amp;quot;
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API (4)</title>
-      <link>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</link>
+      <link>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</link>
       <pubDate>Mon, 24 Sep 2007 12:02:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</guid>
+      <guid>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; のイベント API について紹介するシリーズも今回が最後。&lt;/p&gt;
@@ -596,10 +552,10 @@ import &amp;quot;WelcomePanel.j&amp;quot;
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API (3)</title>
-      <link>http://www.metareal.org/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</link>
+      <link>http://ishikawa.github.io/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</link>
       <pubDate>Sat, 22 Sep 2007 09:28:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</guid>
+      <guid>http://ishikawa.github.io/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; イベント API の進化、更なるつづき。&lt;/p&gt;
@@ -643,10 +599,10 @@ Event.stopObserving(&#39;signinForm&#39;);
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API (2)</title>
-      <link>http://www.metareal.org/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</link>
+      <link>http://ishikawa.github.io/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</link>
       <pubDate>Fri, 21 Sep 2007 05:41:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</guid>
+      <guid>http://ishikawa.github.io/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</guid>
       <description>
 
 &lt;p&gt;随分と間が空いてしまった。前回の記事 &lt;a href=&#34;http://weblog.metareal.org/2007/09/02/prototype-1-6-0-event-overhaul-release/&#34;&gt;Prototype 1.6.0 で大きく進化したイベント API&lt;/a&gt; に引き続き、&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; で導入された、イベント API の変更点を見ていく。&lt;/p&gt;
@@ -686,10 +642,10 @@ Event.stopObserving(&#39;signinForm&#39;);
     
     <item>
       <title>WebKit のブラウザ判定と iPhone、そして iPod touch</title>
-      <link>http://www.metareal.org/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</link>
+      <link>http://ishikawa.github.io/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</link>
       <pubDate>Sun, 09 Sep 2007 05:05:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</guid>
+      <guid>http://ishikawa.github.io/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/09/01/prototype-1-6-0-has-detection-for-iphone/&#34;&gt;Prototype 1.6.0 のブラウザ判定と iPhone&lt;/a&gt; では、&lt;/p&gt;
@@ -737,10 +693,10 @@ WebKitDetect.isMobile = function isMobile()
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API</title>
-      <link>http://www.metareal.org/2007/09/02/prototype-1-6-0-event-overhaul-release/</link>
+      <link>http://ishikawa.github.io/2007/09/02/prototype-1-6-0-event-overhaul-release/</link>
       <pubDate>Sun, 02 Sep 2007 09:55:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/02/prototype-1-6-0-event-overhaul-release/</guid>
+      <guid>http://ishikawa.github.io/2007/09/02/prototype-1-6-0-event-overhaul-release/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; にはいくつもの変更点がある。&lt;/p&gt;
@@ -859,10 +815,10 @@ Event.observe(element, &#39;click&#39;, onClickEventListener.bind(this));
     
     <item>
       <title>Prototype 1.6.0 のブラウザ判定と iPhone </title>
-      <link>http://www.metareal.org/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</link>
+      <link>http://ishikawa.github.io/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</link>
       <pubDate>Sat, 01 Sep 2007 08:30:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</guid>
+      <guid>http://ishikawa.github.io/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://prototypejs.org/&#34;&gt;prototype.js&lt;/a&gt; には 1.5.1 から、各種ブラウザを判定するための &lt;code&gt;Prototype.Browser&lt;/code&gt; が定義されている。&lt;/p&gt;
@@ -929,10 +885,10 @@ Event.observe(element, &#39;click&#39;, onClickEventListener.bind(this));
     
     <item>
       <title>Prototype 1.6.0 と DOMContentLoaded</title>
-      <link>http://www.metareal.org/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</link>
+      <link>http://ishikawa.github.io/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</link>
       <pubDate>Wed, 22 Aug 2007 05:32:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</guid>
+      <guid>http://ishikawa.github.io/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</guid>
       <description>
 
 &lt;p&gt;Prototype 1.6.0 のリリース候補版が公開されたようだ。&lt;/p&gt;
@@ -959,10 +915,10 @@ Event.observe(element, &#39;click&#39;, onClickEventListener.bind(this));
     
     <item>
       <title>prototype.js の $$ 関数で CSS 風に DOM プログラミング</title>
-      <link>http://www.metareal.org/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</link>
+      <link>http://ishikawa.github.io/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</link>
       <pubDate>Sun, 15 Jul 2007 11:56:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</guid>
+      <guid>http://ishikawa.github.io/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://www.prototypejs.org/&#34;&gt;prototype.js&lt;/a&gt; の &lt;code&gt;$$&lt;/code&gt; 関数（実際の処理は &lt;code&gt;Selector.findChildElements&lt;/code&gt;）は CSS セレクタを受け取り、セレクタにマッチする要素を配列で返してくれる。&lt;/p&gt;
@@ -1016,6 +972,92 @@ Event.observe(element, &#39;click&#39;, onClickEventListener.bind(this));
 &lt;li&gt;&lt;a href=&#34;http://www.prototypejs.org/api/utility/dollar-dollar&#34;&gt;Prototype.js: Utility Methods.$$&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://bennolan.com/behaviour/&#34;&gt;Behaviour : Using CSS selectors to apply Javascript behaviours&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>window.onload 前でも DOM 処理が可能なら通知してくれる domready.js</title>
+      <link>http://ishikawa.github.io/2007/07/10/domready-js-cross-browser-ondomcontentloaded/</link>
+      <pubDate>Tue, 10 Jul 2007 12:42:00 +0900</pubDate>
+      
+      <guid>http://ishikawa.github.io/2007/07/10/domready-js-cross-browser-ondomcontentloaded/</guid>
+      <description>
+
+&lt;p&gt;DOM 読み込み完了のタイミングで、任意の関数を実行できるようにする JavaScript ライブラリを書いてみた。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://snipplr.com/view/6029/domreadyjs/&#34;&gt;domready.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://mootools.net/&#34;&gt;mootools&lt;/a&gt; の同様の機能を基にしていて、単体として使いやすいように外部ライブラリへの依存性をなくし、&lt;a href=&#34;http://www.prototypejs.org/&#34;&gt;prototype.js&lt;/a&gt; とも併用できるようにしたもの。&lt;/p&gt;
+
+&lt;p&gt;現状、手元の環境では以下のブラウザで動作確認済み。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;IE 7 (XP standalone)&lt;/li&gt;
+&lt;li&gt;IE 6 SP2&lt;/li&gt;
+&lt;li&gt;Firefox 2.0.0.4&lt;/li&gt;
+&lt;li&gt;Opera 9.21&lt;/li&gt;
+&lt;li&gt;Safari 2.0.4&lt;/li&gt;
+&lt;li&gt;Mac Firefox 2.0.0.4&lt;/li&gt;
+&lt;li&gt;Mac IE 5.2.3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ただし、Mac IE では &lt;code&gt;window.onload&lt;/code&gt; で代用するように実装してある。まあ、スクリプトエラーが出るよりマシだろう。&lt;/p&gt;
+
+&lt;h3 id=&#34;使い方:48dc3b5eda896e1cf587f0f4905fb350&#34;&gt;使い方&lt;/h3&gt;
+
+&lt;p&gt;まず、domready.js を読み込む。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/javascripts/domready.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;prototype.js&lt;/code&gt; と併用する場合は &lt;code&gt;prototype.js&lt;/code&gt; より後に読み込む。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/javascripts/prototype.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/javascripts/domready.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;あとは、DOM 読み込み完了のタイミングで実行したい関数を &lt;code&gt;Event.domReady.add&lt;/code&gt; で登録するだけ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Event.domReady.add(function() {
+  ...
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;他のイベントと登録方法が異なるのは直感的じゃない、とか言われそうだけど、正直あんまり気にならない。&lt;/p&gt;
+
+&lt;h3 id=&#34;経緯-window-onload-の欠点:48dc3b5eda896e1cf587f0f4905fb350&#34;&gt;経緯: window.onload の欠点&lt;/h3&gt;
+
+&lt;p&gt;多くの Ajax 系実装では、ページ読み込み完了時に初期化などを実行するようになっている。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Event.observe(window, &#39;load&#39;, function() {
+  ...
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これは &lt;a href=&#34;http://www.prototypejs.org/&#34;&gt;prototype.js&lt;/a&gt; によるイベント処理だが、&lt;code&gt;window.onload&lt;/code&gt; イベントで処理を実行するために、関数を登録しているのが分かるだろう。&lt;/p&gt;
+
+&lt;p&gt;わざわざこんなことをしているのは、DOM を操作したいからだ。&lt;/p&gt;
+
+&lt;p&gt;だから、ほとんどの Ajax 系実装は &lt;code&gt;window.onload&lt;/code&gt; イベントがやってくるのをじっと待っている。&lt;code&gt;window.onload&lt;/code&gt; イベントのあとでは DOM ツリーは完全に構築されているし、他に DOM ツリーが構築済みなのを知る、適当なイベントもないからね。&lt;/p&gt;
+
+&lt;p&gt;もちろん、&lt;code&gt;window.onload&lt;/code&gt; は完全じゃない &amp;hellip; いや、それは嘘で、&lt;strong&gt;完全すぎる&lt;/strong&gt;。DOM ツリーの構築を待つだけじゃなく、すべての画像の読み込みも待ってしまうんだ。そうすると、画像を多く含むようなページでは、Ajax の処理がいつまでたってもはじまらない、なんてことが起こって、これは、あんまり嬉しくない。&lt;/p&gt;
+
+&lt;h3 id=&#34;解決策-ondomcontentloaded-とクロスブラウザな実装:48dc3b5eda896e1cf587f0f4905fb350&#34;&gt;解決策: onDOMContentLoaded とクロスブラウザな実装&lt;/h3&gt;
+
+&lt;p&gt;ブラウザごとにさまざまな解決策がある。&lt;/p&gt;
+
+&lt;p&gt;たとえば、Firefox など Mozilla 系のブラウザでは &lt;code&gt;onDOMContentLoaded&lt;/code&gt; というイベントがあって、これはそのものずばり、DOM ツリーが読み込み完了したときに通知してくれるイベントだ。そして、Safari では &lt;code&gt;document.readyState&lt;/code&gt; が、IE では &lt;code&gt;defer&lt;/code&gt; 属性を有効にした &lt;code&gt;script&lt;/code&gt; 要素の読み込みが利用できる（このへんの詳細は &lt;a href=&#34;http://dean.edwards.name/weblog/2005/09/busted/&#34;&gt;Dean Edwards: The window.onload Problem - Solved!&lt;/a&gt; に詳しい）。&lt;/p&gt;
+
+&lt;p&gt;また、&lt;a href=&#34;http://mootools.net/&#34;&gt;mootools&lt;/a&gt; には &lt;code&gt;window.addEvent(&#39;domready&#39;, ...)&lt;/code&gt;、&lt;a href=&#34;http://jquery.com/&#34;&gt;JQuery&lt;/a&gt; には同様に、&lt;code&gt;$(document).ready()&lt;/code&gt; というクロスブラウザな実装が用意されている。嬉しいことに、&lt;a href=&#34;http://www.prototypejs.org/&#34;&gt;prototype.js&lt;/a&gt; にも近いうちに同様の機能を取り込もう、という動きがあるようだ。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://dev.rubyonrails.org/ticket/5414&#34;&gt;#5414 (PATCH) Faster onload for Event.onload&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://dev.rubyonrails.org/changeset/6596&#34;&gt;Changeset 6596: Support for &amp;ldquo;DOMContentLoaded&amp;rdquo; event handling (prototype.js event branch)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;今回つくった domready.js は mootools の実装を基にしているが、だいたいどれも同じような実装みたいだ。&lt;/p&gt;
 </description>
     </item>
     

@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Disassemble on METAREAL</title>
-    <link>http://www.metareal.org/tags/disassemble/</link>
+    <link>http://ishikawa.github.io/tags/disassemble/</link>
     <description>Recent content in Disassemble on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Thu, 25 Sep 2008 17:39:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/disassemble/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/disassemble/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Python の dis モジュールでさまざまな import 文を disassemble する (2)</title>
-      <link>http://www.metareal.org/2008/09/25/disassembling-python-import-statements-take2/</link>
+      <link>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements-take2/</link>
       <pubDate>Thu, 25 Sep 2008 17:39:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/09/25/disassembling-python-import-statements-take2/</guid>
+      <guid>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements-take2/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;http://www.metareal.org/2008/09/25/disassembling-python-import-statements/&#34;&gt;前回の記事&lt;/a&gt;への追記が長くなりそうなので、新しい記事にまとめました。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements/&#34;&gt;前回の記事&lt;/a&gt;への追記が長くなりそうなので、新しい記事にまとめました。&lt;/p&gt;
 
 &lt;h3 id=&#34;import-module-と-import-module-as-name:c67c4be80ba8b08362387226c770cc35&#34;&gt;import &lt;module&gt; と import &lt;module&gt; as &lt;name&gt;&lt;/h3&gt;
 
@@ -128,10 +128,10 @@ AttributeError: &#39;module&#39; object has no attribute &#39;B&#39;
     
     <item>
       <title>Python の dis モジュールでさまざまな import 文を disassemble する</title>
-      <link>http://www.metareal.org/2008/09/25/disassembling-python-import-statements/</link>
+      <link>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements/</link>
       <pubDate>Thu, 25 Sep 2008 09:34:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/09/25/disassembling-python-import-statements/</guid>
+      <guid>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://docs.python.org/ref/&#34;&gt;Python Reference Manual&lt;/a&gt; の &lt;a href=&#34;http://docs.python.org/ref/import.html&#34;&gt;6.12 The import statement&lt;/a&gt; を参考に、さまざまな形式の import 文を &lt;a href=&#34;http://docs.python.org/lib/module-dis.html&#34;&gt;dis&lt;/a&gt; モジュールで &lt;code&gt;disassemble&lt;/code&gt; してみた。&lt;/p&gt;
@@ -259,7 +259,7 @@ AttributeError: &#39;module&#39; object has no attribute &#39;B&#39;
 
 &lt;p&gt;それもそのはずで、実行時の振る舞いは通常の &lt;code&gt;import&lt;/code&gt; と同じなのだ。もちろん、コンパイル時はコンパイラが &lt;code&gt;from __future__&lt;/code&gt; を特別扱いしてセマンティクスのチェックなどを行うわけだが、&lt;strong&gt;実行時は標準ライブラリの &lt;strong&gt;future&lt;/strong&gt;.py を import するようになっている&lt;/strong&gt;。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.metareal.org/2008/09/25/disassembling-python-import-statements-take2/&#34;&gt;追記が長くなったので、つづきを別の記事として書きました&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements-take2/&#34;&gt;追記が長くなったので、つづきを別の記事として書きました&lt;/a&gt;。&lt;/p&gt;
 
 &lt;h3 id=&#34;reference:8592ba189cdb8aa120e1fb84b538c680&#34;&gt;Reference&lt;/h3&gt;
 

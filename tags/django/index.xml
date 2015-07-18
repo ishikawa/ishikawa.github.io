@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Django on METAREAL</title>
-    <link>http://www.metareal.org/tags/django/</link>
+    <link>http://ishikawa.github.io/tags/django/</link>
     <description>Recent content in Django on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Thu, 03 Dec 2009 12:42:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/django/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/django/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Google AppEngine で Django 1.1 を使う</title>
-      <link>http://www.metareal.org/2009/12/02/running-django-1-1-on-google-appengine/</link>
+      <link>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</link>
       <pubDate>Thu, 03 Dec 2009 12:42:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2009/12/02/running-django-1-1-on-google-appengine/</guid>
+      <guid>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://code.google.com/appengine/&#34;&gt;Google AppEngine&lt;/a&gt; の SDK および実行環境には、Web アプリケーション・フレームワークの &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; がプリインストールされている。&lt;/p&gt;
@@ -95,10 +95,10 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
     
     <item>
       <title>Google App Engine で Django 1.0 を動かす</title>
-      <link>http://www.metareal.org/2008/10/02/running-django-1-0-on-google-app-engine/</link>
+      <link>http://ishikawa.github.io/2008/10/02/running-django-1-0-on-google-app-engine/</link>
       <pubDate>Thu, 02 Oct 2008 10:26:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/10/02/running-django-1-0-on-google-app-engine/</guid>
+      <guid>http://ishikawa.github.io/2008/10/02/running-django-1-0-on-google-app-engine/</guid>
       <description>
 
 &lt;p&gt;このブログは &lt;a href=&#34;http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;Google App Engine と Django で動かしている&lt;/a&gt;のだが、いままで &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; はすこし古い開発版を使っていた。&lt;/p&gt;
@@ -169,10 +169,10 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
     
     <item>
       <title>Django のキャッシュで Google App Engine の Memcache API を使う</title>
-      <link>http://www.metareal.org/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</link>
+      <link>http://ishikawa.github.io/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</link>
       <pubDate>Thu, 29 May 2008 01:48:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</guid>
+      <guid>http://ishikawa.github.io/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://googleappengine.blogspot.com/&#34;&gt;Google App Engine ブログ&lt;/a&gt;で&lt;a href=&#34;http://googleappengine.blogspot.com/2008/05/announcing-open-signups-expected.html&#34;&gt;新しい動き&lt;/a&gt;があった。トピックは以下の通り。&lt;/p&gt;
@@ -188,7 +188,7 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
 
 &lt;h3 id=&#34;重いページをキャッシュする:566a9dac81dfb9c529763dee37b2ec7b&#34;&gt;重いページをキャッシュする&lt;/h3&gt;
 
-&lt;p&gt;このブログを &lt;a href=&#34;http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;Google App Engine に移行&lt;/a&gt;して一週間が経った。しかし、Admin Console でログを確認してみると、ところどころで警告が出ている。&lt;/p&gt;
+&lt;p&gt;このブログを &lt;a href=&#34;http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;Google App Engine に移行&lt;/a&gt;して一週間が経った。しかし、Admin Console でログを確認してみると、ところどころで警告が出ている。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;
 &amp;quot;GET /index.xml HTTP/1.1&amp;quot; 200 117413 - -
@@ -265,10 +265,10 @@ MemcacheCache.get_many = silent_missing_key_error(MemcacheCache.get_many)
     
     <item>
       <title>XViewMiddleware の謎</title>
-      <link>http://www.metareal.org/2008/05/24/django-xview-middleware-tour/</link>
+      <link>http://ishikawa.github.io/2008/05/24/django-xview-middleware-tour/</link>
       <pubDate>Sat, 24 May 2008 09:12:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/05/24/django-xview-middleware-tour/</guid>
+      <guid>http://ishikawa.github.io/2008/05/24/django-xview-middleware-tour/</guid>
       <description>
 
 &lt;p&gt;疑問に思ったことはないだろうか。&lt;/p&gt;
@@ -320,7 +320,7 @@ MemcacheCache.get_many = silent_missing_key_error(MemcacheCache.get_many)
 )
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;HEAD リクエストは &lt;code&gt;curl&lt;/code&gt; コマンドなどで送信することができる。&lt;a href=&#34;http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;このブログも Django で書かれている&lt;/a&gt;ので試してみた（ローカルの開発環境で、だが）。&lt;/p&gt;
+&lt;p&gt;HEAD リクエストは &lt;code&gt;curl&lt;/code&gt; コマンドなどで送信することができる。&lt;a href=&#34;http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;このブログも Django で書かれている&lt;/a&gt;ので試してみた（ローカルの開発環境で、だが）。&lt;/p&gt;
 
 &lt;p&gt;結果は以下のようになる。&lt;/p&gt;
 
@@ -393,10 +393,10 @@ content-length: 0
     
     <item>
       <title>Google App Engine への移行</title>
-      <link>http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/</link>
+      <link>http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/</link>
       <pubDate>Tue, 20 May 2008 07:39:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/</guid>
+      <guid>http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/</guid>
       <description>
 
 &lt;p&gt;ここ数日というもの、Mac の前に座ってやっていたことといえば、&lt;a href=&#34;http://twitter.com/takanori_is&#34;&gt;Twitter&lt;/a&gt; か RSS フィードの消化か、でなければブログの移行作業だ。&lt;/p&gt;
@@ -495,10 +495,10 @@ content-length: 0
     
     <item>
       <title>Django のテンプレートでフォームの要素が hidden かどうかを調べる</title>
-      <link>http://www.metareal.org/2008/05/12/checking-whether-field-has-a-hidden-widget-in-django-template/</link>
+      <link>http://ishikawa.github.io/2008/05/12/checking-whether-field-has-a-hidden-widget-in-django-template/</link>
       <pubDate>Mon, 12 May 2008 10:37:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/05/12/checking-whether-field-has-a-hidden-widget-in-django-template/</guid>
+      <guid>http://ishikawa.github.io/2008/05/12/checking-whether-field-has-a-hidden-widget-in-django-template/</guid>
       <description>&lt;p&gt;Django の &lt;a href=&#34;http://www.djangoproject.com/documentation/newforms/&#34;&gt;newforms library&lt;/a&gt; は、それだけでちいさな MVC の世界だ。テキストフィールドやラジオボタンといった View は &lt;code&gt;django.newforms.widgets&lt;/code&gt; の Widget クラスとそのサブクラスが担当している。&lt;/p&gt;
 
 &lt;p&gt;フォーム要素の HTML をテンプレートで出力する簡単な例は以下のとおり。&lt;/p&gt;
@@ -535,10 +535,10 @@ content-length: 0
     
     <item>
       <title>Django の urlresolvers.py を読む</title>
-      <link>http://www.metareal.org/2008/04/22/django-code-reading-core-urlresolvers/</link>
+      <link>http://ishikawa.github.io/2008/04/22/django-code-reading-core-urlresolvers/</link>
       <pubDate>Tue, 22 Apr 2008 10:38:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/04/22/django-code-reading-core-urlresolvers/</guid>
+      <guid>http://ishikawa.github.io/2008/04/22/django-code-reading-core-urlresolvers/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://lifecoding.metareal.org/post/32387415&#34;&gt;一身上の都合&lt;/a&gt;により &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; の &lt;a href=&#34;http://www.djangoproject.com/documentation/url_dispatch/&#34;&gt;URL dispatcher&lt;/a&gt; について調べている。ドキュメントでだいたいの動作は把握したので、今回は &lt;code&gt;urls.py&lt;/code&gt; に定義した URL のマッピングが実際にはどのように解決されているのか、ソースコードを読むことで理解を深めたい、と思う。&lt;/p&gt;
@@ -670,10 +670,10 @@ a string) and returns a tuple in this format:&lt;/p&gt;
     
     <item>
       <title>Django と Python-Markdown 1.7 で UnicodeDecodeError</title>
-      <link>http://www.metareal.org/2008/04/14/python-markdown-1-7-with-django/</link>
+      <link>http://ishikawa.github.io/2008/04/14/python-markdown-1-7-with-django/</link>
       <pubDate>Tue, 15 Apr 2008 08:57:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/04/14/python-markdown-1-7-with-django/</guid>
+      <guid>http://ishikawa.github.io/2008/04/14/python-markdown-1-7-with-django/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.freewisdom.org/projects/python-markdown/&#34;&gt;Python Markdown&lt;/a&gt; の最新版である 1.7 を &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; で使うと、日本語など ASCII 以外の文字で UnicodeDecodeError が発生する。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;MARKDOWN-CRITICAL: &amp;quot;UnicodeDecodeError: Markdown only accepts unicode or ascii  input.&amp;quot;
@@ -690,10 +690,10 @@ a string) and returns a tuple in this format:&lt;/p&gt;
     
     <item>
       <title>Django のモデルで日本語を使うと UnicodeEncodeError が発生する</title>
-      <link>http://www.metareal.org/2008/04/11/django-unicode-encode-error/</link>
+      <link>http://ishikawa.github.io/2008/04/11/django-unicode-encode-error/</link>
       <pubDate>Sat, 12 Apr 2008 07:16:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/04/11/django-unicode-encode-error/</guid>
+      <guid>http://ishikawa.github.io/2008/04/11/django-unicode-encode-error/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://diary.metareal.org/2008/01/24/meet-django-django-is-a-high-level-python-web-framework/&#34;&gt;ちょっと前&lt;/a&gt;から &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; で遊んでいる。教則本代わりの &lt;a href=&#34;http://www.djangobook.com/&#34;&gt;Django Book&lt;/a&gt; も含めて、完成度の高さに驚くことしきり。&lt;/p&gt;

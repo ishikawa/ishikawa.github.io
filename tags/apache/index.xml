@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Apache on METAREAL</title>
-    <link>http://www.metareal.org/tags/apache/</link>
+    <link>http://ishikawa.github.io/tags/apache/</link>
     <description>Recent content in Apache on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 02 Jan 2007 11:35:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/apache/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/apache/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>rotatelogs と時差</title>
-      <link>http://www.metareal.org/2007/01/02/apache-rotatelogs-time-offset/</link>
+      <link>http://ishikawa.github.io/2007/01/02/apache-rotatelogs-time-offset/</link>
       <pubDate>Tue, 02 Jan 2007 11:35:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/01/02/apache-rotatelogs-time-offset/</guid>
+      <guid>http://ishikawa.github.io/2007/01/02/apache-rotatelogs-time-offset/</guid>
       <description>&lt;p&gt;アクセスログのローテーションに使っているのは、&lt;a href=&#34;http://httpd.apache.org/&#34;&gt;Apache&lt;/a&gt; に付属している &lt;a href=&#34;http://httpd.apache.org/docs/2.2/ja/programs/rotatelogs.html&#34;&gt;&lt;code&gt;rotatelogs&lt;/code&gt;&lt;/a&gt; だ。わたしも多くの初心者と同じく、こいつにまつわる時差の問題に直面した。&lt;/p&gt;
 
 &lt;p&gt;これは、&lt;a href=&#34;http://httpd.apache.org/docs/2.2/ja/logs.html#piped&#34;&gt;Apache のマニュアル&lt;/a&gt;に書かれている &lt;code&gt;rotatelogs&lt;/code&gt; の設定例。&lt;/p&gt;

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Programming on METAREAL</title>
-    <link>http://www.metareal.org/tags/programming/</link>
+    <link>http://ishikawa.github.io/tags/programming/</link>
     <description>Recent content in Programming on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 27 Mar 2007 01:00:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>The world *is* parallel - we are parallel.</title>
-      <link>http://www.metareal.org/2007/03/26/the-world-is-parallel-we-are-are-parallel/</link>
+      <link>http://ishikawa.github.io/2007/03/26/the-world-is-parallel-we-are-are-parallel/</link>
       <pubDate>Tue, 27 Mar 2007 01:00:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/03/26/the-world-is-parallel-we-are-are-parallel/</guid>
+      <guid>http://ishikawa.github.io/2007/03/26/the-world-is-parallel-we-are-are-parallel/</guid>
       <description>&lt;p&gt;本日の名言。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.hyuki.com/yukiwiki/wiki.cgi?TenQuestionsWithJoeArmstrong&#34;&gt;TenQuestionsWithJoeArmstrong - 並列プログラマに 10 の質問 - Joe Armstrong さんの場合&lt;/a&gt;の日本語訳から知ったのですが &amp;hellip;&lt;/p&gt;
@@ -42,10 +42,10 @@
     
     <item>
       <title>最近分かったこと</title>
-      <link>http://www.metareal.org/2006/12/21/some-things-that-i-realized/</link>
+      <link>http://ishikawa.github.io/2006/12/21/some-things-that-i-realized/</link>
       <pubDate>Thu, 21 Dec 2006 10:12:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2006/12/21/some-things-that-i-realized/</guid>
+      <guid>http://ishikawa.github.io/2006/12/21/some-things-that-i-realized/</guid>
       <description>&lt;p&gt;今日やっと、&lt;a href=&#34;http://struts.apache.org/&#34;&gt;Struts&lt;/a&gt; で、&lt;/p&gt;
 
 &lt;ul&gt;

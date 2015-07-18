@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sphinx on METAREAL</title>
-    <link>http://www.metareal.org/tags/sphinx/</link>
+    <link>http://ishikawa.github.io/tags/sphinx/</link>
     <description>Recent content in Sphinx on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Mon, 27 Jul 2009 10:45:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/sphinx/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/sphinx/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Sphinx 0.6.2 にアップグレードしたときのメモ</title>
-      <link>http://www.metareal.org/2009/07/27/upgrading-sphinx-0-6-2/</link>
+      <link>http://ishikawa.github.io/2009/07/27/upgrading-sphinx-0-6-2/</link>
       <pubDate>Mon, 27 Jul 2009 10:45:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2009/07/27/upgrading-sphinx-0-6-2/</guid>
+      <guid>http://ishikawa.github.io/2009/07/27/upgrading-sphinx-0-6-2/</guid>
       <description>
 
 &lt;p&gt;約一年ぶりに &lt;a href=&#34;http://sphinx.pocoo.org/&#34;&gt;Sphinx&lt;/a&gt; を最新版に&amp;hellip;しようとしたら色々苦労したので、変更点や手順をメモとして残しておく。&lt;/p&gt;

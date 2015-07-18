@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Concurrent on METAREAL</title>
-    <link>http://www.metareal.org/tags/concurrent/</link>
+    <link>http://ishikawa.github.io/tags/concurrent/</link>
     <description>Recent content in Concurrent on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Fri, 27 Jun 2008 03:41:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/concurrent/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/concurrent/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>kilim で Java でもジェネレーター</title>
-      <link>http://www.metareal.org/2008/06/26/java-generater-by-using-kilim/</link>
+      <link>http://ishikawa.github.io/2008/06/26/java-generater-by-using-kilim/</link>
       <pubDate>Fri, 27 Jun 2008 03:41:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/06/26/java-generater-by-using-kilim/</guid>
+      <guid>http://ishikawa.github.io/2008/06/26/java-generater-by-using-kilim/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://twitter.com/&#34;&gt;Twitter&lt;/a&gt; と &lt;a href=&#34;http://www.erlang.org/&#34;&gt;Erlang&lt;/a&gt; をきっかけに注目を集めるようになった軽量プロセス（とかマイクロスレッドとか）を Java で実現するためのライブラリに &lt;a href=&#34;http://www.malhar.net/sriram/kilim/&#34;&gt;kilim&lt;/a&gt; があります。&lt;/p&gt;
@@ -138,10 +138,10 @@ Fib(10) = 55
     
     <item>
       <title>ruby 1.8.6 と fastthread</title>
-      <link>http://www.metareal.org/2007/03/28/ruby-1-8-6-and-fastthread/</link>
+      <link>http://ishikawa.github.io/2007/03/28/ruby-1-8-6-and-fastthread/</link>
       <pubDate>Thu, 29 Mar 2007 08:42:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/03/28/ruby-1-8-6-and-fastthread/</guid>
+      <guid>http://ishikawa.github.io/2007/03/28/ruby-1-8-6-and-fastthread/</guid>
       <description>&lt;p&gt;新しい MacBook に &lt;a href=&#34;http://mongrel.rubyforge.org/&#34;&gt;Mongrel&lt;/a&gt; をインストールした。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;% sudo gem install mongrel

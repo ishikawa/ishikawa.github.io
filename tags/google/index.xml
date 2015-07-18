@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Google on METAREAL</title>
-    <link>http://www.metareal.org/tags/google/</link>
+    <link>http://ishikawa.github.io/tags/google/</link>
     <description>Recent content in Google on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 23 Feb 2010 23:26:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/google/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/google/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Google Bookmark が快適すぎる</title>
-      <link>http://www.metareal.org/2010/02/23/google-bookmark-makes-me-feel-so-good/</link>
+      <link>http://ishikawa.github.io/2010/02/23/google-bookmark-makes-me-feel-so-good/</link>
       <pubDate>Tue, 23 Feb 2010 23:26:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2010/02/23/google-bookmark-makes-me-feel-so-good/</guid>
+      <guid>http://ishikawa.github.io/2010/02/23/google-bookmark-makes-me-feel-so-good/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.google.com/bookmarks/&#34;&gt;Google Bookmark&lt;/a&gt; を使いはじめた。シンプルながら快適な使い心地で気に入っている。&lt;/p&gt;
 
 &lt;ol&gt;
@@ -34,10 +34,10 @@
     
     <item>
       <title>Go</title>
-      <link>http://www.metareal.org/2009/11/11/go-vim/</link>
+      <link>http://ishikawa.github.io/2009/11/11/go-vim/</link>
       <pubDate>Wed, 11 Nov 2009 10:29:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2009/11/11/go-vim/</guid>
+      <guid>http://ishikawa.github.io/2009/11/11/go-vim/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://iolanguage.com/&#34;&gt;Io&lt;/a&gt; と並んで、自らの検索能力が試される名前の &lt;a href=&#34;http://golang.org/&#34;&gt;Go&lt;/a&gt; ですが、実用性と簡潔さを兼ねそなえた言語設計は好感がもてます。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;% cd $GOROOT
@@ -54,10 +54,10 @@ au BufRead,BufNewFile *.go set filetype=go
     
     <item>
       <title>Google Chrome に搭載されたオープンソースの JavaScript エンジン &#34;v8&#34; を試す</title>
-      <link>http://www.metareal.org/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</link>
+      <link>http://ishikawa.github.io/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</link>
       <pubDate>Wed, 03 Sep 2008 09:28:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</guid>
+      <guid>http://ishikawa.github.io/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://googlejapan.blogspot.com/2008/09/blog-post.html&#34;&gt;その発表&lt;/a&gt;から世間を騒がせた、Google の Web ブラウザ &lt;strong&gt;Chrome&lt;/strong&gt; が遂に&lt;a href=&#34;http://www.google.com/chrome&#34;&gt;公開された&lt;/a&gt;。&lt;/p&gt;
@@ -222,10 +222,10 @@ fib(10)
     
     <item>
       <title>Google の検索履歴を記録する JavaScript を読んでみた</title>
-      <link>http://www.metareal.org/2007/03/31/reading-google-search-history-javascript/</link>
+      <link>http://ishikawa.github.io/2007/03/31/reading-google-search-history-javascript/</link>
       <pubDate>Sun, 01 Apr 2007 04:59:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/03/31/reading-google-search-history-javascript/</guid>
+      <guid>http://ishikawa.github.io/2007/03/31/reading-google-search-history-javascript/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://www.google.com/searchhistory/&#34;&gt;Google 検索履歴&lt;/a&gt;では、検索クエリーの履歴だけではなく、検索結果で実際にどのページをクリックしたか、も記録している。&lt;/p&gt;
@@ -305,10 +305,10 @@ fib(10)
     
     <item>
       <title>Google のリダイレクタ</title>
-      <link>http://www.metareal.org/2007/02/07/google-redirector/</link>
+      <link>http://ishikawa.github.io/2007/02/07/google-redirector/</link>
       <pubDate>Thu, 08 Feb 2007 01:15:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/02/07/google-redirector/</guid>
+      <guid>http://ishikawa.github.io/2007/02/07/google-redirector/</guid>
       <description>&lt;p&gt;社内の開発合宿行ったり、そこで風邪もらったりしているうちに、すっかりブログの更新から遠のいてしまった。ぼちぼち復活。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.2ch.net/&#34;&gt;2ちゃんねる&lt;/a&gt;ではリファラ隠しのために、いわゆる &lt;code&gt;ttp&lt;/code&gt; リンクや &lt;code&gt;http://ime.nu/&lt;/code&gt; などのリダイレクタが利用されている。リダイレクタという名前は勝手に使ってるだけで、正式なものか分からないけど、URL の末尾やパラメータに別の URL を指定すると、その URL にリダイレクトしてくれるページのこと。&lt;/p&gt;

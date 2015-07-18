@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Algorithm on METAREAL</title>
-    <link>http://www.metareal.org/tags/algorithm/</link>
+    <link>http://ishikawa.github.io/tags/algorithm/</link>
     <description>Recent content in Algorithm on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Mon, 08 Sep 2008 02:25:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>O記法で対数の底が省略される理由</title>
-      <link>http://www.metareal.org/2008/09/07/logarithm-and-big-o-notation/</link>
+      <link>http://ishikawa.github.io/2008/09/07/logarithm-and-big-o-notation/</link>
       <pubDate>Mon, 08 Sep 2008 02:25:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/09/07/logarithm-and-big-o-notation/</guid>
+      <guid>http://ishikawa.github.io/2008/09/07/logarithm-and-big-o-notation/</guid>
       <description>
 
 &lt;p&gt;プログラムにスピードを求めるなら&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E5%A4%9A%E9%A0%85%E5%BC%8F%E6%99%82%E9%96%93&#34;&gt;多項式時間アルゴリズム&lt;/a&gt;、特に対数時間で解けるアルゴリズムが重要になる。なにしろ、&lt;a href=&#34;http://www.cs.sunysb.edu/~skiena/&#34;&gt;Steven S. Skiena&lt;/a&gt; 氏がその著書 &lt;a href=&#34;http://www.amazon.com/exec/obidos/ASIN/0387948600/thealgorithmrepo&#34;&gt;&amp;ldquo;The Algorithm Design Manual&amp;rdquo;&lt;/a&gt; で述べているように、&lt;em&gt;Logarithm is an anagram of algorithm&lt;/em&gt; なのだ。&lt;/p&gt;

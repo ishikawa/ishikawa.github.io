@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cache on METAREAL</title>
-    <link>http://www.metareal.org/tags/cache/</link>
+    <link>http://ishikawa.github.io/tags/cache/</link>
     <description>Recent content in Cache on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Thu, 29 May 2008 01:48:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/cache/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/cache/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Django のキャッシュで Google App Engine の Memcache API を使う</title>
-      <link>http://www.metareal.org/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</link>
+      <link>http://ishikawa.github.io/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</link>
       <pubDate>Thu, 29 May 2008 01:48:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</guid>
+      <guid>http://ishikawa.github.io/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://googleappengine.blogspot.com/&#34;&gt;Google App Engine ブログ&lt;/a&gt;で&lt;a href=&#34;http://googleappengine.blogspot.com/2008/05/announcing-open-signups-expected.html&#34;&gt;新しい動き&lt;/a&gt;があった。トピックは以下の通り。&lt;/p&gt;
@@ -31,7 +31,7 @@
 
 &lt;h3 id=&#34;重いページをキャッシュする:566a9dac81dfb9c529763dee37b2ec7b&#34;&gt;重いページをキャッシュする&lt;/h3&gt;
 
-&lt;p&gt;このブログを &lt;a href=&#34;http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;Google App Engine に移行&lt;/a&gt;して一週間が経った。しかし、Admin Console でログを確認してみると、ところどころで警告が出ている。&lt;/p&gt;
+&lt;p&gt;このブログを &lt;a href=&#34;http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;Google App Engine に移行&lt;/a&gt;して一週間が経った。しかし、Admin Console でログを確認してみると、ところどころで警告が出ている。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;
 &amp;quot;GET /index.xml HTTP/1.1&amp;quot; 200 117413 - -

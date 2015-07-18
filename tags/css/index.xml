@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Css on METAREAL</title>
-    <link>http://www.metareal.org/tags/css/</link>
+    <link>http://ishikawa.github.io/tags/css/</link>
     <description>Recent content in Css on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sat, 24 Nov 2007 02:58:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Ruby の CSS パーサはどこですか？</title>
-      <link>http://www.metareal.org/2007/11/23/looking-for-ruby-css-parser/</link>
+      <link>http://ishikawa.github.io/2007/11/23/looking-for-ruby-css-parser/</link>
       <pubDate>Sat, 24 Nov 2007 02:58:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/11/23/looking-for-ruby-css-parser/</guid>
+      <guid>http://ishikawa.github.io/2007/11/23/looking-for-ruby-css-parser/</guid>
       <description>
 
 &lt;p&gt;「Ruby で書かれた CSS パーサを探しています」メモ。&lt;/p&gt;
@@ -51,10 +51,10 @@
     
     <item>
       <title>IE でリンクをクリックするとフォントサイズが小さくなる</title>
-      <link>http://www.metareal.org/2007/08/08/hit-a-link-and-font-away/</link>
+      <link>http://ishikawa.github.io/2007/08/08/hit-a-link-and-font-away/</link>
       <pubDate>Wed, 08 Aug 2007 10:15:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/08/hit-a-link-and-font-away/</guid>
+      <guid>http://ishikawa.github.io/2007/08/08/hit-a-link-and-font-away/</guid>
       <description>
 
 &lt;p&gt;ひさしぶりに Windows IE 6 でブログの確認をしていたら妙なことに気がついた。&lt;strong&gt;リンクをクリックすると、一瞬、クリックしたリンクのフォントサイズが小さくなるのだ&lt;/strong&gt;。&lt;/p&gt;
@@ -97,10 +97,10 @@
     
     <item>
       <title>YUI の fonts.css だと pre &gt; code がでっかくなっちゃうね</title>
-      <link>http://www.metareal.org/2007/07/17/yui-fonts-css-bigger-pre-code/</link>
+      <link>http://ishikawa.github.io/2007/07/17/yui-fonts-css-bigger-pre-code/</link>
       <pubDate>Tue, 17 Jul 2007 10:31:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/07/17/yui-fonts-css-bigger-pre-code/</guid>
+      <guid>http://ishikawa.github.io/2007/07/17/yui-fonts-css-bigger-pre-code/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://developer.yahoo.com/yui/&#34;&gt;Yahoo! UI Library (YUI)&lt;/a&gt; の &lt;a href=&#34;http://developer.yahoo.com/yui/fonts/&#34;&gt;fonts.css&lt;/a&gt; では &lt;code&gt;pre&lt;/code&gt; と &lt;code&gt;code&lt;/code&gt; を次のようにスタイルづけしている。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;/**

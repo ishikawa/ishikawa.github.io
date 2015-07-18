@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on METAREAL</title>
-    <link>http://www.metareal.org/tags/python/</link>
+    <link>http://ishikawa.github.io/tags/python/</link>
     <description>Recent content in Python on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sun, 31 Jan 2010 18:26:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Python のクロージャとレキシカル変数を使ったシングルトンっぽいもの</title>
-      <link>http://www.metareal.org/2010/01/31/python-shared-instance-closure/</link>
+      <link>http://ishikawa.github.io/2010/01/31/python-shared-instance-closure/</link>
       <pubDate>Sun, 31 Jan 2010 18:26:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2010/01/31/python-shared-instance-closure/</guid>
+      <guid>http://ishikawa.github.io/2010/01/31/python-shared-instance-closure/</guid>
       <description>&lt;p&gt;実際にはシングルトンではなくて、共有インスタンスを返すメソッドを実装する、ってだけなんだけど。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class A(object):
@@ -40,10 +40,10 @@
     
     <item>
       <title>Google AppEngine で Django 1.1 を使う</title>
-      <link>http://www.metareal.org/2009/12/02/running-django-1-1-on-google-appengine/</link>
+      <link>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</link>
       <pubDate>Thu, 03 Dec 2009 12:42:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2009/12/02/running-django-1-1-on-google-appengine/</guid>
+      <guid>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://code.google.com/appengine/&#34;&gt;Google AppEngine&lt;/a&gt; の SDK および実行環境には、Web アプリケーション・フレームワークの &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; がプリインストールされている。&lt;/p&gt;
@@ -123,10 +123,10 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
     
     <item>
       <title>Sphinx 0.6.2 にアップグレードしたときのメモ</title>
-      <link>http://www.metareal.org/2009/07/27/upgrading-sphinx-0-6-2/</link>
+      <link>http://ishikawa.github.io/2009/07/27/upgrading-sphinx-0-6-2/</link>
       <pubDate>Mon, 27 Jul 2009 10:45:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2009/07/27/upgrading-sphinx-0-6-2/</guid>
+      <guid>http://ishikawa.github.io/2009/07/27/upgrading-sphinx-0-6-2/</guid>
       <description>
 
 &lt;p&gt;約一年ぶりに &lt;a href=&#34;http://sphinx.pocoo.org/&#34;&gt;Sphinx&lt;/a&gt; を最新版に&amp;hellip;しようとしたら色々苦労したので、変更点や手順をメモとして残しておく。&lt;/p&gt;
@@ -184,13 +184,13 @@ Please also report this if it was a user error, so that a better error message c
     
     <item>
       <title>Python の dis モジュールでさまざまな import 文を disassemble する (2)</title>
-      <link>http://www.metareal.org/2008/09/25/disassembling-python-import-statements-take2/</link>
+      <link>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements-take2/</link>
       <pubDate>Thu, 25 Sep 2008 17:39:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/09/25/disassembling-python-import-statements-take2/</guid>
+      <guid>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements-take2/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;http://www.metareal.org/2008/09/25/disassembling-python-import-statements/&#34;&gt;前回の記事&lt;/a&gt;への追記が長くなりそうなので、新しい記事にまとめました。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements/&#34;&gt;前回の記事&lt;/a&gt;への追記が長くなりそうなので、新しい記事にまとめました。&lt;/p&gt;
 
 &lt;h3 id=&#34;import-module-と-import-module-as-name:c67c4be80ba8b08362387226c770cc35&#34;&gt;import &lt;module&gt; と import &lt;module&gt; as &lt;name&gt;&lt;/h3&gt;
 
@@ -300,10 +300,10 @@ AttributeError: &#39;module&#39; object has no attribute &#39;B&#39;
     
     <item>
       <title>Python の dis モジュールでさまざまな import 文を disassemble する</title>
-      <link>http://www.metareal.org/2008/09/25/disassembling-python-import-statements/</link>
+      <link>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements/</link>
       <pubDate>Thu, 25 Sep 2008 09:34:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/09/25/disassembling-python-import-statements/</guid>
+      <guid>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://docs.python.org/ref/&#34;&gt;Python Reference Manual&lt;/a&gt; の &lt;a href=&#34;http://docs.python.org/ref/import.html&#34;&gt;6.12 The import statement&lt;/a&gt; を参考に、さまざまな形式の import 文を &lt;a href=&#34;http://docs.python.org/lib/module-dis.html&#34;&gt;dis&lt;/a&gt; モジュールで &lt;code&gt;disassemble&lt;/code&gt; してみた。&lt;/p&gt;
@@ -431,7 +431,7 @@ AttributeError: &#39;module&#39; object has no attribute &#39;B&#39;
 
 &lt;p&gt;それもそのはずで、実行時の振る舞いは通常の &lt;code&gt;import&lt;/code&gt; と同じなのだ。もちろん、コンパイル時はコンパイラが &lt;code&gt;from __future__&lt;/code&gt; を特別扱いしてセマンティクスのチェックなどを行うわけだが、&lt;strong&gt;実行時は標準ライブラリの &lt;strong&gt;future&lt;/strong&gt;.py を import するようになっている&lt;/strong&gt;。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.metareal.org/2008/09/25/disassembling-python-import-statements-take2/&#34;&gt;追記が長くなったので、つづきを別の記事として書きました&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements-take2/&#34;&gt;追記が長くなったので、つづきを別の記事として書きました&lt;/a&gt;。&lt;/p&gt;
 
 &lt;h3 id=&#34;reference:8592ba189cdb8aa120e1fb84b538c680&#34;&gt;Reference&lt;/h3&gt;
 
@@ -447,10 +447,10 @@ AttributeError: &#39;module&#39; object has no attribute &#39;B&#39;
     
     <item>
       <title>Python でプロパティリストを読み込む</title>
-      <link>http://www.metareal.org/2008/08/04/propertylist-parser-for-python/</link>
+      <link>http://ishikawa.github.io/2008/08/04/propertylist-parser-for-python/</link>
       <pubDate>Tue, 05 Aug 2008 12:21:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/08/04/propertylist-parser-for-python/</guid>
+      <guid>http://ishikawa.github.io/2008/08/04/propertylist-parser-for-python/</guid>
       <description>
 
 &lt;p&gt;Python で&lt;a href=&#34;http://ja.wikipedia.org/wiki/プロパティリスト&#34;&gt;プロパティリスト&lt;/a&gt;を読み込み、オブジェクトに変換するライブラリ &lt;a href=&#34;http://github.com/ishikawa/python-plist-parser/&#34;&gt;plist_parser&lt;/a&gt; を書いた。&lt;a href=&#34;http://github.com/ishikawa&#34;&gt;GitHub&lt;/a&gt; で&lt;a href=&#34;http://github.com/ishikawa/python-plist-parser/&#34;&gt;公開している&lt;/a&gt;。Python 2.4 以降で動作確認済み。ただし、対応するフォーマットは XML のみで、書き込みにも対応していない。&lt;/p&gt;
@@ -597,10 +597,10 @@ def load(file):
     
     <item>
       <title>Google App Engine への移行</title>
-      <link>http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/</link>
+      <link>http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/</link>
       <pubDate>Tue, 20 May 2008 07:39:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/</guid>
+      <guid>http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/</guid>
       <description>
 
 &lt;p&gt;ここ数日というもの、Mac の前に座ってやっていたことといえば、&lt;a href=&#34;http://twitter.com/takanori_is&#34;&gt;Twitter&lt;/a&gt; か RSS フィードの消化か、でなければブログの移行作業だ。&lt;/p&gt;
@@ -699,10 +699,10 @@ def load(file):
     
     <item>
       <title>Django の urlresolvers.py を読む</title>
-      <link>http://www.metareal.org/2008/04/22/django-code-reading-core-urlresolvers/</link>
+      <link>http://ishikawa.github.io/2008/04/22/django-code-reading-core-urlresolvers/</link>
       <pubDate>Tue, 22 Apr 2008 10:38:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/04/22/django-code-reading-core-urlresolvers/</guid>
+      <guid>http://ishikawa.github.io/2008/04/22/django-code-reading-core-urlresolvers/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://lifecoding.metareal.org/post/32387415&#34;&gt;一身上の都合&lt;/a&gt;により &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; の &lt;a href=&#34;http://www.djangoproject.com/documentation/url_dispatch/&#34;&gt;URL dispatcher&lt;/a&gt; について調べている。ドキュメントでだいたいの動作は把握したので、今回は &lt;code&gt;urls.py&lt;/code&gt; に定義した URL のマッピングが実際にはどのように解決されているのか、ソースコードを読むことで理解を深めたい、と思う。&lt;/p&gt;
@@ -834,10 +834,10 @@ a string) and returns a tuple in this format:&lt;/p&gt;
     
     <item>
       <title>Django と Python-Markdown 1.7 で UnicodeDecodeError</title>
-      <link>http://www.metareal.org/2008/04/14/python-markdown-1-7-with-django/</link>
+      <link>http://ishikawa.github.io/2008/04/14/python-markdown-1-7-with-django/</link>
       <pubDate>Tue, 15 Apr 2008 08:57:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/04/14/python-markdown-1-7-with-django/</guid>
+      <guid>http://ishikawa.github.io/2008/04/14/python-markdown-1-7-with-django/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.freewisdom.org/projects/python-markdown/&#34;&gt;Python Markdown&lt;/a&gt; の最新版である 1.7 を &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; で使うと、日本語など ASCII 以外の文字で UnicodeDecodeError が発生する。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;MARKDOWN-CRITICAL: &amp;quot;UnicodeDecodeError: Markdown only accepts unicode or ascii  input.&amp;quot;
@@ -854,10 +854,10 @@ a string) and returns a tuple in this format:&lt;/p&gt;
     
     <item>
       <title>Django のモデルで日本語を使うと UnicodeEncodeError が発生する</title>
-      <link>http://www.metareal.org/2008/04/11/django-unicode-encode-error/</link>
+      <link>http://ishikawa.github.io/2008/04/11/django-unicode-encode-error/</link>
       <pubDate>Sat, 12 Apr 2008 07:16:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/04/11/django-unicode-encode-error/</guid>
+      <guid>http://ishikawa.github.io/2008/04/11/django-unicode-encode-error/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://diary.metareal.org/2008/01/24/meet-django-django-is-a-high-level-python-web-framework/&#34;&gt;ちょっと前&lt;/a&gt;から &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; で遊んでいる。教則本代わりの &lt;a href=&#34;http://www.djangobook.com/&#34;&gt;Django Book&lt;/a&gt; も含めて、完成度の高さに驚くことしきり。&lt;/p&gt;
@@ -903,10 +903,10 @@ a string) and returns a tuple in this format:&lt;/p&gt;
     
     <item>
       <title>Mac の Python をビルドするときに GNU Readline ライブラリを有効にする</title>
-      <link>http://www.metareal.org/2008/04/11/building-readline-enabled-python-on-mac/</link>
+      <link>http://ishikawa.github.io/2008/04/11/building-readline-enabled-python-on-mac/</link>
       <pubDate>Fri, 11 Apr 2008 10:05:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/04/11/building-readline-enabled-python-on-mac/</guid>
+      <guid>http://ishikawa.github.io/2008/04/11/building-readline-enabled-python-on-mac/</guid>
       <description>
 
 &lt;p&gt;Mac OS X では &lt;a href=&#34;http://tiswww.case.edu/php/chet/readline/rltop.html&#34;&gt;GNU の Readline ライブラリ&lt;/a&gt;がインストールには含まれておらず、Readline 互換の &lt;a href=&#34;http://sourceforge.net/projects/libedit/&#34;&gt;Libedit&lt;/a&gt; というライブラリへのシンボリックリンクとなっている（こうなっている理由はライセンス上の問題からだと思われる。GNU の Readline ライブラリは GPL で、Libedit は BSD ライセンスだ）。&lt;/p&gt;
@@ -963,11 +963,11 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
     
     <item>
       <title>Apple によるロケール周りの変更点を Python 2.5.2 にも適用する</title>
-      <link>http://www.metareal.org/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</link>
+      <link>http://ishikawa.github.io/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</link>
       <pubDate>Wed, 02 Apr 2008 10:23:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</guid>
-      <description>&lt;p&gt;最近 &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; を 2.5.2 にアップデートして同じ作業を繰り返したことと、&lt;a href=&#34;http://www.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/&#34;&gt;Apple によるロケール周りの変更点を Python 2.5.1 にも適用する&lt;/a&gt;のときはパッチの適用方法について言及がなかったこともあり、そのへんも含めて手順をまとめておく。&lt;/p&gt;
+      <guid>http://ishikawa.github.io/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</guid>
+      <description>&lt;p&gt;最近 &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; を 2.5.2 にアップデートして同じ作業を繰り返したことと、&lt;a href=&#34;http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/&#34;&gt;Apple によるロケール周りの変更点を Python 2.5.1 にも適用する&lt;/a&gt;のときはパッチの適用方法について言及がなかったこともあり、そのへんも含めて手順をまとめておく。&lt;/p&gt;
 
 &lt;p&gt;まずは Python 2.5.2 をダウンロードし展開。&lt;/p&gt;
 
@@ -976,7 +976,7 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
 % tar xjf Python-2.5.2.tar.bz2
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/&#34;&gt;Apple によるロケール周りの変更点を Python 2.5.1 にも適用する&lt;/a&gt;で公開したパッチをあてる。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/&#34;&gt;Apple によるロケール周りの変更点を Python 2.5.1 にも適用する&lt;/a&gt;で公開したパッチをあてる。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;
 % curl -LO http://www.metareal.org/wp-content/uploads/2007/09/python251_apple_locale.txt
@@ -994,19 +994,19 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
 
 &lt;p&gt;2.5.3 がリリースされたら、また同じパターンで記事が一本できるな。&lt;/p&gt;
 
-&lt;p&gt;【追記】こうしてインストールされた Python インタプリタではヒストリ機能などが有効になっていないかもしれない。その場合は &lt;a href=&#34;http://www.metareal.org/2008/04/11/building-readline-enabled-python-on-mac/&#34;&gt;Mac の Python をビルドするときに GNU Readline ライブラリを有効にする&lt;/a&gt;をどうぞ。&lt;/p&gt;
+&lt;p&gt;【追記】こうしてインストールされた Python インタプリタではヒストリ機能などが有効になっていないかもしれない。その場合は &lt;a href=&#34;http://ishikawa.github.io/2008/04/11/building-readline-enabled-python-on-mac/&#34;&gt;Mac の Python をビルドするときに GNU Readline ライブラリを有効にする&lt;/a&gt;をどうぞ。&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</title>
-      <link>http://www.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</link>
+      <link>http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</link>
       <pubDate>Sun, 09 Sep 2007 11:49:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</guid>
+      <guid>http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/&#34;&gt;Python: Mac OS X での locale.getpreferredencoding()&lt;/a&gt; では、Mac OS X に Python 2.5.1 をソースコードからインストールした場合に発生する、ロケール周りの問題点について書いた。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/&#34;&gt;Python: Mac OS X での locale.getpreferredencoding()&lt;/a&gt; では、Mac OS X に Python 2.5.1 をソースコードからインストールした場合に発生する、ロケール周りの問題点について書いた。&lt;/p&gt;
 
 &lt;p&gt;要約すると、&lt;/p&gt;
 
@@ -1018,7 +1018,7 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
 
 &lt;p&gt;という内容だった。&lt;/p&gt;
 
-&lt;p&gt;しかし、しばらくして「っき」さんより&lt;a href=&#34;http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/#comment-4027&#34;&gt;コメントをいただいた&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;しかし、しばらくして「っき」さんより&lt;a href=&#34;http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/#comment-4027&#34;&gt;コメントをいただいた&lt;/a&gt;。&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;上記のlocale.getpreferredencoding()の返り値ですが、10.4.9に含まれているOS標準のPython 2.3.5では、デフォルトがUS-ASCIIになっていて、LANG環境変数も見てくれます。&lt;/p&gt;
@@ -1075,10 +1075,10 @@ ed - ${PROJECT}/Modules/_localemodule.c &amp;lt; ${FIX}/_localemodule.c.ed
     
     <item>
       <title>Python: Mac OS X での locale.getpreferredencoding() </title>
-      <link>http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</link>
+      <link>http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</link>
       <pubDate>Thu, 19 Jul 2007 10:30:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</guid>
+      <guid>http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</guid>
       <description>
 
 &lt;p&gt;（追記）この記事に載せているパッチよりも &lt;a href=&#34;http://weblog.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/&#34;&gt;Apple によるロケール周りの変更点を Python 2.5.1 にも適用する&lt;/a&gt;のパッチを使った方がよさそうです。Mac OS X 標準の Python との互換性があります。&lt;/p&gt;
@@ -1169,10 +1169,10 @@ LookupError: unknown encoding: X-MAC-JAPANESE
     
     <item>
       <title>Mac OS X では MoinMoin が UnboundLocalError で動かない</title>
-      <link>http://www.metareal.org/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</link>
+      <link>http://ishikawa.github.io/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</link>
       <pubDate>Mon, 09 Apr 2007 02:52:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</guid>
+      <guid>http://ishikawa.github.io/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</guid>
       <description>&lt;p&gt;作業メモや備忘録を残しておくためのシステムがほしくて、&lt;a href=&#34;http://moinmoin.wikiwikiweb.de/&#34;&gt;MoinMoin&lt;/a&gt; を自宅サーバの Mac OS X にインストールした。&lt;/p&gt;
 
 &lt;p&gt;ブログだとやっぱり時系列で流れちゃうし、書き殴りのメモとかは公開しづらいしね。MoinMoin はページごとのパーミッションを制御できるなど、今回の用途にはぴったり。&lt;/p&gt;

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Opencv on METAREAL</title>
-    <link>http://www.metareal.org/tags/opencv/</link>
+    <link>http://ishikawa.github.io/tags/opencv/</link>
     <description>Recent content in Opencv on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Wed, 28 Mar 2007 01:18:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>OpenCV 1.0.0 を Mac OS X 10.4 にインストール</title>
-      <link>http://www.metareal.org/2007/03/27/opencv-on-mac-os-x-tiger/</link>
+      <link>http://ishikawa.github.io/2007/03/27/opencv-on-mac-os-x-tiger/</link>
       <pubDate>Wed, 28 Mar 2007 01:18:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/03/27/opencv-on-mac-os-x-tiger/</guid>
+      <guid>http://ishikawa.github.io/2007/03/27/opencv-on-mac-os-x-tiger/</guid>
       <description>
 
 &lt;p&gt;物体認識もできる画像処理ライブラリ &lt;a href=&#34;http://www.intel.com/technology/computing/opencv/&#34;&gt;OpenCV 1.0.0&lt;/a&gt; を Mac OS X 10.4 にてコンパイルしてみた。&lt;/p&gt;

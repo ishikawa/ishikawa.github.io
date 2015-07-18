@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mac on METAREAL</title>
-    <link>http://www.metareal.org/tags/mac/</link>
+    <link>http://ishikawa.github.io/tags/mac/</link>
     <description>Recent content in Mac on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 09 Dec 2008 03:37:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Safari で開いているページのリンクを Evernote クライアントに送る</title>
-      <link>http://www.metareal.org/2008/12/09/copy-link-to-evernote-client-applescript/</link>
+      <link>http://ishikawa.github.io/2008/12/09/copy-link-to-evernote-client-applescript/</link>
       <pubDate>Tue, 09 Dec 2008 03:37:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/12/09/copy-link-to-evernote-client-applescript/</guid>
+      <guid>http://ishikawa.github.io/2008/12/09/copy-link-to-evernote-client-applescript/</guid>
       <description>
 
 &lt;p&gt;最近、プログラミング関係のまとめやインストール手順の記録といったものには &lt;a href=&#34;http://evernote.com/&#34;&gt;Evernote&lt;/a&gt; を利用している。&lt;/p&gt;
@@ -113,10 +113,10 @@ set the clipboard to theClipboard
     
     <item>
       <title>Python でプロパティリストを読み込む</title>
-      <link>http://www.metareal.org/2008/08/04/propertylist-parser-for-python/</link>
+      <link>http://ishikawa.github.io/2008/08/04/propertylist-parser-for-python/</link>
       <pubDate>Tue, 05 Aug 2008 12:21:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/08/04/propertylist-parser-for-python/</guid>
+      <guid>http://ishikawa.github.io/2008/08/04/propertylist-parser-for-python/</guid>
       <description>
 
 &lt;p&gt;Python で&lt;a href=&#34;http://ja.wikipedia.org/wiki/プロパティリスト&#34;&gt;プロパティリスト&lt;/a&gt;を読み込み、オブジェクトに変換するライブラリ &lt;a href=&#34;http://github.com/ishikawa/python-plist-parser/&#34;&gt;plist_parser&lt;/a&gt; を書いた。&lt;a href=&#34;http://github.com/ishikawa&#34;&gt;GitHub&lt;/a&gt; で&lt;a href=&#34;http://github.com/ishikawa/python-plist-parser/&#34;&gt;公開している&lt;/a&gt;。Python 2.4 以降で動作確認済み。ただし、対応するフォーマットは XML のみで、書き込みにも対応していない。&lt;/p&gt;
@@ -263,10 +263,10 @@ def load(file):
     
     <item>
       <title>Mac の Python をビルドするときに GNU Readline ライブラリを有効にする</title>
-      <link>http://www.metareal.org/2008/04/11/building-readline-enabled-python-on-mac/</link>
+      <link>http://ishikawa.github.io/2008/04/11/building-readline-enabled-python-on-mac/</link>
       <pubDate>Fri, 11 Apr 2008 10:05:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/04/11/building-readline-enabled-python-on-mac/</guid>
+      <guid>http://ishikawa.github.io/2008/04/11/building-readline-enabled-python-on-mac/</guid>
       <description>
 
 &lt;p&gt;Mac OS X では &lt;a href=&#34;http://tiswww.case.edu/php/chet/readline/rltop.html&#34;&gt;GNU の Readline ライブラリ&lt;/a&gt;がインストールには含まれておらず、Readline 互換の &lt;a href=&#34;http://sourceforge.net/projects/libedit/&#34;&gt;Libedit&lt;/a&gt; というライブラリへのシンボリックリンクとなっている（こうなっている理由はライセンス上の問題からだと思われる。GNU の Readline ライブラリは GPL で、Libedit は BSD ライセンスだ）。&lt;/p&gt;
@@ -323,11 +323,11 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
     
     <item>
       <title>Apple によるロケール周りの変更点を Python 2.5.2 にも適用する</title>
-      <link>http://www.metareal.org/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</link>
+      <link>http://ishikawa.github.io/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</link>
       <pubDate>Wed, 02 Apr 2008 10:23:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</guid>
-      <description>&lt;p&gt;最近 &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; を 2.5.2 にアップデートして同じ作業を繰り返したことと、&lt;a href=&#34;http://www.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/&#34;&gt;Apple によるロケール周りの変更点を Python 2.5.1 にも適用する&lt;/a&gt;のときはパッチの適用方法について言及がなかったこともあり、そのへんも含めて手順をまとめておく。&lt;/p&gt;
+      <guid>http://ishikawa.github.io/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</guid>
+      <description>&lt;p&gt;最近 &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; を 2.5.2 にアップデートして同じ作業を繰り返したことと、&lt;a href=&#34;http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/&#34;&gt;Apple によるロケール周りの変更点を Python 2.5.1 にも適用する&lt;/a&gt;のときはパッチの適用方法について言及がなかったこともあり、そのへんも含めて手順をまとめておく。&lt;/p&gt;
 
 &lt;p&gt;まずは Python 2.5.2 をダウンロードし展開。&lt;/p&gt;
 
@@ -336,7 +336,7 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
 % tar xjf Python-2.5.2.tar.bz2
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/&#34;&gt;Apple によるロケール周りの変更点を Python 2.5.1 にも適用する&lt;/a&gt;で公開したパッチをあてる。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/&#34;&gt;Apple によるロケール周りの変更点を Python 2.5.1 にも適用する&lt;/a&gt;で公開したパッチをあてる。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;
 % curl -LO http://www.metareal.org/wp-content/uploads/2007/09/python251_apple_locale.txt
@@ -354,16 +354,16 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
 
 &lt;p&gt;2.5.3 がリリースされたら、また同じパターンで記事が一本できるな。&lt;/p&gt;
 
-&lt;p&gt;【追記】こうしてインストールされた Python インタプリタではヒストリ機能などが有効になっていないかもしれない。その場合は &lt;a href=&#34;http://www.metareal.org/2008/04/11/building-readline-enabled-python-on-mac/&#34;&gt;Mac の Python をビルドするときに GNU Readline ライブラリを有効にする&lt;/a&gt;をどうぞ。&lt;/p&gt;
+&lt;p&gt;【追記】こうしてインストールされた Python インタプリタではヒストリ機能などが有効になっていないかもしれない。その場合は &lt;a href=&#34;http://ishikawa.github.io/2008/04/11/building-readline-enabled-python-on-mac/&#34;&gt;Mac の Python をビルドするときに GNU Readline ライブラリを有効にする&lt;/a&gt;をどうぞ。&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>ffmpeg を MacPorts でインストール</title>
-      <link>http://www.metareal.org/2007/12/09/install-ffmpeg-using-macports/</link>
+      <link>http://ishikawa.github.io/2007/12/09/install-ffmpeg-using-macports/</link>
       <pubDate>Sun, 09 Dec 2007 09:57:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/09/install-ffmpeg-using-macports/</guid>
+      <guid>http://ishikawa.github.io/2007/12/09/install-ffmpeg-using-macports/</guid>
       <description>&lt;p&gt;動画の変換がやりたくて Mac に &lt;a href=&#34;http://ffmpeg.mplayerhq.hu/&#34;&gt;ffmpeg&lt;/a&gt; をインストールした。そのときのメモ。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.macports.org/&#34;&gt;MacPorts&lt;/a&gt; でインストールするのがよさげ。&lt;a href=&#34;http://macwiki.sourceforge.jp/wiki/index.php/MacPorts#variants_.E3.81.AE.E3.82.B5.E3.83.9D.E3.83.BC.E3.83.88&#34;&gt;variants&lt;/a&gt; のおかげで、H.264 や AAC を有効にするのも簡単だ。&lt;/p&gt;
@@ -381,10 +381,10 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
     
     <item>
       <title>Mail.app や iGTD の vacuum を cron で自動化する</title>
-      <link>http://www.metareal.org/2007/12/08/vacuum-analyze-sqlite-automatically-by-cron/</link>
+      <link>http://ishikawa.github.io/2007/12/08/vacuum-analyze-sqlite-automatically-by-cron/</link>
       <pubDate>Sat, 08 Dec 2007 10:00:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/08/vacuum-analyze-sqlite-automatically-by-cron/</guid>
+      <guid>http://ishikawa.github.io/2007/12/08/vacuum-analyze-sqlite-automatically-by-cron/</guid>
       <description>&lt;p&gt;Warning&lt;/p&gt;
 
 &lt;p&gt;この方法でデータベースを VACUUM すると、Mail.app で問題が起こるようだ。Mail.app を起動中に cron が実行されるとメールを送信できない、下書き保存できない、などの問題があった。というわけで、この方法は使わないか、問題が起こらないように改良する必要がある。&lt;/p&gt;
@@ -404,10 +404,10 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
     
     <item>
       <title>iGTD も vacuum すると速くなる</title>
-      <link>http://www.metareal.org/2007/12/05/optimize-the-igtd-database/</link>
+      <link>http://ishikawa.github.io/2007/12/05/optimize-the-igtd-database/</link>
       <pubDate>Thu, 06 Dec 2007 08:08:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/05/optimize-the-igtd-database/</guid>
+      <guid>http://ishikawa.github.io/2007/12/05/optimize-the-igtd-database/</guid>
       <description>
 
 &lt;p&gt;日々の ToDo 管理には &lt;a href=&#34;http://bargiel.home.pl/iGTD/index.html&#34;&gt;iGTD&lt;/a&gt; を愛用している。だが、最近、目に見えて動作が重くなってしまった。&lt;/p&gt;
@@ -434,10 +434,10 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
     
     <item>
       <title>MacBook に内蔵された iSight を Flash から利用できるようにする</title>
-      <link>http://www.metareal.org/2007/10/10/setting-flash-camera-with-macbook-isight/</link>
+      <link>http://ishikawa.github.io/2007/10/10/setting-flash-camera-with-macbook-isight/</link>
       <pubDate>Thu, 11 Oct 2007 05:20:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/10/10/setting-flash-camera-with-macbook-isight/</guid>
+      <guid>http://ishikawa.github.io/2007/10/10/setting-flash-camera-with-macbook-isight/</guid>
       <description>&lt;p&gt;Flash の &lt;a href=&#34;http://livedocs.adobe.com/flex/2_jp/langref/flash/media/Camera.html&#34;&gt;&lt;code&gt;flash.media.Camera&lt;/code&gt;&lt;/a&gt; オブジェクトを使うと、Webcam からの入力をキャプチャすることができる。&lt;/p&gt;
 
 &lt;p&gt;しかし、そのままだと MacBook に内蔵された &lt;a href=&#34;http://www.apple.com/jp/macbook/isight.html&#34;&gt;iSight&lt;/a&gt; では映像をとることができない。どうやら、設定を変更する必要があるようだ。&lt;/p&gt;
@@ -457,13 +457,13 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
     
     <item>
       <title>Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</title>
-      <link>http://www.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</link>
+      <link>http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</link>
       <pubDate>Sun, 09 Sep 2007 11:49:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</guid>
+      <guid>http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/&#34;&gt;Python: Mac OS X での locale.getpreferredencoding()&lt;/a&gt; では、Mac OS X に Python 2.5.1 をソースコードからインストールした場合に発生する、ロケール周りの問題点について書いた。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/&#34;&gt;Python: Mac OS X での locale.getpreferredencoding()&lt;/a&gt; では、Mac OS X に Python 2.5.1 をソースコードからインストールした場合に発生する、ロケール周りの問題点について書いた。&lt;/p&gt;
 
 &lt;p&gt;要約すると、&lt;/p&gt;
 
@@ -475,7 +475,7 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
 
 &lt;p&gt;という内容だった。&lt;/p&gt;
 
-&lt;p&gt;しかし、しばらくして「っき」さんより&lt;a href=&#34;http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/#comment-4027&#34;&gt;コメントをいただいた&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;しかし、しばらくして「っき」さんより&lt;a href=&#34;http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/#comment-4027&#34;&gt;コメントをいただいた&lt;/a&gt;。&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;上記のlocale.getpreferredencoding()の返り値ですが、10.4.9に含まれているOS標準のPython 2.3.5では、デフォルトがUS-ASCIIになっていて、LANG環境変数も見てくれます。&lt;/p&gt;
@@ -532,10 +532,10 @@ ed - ${PROJECT}/Modules/_localemodule.c &amp;lt; ${FIX}/_localemodule.c.ed
     
     <item>
       <title>Mail.app を vacuum して高速化</title>
-      <link>http://www.metareal.org/2007/08/23/optimize-the-apple-mail-app-database/</link>
+      <link>http://ishikawa.github.io/2007/08/23/optimize-the-apple-mail-app-database/</link>
       <pubDate>Fri, 24 Aug 2007 05:38:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/23/optimize-the-apple-mail-app-database/</guid>
+      <guid>http://ishikawa.github.io/2007/08/23/optimize-the-apple-mail-app-database/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.sqlite.org/&#34;&gt;SQLite&lt;/a&gt; の &lt;code&gt;vacuum&lt;/code&gt; コマンドで Mail.app を高速化する。ターミナルで、&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;% cd ~/Library/Mail/; sqlite3 Envelope\ Index &amp;quot;vacuum;&amp;quot;
@@ -557,10 +557,10 @@ end tell
     
     <item>
       <title>iGTD と QuickSilver の連携</title>
-      <link>http://www.metareal.org/2007/08/15/about-igtd-quicksilver-plugin/</link>
+      <link>http://ishikawa.github.io/2007/08/15/about-igtd-quicksilver-plugin/</link>
       <pubDate>Wed, 15 Aug 2007 05:18:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/15/about-igtd-quicksilver-plugin/</guid>
+      <guid>http://ishikawa.github.io/2007/08/15/about-igtd-quicksilver-plugin/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://igtd.pl/iGTD/&#34;&gt;iGTD&lt;/a&gt; のインストール用ディスクイメージには &lt;a href=&#34;http://docs.blacktree.com/quicksilver/what_is_quicksilver&#34;&gt;QuickSilver&lt;/a&gt; と連携するためのプラグインが同梱されている（参考：&lt;a href=&#34;http://bargiel.home.pl/iGTD/help/quicksilver/index.html&#34;&gt;iGTD &amp;amp; Quicksilver&lt;/a&gt;）。&lt;/p&gt;
 
 &lt;p&gt;このプラグインで追加される &lt;strong&gt;Put into iGTD inbox&lt;/strong&gt; を使えば、QuickSilver で選択したものは何でも（テキスト、ファイル、ブックマーク、あるいはアプリケーションも）iGTD の inbox に放り込むことが可能だ。QuickSilver でテキストを入力すれば、それがそのままタスクの名前になるし、ファイルやブックマークはタスクにリンクが付随したかたちで登録される。&lt;/p&gt;
@@ -663,10 +663,10 @@ end tell
     
     <item>
       <title>Mac の GTD アプリ、iGTD を試してみた (2)</title>
-      <link>http://www.metareal.org/2007/08/11/review-my-igtd-experience/</link>
+      <link>http://ishikawa.github.io/2007/08/11/review-my-igtd-experience/</link>
       <pubDate>Sat, 11 Aug 2007 08:59:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/11/review-my-igtd-experience/</guid>
+      <guid>http://ishikawa.github.io/2007/08/11/review-my-igtd-experience/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1077839654/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1373/1077839654_3a2455e628_o.gif&#34; alt=&#34;iGTD Screenshot&#34; /&gt;
@@ -713,10 +713,10 @@ end tell
     
     <item>
       <title>Mac の GTD アプリ、iGTD を試してみた</title>
-      <link>http://www.metareal.org/2007/08/10/igtd-first-impression/</link>
+      <link>http://ishikawa.github.io/2007/08/10/igtd-first-impression/</link>
       <pubDate>Fri, 10 Aug 2007 05:29:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/10/igtd-first-impression/</guid>
+      <guid>http://ishikawa.github.io/2007/08/10/igtd-first-impression/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1072315915/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1008/1072315915_bee7dddcbc_o.jpg&#34; alt=&#34;Remember The Milk To iGTD&#34; /&gt;
@@ -757,10 +757,10 @@ end tell
     
     <item>
       <title>PostgreSQL 7.4 を Intel Mac にインストールする方法</title>
-      <link>http://www.metareal.org/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</link>
+      <link>http://ishikawa.github.io/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</link>
       <pubDate>Wed, 25 Jul 2007 04:24:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</guid>
+      <guid>http://ishikawa.github.io/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</guid>
       <description>&lt;p&gt;理由あって &lt;a href=&#34;http://www.postgresql.org/&#34;&gt;PostgreSQL&lt;/a&gt; 7.4 を Mac OS X にインストールすることになった。早速、ダウンロードページから手に入る中で最新の 7.4.17 をダウンロードしてインストールしようとするも、エラーが出てコンパイルできない。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;% ./configure
@@ -852,10 +852,10 @@ All of PostgreSQL successfully made. Ready to install.
     
     <item>
       <title>Python: Mac OS X での locale.getpreferredencoding() </title>
-      <link>http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</link>
+      <link>http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</link>
       <pubDate>Thu, 19 Jul 2007 10:30:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</guid>
+      <guid>http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</guid>
       <description>
 
 &lt;p&gt;（追記）この記事に載せているパッチよりも &lt;a href=&#34;http://weblog.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/&#34;&gt;Apple によるロケール周りの変更点を Python 2.5.1 にも適用する&lt;/a&gt;のパッチを使った方がよさそうです。Mac OS X 標準の Python との互換性があります。&lt;/p&gt;

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Postgres on METAREAL</title>
-    <link>http://www.metareal.org/tags/postgres/</link>
+    <link>http://ishikawa.github.io/tags/postgres/</link>
     <description>Recent content in Postgres on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Wed, 19 Dec 2007 07:18:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>PostgreSQL で使われていないインデックスを調べる</title>
-      <link>http://www.metareal.org/2007/12/18/postgresql-looking-for-unused-indexes/</link>
+      <link>http://ishikawa.github.io/2007/12/18/postgresql-looking-for-unused-indexes/</link>
       <pubDate>Wed, 19 Dec 2007 07:18:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/18/postgresql-looking-for-unused-indexes/</guid>
+      <guid>http://ishikawa.github.io/2007/12/18/postgresql-looking-for-unused-indexes/</guid>
       <description>
 
 &lt;p&gt;PostgreSQL で使われていないインデックスを調べる方法について。いつも忘れるのでこちらにも書く。&lt;/p&gt;
@@ -58,10 +58,10 @@ where
     
     <item>
       <title>PostgreSQL 7.4 の JDBC ドライバをビルド</title>
-      <link>http://www.metareal.org/2007/12/12/building-postgresql-7-4-jdbc-driver/</link>
+      <link>http://ishikawa.github.io/2007/12/12/building-postgresql-7-4-jdbc-driver/</link>
       <pubDate>Wed, 12 Dec 2007 03:59:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/12/building-postgresql-7-4-jdbc-driver/</guid>
+      <guid>http://ishikawa.github.io/2007/12/12/building-postgresql-7-4-jdbc-driver/</guid>
       <description>
 
 &lt;p&gt;PostgreSQL 7.4.13 以降で起こる&lt;a href=&#34;http://weblog.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/&#34;&gt;異なるエンコーディング間の変換エラー&lt;/a&gt;がいまだに尾を引いている。&lt;/p&gt;
@@ -118,10 +118,10 @@ connectclass=org.postgresql.jdbc3.Jdbc3Connection
     
     <item>
       <title>PostgreSQL 7.4.13 以降、異なるエンコーディングでの変換エラー</title>
-      <link>http://www.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</link>
+      <link>http://ishikawa.github.io/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</link>
       <pubDate>Mon, 10 Dec 2007 09:54:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</guid>
+      <guid>http://ishikawa.github.io/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</guid>
       <description>&lt;p&gt;PostgreSQL 7.4.18 で以下のようなエラーが出力されるようになった。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;ERROR:  22P05: character 0xe28094 of encoding &amp;quot;UNICODE&amp;quot; has no equivalent in &amp;quot;EUC_JP&amp;quot;
@@ -152,10 +152,10 @@ connectclass=org.postgresql.jdbc3.Jdbc3Connection
     
     <item>
       <title>PostgreSQL 7.4 のインデックスと smallint と JDBC</title>
-      <link>http://www.metareal.org/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</link>
+      <link>http://ishikawa.github.io/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</link>
       <pubDate>Fri, 03 Aug 2007 05:41:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</guid>
+      <guid>http://ishikawa.github.io/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</guid>
       <description>&lt;p&gt;PostgreSQL 7.4 のマニュアル「&lt;a href=&#34;http://www.postgresql.jp/document/pg746doc/html/datatype.html#DATATYPE-INT&#34;&gt;8.1.1. 整数データ型&lt;/a&gt;」には以下のような記述がある。&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -225,10 +225,10 @@ statement: SELECT * FROM example WHERE smallint_column = &#39;1&amp;amp;#x27;
     
     <item>
       <title>PostgreSQL 7.4 を Intel Mac にインストールする方法</title>
-      <link>http://www.metareal.org/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</link>
+      <link>http://ishikawa.github.io/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</link>
       <pubDate>Wed, 25 Jul 2007 04:24:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</guid>
+      <guid>http://ishikawa.github.io/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</guid>
       <description>&lt;p&gt;理由あって &lt;a href=&#34;http://www.postgresql.org/&#34;&gt;PostgreSQL&lt;/a&gt; 7.4 を Mac OS X にインストールすることになった。早速、ダウンロードページから手に入る中で最新の 7.4.17 をダウンロードしてインストールしようとするも、エラーが出てコンパイルできない。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;% ./configure
@@ -320,10 +320,10 @@ All of PostgreSQL successfully made. Ready to install.
     
     <item>
       <title>空文字列で検索すると PostgreSQL のインデックスが効かない</title>
-      <link>http://www.metareal.org/2007/02/19/query-with-empty-string-cause-full-table-scan/</link>
+      <link>http://ishikawa.github.io/2007/02/19/query-with-empty-string-cause-full-table-scan/</link>
       <pubDate>Tue, 20 Feb 2007 03:53:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/02/19/query-with-empty-string-cause-full-table-scan/</guid>
+      <guid>http://ishikawa.github.io/2007/02/19/query-with-empty-string-cause-full-table-scan/</guid>
       <description>&lt;p&gt;きちんと調べたわけじゃないけど、PostgreSQL で空文字列で検索するとインデックスが効かない気がする。&lt;/p&gt;
 
 &lt;p&gt;具体的には、こういうやつ。&lt;/p&gt;

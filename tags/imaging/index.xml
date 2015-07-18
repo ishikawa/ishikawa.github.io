@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Imaging on METAREAL</title>
-    <link>http://www.metareal.org/tags/imaging/</link>
+    <link>http://ishikawa.github.io/tags/imaging/</link>
     <description>Recent content in Imaging on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 03 Apr 2007 12:18:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/imaging/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/imaging/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>java.awt.Image を BufferedImage や byte 配列に変換する方法</title>
-      <link>http://www.metareal.org/2007/04/02/convert-awt-image-to-buffered-image-or-byte-array/</link>
+      <link>http://ishikawa.github.io/2007/04/02/convert-awt-image-to-buffered-image-or-byte-array/</link>
       <pubDate>Tue, 03 Apr 2007 12:18:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/04/02/convert-awt-image-to-buffered-image-or-byte-array/</guid>
+      <guid>http://ishikawa.github.io/2007/04/02/convert-awt-image-to-buffered-image-or-byte-array/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/&#34;&gt;Java ImageIO で Flickr 並みのサムネイル画像をつくる&lt;/a&gt;という記事で、&lt;/p&gt;
@@ -115,10 +115,10 @@ renderedImage.getRaster().setDataElements(0, 0, w, h, pixelGrabber.getPixels());
     
     <item>
       <title>OpenCV 1.0.0 を Mac OS X 10.4 にインストール</title>
-      <link>http://www.metareal.org/2007/03/27/opencv-on-mac-os-x-tiger/</link>
+      <link>http://ishikawa.github.io/2007/03/27/opencv-on-mac-os-x-tiger/</link>
       <pubDate>Wed, 28 Mar 2007 01:18:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/03/27/opencv-on-mac-os-x-tiger/</guid>
+      <guid>http://ishikawa.github.io/2007/03/27/opencv-on-mac-os-x-tiger/</guid>
       <description>
 
 &lt;p&gt;物体認識もできる画像処理ライブラリ &lt;a href=&#34;http://www.intel.com/technology/computing/opencv/&#34;&gt;OpenCV 1.0.0&lt;/a&gt; を Mac OS X 10.4 にてコンパイルしてみた。&lt;/p&gt;
@@ -177,10 +177,10 @@ make: *** [all] Error 2
     
     <item>
       <title>Java ImageIO で Flickr 並みのサムネイル画像をつくる</title>
-      <link>http://www.metareal.org/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/</link>
+      <link>http://ishikawa.github.io/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/</link>
       <pubDate>Sun, 11 Feb 2007 08:38:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/</guid>
+      <guid>http://ishikawa.github.io/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/</guid>
       <description>&lt;p&gt;まあ、記事のタイトルがアレですけど&amp;hellip;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://java.sun.com/javase/6/docs/technotes/guides/imageio/index.html&#34;&gt;Java の Image I/O&lt;/a&gt; で画像の縮小を行う方法として、&lt;a href=&#34;http://java.sun.com/j2se/1.3/ja/docs/ja/api/java/awt/image/AffineTransformOp.html&#34;&gt;&lt;code&gt;AffineTransformOp&lt;/code&gt;&lt;/a&gt; を利用する方法がある。&lt;/p&gt;

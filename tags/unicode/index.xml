@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Unicode on METAREAL</title>
-    <link>http://www.metareal.org/tags/unicode/</link>
+    <link>http://ishikawa.github.io/tags/unicode/</link>
     <description>Recent content in Unicode on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Mon, 19 Nov 2007 02:31:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/unicode/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/unicode/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Ruby で平仮名にマッチする正規表現</title>
-      <link>http://www.metareal.org/2007/11/18/ruby-needs-unicode-regular-expressions/</link>
+      <link>http://ishikawa.github.io/2007/11/18/ruby-needs-unicode-regular-expressions/</link>
       <pubDate>Mon, 19 Nov 2007 02:31:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/11/18/ruby-needs-unicode-regular-expressions/</guid>
+      <guid>http://ishikawa.github.io/2007/11/18/ruby-needs-unicode-regular-expressions/</guid>
       <description>
 
 &lt;p&gt;Ruby 1.8 系で平仮名にマッチする正規表現を書きたい。&lt;/p&gt;

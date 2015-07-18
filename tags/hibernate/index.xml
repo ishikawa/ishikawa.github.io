@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hibernate on METAREAL</title>
-    <link>http://www.metareal.org/tags/hibernate/</link>
+    <link>http://ishikawa.github.io/tags/hibernate/</link>
     <description>Recent content in Hibernate on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 20 Mar 2007 08:36:00 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/hibernate/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ishikawa.github.io/tags/hibernate/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Criteria API で inner join する</title>
-      <link>http://www.metareal.org/2007/03/19/hibernate-inner-join-using-criteria-api/</link>
+      <link>http://ishikawa.github.io/2007/03/19/hibernate-inner-join-using-criteria-api/</link>
       <pubDate>Tue, 20 Mar 2007 08:36:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/03/19/hibernate-inner-join-using-criteria-api/</guid>
+      <guid>http://ishikawa.github.io/2007/03/19/hibernate-inner-join-using-criteria-api/</guid>
       <description>&lt;p&gt;毎回、&lt;a href=&#34;http://www.hibernate.org/&#34;&gt;Hibernate&lt;/a&gt; の使い方を Google で検索する羽目になるのだが、今日はその検索の過程で、偶々こんな記事を見つけた。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.javalobby.org/articles/hibernatequery102/&#34;&gt;Hibernate Querying 102 : The Criteria API&lt;/a&gt;&lt;/p&gt;
