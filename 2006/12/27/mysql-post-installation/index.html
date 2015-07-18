@@ -1,0 +1,130 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>MySQL をインストールしたあとの作業</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2006/12/27/mysql-post-installation/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>MySQL をインストールしたあとの作業</h1>
+  <div class="metadata">
+    <p class="date">2006/12/28 2:49am</p>
+  </div>
+  <div class="content">
+    
+
+<h3 id="初期化:30366d17b51c685772e0d8cfab1f0d4a">初期化</h3>
+
+<p>MySQL のインストールが完了したら、<a href="http://dev.mysql.com/doc/refman/5.0/en/post-installation.html">マニュアル通り</a>、インストール後の作業を進めていく。</p>
+
+<p><code>mysql_install_db</code> でデータ格納ディレクトリとアカウントを初期化する。</p>
+
+<pre><code>% cd /usr/local/mysql/
+% sudo chown -R mysql:mysql /usr/local/mysql
+% sudo bin/mysql_install_db --user=mysql
+</code></pre>
+
+<p>データベースを起動。</p>
+
+<pre><code>% sudo bin/mysqld_safe --user=mysql &amp;
+</code></pre>
+
+<p>いくつかのコマンドを実行して、動作を確認。</p>
+
+<pre><code>% bin/mysqladmin version
+% bin/mysqladmin variables
+% bin/mysqlshow
+</code></pre>
+
+<p>停止。</p>
+
+<pre><code>% sudo bin/mysqladmin -u root shutdown
+</code></pre>
+
+<h3 id="アカウントの設定:30366d17b51c685772e0d8cfab1f0d4a">アカウントの設定</h3>
+
+<p>インストール直後の MySQL には 2 つのアカウントが用意されている。</p>
+
+<ul>
+<li><code>root</code></li>
+<li>パスワードなし</li>
+<li>local host からの接続のみ許可</li>
+<li>匿名アカウント</li>
+<li>パスワードなし</li>
+<li>local host からの接続のみ許可</li>
+<li><code>test</code> または <code>test_</code> で始まる名前のデータベースへの権限</li>
+</ul>
+
+<p>つまり、最初から用意されているアカウントには、いずれも<strong>パスワードが設定されていない</strong>。これはセキュリティ的によろしくないので、次のふたつを実行する。</p>
+
+<ol>
+<li>匿名アカウントの削除</li>
+<li><code>root</code> にパスワードを設定</li>
+</ol>
+
+<p>MySQL を起動し、<code>mysql -u root</code> で接続。</p>
+
+<p>まずは、匿名アカウントの削除を削除する。</p>
+
+<pre><code>mysql&gt; DELETE FROM mysql.user WHERE User = '';
+mysql&gt; FLUSH PRIVILEGES;
+</code></pre>
+
+<p><code>root</code> にパスワードを設定する。</p>
+
+<pre><code>mysql&gt; SET PASSWORD FOR 'root'\@'localhost' = PASSWORD('newpwd');
+mysql&gt; SET PASSWORD FOR 'root'\@'%' = PASSWORD('newpwd');
+</code></pre>
+
+<h3 id="アカウントの追加:30366d17b51c685772e0d8cfab1f0d4a">アカウントの追加</h3>
+
+<p>実際に、アプリケーションを開発する場合は、自分のアカウントを作っておいた方がいいだろう。</p>
+
+<p>アカウントの追加は <code>GRANT</code> コマンドで行う。</p>
+
+<pre><code>mysql&gt; GRANT ALL PRIVILEGES ON *.* TO 'ishikawa'\@'localhost'
+    -&gt; IDENTIFIED BY 'newpwd' WITH GRANT OPTION;
+</code></pre>
+
+<p>ここでは <code>ishikawa</code> というアカウントを作成した。開発用のため、外部から接続する必要はないので、local host からのみのアクセスを許可した。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2006/12/27/mysql-bindings-on-macosx-tiger/">Mac OS X に MySQL/Ruby をインストール &#43; 高速化パッチ</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2006/12/27/ruby-p12-on-macosx-tiger/">Mac OS X Tiger に Ruby をインストール</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

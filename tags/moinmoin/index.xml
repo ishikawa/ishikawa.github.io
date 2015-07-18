@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Moinmoin on METAREAL</title>
+    <link>http://www.metareal.org/tags/moinmoin/</link>
+    <description>Recent content in Moinmoin on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Mon, 09 Apr 2007 02:52:00 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/moinmoin/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Mac OS X では MoinMoin が UnboundLocalError で動かない</title>
+      <link>http://www.metareal.org/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</link>
+      <pubDate>Mon, 09 Apr 2007 02:52:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</guid>
+      <description>&lt;p&gt;作業メモや備忘録を残しておくためのシステムがほしくて、&lt;a href=&#34;http://moinmoin.wikiwikiweb.de/&#34;&gt;MoinMoin&lt;/a&gt; を自宅サーバの Mac OS X にインストールした。&lt;/p&gt;
+
+&lt;p&gt;ブログだとやっぱり時系列で流れちゃうし、書き殴りのメモとかは公開しづらいしね。MoinMoin はページごとのパーミッションを制御できるなど、今回の用途にはぴったり。&lt;/p&gt;
+
+&lt;p&gt;ただし、バージョン 1.5.7 はそのままだと Mac OS X では動かなかった。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;UnboundLocalError: local variable &#39;File&#39; referenced before assignment
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;こんなエラーが出てしまう。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.sagemath.org:9002/sage_trac/ticket/104&#34;&gt;ここに書かれている通り&lt;/a&gt;、&lt;code&gt;util/filesys.py&lt;/code&gt; を修正すると動くようになった。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

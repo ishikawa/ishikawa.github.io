@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>MacBook に内蔵された iSight を Flash から利用できるようにする</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/10/10/setting-flash-camera-with-macbook-isight/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>MacBook に内蔵された iSight を Flash から利用できるようにする</h1>
+  <div class="metadata">
+    <p class="date">2007/10/11 5:20am</p>
+  </div>
+  <div class="content">
+    <p>Flash の <a href="http://livedocs.adobe.com/flex/2_jp/langref/flash/media/Camera.html"><code>flash.media.Camera</code></a> オブジェクトを使うと、Webcam からの入力をキャプチャすることができる。</p>
+
+<p>しかし、そのままだと MacBook に内蔵された <a href="http://www.apple.com/jp/macbook/isight.html">iSight</a> では映像をとることができない。どうやら、設定を変更する必要があるようだ。</p>
+
+<ol>
+<li>ページに表示された Flash を右クリックして「Adobe Flash Player 設定」を開く。</li>
+<li>左下のアイコンから、一番右のカメラをクリック</li>
+<li>カメラの種類を選択するプルダウンメニューが表示されるので「<strong>USB Video Class Video</strong>」を選択</li>
+</ol>
+
+<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2448186075/"><img src="http://farm3.static.flickr.com/2189/2448186075_9e2d68a91b_o.gif" alt="Webcam on Flash Player" />
+</a>これで iSight からの入力を受け取れるようになる。</p>
+
+<p>ちなみに、ここまでして見たかったページは <a href="http://incubator.quasimondo.com/flash/minority_cube.php">Quasimondo : Incubator : Processing : Minority Cube</a>、Webcam に映した手の動きでキューブを回せる、というデモ。実際に操作してみると、不思議な満足感がある。面白い。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/10/20/%E7%8A%AF%E4%BA%BA%E3%81%AB%E5%91%8A%E3%81%90/">雫井脩介「犯人に告ぐ」</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/10/09/capture-stderr-of-external-program-into-ruby-string/">Ruby で外部プログラムの標準エラー出力を得る方法</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

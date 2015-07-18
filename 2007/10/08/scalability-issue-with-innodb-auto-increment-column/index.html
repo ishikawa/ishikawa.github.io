@@ -1,0 +1,108 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>InnoDB の AUTO_INCREMENT とロック</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/10/08/scalability-issue-with-innodb-auto-increment-column/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>InnoDB の AUTO_INCREMENT とロック</h1>
+  <div class="metadata">
+    <p class="date">2007/10/09 12:29pm</p>
+  </div>
+  <div class="content">
+    
+
+<p>きっかけは <a href="http://www.mysql-ucj2007.jp/index.html">MySQL Users Conference Japan 2007</a> の講演資料「新ストレージエンジン Falcon のアーキテクチャ詳細技術解説」だった。</p>
+
+<p>Falcon とは MySQL 6.0 で搭載予定の新しいストレージエンジンである。</p>
+
+<ul>
+<li><a href="http://dev.mysql.com/doc/falcon/en/index.html">MySQL AB :: Falcon Storage Engine Guide</a></li>
+<li><a href="http://journal.mycom.co.jp/special/2007/falcon/">MySQLの新ストレージエンジン Falcon 徹底リサーチ | マイコミジャーナル</a></li>
+</ul>
+
+<p>この講演資料で Falcon が InnoDB より優れている点として、</p>
+
+<blockquote>
+<p>AUTO_INCREMENT の割当にテーブルロックをかけない</p>
+</blockquote>
+
+<p>があげられており、少々驚いた。</p>
+
+<p>これはつまり、<strong>InnoDB の AUTO_INCREMENT がテーブルロックをかける</strong>、ということであり、そのことをいままで知らなかったからだ。</p>
+
+<p>恥ずかしながら、AUTO_INCREMENT のスケーラビリティについては、いままであまり意識したことがなかった。</p>
+
+<h3 id="innodb-の特別なテーブルロックモード-auto-inc:e6282503b262b44c5726a59dab8eabeb">InnoDB の特別なテーブルロックモード AUTO-INC</h3>
+
+<p>リファレンスマニュアルの「13.5.16. InnoDB テーブル上の制約」にもあるように、AUTO_INCREMENT を使うときはテーブルロックが必要だ。</p>
+
+<blockquote>
+<p>自動インクリメント カウンタにアクセスする時、InnoDB は、トランザクション全体の最後までではなく、現在の SQL ステートメントの最後まで続く、特別なテーブル ロック モード AUTO-INC を利用します。AUTO-INC テーブル ロックが行われている間は、別のクライアントはテーブルに挿入ができない事に注意してください。</p>
+</blockquote>
+
+<p>AUTO_INCREMENT が設定された InnoDB のテーブルでは、AUTO-INC テーブルロックを同時にひとつのトランザクションしか利用できない。これはスケーラビリティの点で問題になりうる。</p>
+
+<h3 id="mysql-5-1-22-では解決済み:e6282503b262b44c5726a59dab8eabeb">MySQL 5.1.22 では解決済み</h3>
+
+<p>しかし、嬉しいことに <a href="http://www.mysqlperformanceblog.com/2007/09/26/innodb-auto-inc-scalability-fixed/">InnoDB auto-inc scalability fixed</a> によると、最新版の <a href="http://dev.mysql.com/downloads/mysql/5.1.html">MySQL 5.1.22</a> ではこの問題が解決されたようだ。</p>
+
+<ul>
+<li><a href="http://bugs.mysql.com/bug.php?id=16979">Bugs: #16979: AUTO_INC lock in InnoDB works a table level lock</a></li>
+<li><a href="http://dev.mysql.com/doc/refman/5.1/en/innodb-auto-increment-handling.html">How AUTO_INCREMENT Handling Works in InnoDB</a></li>
+</ul>
+
+<p>リファレンスマニュアルの <a href="http://dev.mysql.com/doc/refman/5.1/en/innodb-auto-increment-handling.html">How AUTO_INCREMENT Handling Works in InnoDB</a> に詳しいが、5.1.22 からは AUTO_INCREMENT カウンタのロック方法として、よりスケーラビリティの高い方式が導入された。</p>
+
+<p>また、<code>innodb_autoinc_lock_mode</code> パラメータを設定することで、新しい方式を利用するかどうかを設定可能で、<strong>デフォルトでは単純な INSERT でのみ</strong>、新しい方式を利用するようになっている。</p>
+
+<p>ただし、新しいロック方式ではいくつかの点で注意が必要だ。</p>
+
+<ol>
+<li>ステートメントベースのレプリケーションでは問題が起こる可能性がある</li>
+<li>連番になるとは限らない（さまざまな理由で値にはギャップが生じる）</li>
+</ol>
+
+<p>これらは <code>innodb_autoinc_lock_mode</code> の値によっても異なってくるので、リファレンスマニュアルの <a href="http://dev.mysql.com/doc/refman/5.1/en/innodb-auto-increment-handling.html">How AUTO_INCREMENT Handling Works in InnoDB</a> で詳細を確認した方がよいだろう（AUTO_INCREMENT の実装について詳しく書かれているため、機会があれば記事にしたい）。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/10/09/capture-stderr-of-external-program-into-ruby-string/">Ruby で外部プログラムの標準エラー出力を得る方法</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/10/07/java-singleton-collection/">Java で要素がひとつだけのコレクションをつくる</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

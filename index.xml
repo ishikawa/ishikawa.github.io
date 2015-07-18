@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/</link>
+    <description>Recent content on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Tue, 07 Jul 2015 08:02:21 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>JavaScript API Response object</title>
+      <link>http://www.metareal.org/post/2015/07/javascript-api-response-object/</link>
+      <pubDate>Tue, 07 Jul 2015 08:02:21 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/post/2015/07/javascript-api-response-object/</guid>
+      <description>&lt;p&gt;JavaScript (TypeScript) でサーバーとの通信には JSON-RPC 2.0 を用いて、受け取った JSON レスポンスをオブジェクトに変換して使っている。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Tweet {
+
+  constructor(
+    userId: string,
+    screenName: string,
+    text: string,
+    favorited: boolean,
+  ) {}
+
+  static fromJsonResponse(response: any): Tweet {
+    return new Tweet(
+      response[&amp;quot;userId&amp;quot;],
+      response[&amp;quot;screenName&amp;quot;],
+      response[&amp;quot;text&amp;quot;],
+      response[&amp;quot;favorited&amp;quot;]
+    );
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/Microsoft/TypeScript/wiki/Classes#using-a-class-as-an-interface&#34;&gt;TypeScript のクラスはインターフェースとしても使える&lt;/a&gt; ので、JSON レスポンスを変換したオブジェクトをそのまま使える気がしてきた。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;
+class Tweet {
+    userId: string;
+    screenName: string;
+    text: string;
+    favorited: boolean;
+
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>映画「LOOPER」</title>
+      <link>http://www.metareal.org/2013/01/18/looper/</link>
+      <pubDate>Fri, 18 Jan 2013 00:00:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2013/01/18/looper/</guid>
+      <description>&lt;p&gt;話題の映画「&lt;a href=&#34;http://looper.gaga.ne.jp/&#34;&gt;LOOPER&lt;/a&gt;」を観てきた。&lt;/p&gt;
+
+&lt;p&gt;タイムトラベルものでありながら、主人公自身はタイムトラベルしないのが珍しい。先行作品へのオマージュに満ちあふれた本作だが、以下の二点において
+映画「&lt;a href=&#34;http://www.amazon.co.jp/dp/B000BX4ANY&#34;&gt;ターミネーター&lt;/a&gt;」がもっとも近い気がした。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;未来と現代が拮抗する物語である&lt;/li&gt;
+&lt;li&gt;タイムトラベルが両者の衝突を生み出すための道具としてしか使われていない&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;一見、自己犠牲に見えるラストも、個人的には「ターミネーター」の別解として考えるのが腑に落ちた。&lt;/p&gt;
+
+&lt;p&gt;前半は最高にスリリングで、申し分のない面白さ。惜しむらくは、後半の展開が少々雑というか、色んな要素を詰め込みすぎた感はある。 未来の悪党どもに利用され蹂躙されている現代社会や、登場人物たちの悲劇の連鎖、といったループ構造が物語の本質だと思うが、飾りが多くてそこが見えづらい。とても楽しませてもらったのだけど、観賞後、冷静になってみるといまいちスッキリしないモヤモヤ感が残った（だからこそ観終わったあとに語りたくなって、話題になるのかもしれない）。&lt;/p&gt;
+
+&lt;p&gt;とはいえ、斬新なアイデアとサービス精神たっぷりのエンターテイメント作品であることは間違いない。新宿バルト9の前列席は音量が大きすぎて、銃撃戦は片耳を塞がないとツラかったが&amp;hellip;。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Code Reading: Dump and Print Function in llvm::Module Class</title>
+      <link>http://www.metareal.org/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</link>
+      <pubDate>Mon, 14 Jan 2013 00:00:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://llvm.org/releases/download.html#3.1&#34;&gt;LLVM 3.1&lt;/a&gt; のソースコードから、&lt;a href=&#34;http://llvm.org/doxygen/classllvm_1_1Module.html&#34;&gt;llvm::Module&lt;/a&gt; の IR 出力用関数のソースコードを読んだ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;/// Print the module to an output stream with an optional
+/// AssemblyAnnotationWriter.
+void print(raw_ostream &amp;amp;OS, AssemblyAnnotationWriter *AAW) const;
+
+/// Dump the module to stderr (for debugging).
+void dump() const;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;実装は &lt;code&gt;lib/VMCore/Module.cpp&lt;/code&gt; ではなく、他の IR 出力用関数とともに &lt;code&gt;lib/VMCore/AsmWriter.cpp&lt;/code&gt; にまとめられている。まずは &lt;code&gt;llvm::Module::print&lt;/code&gt; を見てみよう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;void Module::print(raw_ostream &amp;amp;ROS, AssemblyAnnotationWriter *AAW) const {
+  SlotTracker SlotTable(this);
+  formatted_raw_ostream OS(ROS);
+  AssemblyWriter W(OS, SlotTable, this, AAW);
+  W.printModule(this);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;llvm-module-print:3faf8e0f1caed9c18f3a51d4cc12c955&#34;&gt;llvm::Module::print&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;AssemblyWriter&lt;/code&gt; は &lt;code&gt;lib/VMCore/AsmWriter.cpp&lt;/code&gt; の無名ネームスペースに定義されているクラスであり、llvm 内のさまざまな型をストリームに出力する関数を提供している。&lt;code&gt;AssemblyWriter::printModule&lt;/code&gt; のコードをざっと眺めてみれば、やっていることの想像はつくだろう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;void AssemblyWriter::printModule(const Module *M) {
+  if (!M-&amp;gt;getModuleIdentifier().empty() &amp;amp;&amp;amp;
+      // Don&#39;t print the ID if it will start a new line (which would
+      // require a comment char before it).
+      M-&amp;gt;getModuleIdentifier().find(&#39;\n&#39;) == std::string::npos)
+    Out &amp;lt;&amp;lt; &amp;quot;; ModuleID = &#39;&amp;quot; &amp;lt;&amp;lt; M-&amp;gt;getModuleIdentifier() &amp;lt;&amp;lt; &amp;quot;&#39;\n&amp;quot;;
+...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;llvm-module-dump:3faf8e0f1caed9c18f3a51d4cc12c955&#34;&gt;llvm::Module::dump&lt;/h2&gt;
+
+&lt;p&gt;同じく &lt;code&gt;lib/VMCore/AsmWriter.cpp&lt;/code&gt; の最後の方に定義されている &lt;code&gt;llvm::Module::dump&lt;/code&gt; はどうなっているだろうか。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;// Module::dump() - Allow printing of Modules from the debugger.
+void Module::dump() const { print(dbgs(), 0); }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;llvm::Module::print&lt;/code&gt; を呼んでいるだけだ。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;第一引数の raw_ostream には dbgs()&lt;/li&gt;
+&lt;li&gt;第二引数の AssemblyAnnotationWriter* には 0 (null pointer)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;では、第一引数に渡している dbgs 関数の戻り値はなんだろうか？&lt;/p&gt;
+
+&lt;h2 id=&#34;llvm-dbgs:3faf8e0f1caed9c18f3a51d4cc12c955&#34;&gt;llvm::dbgs&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;llvm::dbgs&lt;/code&gt; の宣言は &lt;code&gt;include/llvm/Support/Debug.h&lt;/code&gt; にある。デバッグ用の出力ストリーム (raw_ostream) を返す関数だ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;/// dbgs() - This returns a reference to a raw_ostream for debugging
+/// messages.  If debugging is disabled it returns errs().  Use it
+/// like: dbgs() &amp;lt;&amp;lt; &amp;quot;foo&amp;quot; &amp;lt;&amp;lt; &amp;quot;bar&amp;quot;;
+raw_ostream &amp;amp;dbgs();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;実装は &lt;code&gt;lib/Support/Debug.cpp&lt;/code&gt; で定義されており、&lt;code&gt;NDEBUG&lt;/code&gt; が宣言されているか (非デバッグ・モード) 宣言されていないか (デバッグ・モード) で実装が切り替わるようになっている。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;// All Debug.h functionality is a no-op in NDEBUG mode.
+#ifndef NDEBUG
+/// dbgs - Return a circular-buffered debug stream.
+raw_ostream &amp;amp;llvm::dbgs() {
+...
+}
+...
+#else
+// Avoid &amp;quot;has no symbols&amp;quot; warning.
+namespace llvm {
+  /// dbgs - Return errs().
+  raw_ostream &amp;amp;dbgs() {
+    return errs();
+  }
+}
+
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;非デバッグ・モードのとき &lt;code&gt;dbgs()&lt;/code&gt; は単に標準エラー出力への raw_ostream を返す。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#ifndef STDERR_FILENO
+# define STDERR_FILENO 2
+#endif
+...
+/// errs() - This returns a reference to a raw_ostream for standard error.
+/// Use it like: errs() &amp;lt;&amp;lt; &amp;quot;foo&amp;quot; &amp;lt;&amp;lt; &amp;quot;bar&amp;quot;;
+raw_ostream &amp;amp;llvm::errs() {
+  // Set standard error to be unbuffered by default.
+  static raw_fd_ostream S(STDERR_FILENO, false, true);
+  return S;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;デバッグ・モードの場合の実装も見てみよう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;/// dbgs - Return a circular-buffered debug stream.
+raw_ostream &amp;amp;llvm::dbgs() {
+  // Do one-time initialization in a thread-safe way.
+  static struct dbgstream {
+    circular_raw_ostream strm;
+
+    dbgstream() :
+        strm(errs(), &amp;quot;*** Debug Log Output ***\n&amp;quot;,
+             (!EnableDebugBuffering || !DebugFlag) ? 0 : DebugBufferSize) {
+      if (EnableDebugBuffering &amp;amp;&amp;amp; DebugFlag &amp;amp;&amp;amp; DebugBufferSize != 0)
+        // TODO: Add a handler for SIGUSER1-type signals so the user can
+        // force a debug dump.
+        sys::AddSignalHandler(&amp;amp;debug_user_sig_handler, 0);
+      // Otherwise we&#39;ve already set the debug stream buffer size to
+      // zero, disabling buffering so it will output directly to errs().
+    }
+  } thestrm;
+
+  return thestrm.strm;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;デバッグ・モードの場合は、標準エラー出力をラップした circular_raw_ostream を返している。static な構造体のコンストラクタで初期化することで、 シグナル・ハンドラなども設定しているのが興味深い。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった</title>
+      <link>http://www.metareal.org/2010/12/16/ffi-requires-ruby-version-1-9-2/</link>
+      <pubDate>Thu, 16 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.metareal.org/2010/12/16/ffi-requires-ruby-version-1-9-2/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/ffi/ffi&#34;&gt;Ruby-FFI 1.0.0&lt;/a&gt; からは &lt;a href=&#34;http://groups.google.com/group/ruby-ffi/browse_thread/thread/c40766b574a15962&#34;&gt;Ruby 1.9.2 以降が必要になった&lt;/a&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% sudo gem1.8 install ffi
+Password:
+ERROR:  Error installing ffi:
+        ffi requires Ruby version &amp;gt;= 1.9.2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;そのため、Ruby 1.8 向けの gem をインストールするときはバージョン 0.6.3 を指定する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% sudo gem1.8 install ffi --version &amp;quot;= 0.6.3&amp;quot;
+Password:
+Building native extensions.  This could take a while...
+Successfully installed ffi-0.6.3
+1 gem installed
+Installing ri documentation for ffi-0.6.3...
+Installing RDoc documentation for ffi-0.6.3...
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ruby FFI のメモリ管理についてメモ</title>
+      <link>http://www.metareal.org/2010/12/11/1292077318/</link>
+      <pubDate>Sat, 11 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.metareal.org/2010/12/11/1292077318/</guid>
+      <description>&lt;p&gt;Ruby FFI のメモリ管理についてメモ。FFI::MemoryPointer で確保したメモリを自分で破棄する場合は、autorelease を false にする。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;error   = FFI::MemoryPointer.new(:pointer)
+...
+C.LLVMDisposeMessage(error)
+error.autorelease=false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;そうしないと、FFI::MemoryPointer は GC 時に確保したメモリを破棄しようとする (&lt;a href=&#34;https://github.com/ffi/ffi/blob/1.0.1/ext/ffi_c/MemoryPointer.c#L138&#34;&gt;MemoryPointer.c#L138&lt;/a&gt;) ので、たとえば Mac OS X では以下のようなエラーが出る。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ruby(891,0x7fff70874ca0) malloc: *** error for object 0x102e8fb10: pointer being freed was not allocated
+*** set a breakpoint in malloc_error_break to debug
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;エラー処理とかでは割と忘れがちかもしれない。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>LLVM 2.8 の C API 差分をチェックしてはじめて気づいたけど、2.8...</title>
+      <link>http://www.metareal.org/2010/12/05/1291551820/</link>
+      <pubDate>Sun, 05 Dec 2010 09:23:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2010/12/05/1291551820/</guid>
+      <description>&lt;p&gt;LLVM 2.8 の &lt;a href=&#34;https://gist.github.com/728757&#34;&gt;C API 差分&lt;/a&gt;をチェックしてはじめて気づいたけど、2.8 からは Union Type がなくなったみたい。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The LLVM IR &amp;lsquo;Union&amp;rsquo; feature was removed. While this is a desirable feature for LLVM IR to support, the existing implementation was half baked and barely useful. We&amp;rsquo;d really like anyone interested to resurrect the work and finish it for a future release.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://llvm.org/docs/ReleaseNotes.html#changes&#34;&gt;LLVM 2.8 Release Notes | Major Changes and Removed Features&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-September/034448.html&#34;&gt;[LLVMdev] Union type, is it really used or necessary?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;現在の実装は不完全で、また、不足分を実装しメンテする開発者がおらず優先順位も低い、ということが理由のようだ。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;It&amp;rsquo;s just a matter of priorities, unfortunately&amp;hellip; :(&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-September/034451.html&#34;&gt;http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-September/034451.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Lots of people agree it would be a useful feature, we are lacking a useful implementation :-)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-September/034484.html&#34;&gt;http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-September/034484.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Google Bookmark が快適すぎる</title>
+      <link>http://www.metareal.org/2010/02/23/google-bookmark-makes-me-feel-so-good/</link>
+      <pubDate>Tue, 23 Feb 2010 23:26:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2010/02/23/google-bookmark-makes-me-feel-so-good/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.google.com/bookmarks/&#34;&gt;Google Bookmark&lt;/a&gt; を使いはじめた。シンプルながら快適な使い心地で気に入っている。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;とにかく、ブックマーク編集画面が開くまでが速い&lt;/li&gt;
+&lt;li&gt;ブックマーク先のページも含めて全文検索が可能&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;ソーシャル要素は考えず、純粋に「ブックマーク」という行為を突き詰めていくと、上記二点が非常に重要であることが分かると思う。&lt;/p&gt;
+
+&lt;p&gt;ちなみに、ブックマークレットには&lt;a href=&#34;http://winmac.blog33.fc2.com/blog-entry-63.html&#34;&gt;Googleブックマークに追加するブックマークレット（メモ欄対応版）&lt;/a&gt;で配布されているものを別窓で開くようにして使わせてもらっている。感謝。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;javascript:var%20u=encodeURIComponent(location.href);var%20ti=encodeURIComponent(document.title);var%20te=encodeURIComponent((window.getSelection&amp;amp;&amp;amp;window.getSelection())||(document.getSelection&amp;amp;&amp;amp;document.getSelection())||(document.selection&amp;amp;&amp;amp;document.selection.createRange&amp;amp;&amp;amp;document.selection.createRange().text));window.open((te!=&#39;&#39;)?&#39;http://www.google.com/bookmarks/mark?op=add&amp;amp;bkmk=&#39;+u+&#39;&amp;amp;title=&#39;+ti+&#39;&amp;amp;annotation=&#39;+te:&#39;http://www.google.com/bookmarks/mark?op=add&amp;amp;bkmk=&#39;+u+&#39;&amp;amp;title=&#39;+ti);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Python のクロージャとレキシカル変数を使ったシングルトンっぽいもの</title>
+      <link>http://www.metareal.org/2010/01/31/python-shared-instance-closure/</link>
+      <pubDate>Sun, 31 Jan 2010 18:26:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2010/01/31/python-shared-instance-closure/</guid>
+      <description>&lt;p&gt;実際にはシングルトンではなくて、共有インスタンスを返すメソッドを実装する、ってだけなんだけど。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class A(object):
+
+    @staticmethod
+    def shared():
+        instance = A()
+        A.shared = staticmethod(lambda: instance)
+        return instance
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;共有インスタンスとなるオブジェクトを生成し、レキシカル変数にバインドする&lt;/li&gt;
+&lt;li&gt;このオブジェクトを返す無名関数で、元の関数 shared を置き換える&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;何が嬉しいかというと、共有インスタンスを参照するための変数（今回の場合は &lt;code&gt;instance&lt;/code&gt;）を関数外から不可視にできること。変数のスコープが必要以上に広いと不安になります。実行時に遅延インスタンス化されるのが嫌なら、クラス定義の直後に一度呼び出すなりすればいいと思う。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://gist.github.com/290628&#34;&gt;gist:290628&lt;/a&gt; に doctest とか追加したものを置いてあります。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Google AppEngine で Django 1.1 を使う</title>
+      <link>http://www.metareal.org/2009/12/02/running-django-1-1-on-google-appengine/</link>
+      <pubDate>Thu, 03 Dec 2009 12:42:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2009/12/02/running-django-1-1-on-google-appengine/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://code.google.com/appengine/&#34;&gt;Google AppEngine&lt;/a&gt; の SDK および実行環境には、Web アプリケーション・フレームワークの &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; がプリインストールされている。&lt;/p&gt;
+
+&lt;p&gt;しかし、デフォルトで有効になっているのは 0.96 という相当古いバージョンだ（もっとも、Google AppEngine リリース時点では、これが最新のバージョンであった）。すでにサポートも終了しており、バグや脆弱性の修正もされないため、できれば最新の 1.0/1.1系列を使いたい、という人が大半だろう。&lt;/p&gt;
+
+&lt;p&gt;しかし、これまで、バージョン 1.0 以降の Django を Google AppEngine で使うのは骨の折れる作業だった。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使いたいバージョンの Django を丸ごとアップロードしなくてはいけなかった&lt;/li&gt;
+&lt;li&gt;Django はファイル数が多いため、アップロード可能なファイル数制限を超えやすい&lt;/li&gt;
+&lt;li&gt;デフォルトで有効になる古いバージョンの Django を無効化するために、&lt;a href=&#34;http://code.google.com/intl/en/appengine/articles/django.html&#34;&gt;呪文めいたコードが必要&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;だが、いまや状況は変わった。SDK &lt;a href=&#34;http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes#Version_1.2.3_-_June_18,_2009&#34;&gt;1.2.3 からは Django 1.0&lt;/a&gt; が、SDK &lt;a href=&#34;http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes#Version_1.2.5_-_September_3,_2009&#34;&gt;1.2.5 からは Django 1.1&lt;/a&gt; がサポートされ、Google AppEngine でも、簡単に Django 1.x を動かせるようになった。&lt;/p&gt;
+
+&lt;h3 id=&#34;google-appengine-dist-use-library:d5cbf458e70a92e96be7ede9be9f6ecd&#34;&gt;google.appengine.dist.use_library&lt;/h3&gt;
+
+&lt;p&gt;SDK 1.2.&lt;sup&gt;3&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;.2.5 からは &lt;a href=&#34;http://code.google.com/p/googleappengine/source/browse/#svn/trunk/python/google/appengine/dist&#34;&gt;google.appengine.dist&lt;/a&gt; モジュールの &lt;code&gt;use_library&lt;/code&gt; 関数を使うことで Django 1.0/1.1 を選択できるようになった。&lt;/p&gt;
+
+&lt;p&gt;使い方は簡単で、&lt;code&gt;main.py&lt;/code&gt; に以下のような記述を追加するだけだ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import os
+os.environ[&#39;DJANGO_SETTINGS_MODULE&#39;] = &#39;settings&#39;
+
+from google.appengine.dist import use_library
+use_library(&#39;django&#39;, &#39;1.1&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これまで開発者が各自行っていた &lt;code&gt;sys.path&lt;/code&gt; の調整は &lt;code&gt;use_library&lt;/code&gt; 関数がやってくれる。&lt;/p&gt;
+
+&lt;p&gt;更に嬉しいことに、Django のコードをアップロードする必要もなくなった。Google AppEngine のサーバには Django 1.0/1.1 がインストールされている。ただし、SDK には Django 0.96 しか添付されていないので、1.0/1.1 を使う場合は、あらかじめローカルのマシンに Django 1.0/1.1 をインストールしておこう。&lt;/p&gt;
+
+&lt;h3 id=&#34;django-のバージョンと-dos-攻撃可能な脆弱性について:d5cbf458e70a92e96be7ede9be9f6ecd&#34;&gt;Django のバージョンと DoS 攻撃可能な脆弱性について&lt;/h3&gt;
+
+&lt;p&gt;なお、実際に有効になる Django の詳細なバージョンは、本記事執筆時点の 2009 年 11 月で以下のようになっている（&lt;code&gt;django.VERSION&lt;/code&gt; で調べた）。&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;use_library&lt;/th&gt;
+&lt;th&gt;Django version&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;(None)&lt;/td&gt;
+&lt;td&gt;0.96.4&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;use_library(1.0)&lt;/td&gt;
+&lt;td&gt;1.0.2&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;use_library(1.1)&lt;/td&gt;
+&lt;td&gt;1.1.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;del&gt;残念ながら、1.0/1.1 は &lt;a href=&#34;http://www.djangoproject.com/weblog/2009/oct/09/security/&#34;&gt;DoS 攻撃可能な脆弱性が修正されたバージョン&lt;/a&gt; ではないようだ（修正バージョンは 1.0.&lt;sup&gt;4&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;.1.1）。&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;この脆弱性は &lt;code&gt;EmailField&lt;/code&gt; か &lt;code&gt;URLField&lt;/code&gt; に関連したものなので、それらを使っているプログラムでは Google AppEngine にインストールされた Django のアップデートを待つか、これまでどおりの方法で、修正済みのバージョンをアップロードした方が安全だろう。&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Google AppEngine プロジェクトに&lt;a href=&#34;http://code.google.com/p/googleappengine/issues/detail?id=2447&#34;&gt;報告&lt;/a&gt;したところ、GAE で有効になるバージョンは修正済みのものである、とのこと。失礼しました。&lt;/p&gt;
+
+&lt;h3 id=&#34;main-py-のサンプル:d5cbf458e70a92e96be7ede9be9f6ecd&#34;&gt;main.py のサンプル&lt;/h3&gt;
+
+&lt;p&gt;実際に &lt;code&gt;use_library&lt;/code&gt; を使ったサンプルを &lt;a href=&#34;http://gist.github.com/245523&#34;&gt;gist:245523&lt;/a&gt; で公開している。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>http://www.metareal.org/2009/11/11/go-vim/</link>
+      <pubDate>Wed, 11 Nov 2009 10:29:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2009/11/11/go-vim/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://iolanguage.com/&#34;&gt;Io&lt;/a&gt; と並んで、自らの検索能力が試される名前の &lt;a href=&#34;http://golang.org/&#34;&gt;Go&lt;/a&gt; ですが、実用性と簡潔さを兼ねそなえた言語設計は好感がもてます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% cd $GOROOT
+% ls misc/vim/
+go.vim
+% cp misc/vim/go.vim ~/.vim/syntax/
+% cat &amp;amp;gt; ~/.vim/ftdetect/go.vim
+au BufRead,BufNewFile *.go set filetype=go
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;今日はここまで。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>伊坂幸太郎「ラッシュライフ」</title>
+      <link>http://www.metareal.org/2009/11/10/8/%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A9%E3%82%A4%E3%83%95-%E4%BC%8A%E5%9D%82%E5%B9%B8%E5%A4%AA%E9%83%8E</link>
+      <pubDate>Wed, 11 Nov 2009 01:28:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2009/11/10/8/%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A9%E3%82%A4%E3%83%95-%E4%BC%8A%E5%9D%82%E5%B9%B8%E5%A4%AA%E9%83%8E</guid>
+      <description>&lt;p&gt;すでに本棚の肥やしと化していた「ラッシュライフ」を読了した。「&lt;a href=&#34;http://www.amazon.co.jp/dp/4101250219&#34;&gt;オーデュポンの祈り&lt;/a&gt;」に引きつづき二冊目の伊坂幸太郎なので、一応、刊行順に読んでいることになる。もっとも、著者の本が文庫化されはじめた時期に衝動買いして、そのまま積んでいたというだけなのだが。&lt;/p&gt;
+
+&lt;p&gt;作品の感想は人それぞれ、どうやら評価の高い作品らしいので、個人的にトンデモに感じた箇所だけ挙げておく。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;豊田の連れている犬が饒舌すぎる。いっそのこと喋らせてしまえば、まだ面白かった。&lt;/li&gt;
+&lt;li&gt;ある事件の背景を、登場人物たちが「会話」で説明してくれる。&lt;/li&gt;
+&lt;li&gt;複雑にみえる構成も「偶然って不思議ね」程度の意味しかない。実は、都合のいい部分をつなげているだけなので、それほど複雑でもない。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ただ、「最高時速240キロの場所から物語が始まる」という書き出しは素晴らしい。気障だけど格好いいし、はまっている。これが本書のすべてだと思う。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Sphinx 0.6.2 にアップグレードしたときのメモ</title>
+      <link>http://www.metareal.org/2009/07/27/upgrading-sphinx-0-6-2/</link>
+      <pubDate>Mon, 27 Jul 2009 10:45:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2009/07/27/upgrading-sphinx-0-6-2/</guid>
+      <description>
+
+&lt;p&gt;約一年ぶりに &lt;a href=&#34;http://sphinx.pocoo.org/&#34;&gt;Sphinx&lt;/a&gt; を最新版に&amp;hellip;しようとしたら色々苦労したので、変更点や手順をメモとして残しておく。&lt;/p&gt;
+
+&lt;h3 id=&#34;sphinx-0-6-2-jinja2-2-1-1:27e83262ac07d97e8e96230e1937876f&#34;&gt;Sphinx 0.6.2 &amp;amp; Jinja2 2.1.1&lt;/h3&gt;
+
+&lt;p&gt;easy_install でインストールしようとしたが、&lt;a href=&#34;http://jinja.pocoo.org/2/&#34;&gt;Jinja2&lt;/a&gt; のセットアップ・スクリプトがうまく動いていないらしく、Jinja2 に依存している Sphinx もインストールできない。原因を調べる気力はないので、ソースコードからビルドしてインストールすることにした。&lt;/p&gt;
+
+&lt;p&gt;まずは &lt;a href=&#34;http://pypi.python.org/pypi/Jinja2&#34;&gt;Jinja2 2.1.1&lt;/a&gt; をビルドしてインストール。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% curl -LO http://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.1.1.tar.gz
+% tar xvzf Jinja2-2.1.1.tar.gz
+% cd Jinja2-2.1.1
+% sudo python setup.py install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;つづいて &lt;a href=&#34;http://pypi.python.org/pypi/Sphinx/0.6.2&#34;&gt;Sphinx 0.6.2&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% curl -LO http://pypi.python.org/packages/source/S/Sphinx/Sphinx-0.6.2.tar.gz
+% tar xvzf Sphinx-0.6.2.tar.gz
+% cd Sphinx-0.6.2
+% sudo python setup.py install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;sphinx-builder:27e83262ac07d97e8e96230e1937876f&#34;&gt;sphinx.builder&lt;/h3&gt;
+
+&lt;p&gt;Sphinx 0.6.2 では &lt;code&gt;sphinx.builder&lt;/code&gt; が非推奨扱いになっていた (&lt;a href=&#34;http://bitbucket.org/birkenfeld/sphinx/changeset/254e0ff435e8/&#34;&gt;changeset:254e0ff435e8&lt;/a&gt;)。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Running Sphinx v0.6.2
+docs/ja/source/../../sphinxext/__init__.py:1:
+DeprecationWarning: The sphinx.builder module is deprecated; please import builders from the respective sphinx.builders submodules.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;次のバージョンでは&lt;a href=&#34;http://bitbucket.org/birkenfeld/sphinx/changeset/7da5ae249f61/&#34;&gt;削除されている&lt;/a&gt;ようだし、モジュール名を適切に直す。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-from sphinx.builder import StandaloneHTMLBuilder
++from sphinx.builders.html import StandaloneHTMLBuilder
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;unicodedecodeerror:27e83262ac07d97e8e96230e1937876f&#34;&gt;UnicodeDecodeError&lt;/h3&gt;
+
+&lt;p&gt;今度は、日本語を含むドキュメントを変換しようとすると UnicodeDecodeError が発生する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Exception occurred:
+  File &amp;quot;/Library/Python/2.5/site-packages/Sphinx-0.6.2-py2.5.egg/sphinx/themes/basic/layout.html&amp;quot;, line 19, in block &amp;quot;rootrellink&amp;quot;
+    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;{{ pathto(master_doc) }}&amp;quot;&amp;gt;{{ shorttitle|e }}&amp;lt;/a&amp;gt;{{ reldelim1 }}&amp;lt;/li&amp;gt;
+UnicodeDecodeError: &#39;ascii&#39; codec can&#39;t decode byte 0xe3 in position 8: ordinal not in range(128)
+The full traceback has been saved in /var/folders/Xg/XgsbIugsGWiYSnTBrMoebU+++TI/-Tmp-/sphinx-err-cfE9NN.log, if you want to report the issue to the author.
+Please also report this if it was a user error, so that a better error message can be provided next time.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;どうやら、&lt;code&gt;conf.py&lt;/code&gt; に &lt;strong&gt;str&lt;/strong&gt; で日本語を書いていたのが原因らしい。&lt;strong&gt;unicode&lt;/strong&gt; リテラルで書き直したらうまくいった。&lt;a href=&#34;http://jinja.pocoo.org/2/documentation/api#unicode&#34;&gt;Jinja2 の Unicode 対応&lt;/a&gt;が原因だろうか。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>WEB&#43;DB PRESS Vol.48</title>
+      <link>http://www.metareal.org/2008/12/24/web-db-press-vol48/</link>
+      <pubDate>Wed, 24 Dec 2008 01:06:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/12/24/web-db-press-vol48/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://raku.to/&#34;&gt;古谷楽人&lt;/a&gt;氏より &lt;a href=&#34;http://gihyo.jp/magazine/wdpress/archive/2009/vol48&#34;&gt;WEB+DB PRESS Vol.48&lt;/a&gt; (&lt;a href=&#34;http://www.amazon.co.jp/exec/obidos/ASIN/4774136913/&#34;&gt;amazon.co.jp&lt;/a&gt;) を献本いただきました。ありがとうございます。わたしは当雑誌、というか雑誌全般の熱心な読者ではないのですが（ごめんなさい）、ひさしぶりの技術系雑誌を楽しく読ませてもらいました。&lt;/p&gt;
+
+&lt;p&gt;WEB+DB PRESS Vol.48 で氏は「[最速]JavaScript エンジン徹底比較」と題して、最近のブラウザ事情に聡いプログラマなら気になるであろう、最新 JavaScript エンジンの比較と検証記事を執筆されています。以下では、記事内容の簡単な紹介と一読した感想などを書いていきます。&lt;/p&gt;
+
+&lt;h3 id=&#34;最速-javascript-エンジン徹底比較:413f555c66a5164357ae2df9904875e8&#34;&gt;[最速]JavaScript エンジン徹底比較&lt;/h3&gt;
+
+&lt;p&gt;（ここから文体をいつもどおりに戻して&amp;hellip;）記事は三章から構成されており、それぞれの章題は：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;JavaScript エンジンの比較&lt;/li&gt;
+&lt;li&gt;SquirrelFish Extreme / WebKit の最適化手法&lt;/li&gt;
+&lt;li&gt;注目の Google Chrome に搭載された V8&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;である。&lt;/p&gt;
+
+&lt;p&gt;章題からも推測できるように、第一章が複数ベンチマークスイートによる各 JavaScript エンジンのパフォーマンス比較、第二章と第三章ではコンパイラと仮想機械の一般的な説明から始まり、WebKit の &lt;a href=&#34;http://webkit.org/blog/214/introducing-squirrelfish-extreme/&#34;&gt;SquirrelFish Extreme&lt;/a&gt;、および Google の &lt;a href=&#34;http://code.google.com/p/v8/&#34;&gt;V8&lt;/a&gt; が用いる最適化手法について多くのページが割かれている。&lt;/p&gt;
+
+&lt;p&gt;個々のトピックについては WEB 上にも詳細に解説されたサイトがあるものの、雑誌という紙媒体で、こうして一本にまとめられた情報は珍しいのではないだろうか&amp;hellip;って、普段、雑誌を読まない人が書いても説得力に乏しい。スミマセン。もっとも、珍しかろうが珍しくなかろうが、日本語で読める貴重な情報源のひとつであることに変わりはない。
+特に、SquirrelFish Extreme で採用されている Polymorphic Inline Cache (PIC) や V8 の高速なプロパティ・アクセスを実現するための &lt;a href=&#34;http://code.google.com/intl/ja-JP/apis/v8/design.html#prop_access&#34;&gt;Hidden Class&lt;/a&gt; の解説は、現代的な動的言語の裏舞台を知る、という意味で興味深い。たとえ、言語処理系の実装詳細に興味がなくとも、普段使っている道具がどのように作られているかを知ることは益になるだろう。&lt;/p&gt;
+
+&lt;h3 id=&#34;最後に:413f555c66a5164357ae2df9904875e8&#34;&gt;最後に&lt;/h3&gt;
+
+&lt;p&gt;今回、ひさしぶりに技術系雑誌を読んでみて、プロのライターと編集者による情報のパッケージングと、紙という媒体とレイアウトには、他のものには代えがたい価値がある、と感じた。腰を落ち着けて、プログラミングのさまざまなトピックスに触れるというのは、やはり、ワクワクする体験だ。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>道尾秀介「背の眼」</title>
+      <link>http://www.metareal.org/2008/12/14/%E8%83%8C%E3%81%AE%E7%9C%BC/</link>
+      <pubDate>Sun, 14 Dec 2008 08:29:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/12/14/%E8%83%8C%E3%81%AE%E7%9C%BC/</guid>
+      <description>&lt;p&gt;「&lt;a href=&#34;http://www.metareal.org/2008/12/13/%E5%90%91%E6%97%A5%E8%91%B5%E3%81%AE%E5%92%B2%E3%81%8B%E3%81%AA%E3%81%84%E5%A4%8F/&#34;&gt;向日葵の咲かない夏&lt;/a&gt;」が期待以上に楽しめた（精神的なダメージも大きかったが&amp;hellip;）ので、道尾秀介の他作品も読んでみることにした。もちろん、今後は期待値ハードルが上がっている。&lt;/p&gt;
+
+&lt;p&gt;選んだのは、これも文庫化されていた「&lt;a href=&#34;http://www.amazon.co.jp/%E8%83%8C%E3%81%AE%E7%9C%BC%E3%80%88%E4%B8%8A%E3%80%89-%E5%B9%BB%E5%86%AC%E8%88%8E%E6%96%87%E5%BA%AB-%E9%81%93%E5%B0%BE-%E7%A7%80%E4%BB%8B/dp/434441036X%3FSubscriptionId%3D15SMZCTB9V8NGR2TW082%26tag%3Dwebloandlogic-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D434441036X&#34;&gt;背の眼&lt;/a&gt;」。著者のデビュー作だ。第五回ホラーサスペンス大賞特別賞を受賞しており、評価も高い。文庫版は上下巻二冊組だが、一冊の厚さが程々なので分量はそれほどでもない。&lt;/p&gt;
+
+&lt;p&gt;解説でも触れられているように京極夏彦『&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E7%99%BE%E9%AC%BC%E5%A4%9C%E8%A1%8C%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA&#34;&gt;百鬼夜行シリーズ&lt;/a&gt;』からの影響が色濃く窺える。しかし、それも行き過ぎることはなく独自の要素が多いので、むしろ同シリーズの雰囲気が好きな人はより楽しめるのではないかと思う。デビュー作ゆえか荒削りな部分は残るものの、さまざまな謎と伏線が絡み合い、結末で「腑に落ちる」展開は熱に浮かされたような高揚感があり、本格ミステリ好きには堪らない。
+個人的に、他の作品の文庫化を心待ちにしている作家のひとり。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>道尾秀介「向日葵の咲かない夏」</title>
+      <link>http://www.metareal.org/2008/12/13/%E5%90%91%E6%97%A5%E8%91%B5%E3%81%AE%E5%92%B2%E3%81%8B%E3%81%AA%E3%81%84%E5%A4%8F/</link>
+      <pubDate>Sat, 13 Dec 2008 12:06:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/12/13/%E5%90%91%E6%97%A5%E8%91%B5%E3%81%AE%E5%92%B2%E3%81%8B%E3%81%AA%E3%81%84%E5%A4%8F/</guid>
+      <description>&lt;p&gt;タイトルとあらすじから、ほろ苦い青春物語を連想していたら、凄惨な話で驚いた。&lt;/p&gt;
+
+&lt;p&gt;冒頭から痛ましい事件がつづく。主人公と、その家族が置かれた状況は過酷だ。感情を抑えた筆致が悲惨さを際立たせ、それが、まだ幼い主人公の視点を通して語られているのだと思うと、胸がしめつけられる。&lt;/p&gt;
+
+&lt;p&gt;未読の方のために詳しくは書かないが、いくつかのミステリー的な罠がしかけられている。これが、かなりの劇薬。アンフェア（というか、作者自身、そんなことは気にしていないと思う）ではあるが、筆者が結末に構築した世界は、実に見事な蜃気楼だ。まるで、砂漠にひとり、地図もなく取り残されたような気分になる。&lt;/p&gt;
+
+&lt;p&gt;禍々しい。非常に現代的なこの物語には、そんな古くさい形容詞がよく似合う。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/%E5%90%91%E6%97%A5%E8%91%B5%E3%81%AE%E5%92%B2%E3%81%8B%E3%81%AA%E3%81%84%E5%A4%8F-%E6%96%B0%E6%BD%AE%E6%96%87%E5%BA%AB-%E9%81%93%E5%B0%BE-%E7%A7%80%E4%BB%8B/dp/4101355517%3FSubscriptionId%3D15SMZCTB9V8NGR2TW082%26tag%3Dwebloandlogic-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D4101355517&#34;&gt;向日葵の咲かない夏 (新潮文庫)&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

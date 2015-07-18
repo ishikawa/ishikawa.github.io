@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>サイドバーの Archives で日付表記を変更する</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2006/12/08/wordpress-archives-date-format/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>サイドバーの Archives で日付表記を変更する</h1>
+  <div class="metadata">
+    <p class="date">2006/12/08 9:30am</p>
+  </div>
+  <div class="content">
+    <p>WordPress のサイドバーに表示されている「Archives」だが、日付の表記が「November 2006」のようになっている。<strong>私の推測では</strong> November が何月なのか、すぐにわかる人はすくないはずだ。できれば、ここはなんとかしたい。</p>
+
+<p>管理画面の「Options」にあった「Date and Time」の設定を変更してみた。しかし、<strong>どこにも反映されている気配がない</strong>ので（わざわざ <a href="http://php.net/date">PHP のドキュメント</a>を読んだっていうのに&hellip;）、ソースコードを調べることにする。</p>
+
+<p>テンプレートを眺めてみると、<code>wp_get_archives</code> という PHP の関数を呼び出している。で、こいつは引数の解析だけやって、実際の処理は <code>get_archives</code> 関数が行う。</p>
+
+<p>ファイルは <code>wp-includes/template-functions-general.php</code> の 300 行目あたり。</p>
+
+<pre><code>function get_archives($type='', $limit='', $format='html', $before = '', $after = '', $show_post_count = false) {
+  ...
+  if ( 'monthly' == $type ) {
+    ...
+        if ( $show_post_count ) {
+          **$text = sprintf('%s %d', $month[zeroise($arcresult-&gt;month,2)], $arcresult-&gt;year);**
+          $after = ' ('.$arcresult-&gt;posts.')' . $afterafter;
+        } else {
+          **$text = sprintf('%s %d', $month[zeroise($arcresult-&gt;month,2)], $arcresult-&gt;year);**
+        }
+        echo get_archives_link($url, $text, $format, $before, $after);
+      }
+    }
+  } elseif ( 'daily' == $type ) {
+  ...
+</code></pre>
+
+<p>どうやら月別表示のフォーマットは <code>sprintf</code> で決め打ちらしいので、アドホックなコードにはアドホックな修正で対応する。PHP でプログラミングをしたことはないが、まあ<strong>適当に書いたら動くだろう</strong>、という魂胆。</p>
+
+<pre><code>function get_archives($type='', $limit='', $format='html', $before = '', $after = '', $show_post_count = false) {
+  ...
+  if ( 'monthly' == $type ) {
+      $url = get_month_link($arcresult-&gt;year, $arcresult-&gt;month);
+      **$text = sprintf('%04d/%02d', $arcresult-&gt;year, $arcresult-&gt;month);**
+      if ( $show_post_count ) {
+        $after = ' ('.$arcresult-&gt;posts.')' . $afterafter;
+      }
+</code></pre>
+
+<p>これで「November 2006」が「2006/11」と表示されるようになった。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2006/12/09/apache-xmlrpc-filename/">Apache XML-RPC のファイル名</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2006/11/21/hello-world/">&#34;Hello, world!\n&#34;</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

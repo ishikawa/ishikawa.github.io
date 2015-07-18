@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Magazine on METAREAL</title>
+    <link>http://www.metareal.org/tags/magazine/</link>
+    <description>Recent content in Magazine on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Wed, 24 Dec 2008 01:06:00 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/magazine/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>WEB&#43;DB PRESS Vol.48</title>
+      <link>http://www.metareal.org/2008/12/24/web-db-press-vol48/</link>
+      <pubDate>Wed, 24 Dec 2008 01:06:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/12/24/web-db-press-vol48/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://raku.to/&#34;&gt;古谷楽人&lt;/a&gt;氏より &lt;a href=&#34;http://gihyo.jp/magazine/wdpress/archive/2009/vol48&#34;&gt;WEB+DB PRESS Vol.48&lt;/a&gt; (&lt;a href=&#34;http://www.amazon.co.jp/exec/obidos/ASIN/4774136913/&#34;&gt;amazon.co.jp&lt;/a&gt;) を献本いただきました。ありがとうございます。わたしは当雑誌、というか雑誌全般の熱心な読者ではないのですが（ごめんなさい）、ひさしぶりの技術系雑誌を楽しく読ませてもらいました。&lt;/p&gt;
+
+&lt;p&gt;WEB+DB PRESS Vol.48 で氏は「[最速]JavaScript エンジン徹底比較」と題して、最近のブラウザ事情に聡いプログラマなら気になるであろう、最新 JavaScript エンジンの比較と検証記事を執筆されています。以下では、記事内容の簡単な紹介と一読した感想などを書いていきます。&lt;/p&gt;
+
+&lt;h3 id=&#34;最速-javascript-エンジン徹底比較:413f555c66a5164357ae2df9904875e8&#34;&gt;[最速]JavaScript エンジン徹底比較&lt;/h3&gt;
+
+&lt;p&gt;（ここから文体をいつもどおりに戻して&amp;hellip;）記事は三章から構成されており、それぞれの章題は：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;JavaScript エンジンの比較&lt;/li&gt;
+&lt;li&gt;SquirrelFish Extreme / WebKit の最適化手法&lt;/li&gt;
+&lt;li&gt;注目の Google Chrome に搭載された V8&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;である。&lt;/p&gt;
+
+&lt;p&gt;章題からも推測できるように、第一章が複数ベンチマークスイートによる各 JavaScript エンジンのパフォーマンス比較、第二章と第三章ではコンパイラと仮想機械の一般的な説明から始まり、WebKit の &lt;a href=&#34;http://webkit.org/blog/214/introducing-squirrelfish-extreme/&#34;&gt;SquirrelFish Extreme&lt;/a&gt;、および Google の &lt;a href=&#34;http://code.google.com/p/v8/&#34;&gt;V8&lt;/a&gt; が用いる最適化手法について多くのページが割かれている。&lt;/p&gt;
+
+&lt;p&gt;個々のトピックについては WEB 上にも詳細に解説されたサイトがあるものの、雑誌という紙媒体で、こうして一本にまとめられた情報は珍しいのではないだろうか&amp;hellip;って、普段、雑誌を読まない人が書いても説得力に乏しい。スミマセン。もっとも、珍しかろうが珍しくなかろうが、日本語で読める貴重な情報源のひとつであることに変わりはない。
+特に、SquirrelFish Extreme で採用されている Polymorphic Inline Cache (PIC) や V8 の高速なプロパティ・アクセスを実現するための &lt;a href=&#34;http://code.google.com/intl/ja-JP/apis/v8/design.html#prop_access&#34;&gt;Hidden Class&lt;/a&gt; の解説は、現代的な動的言語の裏舞台を知る、という意味で興味深い。たとえ、言語処理系の実装詳細に興味がなくとも、普段使っている道具がどのように作られているかを知ることは益になるだろう。&lt;/p&gt;
+
+&lt;h3 id=&#34;最後に:413f555c66a5164357ae2df9904875e8&#34;&gt;最後に&lt;/h3&gt;
+
+&lt;p&gt;今回、ひさしぶりに技術系雑誌を読んでみて、プロのライターと編集者による情報のパッケージングと、紙という媒体とレイアウトには、他のものには代えがたい価値がある、と感じた。腰を落ち着けて、プログラミングのさまざまなトピックスに触れるというのは、やはり、ワクワクする体験だ。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

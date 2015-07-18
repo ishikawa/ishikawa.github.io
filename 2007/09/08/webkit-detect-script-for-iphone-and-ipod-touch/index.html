@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>WebKit のブラウザ判定と iPhone、そして iPod touch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>WebKit のブラウザ判定と iPhone、そして iPod touch</h1>
+  <div class="metadata">
+    <p class="date">2007/09/09 5:05am</p>
+  </div>
+  <div class="content">
+    
+
+<p><a href="http://weblog.metareal.org/2007/09/01/prototype-1-6-0-has-detection-for-iphone/">Prototype 1.6.0 のブラウザ判定と iPhone</a> では、</p>
+
+<blockquote>
+<p><a href="http://prototypejs.org/">prototype.js</a> には 1.5.1 から、各種ブラウザを判定するための <code>Prototype.Browser</code> が定義されている。</p>
+</blockquote>
+
+<p>として prototype.js のブラウザ判定コードを紹介した。iPhone を含む WebKit ベースのブラウザも判別できる。</p>
+
+<h3 id="webkit-detect-script:3f28bd634314958df76c1309adcb93a5">WebKit Detect script</h3>
+
+<p><a href="http://webkit.org/blog/">Surfin’ Safari</a> の <a href="http://webkit.org/blog/119/webkit-detect-script-updated-for-iphone-and-ipod-touch/">WebKit Detect script updated for iPhone and iPod touch</a> で知った。<a href="http://trac.webkit.org/projects/webkit/wiki/DetectingWebKit">WebKit detection script</a> というものがあるらしい。</p>
+
+<p>記事では <a href="http://www.apple.com/iphone/">iPhone</a> と <a href="http://www.apple.com/iphone/">iPod touch</a> もサポートしたよ、と書かれている。ソースコードではこんな感じ、</p>
+
+<pre><code>WebKitDetect.isWebKit = function isWebKit()
+{
+    return RegExp(&quot; AppleWebKit/&quot;).test(navigator.userAgent);
+}
+...
+WebKitDetect.isMobile = function isMobile()
+{
+    return WebKitDetect.isWebKit() &amp;amp;&amp;amp; RegExp(&quot; Mobile/&quot;).test(navigator.userAgent);
+}
+</code></pre>
+
+<p>つまり、User-Agent に、</p>
+
+<ul>
+<li>&ldquo;AppleWebKit/&rdquo; があれば WebKit</li>
+<li>&ldquo;Mobile/&rdquo; があれば携帯端末</li>
+</ul>
+
+<p>ということのようだ。</p>
+
+<p>ここで、prototype.js のブラウザ判定コードを復習してみる。</p>
+
+<pre><code>MobileSafari: !!navigator.userAgent.match(/iPhone.*Mobile.*Safari/)
+</code></pre>
+
+<p>User-Agent に &ldquo;iPhone&rdquo; という文字列を想定していることからも、おそらく iPod touch では動作しないだろう。まあ、すぐ直るだろうけど。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/">Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/09/02/prototype-1-6-0-event-overhaul-release/">Prototype 1.6.0 で大きく進化したイベント API</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

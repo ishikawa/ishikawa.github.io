@@ -1,0 +1,195 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Python でプロパティリストを読み込む</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2008/08/04/propertylist-parser-for-python/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Python でプロパティリストを読み込む</h1>
+  <div class="metadata">
+    <p class="date">2008/08/05 12:21pm</p>
+  </div>
+  <div class="content">
+    
+
+<p>Python で<a href="http://ja.wikipedia.org/wiki/プロパティリスト">プロパティリスト</a>を読み込み、オブジェクトに変換するライブラリ <a href="http://github.com/ishikawa/python-plist-parser/">plist_parser</a> を書いた。<a href="http://github.com/ishikawa">GitHub</a> で<a href="http://github.com/ishikawa/python-plist-parser/">公開している</a>。Python 2.4 以降で動作確認済み。ただし、対応するフォーマットは XML のみで、書き込みにも対応していない。</p>
+
+<p>使い方は至って単純だ。たとえば、以下のプロパティリストは <code>iTunes Music Library.xml</code> から一部抜粋したものだが、</p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+&lt;dict&gt;
+  &lt;key&gt;Track ID&lt;/key&gt;
+  &lt;integer&gt;4154&lt;/integer&gt;
+  &lt;key&gt;Artist&lt;/key&gt;
+  &lt;string&gt;Megadeth&lt;/string&gt;
+  &lt;key&gt;Name&lt;/key&gt;
+  &lt;string&gt;Architecture Of Aggression&lt;/string&gt;
+  &lt;key&gt;Date Added&lt;/key&gt;
+  &lt;date&gt;2008-06-23T12:20:17Z&lt;/date&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre>
+
+<p>このプロパティリストが <code>music.xml</code> という名前で保存されているとして、このファイルを読み込んでオブジェクトに変換するコードは以下のとおり。</p>
+
+<pre><code>from plist_parser import XmlPropertyListParser, \
+                         PropertyListParseError
+
+f = open('music.plist')
+try:
+    print XmlPropertyListParser().parse(f)
+    # =&gt;
+    # {
+    #    'Date Added': datetime.datetime(2008, 6, 23, 12, 20, 17),
+    #    'Track ID': 4154,
+    #    'Name': 'Architecture Of Aggression',
+    #    'Artist': 'Megadeth'
+    # }
+except PropertyListParseError:
+    raise
+finally:
+    f.close()
+</code></pre>
+
+<p>特に説明の必要はないだろう。</p>
+
+<p>自作ライブラリの紹介はこれくらいにし、以降では、<strong>Python でプロパティリストを解析する他の手段</strong>と、それらのパフォーマンスを比較した結果について書いてみたい。</p>
+
+<h3 id="plistlib:0827b0ca43409c9b3c7a16a19e49fa08">plistlib</h3>
+
+<p>Python 2.6 からは、プロパティリストの読み書きをするためのライブラリ <a href="http://docs.python.org/dev/library/plistlib.html">plistlib</a> が標準で添付されている。また、Python 2.5 以前でもソースコードや Mac 向けのディストリビューションには含まれているので、実はプロパティリストを読み込みたいだけなら、今回自作した <a href="http://github.com/ishikawa/python-plist-parser/">plist_parser</a> の有用性はすくない。</p>
+
+<p>それなら、何故わざわざ自作したのかといえば、ほぼ実装してしまってから <a href="http://docs.python.org/dev/library/plistlib.html">plistlib</a> の存在に気づいたのだ。勘弁してほしい。</p>
+
+<h3 id="xml-etree:0827b0ca43409c9b3c7a16a19e49fa08">xml.etree</h3>
+
+<p>Python 2.5 から標準添付されている <a href="http://docs.python.org/lib/module-xml.etree.ElementTree.html">xml.etree</a> ライブラリを使うと XML の処理が簡潔に記述できる。作者のサイト <a href="http://effbot.org/">effbot.org</a> に掲載されている記事 <a href="http://effbot.org/zone/element-iterparse.htm">The ElementTree iterparse Function</a> に、ちょうど、このライブラリを使ってプロパティリストを読み込む例がある（以下はすこし改変してある）。</p>
+
+<pre><code>from xml.etree.ElementTree import iterparse
+import base64, datetime, re
+
+unmarshallers = {
+
+    # collections
+    &quot;array&quot;: lambda x: [v.text for v in x],
+    &quot;dict&quot;: lambda x:
+        dict((x[i].text, x[i+1].text) for i in range(0, len(x), 2)),
+    &quot;key&quot;: lambda x: x.text or &quot;&quot;,
+
+    # simple types
+    &quot;string&quot;: lambda x: x.text or &quot;&quot;,
+    &quot;data&quot;: lambda x: base64.decodestring(x.text or &quot;&quot;),
+    &quot;date&quot;: lambda x: datetime.datetime(*map(int, re.findall(&quot;\d+&quot;, x.text))),
+    &quot;true&quot;: lambda x: True,
+    &quot;false&quot;: lambda x: False,
+    &quot;real&quot;: lambda x: float(x.text),
+    &quot;integer&quot;: lambda x: int(x.text),
+
+}
+
+def load(file):
+    parser = iterparse(file)
+    for action, elem in parser:
+        unmarshal = unmarshallers.get(elem.tag)
+        if unmarshal:
+            data = unmarshal(elem)
+            elem.clear()
+            elem.text = data
+        elif elem.tag != &quot;plist&quot;:
+            raise IOError(&quot;unknown plist type: %r&quot; % elem.tag)
+    return parser.root[0].text
+</code></pre>
+
+<p>非常にコンパクトだ。</p>
+
+<p>xml.etree は C による実装 <code>xml.etree.cElementTree</code> も提供されており、これを使うとパフォーマンスでもかなりの好成績を出すようになる（具体的なパフォーマンスの比較は後述）。</p>
+
+<h3 id="パフォーマンスの比較:0827b0ca43409c9b3c7a16a19e49fa08">パフォーマンスの比較</h3>
+
+<p>さて、プロパティリストを読み込むためのライブラリとして、</p>
+
+<ul>
+<li><a href="http://github.com/ishikawa/python-plist-parser/">plist_parser</a></li>
+<li><a href="http://docs.python.org/dev/library/plistlib.html">plistlib</a></li>
+<li><a href="http://docs.python.org/lib/module-xml.etree.ElementTree.html">xml.etree</a></li>
+</ul>
+
+<p>の三つが出揃った。これらのパフォーマンスを比較してみよう。</p>
+
+<p>それぞれのライブラリを使用したプログラムを用意する。測定対象のプログラムはどれも、iTunes の音楽ライブラリのプロパティリスト（約 7MB）を読み込み、オブジェクトに変換する、というものである。<strong>これらのプログラムをそれぞれ 20 回ずつ実行し、その実行時間の平均を比較する</strong>。</p>
+
+<p>また、プログラムと測定方法については、以下の点にも気をつけた。</p>
+
+<ul>
+<li>IO の影響をすくなくするため、ファイルはあらかじめメモリに展開する</li>
+<li>メモリ管理の影響をすくなくするため、プログラムの実行中は GC を停止する（C プログラムの場合は、メモリを解放しない）</li>
+<li>負荷の高いバックグラウンドプロセス（たとえば <a href="http://www.apple.com/jp/macosx/features/timemachine.html">Time Machine</a> など）はオフにする</li>
+<li>ウォームアップのために、事前にプログラムを 5 回実行する</li>
+</ul>
+
+<p>しかし、実行時間はプログラムを実行するコンピューターの性能に左右される。誰かのコンピューターで 5 秒しかかからなかった、と言われても、あなたにとっては意味がないだろう。それぞれのプログラムの実行時間を並べていっても、実際にどれくらい速いのか（あるいは、遅いのか）はわかりづらい。基準となる比較対象が必要だ。</p>
+
+<p>今回は比較対象として、<a href="http://github.com/ishikawa/python-plist-parser/tree/master/tools/performance/core_foundation_parser.c">C による実装</a>を用意した。これは Mac OS X ネイティブの API を使って、プロパティリストを読み込んでいる。<strong>このプログラムの実行時間を 1 として、それぞれの実行時間を比較</strong>してみよう（なお、測定に使用したプログラムは<a href="http://github.com/ishikawa/python-plist-parser/tree/master/tools/performance/profiler.py">ここに置いてある</a>）。</p>
+
+<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2732221848/"><img src="http://farm4.static.flickr.com/3123/2732221848_38f2439737_o.png" alt="Performance of Python Property Lists Libraries" />
+</a>やはり、C によるプログラムが桁違いに速い。ちなみに、実時間でいえば 0.5 秒程度である。</p>
+
+<p>次に目立つのが <a href="http://docs.python.org/lib/module-xml.etree.ElementTree.html">xml.etree</a> によるプログラムだ。これは C による <code>xml.etree.cElementTree</code> と Python のみで実装された <code>xml.etree.ElementTree</code> のふたつがあるが、<code>xml.etree.cElementTree</code> はかなり速いことがわかる。C によるプログラムと比較しても 5 倍程度の実行時間、<a href="http://docs.python.org/dev/library/plistlib.html">plistlib</a> と比較すると 3 倍程度速く、優秀であるといえる。逆に、Python による実装の <code>xml.etree.ElementTree</code> がズバ抜けて遅いのも興味深い。</p>
+
+<p>ところで、グラフからも分かるように、<code>plist_parser</code> には実装がふたつある。</p>
+
+<p>実は、今回の測定で <code>xml.etree.cElementTree</code> が速いことが判り、<code>xml.etree.cElementTree</code> がインストールされているときはそちらを使うように急遽作りかえたのだ（ない場合は、<code>xml.sax</code> による実装を使う）。</p>
+
+<p>そのため、Python 2.5 以降など、<code>xml.etree.cElementTree</code> がインストールされている環境では、同程度の速度で動作するようになっている。</p>
+
+<h3 id="最後に:0827b0ca43409c9b3c7a16a19e49fa08">最後に</h3>
+
+<ul>
+<li>XML を扱うなら、<a href="http://docs.python.org/lib/module-xml.etree.ElementTree.html">xml.etree</a> は一見の価値あり</li>
+<li>ライブラリを作るまえに、同じものがすでにないかチェックした方がよい</li>
+<li>パフォーマンスを測定するのは難しい</li>
+</ul>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/">Google Chrome に搭載されたオープンソースの JavaScript エンジン &#34;v8&#34; を試す</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/">C 言語で書かれたソフトウェアが Flash で動くようになるかもしれない</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

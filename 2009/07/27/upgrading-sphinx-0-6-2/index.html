@@ -1,0 +1,106 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Sphinx 0.6.2 にアップグレードしたときのメモ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2009/07/27/upgrading-sphinx-0-6-2/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Sphinx 0.6.2 にアップグレードしたときのメモ</h1>
+  <div class="metadata">
+    <p class="date">2009/07/27 10:45am</p>
+  </div>
+  <div class="content">
+    
+
+<p>約一年ぶりに <a href="http://sphinx.pocoo.org/">Sphinx</a> を最新版に&hellip;しようとしたら色々苦労したので、変更点や手順をメモとして残しておく。</p>
+
+<h3 id="sphinx-0-6-2-jinja2-2-1-1:27e83262ac07d97e8e96230e1937876f">Sphinx 0.6.2 &amp; Jinja2 2.1.1</h3>
+
+<p>easy_install でインストールしようとしたが、<a href="http://jinja.pocoo.org/2/">Jinja2</a> のセットアップ・スクリプトがうまく動いていないらしく、Jinja2 に依存している Sphinx もインストールできない。原因を調べる気力はないので、ソースコードからビルドしてインストールすることにした。</p>
+
+<p>まずは <a href="http://pypi.python.org/pypi/Jinja2">Jinja2 2.1.1</a> をビルドしてインストール。</p>
+
+<pre><code>% curl -LO http://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.1.1.tar.gz
+% tar xvzf Jinja2-2.1.1.tar.gz
+% cd Jinja2-2.1.1
+% sudo python setup.py install
+</code></pre>
+
+<p>つづいて <a href="http://pypi.python.org/pypi/Sphinx/0.6.2">Sphinx 0.6.2</a></p>
+
+<pre><code>% curl -LO http://pypi.python.org/packages/source/S/Sphinx/Sphinx-0.6.2.tar.gz
+% tar xvzf Sphinx-0.6.2.tar.gz
+% cd Sphinx-0.6.2
+% sudo python setup.py install
+</code></pre>
+
+<h3 id="sphinx-builder:27e83262ac07d97e8e96230e1937876f">sphinx.builder</h3>
+
+<p>Sphinx 0.6.2 では <code>sphinx.builder</code> が非推奨扱いになっていた (<a href="http://bitbucket.org/birkenfeld/sphinx/changeset/254e0ff435e8/">changeset:254e0ff435e8</a>)。</p>
+
+<pre><code>Running Sphinx v0.6.2
+docs/ja/source/../../sphinxext/__init__.py:1:
+DeprecationWarning: The sphinx.builder module is deprecated; please import builders from the respective sphinx.builders submodules.
+</code></pre>
+
+<p>次のバージョンでは<a href="http://bitbucket.org/birkenfeld/sphinx/changeset/7da5ae249f61/">削除されている</a>ようだし、モジュール名を適切に直す。</p>
+
+<pre><code>-from sphinx.builder import StandaloneHTMLBuilder
++from sphinx.builders.html import StandaloneHTMLBuilder
+</code></pre>
+
+<h3 id="unicodedecodeerror:27e83262ac07d97e8e96230e1937876f">UnicodeDecodeError</h3>
+
+<p>今度は、日本語を含むドキュメントを変換しようとすると UnicodeDecodeError が発生する。</p>
+
+<pre><code>Exception occurred:
+  File &quot;/Library/Python/2.5/site-packages/Sphinx-0.6.2-py2.5.egg/sphinx/themes/basic/layout.html&quot;, line 19, in block &quot;rootrellink&quot;
+    &lt;li&gt;&lt;a href=&quot;{{ pathto(master_doc) }}&quot;&gt;{{ shorttitle|e }}&lt;/a&gt;{{ reldelim1 }}&lt;/li&gt;
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xe3 in position 8: ordinal not in range(128)
+The full traceback has been saved in /var/folders/Xg/XgsbIugsGWiYSnTBrMoebU+++TI/-Tmp-/sphinx-err-cfE9NN.log, if you want to report the issue to the author.
+Please also report this if it was a user error, so that a better error message can be provided next time.
+</code></pre>
+
+<p>どうやら、<code>conf.py</code> に <strong>str</strong> で日本語を書いていたのが原因らしい。<strong>unicode</strong> リテラルで書き直したらうまくいった。<a href="http://jinja.pocoo.org/2/documentation/api#unicode">Jinja2 の Unicode 対応</a>が原因だろうか。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2009/11/10/8/%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A9%E3%82%A4%E3%83%95-%E4%BC%8A%E5%9D%82%E5%B9%B8%E5%A4%AA%E9%83%8E">伊坂幸太郎「ラッシュライフ」</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2008/12/24/web-db-press-vol48/">WEB&#43;DB PRESS Vol.48</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

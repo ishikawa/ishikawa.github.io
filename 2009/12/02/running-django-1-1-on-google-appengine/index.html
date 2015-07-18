@@ -1,0 +1,128 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Google AppEngine で Django 1.1 を使う</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2009/12/02/running-django-1-1-on-google-appengine/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Google AppEngine で Django 1.1 を使う</h1>
+  <div class="metadata">
+    <p class="date">2009/12/03 12:42pm</p>
+  </div>
+  <div class="content">
+    
+
+<p><a href="http://code.google.com/appengine/">Google AppEngine</a> の SDK および実行環境には、Web アプリケーション・フレームワークの <a href="http://www.djangoproject.com/">Django</a> がプリインストールされている。</p>
+
+<p>しかし、デフォルトで有効になっているのは 0.96 という相当古いバージョンだ（もっとも、Google AppEngine リリース時点では、これが最新のバージョンであった）。すでにサポートも終了しており、バグや脆弱性の修正もされないため、できれば最新の 1.0/1.1系列を使いたい、という人が大半だろう。</p>
+
+<p>しかし、これまで、バージョン 1.0 以降の Django を Google AppEngine で使うのは骨の折れる作業だった。</p>
+
+<ul>
+<li>使いたいバージョンの Django を丸ごとアップロードしなくてはいけなかった</li>
+<li>Django はファイル数が多いため、アップロード可能なファイル数制限を超えやすい</li>
+<li>デフォルトで有効になる古いバージョンの Django を無効化するために、<a href="http://code.google.com/intl/en/appengine/articles/django.html">呪文めいたコードが必要</a></li>
+</ul>
+
+<p>だが、いまや状況は変わった。SDK <a href="http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes#Version_1.2.3_-_June_18,_2009">1.2.3 からは Django 1.0</a> が、SDK <a href="http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes#Version_1.2.5_-_September_3,_2009">1.2.5 からは Django 1.1</a> がサポートされ、Google AppEngine でも、簡単に Django 1.x を動かせるようになった。</p>
+
+<h3 id="google-appengine-dist-use-library:d5cbf458e70a92e96be7ede9be9f6ecd">google.appengine.dist.use_library</h3>
+
+<p>SDK 1.2.<sup>3</sup>&frasl;<sub>1</sub>.2.5 からは <a href="http://code.google.com/p/googleappengine/source/browse/#svn/trunk/python/google/appengine/dist">google.appengine.dist</a> モジュールの <code>use_library</code> 関数を使うことで Django 1.0/1.1 を選択できるようになった。</p>
+
+<p>使い方は簡単で、<code>main.py</code> に以下のような記述を追加するだけだ。</p>
+
+<pre><code>import os
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+
+from google.appengine.dist import use_library
+use_library('django', '1.1')
+</code></pre>
+
+<p>これまで開発者が各自行っていた <code>sys.path</code> の調整は <code>use_library</code> 関数がやってくれる。</p>
+
+<p>更に嬉しいことに、Django のコードをアップロードする必要もなくなった。Google AppEngine のサーバには Django 1.0/1.1 がインストールされている。ただし、SDK には Django 0.96 しか添付されていないので、1.0/1.1 を使う場合は、あらかじめローカルのマシンに Django 1.0/1.1 をインストールしておこう。</p>
+
+<h3 id="django-のバージョンと-dos-攻撃可能な脆弱性について:d5cbf458e70a92e96be7ede9be9f6ecd">Django のバージョンと DoS 攻撃可能な脆弱性について</h3>
+
+<p>なお、実際に有効になる Django の詳細なバージョンは、本記事執筆時点の 2009 年 11 月で以下のようになっている（<code>django.VERSION</code> で調べた）。</p>
+
+<table>
+<thead>
+<tr>
+<th>use_library</th>
+<th>Django version</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>(None)</td>
+<td>0.96.4</td>
+</tr>
+
+<tr>
+<td>use_library(1.0)</td>
+<td>1.0.2</td>
+</tr>
+
+<tr>
+<td>use_library(1.1)</td>
+<td>1.1.0</td>
+</tr>
+</tbody>
+</table>
+
+<p><del>残念ながら、1.0/1.1 は <a href="http://www.djangoproject.com/weblog/2009/oct/09/security/">DoS 攻撃可能な脆弱性が修正されたバージョン</a> ではないようだ（修正バージョンは 1.0.<sup>4</sup>&frasl;<sub>1</sub>.1.1）。</del></p>
+
+<p><del>この脆弱性は <code>EmailField</code> か <code>URLField</code> に関連したものなので、それらを使っているプログラムでは Google AppEngine にインストールされた Django のアップデートを待つか、これまでどおりの方法で、修正済みのバージョンをアップロードした方が安全だろう。</del></p>
+
+<p><strong>Note</strong></p>
+
+<p>Google AppEngine プロジェクトに<a href="http://code.google.com/p/googleappengine/issues/detail?id=2447">報告</a>したところ、GAE で有効になるバージョンは修正済みのものである、とのこと。失礼しました。</p>
+
+<h3 id="main-py-のサンプル:d5cbf458e70a92e96be7ede9be9f6ecd">main.py のサンプル</h3>
+
+<p>実際に <code>use_library</code> を使ったサンプルを <a href="http://gist.github.com/245523">gist:245523</a> で公開している。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2010/01/31/python-shared-instance-closure/">Python のクロージャとレキシカル変数を使ったシングルトンっぽいもの</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2009/11/11/go-vim/">Go</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

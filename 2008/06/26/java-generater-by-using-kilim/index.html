@@ -1,0 +1,171 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>kilim で Java でもジェネレーター</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2008/06/26/java-generater-by-using-kilim/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>kilim で Java でもジェネレーター</h1>
+  <div class="metadata">
+    <p class="date">2008/06/27 3:41am</p>
+  </div>
+  <div class="content">
+    
+
+<p><a href="http://twitter.com/">Twitter</a> と <a href="http://www.erlang.org/">Erlang</a> をきっかけに注目を集めるようになった軽量プロセス（とかマイクロスレッドとか）を Java で実現するためのライブラリに <a href="http://www.malhar.net/sriram/kilim/">kilim</a> があります。</p>
+
+<ul>
+<li><a href="http://www.malhar.net/sriram/talks/kilim-google.pdf">Isolation-typed actors for Java</a> (PDF)</li>
+<li><a href="http://www.infoq.com/news/2008/06/kilim-message-passing-in-java">InfoQ: Kilim - actors and message passing in Java</a></li>
+</ul>
+
+<p>夜中に突然 Java が書きたくなって、まだ、Examples を動かしてみた程度ですが、とりあえず <a href="http://www.python.jp/doc/nightly/tut/node11.html#SECTION0011900000000000000000">Python のジェネレーター</a>っぽいことができるのは分かったので記事にしておきます。暇と知識が増えたら、もうすこし突っ込んだ記事もあげる予定です（自信がないので今回、ですます調）。</p>
+
+<h3 id="ジェネレーターの例:152df58aa8e4f658eef9140e9804f1dc">ジェネレーターの例</h3>
+
+<p>では、本当につまらない例です。フィボナッチ数を求めるプログラムをどうぞ。</p>
+
+<pre><code class="language-java">import kilim.Generator;
+import kilim.pausable;
+
+public class Fib extends Generator&lt;Integer&gt; {
+
+  public @pausable void execute() {  // (1)
+    int fib1 = 0;
+    int fib2 = 1;
+
+    while (true) {
+      yield(fib1);  // (2)
+      fib2 = fib1 + fib2;
+      fib1 = fib2 - fib1;
+    }
+  }
+
+  public static void main(String[] args) {
+    final Fib fib = new Fib();
+
+    for (int i = 0; i &lt;= 10; i++) {
+      System.out.printf(&quot;Fib(%d) = %d\n&quot;, i, fib.next()); // (3)
+    }
+  }
+
+}
+</code></pre>
+
+<p>面白い箇所の行にコメントで番号を振りました。</p>
+
+<ol>
+<li>協調動作させたいメソッドは、このように <code>@pausable</code> アノテーションで指示します</li>
+<li>呼び出し側に制御を戻すときは <code>yield</code> メソッドを使います。Python 的</li>
+<li><code>kilim.Generator</code> は <code>java.util.Iterator</code> と <code>java.lang.Iterable</code> インターフェースを実装しているので、こんなふうに使います。ますます Python</li>
+</ol>
+
+<h3 id="ビルドと実行方法:152df58aa8e4f658eef9140e9804f1dc">ビルドと実行方法</h3>
+
+<p>上記のソースコードを実行するまでの手順をまとめておきます。</p>
+
+<p>まずは<a href="http://www.malhar.net/sriram/kilim/">公式サイト</a>からソースコードをダウンロードして展開、ビルドします。</p>
+
+<pre><code>% tar xvzf kilim-0.5.tgz.tar
+% cd kilim-0.5
+% ant
+</code></pre>
+
+<p><code>.jar</code> も作っておきましょう（<strong>2008/6/27追記</strong>：<code>cd classes</code> が抜けていたので追記しました）。</p>
+
+<pre><code>% cd classes/
+% jar cvf kilim-0.5.jar kilim
+</code></pre>
+
+<p>適当なディレクトリを作成して、さきほど作成した <code>kilim-0.5.jar</code> とソースコードに含まれている <code>asm-all-2.2.3.jar</code> をコピーします。また、上記のサンプルプログラムを <code>Fib.java</code> という名前で、同じディレクトリに保存してください。</p>
+
+<p>早速、<code>Fib.java</code> をコンパイルします。</p>
+
+<pre><code>% javac -cp ./kilim-0.5.jar ./Fib.java
+% ls
+Fib.class               Fib.java                asm-all-2.2.3.jar       kilim-0.5.jar
+</code></pre>
+
+<p><code>Fib.class</code> が作成されているのでコンパイルは成功しています。実行してみましょう。</p>
+
+<pre><code>% java -cp .:./kilim-0.5.jar Fib
+############################################################
+Task class Fib has either not been woven or the classpath is incorrect
+############################################################
+java.lang.Exception: Stack trace
+        at java.lang.Thread.dumpStack(Thread.java:1176)
+        at kilim.Task.errNotWoven(Task.java:188)
+        at kilim.Task.execute(Task.java:252)
+        at kilim.Task._runExecute(Task.java:291)
+        at kilim.Generator.next(Generator.java:47)
+        at Fib.main(Fib.java:22)
+</code></pre>
+
+<p>あらら &hellip; 不可解なエラーが出てしまいました。</p>
+
+<p>種を明かすと kilim はバイトコード改変を利用しています。そのため、実行する前に、対象の <code>.class</code> ファイルを <code>kilim.tools.Weaver</code> で変換してやらないといけません（ソースコードのコメントを読むと、継続渡し形式(CPS)変換をしているらしい）。</p>
+
+<pre><code>% java -cp .:./kilim-0.5.jar:./asm-all-2.2.3.jar kilim.tools.Weaver -d . Fib
+Wrote: ./kilim/S_I2.class
+Wrote: ./Fib.class
+</code></pre>
+
+<p>なんだか <code>.class</code> が増えちゃったけど、いまのところ気にしない&hellip;</p>
+
+<pre><code>% java -cp .:./kilim-0.5.jar Fib
+Fib(0) = 0
+Fib(1) = 1
+Fib(2) = 1
+Fib(3) = 2
+Fib(4) = 3
+Fib(5) = 5
+Fib(6) = 8
+Fib(7) = 13
+Fib(8) = 21
+Fib(9) = 34
+Fib(10) = 55
+</code></pre>
+
+<p>今度は実行できました。フィボナッチ数が順番に出力されているのが分かると思います。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/">C 言語で書かれたソフトウェアが Flash で動くようになるかもしれない</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/">Flickr の JSON フィードで自作ブログパーツ</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

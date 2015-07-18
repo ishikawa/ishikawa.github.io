@@ -1,0 +1,177 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>C/C&#43;&#43; のコードを ActionScript に変換する Adobe Alchemy を試す</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2008/12/09/adobe-alchemy-first-impression/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>C/C&#43;&#43; のコードを ActionScript に変換する Adobe Alchemy を試す</h1>
+  <div class="metadata">
+    <p class="date">2008/12/09 8:34am</p>
+  </div>
+  <div class="content">
+    
+
+<p><a href="http://labs.adobe.com/">Adobe Labs</a> の研究プロジェクト、コードネーム <a href="http://labs.adobe.com/technologies/alchemy/">Alchemy</a> を試してみた。同プロジェクトについては、すでに多くの方が書かれており、今更な感もあるが、以前に<a href="http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/">紹介記事を書いている</a>ことだし、備忘録も兼ねて残しておく。</p>
+
+<h3 id="alchemy-について:9f30228ae7bbbce1de769aa05d1ff356">Alchemy について</h3>
+
+<p><a href="http://labs.adobe.com/technologies/alchemy/">Alchemy</a> プロジェクトで<a href="http://labs.adobe.com/downloads/alchemy.html">配布</a>されているツールを使うと、C/C++ コードで記述されたプログラムを ActionScript Virtual Machine (AVM2) で動作するように変換できる（AVM2 については <a href="http://www.adobe.com/devnet/actionscript/articles/avm2overview.pdf">Adobe ActionScript Virtual Machine 2 (AVM2) Overview (PDF, 400K)</a> を参照）。</p>
+
+<p>これはつまり、既存の C/C++ プログラムが Flash Player や AIR 上で動作することを意味している。また、C/C++ プログラムのコンパイルには LLVM を利用しており、そこで生成された中間コードが ActionScript 3.0 のソースコードに変換される（<strong>そのままバイトコードには変換しない</strong>）。その後、生成された ActionScript コードが Alchemy 独自の ActionScript コンパイラで ActionScript Byte Code (ABC) にコンパイルされるようだ。</p>
+
+<ul>
+<li>既存の C/C++ ライブラリの再利用に。特に OS 非依存なもの（例：オーディオ／ビデオ、XML パース、暗号処理、シミュレーション）</li>
+<li>CPU バウンドなプログラムなら Alchemy でコンパイルすると 10 倍ほども速くなるかもしれない。これは、LLVM による最適化の恩恵と、<code>ByteArray</code> に関する最適化された命令が理由（ActionScript コンパイラではまだ使われていない）</li>
+<li>C/C++ コードは ActionScript 3.0 の SWF または SWC にコンパイルされる。SWF/SWC のセキュリティ制限やサンドボックスは通常の SWF/SWC と同様</li>
+<li>C/C++ コードから <code>&quot;AS3.h&quot;</code> で宣言された API を使うことで、Flash Player にアクセス可能</li>
+</ul>
+
+<h3 id="インストール:9f30228ae7bbbce1de769aa05d1ff356">インストール</h3>
+
+<p><a href="http://labs.adobe.com/wiki/index.php/Alchemy:Documentation:Getting_Started">Alchemy:Documentation:Getting Started</a> を参考に、インストール作業を進めていく。</p>
+
+<ol>
+<li><a href="http://www.adobe.com/support/flashplayer/downloads.html">Flash Player 10</a> が必要（開発用に <code>content debugger</code> の方が便利）</li>
+<li><a href="http://labs.adobe.com/downloads/alchemy.html">ダウンロードページ</a>から Alchemy ツールキットを落とす（思ったより軽い）</li>
+<li><a href="http://www.adobe.com/products/flex/flexdownloads/#sdk">Flex SDK 3.2</a> をダウンロードする</li>
+</ol>
+
+<p><code>$FLEX_HOME/bin</code> を <code>PATH</code> に追加する</p>
+
+<pre><code>% adt -version
+adt version &quot;1.5.0.7220&quot;
+</code></pre>
+
+<p>Alchemy のディレクトリに移動し、<code>config</code> プログラムを実行する</p>
+
+<pre><code>% cd Developer/System/Flash/alchemy-darwin-v0.4a/
+% ./config
+</code></pre>
+
+<p><code>config</code> プログラムで生成された <code>alchemy-setup</code> をシェルの起動時に読み込むようにする：</p>
+
+<pre><code>source /Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/alchemy-setup
+</code></pre>
+
+<p>また、<code>alchemy-setup</code> は <strong>PATH を変更する前</strong>に読み込むらしい。そして、次に、<code>${ALCHEMY_HOME}/achacks</code> を <code>PATH</code> に追加する。最終的には以下のようになる：</p>
+
+<pre><code># Flash, Flex, Alchemy ...
+source /Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/alchemy-setup
+PATH=${PATH}:/Users/ishikawa/Developer/System/Flash/flex_sdk_3/bin
+PATH=${PATH}:${ALCHEMY_HOME}/achacks
+...
+export PATH
+</code></pre>
+
+<h3 id="サンプルを試す:9f30228ae7bbbce1de769aa05d1ff356">サンプルを試す</h3>
+
+<p>では、同梱されているサンプルを試してみよう：</p>
+
+<pre><code>% cd $ALCHEMY_HOME/samples/stringecho
+% which gcc
+/usr/bin/gcc
+% alc-on; which gcc
+/Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/achacks/gcc
+</code></pre>
+
+<p>まず、<code>alc-on</code> を実行すると、<code>gcc</code> が Alchemy 独自のものに切り替わるのが分かると思う。そして、<code>samples/stringecho</code> にあるファイルは以下の通り：</p>
+
+<ul>
+<li>as3/EchoTest.as</li>
+<li>readme.txt</li>
+<li>stringecho.c</li>
+</ul>
+
+<p>ここで、Alchemy 独自の gcc で <code>stringecho.c</code> をコンパイルする</p>
+
+<pre><code>% gcc stringecho.c -O3 -Wall -swc -o stringecho.swc
+WARNING: While resolving call to function 'main' arguments were dropped!
+...
+464.achacks.swf, 362566 bytes written
+</code></pre>
+
+<p>WARNING はとりあえず無視で。コンパイルの結果、<code>stringecho.swc</code> が出来た。
+そして、as3 ディレクトリにある <code>EchoTest.as</code> が <code>stringecho.swc</code> を使う AS3 のプログラムである。EchoTest.as を覗いてみると、</p>
+
+<pre><code>import cmodule.stringecho.CLibInit;
+</code></pre>
+
+<p>という <code>import</code> 文があり、これがコンパイルされた C プログラムを参照しているのだと分かる。また、<code>trace()</code> を使って文字列を出力している：</p>
+
+<pre><code>trace(lib.echo(&quot;foo&quot;));
+</code></pre>
+
+<p>では、この <code>EchoTest.as</code> を <code>mxmlc</code> でコンパイルしよう：</p>
+
+<pre><code>% mxmlc -library-path+=stringecho.swc --target-player=10.0.0 as3/EchoTest.as
+Loading configuration file /Users/ishikawa/Developer/System/Flash/flex_sdk_3/frameworks/flex-config.xml
+/Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/samples/stringecho/as3/EchoTest.swf (142882 bytes)
+</code></pre>
+
+<p>ここで思い出してほしい。このプログラムは <code>trace()</code> で文字列を出力するだけのプログラムだった。なので、<a href="http://www.adobe.com/support/flashplayer/downloads.html">デバッグ版の Flash Player 10</a> でログが出力されるように、<a href="http://livedocs.adobe.com/flex/3/html/help.html?content=logging_04.html#179436">mm.cfg でログを出力するように設定</a>しておこう。</p>
+
+<pre><code>% cat &amp;gt; /Library/Application\ Support/Macromedia/mm.cfg
+ErrorReportingEnable=1
+TraceOutputFileEnable=1
+</code></pre>
+
+<p>Mac OS X の場合、<code>mm.cfg</code> を置く場所は <code>~/mm.cfg</code> でもいいようなことがコメントにはあるけど、出来れば、<code>~/Library/Application Support/Macromedia/mm.cfg</code> も見てくれないだろうか。それはともかく、ログファイルは <code>~/Library/Preferences/Macromedia/Flash Player/Logs/</code> に <code>flashlog.txt</code> という名前で保存される。</p>
+
+<p>Console.app からログを確認できるように、<code>~/Library/Logs</code> にシンボリックリンクを作成しておこう：</p>
+
+<pre><code>% ln -s ~/Library/Preferences/Macromedia/Flash\ Player/Logs/flashlog.txt ~/Library/Logs/
+</code></pre>
+
+<p>やっとデバッグの準備が整った。デバッグ用 Flash Player で <code>EchoTest.swf</code> を開き、<code>flashlog.txt</code> に <strong>foo</strong> という文字列が書き込まれれば成功だ。Alchemy でコンパイルしたプログラムが無事、動作していることになる。</p>
+
+<h3 id="参考情報:9f30228ae7bbbce1de769aa05d1ff356">参考情報</h3>
+
+<ul>
+<li><a href="http://labs.adobe.com/wiki/index.php/Alchemy:FAQ">Alchemy:FAQ - Adobe Labs</a></li>
+<li><a href="http://journal.mycom.co.jp/news/2008/11/21/005/index.html">Adobe Alchemy登場、C/C++アプリをFlashで動作させる研究にLLVM技術採用 | エンタープライズ | マイコミジャーナル</a></li>
+<li><a href="http://slashdot.jp/developers/article.pl?sid=08/11/23/0717231">スラッシュドット・ジャパン | C/C++でFlashアプリが開発できるAdobe Alchemy</a></li>
+<li><a href="http://d.hatena.ne.jp/amachang/20081118/1227005285">C/C++ のコードを Flash Player で動かす！ Alchemy を速攻試してみる。 - IT戦記</a></li>
+</ul>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2008/12/12/gcc-options-request-or-suppress-warnings-and-errors/">GCC の警告オプションで一部の警告のみをエラー扱いにしたい</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2008/12/09/copy-link-to-evernote-client-applescript/">Safari で開いているページのリンクを Evernote クライアントに送る</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

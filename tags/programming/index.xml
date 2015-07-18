@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on METAREAL</title>
+    <link>http://www.metareal.org/tags/programming/</link>
+    <description>Recent content in Programming on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Tue, 27 Mar 2007 01:00:00 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>The world *is* parallel - we are parallel.</title>
+      <link>http://www.metareal.org/2007/03/26/the-world-is-parallel-we-are-are-parallel/</link>
+      <pubDate>Tue, 27 Mar 2007 01:00:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/03/26/the-world-is-parallel-we-are-are-parallel/</guid>
+      <description>&lt;p&gt;本日の名言。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.hyuki.com/yukiwiki/wiki.cgi?TenQuestionsWithJoeArmstrong&#34;&gt;TenQuestionsWithJoeArmstrong - 並列プログラマに 10 の質問 - Joe Armstrong さんの場合&lt;/a&gt;の日本語訳から知ったのですが &amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;まずは原文&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Michael:&lt;/strong&gt; One of the most pressing issues presently appears to be that parallel programming is still harder and less productive than its sequential counterpart. Is there any way to change this in your opinion?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Joe:&lt;/strong&gt; It’s not harder - it’s hard because the dominant model is locks, threads, shared memory - now that &lt;em&gt;is&lt;/em&gt; hard. Pure message passing systems are easy to program and reason about.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The world &lt;em&gt;is&lt;/em&gt; parallel - we are parallel.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;そして、最後のパラグラフの日本語訳が&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;世界は並列なんだ.&lt;/strong&gt; &amp;hellip; 僕達は並列なんだよ.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;やけにかっこいいなあ。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>最近分かったこと</title>
+      <link>http://www.metareal.org/2006/12/21/some-things-that-i-realized/</link>
+      <pubDate>Thu, 21 Dec 2006 10:12:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2006/12/21/some-things-that-i-realized/</guid>
+      <description>&lt;p&gt;今日やっと、&lt;a href=&#34;http://struts.apache.org/&#34;&gt;Struts&lt;/a&gt; で、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;検証、適切なエラーメッセージ&lt;/li&gt;
+&lt;li&gt;フォームビーンの生成スコープ&lt;/li&gt;
+&lt;li&gt;トークン処理&lt;/li&gt;
+&lt;li&gt;キャンセル処理&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;が自信をもって書けるようになりました。&lt;/p&gt;
+
+&lt;p&gt;また、&lt;code&gt;Action&lt;/code&gt; クラスでは &lt;code&gt;finally&lt;/code&gt; を使って、トークンの保存と解除をすると、スッキリまとまるようです。&lt;/p&gt;
+
+&lt;p&gt;数日前は &lt;a href=&#34;http://www.hibernate.org/&#34;&gt;Hibernate&lt;/a&gt; の &lt;code&gt;.hbm.xml&lt;/code&gt; について、プロパティの記述を今より簡潔にできることを知りました。
+もう、&lt;code&gt;varchar&lt;/code&gt; のサイズを指定するために、醜いネストと &lt;code&gt;sql-type&lt;/code&gt; を使うことはありません。&lt;code&gt;length&lt;/code&gt; 属性を指定しておけば、&lt;code&gt;SchemaExport&lt;/code&gt; は適切な DDL スクリプトを生成してくれます。&lt;/p&gt;
+
+&lt;p&gt;いままで分からなかったことが分かるようになるのが、楽しいです。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

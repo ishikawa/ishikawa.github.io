@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript on METAREAL</title>
+    <link>http://www.metareal.org/tags/javascript/</link>
+    <description>Recent content in Javascript on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Tue, 07 Jul 2015 08:02:21 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>JavaScript API Response object</title>
+      <link>http://www.metareal.org/post/2015/07/javascript-api-response-object/</link>
+      <pubDate>Tue, 07 Jul 2015 08:02:21 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/post/2015/07/javascript-api-response-object/</guid>
+      <description>&lt;p&gt;JavaScript (TypeScript) でサーバーとの通信には JSON-RPC 2.0 を用いて、受け取った JSON レスポンスをオブジェクトに変換して使っている。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Tweet {
+
+  constructor(
+    userId: string,
+    screenName: string,
+    text: string,
+    favorited: boolean,
+  ) {}
+
+  static fromJsonResponse(response: any): Tweet {
+    return new Tweet(
+      response[&amp;quot;userId&amp;quot;],
+      response[&amp;quot;screenName&amp;quot;],
+      response[&amp;quot;text&amp;quot;],
+      response[&amp;quot;favorited&amp;quot;]
+    );
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/Microsoft/TypeScript/wiki/Classes#using-a-class-as-an-interface&#34;&gt;TypeScript のクラスはインターフェースとしても使える&lt;/a&gt; ので、JSON レスポンスを変換したオブジェクトをそのまま使える気がしてきた。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;
+class Tweet {
+    userId: string;
+    screenName: string;
+    text: string;
+    favorited: boolean;
+
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>WEB&#43;DB PRESS Vol.48</title>
+      <link>http://www.metareal.org/2008/12/24/web-db-press-vol48/</link>
+      <pubDate>Wed, 24 Dec 2008 01:06:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/12/24/web-db-press-vol48/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://raku.to/&#34;&gt;古谷楽人&lt;/a&gt;氏より &lt;a href=&#34;http://gihyo.jp/magazine/wdpress/archive/2009/vol48&#34;&gt;WEB+DB PRESS Vol.48&lt;/a&gt; (&lt;a href=&#34;http://www.amazon.co.jp/exec/obidos/ASIN/4774136913/&#34;&gt;amazon.co.jp&lt;/a&gt;) を献本いただきました。ありがとうございます。わたしは当雑誌、というか雑誌全般の熱心な読者ではないのですが（ごめんなさい）、ひさしぶりの技術系雑誌を楽しく読ませてもらいました。&lt;/p&gt;
+
+&lt;p&gt;WEB+DB PRESS Vol.48 で氏は「[最速]JavaScript エンジン徹底比較」と題して、最近のブラウザ事情に聡いプログラマなら気になるであろう、最新 JavaScript エンジンの比較と検証記事を執筆されています。以下では、記事内容の簡単な紹介と一読した感想などを書いていきます。&lt;/p&gt;
+
+&lt;h3 id=&#34;最速-javascript-エンジン徹底比較:413f555c66a5164357ae2df9904875e8&#34;&gt;[最速]JavaScript エンジン徹底比較&lt;/h3&gt;
+
+&lt;p&gt;（ここから文体をいつもどおりに戻して&amp;hellip;）記事は三章から構成されており、それぞれの章題は：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;JavaScript エンジンの比較&lt;/li&gt;
+&lt;li&gt;SquirrelFish Extreme / WebKit の最適化手法&lt;/li&gt;
+&lt;li&gt;注目の Google Chrome に搭載された V8&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;である。&lt;/p&gt;
+
+&lt;p&gt;章題からも推測できるように、第一章が複数ベンチマークスイートによる各 JavaScript エンジンのパフォーマンス比較、第二章と第三章ではコンパイラと仮想機械の一般的な説明から始まり、WebKit の &lt;a href=&#34;http://webkit.org/blog/214/introducing-squirrelfish-extreme/&#34;&gt;SquirrelFish Extreme&lt;/a&gt;、および Google の &lt;a href=&#34;http://code.google.com/p/v8/&#34;&gt;V8&lt;/a&gt; が用いる最適化手法について多くのページが割かれている。&lt;/p&gt;
+
+&lt;p&gt;個々のトピックについては WEB 上にも詳細に解説されたサイトがあるものの、雑誌という紙媒体で、こうして一本にまとめられた情報は珍しいのではないだろうか&amp;hellip;って、普段、雑誌を読まない人が書いても説得力に乏しい。スミマセン。もっとも、珍しかろうが珍しくなかろうが、日本語で読める貴重な情報源のひとつであることに変わりはない。
+特に、SquirrelFish Extreme で採用されている Polymorphic Inline Cache (PIC) や V8 の高速なプロパティ・アクセスを実現するための &lt;a href=&#34;http://code.google.com/intl/ja-JP/apis/v8/design.html#prop_access&#34;&gt;Hidden Class&lt;/a&gt; の解説は、現代的な動的言語の裏舞台を知る、という意味で興味深い。たとえ、言語処理系の実装詳細に興味がなくとも、普段使っている道具がどのように作られているかを知ることは益になるだろう。&lt;/p&gt;
+
+&lt;h3 id=&#34;最後に:413f555c66a5164357ae2df9904875e8&#34;&gt;最後に&lt;/h3&gt;
+
+&lt;p&gt;今回、ひさしぶりに技術系雑誌を読んでみて、プロのライターと編集者による情報のパッケージングと、紙という媒体とレイアウトには、他のものには代えがたい価値がある、と感じた。腰を落ち着けて、プログラミングのさまざまなトピックスに触れるというのは、やはり、ワクワクする体験だ。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Google Chrome に搭載されたオープンソースの JavaScript エンジン &#34;v8&#34; を試す</title>
+      <link>http://www.metareal.org/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</link>
+      <pubDate>Wed, 03 Sep 2008 09:28:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://googlejapan.blogspot.com/2008/09/blog-post.html&#34;&gt;その発表&lt;/a&gt;から世間を騒がせた、Google の Web ブラウザ &lt;strong&gt;Chrome&lt;/strong&gt; が遂に&lt;a href=&#34;http://www.google.com/chrome&#34;&gt;公開された&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;Mac ユーザなうえに、日々の Web ブラウジングは Safari と iPhone で満足していることもあり、Chrome 自体への興味は薄い。しかし、オープンソースの JavaScript エンジンも独自開発している、となると話は別だ。しかも、&lt;a href=&#34;http://www.strongtalk.org/&#34;&gt;Strongtalk&lt;/a&gt; や &lt;a href=&#34;http://java.sun.com/javase/technologies/hotspot/&#34;&gt;HotSpot Java VM&lt;/a&gt; の開発者が関わっている、というのだから俄然興味が湧いてくる（&lt;a href=&#34;http://www.avibryant.com/2008/09/chrome-v8-and-s.html&#34;&gt;参考記事&lt;/a&gt;）。&lt;/p&gt;
+
+&lt;p&gt;Google が開発、公開している JavaScript 処理系は、その名も &lt;a href=&#34;http://code.google.com/p/v8/&#34;&gt;v8&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;v8-の特徴:6b1900b58191e8d3cb79ebccaf274941&#34;&gt;v8 の特徴&lt;/h3&gt;
+
+&lt;p&gt;では、v8 には既存の処理系に比べて、どのような利点があるのだろうか。Google がわざわざ独自に開発し、Chrome という重要なプロダクトに搭載して公開するくらいだから、そこには他の処理系では達成できないアドバンテージがあるはずである。&lt;/p&gt;
+
+&lt;p&gt;Google Code で公開されている文書 &lt;a href=&#34;http://code.google.com/apis/v8/design.html&#34;&gt;Design Elements&lt;/a&gt; から概観をつかんでみよう。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://code.google.com/apis/v8/design.html#prop_access&#34;&gt;オブジェクトのプロパティへのアクセスが高速&lt;/a&gt;
+JavaScript ではオブジェクトのプロパティを自由に追加・削除できる。&lt;/p&gt;
+
+&lt;p&gt;これを実現するためには、ハッシュ表や二分木といった&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97&#34;&gt;辞書&lt;/a&gt;による実装が一般的だが、そうするとプロパティにアクセスするたびに辞書を検索しなくてはいけない。&lt;/p&gt;
+
+&lt;p&gt;v8 では &lt;strong&gt;hidden class&lt;/strong&gt; という実装テクニックを用いることにより、オブジェクトのプロパティへのアクセス方法が、オブジェクトの格納されているメモリのオフセットへのアクセスとなる。そのため、無駄な検索を省くことができ、高速なアクセスを実現している。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://code.google.com/apis/v8/design.html#mach_code&#34;&gt;動的なマシンコード生成&lt;/a&gt;
+JavaScript のコードは最初に実行されるときにマシンコードに変換される。&lt;strong&gt;バイトコードやインタプリタはない&lt;/strong&gt;。また、プロパティへのアクセスは特別扱いされ、インライン・キャッシュという Smalltalk 実装系由来の技法が使われているらしい（参考：&lt;a href=&#34;http://www.cs.ucla.edu/~palsberg/course/cs232/papers/DeutschSchiffman-popl84.pdf&#34;&gt;Efficient Implementation of the Smalltalk-80 System&lt;/a&gt;）&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://code.google.com/apis/v8/design.html#garb_coll&#34;&gt;効率的なガベージコレクション&lt;/a&gt;
+v8 のガベージコレクションの特徴は以下のとおりである：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;stop-the-world&lt;/strong&gt; ガベージコレクション中はプログラムが停止する&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;世代別ガベージコレクション&lt;/strong&gt; 一度のガベージコレクションではオブジェクトの一部のみを検査することにより、プログラム停止時間を短縮&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ldquo;保守的&amp;rdquo;ではない&lt;/strong&gt; このため、未使用のオブジェクトをポインタと判定してしまい、メモリリークすることがない&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;メモリ・コンパクションができる&lt;/strong&gt; メモリのフラグメンテーションを防ぐ&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;総じて、バランスの良い実装を選びながら、特にメモリ効率に気をつかっている印象を受ける。&lt;/p&gt;
+
+&lt;h3 id=&#34;試す:6b1900b58191e8d3cb79ebccaf274941&#34;&gt;試す&lt;/h3&gt;
+
+&lt;p&gt;どうだろう？ v8 に興味が湧いてきたんじゃないだろうか。&lt;/p&gt;
+
+&lt;p&gt;では、能書きはこれくらいにして、実際に v8 を使ってみよう。なお、環境は Mac OS X Leopard、Xcode はインストール済みで GCC, Python, Subversion などがインストールされているものとする。&lt;/p&gt;
+
+&lt;p&gt;まずは適当なディレクトリに、ソースコードをチェックアウトする。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% cd Developer/Workspace/JavaScript/
+% svn checkout http://v8.googlecode.com/svn/trunk/ v8
+% cd v8/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ビルドには &lt;a href=&#34;http://www.scons.org/&#34;&gt;SCons&lt;/a&gt; というビルドツールが必要だ。&lt;a href=&#34;http://www.macports.org/&#34;&gt;MacPorts&lt;/a&gt; でインストールしておこう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% sudo port install scons
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ビルドオプションは、&lt;code&gt;scons --help&lt;/code&gt; で確認できる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% scons --help
+scons: Reading SConscript files ...
+scons: done reading SConscript files.
+
+mode: compilation mode (debug, release)
+    default: release
+    actual: release
+
+sample: build sample (shell, process)
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;とりあえず試したいだけなので、デフォルトの設定でビルドしてみようか。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% scons
+scons: Reading SConscript files ...
+scons: done reading SConscript files.
+scons: Building targets ...
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;同じディレクトリに &lt;code&gt;libv8.a&lt;/code&gt; というライブラリができたはずだ。&lt;/p&gt;
+
+&lt;h3 id=&#34;簡単な-c-プログラムで使ってみよう:6b1900b58191e8d3cb79ebccaf274941&#34;&gt;簡単な C++ プログラムで使ってみよう&lt;/h3&gt;
+
+&lt;p&gt;他の C++ プログラムに組み込んで使うことを念頭に開発されているのも、v8 の特徴だ。プロジェクト・サイトにある &lt;a href=&#34;http://code.google.com/apis/v8/get_started.html&#34;&gt;Hello World プログラム&lt;/a&gt;よりは実用的なプログラムで感触をつかんでみよう。&lt;/p&gt;
+
+&lt;p&gt;以下は、標準入力から受け取ったプログラムを構文解析して実行、結果を標準出力に書き出すプログラムだ（Gist にもアップしておいた。&lt;a href=&#34;http://gist.github.com/8559&#34;&gt;gist:8559&lt;/a&gt;）。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;sstream&amp;gt;
+#include &amp;lt;v8.h&amp;gt;
+
+using namespace v8;
+
+int main(int argc, const char **argv) {
+  // Create a scope and environment
+  HandleScope scope;
+  Handle&amp;lt;Context&amp;gt; context = Context::New();
+  Context::Scope context_scope(context);
+
+  // Reading a source code
+  std::stringbuf buffer;
+  std::cin.get(buffer, EOF);
+  Handle&amp;lt;String&amp;gt; source = String::New(buffer.str().c_str());
+
+  // Register try/cache handler for error reporting
+  TryCatch try_catch;
+  // Compile the source code.
+  Handle&amp;lt;Script&amp;gt; script = Script::Compile(source);
+
+  if (script.IsEmpty()) {
+    // Print errors that happened during compilation.
+    String::AsciiValue error(try_catch.Exception());
+    std::cout &amp;lt;&amp;lt; *error &amp;lt;&amp;lt; std::endl;
+    return -1;
+  }
+
+  // Running script
+  Handle&amp;lt;Value&amp;gt; result = script-&amp;gt;Run();
+
+  if (result.IsEmpty()) {
+    // Print errors that happened during execution.
+    String::AsciiValue error(try_catch.Exception());
+    std::cout &amp;lt;&amp;lt; *error &amp;lt;&amp;lt; std::endl;
+    return -1;
+  }
+
+  // Convert the result to an ASCII string and print it.
+  String::AsciiValue ascii(result);
+  std::cout &amp;lt;&amp;lt; *ascii &amp;lt;&amp;lt; std::endl;
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;このプログラムは gcc で次のようにコンパイルする。&lt;code&gt;V8_HOME&lt;/code&gt; 環境変数には v8 をチェックアウトしたディレクトリを設定してほしい。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% g++ -I${V8_HOME}/include -L${V8_HOME} -lv8 -o simple_v8_shell simple_v8_shell.cc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;実行例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% ./simple_v8_shell
+&#39;Hello, &#39; + &#39;World!&#39;
+Hello, World!
+% ./simple_v8_shell
+1 + 2 * 3
+7
+% ./simple_v8_shell
+var fib = function(n) {
+  return (n &amp;lt; 2) ? n : fib(n - 2) + fib(n - 1)
+}
+fib(10)
+55
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;最後に:6b1900b58191e8d3cb79ebccaf274941&#34;&gt;最後に&lt;/h3&gt;
+
+&lt;p&gt;現時点では、v8 が実際のところどれだけのものなのか、確証をもって言えることは多くない。しかし、v8 の登場で強く感じたことがふたつある。&lt;/p&gt;
+
+&lt;p&gt;まず、JavaScript エンジンの実装は &lt;a href=&#34;http://www.mozilla-japan.org/projects/tamarin/&#34;&gt;Tamarin&lt;/a&gt; (Adobe/Mozilla)、&lt;a href=&#34;http://webkit.org/blog/189/announcing-squirrelfish/&#34;&gt;SquirrelFish&lt;/a&gt; (Apple)、そして、今回の &lt;a href=&#34;http://code.google.com/p/v8/&#34;&gt;v8&lt;/a&gt; (Google) &amp;hellip; 強豪たちとホットな技術がひしめく戦場になりつつある。手の出尽くした感があるブラウザ競争とは異なり、この戦場はまさに「未開のフロンティア」だろう。&lt;/p&gt;
+
+&lt;p&gt;また、ここ数年で多くのプログラマに浸透した動的言語だが、これから数年のうちに、今度は&lt;strong&gt;動的言語の効率的な実装&lt;/strong&gt;もプログラマ一般に浸透していくのではないか、という思いを強くした。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Flickr の JSON フィードで自作ブログパーツ</title>
+      <link>http://www.metareal.org/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</link>
+      <pubDate>Sun, 15 Jun 2008 10:09:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</guid>
+      <description>
+
+&lt;p&gt;写真を撮るのが好きじゃない。&lt;/p&gt;
+
+&lt;p&gt;カメラは荷物になるし、壊れやすいから気をつかう。いざ撮影になると、バッグから取り出して、電源ボタンを押す、レンズを向ける、ピントを合わせて、と面倒だ。衆人環視の中、うんうん唸りながらシャッターを切るのも粋じゃない。&lt;/p&gt;
+
+&lt;p&gt;では、何が楽しくて写真を撮るのかといえば、補正が楽しい。&lt;a href=&#34;http://www.adobe.com/jp/products/photoshopelwin/&#34;&gt;Photoshop Elements&lt;/a&gt; の自動補正がよく出来ていて、何も考えずにボタンを押していくだけで、それなりの見栄えになってくれる。これは楽しい（ただし、たまに自力で補正に挑戦しても、自動補正の方がキレイで気分が悪い）。&lt;/p&gt;
+
+&lt;p&gt;そのうち、出来上がった写真を他人に見せびらかしたくなるのが自然の流れ。写真を &lt;a href=&#34;http://www.flickr.com/&#34;&gt;Flickr&lt;/a&gt; にアップロードするようになった。さらに、&lt;a href=&#34;http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;このブログをリニューアル&lt;/a&gt;するさいには、&lt;a href=&#34;http://www.flickr.com/&#34;&gt;Flickr&lt;/a&gt; にアップロードした写真を表示するブログパーツを追加するつもりだった。&lt;/p&gt;
+
+&lt;p&gt;公式のブログパーツは &lt;a href=&#34;http://www.flickr.com/badge.gne&#34;&gt;Flickr Badge&lt;/a&gt; という名前で Flash 版と HTML 版が用意されている。しかし、いくつかの理由により、どちらも使う気になれなかった。幸い、Flickr では&lt;a href=&#34;http://www.flickr.com/services/feeds/&#34;&gt;さまざまなフィードが提供されている&lt;/a&gt;。これらを利用すれば、&lt;strong&gt;自作のブログパーツをつくるのは難しくない&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;公式ブログパーツの不満点:bd498955fcbc8b4394e75e6100e5c1f2&#34;&gt;公式ブログパーツの不満点&lt;/h3&gt;
+
+&lt;p&gt;提供されているもので満足なら自作する必要はない。公式ブログパーツの不満点も挙げておこう。&lt;/p&gt;
+
+&lt;p&gt;まずは、Flash 版だが、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;サムネイルがちいさい&lt;/li&gt;
+&lt;li&gt;一定時間ごとにアニメーションで拡大するのは面白いが、読者からすれば煩わしいものだ&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;という不満がある。&lt;/p&gt;
+
+&lt;p&gt;一方、HTML 版はというと、サムネイルの大きさは選択可能、レイアウトも CSS で設定できるので自由度も高い。ただし、ブログパーツを挿入するための JavaScript が好みじゃない（以下、一部整形済み）。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var b_txt = &#39;&#39;;
+
+b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_image&amp;quot; id=&amp;quot;flickr_badge_image1&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.flickr.com/photos/ishikawa_takanori/2555186680/&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;http://farm4.static.flickr.com/3006/2555186680_7c18b8cc1a_s.jpg&amp;quot; alt=&amp;quot;A photo on Flickr&amp;quot; title=&amp;quot;BUFFET STYLE&amp;quot; height=&amp;quot;75&amp;quot; width=&amp;quot;75&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&#39;;
+
+b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_image&amp;quot; id=&amp;quot;flickr_badge_image2&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.flickr.com/photos/ishikawa_takanori/2555186616/&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;http://farm4.static.flickr.com/3140/2555186616_823d69311e_s.jpg&amp;quot; alt=&amp;quot;A photo on Flickr&amp;quot; title=&amp;quot;spaghetti with Genova style basil sauce&amp;quot; height=&amp;quot;75&amp;quot; width=&amp;quot;75&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&#39;;
+
+b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_image&amp;quot; id=&amp;quot;flickr_badge_image3&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.flickr.com/photos/ishikawa_takanori/2553633584/&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;http://farm4.static.flickr.com/3274/2553633584_0e3633ebe6_s.jpg&amp;quot; alt=&amp;quot;A photo on Flickr&amp;quot; title=&amp;quot;The Technorati Monster escaped again.&amp;quot; height=&amp;quot;75&amp;quot; width=&amp;quot;75&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&#39;;
+
+document.write(b_txt)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ごらんのとおり、古典的な &lt;code&gt;document.write&lt;/code&gt; のブログパーツである。&lt;a href=&#34;http://la.ma.la/blog/diary_200507160912.htm&#34;&gt;最速インターフェース研究会 :: ページレンダリングを妨げない広告挿入手法に関する覚書&lt;/a&gt;でも説明されているように、この手法だとページの表示を妨げる可能性がある。ブログパーツはあくまでオマケ。ページの表示が遅れるのは嬉しくない。&lt;/p&gt;
+
+&lt;p&gt;今回自作するブログパーツでは、ページの読み込み後にブログパーツの表示を行うことで、この問題による影響を軽減している。&lt;/p&gt;
+
+&lt;h3 id=&#34;flickr-の-json-フィード:bd498955fcbc8b4394e75e6100e5c1f2&#34;&gt;Flickr の JSON フィード&lt;/h3&gt;
+
+&lt;p&gt;Flickr では&lt;a href=&#34;http://www.flickr.com/services/feeds/&#34;&gt;さまざまなフィードが提供されている&lt;/a&gt;が、ありがたいことに JSONP (JSON with Padding) 形式のフィードも提供されている。&lt;/p&gt;
+
+&lt;p&gt;JSONP については以下の記事に詳しい（最初の記事は &lt;a href=&#34;http://mochikit.com/&#34;&gt;MochiKit&lt;/a&gt; の作者による解説。これが初出っぽい）。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://bob.pythonmac.org/archives/2005/12/05/remote-json-jsonp/&#34;&gt;from &lt;strong&gt;future&lt;/strong&gt; import * » Remote JSON - JSONP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.baldanders.info/spiegel/remark/archives/000222.shtml&#34;&gt;[鏡] 入門 JSON 3 &amp;ndash; JSONP とコールバック関数 &amp;ndash; 戯れ言++&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;まずは、実例をみるのがいいだろう。&lt;/p&gt;
+
+&lt;p&gt;たとえば、&lt;a href=&#34;http://api.flickr.com/services/feeds/photos_public.gne?id=23956121%40N00&amp;amp;tags=green&amp;amp;format=json&#34;&gt;http://api.flickr.com/services/feeds/photos_public.gne?id=23956121%40N00&amp;amp;tags=green&amp;amp;format=json&lt;/a&gt; を開くと、次のような JavaScript が返ってくる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;jsonFlickrFeed({
+    &amp;quot;title&amp;quot;: &amp;quot;Uploads from Takanori Ishikawa, tagged green&amp;quot;,
+    &amp;quot;link&amp;quot;: &amp;quot;http://www.flickr.com/photos/ishikawa_takanori/tags/green/&amp;quot;,
+    &amp;quot;description&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;modified&amp;quot;: &amp;quot;2008-05-24T07:39:52Z&amp;quot;,
+    &amp;quot;generator&amp;quot;: &amp;quot;http://www.flickr.com/&amp;quot;,
+    &amp;quot;items&amp;quot;: [
+     {
+      &amp;quot;title&amp;quot;: &amp;quot;Shadow Game&amp;quot;,
+      &amp;quot;link&amp;quot;: &amp;quot;http://www.flickr.com/photos/ishikawa_takanori/2517368623/&amp;quot;,
+      &amp;quot;media&amp;quot;: {&amp;quot;m&amp;quot;:&amp;quot;http://farm3.static.flickr.com/2141/2517368623_9c15a8e38dv&amp;quot;},
+      &amp;quot;date_taken&amp;quot;: &amp;quot;2008-05-04T15:15:36-08:00&amp;quot;,
+      &amp;quot;description&amp;quot;: &amp;quot;...&amp;quot;,
+      &amp;quot;published&amp;quot;: &amp;quot;2008-05-24T07:39:52Z&amp;quot;,
+      &amp;quot;author&amp;quot;: &amp;quot;nobody@flickr.com (Takanori Ishikawa)&amp;quot;,
+      &amp;quot;author_id&amp;quot;: &amp;quot;23956121@N00&amp;quot;,
+      &amp;quot;tags&amp;quot;: &amp;quot;green nara horyuji&amp;quot;
+     },
+...
+        ]
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;返ってくるのが JavaScript&lt;/strong&gt; というのがミソで、つまり、次のような使い方ができる。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;上記 URL を &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; タグに指定し、JavaScript を読み込む&lt;/li&gt;
+&lt;li&gt;読み込みが完了すると、&lt;code&gt;jsonFlickrFeed&lt;/code&gt; 関数が呼ばれる&lt;/li&gt;
+&lt;li&gt;そのときの引数は写真のデータを格納した連想配列&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;このとき渡される引数の詳細については &lt;a href=&#34;http://www.flickr.com/services/api/response.json.html&#34;&gt;JSON Response Format&lt;/a&gt; を参考にしてほしい（参照先にも書かれているように、呼び出される関数の名前を指定することも可能だ）。&lt;/p&gt;
+
+&lt;p&gt;では、実際に &lt;a href=&#34;http://www.flickr.com/services/feeds/&#34;&gt;Flickr JSON フィード&lt;/a&gt;を使って、写真を表示してみよう。&lt;/p&gt;
+
+&lt;p&gt;この即席ブログパーツの &lt;code&gt;jsonFlickrFeed&lt;/code&gt; 関数は以下のようになっている。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function jsonFlickrFeed(json) {
+  var div = document.getElementById(&amp;quot;flickr-json-api-example-001&amp;quot;);
+  var items = json.items.slice(0, 6);
+
+  for (var i = 0; i &amp;lt; items.length; i++) {
+    var item = items[i];
+    var a = document.createElement(&amp;quot;a&amp;quot;);
+    var img = document.createElement(&amp;quot;img&amp;quot;);
+    var media = item.media.m.replace(/_m.(jpe?g)$/, &amp;quot;_t.$1&amp;quot;); // (1)
+
+    img.setAttribute(&amp;quot;src&amp;quot;, media);
+    a.setAttribute(&amp;quot;href&amp;quot;, item.link);
+    a.setAttribute(&amp;quot;title&amp;quot;, item.title);
+
+    a.appendChild(img);
+    div.appendChild(a);
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;特に問題はないと思う。引数で渡される連想配列には &lt;code&gt;items&lt;/code&gt; という名前で各写真のデータが入っている。それをループで回して &lt;code&gt;img&lt;/code&gt; 要素を作成している。&lt;/p&gt;
+
+&lt;p&gt;説明がいるとすれば、写真の URL を正規表現でいじっている部分だろうか（コメントで &lt;code&gt;(1)&lt;/code&gt; と書いた行）。Flickr の写真にはいくかのサイズがあって、それぞれに URL の形式が決まっている。このへんの写真 URL の形式については &lt;a href=&#34;http://www.flickr.com/services/api/misc.urls.html&#34;&gt;Photo Source URLs&lt;/a&gt; が詳しい。&lt;/p&gt;
+
+&lt;p&gt;あとは、&lt;code&gt;script&lt;/code&gt; 要素で JSON フィードの URL を指定する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;script src=&amp;quot;http://api.flickr.com/services/feeds/photos_public.gne?id=23956121%40N00&amp;amp;amp;tags=popular&amp;amp;amp;jsoncallback=flickrJsonAPIExample001&amp;amp;amp;format=json&amp;quot; type=&amp;quot;text/javascript&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;また、この &lt;code&gt;script&lt;/code&gt; 要素を置く場所を &lt;code&gt;&amp;lt;/body&amp;gt;&lt;/code&gt; タグの直前にしておけば、JavaScript の読み込みがはじまったときには他の部分が表示されているので、ページの表示の妨げになりにくい。&lt;/p&gt;
+
+&lt;h3 id=&#34;json-フィードの手軽さ:bd498955fcbc8b4394e75e6100e5c1f2&#34;&gt;JSON フィードの手軽さ&lt;/h3&gt;
+
+&lt;p&gt;Flickr が JSON フィードを利用すれば、写真を表示するブログパーツが簡単に自作できることが分かった。&lt;/p&gt;
+
+&lt;p&gt;JavaScript と親和性が高いのみならず、ただの外部スクリプト読み込みなので、&lt;code&gt;XMLHttpRequest&lt;/code&gt; につきもののクロスドメイン制限がないのもありがたい。&lt;/p&gt;
+
+&lt;p&gt;最後に、参考リンクをまとめておく。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/services/feeds/&#34;&gt;Flickr で提供されているフィード一覧&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/services/api/misc.urls.html&#34;&gt;写真の URL の形式について&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/services/api/response.json.html&#34;&gt;JSONP で渡される引数について&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/services/api/explore/?method=flickr.favorites.getList&#34;&gt;Flickr API Explorer&lt;/a&gt; API のテスト用ページ。自分の User ID を確認できる&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>280Slides in Objective-J</title>
+      <link>http://www.metareal.org/2008/06/06/280slides-in-objective-j/</link>
+      <pubDate>Fri, 06 Jun 2008 12:42:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/06/06/280slides-in-objective-j/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://280slides.com/&#34;&gt;280Slides&lt;/a&gt; という Web サービスがすごい。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.xxeo.com/archives/2008/06/05/new-web-site-in-objective-c-via-javascript.html&#34;&gt;Dru’s Blog » New Web Site in Objective-C via Javascript&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.reddit.com/r/programming/info/6m84p/comments/&#34;&gt;New 280 Slides Web Site translates Objective-C to Javascript | reddit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Keynote 風のプレゼンテーションツールとしての UI も素晴らしいが、圧巻なのは、その実装技術。&lt;/p&gt;
+
+&lt;p&gt;「どんな JavaScript や Flash を使ってるんだ？」と思うだろう。さあ、&lt;a href=&#34;https://addons.mozilla.org/ja/firefox/addon/1843&#34;&gt;FireBug&lt;/a&gt; なり Safari の Web インスペクタなりで、ページに読み込まれているスクリプトを確認してみよう。その大半が馴染みのない拡張子 &lt;code&gt;.j&lt;/code&gt; であることに驚くに違いない。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://280slides.com/Editor/1212703678/main.j&#34;&gt;main.j&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://280slides.com/Editor/1212703678/Document.j&#34;&gt;Document.j&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://280slides.com/Editor/1212703678/DocumentController.j&#34;&gt;DocumentController.j&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;上にあげたのは、&lt;code&gt;.j&lt;/code&gt; ファイルの一例だが、あなたが Mac OS X の開発者であれば、見覚えのある名前ばかりだろう。これは Mac OS X の MVC フレームワーク &lt;a href=&#34;http://developer.apple.com/cocoa/&#34;&gt;Cocoa&lt;/a&gt; を構成するクラス名と酷似している。&lt;/p&gt;
+
+&lt;h3 id=&#34;objective-j:768c3b36853f147cf4a820ec94390722&#34;&gt;Objective-J&lt;/h3&gt;
+
+&lt;p&gt;試しに &lt;a href=&#34;http://280slides.com/Editor/1212703678/DocumentController.j&#34;&gt;DocumentController.j&lt;/a&gt; を覗いてみようか。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//
+// DocumentController.j
+// Editor
+//
+// Created by Francisco Tolmasky.
+// Copyright 2005 - 2008, 280 North, Inc. All rights reserved.
+//
+
+import &amp;lt;AppKit/CPDocumentController.j&amp;gt;
+
+import &amp;quot;OpenPanel.j&amp;quot;
+import &amp;quot;Themes.j&amp;quot;
+import &amp;quot;ThemePanel.j&amp;quot;
+import &amp;quot;WelcomePanel.j&amp;quot;
+
+@implementation DocumentController : CPDocumentController
+{
+    BOOL    _applicationHasFinishedLaunching;
+}
+
+- (void)applicationDidFinishLaunching:(CPNotification)aNotification
+{
+    // FIXME
+    // Check [CPApp arguments][0] for &amp;quot;docs&amp;quot; and [self openPresentationWithFilename: args[2]];
+
+    [CPApp runModalForWindow:[[WelcomePanel alloc] init]];
+
+    _applicationHasFinishedLaunching = YES;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;どう見ても &lt;a href=&#34;http://developer.apple.com/documentation/Cocoa/Conceptual/ObjectiveC/Introduction/chapter_1_section_1.html&#34;&gt;Objective-C&lt;/a&gt; です。&lt;/p&gt;
+
+&lt;p&gt;もちろん、ブラウザがこんな独自言語をコンパイルできるわけがない。これらのスクリプトは &lt;a href=&#34;http://280slides.com/Editor/1212703678/Frameworks/Objective-J/Objective-J.js&#34;&gt;Objective-J.js&lt;/a&gt; によって、&lt;strong&gt;実行時に JavaScript へと変換（コンパイル）&lt;/strong&gt;される。&lt;/p&gt;
+
+&lt;p&gt;どんなふうになるかは、プリコンパイルされた &lt;a href=&#34;http://280slides.com/Editor/1212703678/Frameworks/AppKit/AppKit.sj&#34;&gt;AppKit.sj&lt;/a&gt; もあるので、参考に覗いてみるといいだろう。&lt;/p&gt;
+
+&lt;h3 id=&#34;dsl-and-framework:768c3b36853f147cf4a820ec94390722&#34;&gt;DSL and Framework&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E5%9B%BA%E6%9C%89%E8%A8%80%E8%AA%9E&#34;&gt;Domain-Specific Language (DSL)&lt;/a&gt; の有効性は散々言い古されてきたけど、Objective-J が Cocoa という、すでに GUI アプリケーションの分野で定評のあるフレームワークを土台としていることは興味深い（もしかすると今後、このような流れが他にも起こるだろうか？）。&lt;/p&gt;
+
+&lt;p&gt;そして、なにより、こんなことを妄想しこそすれ、本当にやってしまう心意気は賞賛に値する。&lt;/p&gt;
+
+&lt;h3 id=&#34;p-s:768c3b36853f147cf4a820ec94390722&#34;&gt;P.S.&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;（2008.06.06 追記）&lt;/strong&gt;この記事を書いたあとで、&lt;a href=&#34;http://gbracha.blogspot.com/2008/04/everyone-is-talking-about-cloud.html&#34;&gt;Room 101: java&amp;rsquo;scrypt&lt;/a&gt; という記事を思い出した。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Javascript is the assembly language of the internet platform (and the browser is the OS).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;この記事では他にも &lt;a href=&#34;http://code.google.com/webtoolkit/&#34;&gt;Google Web Toolkit&lt;/a&gt; に言及している。そういえば、Google Web Toolkit (GWT) も Java で書かれたプログラムが（サーバ側で）JavaScript に「コンパイル」されるのだった。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>JavaScript ベンチマーク SunSpider 0.9</title>
+      <link>http://www.metareal.org/2007/12/19/new-javascript-benchmark-sunspider/</link>
+      <pubDate>Thu, 20 Dec 2007 08:28:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/12/19/new-javascript-benchmark-sunspider/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://webkit.org/&#34;&gt;WebKit&lt;/a&gt; の開発者たちは素晴らしいレンダリング・エンジンだけではなく、&lt;a href=&#34;http://webkit.org/blog/61/introducing-drosera/&#34;&gt;Drosera&lt;/a&gt; や &lt;a href=&#34;http://webkit.org/blog/108/yet-another-one-more-thing-a-new-web-inspector/&#34;&gt;Web Inspector&lt;/a&gt; などの Web 開発者向けツールも提供してきたが、今度は JavaScript ベンチマークをリリースしたようだ。&lt;/p&gt;
+
+&lt;p&gt;このベンチマークはJavaScript 言語のコアに絞ったベンチマークを提供しており、これまでの、Web 開発者が使うツールというよりは言語処理系開発者向けのツールといえる。&lt;/p&gt;
+
+&lt;h3 id=&#34;sunspider-0-9:34f2cfef7b24314ebc3ea9e94a1e7bb4&#34;&gt;SunSpider 0.9&lt;/h3&gt;
+
+&lt;p&gt;このベンチマークは &lt;a href=&#34;http://webkit.org/blog/&#34;&gt;Surfin’ Safari&lt;/a&gt; のブログ上で公開がアナウンスされている。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://webkit.org/blog/152/announcing-sunspider-09/&#34;&gt;Surfin’ Safari - Blog Archive » Announcing SunSpider 0.9&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;この記事では、他にも多くの JavaScript ベンチマークが存在することを認めたうえで、SunSpider には以下のような特徴があるとしている。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;マイクロベンチマークではなく、実際にアプリケーションで使用されているコードである&lt;/li&gt;
+&lt;li&gt;テスト対象に DOM は含まず、JavaScript 言語のコアのベンチマークに焦点を合わせている&lt;/li&gt;
+&lt;li&gt;ブラウザ／コンソール両方で簡単に実行できる&lt;/li&gt;
+&lt;li&gt;実行時間のブレも計測できるので、どの程度安定した計測なのかが分かる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://webkit.org/perf/sunspider-0.9/sunspider.html&#34;&gt;このページ&lt;/a&gt;でベンチマークを実行することができる。実際に実行してみると計測結果をパーマリンクとして保存できたり、それらを比較できたりと興味深い。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Prototype 1.6.0 で大きく進化したイベント API（目次）</title>
+      <link>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</link>
+      <pubDate>Mon, 24 Sep 2007 12:10:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; の変更点、特にイベント周りの API の変更についてまとめた記事のインデックス。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/09/02/prototype-1-6-0-event-overhaul-release/&#34;&gt;Event.observe で登録したコールバックの this&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/&#34;&gt;イベントオブジェクトの拡張&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/&#34;&gt;Event.stopObserving で複数のイベント登録を解除できるようになった&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/&#34;&gt;カスタム・イベント&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/&#34;&gt;クロスブラウザな DOMContentLoaded イベント&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Prototype 1.6.0 で大きく進化したイベント API (4)</title>
+      <link>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</link>
+      <pubDate>Mon, 24 Sep 2007 12:02:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; のイベント API について紹介するシリーズも今回が最後。&lt;/p&gt;
+
+&lt;h3 id=&#34;カスタム-イベント:3fc46135dc04f09d8a52e206d744d890&#34;&gt;カスタム・イベント&lt;/h3&gt;
+
+&lt;p&gt;あらかじめ定義された組み込みのイベント &lt;code&gt;click&lt;/code&gt; や &lt;code&gt;submit&lt;/code&gt; 以外にも、ユーザーが好きなイベントを発生させることができるようになった。&lt;/p&gt;
+
+&lt;p&gt;たとえば、こんな HTML があるとして、&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;container&amp;quot;&amp;gt;
+  &amp;lt;h1&amp;gt;&amp;lt;span id=&amp;quot;title&amp;quot;&amp;gt;Release notes&amp;lt;/span&amp;gt;&amp;lt;/h1&amp;gt;
+  ...
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;Element#fire&lt;/code&gt;（実体は &lt;code&gt;Event.fire&lt;/code&gt;）メソッドを使って、タイトルが変更された、という通知を送る（イベントを発生させる）ことができる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$(&amp;quot;title&amp;quot;).fire(&amp;quot;titleChanged&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当然、受け手も必要なわけで、組み込みのイベントと同様、&lt;code&gt;Element#observe&lt;/code&gt; でコールバック関数を登録できる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$(&amp;quot;container&amp;quot;).observe(&amp;quot;titleChanged&amp;quot;, function(event) {
+  this.highlight({ duration: 0.5 });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ちなみに、&lt;code&gt;Event.fire&lt;/code&gt; メソッドは内部で次のどちらかの処理を行う。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ブラウザが &lt;a href=&#34;http://www.w3.org/TR/DOM-Level-2-Events/events.html&#34;&gt;DOM Events&lt;/a&gt; をサポートしていれば、&lt;a href=&#34;http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-DocumentEvent-createEvent&#34;&gt;&lt;code&gt;document.createEvent&lt;/code&gt;&lt;/a&gt; でイベントを作成し、&lt;a href=&#34;http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-EventTarget-dispatchEvent&#34;&gt;&lt;code&gt;element.dispatchEvent&lt;/code&gt;&lt;/a&gt; でイベントを発生&lt;/li&gt;
+&lt;li&gt;そうでなければ、&lt;a href=&#34;http://msdn2.microsoft.com/en-us/library/ms536390.aspx&#34;&gt;&lt;code&gt;document.createEventObject&lt;/code&gt;&lt;/a&gt; でイベントを作成し、&lt;a href=&#34;http://msdn2.microsoft.com/en-us/library/ms536423.aspx&#34;&gt;&lt;code&gt;element.fireEvent&lt;/code&gt;&lt;/a&gt; でイベントを発生&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;クロスブラウザな-domcontentloaded-イベント:3fc46135dc04f09d8a52e206d744d890&#34;&gt;クロスブラウザな DOMContentLoaded イベント&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/07/10/domready-js-cross-browser-ondomcontentloaded/&#34;&gt;window.onload 前でも DOM 処理が可能なら通知してくれる domready.js&lt;/a&gt; でも紹介した &lt;strong&gt;DOMContentLoaded がサポートされた。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... })
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;従来の &lt;code&gt;Element#observe&lt;/code&gt; メソッドを通して、透過的に扱うことができる。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Prototype 1.6.0 で大きく進化したイベント API (3)</title>
+      <link>http://www.metareal.org/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</link>
+      <pubDate>Sat, 22 Sep 2007 09:28:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; イベント API の進化、更なるつづき。&lt;/p&gt;
+
+&lt;h3 id=&#34;event-stopobserving-で複数のイベント登録を解除できるようになった:db5ff103e3e1dc8be040cb41c1456390&#34;&gt;&lt;code&gt;Event.stopObserving&lt;/code&gt; で複数のイベント登録を解除できるようになった&lt;/h3&gt;
+
+&lt;p&gt;イベントのコールバック関数は &lt;a href=&#34;http://www.prototypejs.org/api/event/observe&#34;&gt;&lt;code&gt;Event.observe&lt;/code&gt;&lt;/a&gt; や &lt;a href=&#34;http://www.prototypejs.org/api/element#method-observe&#34;&gt;&lt;code&gt;Element#observe&lt;/code&gt;&lt;/a&gt; で登録し、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.prototypejs.org/api/event/stopObserving&#34;&gt;&lt;code&gt;Event.stopObserving&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.prototypejs.org/api/element/stopobserving&#34;&gt;&lt;code&gt;Element#stopObserving&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;で登録を解除できる。&lt;/p&gt;
+
+&lt;p&gt;これまで &lt;code&gt;stopObserving()&lt;/code&gt; で登録を解除するには &lt;code&gt;observe()&lt;/code&gt; に渡した引数と同じものを渡す必要があった。つまり、&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Event.observe(&#39;signinForm&#39;, &#39;submit&#39;, checkForm);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;でコールバック関数 &lt;code&gt;checkForm&lt;/code&gt; を登録した場合は、&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;としていたはず。&lt;/p&gt;
+
+&lt;p&gt;1.6.0 では引数を省略することで、対応するコールバック関数すべてを解除できるようになった。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// checkForm を解除
+Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm);
+// signinForm の submit イベントに登録されたコールバック関数を解除
+Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;);
+// signinForm に登録されたコールバック関数を解除
+Event.stopObserving(&#39;signinForm&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これまで &lt;code&gt;removeEventListener&lt;/code&gt; や &lt;code&gt;detachEvent&lt;/code&gt; の単なるラッパーに近かった &lt;code&gt;stopObserving&lt;/code&gt; だが、これでだいぶ使いやすくなった。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Prototype 1.6.0 で大きく進化したイベント API (2)</title>
+      <link>http://www.metareal.org/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</link>
+      <pubDate>Fri, 21 Sep 2007 05:41:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</guid>
+      <description>
+
+&lt;p&gt;随分と間が空いてしまった。前回の記事 &lt;a href=&#34;http://weblog.metareal.org/2007/09/02/prototype-1-6-0-event-overhaul-release/&#34;&gt;Prototype 1.6.0 で大きく進化したイベント API&lt;/a&gt; に引き続き、&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; で導入された、イベント API の変更点を見ていく。&lt;/p&gt;
+
+&lt;h3 id=&#34;イベントオブジェクトの拡張:283490f00731b42581464655d8d20772&#34;&gt;イベントオブジェクトの拡張&lt;/h3&gt;
+
+&lt;p&gt;これまでも、たとえば &lt;code&gt;$()&lt;/code&gt; から返された DOM 要素は &lt;a href=&#34;http://www.prototypejs.org/api/element/methods&#34;&gt;&lt;code&gt;Element.extend&lt;/code&gt;&lt;/a&gt; で色々と便利なメソッドが追加されていたが、1.6.0 からはイベントのコールバックに渡されるイベントオブジェクトでも &lt;code&gt;Event.extend&lt;/code&gt; されるようになった。&lt;/p&gt;
+
+&lt;p&gt;これからはコールバック関数でこんなふうに書ける。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function onClickListener(event) {
+  if (event.isLeftClick()) {
+    ...
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;また、IE の場合は他のモダンブラウザとの差異をなくすため、以下のプロパティも追加されている。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;target&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;relatedTarget&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pageX&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pageY&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;また、&lt;a href=&#34;http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html#Events-interface&#34;&gt;Document Object Model Events&lt;/a&gt; に準拠した、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;stopPropagation()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;preventDefault()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;メソッドも追加されているようだ。（更につづく）&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>WebKit のブラウザ判定と iPhone、そして iPod touch</title>
+      <link>http://www.metareal.org/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</link>
+      <pubDate>Sun, 09 Sep 2007 05:05:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/09/01/prototype-1-6-0-has-detection-for-iphone/&#34;&gt;Prototype 1.6.0 のブラウザ判定と iPhone&lt;/a&gt; では、&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://prototypejs.org/&#34;&gt;prototype.js&lt;/a&gt; には 1.5.1 から、各種ブラウザを判定するための &lt;code&gt;Prototype.Browser&lt;/code&gt; が定義されている。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;として prototype.js のブラウザ判定コードを紹介した。iPhone を含む WebKit ベースのブラウザも判別できる。&lt;/p&gt;
+
+&lt;h3 id=&#34;webkit-detect-script:3f28bd634314958df76c1309adcb93a5&#34;&gt;WebKit Detect script&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://webkit.org/blog/&#34;&gt;Surfin’ Safari&lt;/a&gt; の &lt;a href=&#34;http://webkit.org/blog/119/webkit-detect-script-updated-for-iphone-and-ipod-touch/&#34;&gt;WebKit Detect script updated for iPhone and iPod touch&lt;/a&gt; で知った。&lt;a href=&#34;http://trac.webkit.org/projects/webkit/wiki/DetectingWebKit&#34;&gt;WebKit detection script&lt;/a&gt; というものがあるらしい。&lt;/p&gt;
+
+&lt;p&gt;記事では &lt;a href=&#34;http://www.apple.com/iphone/&#34;&gt;iPhone&lt;/a&gt; と &lt;a href=&#34;http://www.apple.com/iphone/&#34;&gt;iPod touch&lt;/a&gt; もサポートしたよ、と書かれている。ソースコードではこんな感じ、&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;WebKitDetect.isWebKit = function isWebKit()
+{
+    return RegExp(&amp;quot; AppleWebKit/&amp;quot;).test(navigator.userAgent);
+}
+...
+WebKitDetect.isMobile = function isMobile()
+{
+    return WebKitDetect.isWebKit() &amp;amp;amp;&amp;amp;amp; RegExp(&amp;quot; Mobile/&amp;quot;).test(navigator.userAgent);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;つまり、User-Agent に、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;AppleWebKit/&amp;rdquo; があれば WebKit&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Mobile/&amp;rdquo; があれば携帯端末&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ということのようだ。&lt;/p&gt;
+
+&lt;p&gt;ここで、prototype.js のブラウザ判定コードを復習してみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;MobileSafari: !!navigator.userAgent.match(/iPhone.*Mobile.*Safari/)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;User-Agent に &amp;ldquo;iPhone&amp;rdquo; という文字列を想定していることからも、おそらく iPod touch では動作しないだろう。まあ、すぐ直るだろうけど。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Prototype 1.6.0 で大きく進化したイベント API</title>
+      <link>http://www.metareal.org/2007/09/02/prototype-1-6-0-event-overhaul-release/</link>
+      <pubDate>Sun, 02 Sep 2007 09:55:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/09/02/prototype-1-6-0-event-overhaul-release/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; にはいくつもの変更点がある。&lt;/p&gt;
+
+&lt;p&gt;特に イベント周りの API で顕著だ。&lt;code&gt;Event.observe&lt;/code&gt; メソッドなど、お馴染みの API が大幅に手を加えられている。&lt;/p&gt;
+
+&lt;h3 id=&#34;event-observe-で登録したコールバックの-this:32691c882a422470edd0966843784353&#34;&gt;&lt;code&gt;Event.observe&lt;/code&gt; で登録したコールバックの &lt;code&gt;this&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;いままで &lt;code&gt;Event.observe&lt;/code&gt; でコールバック関数を登録するときは、コールバックが呼ばれたときの &lt;code&gt;this&lt;/code&gt; を固定するため（と、引数に &lt;code&gt;event&lt;/code&gt; が確実に渡ってくるように）、&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var element = $(&#39;mybutton&#39;);
+Event.observe(element, &#39;click&#39;, onClickEventListener.bindAsEventListener(element));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;Function#bindAsEventListener&lt;/code&gt; を使っていたと思う。&lt;/p&gt;
+
+&lt;p&gt;これが 1.6.0 では、&lt;code&gt;Event.observe&lt;/code&gt; や &lt;code&gt;Element.observe&lt;/code&gt; で登録したコールバック関数はすべてのブラウザで、&lt;code&gt;this&lt;/code&gt; がイベントの発生した DOM 要素となるように変更された。&lt;/p&gt;
+
+&lt;p&gt;そのため、上記のコードはシンプルに、&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var element = $(&#39;mybutton&#39;);
+Event.observe(element, &#39;click&#39;, onClickEventListener);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;と書けるようになった。&lt;/p&gt;
+
+&lt;p&gt;もっとも、コールバック関数を登録するオブジェクト（コントローラー）自身を &lt;code&gt;this&lt;/code&gt; にすることの方が多いかもしれない。その場合は &lt;code&gt;bind&lt;/code&gt; する必要がある。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var element = $(&#39;mybutton&#39;);
+Event.observe(element, &#39;click&#39;, onClickEventListener.bind(this));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;コールバック関数の &lt;code&gt;this&lt;/code&gt; を固定する処理
+すでに &lt;code&gt;Function#bind&lt;/code&gt; や &lt;code&gt;Function#bindAsEventListener&lt;/code&gt; が紹介されつくしているご時世に今更な感もあるが、&lt;code&gt;Event.observe&lt;/code&gt; で登録したコールバック関数の &lt;code&gt;this&lt;/code&gt; を固定している処理を見てみよう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;observe: function(element, eventName, handler) {
+  element = $(element);
+  var id = getEventID(element), name = getDOMEventName(eventName);
+
+  var wrapper = createWrapper(id, eventName, handler);
+  if (!wrapper) return element;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;createWrapper&lt;/code&gt; が、渡されたコールバック関数 &lt;code&gt;handler&lt;/code&gt; から &lt;code&gt;this&lt;/code&gt; を固定したラッパー関数を返す。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function createWrapper(id, eventName, handler) {
+  var c = getWrappersForEventName(id, eventName);
+  if (c.pluck(&amp;quot;handler&amp;quot;).include(handler)) return false;
+
+  var wrapper = function(event) {
+    if (event.eventName &amp;amp;&amp;amp; event.eventName != eventName)
+      return false;
+
+    Event.extend(event);
+    handler.call(event.target, event);
+  };
+
+  wrapper.handler = handler;
+  c.push(wrapper);
+  return wrapper;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;強調部分に注目してほしい。&lt;code&gt;Event.extend&lt;/code&gt; でイベントオブジェクトを拡張したうえで、&lt;code&gt;event.target&lt;/code&gt; つまりイベントが発生した DOM 要素のメソッドとしてコールバック関数を呼んでいる。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Object.extend&lt;/code&gt; と静的スコープの利用
+ところで、&lt;code&gt;Event&lt;/code&gt; オブジェクトに &lt;code&gt;observe&lt;/code&gt; メソッドを追加するときは &lt;code&gt;Object.extend&lt;/code&gt; によるコピーを利用しているのだが、その利用法が珍しい。&lt;/p&gt;
+
+&lt;p&gt;どのようになっているのか？　構造を示すために細かい部分を省略したコードを以下に載せる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Object.extend(Event, (function() {
+  function createWrapper(id, eventName, handler) {
+    ...
+  }
+
+  return {
+    observe: function(element, eventName, handler) {
+      ...
+    },
+    ...
+  };
+})());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;かなり読みづらいが、無名関数の呼び出し結果を &lt;code&gt;Object.extend&lt;/code&gt; に渡している。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Object.extend(Event, (function() {...})());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ここで、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;実際に &lt;code&gt;Object.extend&lt;/code&gt; に渡されるのは、無名関数内で &lt;code&gt;return&lt;/code&gt; されているオブジェクト&lt;/li&gt;
+&lt;li&gt;このオブジェクトのメソッドが公開される API として &lt;code&gt;Object.extend&lt;/code&gt; される&lt;/li&gt;
+&lt;li&gt;その他の関数はこれらのメソッドから利用されるだけのユーティリティ&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;というわけだ。&lt;/p&gt;
+
+&lt;p&gt;これは、&lt;strong&gt;名前空間を汚染しないために無名関数の静的スコープを利用する&lt;/strong&gt;、という JavaScript のイディオムと同じであることが分かると思う。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(function() {
+  // この内部で定義した関数や変数は、この無名関数より外部の
+  // 名前空間を汚染しない。
+  function doSomething() {
+    ...
+  }
+})();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ただ、そこから &lt;code&gt;return&lt;/code&gt; されるオブジェクトを別の関数の引数に渡す、というやり方ははじめて見た。少なくとも &lt;a href=&#34;http://prototypejs.org/assets/2007/6/20/prototype.js&#34;&gt;Prototype 1.5.1.1&lt;/a&gt; までは見られなかった手法だ。&lt;/p&gt;
+
+&lt;p&gt;長くなってしまった&amp;hellip;。Prototype 1.6.0 のイベント API には他にも変更点がある。それらはまた次回。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Prototype 1.6.0 のブラウザ判定と iPhone </title>
+      <link>http://www.metareal.org/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</link>
+      <pubDate>Sat, 01 Sep 2007 08:30:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://prototypejs.org/&#34;&gt;prototype.js&lt;/a&gt; には 1.5.1 から、各種ブラウザを判定するための &lt;code&gt;Prototype.Browser&lt;/code&gt; が定義されている。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var Prototype = {
+  ...
+  Browser: {
+    IE:     !!(window.attachEvent &amp;amp;&amp;amp; !window.opera),
+    Opera:  !!window.opera,
+    WebKit: navigator.userAgent.indexOf(&#39;AppleWebKit/&#39;) &amp;gt; -1,
+    Gecko:  navigator.userAgent.indexOf(&#39;Gecko&#39;) &amp;gt; -1 &amp;amp;&amp;amp; navigator.userAgent.indexOf(&#39;KHTML&#39;) == -1,
+  ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使い方は一目瞭然だろう。&lt;/p&gt;
+
+&lt;p&gt;たとえば Internet Explorer の場合は &lt;code&gt;Prototype.Browser.IE&lt;/code&gt; が、Safari など &lt;a href=&#34;http://webkit.org/&#34;&gt;WebKit&lt;/a&gt; を利用しているブラウザでは &lt;code&gt;Prototype.Browser.WebKit&lt;/code&gt; が &lt;code&gt;true&lt;/code&gt; になる。&lt;/p&gt;
+
+&lt;h3 id=&#34;prototype-1-6-0-rc-での-prototype-browser:dfc03e5fd76ec81ced4405d2709132cd&#34;&gt;Prototype 1.6.0 RC での Prototype.Browser&lt;/h3&gt;
+
+&lt;p&gt;そして、&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; では、ここに新しい定義が追加された。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.apple.com/iphone/internet/&#34;&gt;iPhone&lt;/a&gt; だ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var Prototype = {
+  Version: &#39;1.6.0_rc0&#39;,
+
+  Browser: {
+    IE:     !!(window.attachEvent &amp;amp;&amp;amp; !window.opera),
+    Opera:  !!window.opera,
+    WebKit: navigator.userAgent.indexOf(&#39;AppleWebKit/&#39;) &amp;gt; -1,
+    Gecko:  navigator.userAgent.indexOf(&#39;Gecko&#39;) &amp;gt; -1 &amp;amp;&amp;amp; navigator.userAgent.indexOf(&#39;KHTML&#39;) == -1,
+    MobileSafari: !!navigator.userAgent.match(/iPhone.*Mobile.*Safari/)
+  },
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;Prototype.Browser.MobileSafari&lt;/code&gt; が iPhone のブラウザを判定するために利用できるようになった。&lt;/p&gt;
+
+&lt;p&gt;なお、iPhone に搭載されている Safari の User-Agent は&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;となっている。&lt;/p&gt;
+
+&lt;h3 id=&#34;prototype-browser-の歴史:dfc03e5fd76ec81ced4405d2709132cd&#34;&gt;&lt;code&gt;Prototype.Browser&lt;/code&gt; の歴史&lt;/h3&gt;
+
+&lt;p&gt;もともと &lt;code&gt;Prototype.Browser&lt;/code&gt; は、prototype.js のあちこちに散らばっていたブラウザ判定コードを一箇所にまとめるために導入された。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://dev.rubyonrails.org/ticket/6800&#34;&gt;#6800 PATCH: Unified browser detection&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;その後、iPhone では &lt;code&gt;Prototype.BrowserFeatures.SpecificElementExtensions&lt;/code&gt; が誤って &lt;code&gt;true&lt;/code&gt; になってしまうことが発覚。対策として iPhone 判定が必要になったようだ。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://dev.rubyonrails.org/changeset/7157&#34;&gt;Changeset 7157 - Temporary workaround for Prototype.BrowserFeatures.SpecificElementExtensions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://dev.rubyonrails.org/changeset/7241&#34;&gt;Changeset 7241 - prototype: Add Prototype.Browser.MobileSafari&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ちなみに、&lt;code&gt;Prototype.BrowserFeatures.SpecificElementExtensions&lt;/code&gt; は DOM 要素のプロトタイプチェーンに関するものだが&amp;hellip;、ということは、iPhone に搭載されている Safari ではそのへんが変更されている？&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Prototype 1.6.0 と DOMContentLoaded</title>
+      <link>http://www.metareal.org/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</link>
+      <pubDate>Wed, 22 Aug 2007 05:32:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</guid>
+      <description>
+
+&lt;p&gt;Prototype 1.6.0 のリリース候補版が公開されたようだ。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype JavaScript framework: Prototype 1.6.0 release candidate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://weblog.rubyonrails.com/2007/8/16/prototype-1-6-0-release-candidate&#34;&gt;Riding Rails: Prototype 1.6.0 release candidate&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;変更点が多い。目を引くものとしては、クラスの継承がサポートされた。新しい &lt;code&gt;Class.create&lt;/code&gt; では親クラスを指定できる。いままでは &lt;code&gt;Object.extend&lt;/code&gt; によるコピーで擬似的な継承をしていただけなので、これは嬉しいかもしれない。&lt;/p&gt;
+
+&lt;h3 id=&#34;クロスブラウザな-domcontentloaded-イベント:ed7086350f630b6b1a6433edc35f905a&#34;&gt;クロスブラウザな DOMContentLoaded イベント&lt;/h3&gt;
+
+&lt;p&gt;また、「&lt;a href=&#34;http://weblog.metareal.org/2007/07/10/domready-js-cross-browser-ondomcontentloaded/&#34;&gt;window.onload 前でも DOM 処理が可能なら通知してくれる domready.js&lt;/a&gt;」という記事でも書いた、&lt;strong&gt;DOMContentLoaded がサポートされた&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... })
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;従来の &lt;code&gt;Element#observe&lt;/code&gt; メソッドを通して、透過的に扱うことができる。これで、先の記事にアップしていた domready.js は不要になるだろう。&lt;/p&gt;
+
+&lt;p&gt;1.6.0 には他にも色々面白そうな機能が追加されている。暇があるときに追々調べていくつもり。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>prototype.js の $$ 関数で CSS 風に DOM プログラミング</title>
+      <link>http://www.metareal.org/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</link>
+      <pubDate>Sun, 15 Jul 2007 11:56:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://www.prototypejs.org/&#34;&gt;prototype.js&lt;/a&gt; の &lt;code&gt;$$&lt;/code&gt; 関数（実際の処理は &lt;code&gt;Selector.findChildElements&lt;/code&gt;）は CSS セレクタを受け取り、セレクタにマッチする要素を配列で返してくれる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var links = $$(&#39;#contents a&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;だが、単純にひとつのセレクタだけではなくて、複数のセレクタを引数に渡したり、CSS と同じく、カンマ区切りで複数指定することもできる（結果は重複要素のない配列となって返ってくる）。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var links = $$(&amp;quot;#contents a&amp;quot;, &amp;quot;#footer .items a&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;このコードは、こう書くこともできる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var links = $$(&amp;quot;#contents a, #footer .items a&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;そして、いまさらながら気づいたのは、これらの特徴を利用すれば、DOM の処理を CSS のように&lt;strong&gt;宣言的に&lt;/strong&gt;書くのが可能だ、ということ。&lt;/p&gt;
+
+&lt;h3 id=&#34;css-風に-dom-プログラミング:12304a132f373bd3c8e5deb177a8527c&#34;&gt;CSS 風に DOM プログラミング&lt;/h3&gt;
+
+&lt;p&gt;たとえば、フォーム入力画面で最初のテキストフィールドまたはテキストエリアを取り出す場合は、&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$$(
+  &amp;quot;form input[type=text]&amp;quot;,
+  &amp;quot;form textarea&amp;quot;
+).slice(0, 1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;と書けるので、以前の &lt;a href=&#34;http://weblog.metareal.org/2007/07/10/domready-js-cross-browser-ondomcontentloaded/&#34;&gt;domready.js&lt;/a&gt; と組み合わせると、&lt;strong&gt;読み込み時に最初のテキストフィールドまたはテキストエリアを選択状態にする&lt;/strong&gt;コードは以下のように書ける。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Event.domReady.add(function() {
+
+  // Select initial first responder when the window is first placed onscreen.
+  $$(
+    &amp;quot;form input[type=text]&amp;quot;,
+    &amp;quot;form textarea&amp;quot;
+  ).slice(0, 1).each(function(element){
+    element.activate();
+  });
+
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;強調部分のみに注目してもらうと分かりやすいが、CSS に近い記述になっている。また、今回の例のように、&lt;code&gt;slice&lt;/code&gt; して特定の要素のみに限定したり、&lt;a href=&#34;http://www.prototypejs.org/api/utility/dollar-dollar&#34;&gt;Prototype.js 1.5.1 では CSS3 もサポートされている&lt;/a&gt;など、より柔軟な選択が可能なのも嬉しい。&lt;/p&gt;
+
+&lt;h3 id=&#34;参考:12304a132f373bd3c8e5deb177a8527c&#34;&gt;参考&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.prototypejs.org/&#34;&gt;Prototype.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.prototypejs.org/api/utility/dollar-dollar&#34;&gt;Prototype.js: Utility Methods.$$&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://bennolan.com/behaviour/&#34;&gt;Behaviour : Using CSS selectors to apply Javascript behaviours&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

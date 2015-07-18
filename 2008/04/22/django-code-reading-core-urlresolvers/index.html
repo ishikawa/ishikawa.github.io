@@ -1,0 +1,180 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Django の urlresolvers.py を読む</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2008/04/22/django-code-reading-core-urlresolvers/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Django の urlresolvers.py を読む</h1>
+  <div class="metadata">
+    <p class="date">2008/04/22 10:38am</p>
+  </div>
+  <div class="content">
+    
+
+<p><a href="http://lifecoding.metareal.org/post/32387415">一身上の都合</a>により <a href="http://www.djangoproject.com/">Django</a> の <a href="http://www.djangoproject.com/documentation/url_dispatch/">URL dispatcher</a> について調べている。ドキュメントでだいたいの動作は把握したので、今回は <code>urls.py</code> に定義した URL のマッピングが実際にはどのように解決されているのか、ソースコードを読むことで理解を深めたい、と思う。</p>
+
+<p>なお、参照したソースコードは SVN の Revision 7438 である。公開リリースの 0.96.1 とは内容が大きく異なる可能性があること、 <a href="http://code.djangoproject.com/query">Trac</a> での議論やドキュメントを読むかぎり、このへんの実装については今後大きく変更されるかもしれないことを、あらかじめお断りしておく。</p>
+
+<h3 id="urlresolvers-py:df5b3f6671d300513435b6b9f9ba9ac6">urlresolvers.py</h3>
+
+<p>まずは、調べるソースコードを特定しよう。URL の逆マッピングをしてくれる <a href="http://www.djangoproject.com/documentation/url_dispatch/#reverse">reverse() 関数</a>が用意されていることは分かっているので、これを手がかりにソースコードを探すのがよさそうだ。</p>
+
+<p>試しに <code>def reverse(</code> を検索してみると、簡単に見つかった。<code>django/core/urlresolvers.py</code> で定義されている。ソースコードのコメントにも、</p>
+
+<blockquote>
+<p>This module converts requested URLs to callback view functions.</p>
+</blockquote>
+
+<p>と書かれているので、これが探していたソースコード（モジュール）だろう。</p>
+
+<h3 id="reverse-と-resolve:df5b3f6671d300513435b6b9f9ba9ac6">reverse() と resolve()</h3>
+
+<p><code>urlresolvers.py</code> では <code>reverse()</code> だけでなく、<code>resolve()</code> も定義されている。</p>
+
+<pre><code>def resolve(path, urlconf=None):
+    return get_resolver(urlconf).resolve(path)
+
+def reverse(viewname, urlconf=None, args=None, kwargs=None):
+    args = args or []
+    kwargs = kwargs or {}
+    return iri_to_uri(u'/' + get_resolver(urlconf).reverse(viewname, *args, **kwargs))
+</code></pre>
+
+<p>関数名や引数から <code>reverse()</code> が URL の逆マッピング（名前、引数から URL を探索）を行うのにたいし、<code>resolve()</code> が URL のマッピング（URL から探索）を担当していることは容易に想像がつく。</p>
+
+<p>では、<code>resolve()</code> が返すものはなんだろうか？　これはソースコードのコメントに書いてある。</p>
+
+<blockquote>
+<p>This module converts requested URLs to callback view functions.</p>
+</blockquote>
+
+<p>RegexURLResolver is the main class here. Its resolve() method takes a URL (as
+a string) and returns a tuple in this format:</p>
+
+<p>(view_function, function_args, function_kwargs)</p>
+
+<p>アクセスされた URL パス文字列を渡すと、</p>
+
+<ul>
+<li>View 関数</li>
+<li>引数</li>
+<li>キーワード引数</li>
+</ul>
+
+<p>がタプルで返ってくるらしい。</p>
+
+<h3 id="regexurlresolver:df5b3f6671d300513435b6b9f9ba9ac6">RegexURLResolver</h3>
+
+<p><code>reverse()</code> も <code>resolve()</code> も、実際の処理は <code>get_resolver()</code> で返ってくるオブジェクトに丸投げしている。そして、先のコメントが示唆するように、<code>get_resolver()</code> で返されるオブジェクトは <code>RegexURLResolver</code> のインスタンスになっている。</p>
+
+<pre><code>def get_resolver(urlconf):
+...
+    return RegexURLResolver(r'^/', urlconf)
+</code></pre>
+
+<p><code>RegexURLResolver</code> は <code>urls.py</code> に対応したクラスであり、そこで定義された <code>urlpatterns</code> や <code>handler404</code> などを参照している。</p>
+
+<pre><code>class RegexURLResolver(object):
+...
+    def _get_urlconf_module(self):
+        try:
+            return self._urlconf_module
+        except AttributeError:
+            try:
+                self._urlconf_module = __import__(self.urlconf_name, {}, {}, [''])
+...
+    def _get_url_patterns(self):
+        return self.urlconf_module.urlpatterns
+...
+    def _resolve_special(self, view_type):
+        callback = getattr(self.urlconf_module, 'handler%s' % view_type)
+...
+    def resolve404(self):
+        return self._resolve_special('404')
+
+    def resolve500(self):
+        return self._resolve_special('500')
+</code></pre>
+
+<p>なお、<code>urlpatterns</code> の中身は何かといえば、同じファイルで定義されている <code>RegexURLPattern</code> インスタンスのリストだ（ただし、別の <code>urls.py</code> を <code>include()</code> している場合は <code>RegexURLPattern</code> ではなく <code>RegexURLResolver</code> インスタンスがリストに挿入されて入れ子構造になる）。このへんは patterns() や url() が定義されている <code>django/conf/defaults.py</code> を読むと分かる。</p>
+
+<p><code>resolve()</code> メソッドの実装を見れば、URL パス文字列の対応を <code>urlpatterns</code> から探索する様子が分かるだろう。</p>
+
+<pre><code>def resolve(self, path):
+    tried = []
+    match = self.regex.search(path)
+    if match:
+        new_path = path[match.end():]
+        for pattern in self.urlconf_module.urlpatterns:
+            try:
+                sub_match = pattern.resolve(new_path)
+            except Resolver404, e:
+                tried.extend([(pattern.regex.pattern + '   ' + t) for t in e.args[0]['tried']])
+            else:
+                if sub_match:
+                    sub_match_dict = dict([(smart_str(k), v) for k, v in match.groupdict().items()])
+                    sub_match_dict.update(self.default_kwargs)
+                    for k, v in sub_match[2].iteritems():
+                        sub_match_dict[smart_str(k)] = v
+                    return sub_match[0], sub_match[1], sub_match_dict
+                tried.append(pattern.regex.pattern)
+        raise Resolver404, {'tried': tried, 'path': new_path}
+</code></pre>
+
+<p><code>resolve()</code> メソッドは <code>RegexURLPattern</code> にも <code>RegexURLResolver</code> にも実装されていることに注意。</p>
+
+<h3 id="matchchecker:df5b3f6671d300513435b6b9f9ba9ac6">MatchChecker</h3>
+
+<p><code>urlresolver.py</code> にはこの他に <code>MatchChecker</code> というクラスが定義されており、これは <code>reverse()</code> の過程で正規表現をパス文字列に変換するために使われているようだ。</p>
+
+<pre><code>def reverse_helper(regex, *args, **kwargs):
+...
+    # TODO: Handle nested parenthesis in the following regex.
+    result = re.sub(r'\(([^)]+)\)', MatchChecker(args, kwargs), regex.pattern)
+    return result.replace('^', '').replace('$', '')
+</code></pre>
+
+<p>余談だが、ここでは <code>^</code> と <code>$</code> のメタ文字しか削除していないため、他のメタ文字はそのまま残ってしまう（もっとも、通常のマッピングをする範囲で困ることはないだろうけど）。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2008/05/12/checking-whether-field-has-a-hidden-widget-in-django-template/">Django のテンプレートでフォームの要素が hidden かどうかを調べる</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2008/04/18/ruby-openid-util-logger/">ruby-openid でログの出力先を変更する</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

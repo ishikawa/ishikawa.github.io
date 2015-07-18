@@ -1,0 +1,71 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Flash で動画をストリーミング再生</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/01/08/flash-video-streaming/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Flash で動画をストリーミング再生</h1>
+  <div class="metadata">
+    <p class="date">2007/01/09 3:03am</p>
+  </div>
+  <div class="content">
+    <p>Flash で動画をストリーミング再生する方法について調査したときのメモ。</p>
+
+<ul>
+<li>Flash Player 6 以降</li>
+<li>ストリーミング用のファイルは <code>.flv</code></li>
+<li><code>.mpeg</code> や <code>.mov</code> を <code>.flv</code> に変換して使う</li>
+<li>Flash MX や Flash Professional で変換</li>
+<li>たぶん、フリーの変換ソフトが転がってると予想</li>
+<li>配信</li>
+<li><a href="http://www.adobe.com/jp/products/flashmediaserver/">Flash Media Server 2</a> が必要？</li>
+<li>プロトコルは RTMP (<a href="http://en.wikipedia.org/wiki/Real_Time_Messaging_Protocol">Real Time Messaging Protocol</a>)</li>
+<li>オープンソースの Flash サーバ <a href="http://www.osflash.org/red5/">Red5</a></li>
+<li>RTMP は Adobe (Macromedia) 独自のプロトコルで、仕様は公開されていない。</li>
+<li>Red5 の人たちは頑張って解析しているようだ。Web サイトに<a href="http://www.osflash.org/rtmp_os">仕様についての情報</a>もある。</li>
+</ul>
+
+<p>やっぱり配信部分がネックだなあ。Red5 は動画配信するだけにはオーバースペックな気がするし。。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/01/08/looking-for-loving-title-element/">理想の &lt;title&gt; をもとめて</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd/">lighttpd で Flash Video (.flv) をストリーミング配信</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

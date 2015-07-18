@@ -1,0 +1,78 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>LLVM 2.8 の C API 差分をチェックしてはじめて気づいたけど、2.8...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2010/12/05/1291551820/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>LLVM 2.8 の C API 差分をチェックしてはじめて気づいたけど、2.8...</h1>
+  <div class="metadata">
+    <p class="date">2010/12/05 9:23am</p>
+  </div>
+  <div class="content">
+    <p>LLVM 2.8 の <a href="https://gist.github.com/728757">C API 差分</a>をチェックしてはじめて気づいたけど、2.8 からは Union Type がなくなったみたい。</p>
+
+<blockquote>
+<p>The LLVM IR &lsquo;Union&rsquo; feature was removed. While this is a desirable feature for LLVM IR to support, the existing implementation was half baked and barely useful. We&rsquo;d really like anyone interested to resurrect the work and finish it for a future release.</p>
+</blockquote>
+
+<ul>
+<li><a href="http://llvm.org/docs/ReleaseNotes.html#changes">LLVM 2.8 Release Notes | Major Changes and Removed Features</a></li>
+<li><a href="http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-September/034448.html">[LLVMdev] Union type, is it really used or necessary?</a></li>
+</ul>
+
+<p>現在の実装は不完全で、また、不足分を実装しメンテする開発者がおらず優先順位も低い、ということが理由のようだ。</p>
+
+<blockquote>
+<p>It&rsquo;s just a matter of priorities, unfortunately&hellip; :(</p>
+</blockquote>
+
+<p><a href="http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-September/034451.html">http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-September/034451.html</a></p>
+
+<blockquote>
+<p>Lots of people agree it would be a useful feature, we are lacking a useful implementation :-)</p>
+</blockquote>
+
+<p><a href="http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-September/034484.html">http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-September/034484.html</a></p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2010/12/11/1292077318/">Ruby FFI のメモリ管理についてメモ</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2010/02/23/google-bookmark-makes-me-feel-so-good/">Google Bookmark が快適すぎる</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

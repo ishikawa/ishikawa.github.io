@@ -1,0 +1,131 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>window.onload 前でも DOM 処理が可能なら通知してくれる domready.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/07/10/domready-js-cross-browser-ondomcontentloaded/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>window.onload 前でも DOM 処理が可能なら通知してくれる domready.js</h1>
+  <div class="metadata">
+    <p class="date">2007/07/10 12:42pm</p>
+  </div>
+  <div class="content">
+    
+
+<p>DOM 読み込み完了のタイミングで、任意の関数を実行できるようにする JavaScript ライブラリを書いてみた。</p>
+
+<ul>
+<li><a href="http://snipplr.com/view/6029/domreadyjs/">domready.js</a></li>
+</ul>
+
+<p><a href="http://mootools.net/">mootools</a> の同様の機能を基にしていて、単体として使いやすいように外部ライブラリへの依存性をなくし、<a href="http://www.prototypejs.org/">prototype.js</a> とも併用できるようにしたもの。</p>
+
+<p>現状、手元の環境では以下のブラウザで動作確認済み。</p>
+
+<ul>
+<li>IE 7 (XP standalone)</li>
+<li>IE 6 SP2</li>
+<li>Firefox 2.0.0.4</li>
+<li>Opera 9.21</li>
+<li>Safari 2.0.4</li>
+<li>Mac Firefox 2.0.0.4</li>
+<li>Mac IE 5.2.3</li>
+</ul>
+
+<p>ただし、Mac IE では <code>window.onload</code> で代用するように実装してある。まあ、スクリプトエラーが出るよりマシだろう。</p>
+
+<h3 id="使い方:48dc3b5eda896e1cf587f0f4905fb350">使い方</h3>
+
+<p>まず、domready.js を読み込む。</p>
+
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/domready.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p><code>prototype.js</code> と併用する場合は <code>prototype.js</code> より後に読み込む。</p>
+
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/prototype.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/domready.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>あとは、DOM 読み込み完了のタイミングで実行したい関数を <code>Event.domReady.add</code> で登録するだけ。</p>
+
+<pre><code>Event.domReady.add(function() {
+  ...
+});
+</code></pre>
+
+<p>他のイベントと登録方法が異なるのは直感的じゃない、とか言われそうだけど、正直あんまり気にならない。</p>
+
+<h3 id="経緯-window-onload-の欠点:48dc3b5eda896e1cf587f0f4905fb350">経緯: window.onload の欠点</h3>
+
+<p>多くの Ajax 系実装では、ページ読み込み完了時に初期化などを実行するようになっている。</p>
+
+<pre><code>Event.observe(window, 'load', function() {
+  ...
+});
+</code></pre>
+
+<p>これは <a href="http://www.prototypejs.org/">prototype.js</a> によるイベント処理だが、<code>window.onload</code> イベントで処理を実行するために、関数を登録しているのが分かるだろう。</p>
+
+<p>わざわざこんなことをしているのは、DOM を操作したいからだ。</p>
+
+<p>だから、ほとんどの Ajax 系実装は <code>window.onload</code> イベントがやってくるのをじっと待っている。<code>window.onload</code> イベントのあとでは DOM ツリーは完全に構築されているし、他に DOM ツリーが構築済みなのを知る、適当なイベントもないからね。</p>
+
+<p>もちろん、<code>window.onload</code> は完全じゃない &hellip; いや、それは嘘で、<strong>完全すぎる</strong>。DOM ツリーの構築を待つだけじゃなく、すべての画像の読み込みも待ってしまうんだ。そうすると、画像を多く含むようなページでは、Ajax の処理がいつまでたってもはじまらない、なんてことが起こって、これは、あんまり嬉しくない。</p>
+
+<h3 id="解決策-ondomcontentloaded-とクロスブラウザな実装:48dc3b5eda896e1cf587f0f4905fb350">解決策: onDOMContentLoaded とクロスブラウザな実装</h3>
+
+<p>ブラウザごとにさまざまな解決策がある。</p>
+
+<p>たとえば、Firefox など Mozilla 系のブラウザでは <code>onDOMContentLoaded</code> というイベントがあって、これはそのものずばり、DOM ツリーが読み込み完了したときに通知してくれるイベントだ。そして、Safari では <code>document.readyState</code> が、IE では <code>defer</code> 属性を有効にした <code>script</code> 要素の読み込みが利用できる（このへんの詳細は <a href="http://dean.edwards.name/weblog/2005/09/busted/">Dean Edwards: The window.onload Problem - Solved!</a> に詳しい）。</p>
+
+<p>また、<a href="http://mootools.net/">mootools</a> には <code>window.addEvent('domready', ...)</code>、<a href="http://jquery.com/">JQuery</a> には同様に、<code>$(document).ready()</code> というクロスブラウザな実装が用意されている。嬉しいことに、<a href="http://www.prototypejs.org/">prototype.js</a> にも近いうちに同様の機能を取り込もう、という動きがあるようだ。</p>
+
+<ul>
+<li><a href="http://dev.rubyonrails.org/ticket/5414">#5414 (PATCH) Faster onload for Event.onload</a></li>
+<li><a href="http://dev.rubyonrails.org/changeset/6596">Changeset 6596: Support for &ldquo;DOMContentLoaded&rdquo; event handling (prototype.js event branch)</a></li>
+</ul>
+
+<p>今回つくった domready.js は mootools の実装を基にしているが、だいたいどれも同じような実装みたいだ。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/07/10/%E3%83%90%E3%83%93%E3%83%AD%E3%83%8B%E3%82%A2%E3%82%A6%E3%82%A7%E3%83%BC%E3%83%96/">堀晃「バビロニア・ウェーブ」</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/07/08/setting-environment-variables-through-rake-command/">rake コマンドで環境変数を設定する</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

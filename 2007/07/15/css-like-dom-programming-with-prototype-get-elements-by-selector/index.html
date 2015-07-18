@@ -1,0 +1,107 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>prototype.js の $$ 関数で CSS 風に DOM プログラミング</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>prototype.js の $$ 関数で CSS 風に DOM プログラミング</h1>
+  <div class="metadata">
+    <p class="date">2007/07/15 11:56am</p>
+  </div>
+  <div class="content">
+    
+
+<p><a href="http://www.prototypejs.org/">prototype.js</a> の <code>$$</code> 関数（実際の処理は <code>Selector.findChildElements</code>）は CSS セレクタを受け取り、セレクタにマッチする要素を配列で返してくれる。</p>
+
+<pre><code>var links = $$('#contents a');
+</code></pre>
+
+<p>だが、単純にひとつのセレクタだけではなくて、複数のセレクタを引数に渡したり、CSS と同じく、カンマ区切りで複数指定することもできる（結果は重複要素のない配列となって返ってくる）。</p>
+
+<pre><code>var links = $$(&quot;#contents a&quot;, &quot;#footer .items a&quot;);
+</code></pre>
+
+<p>このコードは、こう書くこともできる。</p>
+
+<pre><code>var links = $$(&quot;#contents a, #footer .items a&quot;);
+</code></pre>
+
+<p>そして、いまさらながら気づいたのは、これらの特徴を利用すれば、DOM の処理を CSS のように<strong>宣言的に</strong>書くのが可能だ、ということ。</p>
+
+<h3 id="css-風に-dom-プログラミング:12304a132f373bd3c8e5deb177a8527c">CSS 風に DOM プログラミング</h3>
+
+<p>たとえば、フォーム入力画面で最初のテキストフィールドまたはテキストエリアを取り出す場合は、</p>
+
+<pre><code>$$(
+  &quot;form input[type=text]&quot;,
+  &quot;form textarea&quot;
+).slice(0, 1)
+</code></pre>
+
+<p>と書けるので、以前の <a href="http://weblog.metareal.org/2007/07/10/domready-js-cross-browser-ondomcontentloaded/">domready.js</a> と組み合わせると、<strong>読み込み時に最初のテキストフィールドまたはテキストエリアを選択状態にする</strong>コードは以下のように書ける。</p>
+
+<pre><code>Event.domReady.add(function() {
+
+  // Select initial first responder when the window is first placed onscreen.
+  $$(
+    &quot;form input[type=text]&quot;,
+    &quot;form textarea&quot;
+  ).slice(0, 1).each(function(element){
+    element.activate();
+  });
+
+});
+</code></pre>
+
+<p>強調部分のみに注目してもらうと分かりやすいが、CSS に近い記述になっている。また、今回の例のように、<code>slice</code> して特定の要素のみに限定したり、<a href="http://www.prototypejs.org/api/utility/dollar-dollar">Prototype.js 1.5.1 では CSS3 もサポートされている</a>など、より柔軟な選択が可能なのも嬉しい。</p>
+
+<h3 id="参考:12304a132f373bd3c8e5deb177a8527c">参考</h3>
+
+<ul>
+<li><a href="http://www.prototypejs.org/">Prototype.js</a></li>
+<li><a href="http://www.prototypejs.org/api/utility/dollar-dollar">Prototype.js: Utility Methods.$$</a></li>
+<li><a href="http://bennolan.com/behaviour/">Behaviour : Using CSS selectors to apply Javascript behaviours</a></li>
+</ul>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/07/17/yui-fonts-css-bigger-pre-code/">YUI の fonts.css だと pre &gt; code がでっかくなっちゃうね</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/07/13/%E7%89%A9%E7%90%86%E5%AD%A6%E8%80%85%E3%81%AF%E3%83%9E%E3%83%AB%E3%81%8C%E3%81%8A%E5%A5%BD%E3%81%8D/">ローレンス・Ｍ・クラウス「物理学者はマルがお好き―牛を球とみなして始める物理学的発想法」</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

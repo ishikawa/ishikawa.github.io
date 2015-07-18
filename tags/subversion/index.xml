@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Subversion on METAREAL</title>
+    <link>http://www.metareal.org/tags/subversion/</link>
+    <description>Recent content in Subversion on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Tue, 19 Jun 2007 09:44:00 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/subversion/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Xcode で Subversion を利用するときのトラブルシューティング</title>
+      <link>http://www.metareal.org/2007/06/19/xcode-subversion-troubleshooting/</link>
+      <pubDate>Tue, 19 Jun 2007 09:44:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/06/19/xcode-subversion-troubleshooting/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/564796906/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1293/564796906_6c386b03b5.jpg&#34; alt=&#34;Xcode SCM Preference&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Xcode の &lt;a href=&#34;http://developer.apple.com/DOCUMENTATION/DeveloperTools/Conceptual/XcodeUserGuide/Contents/Resources/ja.lproj/04_scm/chapter_25_section_1.html#//apple_ref/doc/uid/TP40002684-BABCCJCJ&#34;&gt;SCM 連携機能&lt;/a&gt;は、すくなくとも &lt;a href=&#34;http://www.eclipse.org/&#34;&gt;Eclipse&lt;/a&gt; なんかに比べると貧弱で、実作業ではコマンドラインで &lt;code&gt;svn&lt;/code&gt; を使っている。&lt;/p&gt;
+
+&lt;p&gt;それでも一度は試しておきたい、と試してみたときの、あまり一般的ではないトラブルシューティングを覚え書き。&lt;/p&gt;
+
+&lt;h3 id=&#34;svn-ssh-で-22-番以外のポートを使いたいとき:4c169007c75ddb3eb25a6558cc5dda08&#34;&gt;svn+ssh で 22 番以外のポートを使いたいとき&lt;/h3&gt;
+
+&lt;p&gt;これは別に Xcode に限った話じゃないけど、&lt;code&gt;svn+ssh&lt;/code&gt; プロトコルで 22 番以外のポートを使う場合は、環境変数 &lt;code&gt;SVN_SSH&lt;/code&gt; で &lt;code&gt;ssh&lt;/code&gt; プログラムの引数に指定します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export SVN_SSH=&amp;quot;ssh -p 12345&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;環境変数を &lt;code&gt;export&lt;/code&gt; したターミナルで、そのまま &lt;code&gt;.xcodeproj&lt;/code&gt; を開けばいいです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;open ./Example.xcodeproj
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;それでも-パスフレーズ入力できないとき:4c169007c75ddb3eb25a6558cc5dda08&#34;&gt;それでも、パスフレーズ入力できないとき&lt;/h3&gt;
+
+&lt;p&gt;上の方法で Xcode 起動して、SCM を有効にしても、パスフレーズの入力画面などがでず、&lt;code&gt;Permission denied&lt;/code&gt; で怒られてしまうことがある &amp;hellip; というか、僕がまさにそれ。&lt;/p&gt;
+
+&lt;p&gt;このときは、&lt;a href=&#34;http://www.sshkeychain.org/&#34;&gt;SSHKeychain&lt;/a&gt; を使って、パスフレーズ入力を横取りすることで動くようになった。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Xcode プロジェクトを Subversion 管理する</title>
+      <link>http://www.metareal.org/2007/06/17/subversion-primer-for-xcode-projects/</link>
+      <pubDate>Mon, 18 Jun 2007 03:35:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/06/17/subversion-primer-for-xcode-projects/</guid>
+      <description>
+
+&lt;p&gt;Apple の提供する開発環境 &lt;a href=&#34;http://www.apple.com/jp/macosx/features/xcode/&#34;&gt;Xcode&lt;/a&gt; で作成したプロジェクトを Subversion 管理する手順。基本的に「&lt;a href=&#34;http://rails.office.drecom.jp/ishikawa/archive/26&#34;&gt;Rails のプロジェクトを Subversion で管理する&lt;/a&gt;」の Xcode 版。&lt;/p&gt;
+
+&lt;h3 id=&#34;リポジトリの場所を決める:84949e6a353c13bf30ea590aa956b65a&#34;&gt;リポジトリの場所を決める&lt;/h3&gt;
+
+&lt;p&gt;まずは、リポジトリのルート URL を決めて、これを環境変数に設定しよう。以降はこの変数を使うことで、長々とした URL をタイプする手間が省ける。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% SVN_REPO=svn+ssh://svn.example.com/projects/Example
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;もちろん、実際の URL は自分で使うものに置き換えてほしい。&lt;/p&gt;
+
+&lt;h3 id=&#34;空のプロジェクトをコミットする:84949e6a353c13bf30ea590aa956b65a&#34;&gt;空のプロジェクトをコミットする&lt;/h3&gt;
+
+&lt;p&gt;ここで、いきなり Xcode を起動して新規プロジェクトをつくるのではなく、まずは、プロジェクトのディレクトリ・レイアウトを構成した、空のプロジェクトをコミットする。&lt;/p&gt;
+
+&lt;p&gt;Subversion 管理するプロジェクトのディレクトリ・レイアウトといえば、&lt;code&gt;trunk branches tags&lt;/code&gt; が王道なので、これに合わせておくのがいいだろう。たとえ、開発者があなたひとりで、職場の数人しか使わないようなアプリケーションを開発しており、ブランチなんか作る予定がないのだとしても。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% mkdir tmp
+% cd tmp
+% mkdir trunk tags branches
+% svn import ./ ${SVN_REPO} -m &amp;quot;initial import&amp;quot;
+Adding         trunk
+Adding         branches
+Adding         tags
+
+Committed revision 20.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;コミットしたら、このディレクトリは必要ないので削除しても大丈夫だ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% cd ..
+% rm -rf tmp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;xcode-のプロジェクトにチェックアウト:84949e6a353c13bf30ea590aa956b65a&#34;&gt;Xcode のプロジェクトにチェックアウト&lt;/h3&gt;
+
+&lt;p&gt;そうして、コミットした空のプロジェクトを Xocde のプロジェクト・ディレクトリにチェックアウトすれば、Subversion 管理された Xcode プロジェクトが出来上がる。この方法なら、すでに開発中のプロジェクトにも適用しやすい。&lt;/p&gt;
+
+&lt;p&gt;ここでは、&lt;code&gt;~/Developer/Workspace/Example/&lt;/code&gt; に Xcode のプロジェクトを作成しているものとする。そのディレクトリに移動し、さきほどコミットしたプロジェクトの &lt;code&gt;trunk&lt;/code&gt; をチェックアウトしよう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% cd ~/Developer/Workspace/Example/
+% svn checkout ${SVN_REPO}/trunk .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;バージョン管理するファイルの選択:84949e6a353c13bf30ea590aa956b65a&#34;&gt;バージョン管理するファイルの選択&lt;/h3&gt;
+
+&lt;p&gt;ここまでで、&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;プロジェクトのディレクトリ・レイアウトを決める&lt;/li&gt;
+&lt;li&gt;空のプロジェクトをコミットする&lt;/li&gt;
+&lt;li&gt;Xcode プロジェクトにチェックアウト&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;が出来た。&lt;/p&gt;
+
+&lt;p&gt;もちろん、いまは空のディレクトリをチェックアウトしただけなので、Xcode プロジェクト内のファイルはいずれもバージョン管理されていない。&lt;/p&gt;
+
+&lt;p&gt;ひとつひとつ、必要なファイルを &lt;code&gt;svn add&lt;/code&gt; してもかまわないが、最初にすべてを &lt;code&gt;svn add&lt;/code&gt; してしまって、不要なものを取り除くのが簡単だ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% svn add --force .
+A         Example.xcodeproj
+A         Example.xcodeproj/ishikawa.mode1
+A         Example.xcodeproj/ishikawa.pbxuser
+A         Example.xcodeproj/project.pbxproj
+A         Example_Prefix.pch
+A         build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ビルド結果が保存される &lt;code&gt;build&lt;/code&gt; ディレクトリはバージョン管理しなくてもよいだろう。まずは、このディレクトリを管理対象から外す。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% svn revert build --recursive
+% svn propset svn:ignore &amp;quot;build&amp;quot; .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Xcode の&lt;a href=&#34;http://developer.apple.com/DOCUMENTATION/DeveloperTools/Conceptual/XcodeUserGuide/Contents/Resources/ja.lproj/04_02_SCMManagingProjects/chapter_27_section_2.html#//apple_ref/doc/uid/TP40002686-BAJFCAII&#34;&gt;プロジェクトパッケージ&lt;/a&gt; &lt;code&gt;.xcodeproj&lt;/code&gt; にはユーザー特有のファイルが含まれているので、複数人で開発する場合は、これらも管理対象から外しておいた方がいいだろう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% svn revert Example.xcodeproj/ishikawa.*
+% svn propedit svn:ignore Example.xcodeproj/
+*.mode1
+*.pbxuser
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最後に変更をコミットして終わり。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% svn commit -m &amp;quot;New Xcode project&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Eclipse の Java プロジェクトを Subversion 管理するときの手順</title>
+      <link>http://www.metareal.org/2007/01/11/subversion-primer-for-eclipse-java-projects/</link>
+      <pubDate>Thu, 11 Jan 2007 09:40:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/01/11/subversion-primer-for-eclipse-java-projects/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.eclipse.org/&#34;&gt;Eclipse&lt;/a&gt; の Java プロジェクトを Subversion 管理するときの手順を、メモも兼ねて残しておこう。ちなみに、Eclipse での Subversion サポートに使っているのは &lt;a href=&#34;http://subclipse.tigris.org/&#34;&gt;Subclipse&lt;/a&gt; プラグイン。&lt;/p&gt;
+
+&lt;p&gt;以下の &lt;code&gt;$REPO&lt;/code&gt; 変数はプロジェクトを作成する、Subversion レポジトリの URL とする（たとえば、&lt;code&gt;svn+ssh://svn.metareal.org/path/to/repo/project/&lt;/code&gt;）。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% mkdir tmp
+% cd tmp
+% mkdir trunk branches tags
+% svn import -m &amp;quot;initial import&amp;quot; . $REPO
+% cd ../
+% rm -rf tmp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Eclipse で新規 Java プロジェクトを作成する。&lt;/p&gt;
+
+&lt;p&gt;そして、新規作成されたプロジェクトのディレクトリに、Subversion レポジトリからチェックアウト。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% cd /path/to/workspace/project/
+% svn co $REPO/trunk .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;いつも使っているディレクトリレイアウトを作成して必要なものを &lt;code&gt;svn add&lt;/code&gt; しておく。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% mkdir -p build/classes build/test-classes build/reports
+% mkdir -p docs/api
+% mkdir -p src/java src/test
+% svn add . --force
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;不要なものは &lt;code&gt;revert&lt;/code&gt; して、&lt;code&gt;svn:ignore&lt;/code&gt; を設定。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% svn revert build/*
+% svn revert docs/api -R
+% svn propset svn:ignore &amp;quot;*&amp;quot; build
+% svn propset svn:ignore &amp;quot;api&amp;quot; docs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Eclipse でビルドディレクトリや諸々の設定をすませたらコミット。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% svn commit -m &amp;quot;New project&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Eclipse 側でプロジェクトが Subversion 管理されていないようなら、プロジェクトのアイコンを右クリック、「Team」＞「Share Project&amp;hellip;」で設定できる（すでにある &lt;code&gt;.svn&lt;/code&gt; を認識してくれるので、設定は簡単）。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Subversion を SWIG サポートつきでインストールする</title>
+      <link>http://www.metareal.org/2006/12/24/install-subversion-with-swig-bindings/</link>
+      <pubDate>Sun, 24 Dec 2006 12:29:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2006/12/24/install-subversion-with-swig-bindings/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.swig.org/&#34;&gt;SWIG&lt;/a&gt; によるスクリプト言語サポートつきで &lt;a href=&#34;http://subversion.tigris.org/&#34;&gt;Subversion&lt;/a&gt; をインストールしたときのメモ。&lt;/p&gt;
+
+&lt;p&gt;必要なファイルは以下の通り。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;swig-1.3.31.tar.gz&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;subversion-1.4.2.tar.bz2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;subversion-deps-1.4.2.tar.bz2&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;まずは SWIG をインストールする。Ruby はシステム標準のものとは別に 1.8.5-p2 をインストールしていたので、&lt;code&gt;configure&lt;/code&gt; でパスを指定してある。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% curl --location -O http://prdownloads.sourceforge.net/swig/swig-1.3.31.tar.gz
+% tar xvzf swig-1.3.31.tar.gz
+% cd swig-1.3.31
+% ./configure --with-ruby=/usr/local/bin/ruby
+% make
+% sudo make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Subversion は &lt;code&gt;subversion-1.4.2.tar.bz2&lt;/code&gt; と &lt;code&gt;subversion-deps-1.4.2.tar.bz2&lt;/code&gt; 解凍すると、どちらも &lt;code&gt;subversion-1.4.2&lt;/code&gt; というディレクトリに展開されるので便利だ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% curl -O http://subversion.tigris.org/downloads/subversion-1.4.2.tar.bz2
+% curl -O http://subversion.tigris.org/downloads/subversion-deps-1.4.2.tar.bz2
+% tar xvjf subversion-1.4.2.tar.bz2
+% tar xvjf subversion-deps-1.4.2.tar.bz2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;configure&lt;/code&gt; で、SWIG バインディングを有効にする言語と SWIG のパスを指定する。&lt;code&gt;--enable-swig-bindings&lt;/code&gt; には &lt;code&gt;perl&lt;/code&gt; や &lt;code&gt;python&lt;/code&gt; のように個別指定も可能。&lt;/p&gt;
+
+&lt;p&gt;また、Subversion で BerkeleyDB を使う場合は、別にオプションが必要かもしれない。今回に限って言えば、BerkeleyDB は必要ないので指定していない。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% cd subversion-1.4.2
+% ./configure --enable-swig-bindings=all --with-swig=/usr/local/bin/swig
+% make
+% sudo make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;次に、バインディングをインストール&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% make swig-rb
+% sudo make install-swig-rb
+% make check-swig-rb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;BerkeleyDB 周りでエラーが出てるが無視（BerkeleyDB サポートは入れてないので）。
+pl, py も同様に。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% make swig-pl
+% sudo make install-swig-pl
+% make check-swig-pl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;% make swig-py
+% sudo make install-swig-py
+% make check-swig-py
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ViewVC のインストール</title>
+      <link>http://www.metareal.org/2006/12/18/install-viewvc/</link>
+      <pubDate>Tue, 19 Dec 2006 05:17:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2006/12/18/install-viewvc/</guid>
+      <description>&lt;p&gt;あとでブログに書こうと思って残しておいた &lt;a href=&#34;http://www.viewvc.org/&#34;&gt;ViewVC&lt;/a&gt; の設定メモ。今日、仕事中に思わず、&lt;strong&gt;ファイルを上書きしてしまった&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;ネタはその日のうちに書いておけ、という教訓。&lt;/p&gt;
+
+&lt;p&gt;もっとも、インストールや設定自体は、ほぼ &lt;code&gt;INSTALL&lt;/code&gt; ファイルの手順どおりでいけたので、ブログに書くまでもない気がする。気をつける部分といえば、セキュリティ的な理由から、Apache の &lt;code&gt;DocumentRoot&lt;/code&gt; 以下にはインストールしないことくらいだろうか（&lt;code&gt;INSTALL&lt;/code&gt; ファイルにも書いてあるけど）。&lt;/p&gt;
+
+&lt;p&gt;これだけじゃなんなので、&lt;code&gt;httpd.conf&lt;/code&gt; も載せておく（パスなどは変えてある）。要点は：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;mod_python&lt;/code&gt; で動かしている&lt;/li&gt;
+&lt;li&gt;付属の &lt;code&gt;.htaccess&lt;/code&gt; は使っていない&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/viewvc&lt;/code&gt; でアクセスできるように &lt;code&gt;ScriptAlias&lt;/code&gt; を使う&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;LoadModule python_module modules/mod_python.so
+&amp;lt;VirtualHost *:80&amp;gt;
+  ServerName svn.metareal.org
+  DocumentRoot /sites/viewvc
+
+  ScriptAlias /viewvc /sites/viewvc/viewvc.py
+  &amp;lt;Directory &amp;quot;/sites/viewvc&amp;quot;&amp;gt;
+    DirectoryIndex viewvc.py
+    AddHandler python-program .py
+    PythonHandler handler
+    PythonDebug On
+
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+  &amp;lt;/Directory&amp;gt;
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>svn.metareal.org に ViewVC を導入</title>
+      <link>http://www.metareal.org/2006/12/18/svn-metareal-org/</link>
+      <pubDate>Mon, 18 Dec 2006 09:58:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2006/12/18/svn-metareal-org/</guid>
+      <description>&lt;p&gt;ここ数週間、サイトに &lt;a href=&#34;http://subversion.tigris.org/&#34;&gt;Subversion&lt;/a&gt; へのインターフェースを追加しようとしていた。それは &lt;a href=&#34;http://svn.apache.org/viewvc/&#34;&gt;Apache&lt;/a&gt; に倣い svn.metareal.org として公開され、個人的プロジェクトのレポジトリとして機能するはずだった。公開に向けて、暇をみてはコンパイルとインストールを繰り返していた。&lt;/p&gt;
+
+&lt;p&gt;そして、待っていたのは挫折の連続だった。&lt;/p&gt;
+
+&lt;p&gt;まずは、&lt;a href=&#34;http://trac.edgewall.org/&#34;&gt;Trac&lt;/a&gt; に挑戦してみた。これは流行っているし、仕事でも使っているので安心感がある（仕事では同僚がインストールしてくれたので、まさか、&lt;a href=&#34;http://trac.edgewall.org/wiki/TracInstall#Requirements&#34;&gt;あれほど多くのライブラリが必要&lt;/a&gt;だとは夢にも思わなかったのだ）。&lt;/p&gt;
+
+&lt;p&gt;しかし、延々とつづく &lt;code&gt;configure, make, make install&lt;/code&gt; がやっと終わったと思ったら、&lt;strong&gt;結局動かない&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;mod_python&lt;/code&gt; にしようが、&lt;code&gt;mod_fastcgi, mod_fcgi&lt;/code&gt; にしようが結果は同じ。それはとにかく動かないのだ（ちなみに、遭遇した問題は &lt;a href=&#34;http://trac.edgewall.org/ticket/2969&#34;&gt;Ticket:2969&lt;/a&gt; で報告されているものと同様だが、&lt;a href=&#34;http://darwinports.opendarwin.org/&#34;&gt;DarwinPort&lt;/a&gt; ではなく、すべてソースからコンパイルした）。&lt;/p&gt;
+
+&lt;p&gt;Trac は諦めて、&lt;a href=&#34;http://search.cpan.org/dist/SVN-Web/&#34;&gt;SVN::Web&lt;/a&gt; を試してみる。SVN::Web を選んだ理由は単純で、見た目が Trac と同じだったから。見た目重要。&lt;/p&gt;
+
+&lt;p&gt;しかし、こいつも依存モジュールのいくつか（&lt;code&gt;WWW::Mechanize&lt;/code&gt; と &lt;code&gt;Template::Plugin::Clickable::Email&lt;/code&gt;）がインストールできずに断念。CPAN しか試してないけど、それ以上追求する根気がない。&lt;/p&gt;
+
+&lt;p&gt;なんだかんだで、最終的には &lt;a href=&#34;http://www.viewvc.org/&#34;&gt;ViewVC&lt;/a&gt; に落ち着いた（いや、インストールできたのがこれだけなんですけどね）。他にも色々設定しないといけないけど、今日はとりあえず公開だけしておしまい。&lt;/p&gt;
+
+&lt;p&gt;あー、疲れた。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

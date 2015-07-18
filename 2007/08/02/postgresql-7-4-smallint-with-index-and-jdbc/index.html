@@ -1,0 +1,118 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>PostgreSQL 7.4 のインデックスと smallint と JDBC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>PostgreSQL 7.4 のインデックスと smallint と JDBC</h1>
+  <div class="metadata">
+    <p class="date">2007/08/03 5:41am</p>
+  </div>
+  <div class="content">
+    <p>PostgreSQL 7.4 のマニュアル「<a href="http://www.postgresql.jp/document/pg746doc/html/datatype.html#DATATYPE-INT">8.1.1. 整数データ型</a>」には以下のような記述がある。</p>
+
+<blockquote>
+<p><strong>注意:</strong> インデックスが付けられた smallint あるいは bigint の列がテーブルにある場合、システムがそのインデックスを使用しようとした時に問題を引き起こすことがあります。 例えば句が次のような形式の場合、</p>
+
+<p>&hellip; WHERE smallint_column = 42</p>
+
+<p>システムはインデックスを使用しません。 なぜなら42という定数にシステムが integer を割り当てるからです。 今の所PostgreSQLは2つの異なるデータ型が混在している時には、インデックスを使うことができません。 問題を回避するには以下のように定数部分を単一引用符で括ります。</p>
+
+<p>&hellip; WHERE smallint_column = &lsquo;42&rsquo;</p>
+
+<p>こうすると、システムは型分析を後廻しにしてこの定数に正しいデータ型を割り振ります。</p>
+</blockquote>
+
+<p>（なお、PostgreSQL 8.x のドキュメントからは<a href="http://www.postgresql.jp/document/pg800doc/html/datatype.html#DATATYPE-INT">該当する部分が削除されている</a>ので、バージョン 8 以降にはこの制限はないのかもしれない。未確認）</p>
+
+<p>なんにせよ、PostgreSQL 7.4 では smallint のカラムを条件に含める場合は、 <code>smallint_column = '42'</code> と単一引用符で囲むか、<code>smallint_column = 42::smallint</code> みたいに型を指定しないと、インデックスが使われないらしい。</p>
+
+<p><strong>こういう些細な注意事項は忘れてしまうのが常</strong>なので、よほどサイズが重要でないかぎりは int を使うのが安全。どうしても smallint を使う場合は、ちゃんと SQL を explain してみて引用符で囲み、理由をコメントなりで書いておくようにするべきだろう。</p>
+
+<p>ただ、問題は JDBC とかの抽象層をかます場合で、このときに<strong>どんな SQL が発行されるかを把握しておく必要がある</strong>。</p>
+
+<p>PostgreSQL 側で、実際に発行されている SQL をログに記録して確認してみた。Java のコードと PostgreSQL のログに残されていた SQL ステートメントの両方を載せてある。</p>
+
+<p><code>java.sql.PreparedStatement.setInt(int, int)</code> を使った場合、</p>
+
+<pre><code>int type = ...;
+stmt.setInt(1, type);
+...
+statement: SELECT * FROM example WHERE smallint_column = 1
+</code></pre>
+
+<p><code>java.sql.PreparedStatement.setShort(int, short)</code> を使った場合、</p>
+
+<pre><code>int type = ...;
+stmt.setShort(1, (short)type);
+...
+statement: SELECT * FROM example WHERE smallint_column = 1
+</code></pre>
+
+<p><code>java.sql.PreparedStatement.setObject(int, Object, int)</code> を使った場合、</p>
+
+<pre><code>int type = ...;
+stmt.setObject(3, Integer.valueOf(type), java.sql.Types.SMALLINT);
+...
+statement: SELECT * FROM example WHERE smallint_column = 1
+</code></pre>
+
+<p><code>java.sql.PreparedStatement.setString(int, String)</code> を使った場合、</p>
+
+<pre><code>int type = ...;
+stmt.setString(1, Integer.toString(type));
+...
+statement: SELECT * FROM example WHERE smallint_column = '1&amp;#x27;
+</code></pre>
+
+<p>setShort や setObject で SQL の型を指定しても、実際に発行される SQL では型指定がないのでインデックスが使用されない。setString を使えば、引用符に囲まれ、インデックスが使われるようになる。</p>
+
+<p>最後に、今回の検証に使用した環境は以下のとおり。</p>
+
+<ul>
+<li>PostgreSQL 7.4.7</li>
+<li>pg74.216.jdbc3.jar</li>
+</ul>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/08/07/%E5%AE%87%E5%AE%99%E6%B6%88%E5%A4%B1/">グレッグ・イーガン「宇宙消失」</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/07/31/%E4%B8%87%E7%89%A9%E7%90%86%E8%AB%96/">グレッグ・イーガン「万物理論」</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Prototype 1.6.0 と DOMContentLoaded</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Prototype 1.6.0 と DOMContentLoaded</h1>
+  <div class="metadata">
+    <p class="date">2007/08/22 5:32am</p>
+  </div>
+  <div class="content">
+    
+
+<p>Prototype 1.6.0 のリリース候補版が公開されたようだ。</p>
+
+<ul>
+<li><a href="http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate">Prototype JavaScript framework: Prototype 1.6.0 release candidate</a></li>
+<li><a href="http://weblog.rubyonrails.com/2007/8/16/prototype-1-6-0-release-candidate">Riding Rails: Prototype 1.6.0 release candidate</a></li>
+</ul>
+
+<p>変更点が多い。目を引くものとしては、クラスの継承がサポートされた。新しい <code>Class.create</code> では親クラスを指定できる。いままでは <code>Object.extend</code> によるコピーで擬似的な継承をしていただけなので、これは嬉しいかもしれない。</p>
+
+<h3 id="クロスブラウザな-domcontentloaded-イベント:ed7086350f630b6b1a6433edc35f905a">クロスブラウザな DOMContentLoaded イベント</h3>
+
+<p>また、「<a href="http://weblog.metareal.org/2007/07/10/domready-js-cross-browser-ondomcontentloaded/">window.onload 前でも DOM 処理が可能なら通知してくれる domready.js</a>」という記事でも書いた、<strong>DOMContentLoaded がサポートされた</strong>。</p>
+
+<pre><code>document.observe(&quot;contentloaded&quot;, function() { ... })
+</code></pre>
+
+<p>従来の <code>Element#observe</code> メソッドを通して、透過的に扱うことができる。これで、先の記事にアップしていた domready.js は不要になるだろう。</p>
+
+<p>1.6.0 には他にも色々面白そうな機能が追加されている。暇があるときに追々調べていくつもり。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/08/23/optimize-the-apple-mail-app-database/">Mail.app を vacuum して高速化</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/08/21/rename-xcode-project/">Xcode でプロジェクトの名前を変更したくなったら</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

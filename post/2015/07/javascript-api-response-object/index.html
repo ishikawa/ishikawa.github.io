@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>JavaScript API Response object</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/post/2015/07/javascript-api-response-object/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>JavaScript API Response object</h1>
+  <div class="metadata">
+    <p class="date">2015/07/07 8:02am</p>
+  </div>
+  <div class="content">
+    <p>JavaScript (TypeScript) でサーバーとの通信には JSON-RPC 2.0 を用いて、受け取った JSON レスポンスをオブジェクトに変換して使っている。</p>
+
+<pre><code class="language-typescript">class Tweet {
+
+  constructor(
+    userId: string,
+    screenName: string,
+    text: string,
+    favorited: boolean,
+  ) {}
+
+  static fromJsonResponse(response: any): Tweet {
+    return new Tweet(
+      response[&quot;userId&quot;],
+      response[&quot;screenName&quot;],
+      response[&quot;text&quot;],
+      response[&quot;favorited&quot;]
+    );
+  }
+}
+</code></pre>
+
+<p><a href="https://github.com/Microsoft/TypeScript/wiki/Classes#using-a-class-as-an-interface">TypeScript のクラスはインターフェースとしても使える</a> ので、JSON レスポンスを変換したオブジェクトをそのまま使える気がしてきた。</p>
+
+<pre><code class="language-typescript">
+class Tweet {
+    userId: string;
+    screenName: string;
+    text: string;
+    favorited: boolean;
+
+}
+
+
+</code></pre>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2013/01/18/looper/">映画「LOOPER」</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

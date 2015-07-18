@@ -1,0 +1,82 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Python 2.5 をインストール</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/01/01/install-python-25/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Python 2.5 をインストール</h1>
+  <div class="metadata">
+    <p class="date">2007/01/02 4:38am</p>
+  </div>
+  <div class="content">
+    <p>冬休み。お勉強の一環として <a href="http://www.python.org/">Python</a> を考えている。</p>
+
+<p>現時点の最新版は <code>2.5</code>、一方、Mac OS X Tiger に標準インストールされているのは <code>2.3.2</code>。
+というわけでダウンロードページから Python 2.5 のソースコードをダウンロードして、インストール。</p>
+
+<pre><code>% curl -O http://www.python.org/ftp/python/2.5/Python-2.5.tgz
+% tar xvzf Python-2.5.tgz
+% cd Python-2.5
+% ./configure
+% make
+% sudo make install
+</code></pre>
+
+<p>特に問題なくインストールできた。</p>
+
+<pre><code>% python -V
+Python 2.5
+</code></pre>
+
+<p>お約束通り、<code>Hello, World</code> で幕開け。</p>
+
+<pre><code>% python
+Python 2.5 (r25:51908, Jan  1 2007, 17:41:26)
+[GCC 4.0.1 (Apple Computer, Inc. build 5367)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; print &quot;Hello, World!&quot;
+Hello, World!
+</code></pre>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/01/02/apache-rotatelogs-time-offset/">rotatelogs と時差</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/01/01/a-happy-new-year-2007/">謹賀新年</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

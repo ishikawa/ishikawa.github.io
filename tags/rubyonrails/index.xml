@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rubyonrails on METAREAL</title>
+    <link>http://www.metareal.org/tags/rubyonrails/</link>
+    <description>Recent content in Rubyonrails on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Fri, 18 Apr 2008 07:41:00 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/rubyonrails/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ruby-openid でログの出力先を変更する</title>
+      <link>http://www.metareal.org/2008/04/18/ruby-openid-util-logger/</link>
+      <pubDate>Fri, 18 Apr 2008 07:41:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/04/18/ruby-openid-util-logger/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://rubyforge.org/projects/ruby-openid/&#34;&gt;ruby-openid&lt;/a&gt; は Ruby の OpenID ライブラリだが、そのままだとログの出力先が標準エラー出力に向けられている。これでは何かと困ることもあるだろう（たとえば、ユニットテストの結果に ruby-openid のデバッグ出力が混じって鬱陶しい、とか）。&lt;/p&gt;
+
+&lt;p&gt;幸い OpenID::Util モジュールに、内部で使われているロガーを変更するためのメソッドが用意されている。以下のようにすれば、Rails 標準のロガーに置き換えることが可能だ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# ruby-openid の Logger を Rails 標準のもので置き換える
+OpenID::Util.logger = RAILS_DEFAULT_LOGGER
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;RAILS_DEFAULT_LOGGER&lt;/code&gt; 定数など、Rails のロガー周りについては &lt;a href=&#34;http://wiki.rubyonrails.org/rails/pages/HowtoConfigureLogging&#34;&gt;Wiki のまとめ&lt;/a&gt;が参考になる。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>find | xargs rcov</title>
+      <link>http://www.metareal.org/2008/02/17/find-xargs-rcov/</link>
+      <pubDate>Sun, 17 Feb 2008 09:55:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/02/17/find-xargs-rcov/</guid>
+      <description>&lt;p&gt;Rails アプリのコードカヴァレッジに &lt;a href=&#34;http://eigenclass.org/hiki.rb?rcov&#34;&gt;rcov&lt;/a&gt; を使ってみた。面倒な設定も必要なく、そこそこの速度でカヴァレッジを測定できるので便利だ。異常系のテスト洩れ確認に重宝している。&lt;/p&gt;
+
+&lt;p&gt;Rails アプリなので、test ディレクトリ以下のテストコードを実行したいわけだが、&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rcov test/*/*_test.rb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;このように、シェルのワイルドカード指定では再帰的に深いディレクトリを扱うことができない（zsh なら &lt;code&gt;**&lt;/code&gt; でいいね）。こういう場合は find, xargs を組み合わせればいい。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;find test -name &#39;*_test.rb&#39; -print | xargs rcov --aggregate log/coverage/aggregate.info
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;rcov は &lt;code&gt;--aggregate&lt;/code&gt; オプションで指定されたファイルに実行結果を保存し、次回実行時に利用することができる。ファイル数が多いと xargs はコマンドを複数回実行するので、結果が上書きされないように &lt;code&gt;--aggregate&lt;/code&gt; オプションを指定するようにしよう。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mime::Type の register メソッドで定義される定数</title>
+      <link>http://www.metareal.org/2008/02/15/rails-mime-type-register/</link>
+      <pubDate>Fri, 15 Feb 2008 08:10:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/02/15/rails-mime-type-register/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://api.rubyonrails.org/classes/Mime/Type.html#M001651&#34;&gt;Mime::Type.register&lt;/a&gt; は、登録された &lt;a href=&#34;http://api.rubyonrails.org/classes/Mime/Type.html&#34;&gt;Mime::Type&lt;/a&gt; ではなく拡張子の配列を返す、という謎の挙動になっている。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Mime::Type.register &amp;quot;image/jpeg&amp;quot;, :jpeg, [], [&amp;quot;jpg&amp;quot;, &amp;quot;pjpeg&amp;quot;]
+# =&amp;gt; [&amp;quot;jpeg&amp;quot;, &amp;quot;jpg&amp;quot;, &amp;quot;pjpeg&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;そのため、登録された Mime::Type を参照するには、改めて &lt;a href=&#34;http://api.rubyonrails.org/classes/Mime/Type.html#M001648&#34;&gt;Mime::Type.lookup&lt;/a&gt; する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Mime::Type.lookup(&amp;quot;image/jpeg&amp;quot;)
+# =&amp;gt; #&amp;lt;Mime::Type:0x30601dc @string=&amp;quot;image/jpeg&amp;quot;, @synonyms=[], @symbol=:jpeg&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;しかし、この方法は &lt;code&gt;&amp;quot;image/jpeg&amp;quot;&lt;/code&gt; を二ヶ所にハードコードしてしまう。&lt;/p&gt;
+
+&lt;p&gt;代わりに、Mime::Type#register で Mime モジュールに定義される定数を使うことができる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Mime::JPEG
+# =&amp;gt; #&amp;lt;Mime::Type:0x30601dc @string=&amp;quot;image/jpeg&amp;quot;, @synonyms=[], @symbol=:jpeg&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Mime::Type#register の第二引数に指定したシンボルを大文字にした定数が定義されているようだ。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ActiveRecord::Base.with_failsave (2)</title>
+      <link>http://www.metareal.org/2008/02/13/activerecord-base-with-failsave-take2/</link>
+      <pubDate>Thu, 14 Feb 2008 08:12:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/02/13/activerecord-base-with-failsave-take2/</guid>
+      <description>&lt;p&gt;実際に &lt;a href=&#34;http://weblog.metareal.org/2008/02/12/activerecord-base-with_failsave/&#34;&gt;ActiveRecord::Base.with_failsave&lt;/a&gt; でテストを書いているうちに、いくつか使い勝手の悪い部分が見つかった。というわけで、すこし改良。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class ActiveRecord::Base
+  def create_or_update_with_fail; false end
+  alias_method :create_or_update_without_fail, :create_or_update
+
+  # ブロックが与えられた場合はブロックを実行し、そのあいだは save! や save が必ず失敗する
+  #
+  # ActiveRecord::Base.with_failsave do
+  # ...
+  # end
+  #
+  # また、サブクラスのみに適用することもできる。
+  #
+  # SomethingModel.with_failsave do
+  # ...
+  # end
+  def self.with_failsave
+    # ActiveRecord::Base のサブクラスで呼び出された場合は alias_method によって、
+    # サブクラス側にも create_or_update が定義されてしまうためか、再度の alias_method による
+    # 定義の差し替えだけでは元の挙動に戻らない。そのため、ensure 節で remove_method している。
+    subclass = !private_instance_methods(false).include?(&amp;quot;create_or_update&amp;quot;)
+    alias_method :create_or_update, :create_or_update_with_fail
+    yield
+  ensure
+    alias_method :create_or_update, :create_or_update_without_fail
+    remove_method :create_or_update if subclass
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;変更点はふたつ。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;ブロック実行中に例外が発生しても、create_or_update が元に戻るように&lt;/li&gt;
+&lt;li&gt;ActiveRecord::Base のサブクラスだけに適用することもできるように&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;後者は functional test で全然意図しないモデルの保存に失敗して先に進めなかった経験から実装した。たとえば、User モデルの save だけを失敗させたい場合は ActiveRecord::Base.with_failsave としているところを、こんなふうに変えればいい。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;User.with_failsave do
+  ...
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://diary.metareal.org/2008/02/13/ruby-alias-method/&#34;&gt;alias_method の挙動がよく分かってない&lt;/a&gt;ので、コメントに書いていることとか間違ってるかも。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ActiveRecord::Base.with_failsave</title>
+      <link>http://www.metareal.org/2008/02/12/activerecord-base-with_failsave/</link>
+      <pubDate>Wed, 13 Feb 2008 04:28:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/02/12/activerecord-base-with_failsave/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://enbug.tdiary.net/20060714.html#p01&#34;&gt;failmalloc&lt;/a&gt; の精神で、必ず失敗する &lt;a href=&#34;http://api.rubyonrails.org/classes/ActiveResource/Base.html#M000848&#34;&gt;ActiveRecord::Base#save&lt;/a&gt; を書いてみた。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class ActiveRecord::Base
+  def create_or_update_with_fail; false end
+  alias_method :create_or_update_without_fail, :create_or_update
+
+  # ブロックが与えられた場合はブロックを実行し、そのあいだは save! や save が必ず失敗する
+  #
+  # ActiveRecord::Base.with_failsave do
+  # ...
+  # end
+  #
+  def self.with_failsave
+    alias_method :create_or_update, :create_or_update_with_fail
+    yield
+    alias_method :create_or_update, :create_or_update_without_fail
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;テストコードで以下のように使うのが目的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;assert_nothing_raised{ model.save! }
+ActiveRecord::Base.with_failsave do
+  assert_raise(ActiveRecord::RecordNotSaved){ model.save! }
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これで例外処理コードのカバレッジも稼げるよ！&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Rails の Migration で MySQL の型を指定する</title>
+      <link>http://www.metareal.org/2008/02/06/using-mysql-data-types-in-rails-migration/</link>
+      <pubDate>Thu, 07 Feb 2008 08:37:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/02/06/using-mysql-data-types-in-rails-migration/</guid>
+      <description>
+
+&lt;p&gt;たとえば、こんな感じの &lt;a href=&#34;http://api.rubyonrails.org/classes/ActiveRecord/Migration.html&#34;&gt;Migration&lt;/a&gt; を考えてみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class CreatePepsi &amp;lt; ActiveRecord::Migration
+  def self.up
+    create_table :pepsies do |t|
+      t.column :coke,       :string, :limit =&amp;gt; 64
+      t.column :jolt,       :integer
+      t.column :created_at, :datetime
+      t.column :updated_at, :datetime
+    end
+  end
+
+  def self.down
+    drop_table :addresses
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Rails 2.0 の &lt;a href=&#34;http://ryandaigle.com/articles/2007/5/6/what-s-new-in-edge-rails-bringin-sexy-back&#34;&gt;sexy migration&lt;/a&gt; ではこんなふうにも書けるんだけど、個人的に馴染まないので今回はスルー。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class CreatePepsi &amp;lt; ActiveRecord::Migration
+  def self.up
+    create_table :pepsies do |t|
+      t.string  :coke, :limit =&amp;gt; 64
+      t.integer :jolt
+      t.timestamps
+    end
+  end
+
+  def self.down
+    drop_table :addresses
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;rake db:migrate&lt;/code&gt; したときの &lt;code&gt;CREATE TABLE&lt;/code&gt; はこうなる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CREATE TABLE `pepsies` (
+  `id` int(11) NOT NULL auto_increment,
+  `coke` varchar(64) default NULL,
+  `jolt` int(11) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;string は MySQL の VARCHAR に、integer は int になる。これを CHAR とか SMALLINT とかにできないか、というのが今回の話題。&lt;/p&gt;
+
+&lt;h3 id=&#34;char-とか-smallint-とかにしてみる:f1b79cf6415becfface7fa647c45b8dc&#34;&gt;CHAR とか SMALLINT とかにしてみる&lt;/h3&gt;
+
+&lt;p&gt;結論からいえば、これでよい。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class CreatePepsi &amp;lt; ActiveRecord::Migration
+  def self.up
+    create_table :pepsies do |t|
+      t.column :coke,       :CHAR, :limit =&amp;gt; 64
+      t.column :jolt,       :SMALLINT
+      t.column :created_at, :datetime
+      t.column :updated_at, :datetime
+    end
+  end
+
+  def self.down
+    drop_table :addresses
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;本当に CHAR とか SMALLINT とかにしてみただけである（といっても Symbol になってるけど）。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;CREATE TABLE&lt;/code&gt; はこうなる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CREATE TABLE `pepsies` (
+  `id` int(11) NOT NULL auto_increment,
+  `coke` char(1) default NULL,
+  `jolt` smallint(6) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;limit-が効かない:f1b79cf6415becfface7fa647c45b8dc&#34;&gt;:limit が効かない&lt;/h3&gt;
+
+&lt;p&gt;SQL を見ると分かるように &lt;code&gt;coke&lt;/code&gt; が &lt;code&gt;char(1)&lt;/code&gt; となってしまい、Migration で指定した &lt;code&gt;:limit =&amp;gt; 64&lt;/code&gt; が効いていないようだ。&lt;/p&gt;
+
+&lt;p&gt;とりあえず素直に対応してみよう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class CreatePepsi &amp;lt; ActiveRecord::Migration
+  def self.up
+    create_table :pepsies do |t|
+      t.column :coke,       :&amp;quot;CHAR(64)&amp;quot;
+      t.column :jolt,       :SMALLINT
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;:CHAR&lt;/code&gt; という指定を &lt;code&gt;:&amp;quot;CHAR(64)&amp;quot;&lt;/code&gt; にしたわけだ（&lt;a href=&#34;http://www.ruby-lang.org/ja/man/html/_A5EAA5C6A5E9A5EB.html#a.a5.b7.a5.f3.a5.dc.a5.eb&#34;&gt;Ruby の Symbol リテラルでは :&amp;ldquo;&amp;hellip;&amp;rdquo; や :&amp;lsquo;&amp;hellip;&amp;rsquo; の形式で、任意のシンボルを定義することができる&lt;/a&gt;）。&lt;/p&gt;
+
+&lt;p&gt;再度、&lt;code&gt;CREATE TABLE&lt;/code&gt; を確認。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CREATE TABLE `pepsies` (
+  `id` int(11) NOT NULL auto_increment,
+  `coke` char(64) default NULL,
+  `jolt` smallint(6) default NULL,
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;うまくいったらしい。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Rails 2.0 で追加された Migration 関連の Rake タスク</title>
+      <link>http://www.metareal.org/2008/01/31/rails-2-0-migration-related-rake-tasks/</link>
+      <pubDate>Fri, 01 Feb 2008 03:08:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/01/31/rails-2-0-migration-related-rake-tasks/</guid>
+      <description>
+
+&lt;h3 id=&#34;db-migrate-reset:fd9efc155b510df5c9ef382b45977609&#34;&gt;db:migrate:reset&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;DROP DATABASE&lt;/code&gt; して &lt;code&gt;db:migrate&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;毎回、&lt;code&gt;VERSION=0&lt;/code&gt; とか指定していたので、こういうのが欲しかった&lt;/li&gt;
+&lt;li&gt;問答無用で &lt;code&gt;DEFAULT CHARACTER SET &#39;utf8&#39;&lt;/code&gt; な気もするが&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;db-migrate-redo-step-n:fd9efc155b510df5c9ef382b45977609&#34;&gt;db:migrate:redo [STEP=n]&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;STEP&lt;/code&gt; で指定した数だけ遡って db:migrate をやりなおす&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;STEP&lt;/code&gt; のデフォルトは 1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Rails で MySQL を使うときの注意点</title>
+      <link>http://www.metareal.org/2007/07/24/notes-on-rubyonrails-with-mysql/</link>
+      <pubDate>Tue, 24 Jul 2007 09:29:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/07/24/notes-on-rubyonrails-with-mysql/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://weblog.rubyonrails.com/2007/7/20/rails-and-mysql&#34;&gt;Rails のブログでも取り上げられていた&lt;/a&gt;、&amp;rdquo;&lt;a href=&#34;http://mysqldump.azundris.com/archives/72-Rubyisms.html&#34;&gt;Rubyisms - MySQL-dump&lt;/a&gt;&amp;rdquo; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。&lt;/p&gt;
+
+&lt;p&gt;Rubyisms - MySQL-dump
+  &lt;a href=&#34;http://mysqldump.azundris.com/archives/72-Rubyisms.html&#34;&gt;http://mysqldump.azundris.com/archives/72-Rubyisms.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;select-が多すぎる:8c28f4d94b9da94a1e3d3c0468038cda&#34;&gt;&amp;ldquo;select *&amp;rdquo; が多すぎる&lt;/h3&gt;
+
+&lt;p&gt;ActiveRecord は、特に何も指定しないと &lt;code&gt;select *&lt;/code&gt; で、すべてのカラムを取ってくる。SQL は動的に生成されて、どのカラムが存在するかチェックしているので、スキームが変更されても大丈夫。&lt;/p&gt;
+
+&lt;p&gt;でも、必要のないデータまで取ってきてしまう、という問題はあるよね。そして、何が無駄かっていうと、必要のないデータのために一時的なテーブルが使われるかもしれない、ってことなんだ（SQL を &lt;code&gt;EXPLAIN&lt;/code&gt; してみて、&amp;rdquo;using temporary&amp;rdquo; となっていれば、そういう事態が発生しているサインだ）。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TEXT や BLOB をもつテーブルではもっと悪くて、一時テーブルは&lt;strong&gt;ディスク上に&lt;/strong&gt;作られる&lt;/li&gt;
+&lt;li&gt;これには &lt;code&gt;tmp_table_size&lt;/code&gt; や &lt;code&gt;max_heap_table_size&lt;/code&gt; の設定は&lt;strong&gt;関係ない&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;そういう場合は、SQL を二段階に分けるといい&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;まず、最初の SQL でレコードの ID だけを SELECT する（&lt;code&gt;int&lt;/code&gt; だけなので、このときの一時テーブルはメモリ上に作られる）&lt;/li&gt;
+&lt;li&gt;次に、その ID で必要な TEXT や BLOB を SELECT するんだ（これは ID による単純な検索なので一時テーブルは使われない）&lt;/li&gt;
+&lt;li&gt;ActiveRecord では &lt;code&gt;find([id1, id2, ...])&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;では、ActiveRecord で &lt;code&gt;select *&lt;/code&gt; を避けるにはどうするか？&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;find(...)&lt;/code&gt; の最後の引数に指定するハッシュに &lt;code&gt;:select =&amp;gt; [ fieldlist ]&lt;/code&gt; として指定する&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ActiveRecord::Base&lt;/code&gt; をサブクラス化して、&lt;code&gt;:select&lt;/code&gt; が指定されていなければ、警告を出すようにするのがいいんじゃない？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;文字列型がかなり無駄かも:8c28f4d94b9da94a1e3d3c0468038cda&#34;&gt;文字列型がかなり無駄かも&lt;/h3&gt;
+
+&lt;p&gt;たとえ TEXT 型（Migration だと &lt;code&gt;:text&lt;/code&gt; 型）を使っていなくても、Migration で &lt;code&gt;:string&lt;/code&gt; 型を使っているなら、気をつけた方がいい。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;普通、これは VARCHAR(255)&lt;/li&gt;
+&lt;li&gt;エンコーディングは &lt;code&gt;utf8&lt;/code&gt; になっているだろう&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;さて、MySQL では&lt;strong&gt;メモリ上の一時テーブルには&lt;/strong&gt; VARCHAR 型がない（「補足：メモリ上の一時テーブルには VARCHAR 型がない」参照）&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;代わりに VARCHAR は CHAR に変換される&lt;/li&gt;
+&lt;li&gt;つまり、VARCHAR(255) は CHAR(255) ってこと&lt;/li&gt;
+&lt;li&gt;そして、&lt;code&gt;utf8&lt;/code&gt; では 1 文字 3 バイトとして換算されるから &amp;hellip;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:string&lt;/code&gt; 型のカラムひとつごとに 765 バイトを占有する &amp;hellip; なんてこった。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;だから、デフォルトの &lt;code&gt;utf8&lt;/code&gt; ではなく、&lt;code&gt;latin1&lt;/code&gt; などの多バイトではないエンコーディングを使うことも考慮した方がよい。そして、&lt;code&gt;:string&lt;/code&gt; 型には必ず &lt;code&gt;:limit&lt;/code&gt; を指定しよう。&lt;/p&gt;
+
+&lt;p&gt;以上、MySQL の一時テーブルの特性とか、知らないとどうにもならん部分が多い。他にも、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;なんでテーブル名とかをバッククォートで囲んでないの？　とか、&lt;/li&gt;
+&lt;li&gt;トランザクション内部ではクエリーキャッシュが使われない、とか&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;興味深い話題があります。あと、この要約が間違ってる可能性もあるので、是非&lt;a href=&#34;http://mysqldump.azundris.com/archives/72-Rubyisms.html&#34;&gt;原文&lt;/a&gt;も読むことをおすすめします。&lt;/p&gt;
+
+&lt;h3 id=&#34;補足-メモリ上の一時テーブルには-varchar-型がない:8c28f4d94b9da94a1e3d3c0468038cda&#34;&gt;補足：メモリ上の一時テーブルには VARCHAR 型がない&lt;/h3&gt;
+
+&lt;p&gt;「メモリ上の一時テーブルには VARCHAR 型がない」という記述について、気になったので調べてみた。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.jpipes.com/index.php?/archives/177-Common-Questions-and-Answers-from-Performance-Tuning-Webinars.html&#34;&gt;Common Questions and Answers from Performance Tuning Webinars - Jay Pipes&lt;/a&gt; という記事にて、&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;A temporary table is implicitly created to handle a GROUP BY or ORDER BY clause and a VARCHAR column is in the SELECT statement&lt;/li&gt;
+&lt;li&gt;A temporary table is created explicitly which contains a VARCHAR column&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In these cases, the length of the VARCHAR columns does come into play. Why? Because &lt;strong&gt;temporary tables in memory are actually just tables of the MEMORY storage engine.&lt;/strong&gt; The MEMORY storage engine, for some reason, treats all VARCHAR(X) columns as CHAR(X) columns.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;つまり、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;メモリ上の一時テーブルは &lt;a href=&#34;http://dev.mysql.com/doc/refman/5.0/en/memory-storage-engine.html&#34;&gt;MEMORY ストレージエンジン&lt;/a&gt;である&lt;/li&gt;
+&lt;li&gt;そして、MEMORY ストレージエンジンは &lt;code&gt;VARCHAR(X)&lt;/code&gt; を &lt;code&gt;CHAR(X)&lt;/code&gt; として扱う&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ということのようだ。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>script.aculo.us の InPlaceEditor で submitOnBlur だと Safari が落ちる</title>
+      <link>http://www.metareal.org/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</link>
+      <pubDate>Fri, 06 Jul 2007 10:57:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://script.aculo.us/&#34;&gt;script.aculo.us&lt;/a&gt; の &lt;a href=&#34;http://wiki.script.aculo.us/scriptaculous/show/Ajax.InPlaceEditor&#34;&gt;InPlaceEditor&lt;/a&gt; を試している。&lt;/p&gt;
+
+&lt;p&gt;設定でカスタマイズできる部分がけっこうある割に、必要なものがなかったりして（特にコールバック系）微妙に使いづらいんだが、Safari だと不意にクラッシュする、という問題もあったり。&lt;/p&gt;
+
+&lt;p&gt;色々調べてみると、どうやら &lt;code&gt;submitOnBlur&lt;/code&gt; を設定して、フォーカスリング（テキストフィールドのフォーカス時に、フィールドの周囲に出る青い線）をクリックするとお亡くなりになるらしい。&lt;/p&gt;
+
+&lt;p&gt;まあ、普通に Safari のバグだと思うんだが、&lt;code&gt;onblur&lt;/code&gt; の処理を適当に遅延させると大丈夫なようなので、&lt;a href=&#34;http://dev.rubyonrails.org/ticket/3717&#34;&gt;ticket:3717&lt;/a&gt; に&lt;a href=&#34;http://dev.rubyonrails.org/attachment/ticket/3717/InPlaceEditorSubmitOnBlurCrashOnSafari.diff&#34;&gt;パッチ&lt;/a&gt;を送っておいた。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Rails の便利メソッド h, html_escape は ERB:Util にあった</title>
+      <link>http://www.metareal.org/2007/06/30/htmlescape-in-erb-util/</link>
+      <pubDate>Sun, 01 Jul 2007 07:03:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/06/30/htmlescape-in-erb-util/</guid>
+      <description>&lt;p&gt;Ruby on Rails のテンプレートでしょっちゅうお世話になる &lt;code&gt;h&lt;/code&gt; メソッド。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;&lt;/code&gt; や &lt;code&gt;&amp;amp;&lt;/code&gt; といった、HTML にはそのまま書けない文字を実体参照に置き換えてくれるメソッドだが、これをコントローラーから使いたいときがある。たとえば、Ajax のレスポンスで ad-hoc に HTML 片を返してしまいたいときとか、けっこうあるんじゃないか。&lt;/p&gt;
+
+&lt;p&gt;しかし、そのままではコントローラーから使うことはできない。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def update
+  render :text =&amp;gt; h(params[:value])
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;というか、そもそも &lt;a href=&#34;http://api.rubyonrails.org/&#34;&gt;API リファレンス&lt;/a&gt;にないんですけど&amp;hellip;。&lt;/p&gt;
+
+&lt;p&gt;ソースコードを調べてみて、やっと分かった。&lt;/p&gt;
+
+&lt;p&gt;どうやら、&lt;code&gt;h&lt;/code&gt; メソッドは  &lt;a href=&#34;http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB/Util.html&#34;&gt;erb の ERB::Util モジュール&lt;/a&gt;で定義されているらしい。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;actionpack-1.13.3 - lib/action_view/helpers/tag_helper.rb&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;module ActionView
+  module Helpers #:nodoc:
+    # Use these methods to generate HTML tags programmatically when you can&#39;t use
+    # a Builder. By default, they output XHTML compliant tags.
+    module TagHelper
+      include ERB::Util
+      ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以下は ruby 1.8.6 の &lt;code&gt;erb.rb&lt;/code&gt; から&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class ERB
+  module Util
+    public
+    def html_escape(s)
+      s.to_s.gsub(/&amp;amp;/, &amp;quot;&amp;amp;amp;&amp;quot;).gsub(/\&amp;quot;/, &amp;quot;&amp;quot;&amp;quot;).gsub(/&amp;gt;/, &amp;quot;&amp;amp;gt;&amp;quot;).gsub(/&amp;lt;/, &amp;quot;&amp;amp;lt;&amp;quot;)
+    end
+    alias h html_escape
+    module_function :h
+    module_function :html_escape
+    ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;というわけで、Rails のコントローラーで &lt;code&gt;h&lt;/code&gt; メソッドを使うには以下のようにすればいい。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def update
+  render :text =&amp;gt; ERB::Util.html_escape(params[:value])
+end
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mac OS X Tiger に Ruby on Rails をインストール</title>
+      <link>http://www.metareal.org/2006/12/27/rubyonrails-on-macosx-tiger/</link>
+      <pubDate>Thu, 28 Dec 2006 12:26:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2006/12/27/rubyonrails-on-macosx-tiger/</guid>
+      <description>&lt;p&gt;さて、次は &lt;a href=&#34;http://www.rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt; のインストールだ。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://rubygems.org/&#34;&gt;RubyGems&lt;/a&gt; がインストール済みなら、これはもう簡単。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% sudo gem install rails --include-dependencies
+Bulk updating Gem source index for: http://gems.rubyforge.org
+Successfully installed rails-1.1.6
+Successfully installed rake-0.7.1
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;こんだけ。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mac OS X Tiger に RubyGems をインストール</title>
+      <link>http://www.metareal.org/2006/12/27/rubygems-on-macosx-tiger/</link>
+      <pubDate>Thu, 28 Dec 2006 12:02:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2006/12/27/rubygems-on-macosx-tiger/</guid>
+      <description>&lt;p&gt;Mac OS X Tiger 上に &lt;a href=&#34;http://www.rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt; の開発環境を構築している。&lt;/p&gt;
+
+&lt;p&gt;Ruby on Rails は &lt;a href=&#34;http://www.ruby-lang.org/ja/&#34;&gt;Ruby&lt;/a&gt; のパッケージ管理システムである &lt;a href=&#34;http://rubygems.org/&#34;&gt;RubyGems&lt;/a&gt; でインストールできるので、まずは RubyGems をインストールしてみよう。&lt;/p&gt;
+
+&lt;p&gt;RubyGems のマニュアルから &lt;a href=&#34;http://rubygems.org/read/chapter/3&#34;&gt;&amp;ldquo;3. Installing RubyGems&amp;rdquo;&lt;/a&gt; の手順通りに進めていく。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://rubyforge.org/frs/?group_id=126&#34;&gt;RubyForge&lt;/a&gt; から最新版をダウンロード。現時点での最新版は &lt;code&gt;0.9.0&lt;/code&gt; だったので、&lt;a href=&#34;http://rubyforge.org/frs/download.php/11289/rubygems-0.9.0.tgz&#34;&gt;&lt;code&gt;rubygems-0.9.0.tgz&lt;/code&gt;&lt;/a&gt; をダウンロードして展開。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% curl --location -O http://rubyforge.org/frs/download.php/11289/rubygems-0.9.0.tgz
+% tar xvzf rubygems-0.9.0.tgz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;展開先のディレクトリに移動し、&lt;code&gt;setup.rb&lt;/code&gt; を実行。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% cd rubygems-0.9.0
+% sudo ruby setup.rb
+...
+  Successfully built RubyGem
+  Name: sources
+  Version: 0.0.1
+  File: sources-0.0.1.gem
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これでインストールは完了。思ったより簡単だったな。。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mac OS X  Tiger に Ruby on Rails の環境を構築する</title>
+      <link>http://www.metareal.org/2006/12/27/rubyonrails-on-macosx-tiger-links/</link>
+      <pubDate>Thu, 28 Dec 2006 01:32:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2006/12/27/rubyonrails-on-macosx-tiger-links/</guid>
+      <description>&lt;p&gt;Mac OS X Tiger (Intel) に &lt;a href=&#34;http://www.rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt; によるアプリケーション開発環境を構築するための手順まとめ。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2006/12/27/ruby-p12-on-macosx-tiger/&#34;&gt;Mac OS X Tiger に Ruby をインストール&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2006/12/27/rubygems-on-macosx-tiger/&#34;&gt;Mac OS X Tiger に RubyGems をインストール&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2006/12/27/rubyonrails-on-macosx-tiger/&#34;&gt;Mac OS X Tiger に Ruby on Rails をインストール&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2006/12/27/mysql-on-macosx-tiger/&#34;&gt;Mac OS X Tiger に MySQL 5.0.27 をインストール&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2006/12/27/mysql-post-installation/&#34;&gt;MySQL をインストールしたあとの作業&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2006/12/27/mysql-bindings-on-macosx-tiger/&#34;&gt;Mac OS X に MySQL/Ruby をインストール + 高速化パッチ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2006/12/28/reason-of-mysql-ruby-test-failure/&#34;&gt;MySQL/Ruby の test.rb が失敗する理由と対策&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Ruby の CSS パーサはどこですか？</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/11/23/looking-for-ruby-css-parser/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Ruby の CSS パーサはどこですか？</h1>
+  <div class="metadata">
+    <p class="date">2007/11/24 2:58am</p>
+  </div>
+  <div class="content">
+    
+
+<p>「Ruby で書かれた CSS パーサを探しています」メモ。</p>
+
+<h3 id="ruby-css-parser-http-rubyforge-org-projects-cssparser:5c9a0d1659f01ae002c059e62562b7c3"><a href="http://rubyforge.org/projects/cssparser/">Ruby CSS Parser</a></h3>
+
+<p>最近 RubyForge に登録されたばかりのプロジェクト</p>
+
+<ul>
+<li><code>gem install css_parser</code> で試してみる</li>
+<li>いきなり、<a href="http://code.dunae.ca/css_parser/">ドキュメント</a>と実際の挙動が違う。</li>
+<li><code>CssParser::Parser#load_file!</code> というメソッドはなくて <code>CssParser::Parser#load_uri!</code></li>
+<li>とりあえずローカルファイルを読み込む方法がないようだ</li>
+<li><a href="http://www.w3.org/StyleSheets/home.css">W3C のスタイルシート</a>で試してみたがエラー</li>
+<li>まだ実用ではない、ということだろう</li>
+</ul>
+
+<h3 id="csspool-http-rubyforge-org-projects-csspool:5c9a0d1659f01ae002c059e62562b7c3"><a href="http://rubyforge.org/projects/csspool/">csspool</a></h3>
+
+<p>W3C で公開されている CSS パーサのための共通 API <a href="http://www.w3.org/TR/SAC/">SAC</a>（<a href="http://www2.airnet.ne.jp/sardine/docs/NOTE-SAC-20000728.ja.html">和訳</a>）の Ruby による実装。</p>
+
+<ul>
+<li>なので、委員会っぽい API</li>
+<li>あらかじめ <a href="http://i.loveruby.net/ja/projects/racc/">racc</a>, <a href="http://onestepback.org/software/flexmock/">flexmock</a> のインストールが必要</li>
+<li>何を間違ったのか、gem でインストールしたあとに、手動で rake しないと動かなかった</li>
+<li>パースできるファイルとできないファイルがある</li>
+<li><code>@charset</code> 規則があるものは駄目</li>
+</ul>
+
+<p>うーん、単に特定のプロパティをもつセレクタを抜き出したいだけなんだが、どちらのライブラリでも出来ないという罠。自分で書き捨てのスクリプトでも書いて、急場を凌ぐしかないのか。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/12/05/optimize-the-igtd-database/">iGTD も vacuum すると速くなる</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/11/18/ruby-needs-unicode-regular-expressions/">Ruby で平仮名にマッチする正規表現</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

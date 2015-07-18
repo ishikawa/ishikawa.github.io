@@ -1,0 +1,161 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Python の dis モジュールでさまざまな import 文を disassemble する (2)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2008/09/25/disassembling-python-import-statements-take2/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Python の dis モジュールでさまざまな import 文を disassemble する (2)</h1>
+  <div class="metadata">
+    <p class="date">2008/09/25 5:39pm</p>
+  </div>
+  <div class="content">
+    
+
+<p><a href="/2008/09/25/disassembling-python-import-statements/">前回の記事</a>への追記が長くなりそうなので、新しい記事にまとめました。</p>
+
+<h3 id="import-module-と-import-module-as-name:c67c4be80ba8b08362387226c770cc35">import <module> と import <module> as <name></h3>
+
+<p><code>import &lt;module&gt;</code> と <code>import &lt;module&gt; as &lt;name&gt;</code> では、どのようなバイトコードにコンパイルされるか、つまり、実行時の振る舞いが<strong>微妙に異なる</strong>ことに注意しよう。</p>
+
+<pre><code>&gt;&gt;&gt; dis.disassemble(compile('import os.path', '', 'exec'))
+  1           0 LOAD_CONST               0 (-1)
+              3 LOAD_CONST               1 (None)
+              6 IMPORT_NAME              0 (os.path)
+              9 STORE_NAME               1 (os)
+             12 LOAD_CONST               1 (None)
+             15 RETURN_VALUE
+&gt;&gt;&gt; dis.disassemble(compile('import os.path as os_path', '', 'exec'))
+  1           0 LOAD_CONST               0 (-1)
+              3 LOAD_CONST               1 (None)
+              6 IMPORT_NAME              0 (os.path)
+              9 LOAD_ATTR                1 (path)
+             12 STORE_NAME               2 (os_path)
+             15 LOAD_CONST               1 (None)
+             18 RETURN_VALUE
+</code></pre>
+
+<p>前者では <code>IMPORT_NAME os.path</code> でロードされたモジュールを <code>os</code> という名前でシンボルテーブルに登録する。では、<code>IMPORT_NAME os.path</code> でロードされるモジュールは何かといえば、これは <a href="http://docs.python.org/lib/module-os.html">os</a> モジュールである。<a href="http://docs.python.org/lib/module-os.path.html">os.path</a> ではない。</p>
+
+<p>そして、<em>os</em> モジュール内部では <em>os.path</em> モジュールを <code>path</code> という名前でインポートしている（実際には、プラットフォームごとに異なるモジュールをインポートする）。そのため、<em>os</em> モジュールを <code>os</code> という名前でシンボルテーブルに登録しておけば、<code>os.path</code> で <em>os.path</em> モジュールを参照できるわけだ（このへんは次節で更に掘り下げる）。</p>
+
+<p>それにたいして、後者の <code>import os.path as os_path</code> では <code>IMPORT_NAME os.path</code> でロードされたモジュールから <code>LOAD_ATTR path</code> で取り出した <em>os.path</em> モジュールを <code>os_path</code> という名前でシンボルテーブルに登録する。このように、<code>import &lt;module&gt;</code> と <code>import &lt;module&gt; as &lt;name&gt;</code> では、実行時の振る舞いが微妙に異なっている。</p>
+
+<h3 id="import-a-と-import-a-b:c67c4be80ba8b08362387226c770cc35">import A と import A.B</h3>
+
+<p>ここからはバイトコードを離れて、<code>import</code> の動作をみていこう。まずは前節の<code>import os.path as os_path</code> を振り返る。</p>
+
+<ol>
+<li><code>IMPORT_NAME os.path</code> で <em>os</em> モジュールがロードされる</li>
+<li><code>LOAD_ATTR path</code> で <em>os</em> モジュールから <em>os.path</em> モジュールを取り出す</li>
+<li>取り出した <em>os.path</em> モジュールを <code>os_path</code> という名前でシンボルテーブルに登録する</li>
+</ol>
+
+<p>前節でも書いたように、<em>os</em> モジュール内部では <em>os.path</em> モジュールを <code>path</code> という名前でインポートしているので、2. の手順がうまくいくのは納得できる。しかし、それ以外のモジュール（パッケージ）ではどうだろうか？</p>
+
+<p>たとえば、<strong>A.B.C</strong> というパッケージ構造があるとする。</p>
+
+<pre><code>% python
+&gt;&gt;&gt; import A
+&gt;&gt;&gt; A
+&lt;module 'A' from 'A/__init__.pyc'&gt;
+&gt;&gt;&gt; dir(A)
+['__builtins__', '__doc__', '__file__', '__name__', '__path__']
+</code></pre>
+
+<p>このように、<code>dir()</code> で調べても、<em>A</em> モジュールに <code>B</code> という属性はない。</p>
+
+<pre><code>&gt;&gt;&gt; A.B
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+AttributeError: 'module' object has no attribute 'B'
+</code></pre>
+
+<p>ということは、このパッケージでは <code>import A.B as A_B</code> のようなインポートは失敗しそうだ。何故なら <em>A</em> モジュールに <code>B</code> という属性はないのだから、上の手順では 2. で失敗するはずである。</p>
+
+<p>まずは念のため、バイトコードも確認しておこう。</p>
+
+<pre><code>&gt;&gt;&gt; dis.disassemble(compile('import A.B as A_B', '', 'exec'))
+  1           0 LOAD_CONST               0 (-1)
+              3 LOAD_CONST               1 (None)
+              6 IMPORT_NAME              0 (A.B)
+              9 LOAD_ATTR                1 (B)
+             12 STORE_NAME               2 (A_B)
+             15 LOAD_CONST               1 (None)
+             18 RETURN_VALUE
+</code></pre>
+
+<p>前節でみたものと同じだ。やはり、<code>LOAD_ATTR</code> で <code>B</code> を取り出そうとしている。では、実行してみる。</p>
+
+<pre><code>&gt;&gt;&gt; import A.B as A_B
+&gt;&gt;&gt;
+</code></pre>
+
+<p>おかしい。成功してしまった。</p>
+
+<pre><code>&gt;&gt;&gt; A_B
+&lt;module 'A.B' from 'A/B/__init__.pyc'&gt;
+</code></pre>
+
+<p>ちゃんとインポートもできているようだ。どういうことだろうか？　一旦インタプリタを終了して、もう一度、今度は <code>import A.B</code> を試してみよう。</p>
+
+<pre><code>% python
+&gt;&gt;&gt; import A.B
+&gt;&gt;&gt; A.B
+&lt;module 'A.B' from 'A/B/__init__.pyc'&gt;
+</code></pre>
+
+<p>なんと、<code>A.B</code> でモジュールにアクセスできている。更に <code>import A</code> して <em>A</em> モジュールを調べてみると、</p>
+
+<pre><code>&gt;&gt;&gt; import A
+&gt;&gt;&gt; A
+&lt;module 'A' from 'A/__init__.pyc'&gt;
+&gt;&gt;&gt; dir(A)
+['B', '__builtins__', '__doc__', '__file__', '__name__', '__path__']
+</code></pre>
+
+<p><em>A</em> モジュールに <code>B</code> が増えていることが分かる。</p>
+
+<p>これで <em>os</em> 以外のモジュールでも <code>import</code> がうまく動作する理由が分かった。おそらくは <code>IMPORT_NAME</code> が実行されるときに、内部的にこのような下準備が行われていたわけだ。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2008/10/02/running-django-1-0-on-google-app-engine/">Google App Engine で Django 1.0 を動かす</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2008/09/25/disassembling-python-import-statements/">Python の dis モジュールでさまざまな import 文を disassemble する</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

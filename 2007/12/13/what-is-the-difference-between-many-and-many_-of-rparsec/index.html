@@ -1,0 +1,101 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>RParsec の many と many_ の違い</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>RParsec の many と many_ の違い</h1>
+  <div class="metadata">
+    <p class="date">2007/12/13 9:09am</p>
+  </div>
+  <div class="content">
+    
+
+<p><a href="http://weblog.metareal.org/2007/12/11/studying-rparsec-introduction/#rparsec-calculator-demo">前回の四則演算デモ</a>で真っ先に目を引いたのは <code>many_</code> という奇妙な名前のメソッドだった。</p>
+
+<pre><code>delim = whitespace.many_
+</code></pre>
+
+<p>他にもっと注目すべきところがあるだろうと言われそうだが、<strong>非公開の関数か一時変数のようなメソッド</strong>が公開 API の一部というのに驚いた。</p>
+
+<p>また、<a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000015">many_</a> は <a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html">Parser</a> クラスのメソッドだが、このクラスには他にも <a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000016">many</a> というメソッドが用意されている。</p>
+
+<p>両者の違いは何だろう？</p>
+
+<h3 id="many-と-many-の違い:15dabfe992c245acbc1c9576207a5c48">many と many_ の違い</h3>
+
+<p>上記リンク先の API リファレンスによれば、</p>
+
+<ul>
+<li>many は複数回マッチしたそれぞれの結果を配列で返し、</li>
+<li>many_ は最後にマッチした結果のみを返す</li>
+</ul>
+
+<p>という違いだけのようだ。irb で実際に動作を確認してみよう。</p>
+
+<pre><code>% irb
+irb(main):001:0&gt; require 'rubygems'
+irb(main):002:0&gt; require 'rparsec'
+irb(main):003:0&gt; include Parsers
+</code></pre>
+
+<p>まずは必要な require や include を済ませておく。</p>
+
+<pre><code>irb(main):004:0&gt; whitespace.many.parse(&quot;\t\r\n&quot;)
+=&gt; [9, 13, 10]
+irb(main):005:0&gt; whitespace.many_.parse(&quot;\t\r\n&quot;)
+=&gt; 10
+</code></pre>
+
+<p>many では引数で渡した文字列（タブと改行）の各文字が配列で返されるのにたいして、many_ では最後の改行文字のみが返されているのが確認できた。</p>
+
+<pre><code>irb(main):007:0&gt; whitespace.many.parse(&quot;&quot;)
+=&gt; []
+irb(main):006:0&gt; whitespace.many_.parse(&quot;&quot;)
+=&gt; nil
+</code></pre>
+
+<p>ちなみに、一度もマッチしなかった場合は many では空の配列、many_ では nil が返されるようだ。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/">rparsec の四則演算デモを浮動小数点に対応させる</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/12/12/building-postgresql-7-4-jdbc-driver/">PostgreSQL 7.4 の JDBC ドライバをビルド</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

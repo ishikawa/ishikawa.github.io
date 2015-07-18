@@ -1,0 +1,132 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>JavaScript でコードを色づけしてくれるライブラリ google-code-prettify</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/06/15/google-code-prettify-syntax-highlighter-written-in-javascript/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>JavaScript でコードを色づけしてくれるライブラリ google-code-prettify</h1>
+  <div class="metadata">
+    <p class="date">2007/06/15 9:08am</p>
+  </div>
+  <div class="content">
+    
+
+<p>Ruby のコードを色づけしてくれる <a href="http://syntax.rubyforge.org/">Syntax</a> を試しているうちに、このブログでもコードの色づけ（いわゆるシンタックス・ハイライト。はてなダイアリーの<a href="http://hatenadiary.g.hatena.ne.jp/keyword/%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E8%89%B2%E4%BB%98%E3%81%91%E3%81%97%E3%81%A6%E8%A8%98%E8%BF%B0%E3%81%99%E3%82%8B%EF%BC%88%E3%82%B7%E3%83%B3%E3%82%BF%E3%83%83%E3%82%AF%E3%82%B9%E3%83%BB%E3%83%8F%E3%82%A4%E3%83%A9%E3%82%A4%E3%83%88%EF%BC%89">スーパー pre 記法</a>みたいなやつね）をやってみたくなった。</p>
+
+<p>誰でも普段は、エディタで色づけされたコードを見慣れてるわけで、やっぱり黒べったりは読みづらいといえば読みづらい。</p>
+
+<h3 id="javascript-によるコード色づけ:97997dd31a4d7c14602f4c7920831d8c">JavaScript によるコード色づけ</h3>
+
+<p>ただ、このブログは <a href="http://wordpress.com/">WordPress</a> で動作している。</p>
+
+<p>WordPress といえば、あれか &hellip; PHP か。なので、Ruby の Syntax ライブラリは使えない。それに、そもそも Syntax は Ruby の字句解析ライブラリとしての用途に重きを置いているためか、デフォルトで対応している言語が少ない（Ruby と XML, YAML だけ）。そのへんの不満もある。</p>
+
+<p>色々迷った末（五分くらい）、JavaScript によるコード色づけを試してみることにした（<a href="http://codex.wordpress.org/Plugins/Syntax_Highlighting">WordPress のプラグイン</a>はですね、種類が多すぎて比較する気にもなれませんでした）。</p>
+
+<p>問題はどのライブラリを使うか。検索してみると、<a href="http://code.google.com/">Google Code</a> にいくつか見つかった。</p>
+
+<ul>
+<li><a href="http://code.google.com/p/syntaxhighlighter/">syntaxhighlighter</a></li>
+<li><a href="http://code.google.com/p/google-code-prettify/">google-code-prettify</a></li>
+</ul>
+
+<p><a href="http://code.google.com/p/syntaxhighlighter/">syntaxhighlighter</a> は<a href="http://code.google.com/p/syntaxhighlighter/wiki/Languages">対応言語</a>は申し分ないのだが、ちょっとオーバースペック気味だ。行番号表示やクリップボードへのコピーとかは、とりあえずいらないだろう。</p>
+
+<p>一方の <a href="http://code.google.com/p/google-code-prettify/">google-code-prettify</a> はシンプルでいい感じ。早速、試してみることにする。</p>
+
+<h3 id="google-code-prettify:97997dd31a4d7c14602f4c7920831d8c">google-code-prettify</h3>
+
+<p>使い方は <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">README</a> を読めば問題ないと思う。このブログでは <code>prototype.js</code> を使って、こんなふうに組み込んだ。</p>
+
+<pre><code>&lt;script src=&quot;http://metareal.org/javascripts/prototype.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://metareal.org/javascripts/prettify.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;
+  Event.observe(window, 'load', function() {
+    prettyPrint();
+  });
+&lt;/script&gt;
+</code></pre>
+
+<p>この通り、HTML も色づけしてくれる。HTML に埋め込んだ JavaScript も認識されてるのはすごいな。しかも、コード部分の指定は <code>pre</code> 要素か <code>code</code> 要素の <code>class</code> 属性に <code>prettyprint</code> を指定するだけ。シンプル。</p>
+
+<h3 id="おまけ-ruby-コードの色づけ:97997dd31a4d7c14602f4c7920831d8c">おまけ: Ruby コードの色づけ</h3>
+
+<p>ちなみに、Ruby コードの色づけはどうだろう。</p>
+
+<p>冒頭にあげた <a href="http://syntax.rubyforge.org/">Syntax</a> のコードで試してみよう。</p>
+
+<p><code>syntax-1.0.0/lib/syntax/convertors/abstract.rb</code></p>
+
+<pre><code>require 'syntax'
+
+module Syntax
+  module Convertors
+
+    # The abstract ancestor class for all convertors. It implements a few
+    # convenience methods to provide a common interface for all convertors.
+    class Abstract
+
+      # A reference to the tokenizer used by this convertor.
+      attr_reader :tokenizer
+
+      # A convenience method for instantiating a new convertor for a
+      # specific syntax.
+      def self.for_syntax( syntax )
+        new( Syntax.load( syntax ) )
+      end
+
+      # Creates a new convertor that uses the given tokenizer.
+      def initialize( tokenizer )
+        @tokenizer = tokenizer
+      end
+
+    end
+
+  end
+end
+</code></pre>
+
+<p>十分だな。シンボルは色づけされてないようだけど、インスタンス変数は認識されている。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/06/16/sync-different-mac-with-dotmac/">.Mac の同期機能がすごく便利です</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/06/14/ruby-extension-struct-rstring-macros/">Ruby の拡張ライブラリ開発では RSTRING_PTR, RSTRING_LEN が 1.8.6 から使える</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

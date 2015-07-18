@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Trac on METAREAL</title>
+    <link>http://www.metareal.org/tags/trac/</link>
+    <description>Recent content in Trac on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Sun, 09 Sep 2007 11:49:00 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/trac/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</title>
+      <link>http://www.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</link>
+      <pubDate>Sun, 09 Sep 2007 11:49:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/&#34;&gt;Python: Mac OS X での locale.getpreferredencoding()&lt;/a&gt; では、Mac OS X に Python 2.5.1 をソースコードからインストールした場合に発生する、ロケール周りの問題点について書いた。&lt;/p&gt;
+
+&lt;p&gt;要約すると、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;locale.getpreferredencoding()&lt;/code&gt; の返すエンコーディングが &lt;code&gt;X-MAC-JAPANESE&lt;/code&gt; になってしまう&lt;/li&gt;
+&lt;li&gt;Python では &lt;code&gt;X-MAC-JAPANESE&lt;/code&gt; がデフォルトではサポートされていないため、&lt;code&gt;locale.getpreferredencoding()&lt;/code&gt; を利用したエンコード、デコードができない&lt;/li&gt;
+&lt;li&gt;_localmodule.c を変更して、&lt;code&gt;X-MAC-JAPANESE&lt;/code&gt; の代わりに &lt;code&gt;shift_jis&lt;/code&gt; を返すようにして解決&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;という内容だった。&lt;/p&gt;
+
+&lt;p&gt;しかし、しばらくして「っき」さんより&lt;a href=&#34;http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/#comment-4027&#34;&gt;コメントをいただいた&lt;/a&gt;。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;上記のlocale.getpreferredencoding()の返り値ですが、10.4.9に含まれているOS標準のPython 2.3.5では、デフォルトがUS-ASCIIになっていて、LANG環境変数も見てくれます。&lt;/p&gt;
+
+&lt;p&gt;これは、Appleがパッケージングの際に、&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.opensource.apple.com/darwinsource/10.4.9.x86/python-16.1.3/&#34;&gt;http://www.opensource.apple.com/darwinsource/10.4.9.x86/python-16.1.3/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;以下に含まれているパッチを適用して、ロケール周りのdefined(APPLE)や ‘darwin’ を無効にしているからです。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;たしかに、前回の記事では Mac OS X に標準でバンドルされている Python にまで考えが及んでいなかった。「っき」さんの指摘通り、互換性のことも考慮すると、Apple のパッケージングを見習うのがよさそうだ。&lt;/p&gt;
+
+&lt;p&gt;というわけで、Apple のパッチを適用した Python 2.5.1 の&lt;a href=&#34;http://snipplr.com/view/6028/apples-modifications-to-python-251-localepy-/&#34;&gt;パッチファイルをアップしておく&lt;/a&gt;。以降は、このパッチファイルを作成するまでの詳細である。&lt;/p&gt;
+
+&lt;h3 id=&#34;mac-os-x-に標準でパッケージングされている-python:363e045729c80ba947d40f29bb6d79a6&#34;&gt;Mac OS X に標準でパッケージングされている Python&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://developer.apple.com/&#34;&gt;Apple Developer Connection&lt;/a&gt; の &lt;a href=&#34;http://developer.apple.com/opensource/index.html&#34;&gt;Open Source&lt;/a&gt; ページでは Mac OS X のベースとなっている Darwin のソースコードが公開されている。&lt;a href=&#34;http://www.opensource.apple.com/darwinsource/10.4.9.x86/&#34;&gt;現時点での最新版は Mac OS X 10.4.9 のもの&lt;/a&gt;なので、今回のパッチはこれを基にした。&lt;/p&gt;
+
+&lt;p&gt;上記ページからダウンロードできる &lt;a href=&#34;http://www.opensource.apple.com/darwinsource/tarballs/other/python-16.1.3.tar.gz&#34;&gt;python-16.1.3.tar.gz&lt;/a&gt; には Mac OS X にバンドルされている Python に適用されたパッチが含まれているので、このうち、ロケール周りに関係あるものを Python 2.5.1 のソースコードに適用すればよさそうだ。&lt;/p&gt;
+
+&lt;h3 id=&#34;apple-のパッチを-python-2-5-1-に適用する:363e045729c80ba947d40f29bb6d79a6&#34;&gt;Apple のパッチを Python 2.5.1 に適用する&lt;/h3&gt;
+
+&lt;p&gt;まずは、Python 2.5.1 のソースコードと Apple のパッチ (python-16.1.3.tar.gz) を同じディレクトリにダウンロードして展開する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% curl -LO http://www.python.org/ftp/python/2.5.1/Python-2.5.1.tgz
+% curl -LO http://www.opensource.apple.com/darwinsource/tarballs/other/python-16.1.3.tar.gz
+% tar xvzf Python-2.5.1.tgz
+% tar xvzf python-16.1.3.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以下のようなシェルスクリプトでパッチを適用した。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PROJECT=Python-2.5.1
+FIX=python-16.1.3/fix
+echo ed - ${PROJECT}/Lib/locale.py \&amp;lt; ${FIX}/locale.py.ed &amp;amp;&amp;amp; \
+ed - ${PROJECT}/Lib/locale.py &amp;lt; ${FIX}/locale.py.ed &amp;amp;&amp;amp; \
+echo ed - ${PROJECT}/Modules/_localemodule.c \&amp;lt; ${FIX}/_localemodule.c.ed &amp;amp;&amp;amp; \
+ed - ${PROJECT}/Modules/_localemodule.c &amp;lt; ${FIX}/_localemodule.c.ed
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;要するに、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;python-16.1.3/fix/locale.py.ed&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;python-16.1.3/fix/_localemodule.c.ed&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;というふたつのパッチファイルを適用したわけだ。&lt;/p&gt;
+
+&lt;p&gt;その diff をとったものが&lt;a href=&#34;http://snipplr.com/view/6028/apples-modifications-to-python-251-localepy-/&#34;&gt;上記のパッチファイル&lt;/a&gt;となる。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Python: Mac OS X での locale.getpreferredencoding() </title>
+      <link>http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</link>
+      <pubDate>Thu, 19 Jul 2007 10:30:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</guid>
+      <description>
+
+&lt;p&gt;（追記）この記事に載せているパッチよりも &lt;a href=&#34;http://weblog.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/&#34;&gt;Apple によるロケール周りの変更点を Python 2.5.1 にも適用する&lt;/a&gt;のパッチを使った方がよさそうです。Mac OS X 標準の Python との互換性があります。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://trac.edgewall.org/wiki/TracInstall&#34;&gt;TracInstall&lt;/a&gt; に従って、Mac OS X で &lt;a href=&#34;http://trac.edgewall.org/&#34;&gt;Trac&lt;/a&gt; を動かそうとしている。&lt;a href=&#34;http://weblog.metareal.org/category/subversion/&#34;&gt;以前試したときは頓挫した&lt;/a&gt;のだが、今回は Python を含む&lt;strong&gt;すべてのライブラリ&lt;/strong&gt;を一からインストールして、じっくりやってみることにした。&lt;/p&gt;
+
+&lt;p&gt;とりあえず、&lt;code&gt;tracd&lt;/code&gt; を起動するところまでは問題なくいったのだけれど、URL にアクセスしてみると早速こんなエラーが。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Traceback (most recent call last):
+  File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 406, in dispatch_request
+    dispatcher.dispatch(req)
+  File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 207, in dispatch
+    populate_hdf(req.hdf, self.env, req)
+  File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 77, in populate_hdf
+    &#39;time&#39;: format_datetime(),
+  File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/util/datefmt.py&amp;quot;, line 65, in format_datetime
+    return unicode(text, encoding, &#39;replace&#39;)
+LookupError: unknown encoding: X-MAC-JAPANESE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;じっくりやってみる、と書いた矢先にくじけそうになりましたが、諦めずに原因を追ってみますね。&lt;/p&gt;
+
+&lt;p&gt;その前に、今回試したバージョンは、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Python 2.5.1&lt;/li&gt;
+&lt;li&gt;Trac 0.10.4&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;です。&lt;/p&gt;
+
+&lt;h3 id=&#34;ソースコードを読む:420dbfa210f789f3a114411bdddb14ea&#34;&gt;ソースコードを読む&lt;/h3&gt;
+
+&lt;p&gt;スタックトレースから例外の発生箇所は簡単に分かるので、ソースコードを読んでみる (&lt;code&gt;/trac/util/datefmt.py&lt;/code&gt;) 。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def format_datetime(t=None, format=&#39;%x %X&#39;, gmt=False):
+    if t is None:
+        t = time.time()
+    if not isinstance(t, (list, tuple, time.struct_time)):
+        if gmt:
+            t = time.gmtime(float(t))
+        else:
+            t = time.localtime(float(t))
+
+    text = time.strftime(format, t)
+    encoding = locale.getpreferredencoding() or sys.getdefaultencoding()
+    if sys.platform != &#39;win32&#39;:
+        encoding = locale.getlocale(locale.LC_TIME)[1] or encoding
+        # the above is broken on win32, e.g. we&#39;d get &#39;437&#39; instead of &#39;cp437&#39;
+    return unicode(text, encoding, &#39;replace&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;今回のエラーはビルトイン関数の &lt;code&gt;unicode&lt;/code&gt; が &lt;code&gt;X-MAC-JAPANESE&lt;/code&gt; エンコーディングをサポートしていないのが原因のようだ。&lt;code&gt;X-MAC-JAPANESE&lt;/code&gt; は Mac ユーザにとってはお馴染みの MacJapanese（ほぼ Shift-JIS）のことだろう。たしかにリファレンスの &lt;a href=&#34;http://docs.python.org/lib/standard-encodings.html&#34;&gt;4.8.3 Standard Encodings&lt;/a&gt; を読んでもそれらしきエンコーディングがない。&lt;/p&gt;
+
+&lt;p&gt;となると、考えられる解決方法はふたつ&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;MacJapanese をサポートするコーデックを追加&lt;/li&gt;
+&lt;li&gt;そもそも、&lt;code&gt;locale.getpreferredencoding()&lt;/code&gt; でサポートしていないエンコーディングを返さない。この場合は &lt;code&gt;shift_jis&lt;/code&gt; を返してしまっていい気がする&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;まあ、1. が真っ当なんだろうけど、2. でも問題ないというか、むしろ、&lt;code&gt;getpreferredencoding&lt;/code&gt; という名前のメソッドがサポートされていないエンコーディングを返すよりいいんじゃないだろうか。&lt;/p&gt;
+
+&lt;h3 id=&#34;localmodule-c-を変更:420dbfa210f789f3a114411bdddb14ea&#34;&gt;_localmodule.c を変更&lt;/h3&gt;
+
+&lt;p&gt;とりあえず、Python 2.5.1 の &lt;code&gt;Modules/_localemodule.c&lt;/code&gt; で、&lt;code&gt;X-MAC-JAPANESE&lt;/code&gt; の場合は &lt;code&gt;shift_jis&lt;/code&gt; を返すように変更してみた。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;--- Modules/_localemodule.c.orig        2007-07-19 02:47:21.000000000 +0900
++++ Modules/_localemodule.c     2007-07-19 03:17:28.000000000 +0900
+@@ -426,6 +426,7 @@
+     case kCFStringEncodingMacCyrillic: return &amp;quot;mac-cyrillic&amp;quot;;
+     case kCFStringEncodingMacTurkish: return &amp;quot;mac-turkish&amp;quot;;
+     case kCFStringEncodingMacIcelandic: return &amp;quot;mac-icelandic&amp;quot;;
++    case kCFStringEncodingMacJapanese: return &amp;quot;shift_jis&amp;quot;;
+     /* XXX which one is mac-latin2? */
+     }
+     if (!name) {
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ちなみに、このへんのコードでは Mac OS X のフレームワークである &lt;a href=&#34;http://developer.apple.com/corefoundation/&#34;&gt;Core Foundation&lt;/a&gt; が利用されている。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://devworld.apple.com/documentation/CoreFoundation/Reference/CFStringRef/Reference/reference.html&#34;&gt;CFString Reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://homepage.mac.com/mkino2/core/index.html&#34;&gt;CoreFoundation の秘密&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

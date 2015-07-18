@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Quicksilver on METAREAL</title>
+    <link>http://www.metareal.org/tags/quicksilver/</link>
+    <description>Recent content in Quicksilver on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Wed, 15 Aug 2007 05:18:00 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/quicksilver/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>iGTD と QuickSilver の連携</title>
+      <link>http://www.metareal.org/2007/08/15/about-igtd-quicksilver-plugin/</link>
+      <pubDate>Wed, 15 Aug 2007 05:18:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/08/15/about-igtd-quicksilver-plugin/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://igtd.pl/iGTD/&#34;&gt;iGTD&lt;/a&gt; のインストール用ディスクイメージには &lt;a href=&#34;http://docs.blacktree.com/quicksilver/what_is_quicksilver&#34;&gt;QuickSilver&lt;/a&gt; と連携するためのプラグインが同梱されている（参考：&lt;a href=&#34;http://bargiel.home.pl/iGTD/help/quicksilver/index.html&#34;&gt;iGTD &amp;amp; Quicksilver&lt;/a&gt;）。&lt;/p&gt;
+
+&lt;p&gt;このプラグインで追加される &lt;strong&gt;Put into iGTD inbox&lt;/strong&gt; を使えば、QuickSilver で選択したものは何でも（テキスト、ファイル、ブックマーク、あるいはアプリケーションも）iGTD の inbox に放り込むことが可能だ。QuickSilver でテキストを入力すれば、それがそのままタスクの名前になるし、ファイルやブックマークはタスクにリンクが付随したかたちで登録される。&lt;/p&gt;
+
+&lt;p&gt;また、タスクを登録するときは、あらかじめ決められたフォーマットに従うことで、たとえば、登録先のコンテキストやプロジェクトを指定することができる。&lt;/p&gt;
+
+&lt;p&gt;以下に、使用できるフォーマットをまとめた。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;コンテキストを指定する&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;@development&lt;/strong&gt; Remove a bug with link field&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@dev&lt;/strong&gt; Remove a bug with link field&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;プロジェクトを指定する&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;A nice new feature &lt;strong&gt;[igtd]&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;A nice new feature &lt;strong&gt;[ig]&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;ノートを指定する&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;@dev A nice new feature [igtd]&lt;strong&gt;: quicksilver integration&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;@dev A nice new feature&lt;strong&gt;: quicksilver integration&lt;/strong&gt; [igtd]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;優先度を指定する&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;@dev A nice new feature&lt;strong&gt;!!&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;@dev A nice new feature&lt;strong&gt;!&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;@dev A nice new feature&lt;/li&gt;
+&lt;li&gt;@dev A nice new feature&lt;strong&gt;?&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;@dev A nice new feature&lt;strong&gt;??&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;開始日時を指定する&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;@dev do it!! [igtd]: new release &lt;strong&gt;#friday,&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;終了日時を指定する&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;@dev do it!! [igtd]: new release &lt;strong&gt;#today&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;@dev do it! [igtd]: new release &lt;strong&gt;#next week&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;開始／終了日時を指定する&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;@dev do it!! [igtd]: new release &lt;strong&gt;#friday,sunday&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;タグを指定する&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;@dev a task! [igtd]: new release &lt;strong&gt;{concept,1.5}&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;インストール用ディスクイメージには同様の機能をもつ Dashboard ウィジェットも同梱されているので、好きな方を使えばいいだろう。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>QuickSilver でスクリーンセイバーを起動</title>
+      <link>http://www.metareal.org/2007/03/28/launch-screen-saver-from-quicksilver/</link>
+      <pubDate>Thu, 29 Mar 2007 01:21:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/03/28/launch-screen-saver-from-quicksilver/</guid>
+      <description>&lt;p&gt;わたしは不器用なので、スクリーンセイバーをホットコーナーから起動しようとするたびに失敗する（スクリーンセイバーが起動したとたんに、微妙にマウスを動かしてしまって、起動が解除されてしまう）。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://quicksilver.blacktree.com/&#34;&gt;QuickSilver&lt;/a&gt; から起動できたら便利だなと思って、スクリーンセイバーを起動する &lt;code&gt;AppleScript&lt;/code&gt; を書いて、&lt;code&gt;~/Library/Scripts/&lt;/code&gt; に置いてある。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tell application &amp;quot;Finder&amp;quot;
+  open application file &amp;quot;/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app&amp;quot; as POSIX file
+end tell
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ホットキーにも登録してみたが、いちいち QuickSilver を起動してタイプする方が性にあっているようだ。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

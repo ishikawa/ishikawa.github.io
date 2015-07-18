@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tamarin on METAREAL</title>
+    <link>http://www.metareal.org/tags/tamarin/</link>
+    <description>Recent content in Tamarin on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Sun, 06 Jul 2008 09:35:00 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/tamarin/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>C 言語で書かれたソフトウェアが Flash で動くようになるかもしれない</title>
+      <link>http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/</link>
+      <pubDate>Sun, 06 Jul 2008 09:35:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://lucille.atso-net.jp/blog/?p=555&#34;&gt;lucille development blog&lt;/a&gt; 経由。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.toolness.com/wp/?p=52&#34;&gt;Running C and Python Code on The Web&lt;/a&gt; によると、Adobe の Scott Petersen 氏が大変興味深いツールを開発中のようだ。このツールを使うと、C 言語で書かれたソフトウェアを Flash Player で実行できるようになる。また、このツールはオープンソースで公開されるとのこと。&lt;/p&gt;
+
+&lt;h3 id=&#34;llvm-tamarin:8d737c7358e6143323105190bb6ec8ae&#34;&gt;LLVM, Tamarin&lt;/h3&gt;
+
+&lt;p&gt;ソフトウェアを Flash Player で実行可能な形式に変換するためには、ソフトウェアのソースコードが必要になる。変換の手順は以下のとおり。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;C 言語で書かれたソースコードを &lt;a href=&#34;http://llvm.org/cmds/llvmgcc.html&#34;&gt;llvm-gcc&lt;/a&gt; で &lt;a href=&#34;http://llvm.org/&#34;&gt;LLVM&lt;/a&gt; のアセンブリにコンパイルする&lt;/li&gt;
+&lt;li&gt;LLVM のアセンブリを &lt;a href=&#34;http://ja.wikipedia.org/wiki/ActionScript&#34;&gt;ActionScript&lt;/a&gt; で実装した独自 VM 向けの命令群に変換する&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;ActionScript で実装された独自 VM は、Flash Player の &lt;a href=&#34;http://www.mozilla-japan.org/projects/tamarin/&#34;&gt;Tamarin&lt;/a&gt; VM で実行される、というカラクリだ。&lt;/p&gt;
+
+&lt;p&gt;先進的な最適化を備えたバックエンドとして注目を集める LLVM プロジェクトだが、その成果物を、フロントエンドとして利用しているのが面白い（もちろん、LLVM アセンブリの段階でも、&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E5%AE%9A%E6%95%B0%E7%95%B3%E3%81%BF%E8%BE%BC%E3%81%BF&#34;&gt;定数畳み込み&lt;/a&gt;や&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%87%E3%83%83%E3%83%89%E3%82%B3%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4&#34;&gt;デッドコード削除&lt;/a&gt;といった従来の最適化は施されているはずなので、フロントエンドとしてのみ利点があるわけではない）。&lt;/p&gt;
+
+&lt;h3 id=&#34;quake-nintendo:8d737c7358e6143323105190bb6ec8ae&#34;&gt;Quake, Nintendo&lt;/h3&gt;
+
+&lt;p&gt;もっとも、命令単位の変換はそれほど難しいものでもないし、実用的なアプリケーションが動作するのかどうか、気になるところだ。そこで、コンパイラだけではなく、インフラも整備されている。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;POSIX API&lt;/li&gt;
+&lt;li&gt;Flash のマルチメディア機能を操作するためのライブラリ&lt;/li&gt;
+&lt;li&gt;ネイティブのバイト配列など、Tamarin VM への機能追加&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;結果として、さまざまな種類のソフトウェアが、実用的な速度で動作するらしい。&lt;/p&gt;
+
+&lt;p&gt;Mozilla で行われたデモでは、&lt;a href=&#34;http://ja.wikipedia.org/wiki/Quake&#34;&gt;Quake&lt;/a&gt; や、C 言語で書かれたエミュレータでゼルダが動いていた、しかも、ゲームは操作でき BGM も再現されていた、というのでなかなかのインパクトだ（ただ、2. のライブラリを使うために、ソースコードを書き換える必要があるんじゃないの？　という疑問は湧くが&amp;hellip;）。&lt;/p&gt;
+
+&lt;p&gt;ゲームだけではない。デモでは同様に、&lt;a href=&#34;http://www.lua.org/&#34;&gt;Lua&lt;/a&gt;, &lt;a href=&#34;http://www.ruby-lang.org/ja/&#34;&gt;Ruby&lt;/a&gt;, &lt;a href=&#34;http://www.perl.org/&#34;&gt;Perl&lt;/a&gt;, そして &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; といった LL 言語の処理系が動作していた、という。改めて書くが、これらはすべて、&lt;strong&gt;Flash Player 上での出来事だ&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;python-javascript-nestedvm:8d737c7358e6143323105190bb6ec8ae&#34;&gt;Python, JavaScript, NestedVM&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.toolness.com/wp/?p=52&#34;&gt;元記事&lt;/a&gt;ではこのあと、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;この技術が Python に与える影響をセキュリティ的観点、&lt;a href=&#34;http://codespeak.net/pypy/dist/pypy/doc/home.html&#34;&gt;PyPy&lt;/a&gt; プロジェクトとの比較から考察&lt;/li&gt;
+&lt;li&gt;ActionScript でも動くのなら、ブラウザの JavaScript でも動くんじゃない？　という当然の飛躍&lt;/li&gt;
+&lt;li&gt;まだ、不完全だけど Firefox の JavaScript エンジンには Tamarin VM が搭載されるしね&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;といった話題に移っていく&lt;a href=&#34;#note&#34;&gt;[1]&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;Adobe も LLVM を採用することを検討くらいはしているはずなので、これは LLVM 採用に向けた過渡的な実験の成果なのではないか、と個人的には思っている。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;#id1&#34;&gt;[1]&lt;/a&gt;
+なお、C 言語で書かれたソフトウェアを別言語の処理系で動かす、というテーマには &lt;a href=&#34;http://nestedvm.ibex.org/&#34;&gt;NestedVM&lt;/a&gt; という先行事例がある。GCC の出力した MIPS コードを Java のバイトコードに変換することで、C や FORTRAN などで書かれたソフトウェアを Java VM で実行できるようにしている。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

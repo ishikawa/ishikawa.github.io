@@ -1,0 +1,64 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>QuickSilver でスクリーンセイバーを起動</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/03/28/launch-screen-saver-from-quicksilver/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>QuickSilver でスクリーンセイバーを起動</h1>
+  <div class="metadata">
+    <p class="date">2007/03/29 1:21am</p>
+  </div>
+  <div class="content">
+    <p>わたしは不器用なので、スクリーンセイバーをホットコーナーから起動しようとするたびに失敗する（スクリーンセイバーが起動したとたんに、微妙にマウスを動かしてしまって、起動が解除されてしまう）。</p>
+
+<p><a href="http://quicksilver.blacktree.com/">QuickSilver</a> から起動できたら便利だなと思って、スクリーンセイバーを起動する <code>AppleScript</code> を書いて、<code>~/Library/Scripts/</code> に置いてある。</p>
+
+<pre><code>tell application &quot;Finder&quot;
+  open application file &quot;/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app&quot; as POSIX file
+end tell
+</code></pre>
+
+<p>ホットキーにも登録してみたが、いちいち QuickSilver を起動してタイプする方が性にあっているようだ。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/03/28/ruby-1-8-6-and-fastthread/">ruby 1.8.6 と fastthread</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/03/27/opencv-on-mac-os-x-tiger/">OpenCV 1.0.0 を Mac OS X 10.4 にインストール</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

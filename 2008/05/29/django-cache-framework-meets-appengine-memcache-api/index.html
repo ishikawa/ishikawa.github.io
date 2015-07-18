@@ -1,0 +1,141 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Django のキャッシュで Google App Engine の Memcache API を使う</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2008/05/29/django-cache-framework-meets-appengine-memcache-api/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Django のキャッシュで Google App Engine の Memcache API を使う</h1>
+  <div class="metadata">
+    <p class="date">2008/05/29 1:48am</p>
+  </div>
+  <div class="content">
+    
+
+<p><a href="http://googleappengine.blogspot.com/">Google App Engine ブログ</a>で<a href="http://googleappengine.blogspot.com/2008/05/announcing-open-signups-expected.html">新しい動き</a>があった。トピックは以下の通り。</p>
+
+<ol>
+<li>アカウント数の制限を撤廃</li>
+<li>課金の料金体系について</li>
+<li>画像操作のための API</li>
+<li><a href="http://code.google.com/appengine/docs/memcache/">Memcache API</a></li>
+</ol>
+
+<p>どれひとつとっても、重大な発表ばかりだ。プラットホームとしての Google App Engine に注目している方は 1. 2. が特に気になるだろうし、利用者からすれば、3. 4. は待ち焦がれていた機能だろう。</p>
+
+<h3 id="重いページをキャッシュする:566a9dac81dfb9c529763dee37b2ec7b">重いページをキャッシュする</h3>
+
+<p>このブログを <a href="/2008/05/20/porting-weblog-to-google-app-engine/">Google App Engine に移行</a>して一週間が経った。しかし、Admin Console でログを確認してみると、ところどころで警告が出ている。</p>
+
+<pre><code>
+&quot;GET /index.xml HTTP/1.1&quot; 200 117413 - -
+...
+This request used a high amount of CPU, and was roughly 5.5 times over the average request CPU limit. High CPU requests have a small quota, and if you exceed this quota, your app will be temporarily disabled.
+</code></pre>
+
+<p>どうやら、フィードの生成が重いようである。</p>
+
+<p>考えてみれば、フィードがリクエストされるたびに、この重い処理を繰り返す必要はない。どうせ、記事の更新があるまでは生成される内容は同じだし、記事の更新をリアルタイムに反映する必要もないだろう。キャッシュしてしまおう。</p>
+
+<h3 id="the-django-cache-framework:566a9dac81dfb9c529763dee37b2ec7b">The Django cache framework</h3>
+
+<p><a href="http://www.djangoproject.com/">Django</a> には<a href="http://www.djangoproject.com/documentation/cache/">簡単に使えるキャッシュ・フレームワーク</a>（<a href="http://ymasuda.jp/python/django/docs/cache.html">和訳</a>）が組込まれており、<a href="http://danga.com/memcached/">memcached</a> もサポートされている。</p>
+
+<p>今回は <strong>Django のキャッシュ・フレームワークが memcached の代わりに GAE の Memcache API を使うようにする</strong>ことで、コンテンツをキャッシュしてみよう。</p>
+
+<p>Note</p>
+
+<p>以下で紹介する方法は、<a href="http://code.google.com/p/google-app-engine-django/">Google App Engine Helper for Django</a> に投稿された<a href="http://code.google.com/p/google-app-engine-django/issues/detail?id=27">パッチ</a>に基づいている。この機能が Google App Engine Helper for Django に取り込まれる日も近いだろう。</p>
+
+<p>この修正は簡単で、<code>main.py</code> に以下の行を追加するだけである。</p>
+
+<pre><code># Install App Engine memcache backend for cache framework
+from google.appengine.api import memcache
+sys.modules['memcache'] = memcache
+</code></pre>
+
+<p>変更は一目瞭然。トップレベルの <code>memcache</code> モジュールを GAE の <code>memcache</code> モジュールにしてしまう。</p>
+
+<p>あとは、Django のキャッシュ・フレームワークを設定するだけだ。<code>settings.py</code> に <code>CACHE_BACKEND</code> の指定を追加しよう。GAE の Memcache API では接続先や負荷分散を指定する必要はないので、ホストの部分は空にしておく。</p>
+
+<pre><code>CACHE_BACKEND = 'memcached:///'
+</code></pre>
+
+<p>とりあえず、フィードをキャッシュしたかったので <code>cache_page</code> デコレータで、フィードを生成している View をキャッシュするようにした。</p>
+
+<pre><code>from django.views.decorators.cache import cache_page, never_cache
+
+@cache_page
+def archive_tag(request, slug, page=1):
+  ...
+</code></pre>
+
+<p>たったこれだけで、初回リクエスト以降、重いフィード生成の処理をキャッシュしてくれるようになった。</p>
+
+<h3 id="keyerror:566a9dac81dfb9c529763dee37b2ec7b">KeyError</h3>
+
+<p><strong>（2008.5.29 追記）</strong>memcached.Client#get が <code>KeyError</code> を返すことがあるようだ。<a href="http://code.google.com/appengine/docs/memcache/clientclass.html#Client_get">キーが存在しない場合は None を返すはず</a>なので、バグかもしれない。</p>
+
+<ul>
+<li><a href="http://groups.google.com/group/google-appengine/browse_thread/thread/48eea75a4b1e54cf/b59461ba28810c86?lnk=gst&amp;q=memcache#b59461ba28810c86">memcache module working? - Google App Engine | Google グループ</a></li>
+</ul>
+
+<p>ただ、公開直後の時点では <code>KeyError</code> が頻発し、エラーページが表示されてしまう。以下のようなコードで、</p>
+
+<pre><code>def silent_missing_key_error(func):
+    def inner(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except KeyError:
+            logging.exception(&quot;KeyError in google.appengine.api.memcache&quot;)
+            return None
+    return inner
+
+from django.core.cache.backends.memcached import CacheClass as MemcacheCache
+MemcacheCache.get = silent_missing_key_error(MemcacheCache.get)
+MemcacheCache.get_many = silent_missing_key_error(MemcacheCache.get_many)
+</code></pre>
+
+<p><code>KeyError</code> が起こった場合はログに残して、<code>None</code> を返すようにしている。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2008/06/06/280slides-in-objective-j/">280Slides in Objective-J</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2008/05/24/django-xview-middleware-tour/">XViewMiddleware の謎</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

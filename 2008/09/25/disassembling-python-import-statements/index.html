@@ -1,0 +1,192 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Python の dis モジュールでさまざまな import 文を disassemble する</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2008/09/25/disassembling-python-import-statements/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Python の dis モジュールでさまざまな import 文を disassemble する</h1>
+  <div class="metadata">
+    <p class="date">2008/09/25 9:34am</p>
+  </div>
+  <div class="content">
+    
+
+<p><a href="http://docs.python.org/ref/">Python Reference Manual</a> の <a href="http://docs.python.org/ref/import.html">6.12 The import statement</a> を参考に、さまざまな形式の import 文を <a href="http://docs.python.org/lib/module-dis.html">dis</a> モジュールで <code>disassemble</code> してみた。</p>
+
+<h3 id="import:8592ba189cdb8aa120e1fb84b538c680">import &hellip;</h3>
+
+<p>まずは、もっとも単純な <code>import ...</code></p>
+
+<pre><code>&gt;&gt;&gt; dis.disassemble(compile('import os', '', 'exec'))
+  1           0 LOAD_CONST               0 (-1)
+              3 LOAD_CONST               1 (None)
+              6 IMPORT_NAME              0 (os)
+              9 STORE_NAME               0 (os)
+             12 LOAD_CONST               1 (None)
+             15 RETURN_VALUE
+</code></pre>
+
+<p><code>IMPORT_NAME</code> で <code>import</code> するモジュールが指定されていることが分かる。では、<code>as</code> を使って別名をつけるとどうなるだろうか。</p>
+
+<pre><code>&gt;&gt;&gt; dis.disassemble(compile('import os as os2', '', 'exec'))
+  1           0 LOAD_CONST               0 (-1)
+              3 LOAD_CONST               1 (None)
+              6 IMPORT_NAME              0 (os)
+              9 STORE_NAME               1 (os2)
+             12 LOAD_CONST               1 (None)
+             15 RETURN_VALUE
+</code></pre>
+
+<p><code>STORE_NAME</code> の引数が <code>os</code> から <code>os2</code> に変わった。つまり、登録するシンボル名は <code>STORE_NAME</code> で指定されるということだろう。</p>
+
+<h3 id="import-1:8592ba189cdb8aa120e1fb84b538c680">import &hellip;, &hellip;</h3>
+
+<p>複数のモジュールを <code>import</code> してみよう。</p>
+
+<pre><code>&gt;&gt;&gt; dis.disassemble(compile('import os, sys', '', 'exec'))
+  1           0 LOAD_CONST               0 (-1)
+              3 LOAD_CONST               1 (None)
+              6 IMPORT_NAME              0 (os)
+              9 STORE_NAME               0 (os)
+             12 LOAD_CONST               0 (-1)
+             15 LOAD_CONST               1 (None)
+             18 IMPORT_NAME              1 (sys)
+             21 STORE_NAME               1 (sys)
+             24 LOAD_CONST               1 (None)
+             27 RETURN_VALUE
+</code></pre>
+
+<p>特別なバイトコードが用意されているわけではなく、引数だけが異なるバイトコードが繰り返されるようだ。</p>
+
+<h3 id="from-import:8592ba189cdb8aa120e1fb84b538c680">from &hellip; import &hellip;</h3>
+
+<p>モジュールから特定のシンボルだけを <code>import</code> する <code>from ... import ...</code></p>
+
+<pre><code>&gt;&gt;&gt; dis.disassemble(compile('from os.path import join', '', 'exec'))
+  1           0 LOAD_CONST               0 (-1)
+              3 LOAD_CONST               1 (('join',))
+              6 IMPORT_NAME              0 (os.path)
+              9 IMPORT_FROM              1 (join)
+             12 STORE_NAME               1 (join)
+             15 POP_TOP
+             16 LOAD_CONST               2 (None)
+             19 RETURN_VALUE
+
+&gt;&gt;&gt; dis.disassemble(compile('from os.path import join, dirname', '', 'exec'))
+  1           0 LOAD_CONST               0 (-1)
+              3 LOAD_CONST               1 (('join', 'dirname'))
+              6 IMPORT_NAME              0 (os.path)
+              9 IMPORT_FROM              1 (join)
+             12 STORE_NAME               1 (join)
+             15 IMPORT_FROM              2 (dirname)
+             18 STORE_NAME               2 (dirname)
+             21 POP_TOP
+             22 LOAD_CONST               2 (None)
+             25 RETURN_VALUE
+</code></pre>
+
+<p>新しく <code>IMPORT_FROM</code> が登場しているが、基本的な構造は変わらない。</p>
+
+<p>すこし特殊なのが <code>from ... import *</code> でモジュール内のすべてのシンボルを <code>import</code> する場合だ。</p>
+
+<pre><code>&gt;&gt;&gt; dis.disassemble(compile('from module import *', '', 'exec'))
+  1           0 LOAD_CONST               0 (-1)
+              3 LOAD_CONST               1 (('*',))
+              6 IMPORT_NAME              0 (module)
+              9 IMPORT_STAR
+             10 LOAD_CONST               2 (None)
+             13 RETURN_VALUE
+</code></pre>
+
+<p><code>STORE_NAME</code> がなくなり、専用の <code>IMPORT_STAR</code> が使われている。</p>
+
+<h3 id="relative-imports:8592ba189cdb8aa120e1fb84b538c680">Relative Imports</h3>
+
+<p><a href="http://docs.python.org/whatsnew/pep-328.html">相対インポート</a>はどのように実現されているのだろう？</p>
+
+<pre><code>&gt;&gt;&gt; dis.disassemble(compile('from .. b import B', '', 'exec'))
+  1           0 LOAD_CONST               0 (2)
+              3 LOAD_CONST               1 (('B',))
+              6 IMPORT_NAME              0 (b)
+              9 IMPORT_FROM              1 (B)
+             12 STORE_NAME               1 (B)
+             15 POP_TOP
+             16 LOAD_CONST               2 (None)
+             19 RETURN_VALUE
+</code></pre>
+
+<p>一見すると、<code>from b import B</code> から変わったところは見当たらない。しかし、最初の <code>LOAD_CONST</code> に注目してほしい。いままで <code>-1</code> だった引数が 2 になっている。ここで相対インポートの深さを指定しているわけだ。</p>
+
+<h3 id="from-future-import:8592ba189cdb8aa120e1fb84b538c680">from <strong>future</strong> import &hellip;</h3>
+
+<p>最後に <code>from __future__</code> がどのようにコンパイルされるのか見ておこう。</p>
+
+<pre><code>&gt;&gt;&gt; dis.disassemble(compile('from __future__ import absolute_import', '', 'exec'))
+  1           0 LOAD_CONST               0 (0)
+              3 LOAD_CONST               1 (('absolute_import',))
+              6 IMPORT_NAME              0 (__future__)
+              9 IMPORT_FROM              1 (absolute_import)
+             12 STORE_NAME               1 (absolute_import)
+             15 POP_TOP
+             16 LOAD_CONST               2 (None)
+             19 RETURN_VALUE
+</code></pre>
+
+<p>バイトコードは普通の <code>import</code> と変わらないように見える。</p>
+
+<p>それもそのはずで、実行時の振る舞いは通常の <code>import</code> と同じなのだ。もちろん、コンパイル時はコンパイラが <code>from __future__</code> を特別扱いしてセマンティクスのチェックなどを行うわけだが、<strong>実行時は標準ライブラリの <strong>future</strong>.py を import するようになっている</strong>。</p>
+
+<p><a href="/2008/09/25/disassembling-python-import-statements-take2/">追記が長くなったので、つづきを別の記事として書きました</a>。</p>
+
+<h3 id="reference:8592ba189cdb8aa120e1fb84b538c680">Reference</h3>
+
+<ul>
+<li><a href="http://docs.python.org/ref/import.html">6.12 The import statement</a></li>
+<li><a href="http://docs.python.org/ref/future.html">6.12.1 Future statements</a></li>
+<li><a href="http://docs.python.org/lib/module-dis.html">dis &ndash; Disassembler for Python byte code</a></li>
+<li><a href="http://docs.python.org/lib/bytecodes.html">Python Byte Code Instructions</a></li>
+<li><a href="http://www.python.org/dev/peps/pep-0236/">PEP 236 &ndash; Back to the <strong>future</strong></a></li>
+</ul>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2008/09/25/disassembling-python-import-statements-take2/">Python の dis モジュールでさまざまな import 文を disassemble する (2)</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2008/09/07/logarithm-and-big-o-notation/">O記法で対数の底が省略される理由</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

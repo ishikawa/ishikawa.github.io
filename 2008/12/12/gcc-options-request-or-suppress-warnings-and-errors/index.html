@@ -1,0 +1,104 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>GCC の警告オプションで一部の警告のみをエラー扱いにしたい</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2008/12/12/gcc-options-request-or-suppress-warnings-and-errors/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>GCC の警告オプションで一部の警告のみをエラー扱いにしたい</h1>
+  <div class="metadata">
+    <p class="date">2008/12/12 6:23am</p>
+  </div>
+  <div class="content">
+    
+
+<p><a href="http://gcc.gnu.org/">GCC</a> の警告オプションでよく使うものといえば、以下のようなものがある：</p>
+
+<ul>
+<li><a href="http://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Warning-Options.html#index-Wall-234"><code>-Wall</code></a> 一般的な警告を有効にする</li>
+<li><a href="http://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Warning-Options.html#index-Wextra-237"><code>-Wextra (-W)</code></a> <code>-W</code> が <a href="http://gcc.gnu.org/gcc-4.0/">gcc 4</a> から分かりやすい名前に変更された（<code>-W</code> も有効）</li>
+<li><a href="http://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Warning-Options.html#index-Werror-226"><code>-Werror</code></a> 警告をエラー扱いにする</li>
+</ul>
+
+<h3 id="wunused-parameter:39611ef83396f44a16b5ef53d31a6ecd">-Wunused-parameter</h3>
+
+<p>ところで、警告オプションのひとつ、<a href="http://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Warning-Options.html#index-Wunused-303">-Wunused</a> は <code>-Wextra (-W)</code> が有効な場合、<a href="http://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Warning-Options.html#index-Wunused_002dparameter-297">-Wunused-parameter</a> も有効にする。<code>-Wunused-parameter</code> は関数で使われていない引数があった場合に警告を出力するオプションだ。なお、<code>-Wunused</code> は <code>-Wall</code> によっても暗黙的に指定されるため、<code>-Wextra (-W)</code> と <code>-Wall</code> を両方指定したときも、<code>-Wunused-parameter</code> が有効になる。</p>
+
+<p>このとき、もし、<code>-Werror</code> も有効になっていると、未使用の関数引数があった場合にコンパイルエラーになってしまう。意図した通りの動作ではあるものの、これでは都合が悪いときもある。たとえば、テスト駆動開発では関数の実装を空にしておくことがあるが、上記の場合は、これがエラーとなってしまう。</p>
+
+<h3 id="wno-unused-parameter:39611ef83396f44a16b5ef53d31a6ecd">-Wno-unused-parameter</h3>
+
+<p>Mac OS X Leopard (Xcode 3.1) に付属する gcc は Apple gcc 4.0 と 4.2 だが、デフォルトは gcc 4.0 が使われる。</p>
+
+<pre><code>% gcc --version
+i686-apple-darwin9-gcc-4.0.1 (GCC) 4.0.1 (Apple Inc. build 5490)
+Copyright (C) 2005 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+</code></pre>
+
+<p><a href="http://gcc.gnu.org/gcc-4.0/">gcc 4.0</a> の場合、<code>-Wno-unused-parameter</code> を指定することで「未使用の関数引数」警告自体をなくすことはできる。しかし、できれば、「未使用の関数引数」も警告のまま残し、他の警告はエラー扱いにしたい。</p>
+
+<pre><code>% gcc -std=c++98 -pedantic -Wall -Wextra -Werror -Wno-unused-parameter -c -o src/utils.o src/utils.cpp
+</code></pre>
+
+<h3 id="werror-wno-error:39611ef83396f44a16b5ef53d31a6ecd">-Werror=, -Wno-error=</h3>
+
+<p><a href="http://gcc.gnu.org/onlinedocs/gcc-4.2.4/gcc/">オンラインマニュアル</a>によると、<a href="http://gcc.gnu.org/gcc-4.2/">gcc 4.2</a> からは <a href="http://gcc.gnu.org/onlinedocs/gcc-4.2.4/gcc/Warning-Options.html#index-Werror_003d-325">-Werror= および -Wno-error= というオプション</a>が追加され、エラー扱いにする警告を個別に指定できるようだ。このオプションを使えば、<code>-Wunused-parameter</code> は警告のまま、その他の警告をエラーに出来るだろう。Mac OS X では gcc 4.2 は <code>gcc-4.2</code> という名前でインストールされている。</p>
+
+<pre><code>% gcc-4.2 -std=c++98 -pedantic -Wall -Wextra -Werror -Wno-error=unused-parameter -c -o src/utils.o src/utils.cpp
+src/utils.cpp:108: warning: unused parameter 'start'
+src/utils.cpp:108: warning: unused parameter 'end'
+src/utils.cpp:108: warning: unused parameter 'positiveOnly'
+</code></pre>
+
+<p>しかし、Mac の場合、gcc 4.0 がデフォルトなので、このオプションを使っていいのか悩むところ。</p>
+
+<h3 id="環境変数の利用:39611ef83396f44a16b5ef53d31a6ecd">環境変数の利用</h3>
+
+<p>いまのところ、Makefile には直接書かずに、環境変数で指定する、という方法で対応している：</p>
+
+<pre><code>% CXX=gcc-4.2 CPPFLAGS=-Wno-error=unused-parameter make
+</code></pre>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2008/12/13/%E5%90%91%E6%97%A5%E8%91%B5%E3%81%AE%E5%92%B2%E3%81%8B%E3%81%AA%E3%81%84%E5%A4%8F/">道尾秀介「向日葵の咲かない夏」</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2008/12/09/adobe-alchemy-first-impression/">C/C&#43;&#43; のコードを ActionScript に変換する Adobe Alchemy を試す</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

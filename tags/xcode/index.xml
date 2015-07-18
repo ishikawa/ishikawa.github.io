@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Xcode on METAREAL</title>
+    <link>http://www.metareal.org/tags/xcode/</link>
+    <description>Recent content in Xcode on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Tue, 21 Aug 2007 05:24:00 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/xcode/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Xcode でプロジェクトの名前を変更したくなったら</title>
+      <link>http://www.metareal.org/2007/08/21/rename-xcode-project/</link>
+      <pubDate>Tue, 21 Aug 2007 05:24:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/08/21/rename-xcode-project/</guid>
+      <description>
+
+&lt;p&gt;Xcode でプロジェクトの名前を変えたくなった。&lt;/p&gt;
+
+&lt;p&gt;だが、簡単にはいかない。変更箇所が散在している。面倒くさい。以下に手順をまとめてみる。&lt;/p&gt;
+
+&lt;h3 id=&#34;プロジェクト-ファイル名の変更:2e7ea9e12bb3181a4085f487385cb2ab&#34;&gt;プロジェクト・ファイル名の変更&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Finder で Xcode のプロジェクト・ディレクトリの名前を変更する&lt;/li&gt;
+&lt;li&gt;.xcodeproj ファイルの名前を変更する&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;ターゲットの変更:2e7ea9e12bb3181a4085f487385cb2ab&#34;&gt;ターゲットの変更&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Xcode でターゲット名を変更する&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://developer.apple.com/documentation/DeveloperTools/Conceptual/XcodeUserGuide/Contents/Resources/ja.lproj/05_04_bs_build_settings/chapter_32_section_5.html#//apple_ref/doc/uid/TP40002691-SW4&#34;&gt;ターゲットエディタの「ビルド」パネルを表示&lt;/a&gt;し、「PRODUCT」で検索して表示される「プロダクト名」を変更&lt;/li&gt;
+&lt;li&gt;「PREFIX」で検索して表示されるプレフィックスヘッダのパスにアプリケーション名が含まれているなら変更。&lt;/li&gt;
+&lt;li&gt;プレフィックスヘッダの名前も、この機会に &lt;code&gt;prefix.pch&lt;/code&gt; とかアプリケーション名に依存しない名前にしてしまうのもアリ&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;ソースコードの変更:2e7ea9e12bb3181a4085f487385cb2ab&#34;&gt;ソースコードの変更&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;クラス名の先頭にアプリケーション名の頭文字とか使ってたら悲惨&lt;/li&gt;
+&lt;li&gt;Finder でソースファイル名を変更すると、Xocde 上でのリンクがなくなってしまう&lt;/li&gt;
+&lt;li&gt;.nib ファイルから参照されている場合はそちらも変更する必要が&lt;/li&gt;
+&lt;li&gt;これもアプリケーション名に依存しないようにしておけばいいんだけど、それはそれで。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;プロパティ設定の変更:2e7ea9e12bb3181a4085f487385cb2ab&#34;&gt;プロパティ設定の変更&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ターゲットエディタの「プロパティ」パネルを表示&lt;/li&gt;
+&lt;li&gt;識別子にアプリケーション名が含まれているなら変更する&lt;/li&gt;
+&lt;li&gt;主要クラスとかも変える必要があれば変更する&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;これくらいかな。他にあるかもしれんけど。あとはプロジェクトをクリーンして再ビルド。&lt;/p&gt;
+
+&lt;p&gt;今回の記事を書くにあたってウェブを検索してみると、どうやら、&lt;a href=&#34;http://www.macupdate.com/info.php/id/17683&#34;&gt;Rename Xcode Project&lt;/a&gt; なんて、そのまんまなソフトウェアもあるらしい（試していない）。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Xcode で Subversion を利用するときのトラブルシューティング</title>
+      <link>http://www.metareal.org/2007/06/19/xcode-subversion-troubleshooting/</link>
+      <pubDate>Tue, 19 Jun 2007 09:44:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/06/19/xcode-subversion-troubleshooting/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/564796906/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1293/564796906_6c386b03b5.jpg&#34; alt=&#34;Xcode SCM Preference&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Xcode の &lt;a href=&#34;http://developer.apple.com/DOCUMENTATION/DeveloperTools/Conceptual/XcodeUserGuide/Contents/Resources/ja.lproj/04_scm/chapter_25_section_1.html#//apple_ref/doc/uid/TP40002684-BABCCJCJ&#34;&gt;SCM 連携機能&lt;/a&gt;は、すくなくとも &lt;a href=&#34;http://www.eclipse.org/&#34;&gt;Eclipse&lt;/a&gt; なんかに比べると貧弱で、実作業ではコマンドラインで &lt;code&gt;svn&lt;/code&gt; を使っている。&lt;/p&gt;
+
+&lt;p&gt;それでも一度は試しておきたい、と試してみたときの、あまり一般的ではないトラブルシューティングを覚え書き。&lt;/p&gt;
+
+&lt;h3 id=&#34;svn-ssh-で-22-番以外のポートを使いたいとき:4c169007c75ddb3eb25a6558cc5dda08&#34;&gt;svn+ssh で 22 番以外のポートを使いたいとき&lt;/h3&gt;
+
+&lt;p&gt;これは別に Xcode に限った話じゃないけど、&lt;code&gt;svn+ssh&lt;/code&gt; プロトコルで 22 番以外のポートを使う場合は、環境変数 &lt;code&gt;SVN_SSH&lt;/code&gt; で &lt;code&gt;ssh&lt;/code&gt; プログラムの引数に指定します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export SVN_SSH=&amp;quot;ssh -p 12345&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;環境変数を &lt;code&gt;export&lt;/code&gt; したターミナルで、そのまま &lt;code&gt;.xcodeproj&lt;/code&gt; を開けばいいです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;open ./Example.xcodeproj
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;それでも-パスフレーズ入力できないとき:4c169007c75ddb3eb25a6558cc5dda08&#34;&gt;それでも、パスフレーズ入力できないとき&lt;/h3&gt;
+
+&lt;p&gt;上の方法で Xcode 起動して、SCM を有効にしても、パスフレーズの入力画面などがでず、&lt;code&gt;Permission denied&lt;/code&gt; で怒られてしまうことがある &amp;hellip; というか、僕がまさにそれ。&lt;/p&gt;
+
+&lt;p&gt;このときは、&lt;a href=&#34;http://www.sshkeychain.org/&#34;&gt;SSHKeychain&lt;/a&gt; を使って、パスフレーズ入力を横取りすることで動くようになった。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Xcode プロジェクトを Subversion 管理する</title>
+      <link>http://www.metareal.org/2007/06/17/subversion-primer-for-xcode-projects/</link>
+      <pubDate>Mon, 18 Jun 2007 03:35:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/06/17/subversion-primer-for-xcode-projects/</guid>
+      <description>
+
+&lt;p&gt;Apple の提供する開発環境 &lt;a href=&#34;http://www.apple.com/jp/macosx/features/xcode/&#34;&gt;Xcode&lt;/a&gt; で作成したプロジェクトを Subversion 管理する手順。基本的に「&lt;a href=&#34;http://rails.office.drecom.jp/ishikawa/archive/26&#34;&gt;Rails のプロジェクトを Subversion で管理する&lt;/a&gt;」の Xcode 版。&lt;/p&gt;
+
+&lt;h3 id=&#34;リポジトリの場所を決める:84949e6a353c13bf30ea590aa956b65a&#34;&gt;リポジトリの場所を決める&lt;/h3&gt;
+
+&lt;p&gt;まずは、リポジトリのルート URL を決めて、これを環境変数に設定しよう。以降はこの変数を使うことで、長々とした URL をタイプする手間が省ける。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% SVN_REPO=svn+ssh://svn.example.com/projects/Example
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;もちろん、実際の URL は自分で使うものに置き換えてほしい。&lt;/p&gt;
+
+&lt;h3 id=&#34;空のプロジェクトをコミットする:84949e6a353c13bf30ea590aa956b65a&#34;&gt;空のプロジェクトをコミットする&lt;/h3&gt;
+
+&lt;p&gt;ここで、いきなり Xcode を起動して新規プロジェクトをつくるのではなく、まずは、プロジェクトのディレクトリ・レイアウトを構成した、空のプロジェクトをコミットする。&lt;/p&gt;
+
+&lt;p&gt;Subversion 管理するプロジェクトのディレクトリ・レイアウトといえば、&lt;code&gt;trunk branches tags&lt;/code&gt; が王道なので、これに合わせておくのがいいだろう。たとえ、開発者があなたひとりで、職場の数人しか使わないようなアプリケーションを開発しており、ブランチなんか作る予定がないのだとしても。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% mkdir tmp
+% cd tmp
+% mkdir trunk tags branches
+% svn import ./ ${SVN_REPO} -m &amp;quot;initial import&amp;quot;
+Adding         trunk
+Adding         branches
+Adding         tags
+
+Committed revision 20.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;コミットしたら、このディレクトリは必要ないので削除しても大丈夫だ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% cd ..
+% rm -rf tmp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;xcode-のプロジェクトにチェックアウト:84949e6a353c13bf30ea590aa956b65a&#34;&gt;Xcode のプロジェクトにチェックアウト&lt;/h3&gt;
+
+&lt;p&gt;そうして、コミットした空のプロジェクトを Xocde のプロジェクト・ディレクトリにチェックアウトすれば、Subversion 管理された Xcode プロジェクトが出来上がる。この方法なら、すでに開発中のプロジェクトにも適用しやすい。&lt;/p&gt;
+
+&lt;p&gt;ここでは、&lt;code&gt;~/Developer/Workspace/Example/&lt;/code&gt; に Xcode のプロジェクトを作成しているものとする。そのディレクトリに移動し、さきほどコミットしたプロジェクトの &lt;code&gt;trunk&lt;/code&gt; をチェックアウトしよう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% cd ~/Developer/Workspace/Example/
+% svn checkout ${SVN_REPO}/trunk .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;バージョン管理するファイルの選択:84949e6a353c13bf30ea590aa956b65a&#34;&gt;バージョン管理するファイルの選択&lt;/h3&gt;
+
+&lt;p&gt;ここまでで、&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;プロジェクトのディレクトリ・レイアウトを決める&lt;/li&gt;
+&lt;li&gt;空のプロジェクトをコミットする&lt;/li&gt;
+&lt;li&gt;Xcode プロジェクトにチェックアウト&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;が出来た。&lt;/p&gt;
+
+&lt;p&gt;もちろん、いまは空のディレクトリをチェックアウトしただけなので、Xcode プロジェクト内のファイルはいずれもバージョン管理されていない。&lt;/p&gt;
+
+&lt;p&gt;ひとつひとつ、必要なファイルを &lt;code&gt;svn add&lt;/code&gt; してもかまわないが、最初にすべてを &lt;code&gt;svn add&lt;/code&gt; してしまって、不要なものを取り除くのが簡単だ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% svn add --force .
+A         Example.xcodeproj
+A         Example.xcodeproj/ishikawa.mode1
+A         Example.xcodeproj/ishikawa.pbxuser
+A         Example.xcodeproj/project.pbxproj
+A         Example_Prefix.pch
+A         build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ビルド結果が保存される &lt;code&gt;build&lt;/code&gt; ディレクトリはバージョン管理しなくてもよいだろう。まずは、このディレクトリを管理対象から外す。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% svn revert build --recursive
+% svn propset svn:ignore &amp;quot;build&amp;quot; .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Xcode の&lt;a href=&#34;http://developer.apple.com/DOCUMENTATION/DeveloperTools/Conceptual/XcodeUserGuide/Contents/Resources/ja.lproj/04_02_SCMManagingProjects/chapter_27_section_2.html#//apple_ref/doc/uid/TP40002686-BAJFCAII&#34;&gt;プロジェクトパッケージ&lt;/a&gt; &lt;code&gt;.xcodeproj&lt;/code&gt; にはユーザー特有のファイルが含まれているので、複数人で開発する場合は、これらも管理対象から外しておいた方がいいだろう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% svn revert Example.xcodeproj/ishikawa.*
+% svn propedit svn:ignore Example.xcodeproj/
+*.mode1
+*.pbxuser
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最後に変更をコミットして終わり。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% svn commit -m &amp;quot;New Xcode project&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

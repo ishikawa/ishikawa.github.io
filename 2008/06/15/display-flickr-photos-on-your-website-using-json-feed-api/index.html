@@ -1,0 +1,193 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Flickr の JSON フィードで自作ブログパーツ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Flickr の JSON フィードで自作ブログパーツ</h1>
+  <div class="metadata">
+    <p class="date">2008/06/15 10:09am</p>
+  </div>
+  <div class="content">
+    
+
+<p>写真を撮るのが好きじゃない。</p>
+
+<p>カメラは荷物になるし、壊れやすいから気をつかう。いざ撮影になると、バッグから取り出して、電源ボタンを押す、レンズを向ける、ピントを合わせて、と面倒だ。衆人環視の中、うんうん唸りながらシャッターを切るのも粋じゃない。</p>
+
+<p>では、何が楽しくて写真を撮るのかといえば、補正が楽しい。<a href="http://www.adobe.com/jp/products/photoshopelwin/">Photoshop Elements</a> の自動補正がよく出来ていて、何も考えずにボタンを押していくだけで、それなりの見栄えになってくれる。これは楽しい（ただし、たまに自力で補正に挑戦しても、自動補正の方がキレイで気分が悪い）。</p>
+
+<p>そのうち、出来上がった写真を他人に見せびらかしたくなるのが自然の流れ。写真を <a href="http://www.flickr.com/">Flickr</a> にアップロードするようになった。さらに、<a href="/2008/05/20/porting-weblog-to-google-app-engine/">このブログをリニューアル</a>するさいには、<a href="http://www.flickr.com/">Flickr</a> にアップロードした写真を表示するブログパーツを追加するつもりだった。</p>
+
+<p>公式のブログパーツは <a href="http://www.flickr.com/badge.gne">Flickr Badge</a> という名前で Flash 版と HTML 版が用意されている。しかし、いくつかの理由により、どちらも使う気になれなかった。幸い、Flickr では<a href="http://www.flickr.com/services/feeds/">さまざまなフィードが提供されている</a>。これらを利用すれば、<strong>自作のブログパーツをつくるのは難しくない</strong>。</p>
+
+<h3 id="公式ブログパーツの不満点:bd498955fcbc8b4394e75e6100e5c1f2">公式ブログパーツの不満点</h3>
+
+<p>提供されているもので満足なら自作する必要はない。公式ブログパーツの不満点も挙げておこう。</p>
+
+<p>まずは、Flash 版だが、</p>
+
+<ul>
+<li>サムネイルがちいさい</li>
+<li>一定時間ごとにアニメーションで拡大するのは面白いが、読者からすれば煩わしいものだ</li>
+</ul>
+
+<p>という不満がある。</p>
+
+<p>一方、HTML 版はというと、サムネイルの大きさは選択可能、レイアウトも CSS で設定できるので自由度も高い。ただし、ブログパーツを挿入するための JavaScript が好みじゃない（以下、一部整形済み）。</p>
+
+<pre><code class="language-javascript">var b_txt = '';
+
+b_txt+= '&lt;div class=&quot;flickr_badge_image&quot; id=&quot;flickr_badge_image1&quot;&gt;&lt;a href=&quot;http://www.flickr.com/photos/ishikawa_takanori/2555186680/&quot;&gt;&lt;img src=&quot;http://farm4.static.flickr.com/3006/2555186680_7c18b8cc1a_s.jpg&quot; alt=&quot;A photo on Flickr&quot; title=&quot;BUFFET STYLE&quot; height=&quot;75&quot; width=&quot;75&quot;&gt;&lt;/a&gt;&lt;/div&gt;';
+
+b_txt+= '&lt;div class=&quot;flickr_badge_image&quot; id=&quot;flickr_badge_image2&quot;&gt;&lt;a href=&quot;http://www.flickr.com/photos/ishikawa_takanori/2555186616/&quot;&gt;&lt;img src=&quot;http://farm4.static.flickr.com/3140/2555186616_823d69311e_s.jpg&quot; alt=&quot;A photo on Flickr&quot; title=&quot;spaghetti with Genova style basil sauce&quot; height=&quot;75&quot; width=&quot;75&quot;&gt;&lt;/a&gt;&lt;/div&gt;';
+
+b_txt+= '&lt;div class=&quot;flickr_badge_image&quot; id=&quot;flickr_badge_image3&quot;&gt;&lt;a href=&quot;http://www.flickr.com/photos/ishikawa_takanori/2553633584/&quot;&gt;&lt;img src=&quot;http://farm4.static.flickr.com/3274/2553633584_0e3633ebe6_s.jpg&quot; alt=&quot;A photo on Flickr&quot; title=&quot;The Technorati Monster escaped again.&quot; height=&quot;75&quot; width=&quot;75&quot;&gt;&lt;/a&gt;&lt;/div&gt;';
+
+document.write(b_txt)
+</code></pre>
+
+<p>ごらんのとおり、古典的な <code>document.write</code> のブログパーツである。<a href="http://la.ma.la/blog/diary_200507160912.htm">最速インターフェース研究会 :: ページレンダリングを妨げない広告挿入手法に関する覚書</a>でも説明されているように、この手法だとページの表示を妨げる可能性がある。ブログパーツはあくまでオマケ。ページの表示が遅れるのは嬉しくない。</p>
+
+<p>今回自作するブログパーツでは、ページの読み込み後にブログパーツの表示を行うことで、この問題による影響を軽減している。</p>
+
+<h3 id="flickr-の-json-フィード:bd498955fcbc8b4394e75e6100e5c1f2">Flickr の JSON フィード</h3>
+
+<p>Flickr では<a href="http://www.flickr.com/services/feeds/">さまざまなフィードが提供されている</a>が、ありがたいことに JSONP (JSON with Padding) 形式のフィードも提供されている。</p>
+
+<p>JSONP については以下の記事に詳しい（最初の記事は <a href="http://mochikit.com/">MochiKit</a> の作者による解説。これが初出っぽい）。</p>
+
+<ul>
+<li><a href="http://bob.pythonmac.org/archives/2005/12/05/remote-json-jsonp/">from <strong>future</strong> import * » Remote JSON - JSONP</a></li>
+<li><a href="http://www.baldanders.info/spiegel/remark/archives/000222.shtml">[鏡] 入門 JSON 3 &ndash; JSONP とコールバック関数 &ndash; 戯れ言++</a></li>
+</ul>
+
+<p>まずは、実例をみるのがいいだろう。</p>
+
+<p>たとえば、<a href="http://api.flickr.com/services/feeds/photos_public.gne?id=23956121%40N00&amp;tags=green&amp;format=json">http://api.flickr.com/services/feeds/photos_public.gne?id=23956121%40N00&amp;tags=green&amp;format=json</a> を開くと、次のような JavaScript が返ってくる。</p>
+
+<pre><code class="language-javascript">jsonFlickrFeed({
+    &quot;title&quot;: &quot;Uploads from Takanori Ishikawa, tagged green&quot;,
+    &quot;link&quot;: &quot;http://www.flickr.com/photos/ishikawa_takanori/tags/green/&quot;,
+    &quot;description&quot;: &quot;&quot;,
+    &quot;modified&quot;: &quot;2008-05-24T07:39:52Z&quot;,
+    &quot;generator&quot;: &quot;http://www.flickr.com/&quot;,
+    &quot;items&quot;: [
+     {
+      &quot;title&quot;: &quot;Shadow Game&quot;,
+      &quot;link&quot;: &quot;http://www.flickr.com/photos/ishikawa_takanori/2517368623/&quot;,
+      &quot;media&quot;: {&quot;m&quot;:&quot;http://farm3.static.flickr.com/2141/2517368623_9c15a8e38dv&quot;},
+      &quot;date_taken&quot;: &quot;2008-05-04T15:15:36-08:00&quot;,
+      &quot;description&quot;: &quot;...&quot;,
+      &quot;published&quot;: &quot;2008-05-24T07:39:52Z&quot;,
+      &quot;author&quot;: &quot;nobody@flickr.com (Takanori Ishikawa)&quot;,
+      &quot;author_id&quot;: &quot;23956121@N00&quot;,
+      &quot;tags&quot;: &quot;green nara horyuji&quot;
+     },
+...
+        ]
+})
+</code></pre>
+
+<p><strong>返ってくるのが JavaScript</strong> というのがミソで、つまり、次のような使い方ができる。</p>
+
+<ol>
+<li>上記 URL を <code>&lt;script&gt;</code> タグに指定し、JavaScript を読み込む</li>
+<li>読み込みが完了すると、<code>jsonFlickrFeed</code> 関数が呼ばれる</li>
+<li>そのときの引数は写真のデータを格納した連想配列</li>
+</ol>
+
+<p>このとき渡される引数の詳細については <a href="http://www.flickr.com/services/api/response.json.html">JSON Response Format</a> を参考にしてほしい（参照先にも書かれているように、呼び出される関数の名前を指定することも可能だ）。</p>
+
+<p>では、実際に <a href="http://www.flickr.com/services/feeds/">Flickr JSON フィード</a>を使って、写真を表示してみよう。</p>
+
+<p>この即席ブログパーツの <code>jsonFlickrFeed</code> 関数は以下のようになっている。</p>
+
+<pre><code class="language-javascript">function jsonFlickrFeed(json) {
+  var div = document.getElementById(&quot;flickr-json-api-example-001&quot;);
+  var items = json.items.slice(0, 6);
+
+  for (var i = 0; i &lt; items.length; i++) {
+    var item = items[i];
+    var a = document.createElement(&quot;a&quot;);
+    var img = document.createElement(&quot;img&quot;);
+    var media = item.media.m.replace(/_m.(jpe?g)$/, &quot;_t.$1&quot;); // (1)
+
+    img.setAttribute(&quot;src&quot;, media);
+    a.setAttribute(&quot;href&quot;, item.link);
+    a.setAttribute(&quot;title&quot;, item.title);
+
+    a.appendChild(img);
+    div.appendChild(a);
+  }
+}
+</code></pre>
+
+<p>特に問題はないと思う。引数で渡される連想配列には <code>items</code> という名前で各写真のデータが入っている。それをループで回して <code>img</code> 要素を作成している。</p>
+
+<p>説明がいるとすれば、写真の URL を正規表現でいじっている部分だろうか（コメントで <code>(1)</code> と書いた行）。Flickr の写真にはいくかのサイズがあって、それぞれに URL の形式が決まっている。このへんの写真 URL の形式については <a href="http://www.flickr.com/services/api/misc.urls.html">Photo Source URLs</a> が詳しい。</p>
+
+<p>あとは、<code>script</code> 要素で JSON フィードの URL を指定する。</p>
+
+<pre><code class="language-html">&lt;script src=&quot;http://api.flickr.com/services/feeds/photos_public.gne?id=23956121%40N00&amp;amp;tags=popular&amp;amp;jsoncallback=flickrJsonAPIExample001&amp;amp;format=json&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>また、この <code>script</code> 要素を置く場所を <code>&lt;/body&gt;</code> タグの直前にしておけば、JavaScript の読み込みがはじまったときには他の部分が表示されているので、ページの表示の妨げになりにくい。</p>
+
+<h3 id="json-フィードの手軽さ:bd498955fcbc8b4394e75e6100e5c1f2">JSON フィードの手軽さ</h3>
+
+<p>Flickr が JSON フィードを利用すれば、写真を表示するブログパーツが簡単に自作できることが分かった。</p>
+
+<p>JavaScript と親和性が高いのみならず、ただの外部スクリプト読み込みなので、<code>XMLHttpRequest</code> につきもののクロスドメイン制限がないのもありがたい。</p>
+
+<p>最後に、参考リンクをまとめておく。</p>
+
+<ul>
+<li><a href="http://www.flickr.com/services/feeds/">Flickr で提供されているフィード一覧</a></li>
+<li><a href="http://www.flickr.com/services/api/misc.urls.html">写真の URL の形式について</a></li>
+<li><a href="http://www.flickr.com/services/api/response.json.html">JSONP で渡される引数について</a></li>
+<li><a href="http://www.flickr.com/services/api/explore/?method=flickr.favorites.getList">Flickr API Explorer</a> API のテスト用ページ。自分の User ID を確認できる</li>
+</ul>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2008/06/26/java-generater-by-using-kilim/">kilim で Java でもジェネレーター</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2008/06/06/280slides-in-objective-j/">280Slides in Objective-J</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

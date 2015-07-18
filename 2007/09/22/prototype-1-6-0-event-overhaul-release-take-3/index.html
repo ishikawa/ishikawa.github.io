@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Prototype 1.6.0 で大きく進化したイベント API (3)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Prototype 1.6.0 で大きく進化したイベント API (3)</h1>
+  <div class="metadata">
+    <p class="date">2007/09/22 9:28am</p>
+  </div>
+  <div class="content">
+    
+
+<p><a href="http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate">Prototype 1.6.0 RC</a> イベント API の進化、更なるつづき。</p>
+
+<h3 id="event-stopobserving-で複数のイベント登録を解除できるようになった:db5ff103e3e1dc8be040cb41c1456390"><code>Event.stopObserving</code> で複数のイベント登録を解除できるようになった</h3>
+
+<p>イベントのコールバック関数は <a href="http://www.prototypejs.org/api/event/observe"><code>Event.observe</code></a> や <a href="http://www.prototypejs.org/api/element#method-observe"><code>Element#observe</code></a> で登録し、</p>
+
+<ul>
+<li><a href="http://www.prototypejs.org/api/event/stopObserving"><code>Event.stopObserving</code></a></li>
+<li><a href="http://www.prototypejs.org/api/element/stopobserving"><code>Element#stopObserving</code></a></li>
+</ul>
+
+<p>で登録を解除できる。</p>
+
+<p>これまで <code>stopObserving()</code> で登録を解除するには <code>observe()</code> に渡した引数と同じものを渡す必要があった。つまり、</p>
+
+<pre><code>Event.observe('signinForm', 'submit', checkForm);
+</code></pre>
+
+<p>でコールバック関数 <code>checkForm</code> を登録した場合は、</p>
+
+<pre><code>Event.stopObserving('signinForm', 'submit', checkForm);
+</code></pre>
+
+<p>としていたはず。</p>
+
+<p>1.6.0 では引数を省略することで、対応するコールバック関数すべてを解除できるようになった。</p>
+
+<pre><code>// checkForm を解除
+Event.stopObserving('signinForm', 'submit', checkForm);
+// signinForm の submit イベントに登録されたコールバック関数を解除
+Event.stopObserving('signinForm', 'submit');
+// signinForm に登録されたコールバック関数を解除
+Event.stopObserving('signinForm');
+</code></pre>
+
+<p>これまで <code>removeEventListener</code> や <code>detachEvent</code> の単なるラッパーに近かった <code>stopObserving</code> だが、これでだいぶ使いやすくなった。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/">Prototype 1.6.0 で大きく進化したイベント API (4)</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/">Prototype 1.6.0 で大きく進化したイベント API (2)</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

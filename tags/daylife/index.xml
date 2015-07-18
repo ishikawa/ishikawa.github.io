@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Daylife on METAREAL</title>
+    <link>http://www.metareal.org/tags/daylife/</link>
+    <description>Recent content in Daylife on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Sun, 10 Jun 2007 03:58:00 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/daylife/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>&#34;Summer of &#39;69&#34; とか聴きながらブログをリニューアルしてみた</title>
+      <link>http://www.metareal.org/2007/06/09/summer-of-2007/</link>
+      <pubDate>Sun, 10 Jun 2007 03:58:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/06/09/summer-of-2007/</guid>
+      <description>&lt;p&gt;6 月。最近、暑くなりましたね。初夏。向暑。&lt;/p&gt;
+
+&lt;p&gt;暑くて、でも、じめじめしてて、何もやる気が起きないので、気分転換にブログを涼しげにしてみました。当初はリンクの色を爽やかに明るい水色、画像もいままでの&lt;a href=&#34;http://www.flickr.com/photos/therigby/337685001/&#34;&gt;苔の写真&lt;/a&gt;から色に合わせて&lt;a href=&#34;http://www.flickr.com/photos/ryumu/24710353/&#34;&gt;ペンギン&lt;/a&gt;にするだけのつもりだったのですが、やりだすと気になる部分がちょこちょこ出てきて、結局、手を入れた箇所は以下の通り。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;行間を広くした&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;いままでも広かったけど、更に広く &lt;code&gt;line-height: 1.6&lt;/code&gt; にした&lt;/li&gt;
+&lt;li&gt;「&lt;a href=&#34;http://www.lucky-bag.com/archives/2006/04/unitless-line-heights.html&#34;&gt;Lucky bag::blog: line-height の値には単位なしが良いとされる理由&lt;/a&gt;」を読んでからは単位を指定しないようにしている&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;タイトルを目立つようにした&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;素人臭い &lt;code&gt;text-shadow&lt;/code&gt; は削除&lt;/li&gt;
+&lt;li&gt;フォントを大きく、はっきりした色に&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;コメント投稿欄など、英語だったものを日本語化&lt;/li&gt;
+&lt;li&gt;プロフィールと連絡先を明記&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;あと、「夏」といえば、懐かしかったので貼っておきますね。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.youtube.com/watch?v=ZpucUihZ4HE&#34;&gt;http://www.youtube.com/watch?v=ZpucUihZ4HE&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>AirMac Extreme</title>
+      <link>http://www.metareal.org/2007/05/27/meet-the-airmac-extreme/</link>
+      <pubDate>Sun, 27 May 2007 10:22:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/05/27/meet-the-airmac-extreme/</guid>
+      <description>&lt;p&gt;家の無線 LAN を &lt;a href=&#34;http://www.apple.com/jp/airmacexpress/&#34;&gt;AirMac Express&lt;/a&gt; から &lt;a href=&#34;http://www.apple.com/jp/airmacextreme/&#34;&gt;AirMac Extreme&lt;/a&gt; に変えてみた。特にこれといった動機はなくて、単に新しいモノを試してみたかっただけなんだけど、&lt;a href=&#34;http://www.apple.com/jp/airmacexpress/airtunes.html&#34;&gt;AirTunes&lt;/a&gt; 機能がないのは参ったなあ。おかげで &lt;a href=&#34;http://www.apple.com/jp/ipodhifi/&#34;&gt;iPod Hi-Fi&lt;/a&gt; が宝の持ち腐れ。どうするかは考え中。&lt;/p&gt;
+
+&lt;p&gt;これのブログを動かしているサーバも無線でつないでいるので（LAN ケーブルだと邪魔）、しばらくのあいだ、サーバが停まったままだった。AirMac Extreme で無線 LAN をはじめるのは簡単なのだけど、NAT やらを設定するのが面倒臭かった次第。&lt;/p&gt;
+
+&lt;p&gt;しかし、通信範囲広いね。Skype で会話しながら実験してみたけど、家から出て 2 ブロック先くらいまでは行けた。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>光が</title>
+      <link>http://www.metareal.org/2007/04/18/es-werde-light/</link>
+      <pubDate>Wed, 18 Apr 2007 09:54:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/04/18/es-werde-light/</guid>
+      <description>&lt;p&gt;きた。今日から光回線だ。万歳。&lt;/p&gt;
+
+&lt;p&gt;ルータも変わったのでサーバにつながらなくなる。色々設定して一段落。&lt;/p&gt;
+
+&lt;p&gt;速度は体感的に変化なし。AirMac の限界を疑ったがケーブルでつないでも同じ。適当なサイトで測定してみると 50 Mbps 程度だった。ベストエフォート万歳。&lt;/p&gt;
+
+&lt;p&gt;しかし、重要なのはオプションでくっつけといたテレビの専門チャンネル。&lt;a href=&#34;http://axn.co.jp/index.html&#34;&gt;AXN&lt;/a&gt; で &lt;a href=&#34;http://axn.co.jp/lost/index.html&#34;&gt;LOST シーズン 3&lt;/a&gt; 観るぞー。&lt;/p&gt;
+
+&lt;p&gt;とりあえずは、&lt;a href=&#34;http://www.animax.co.jp/&#34;&gt;アニメ見るならアニマックス&lt;/a&gt;かな。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>春よ、来い</title>
+      <link>http://www.metareal.org/2007/04/02/hello-my-friend/</link>
+      <pubDate>Mon, 02 Apr 2007 09:04:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/04/02/hello-my-friend/</guid>
+      <description>&lt;p&gt;友人と花見に行ってきた。&lt;/p&gt;
+
+&lt;p&gt;場所は上野。人、めっちゃ多い。&lt;/p&gt;
+
+&lt;p&gt;ただし、桜は見事。正直、東京の桜なんてたいしたことないだろ、とか思ってました。すみません。&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E9%8E%A7%E4%BC%9D%E3%82%B5%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%88%E3%83%AB%E3%83%BC%E3%83%91%E3%83%BC&#34;&gt;鎧伝サムライトルーパー&lt;/a&gt;を思い出すほどの桜でした。&lt;strong&gt;武装！！&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;そのあとは&lt;a href=&#34;http://www.gurupita.com/clients/0003003571/&#34;&gt;五臓六腑&lt;/a&gt;でもつ鍋をいただく。明日は仕事なので日本酒は自粛&amp;hellip;したのだが、酒の勢いあまって、&lt;strong&gt;ブログのアドレスを友人に教える&lt;/strong&gt;、という、おそらく明日起きたら後悔するであろう行為をしでかした。&lt;/p&gt;
+
+&lt;p&gt;というわけで、ごちそうさまでした。また誘ってください。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>「LOST」地上波放送開始</title>
+      <link>http://www.metareal.org/2007/01/09/lost-on-tv-launched/</link>
+      <pubDate>Tue, 09 Jan 2007 11:11:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/01/09/lost-on-tv-launched/</guid>
+      <description>&lt;p&gt;海外ドラマ「LOST」の地上波放送が TBS ではじまりました。&lt;/p&gt;
+
+&lt;p&gt;このドラマは昨年みた DVD で最も印象深かったもののひとつ。実際に放送をみながら、このエントリーを書いてますが、やっぱりこのオープニングは秀逸。インパクトもスピード感も抜群です。&lt;/p&gt;
+
+&lt;p&gt;シーズン 2 の DVD も期待大（実家に帰省したときは、&lt;a href=&#34;http://axn.co.jp/index.html&#34;&gt;AXN&lt;/a&gt; でシーズン 2 の一挙放送が途中で、中途半端にみてしまわないように我慢するのが大変だった）。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>謹賀新年</title>
+      <link>http://www.metareal.org/2007/01/01/a-happy-new-year-2007/</link>
+      <pubDate>Mon, 01 Jan 2007 10:19:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/01/01/a-happy-new-year-2007/</guid>
+      <description>&lt;p&gt;九州の実家です。往きの飛行機で、2007 年はどんな年にしようか、なんて考えていたら、うつらうつら寝てしまいました。
+あけましておめでとう。&lt;/p&gt;
+
+&lt;p&gt;ダウンタウンの番組と「&lt;a href=&#34;http://wwws.warnerbros.co.jp/deathnote/&#34;&gt;DEATH NOTE&lt;/a&gt;」を観ながら、ぼけーっとインターネット。「DEATH NOTE」の映画もアニメも、ノートに書いた死の状況を淡々と読み上げるのはやめた方がいいと思う。つまらないので。&lt;/p&gt;
+
+&lt;p&gt;映画「DEATH NOTE」で面白い点といえば、藤原竜也の演技がエロい。これに限る。特に「&lt;strong&gt;チェックメイト&amp;hellip;&lt;/strong&gt;」の発声とかエロすぎます。もう&lt;strong&gt;オヤジの域&lt;/strong&gt;に達している。&lt;/p&gt;
+
+&lt;p&gt;まあ、そんな感じで 2007 年を迎えてしまったわけですが、今年の目標はとりあえず、このブログの更新をつづけることかな。それ以外はこれから考えます。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>クリスマスプレゼント</title>
+      <link>http://www.metareal.org/2006/12/25/transformable-full-action-model-garland/</link>
+      <pubDate>Tue, 26 Dec 2006 06:04:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2006/12/25/transformable-full-action-model-garland/</guid>
+      <description>&lt;p&gt;クリスマスプレゼントに&lt;a href=&#34;http://www.yamato-toys.com/items/detail.php?gid=999&#34;&gt;やまとの「1/15　完全変形ガーランド」&lt;/a&gt;をもらいました。これ、ずっと気になっていたので嬉しいです。本当に変形する！&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/332654729/&#34;&gt;&lt;img src=&#34;http://farm1.static.flickr.com/152/332654729_7813b1ff91_m.jpg&#34; alt=&#34;Transformable Full Action Model GARLAND&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/332654729/&#34;&gt;Transformable Full Action Model GARLAND&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Originally uploaded by &lt;a href=&#34;http://www.flickr.com/people/ishikawa_takanori/&#34;&gt;Takanori Ishikawa&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>熊の家族</title>
+      <link>http://www.metareal.org/2006/12/22/relaxing-bear-family/</link>
+      <pubDate>Sat, 23 Dec 2006 12:06:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2006/12/22/relaxing-bear-family/</guid>
+      <description>&lt;p&gt;いつのまにか家族になってる。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/329791480/&#34;&gt;&lt;img src=&#34;http://farm1.static.flickr.com/165/329791480_d65bc5d306_m.jpg&#34; alt=&#34;The Relaxing bear family&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/329791480/&#34;&gt;The Relaxing bear family&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Originally uploaded by &lt;a href=&#34;http://www.flickr.com/people/ishikawa_takanori/&#34;&gt;Takanori Ishikawa&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>熊の記念撮影</title>
+      <link>http://www.metareal.org/2006/12/09/relaxing-bear-knight/</link>
+      <pubDate>Sun, 10 Dec 2006 06:22:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2006/12/09/relaxing-bear-knight/</guid>
+      <description>&lt;p&gt;職場の机に&lt;a href=&#34;http://www.san-x.co.jp/relaxuma/top.html&#34;&gt;リラックマ&lt;/a&gt;が乗りこんできました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/317688254/&#34;&gt;&lt;img src=&#34;http://static.flickr.com/124/317688254_4da4f5ff2d_m.jpg&#34; alt=&#34;The Relaxing bear knight&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/317688254/&#34;&gt;The Relaxing bear knight&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Originally uploaded by &lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/&#34;&gt;Takanori Ishikawa&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>&#34;Hello, world!\n&#34;</title>
+      <link>http://www.metareal.org/2006/11/21/hello-world/</link>
+      <pubDate>Tue, 21 Nov 2006 12:45:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2006/11/21/hello-world/</guid>
+      <description>&lt;p&gt;大学生のころに、ボンダイブルーの IMac を買って 7 年あまり。
+ついに&lt;strong&gt;自宅サーバに手を出してしまった&lt;/strong&gt;。とりあえず、 &lt;a href=&#34;http://wordpress.org/&#34;&gt;WordPress&lt;/a&gt; でブログを開設してみる。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

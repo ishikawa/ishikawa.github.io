@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Objective C on METAREAL</title>
+    <link>http://www.metareal.org/tags/objective-c/</link>
+    <description>Recent content in Objective C on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Fri, 06 Jun 2008 12:42:00 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/objective-c/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>280Slides in Objective-J</title>
+      <link>http://www.metareal.org/2008/06/06/280slides-in-objective-j/</link>
+      <pubDate>Fri, 06 Jun 2008 12:42:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/06/06/280slides-in-objective-j/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://280slides.com/&#34;&gt;280Slides&lt;/a&gt; という Web サービスがすごい。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.xxeo.com/archives/2008/06/05/new-web-site-in-objective-c-via-javascript.html&#34;&gt;Dru’s Blog » New Web Site in Objective-C via Javascript&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.reddit.com/r/programming/info/6m84p/comments/&#34;&gt;New 280 Slides Web Site translates Objective-C to Javascript | reddit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Keynote 風のプレゼンテーションツールとしての UI も素晴らしいが、圧巻なのは、その実装技術。&lt;/p&gt;
+
+&lt;p&gt;「どんな JavaScript や Flash を使ってるんだ？」と思うだろう。さあ、&lt;a href=&#34;https://addons.mozilla.org/ja/firefox/addon/1843&#34;&gt;FireBug&lt;/a&gt; なり Safari の Web インスペクタなりで、ページに読み込まれているスクリプトを確認してみよう。その大半が馴染みのない拡張子 &lt;code&gt;.j&lt;/code&gt; であることに驚くに違いない。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://280slides.com/Editor/1212703678/main.j&#34;&gt;main.j&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://280slides.com/Editor/1212703678/Document.j&#34;&gt;Document.j&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://280slides.com/Editor/1212703678/DocumentController.j&#34;&gt;DocumentController.j&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;上にあげたのは、&lt;code&gt;.j&lt;/code&gt; ファイルの一例だが、あなたが Mac OS X の開発者であれば、見覚えのある名前ばかりだろう。これは Mac OS X の MVC フレームワーク &lt;a href=&#34;http://developer.apple.com/cocoa/&#34;&gt;Cocoa&lt;/a&gt; を構成するクラス名と酷似している。&lt;/p&gt;
+
+&lt;h3 id=&#34;objective-j:768c3b36853f147cf4a820ec94390722&#34;&gt;Objective-J&lt;/h3&gt;
+
+&lt;p&gt;試しに &lt;a href=&#34;http://280slides.com/Editor/1212703678/DocumentController.j&#34;&gt;DocumentController.j&lt;/a&gt; を覗いてみようか。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//
+// DocumentController.j
+// Editor
+//
+// Created by Francisco Tolmasky.
+// Copyright 2005 - 2008, 280 North, Inc. All rights reserved.
+//
+
+import &amp;lt;AppKit/CPDocumentController.j&amp;gt;
+
+import &amp;quot;OpenPanel.j&amp;quot;
+import &amp;quot;Themes.j&amp;quot;
+import &amp;quot;ThemePanel.j&amp;quot;
+import &amp;quot;WelcomePanel.j&amp;quot;
+
+@implementation DocumentController : CPDocumentController
+{
+    BOOL    _applicationHasFinishedLaunching;
+}
+
+- (void)applicationDidFinishLaunching:(CPNotification)aNotification
+{
+    // FIXME
+    // Check [CPApp arguments][0] for &amp;quot;docs&amp;quot; and [self openPresentationWithFilename: args[2]];
+
+    [CPApp runModalForWindow:[[WelcomePanel alloc] init]];
+
+    _applicationHasFinishedLaunching = YES;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;どう見ても &lt;a href=&#34;http://developer.apple.com/documentation/Cocoa/Conceptual/ObjectiveC/Introduction/chapter_1_section_1.html&#34;&gt;Objective-C&lt;/a&gt; です。&lt;/p&gt;
+
+&lt;p&gt;もちろん、ブラウザがこんな独自言語をコンパイルできるわけがない。これらのスクリプトは &lt;a href=&#34;http://280slides.com/Editor/1212703678/Frameworks/Objective-J/Objective-J.js&#34;&gt;Objective-J.js&lt;/a&gt; によって、&lt;strong&gt;実行時に JavaScript へと変換（コンパイル）&lt;/strong&gt;される。&lt;/p&gt;
+
+&lt;p&gt;どんなふうになるかは、プリコンパイルされた &lt;a href=&#34;http://280slides.com/Editor/1212703678/Frameworks/AppKit/AppKit.sj&#34;&gt;AppKit.sj&lt;/a&gt; もあるので、参考に覗いてみるといいだろう。&lt;/p&gt;
+
+&lt;h3 id=&#34;dsl-and-framework:768c3b36853f147cf4a820ec94390722&#34;&gt;DSL and Framework&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E5%9B%BA%E6%9C%89%E8%A8%80%E8%AA%9E&#34;&gt;Domain-Specific Language (DSL)&lt;/a&gt; の有効性は散々言い古されてきたけど、Objective-J が Cocoa という、すでに GUI アプリケーションの分野で定評のあるフレームワークを土台としていることは興味深い（もしかすると今後、このような流れが他にも起こるだろうか？）。&lt;/p&gt;
+
+&lt;p&gt;そして、なにより、こんなことを妄想しこそすれ、本当にやってしまう心意気は賞賛に値する。&lt;/p&gt;
+
+&lt;h3 id=&#34;p-s:768c3b36853f147cf4a820ec94390722&#34;&gt;P.S.&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;（2008.06.06 追記）&lt;/strong&gt;この記事を書いたあとで、&lt;a href=&#34;http://gbracha.blogspot.com/2008/04/everyone-is-talking-about-cloud.html&#34;&gt;Room 101: java&amp;rsquo;scrypt&lt;/a&gt; という記事を思い出した。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Javascript is the assembly language of the internet platform (and the browser is the OS).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;この記事では他にも &lt;a href=&#34;http://code.google.com/webtoolkit/&#34;&gt;Google Web Toolkit&lt;/a&gt; に言及している。そういえば、Google Web Toolkit (GWT) も Java で書かれたプログラムが（サーバ側で）JavaScript に「コンパイル」されるのだった。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

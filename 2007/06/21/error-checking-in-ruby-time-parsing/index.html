@@ -1,0 +1,124 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Ruby の Time.parse で文字列を Time に変換するときのエラーチェック</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/06/21/error-checking-in-ruby-time-parsing/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Ruby の Time.parse で文字列を Time に変換するときのエラーチェック</h1>
+  <div class="metadata">
+    <p class="date">2007/06/22 4:52am</p>
+  </div>
+  <div class="content">
+    <p>Ruby では、文字列から <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=Time">Time オブジェクト</a> への変換には、<a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=time">time ライブラリ</a> によって拡張される <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=time#Time.2eparse"><code>Time.parse</code></a> を使う。</p>
+
+<pre><code>require &quot;time&quot;
+
+Time.parse(&quot;2007/6/21 19:23&quot;)
+# =&gt; Thu Jun 21 19:23:00 +0900 2007
+</code></pre>
+
+<p><code>Time.parse</code> は内部的に <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=parsedate"><code>ParseDate.parsedate</code></a> を利用しているので、さまざまなフォーマットをサポートしており、それなりに便利だ。逆に、サポートされていないフォーマットの文字列を変換するときは、事前に正規表現で変換するなどの泥臭い作業になる。</p>
+
+<pre><code>Time.parse(&quot;Sat Aug 28 21:45:09 1999&quot;)
+# =&gt; Sat Aug 28 21:45:09 +0900 1999
+Time.parse(&quot;08/28/1999&quot;)
+# =&gt; Sat Aug 28 00:00:00 +0900 1999
+</code></pre>
+
+<p>他にも問題がある。</p>
+
+<p>変換対象の文字列が日付形式ではなかった場合は、当然 <code>Time</code> に変換できないわけだが、そういうときでもエラーを検知する仕組みがないのだ。</p>
+
+<pre><code>Time.parse(&quot;Happy Hacking!&quot;)
+# =&gt; Thu Jun 21 19:33:12 +0900 2007
+</code></pre>
+
+<p>このように、明らかに日付ではない文字列を渡しても、例外が発生するでもなく、<code>Time</code> オブジェクトが返ってくる。</p>
+
+<p><a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=time#Time.2eparse">Time.parse のマニュアル</a>によると、</p>
+
+<blockquote>
+<p>Time.parse(date, now=Time.now)</p>
+
+<p>与えられた時刻に上位の要素がなかったり壊れていた場合、now の該当要素が使われます。</p>
+</blockquote>
+
+<p>とのことで、解析に失敗した場合は「時刻の要素がない」が判断され、引数 <code>now</code>（この場合、デフォルトの <code>Time.now</code>）がそのまま返ってきているようだ。</p>
+
+<p>では、この引数 <code>now</code> に <code>nil</code> を渡せば、失敗時に <code>nil</code> が返ってくるだろうか？</p>
+
+<pre><code>Time.parse(&quot;Happy Hacking!&quot;, nil)
+# =&gt; Thu Jan 01 00:00:00 +0900 1970
+</code></pre>
+
+<p>違った。</p>
+
+<p>実は <code>Time.parse</code> は、それぞれの時刻要素のデフォルトとして <code>1970-01-01 00:00:00:00</code> を指定している。また、この値は <code>Time</code> の起算時間（<code>Unix epoch</code>）に見えるが、結果は地方時間で返ってくるので必ずしもそうではない（日本の場合、<code>1970-01-01 00:00:00 +0900</code>）。</p>
+
+<p>これだと困るので、解析に失敗した場合は <code>nil</code> を返す <code>Time.parse</code> を書いてみた。</p>
+
+<pre><code>require &quot;parsedate&quot;
+require &quot;time&quot;
+
+# The Unix epoch is the time 00:00:00 UTC on January 1, 1970
+UNIX_EPOCH_TIME = Time.at(0)
+
+# Strict version of +Time.parse+, returns +nil+ when parsing is failed.
+def strict_parsetime(string)
+  # +Time.parse+ returns localtime &quot;1970/01/01 00:00:00&quot; when parsing is failed.
+  # So, ugly, I check whether returned value is UNIX epoch.
+  time = Time.parse(string, UNIX_EPOCH_TIME) rescue nil
+  if UNIX_EPOCH_TIME == time then
+    # Previous +Time.parse+ possibly failed.
+    time = nil unless (ParseDate.parsedate(string)[0] rescue nil)
+  end
+  time
+end
+</code></pre>
+
+<p>実装としては、<code>TIme.parse</code> の第二引数に特定の日時を指定し、結果がこの値なら再度 <code>ParseDate.parsedate</code> して本当にエラーなのかチェックしている。</p>
+
+<p>ちゃんとした方法がありそうなんだけどなー。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/06/26/safari-spotlighting-web-history/">Safari の履歴検索がすごく便利です</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/06/19/xcode-subversion-troubleshooting/">Xcode で Subversion を利用するときのトラブルシューティング</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

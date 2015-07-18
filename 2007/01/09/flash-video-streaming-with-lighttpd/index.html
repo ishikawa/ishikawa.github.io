@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>lighttpd で Flash Video (.flv) をストリーミング配信</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>lighttpd で Flash Video (.flv) をストリーミング配信</h1>
+  <div class="metadata">
+    <p class="date">2007/01/09 2:38am</p>
+  </div>
+  <div class="content">
+    <p>以前の記事「<a href="http://weblog.metareal.org/2007/01/08/flash-video-streaming/">Flash で動画をストリーミング再生</a>」で yuin さんにコメントで教えてもらった情報：</p>
+
+<blockquote>
+<p>あと配信に関しては
+<a href="http://blog.kovyrin.net/2006/10/08/lighttpd-memcoder-flvtool-for-streaming/">http://blog.kovyrin.net/2006/10/08/lighttpd-memcoder-flvtool-for-streaming/</a>
+<a href="http://blog.lighttpd.net/articles/2006/03/09/flv-streaming-with-lighttpd">http://blog.lighttpd.net/articles/2006/03/09/flv-streaming-with-lighttpd</a>
+あたりはどうでしょう。</p>
+</blockquote>
+
+<ul>
+<li><a href="http://blog.kovyrin.net/2006/10/08/lighttpd-memcoder-flvtool-for-streaming/">Using Lighttpd, Mplayer/Mencoder and Flvtool2 to Implement Flash Video Streaming</a></li>
+<li><a href="http://blog.lighttpd.net/articles/2006/03/09/flv-streaming-with-lighttpd">flv streaming with lighttpd</a></li>
+<li><a href="http://www.flashcomguru.com/index.cfm/2005/11/2/Streaming-flv-video-via-PHP-take-two">The Flash Video Resource: &lsquo;Streaming&rsquo; flv video via PHP, take two</a></li>
+</ul>
+
+<p>で、とりあえず、<a href="http://www.lighttpd.net/">lighttpd</a> で <code>.flv</code> のストリーミング配信に成功（yuin さん、ありがとう！）。プレイヤーやら .flv やらは<a href="http://jan.kneschke.de/projects/flv-streaming/">こちら</a>のをそのまま使っているです。</p>
+
+<p>リンク先にも書いてあるように、擬似的なストリーミング配信（実際には、ただの HTTP によるダウンロード）なんだけど、普通に配信するぶんには困らないと思う。開始フレームを URL の <code>start</code> パラメータで指定するので、プレイヤー側の対応も必要、ってとこくらいかな。</p>
+
+<p>今日はもう眠いので、詳しくはまた後日。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2007/01/08/flash-video-streaming/">Flash で動画をストリーミング再生</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2007/01/07/universal-xss-with-pdf-files/">サイトに置いてある PDF が XSS に利用される？</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

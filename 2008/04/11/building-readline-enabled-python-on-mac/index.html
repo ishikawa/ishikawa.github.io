@@ -1,0 +1,105 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Mac の Python をビルドするときに GNU Readline ライブラリを有効にする</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2008/04/11/building-readline-enabled-python-on-mac/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Mac の Python をビルドするときに GNU Readline ライブラリを有効にする</h1>
+  <div class="metadata">
+    <p class="date">2008/04/11 10:05am</p>
+  </div>
+  <div class="content">
+    
+
+<p>Mac OS X では <a href="http://tiswww.case.edu/php/chet/readline/rltop.html">GNU の Readline ライブラリ</a>がインストールには含まれておらず、Readline 互換の <a href="http://sourceforge.net/projects/libedit/">Libedit</a> というライブラリへのシンボリックリンクとなっている（こうなっている理由はライセンス上の問題からだと思われる。GNU の Readline ライブラリは GPL で、Libedit は BSD ライセンスだ）。</p>
+
+<p>しかし、これが原因で Readline 対応のプログラムがコンパイルできない、コンパイルできてもヒストリ機能などが使えない、といった問題がしばしば起こる。</p>
+
+<p><a href="http://www.python.org/">Python</a> は後者の例で、<code>configure</code> スクリプトはちゃんと readline ライブラリを認識し <code>make</code> も問題なく通るのだが、実際には Readline ライブラリが無効になったバイナリがインストールされてしまう。</p>
+
+<pre><code>% ./configure
+...
+checking for readline in -lreadline... yes
+checking for rl_callback_handler_install in -lreadline... yes
+checking for rl_pre_input_hook in -lreadline... yes
+checking for rl_completion_matches in -lreadline... no
+...
+% make
+...
+% find . -name readline.so
+# readline.so が出来ていない
+</code></pre>
+
+<p>ヒストリ機能やキャレット移動のショートカットが使えないのは、やはり不便だ。これはなんとかしたい。</p>
+
+<h3 id="macports-で-gnu-readline-ライブラリをインストール:5839a3b3f349c2d8d881ce8086a647d3">MacPorts で GNU Readline ライブラリをインストール</h3>
+
+<p>まずは <a href="http://tiswww.case.edu/php/chet/readline/rltop.html">GNU Readline</a> ライブラリをインストールしよう。<a href="http://www.macports.org/">MacPorts</a> を利用するのが簡単だろう。</p>
+
+<pre><code>% sudo port install readline
+</code></pre>
+
+<p><code>/opt/local/lib</code> 以下にインストールされる。</p>
+
+<pre><code>% l /opt/local/lib/libreadline.*
+-r-xr-xr-x   2 root  admin  448300 Nov 13  2006 /opt/local/lib/libreadline.5.1.dylib
+lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.5.dylib -&gt; libreadline.5.1.dylib
+-rw-r--r--   2 root  admin  574188 Nov 13  2006 /opt/local/lib/libreadline.a
+lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib -&gt; libreadline.5.1.dylib
+</code></pre>
+
+<h3 id="gnu-readline-ライブラリの場所を指定して-python-をビルド:5839a3b3f349c2d8d881ce8086a647d3">GNU Readline ライブラリの場所を指定して Python をビルド</h3>
+
+<p>あとは新しくインストールされたライブラリの場所を指定して、Python をビルドしなおすだけだ。</p>
+
+<pre><code>% CPPFLAGS=-I/opt/local/include LDFLAGS=-L/opt/local/lib ./configure
+% make
+% find . -name readline.so
+./build/lib.macosx-10.3-i386-2.5/readline.so
+% sudo make install
+</code></pre>
+
+<p>こうしてビルドした Python のインタプリタでは、ヒストリ機能やキャレット移動のショートカットが有効になっている。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2008/04/11/django-unicode-encode-error/">Django のモデルで日本語を使うと UnicodeEncodeError が発生する</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/">Apple によるロケール周りの変更点を Python 2.5.2 にも適用する</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

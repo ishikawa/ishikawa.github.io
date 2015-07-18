@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Compiler on METAREAL</title>
+    <link>http://www.metareal.org/tags/compiler/</link>
+    <description>Recent content in Compiler on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Fri, 12 Dec 2008 06:23:00 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/compiler/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>GCC の警告オプションで一部の警告のみをエラー扱いにしたい</title>
+      <link>http://www.metareal.org/2008/12/12/gcc-options-request-or-suppress-warnings-and-errors/</link>
+      <pubDate>Fri, 12 Dec 2008 06:23:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/12/12/gcc-options-request-or-suppress-warnings-and-errors/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://gcc.gnu.org/&#34;&gt;GCC&lt;/a&gt; の警告オプションでよく使うものといえば、以下のようなものがある：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Warning-Options.html#index-Wall-234&#34;&gt;&lt;code&gt;-Wall&lt;/code&gt;&lt;/a&gt; 一般的な警告を有効にする&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Warning-Options.html#index-Wextra-237&#34;&gt;&lt;code&gt;-Wextra (-W)&lt;/code&gt;&lt;/a&gt; &lt;code&gt;-W&lt;/code&gt; が &lt;a href=&#34;http://gcc.gnu.org/gcc-4.0/&#34;&gt;gcc 4&lt;/a&gt; から分かりやすい名前に変更された（&lt;code&gt;-W&lt;/code&gt; も有効）&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Warning-Options.html#index-Werror-226&#34;&gt;&lt;code&gt;-Werror&lt;/code&gt;&lt;/a&gt; 警告をエラー扱いにする&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;wunused-parameter:39611ef83396f44a16b5ef53d31a6ecd&#34;&gt;-Wunused-parameter&lt;/h3&gt;
+
+&lt;p&gt;ところで、警告オプションのひとつ、&lt;a href=&#34;http://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Warning-Options.html#index-Wunused-303&#34;&gt;-Wunused&lt;/a&gt; は &lt;code&gt;-Wextra (-W)&lt;/code&gt; が有効な場合、&lt;a href=&#34;http://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Warning-Options.html#index-Wunused_002dparameter-297&#34;&gt;-Wunused-parameter&lt;/a&gt; も有効にする。&lt;code&gt;-Wunused-parameter&lt;/code&gt; は関数で使われていない引数があった場合に警告を出力するオプションだ。なお、&lt;code&gt;-Wunused&lt;/code&gt; は &lt;code&gt;-Wall&lt;/code&gt; によっても暗黙的に指定されるため、&lt;code&gt;-Wextra (-W)&lt;/code&gt; と &lt;code&gt;-Wall&lt;/code&gt; を両方指定したときも、&lt;code&gt;-Wunused-parameter&lt;/code&gt; が有効になる。&lt;/p&gt;
+
+&lt;p&gt;このとき、もし、&lt;code&gt;-Werror&lt;/code&gt; も有効になっていると、未使用の関数引数があった場合にコンパイルエラーになってしまう。意図した通りの動作ではあるものの、これでは都合が悪いときもある。たとえば、テスト駆動開発では関数の実装を空にしておくことがあるが、上記の場合は、これがエラーとなってしまう。&lt;/p&gt;
+
+&lt;h3 id=&#34;wno-unused-parameter:39611ef83396f44a16b5ef53d31a6ecd&#34;&gt;-Wno-unused-parameter&lt;/h3&gt;
+
+&lt;p&gt;Mac OS X Leopard (Xcode 3.1) に付属する gcc は Apple gcc 4.0 と 4.2 だが、デフォルトは gcc 4.0 が使われる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% gcc --version
+i686-apple-darwin9-gcc-4.0.1 (GCC) 4.0.1 (Apple Inc. build 5490)
+Copyright (C) 2005 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://gcc.gnu.org/gcc-4.0/&#34;&gt;gcc 4.0&lt;/a&gt; の場合、&lt;code&gt;-Wno-unused-parameter&lt;/code&gt; を指定することで「未使用の関数引数」警告自体をなくすことはできる。しかし、できれば、「未使用の関数引数」も警告のまま残し、他の警告はエラー扱いにしたい。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% gcc -std=c++98 -pedantic -Wall -Wextra -Werror -Wno-unused-parameter -c -o src/utils.o src/utils.cpp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;werror-wno-error:39611ef83396f44a16b5ef53d31a6ecd&#34;&gt;-Werror=, -Wno-error=&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://gcc.gnu.org/onlinedocs/gcc-4.2.4/gcc/&#34;&gt;オンラインマニュアル&lt;/a&gt;によると、&lt;a href=&#34;http://gcc.gnu.org/gcc-4.2/&#34;&gt;gcc 4.2&lt;/a&gt; からは &lt;a href=&#34;http://gcc.gnu.org/onlinedocs/gcc-4.2.4/gcc/Warning-Options.html#index-Werror_003d-325&#34;&gt;-Werror= および -Wno-error= というオプション&lt;/a&gt;が追加され、エラー扱いにする警告を個別に指定できるようだ。このオプションを使えば、&lt;code&gt;-Wunused-parameter&lt;/code&gt; は警告のまま、その他の警告をエラーに出来るだろう。Mac OS X では gcc 4.2 は &lt;code&gt;gcc-4.2&lt;/code&gt; という名前でインストールされている。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% gcc-4.2 -std=c++98 -pedantic -Wall -Wextra -Werror -Wno-error=unused-parameter -c -o src/utils.o src/utils.cpp
+src/utils.cpp:108: warning: unused parameter &#39;start&#39;
+src/utils.cpp:108: warning: unused parameter &#39;end&#39;
+src/utils.cpp:108: warning: unused parameter &#39;positiveOnly&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;しかし、Mac の場合、gcc 4.0 がデフォルトなので、このオプションを使っていいのか悩むところ。&lt;/p&gt;
+
+&lt;h3 id=&#34;環境変数の利用:39611ef83396f44a16b5ef53d31a6ecd&#34;&gt;環境変数の利用&lt;/h3&gt;
+
+&lt;p&gt;いまのところ、Makefile には直接書かずに、環境変数で指定する、という方法で対応している：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% CXX=gcc-4.2 CPPFLAGS=-Wno-error=unused-parameter make
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

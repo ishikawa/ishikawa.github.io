@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>V8 on METAREAL</title>
+    <link>http://www.metareal.org/tags/v8/</link>
+    <description>Recent content in V8 on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Wed, 24 Dec 2008 01:06:00 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/v8/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>WEB&#43;DB PRESS Vol.48</title>
+      <link>http://www.metareal.org/2008/12/24/web-db-press-vol48/</link>
+      <pubDate>Wed, 24 Dec 2008 01:06:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/12/24/web-db-press-vol48/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://raku.to/&#34;&gt;古谷楽人&lt;/a&gt;氏より &lt;a href=&#34;http://gihyo.jp/magazine/wdpress/archive/2009/vol48&#34;&gt;WEB+DB PRESS Vol.48&lt;/a&gt; (&lt;a href=&#34;http://www.amazon.co.jp/exec/obidos/ASIN/4774136913/&#34;&gt;amazon.co.jp&lt;/a&gt;) を献本いただきました。ありがとうございます。わたしは当雑誌、というか雑誌全般の熱心な読者ではないのですが（ごめんなさい）、ひさしぶりの技術系雑誌を楽しく読ませてもらいました。&lt;/p&gt;
+
+&lt;p&gt;WEB+DB PRESS Vol.48 で氏は「[最速]JavaScript エンジン徹底比較」と題して、最近のブラウザ事情に聡いプログラマなら気になるであろう、最新 JavaScript エンジンの比較と検証記事を執筆されています。以下では、記事内容の簡単な紹介と一読した感想などを書いていきます。&lt;/p&gt;
+
+&lt;h3 id=&#34;最速-javascript-エンジン徹底比較:413f555c66a5164357ae2df9904875e8&#34;&gt;[最速]JavaScript エンジン徹底比較&lt;/h3&gt;
+
+&lt;p&gt;（ここから文体をいつもどおりに戻して&amp;hellip;）記事は三章から構成されており、それぞれの章題は：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;JavaScript エンジンの比較&lt;/li&gt;
+&lt;li&gt;SquirrelFish Extreme / WebKit の最適化手法&lt;/li&gt;
+&lt;li&gt;注目の Google Chrome に搭載された V8&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;である。&lt;/p&gt;
+
+&lt;p&gt;章題からも推測できるように、第一章が複数ベンチマークスイートによる各 JavaScript エンジンのパフォーマンス比較、第二章と第三章ではコンパイラと仮想機械の一般的な説明から始まり、WebKit の &lt;a href=&#34;http://webkit.org/blog/214/introducing-squirrelfish-extreme/&#34;&gt;SquirrelFish Extreme&lt;/a&gt;、および Google の &lt;a href=&#34;http://code.google.com/p/v8/&#34;&gt;V8&lt;/a&gt; が用いる最適化手法について多くのページが割かれている。&lt;/p&gt;
+
+&lt;p&gt;個々のトピックについては WEB 上にも詳細に解説されたサイトがあるものの、雑誌という紙媒体で、こうして一本にまとめられた情報は珍しいのではないだろうか&amp;hellip;って、普段、雑誌を読まない人が書いても説得力に乏しい。スミマセン。もっとも、珍しかろうが珍しくなかろうが、日本語で読める貴重な情報源のひとつであることに変わりはない。
+特に、SquirrelFish Extreme で採用されている Polymorphic Inline Cache (PIC) や V8 の高速なプロパティ・アクセスを実現するための &lt;a href=&#34;http://code.google.com/intl/ja-JP/apis/v8/design.html#prop_access&#34;&gt;Hidden Class&lt;/a&gt; の解説は、現代的な動的言語の裏舞台を知る、という意味で興味深い。たとえ、言語処理系の実装詳細に興味がなくとも、普段使っている道具がどのように作られているかを知ることは益になるだろう。&lt;/p&gt;
+
+&lt;h3 id=&#34;最後に:413f555c66a5164357ae2df9904875e8&#34;&gt;最後に&lt;/h3&gt;
+
+&lt;p&gt;今回、ひさしぶりに技術系雑誌を読んでみて、プロのライターと編集者による情報のパッケージングと、紙という媒体とレイアウトには、他のものには代えがたい価値がある、と感じた。腰を落ち着けて、プログラミングのさまざまなトピックスに触れるというのは、やはり、ワクワクする体験だ。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Google Chrome に搭載されたオープンソースの JavaScript エンジン &#34;v8&#34; を試す</title>
+      <link>http://www.metareal.org/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</link>
+      <pubDate>Wed, 03 Sep 2008 09:28:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://googlejapan.blogspot.com/2008/09/blog-post.html&#34;&gt;その発表&lt;/a&gt;から世間を騒がせた、Google の Web ブラウザ &lt;strong&gt;Chrome&lt;/strong&gt; が遂に&lt;a href=&#34;http://www.google.com/chrome&#34;&gt;公開された&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;Mac ユーザなうえに、日々の Web ブラウジングは Safari と iPhone で満足していることもあり、Chrome 自体への興味は薄い。しかし、オープンソースの JavaScript エンジンも独自開発している、となると話は別だ。しかも、&lt;a href=&#34;http://www.strongtalk.org/&#34;&gt;Strongtalk&lt;/a&gt; や &lt;a href=&#34;http://java.sun.com/javase/technologies/hotspot/&#34;&gt;HotSpot Java VM&lt;/a&gt; の開発者が関わっている、というのだから俄然興味が湧いてくる（&lt;a href=&#34;http://www.avibryant.com/2008/09/chrome-v8-and-s.html&#34;&gt;参考記事&lt;/a&gt;）。&lt;/p&gt;
+
+&lt;p&gt;Google が開発、公開している JavaScript 処理系は、その名も &lt;a href=&#34;http://code.google.com/p/v8/&#34;&gt;v8&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;v8-の特徴:6b1900b58191e8d3cb79ebccaf274941&#34;&gt;v8 の特徴&lt;/h3&gt;
+
+&lt;p&gt;では、v8 には既存の処理系に比べて、どのような利点があるのだろうか。Google がわざわざ独自に開発し、Chrome という重要なプロダクトに搭載して公開するくらいだから、そこには他の処理系では達成できないアドバンテージがあるはずである。&lt;/p&gt;
+
+&lt;p&gt;Google Code で公開されている文書 &lt;a href=&#34;http://code.google.com/apis/v8/design.html&#34;&gt;Design Elements&lt;/a&gt; から概観をつかんでみよう。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://code.google.com/apis/v8/design.html#prop_access&#34;&gt;オブジェクトのプロパティへのアクセスが高速&lt;/a&gt;
+JavaScript ではオブジェクトのプロパティを自由に追加・削除できる。&lt;/p&gt;
+
+&lt;p&gt;これを実現するためには、ハッシュ表や二分木といった&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97&#34;&gt;辞書&lt;/a&gt;による実装が一般的だが、そうするとプロパティにアクセスするたびに辞書を検索しなくてはいけない。&lt;/p&gt;
+
+&lt;p&gt;v8 では &lt;strong&gt;hidden class&lt;/strong&gt; という実装テクニックを用いることにより、オブジェクトのプロパティへのアクセス方法が、オブジェクトの格納されているメモリのオフセットへのアクセスとなる。そのため、無駄な検索を省くことができ、高速なアクセスを実現している。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://code.google.com/apis/v8/design.html#mach_code&#34;&gt;動的なマシンコード生成&lt;/a&gt;
+JavaScript のコードは最初に実行されるときにマシンコードに変換される。&lt;strong&gt;バイトコードやインタプリタはない&lt;/strong&gt;。また、プロパティへのアクセスは特別扱いされ、インライン・キャッシュという Smalltalk 実装系由来の技法が使われているらしい（参考：&lt;a href=&#34;http://www.cs.ucla.edu/~palsberg/course/cs232/papers/DeutschSchiffman-popl84.pdf&#34;&gt;Efficient Implementation of the Smalltalk-80 System&lt;/a&gt;）&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://code.google.com/apis/v8/design.html#garb_coll&#34;&gt;効率的なガベージコレクション&lt;/a&gt;
+v8 のガベージコレクションの特徴は以下のとおりである：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;stop-the-world&lt;/strong&gt; ガベージコレクション中はプログラムが停止する&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;世代別ガベージコレクション&lt;/strong&gt; 一度のガベージコレクションではオブジェクトの一部のみを検査することにより、プログラム停止時間を短縮&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ldquo;保守的&amp;rdquo;ではない&lt;/strong&gt; このため、未使用のオブジェクトをポインタと判定してしまい、メモリリークすることがない&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;メモリ・コンパクションができる&lt;/strong&gt; メモリのフラグメンテーションを防ぐ&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;総じて、バランスの良い実装を選びながら、特にメモリ効率に気をつかっている印象を受ける。&lt;/p&gt;
+
+&lt;h3 id=&#34;試す:6b1900b58191e8d3cb79ebccaf274941&#34;&gt;試す&lt;/h3&gt;
+
+&lt;p&gt;どうだろう？ v8 に興味が湧いてきたんじゃないだろうか。&lt;/p&gt;
+
+&lt;p&gt;では、能書きはこれくらいにして、実際に v8 を使ってみよう。なお、環境は Mac OS X Leopard、Xcode はインストール済みで GCC, Python, Subversion などがインストールされているものとする。&lt;/p&gt;
+
+&lt;p&gt;まずは適当なディレクトリに、ソースコードをチェックアウトする。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% cd Developer/Workspace/JavaScript/
+% svn checkout http://v8.googlecode.com/svn/trunk/ v8
+% cd v8/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ビルドには &lt;a href=&#34;http://www.scons.org/&#34;&gt;SCons&lt;/a&gt; というビルドツールが必要だ。&lt;a href=&#34;http://www.macports.org/&#34;&gt;MacPorts&lt;/a&gt; でインストールしておこう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% sudo port install scons
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ビルドオプションは、&lt;code&gt;scons --help&lt;/code&gt; で確認できる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% scons --help
+scons: Reading SConscript files ...
+scons: done reading SConscript files.
+
+mode: compilation mode (debug, release)
+    default: release
+    actual: release
+
+sample: build sample (shell, process)
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;とりあえず試したいだけなので、デフォルトの設定でビルドしてみようか。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% scons
+scons: Reading SConscript files ...
+scons: done reading SConscript files.
+scons: Building targets ...
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;同じディレクトリに &lt;code&gt;libv8.a&lt;/code&gt; というライブラリができたはずだ。&lt;/p&gt;
+
+&lt;h3 id=&#34;簡単な-c-プログラムで使ってみよう:6b1900b58191e8d3cb79ebccaf274941&#34;&gt;簡単な C++ プログラムで使ってみよう&lt;/h3&gt;
+
+&lt;p&gt;他の C++ プログラムに組み込んで使うことを念頭に開発されているのも、v8 の特徴だ。プロジェクト・サイトにある &lt;a href=&#34;http://code.google.com/apis/v8/get_started.html&#34;&gt;Hello World プログラム&lt;/a&gt;よりは実用的なプログラムで感触をつかんでみよう。&lt;/p&gt;
+
+&lt;p&gt;以下は、標準入力から受け取ったプログラムを構文解析して実行、結果を標準出力に書き出すプログラムだ（Gist にもアップしておいた。&lt;a href=&#34;http://gist.github.com/8559&#34;&gt;gist:8559&lt;/a&gt;）。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;sstream&amp;gt;
+#include &amp;lt;v8.h&amp;gt;
+
+using namespace v8;
+
+int main(int argc, const char **argv) {
+  // Create a scope and environment
+  HandleScope scope;
+  Handle&amp;lt;Context&amp;gt; context = Context::New();
+  Context::Scope context_scope(context);
+
+  // Reading a source code
+  std::stringbuf buffer;
+  std::cin.get(buffer, EOF);
+  Handle&amp;lt;String&amp;gt; source = String::New(buffer.str().c_str());
+
+  // Register try/cache handler for error reporting
+  TryCatch try_catch;
+  // Compile the source code.
+  Handle&amp;lt;Script&amp;gt; script = Script::Compile(source);
+
+  if (script.IsEmpty()) {
+    // Print errors that happened during compilation.
+    String::AsciiValue error(try_catch.Exception());
+    std::cout &amp;lt;&amp;lt; *error &amp;lt;&amp;lt; std::endl;
+    return -1;
+  }
+
+  // Running script
+  Handle&amp;lt;Value&amp;gt; result = script-&amp;gt;Run();
+
+  if (result.IsEmpty()) {
+    // Print errors that happened during execution.
+    String::AsciiValue error(try_catch.Exception());
+    std::cout &amp;lt;&amp;lt; *error &amp;lt;&amp;lt; std::endl;
+    return -1;
+  }
+
+  // Convert the result to an ASCII string and print it.
+  String::AsciiValue ascii(result);
+  std::cout &amp;lt;&amp;lt; *ascii &amp;lt;&amp;lt; std::endl;
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;このプログラムは gcc で次のようにコンパイルする。&lt;code&gt;V8_HOME&lt;/code&gt; 環境変数には v8 をチェックアウトしたディレクトリを設定してほしい。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% g++ -I${V8_HOME}/include -L${V8_HOME} -lv8 -o simple_v8_shell simple_v8_shell.cc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;実行例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% ./simple_v8_shell
+&#39;Hello, &#39; + &#39;World!&#39;
+Hello, World!
+% ./simple_v8_shell
+1 + 2 * 3
+7
+% ./simple_v8_shell
+var fib = function(n) {
+  return (n &amp;lt; 2) ? n : fib(n - 2) + fib(n - 1)
+}
+fib(10)
+55
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;最後に:6b1900b58191e8d3cb79ebccaf274941&#34;&gt;最後に&lt;/h3&gt;
+
+&lt;p&gt;現時点では、v8 が実際のところどれだけのものなのか、確証をもって言えることは多くない。しかし、v8 の登場で強く感じたことがふたつある。&lt;/p&gt;
+
+&lt;p&gt;まず、JavaScript エンジンの実装は &lt;a href=&#34;http://www.mozilla-japan.org/projects/tamarin/&#34;&gt;Tamarin&lt;/a&gt; (Adobe/Mozilla)、&lt;a href=&#34;http://webkit.org/blog/189/announcing-squirrelfish/&#34;&gt;SquirrelFish&lt;/a&gt; (Apple)、そして、今回の &lt;a href=&#34;http://code.google.com/p/v8/&#34;&gt;v8&lt;/a&gt; (Google) &amp;hellip; 強豪たちとホットな技術がひしめく戦場になりつつある。手の出尽くした感があるブラウザ競争とは異なり、この戦場はまさに「未開のフロンティア」だろう。&lt;/p&gt;
+
+&lt;p&gt;また、ここ数年で多くのプログラマに浸透した動的言語だが、これから数年のうちに、今度は&lt;strong&gt;動的言語の効率的な実装&lt;/strong&gt;もプログラマ一般に浸透していくのではないか、という思いを強くした。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,178 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>Code Reading: Dump and Print Function in llvm::Module Class</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Code Reading: Dump and Print Function in llvm::Module Class</h1>
+  <div class="metadata">
+    <p class="date">2013/01/14 12:00am</p>
+  </div>
+  <div class="content">
+    
+
+<p><a href="http://llvm.org/releases/download.html#3.1">LLVM 3.1</a> のソースコードから、<a href="http://llvm.org/doxygen/classllvm_1_1Module.html">llvm::Module</a> の IR 出力用関数のソースコードを読んだ。</p>
+
+<pre><code class="language-c++">/// Print the module to an output stream with an optional
+/// AssemblyAnnotationWriter.
+void print(raw_ostream &amp;OS, AssemblyAnnotationWriter *AAW) const;
+
+/// Dump the module to stderr (for debugging).
+void dump() const;
+</code></pre>
+
+<p>実装は <code>lib/VMCore/Module.cpp</code> ではなく、他の IR 出力用関数とともに <code>lib/VMCore/AsmWriter.cpp</code> にまとめられている。まずは <code>llvm::Module::print</code> を見てみよう。</p>
+
+<pre><code class="language-c++">void Module::print(raw_ostream &amp;ROS, AssemblyAnnotationWriter *AAW) const {
+  SlotTracker SlotTable(this);
+  formatted_raw_ostream OS(ROS);
+  AssemblyWriter W(OS, SlotTable, this, AAW);
+  W.printModule(this);
+}
+</code></pre>
+
+<h2 id="llvm-module-print:3faf8e0f1caed9c18f3a51d4cc12c955">llvm::Module::print</h2>
+
+<p><code>AssemblyWriter</code> は <code>lib/VMCore/AsmWriter.cpp</code> の無名ネームスペースに定義されているクラスであり、llvm 内のさまざまな型をストリームに出力する関数を提供している。<code>AssemblyWriter::printModule</code> のコードをざっと眺めてみれば、やっていることの想像はつくだろう。</p>
+
+<pre><code class="language-c++">void AssemblyWriter::printModule(const Module *M) {
+  if (!M-&gt;getModuleIdentifier().empty() &amp;&amp;
+      // Don't print the ID if it will start a new line (which would
+      // require a comment char before it).
+      M-&gt;getModuleIdentifier().find('\n') == std::string::npos)
+    Out &lt;&lt; &quot;; ModuleID = '&quot; &lt;&lt; M-&gt;getModuleIdentifier() &lt;&lt; &quot;'\n&quot;;
+...
+}
+</code></pre>
+
+<h2 id="llvm-module-dump:3faf8e0f1caed9c18f3a51d4cc12c955">llvm::Module::dump</h2>
+
+<p>同じく <code>lib/VMCore/AsmWriter.cpp</code> の最後の方に定義されている <code>llvm::Module::dump</code> はどうなっているだろうか。</p>
+
+<pre><code class="language-c++">// Module::dump() - Allow printing of Modules from the debugger.
+void Module::dump() const { print(dbgs(), 0); }
+</code></pre>
+
+<p><code>llvm::Module::print</code> を呼んでいるだけだ。</p>
+
+<ul>
+<li>第一引数の raw_ostream には dbgs()</li>
+<li>第二引数の AssemblyAnnotationWriter* には 0 (null pointer)</li>
+</ul>
+
+<p>では、第一引数に渡している dbgs 関数の戻り値はなんだろうか？</p>
+
+<h2 id="llvm-dbgs:3faf8e0f1caed9c18f3a51d4cc12c955">llvm::dbgs</h2>
+
+<p><code>llvm::dbgs</code> の宣言は <code>include/llvm/Support/Debug.h</code> にある。デバッグ用の出力ストリーム (raw_ostream) を返す関数だ。</p>
+
+<pre><code class="language-c++">/// dbgs() - This returns a reference to a raw_ostream for debugging
+/// messages.  If debugging is disabled it returns errs().  Use it
+/// like: dbgs() &lt;&lt; &quot;foo&quot; &lt;&lt; &quot;bar&quot;;
+raw_ostream &amp;dbgs();
+</code></pre>
+
+<p>実装は <code>lib/Support/Debug.cpp</code> で定義されており、<code>NDEBUG</code> が宣言されているか (非デバッグ・モード) 宣言されていないか (デバッグ・モード) で実装が切り替わるようになっている。</p>
+
+<pre><code class="language-c++">// All Debug.h functionality is a no-op in NDEBUG mode.
+#ifndef NDEBUG
+/// dbgs - Return a circular-buffered debug stream.
+raw_ostream &amp;llvm::dbgs() {
+...
+}
+...
+#else
+// Avoid &quot;has no symbols&quot; warning.
+namespace llvm {
+  /// dbgs - Return errs().
+  raw_ostream &amp;dbgs() {
+    return errs();
+  }
+}
+
+#endif
+</code></pre>
+
+<p>非デバッグ・モードのとき <code>dbgs()</code> は単に標準エラー出力への raw_ostream を返す。</p>
+
+<pre><code class="language-c++">#ifndef STDERR_FILENO
+# define STDERR_FILENO 2
+#endif
+...
+/// errs() - This returns a reference to a raw_ostream for standard error.
+/// Use it like: errs() &lt;&lt; &quot;foo&quot; &lt;&lt; &quot;bar&quot;;
+raw_ostream &amp;llvm::errs() {
+  // Set standard error to be unbuffered by default.
+  static raw_fd_ostream S(STDERR_FILENO, false, true);
+  return S;
+}
+</code></pre>
+
+<p>デバッグ・モードの場合の実装も見てみよう。</p>
+
+<pre><code class="language-c++">/// dbgs - Return a circular-buffered debug stream.
+raw_ostream &amp;llvm::dbgs() {
+  // Do one-time initialization in a thread-safe way.
+  static struct dbgstream {
+    circular_raw_ostream strm;
+
+    dbgstream() :
+        strm(errs(), &quot;*** Debug Log Output ***\n&quot;,
+             (!EnableDebugBuffering || !DebugFlag) ? 0 : DebugBufferSize) {
+      if (EnableDebugBuffering &amp;&amp; DebugFlag &amp;&amp; DebugBufferSize != 0)
+        // TODO: Add a handler for SIGUSER1-type signals so the user can
+        // force a debug dump.
+        sys::AddSignalHandler(&amp;debug_user_sig_handler, 0);
+      // Otherwise we've already set the debug stream buffer size to
+      // zero, disabling buffering so it will output directly to errs().
+    }
+  } thestrm;
+
+  return thestrm.strm;
+}
+</code></pre>
+
+<p>デバッグ・モードの場合は、標準エラー出力をラップした circular_raw_ostream を返している。static な構造体のコンストラクタで初期化することで、 シグナル・ハンドラなども設定しているのが興味深い。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2013/01/18/looper/">映画「LOOPER」</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2010/12/16/ffi-requires-ruby-version-1-9-2/">Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Estraier on METAREAL</title>
+    <link>http://www.metareal.org/tags/estraier/</link>
+    <description>Recent content in Estraier on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Tue, 04 Mar 2008 12:12:00 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/estraier/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Mac OS X に Hyper Estraier をインストールする</title>
+      <link>http://www.metareal.org/2008/03/03/how-to-install-hyper-estraier-with-the-source-package-on-mac-os-x/</link>
+      <pubDate>Tue, 04 Mar 2008 12:12:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2008/03/03/how-to-install-hyper-estraier-with-the-source-package-on-mac-os-x/</guid>
+      <description>
+
+&lt;p&gt;Mac OS X に Hyper Estraier をソースパッケージからインストールしたときのメモ。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mac OS X 10.4.11&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.gnu.org/software/libiconv/&#34;&gt;libiconv&lt;/a&gt; と &lt;a href=&#34;http://www.zlib.net/&#34;&gt;libz&lt;/a&gt; はインストール済み
+&lt;code&gt;/usr/lib/libiconv.2.2.0.dylib&lt;/code&gt;
+&lt;code&gt;/usr/lib/libz.1.2.3.dylib&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;qdbm:2400c0312f106b401d66328bb6a52ad9&#34;&gt;QDBM&lt;/h3&gt;
+
+&lt;p&gt;まずは &lt;a href=&#34;http://qdbm.sourceforge.net/index.ja.html&#34;&gt;QDBM&lt;/a&gt; をインストールする。バージョンは最新の 1.8.77 を選択した。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+% curl -LO http://qdbm.sourceforge.net/qdbm-1.8.77.tar.gz
+% tar xvzf qdbm-1.8.77.tar.gz
+% cd qdbm-1.8.77
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://hyperestraier.sourceforge.net/intro-ja.html#installation&#34;&gt;Hyper Estraier のインストールガイド&lt;/a&gt;によると、zlib を有効化すると Hyper Estraier の作るインデックスが小さくなるそうなので有効にしておく。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+% ./configure --enable-zlib
+% make mac
+% make check-mac
+% sudo make install-mac
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;/usr/local/lib/libqdbm.dylib&lt;/code&gt; にライブラリがインストールされる。&lt;/p&gt;
+
+&lt;h3 id=&#34;hyper-estraier:2400c0312f106b401d66328bb6a52ad9&#34;&gt;Hyper Estraier&lt;/h3&gt;
+
+&lt;p&gt;最新のソースパッケージであるバージョン 1.4.13 を選択した。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+% curl -LO http://hyperestraier.sourceforge.net/hyperestraier-1.4.13.tar.gz
+% tar xvzf hyperestraier-1.4.13.tar.gz
+% cd hyperestraier-1.4.13
+% ./configure
+% make mac
+% make check-mac
+% sudo make install-mac
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;動作確認:2400c0312f106b401d66328bb6a52ad9&#34;&gt;動作確認&lt;/h3&gt;
+
+&lt;p&gt;動作確認として、Hyper Estraier のソースパッケージに含まれるドキュメントをインデックス化してみよう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+% mkdir test
+% cd test/
+% estcmd gather -il ja -sd test.index ./intro-ja.html
+...
+estcmd: INFO: 204 (/Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/uguide-en.html): registered
+estcmd: INFO: 205 (/Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/uguide-ja.html): registered
+estcmd: INFO: flushing index words: name=estraier.index dnum=205 wnum=1 fsiz=7219684 crnum=12376 csiz=841099 dknum=0
+estcmd: INFO: flushing index words: name=estraier.index dnum=205 wnum=10001 fsiz=7486161 crnum=2376 csiz=214737 dknum=0
+estcmd: INFO: closing: name=estraier.index dnum=205 wnum=12377 fsiz=7643824 crnum=0 csiz=0 dknum=0
+estcmd: INFO: finished successfully: elapsed time: 0h 0m 1s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;特に問題なくインデックスを作成できたようだ。検索はどうだろうか。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+% estcmd search -vu estraier.index &amp;quot;Hyper Estraier&amp;quot;
+--------[13A09C711ADAF69A]--------
+VERSION 1.0
+NODE    local
+HIT     21
+HINT#1  hyper estraier  21
+TIME    0.001225
+DOCNUM  205
+WORDNUM 12377
+VIEW    URI
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;
+--------[13A09C711ADAF69A]--------
+3       file:///Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/index.html
+19      file:///Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/javanativeapi/index-all.html
+5       file:///Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/intro-en.html
+114     file:///Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/rubynativeapi/files/estraier-doc_rb.html
+6       file:///Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/intro-ja.html
+21      file:///Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/javanativeapi/overview-summary.html
+39      file:///Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/javapureapi/overview-summary.html
+113     file:///Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/rubynativeapi/classes/Estraier.html
+4       file:///Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/index.ja.html
+2       file:///Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/cguide-ja.html
+--------[13A09C711ADAF69A]--------:END
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;estcmd get&lt;/code&gt; で文書の情報を取得することも出来る。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+% estcmd get estraier.index ../hyperestraier-1.4.13/doc/index.ja.html
+@author=Mikio Hirabayashi
+@digest=5a4e89b097bb60914731db14654d3b3e
+@id=4
+@lang=ja
+@mdate=2007-12-25T01:47:27Z
+@size=13374
+@title=全文検索システム Hyper Estraier
+...
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

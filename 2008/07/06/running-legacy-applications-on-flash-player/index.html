@@ -1,0 +1,105 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>C 言語で書かれたソフトウェアが Flash で動くようになるかもしれない</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>C 言語で書かれたソフトウェアが Flash で動くようになるかもしれない</h1>
+  <div class="metadata">
+    <p class="date">2008/07/06 9:35am</p>
+  </div>
+  <div class="content">
+    
+
+<p><a href="http://lucille.atso-net.jp/blog/?p=555">lucille development blog</a> 経由。</p>
+
+<p><a href="http://www.toolness.com/wp/?p=52">Running C and Python Code on The Web</a> によると、Adobe の Scott Petersen 氏が大変興味深いツールを開発中のようだ。このツールを使うと、C 言語で書かれたソフトウェアを Flash Player で実行できるようになる。また、このツールはオープンソースで公開されるとのこと。</p>
+
+<h3 id="llvm-tamarin:8d737c7358e6143323105190bb6ec8ae">LLVM, Tamarin</h3>
+
+<p>ソフトウェアを Flash Player で実行可能な形式に変換するためには、ソフトウェアのソースコードが必要になる。変換の手順は以下のとおり。</p>
+
+<ol>
+<li>C 言語で書かれたソースコードを <a href="http://llvm.org/cmds/llvmgcc.html">llvm-gcc</a> で <a href="http://llvm.org/">LLVM</a> のアセンブリにコンパイルする</li>
+<li>LLVM のアセンブリを <a href="http://ja.wikipedia.org/wiki/ActionScript">ActionScript</a> で実装した独自 VM 向けの命令群に変換する</li>
+</ol>
+
+<p>ActionScript で実装された独自 VM は、Flash Player の <a href="http://www.mozilla-japan.org/projects/tamarin/">Tamarin</a> VM で実行される、というカラクリだ。</p>
+
+<p>先進的な最適化を備えたバックエンドとして注目を集める LLVM プロジェクトだが、その成果物を、フロントエンドとして利用しているのが面白い（もちろん、LLVM アセンブリの段階でも、<a href="http://ja.wikipedia.org/wiki/%E5%AE%9A%E6%95%B0%E7%95%B3%E3%81%BF%E8%BE%BC%E3%81%BF">定数畳み込み</a>や<a href="http://ja.wikipedia.org/wiki/%E3%83%87%E3%83%83%E3%83%89%E3%82%B3%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4">デッドコード削除</a>といった従来の最適化は施されているはずなので、フロントエンドとしてのみ利点があるわけではない）。</p>
+
+<h3 id="quake-nintendo:8d737c7358e6143323105190bb6ec8ae">Quake, Nintendo</h3>
+
+<p>もっとも、命令単位の変換はそれほど難しいものでもないし、実用的なアプリケーションが動作するのかどうか、気になるところだ。そこで、コンパイラだけではなく、インフラも整備されている。</p>
+
+<ol>
+<li>POSIX API</li>
+<li>Flash のマルチメディア機能を操作するためのライブラリ</li>
+<li>ネイティブのバイト配列など、Tamarin VM への機能追加</li>
+</ol>
+
+<p>結果として、さまざまな種類のソフトウェアが、実用的な速度で動作するらしい。</p>
+
+<p>Mozilla で行われたデモでは、<a href="http://ja.wikipedia.org/wiki/Quake">Quake</a> や、C 言語で書かれたエミュレータでゼルダが動いていた、しかも、ゲームは操作でき BGM も再現されていた、というのでなかなかのインパクトだ（ただ、2. のライブラリを使うために、ソースコードを書き換える必要があるんじゃないの？　という疑問は湧くが&hellip;）。</p>
+
+<p>ゲームだけではない。デモでは同様に、<a href="http://www.lua.org/">Lua</a>, <a href="http://www.ruby-lang.org/ja/">Ruby</a>, <a href="http://www.perl.org/">Perl</a>, そして <a href="http://www.python.org/">Python</a> といった LL 言語の処理系が動作していた、という。改めて書くが、これらはすべて、<strong>Flash Player 上での出来事だ</strong>。</p>
+
+<h3 id="python-javascript-nestedvm:8d737c7358e6143323105190bb6ec8ae">Python, JavaScript, NestedVM</h3>
+
+<p><a href="http://www.toolness.com/wp/?p=52">元記事</a>ではこのあと、</p>
+
+<ul>
+<li>この技術が Python に与える影響をセキュリティ的観点、<a href="http://codespeak.net/pypy/dist/pypy/doc/home.html">PyPy</a> プロジェクトとの比較から考察</li>
+<li>ActionScript でも動くのなら、ブラウザの JavaScript でも動くんじゃない？　という当然の飛躍</li>
+<li>まだ、不完全だけど Firefox の JavaScript エンジンには Tamarin VM が搭載されるしね</li>
+</ul>
+
+<p>といった話題に移っていく<a href="#note">[1]</a>。</p>
+
+<p>Adobe も LLVM を採用することを検討くらいはしているはずなので、これは LLVM 採用に向けた過渡的な実験の成果なのではないか、と個人的には思っている。</p>
+
+<p><a href="#id1">[1]</a>
+なお、C 言語で書かれたソフトウェアを別言語の処理系で動かす、というテーマには <a href="http://nestedvm.ibex.org/">NestedVM</a> という先行事例がある。GCC の出力した MIPS コードを Java のバイトコードに変換することで、C や FORTRAN などで書かれたソフトウェアを Java VM で実行できるようにしている。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2008/08/04/propertylist-parser-for-python/">Python でプロパティリストを読み込む</a></li>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/2008/06/26/java-generater-by-using-kilim/">kilim で Java でもジェネレーター</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>

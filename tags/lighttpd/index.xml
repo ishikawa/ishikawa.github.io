@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lighttpd on METAREAL</title>
+    <link>http://www.metareal.org/tags/lighttpd/</link>
+    <description>Recent content in Lighttpd on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Wed, 10 Jan 2007 03:20:00 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/lighttpd/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>mod_flv_streaming と Deep Tagging</title>
+      <link>http://www.metareal.org/2007/01/09/mod-flv-streaming-and-deep-tagging/</link>
+      <pubDate>Wed, 10 Jan 2007 03:20:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/01/09/mod-flv-streaming-and-deep-tagging/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd-take-2/&#34;&gt;lighttpd で Flash Video (.flv) をストリーミング配信 (2)&lt;/a&gt;の &lt;code&gt;mod_flv_streaming&lt;/code&gt; って、開始フレームを指定するのに、URL のクエリー部分を使うわけだけど、これを &lt;code&gt;mod_rewrite&lt;/code&gt; で Pretty URL にしてやれば、いわゆる &lt;strong&gt;Deep Tagging&lt;/strong&gt; もいけそうね。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.ideaxidea.com/archives/2006/04/tagging_20_deep_tagging.html&#34;&gt;Tagging 2.0: Deep Taggingというコンセプト&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.100shiki.com/archives/2006/12/viddler.html&#34;&gt;映像のある場面にコメントやタグをつけられる『Viddler』&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>lighttpd で Flash Video (.flv) をストリーミング配信 (2)</title>
+      <link>http://www.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd-take-2/</link>
+      <pubDate>Tue, 09 Jan 2007 09:18:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd-take-2/</guid>
+      <description>
+
+&lt;p&gt;前回の記事「&lt;a href=&#34;http://weblog.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd/&#34;&gt;lighttpd で Flash Video (.flv) をストリーミング配信&lt;/a&gt;」で、とりあえずストリーミング配信できることは書いた。今回は Flash の動画配信について調査したまとめ。&lt;/p&gt;
+
+&lt;h3 id=&#34;how-much:7711e8cf11829fcff8aa72c2c0c82c6a&#34;&gt;How much?&lt;/h3&gt;
+
+&lt;p&gt;一番気になっていたのは、あの馬鹿高い「&lt;a href=&#34;http://www.adobe.com/jp/products/flashmediaserver/&#34;&gt;フラッシュなんちゃらサーバ&lt;/a&gt;」を購入しないとあかんの？　というところでしたが、yuin さんがコメントしてくれた情報で解決しました。&lt;/p&gt;
+
+&lt;p&gt;結論からいえば、みんなの大好きな &lt;a href=&#34;http://www.lighttpd.net/&#34;&gt;lighttpd&lt;/a&gt; でストリーミング配信ができる。&lt;/p&gt;
+
+&lt;p&gt;まあ、要するに&lt;strong&gt;タダだよ&lt;/strong&gt;、と。&lt;/p&gt;
+
+&lt;h3 id=&#34;動画フォーマット:7711e8cf11829fcff8aa72c2c0c82c6a&#34;&gt;動画フォーマット&lt;/h3&gt;
+
+&lt;p&gt;まず、動画フォーマットは &lt;strong&gt;Flash Video (&lt;code&gt;.flv&lt;/code&gt;)&lt;/strong&gt; になる。
+これについては、&lt;code&gt;.mpeg&lt;/code&gt; や &lt;code&gt;.mov&lt;/code&gt; からの変換ツールがごろごろあるはずなので詳細は割愛。&lt;/p&gt;
+
+&lt;p&gt;とりあえず、リンクだけ。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ffmpeg.mplayerhq.hu/&#34;&gt;FFmpeg&lt;/a&gt; &lt;code&gt;.flv&lt;/code&gt; に変換。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://rubyforge.org/projects/flvtool2/&#34;&gt;FLVTool2&lt;/a&gt;  &lt;code&gt;.flv&lt;/code&gt; を操作。メタデータ追加など。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;flash-player-の事情:7711e8cf11829fcff8aa72c2c0c82c6a&#34;&gt;Flash Player の事情&lt;/h3&gt;
+
+&lt;p&gt;クライアント (Flash Player) 側では、&lt;a href=&#34;http://livedocs.macromedia.com/flex/2_jp/langref/flash/net/NetConnection.html&#34;&gt;&lt;code&gt;NetConnection&lt;/code&gt;&lt;/a&gt; でサーバに接続する。そして、その接続から &lt;a href=&#34;http://livedocs.macromedia.com/flex/2_jp/langref/flash/net/NetStream.html&#34;&gt;&lt;code&gt;NetStream&lt;/code&gt;&lt;/a&gt; インスタンスを生成し、これを &lt;code&gt;Video&lt;/code&gt; インスタンスに &lt;code&gt;attachVideo()&lt;/code&gt; することで &lt;code&gt;.flv&lt;/code&gt; の再生が可能になる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var nc:NetConnection = new NetConnection();
+nc.connect(null); // initialize
+var stream:NetStream = new NetStream(nc);
+var video:Video = new Video(300,300);
+...
+video.attachVideo(_ns);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Flash Player 6&lt;/strong&gt; では、肝心の &lt;code&gt;NetConnection&lt;/code&gt; が RTMP (Real Time Messaging Protocol) という Adobe (Macromedia) 独自のプロトコルのみサポートしていたため、フラッシュなんちゃらサーバでしかストリーミングができなかった（このへんは Flash MX 関連のドキュメントにあった記述から推測したもの。ちなみに、RTMP の仕様は非公開）。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Real_Time_Messaging_Protocol&#34;&gt;[Wikipedia] Real Time Messaging Protocol&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.osflash.org/red5/&#34;&gt;Red5 : Open Source Flash Server&lt;/a&gt; (RTMP を自力で解析)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;flash-player-7-以降:7711e8cf11829fcff8aa72c2c0c82c6a&#34;&gt;Flash Player 7 以降&lt;/h3&gt;
+
+&lt;p&gt;しかし、&lt;strong&gt;Flash Player 7&lt;/strong&gt; 以降では &lt;code&gt;NetConnection&lt;/code&gt; が HTTP による接続をサポートするようになったため、サーバ上の &lt;code&gt;.flv&lt;/code&gt; に HTTP でアクセスするだけでストリーミング（&lt;strong&gt;っぽい&lt;/strong&gt;）再生が可能になった。&lt;/p&gt;
+
+&lt;p&gt;本来のストリーミングに比べて、この方式は以下の欠点がある（他にもあるかも）。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;頭からの再生しかできない&lt;/li&gt;
+&lt;li&gt;そのままだと、リモートの &lt;code&gt;.flv&lt;/code&gt; を直接ダウンロードできちゃう&lt;/li&gt;
+&lt;li&gt;クライアントのローカルディスクにキャッシュされちゃう&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;lighttpd:7711e8cf11829fcff8aa72c2c0c82c6a&#34;&gt;lighttpd&lt;/h3&gt;
+
+&lt;p&gt;そこで &lt;a href=&#34;http://www.lighttpd.net/&#34;&gt;lighttpd&lt;/a&gt; ですよ。&lt;/p&gt;
+
+&lt;p&gt;lighttpd には 1.4.11 から &lt;code&gt;mod_flv_streaming&lt;/code&gt; という、そのものズバリのモジュールが用意されてまして、こいつを使うと、さきほどの欠点の 1. を克服して、任意の場所から再生が可能になる。&lt;/p&gt;
+
+&lt;p&gt;必要な設定は、&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;server.modules = (
+  &amp;quot;mod_flv_streaming&amp;quot;
+)
+flv-streaming.extensions = ( &amp;quot;.flv&amp;quot; )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;こんだけ。&lt;/p&gt;
+
+&lt;p&gt;仕組みも単純。
+クライアント側では、URL のクエリー文字列に &lt;code&gt;start&lt;/code&gt; パラメータを追加。これで開始位置を指定してもらい、サーバ側では指定された位置のデータを返すようになっています（そのため、&lt;code&gt;start&lt;/code&gt; パラメータによる位置指定をプレイヤー側で実装する必要がある）。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://jan.kneschke.de/projects/flv-streaming/&#34;&gt;lighttpd: チュートリアルとサンプル&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.kovyrin.net/2006/10/08/lighttpd-memcoder-flvtool-for-streaming/&#34;&gt;Using Lighttpd, Mplayer/Mencoder and Flvtool2 to Implement Flash Video Streaming&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.lighttpd.net/articles/2006/03/09/flv-streaming-with-lighttpd&#34;&gt;flv streaming with lighttpd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.flashcomguru.com/index.cfm/2005/11/2/Streaming-flv-video-via-PHP-take-two&#34;&gt;The Flash Video Resource: &amp;#8216;Streaming&amp;#8217; flv video via PHP, take two&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;また、&lt;a href=&#34;http://lighttpd.net/documentation/secdownload.html&#34;&gt;mod_secdownload&lt;/a&gt; を併用することで、欠点 2. の「直接 &lt;code&gt;.flv&lt;/code&gt; をダウンロードされる」も克服できる。&lt;/p&gt;
+
+&lt;p&gt;欠点 3. が残っているとはいえ、設定も簡単だし、魅力的な選択肢なのは間違いない。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>lighttpd で Flash Video (.flv) をストリーミング配信</title>
+      <link>http://www.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd/</link>
+      <pubDate>Tue, 09 Jan 2007 02:38:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd/</guid>
+      <description>&lt;p&gt;以前の記事「&lt;a href=&#34;http://weblog.metareal.org/2007/01/08/flash-video-streaming/&#34;&gt;Flash で動画をストリーミング再生&lt;/a&gt;」で yuin さんにコメントで教えてもらった情報：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;あと配信に関しては
+&lt;a href=&#34;http://blog.kovyrin.net/2006/10/08/lighttpd-memcoder-flvtool-for-streaming/&#34;&gt;http://blog.kovyrin.net/2006/10/08/lighttpd-memcoder-flvtool-for-streaming/&lt;/a&gt;
+&lt;a href=&#34;http://blog.lighttpd.net/articles/2006/03/09/flv-streaming-with-lighttpd&#34;&gt;http://blog.lighttpd.net/articles/2006/03/09/flv-streaming-with-lighttpd&lt;/a&gt;
+あたりはどうでしょう。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.kovyrin.net/2006/10/08/lighttpd-memcoder-flvtool-for-streaming/&#34;&gt;Using Lighttpd, Mplayer/Mencoder and Flvtool2 to Implement Flash Video Streaming&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.lighttpd.net/articles/2006/03/09/flv-streaming-with-lighttpd&#34;&gt;flv streaming with lighttpd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.flashcomguru.com/index.cfm/2005/11/2/Streaming-flv-video-via-PHP-take-two&#34;&gt;The Flash Video Resource: &amp;lsquo;Streaming&amp;rsquo; flv video via PHP, take two&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;で、とりあえず、&lt;a href=&#34;http://www.lighttpd.net/&#34;&gt;lighttpd&lt;/a&gt; で &lt;code&gt;.flv&lt;/code&gt; のストリーミング配信に成功（yuin さん、ありがとう！）。プレイヤーやら .flv やらは&lt;a href=&#34;http://jan.kneschke.de/projects/flv-streaming/&#34;&gt;こちら&lt;/a&gt;のをそのまま使っているです。&lt;/p&gt;
+
+&lt;p&gt;リンク先にも書いてあるように、擬似的なストリーミング配信（実際には、ただの HTTP によるダウンロード）なんだけど、普通に配信するぶんには困らないと思う。開始フレームを URL の &lt;code&gt;start&lt;/code&gt; パラメータで指定するので、プレイヤー側の対応も必要、ってとこくらいかな。&lt;/p&gt;
+
+&lt;p&gt;今日はもう眠いので、詳しくはまた後日。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
