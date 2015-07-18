@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Trac on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/trac/</link>
+    <link>http://www.metareal.org/tags/trac/</link>
     <description>Recent content in Trac on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sun, 09 Sep 2007 11:49:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/trac/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/trac/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</title>
-      <link>http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</link>
+      <link>http://www.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</link>
       <pubDate>Sun, 09 Sep 2007 11:49:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</guid>
+      <guid>http://www.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/&#34;&gt;Python: Mac OS X での locale.getpreferredencoding()&lt;/a&gt; では、Mac OS X に Python 2.5.1 をソースコードからインストールした場合に発生する、ロケール周りの問題点について書いた。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/&#34;&gt;Python: Mac OS X での locale.getpreferredencoding()&lt;/a&gt; では、Mac OS X に Python 2.5.1 をソースコードからインストールした場合に発生する、ロケール周りの問題点について書いた。&lt;/p&gt;
 
 &lt;p&gt;要約すると、&lt;/p&gt;
 
@@ -30,7 +30,7 @@
 
 &lt;p&gt;という内容だった。&lt;/p&gt;
 
-&lt;p&gt;しかし、しばらくして「っき」さんより&lt;a href=&#34;http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/#comment-4027&#34;&gt;コメントをいただいた&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;しかし、しばらくして「っき」さんより&lt;a href=&#34;http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/#comment-4027&#34;&gt;コメントをいただいた&lt;/a&gt;。&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;上記のlocale.getpreferredencoding()の返り値ですが、10.4.9に含まれているOS標準のPython 2.3.5では、デフォルトがUS-ASCIIになっていて、LANG環境変数も見てくれます。&lt;/p&gt;
@@ -87,10 +87,10 @@ ed - ${PROJECT}/Modules/_localemodule.c &amp;lt; ${FIX}/_localemodule.c.ed
     
     <item>
       <title>Python: Mac OS X での locale.getpreferredencoding() </title>
-      <link>http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</link>
+      <link>http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</link>
       <pubDate>Thu, 19 Jul 2007 10:30:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</guid>
+      <guid>http://www.metareal.org/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</guid>
       <description>
 
 &lt;p&gt;（追記）この記事に載せているパッチよりも &lt;a href=&#34;http://weblog.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/&#34;&gt;Apple によるロケール周りの変更点を Python 2.5.1 にも適用する&lt;/a&gt;のパッチを使った方がよさそうです。Mac OS X 標準の Python との互換性があります。&lt;/p&gt;

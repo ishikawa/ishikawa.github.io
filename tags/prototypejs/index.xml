@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Prototypejs on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/prototypejs/</link>
+    <link>http://www.metareal.org/tags/prototypejs/</link>
     <description>Recent content in Prototypejs on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Thu, 31 Jan 2008 12:40:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/prototypejs/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/prototypejs/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Prototype 1.6.0.2 公開</title>
-      <link>http://ishikawa.github.io/2008/01/30/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security/</link>
+      <link>http://www.metareal.org/2008/01/30/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security/</link>
       <pubDate>Thu, 31 Jan 2008 12:40:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/01/30/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security/</guid>
+      <guid>http://www.metareal.org/2008/01/30/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security/</guid>
       <description>
 
 &lt;p&gt;気づけば &lt;a href=&#34;http://www.prototypejs.org/2008/1/25/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security&#34;&gt;Prototype 1.6.0.2&lt;/a&gt; がリリースされていた。&lt;/p&gt;
@@ -62,10 +62,10 @@
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API（目次）</title>
-      <link>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</link>
+      <link>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</link>
       <pubDate>Mon, 24 Sep 2007 12:10:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</guid>
+      <guid>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; の変更点、特にイベント周りの API の変更についてまとめた記事のインデックス。&lt;/p&gt;
 
 &lt;ul&gt;
@@ -80,10 +80,10 @@
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API (4)</title>
-      <link>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</link>
+      <link>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</link>
       <pubDate>Mon, 24 Sep 2007 12:02:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</guid>
+      <guid>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; のイベント API について紹介するシリーズも今回が最後。&lt;/p&gt;
@@ -132,10 +132,10 @@
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API (3)</title>
-      <link>http://ishikawa.github.io/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</link>
+      <link>http://www.metareal.org/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</link>
       <pubDate>Sat, 22 Sep 2007 09:28:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</guid>
+      <guid>http://www.metareal.org/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; イベント API の進化、更なるつづき。&lt;/p&gt;
@@ -179,10 +179,10 @@ Event.stopObserving(&#39;signinForm&#39;);
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API (2)</title>
-      <link>http://ishikawa.github.io/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</link>
+      <link>http://www.metareal.org/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</link>
       <pubDate>Fri, 21 Sep 2007 05:41:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</guid>
+      <guid>http://www.metareal.org/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</guid>
       <description>
 
 &lt;p&gt;随分と間が空いてしまった。前回の記事 &lt;a href=&#34;http://weblog.metareal.org/2007/09/02/prototype-1-6-0-event-overhaul-release/&#34;&gt;Prototype 1.6.0 で大きく進化したイベント API&lt;/a&gt; に引き続き、&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; で導入された、イベント API の変更点を見ていく。&lt;/p&gt;
@@ -222,10 +222,10 @@ Event.stopObserving(&#39;signinForm&#39;);
     
     <item>
       <title>WebKit のブラウザ判定と iPhone、そして iPod touch</title>
-      <link>http://ishikawa.github.io/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</link>
+      <link>http://www.metareal.org/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</link>
       <pubDate>Sun, 09 Sep 2007 05:05:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</guid>
+      <guid>http://www.metareal.org/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/09/01/prototype-1-6-0-has-detection-for-iphone/&#34;&gt;Prototype 1.6.0 のブラウザ判定と iPhone&lt;/a&gt; では、&lt;/p&gt;
@@ -273,10 +273,10 @@ WebKitDetect.isMobile = function isMobile()
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API</title>
-      <link>http://ishikawa.github.io/2007/09/02/prototype-1-6-0-event-overhaul-release/</link>
+      <link>http://www.metareal.org/2007/09/02/prototype-1-6-0-event-overhaul-release/</link>
       <pubDate>Sun, 02 Sep 2007 09:55:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/02/prototype-1-6-0-event-overhaul-release/</guid>
+      <guid>http://www.metareal.org/2007/09/02/prototype-1-6-0-event-overhaul-release/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; にはいくつもの変更点がある。&lt;/p&gt;
@@ -395,10 +395,10 @@ Event.observe(element, &#39;click&#39;, onClickEventListener.bind(this));
     
     <item>
       <title>Prototype 1.6.0 のブラウザ判定と iPhone </title>
-      <link>http://ishikawa.github.io/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</link>
+      <link>http://www.metareal.org/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</link>
       <pubDate>Sat, 01 Sep 2007 08:30:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</guid>
+      <guid>http://www.metareal.org/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://prototypejs.org/&#34;&gt;prototype.js&lt;/a&gt; には 1.5.1 から、各種ブラウザを判定するための &lt;code&gt;Prototype.Browser&lt;/code&gt; が定義されている。&lt;/p&gt;
@@ -465,10 +465,10 @@ Event.observe(element, &#39;click&#39;, onClickEventListener.bind(this));
     
     <item>
       <title>Prototype 1.6.0 と DOMContentLoaded</title>
-      <link>http://ishikawa.github.io/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</link>
+      <link>http://www.metareal.org/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</link>
       <pubDate>Wed, 22 Aug 2007 05:32:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</guid>
+      <guid>http://www.metareal.org/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</guid>
       <description>
 
 &lt;p&gt;Prototype 1.6.0 のリリース候補版が公開されたようだ。&lt;/p&gt;
@@ -495,10 +495,10 @@ Event.observe(element, &#39;click&#39;, onClickEventListener.bind(this));
     
     <item>
       <title>prototype.js の $$ 関数で CSS 風に DOM プログラミング</title>
-      <link>http://ishikawa.github.io/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</link>
+      <link>http://www.metareal.org/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</link>
       <pubDate>Sun, 15 Jul 2007 11:56:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</guid>
+      <guid>http://www.metareal.org/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://www.prototypejs.org/&#34;&gt;prototype.js&lt;/a&gt; の &lt;code&gt;$$&lt;/code&gt; 関数（実際の処理は &lt;code&gt;Selector.findChildElements&lt;/code&gt;）は CSS セレクタを受け取り、セレクタにマッチする要素を配列で返してくれる。&lt;/p&gt;

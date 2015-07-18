@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lifehacks on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/lifehacks/</link>
+    <link>http://www.metareal.org/tags/lifehacks/</link>
     <description>Recent content in Lifehacks on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sun, 19 Aug 2007 01:23:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/lifehacks/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/lifehacks/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>テーブルトークとブレインストーミング</title>
-      <link>http://ishikawa.github.io/2007/08/18/tabletalking-and-brainstorming/</link>
+      <link>http://www.metareal.org/2007/08/18/tabletalking-and-brainstorming/</link>
       <pubDate>Sun, 19 Aug 2007 01:23:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/18/tabletalking-and-brainstorming/</guid>
+      <guid>http://www.metareal.org/2007/08/18/tabletalking-and-brainstorming/</guid>
       <description>&lt;p&gt;そういえば、テーブルトーク RPG って、まさにブレインストーミングだ。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://lifehacking.jp/&#34;&gt;Lifehacking.jp&lt;/a&gt; の記事「&lt;a href=&#34;http://lifehacking.jp/2007/08/brainstorming-is-dead/&#34;&gt;ブレインストーミングは死んだ！ ブレインストーミング万歳！&lt;/a&gt;」より（強調は引用者）。&lt;/p&gt;
@@ -38,10 +38,10 @@
     
     <item>
       <title>iGTD と QuickSilver の連携</title>
-      <link>http://ishikawa.github.io/2007/08/15/about-igtd-quicksilver-plugin/</link>
+      <link>http://www.metareal.org/2007/08/15/about-igtd-quicksilver-plugin/</link>
       <pubDate>Wed, 15 Aug 2007 05:18:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/15/about-igtd-quicksilver-plugin/</guid>
+      <guid>http://www.metareal.org/2007/08/15/about-igtd-quicksilver-plugin/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://igtd.pl/iGTD/&#34;&gt;iGTD&lt;/a&gt; のインストール用ディスクイメージには &lt;a href=&#34;http://docs.blacktree.com/quicksilver/what_is_quicksilver&#34;&gt;QuickSilver&lt;/a&gt; と連携するためのプラグインが同梱されている（参考：&lt;a href=&#34;http://bargiel.home.pl/iGTD/help/quicksilver/index.html&#34;&gt;iGTD &amp;amp; Quicksilver&lt;/a&gt;）。&lt;/p&gt;
 
 &lt;p&gt;このプラグインで追加される &lt;strong&gt;Put into iGTD inbox&lt;/strong&gt; を使えば、QuickSilver で選択したものは何でも（テキスト、ファイル、ブックマーク、あるいはアプリケーションも）iGTD の inbox に放り込むことが可能だ。QuickSilver でテキストを入力すれば、それがそのままタスクの名前になるし、ファイルやブックマークはタスクにリンクが付随したかたちで登録される。&lt;/p&gt;
@@ -144,10 +144,10 @@
     
     <item>
       <title>Mac の GTD アプリ、iGTD を試してみた (2)</title>
-      <link>http://ishikawa.github.io/2007/08/11/review-my-igtd-experience/</link>
+      <link>http://www.metareal.org/2007/08/11/review-my-igtd-experience/</link>
       <pubDate>Sat, 11 Aug 2007 08:59:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/11/review-my-igtd-experience/</guid>
+      <guid>http://www.metareal.org/2007/08/11/review-my-igtd-experience/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1077839654/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1373/1077839654_3a2455e628_o.gif&#34; alt=&#34;iGTD Screenshot&#34; /&gt;
@@ -194,10 +194,10 @@
     
     <item>
       <title>Mac の GTD アプリ、iGTD を試してみた</title>
-      <link>http://ishikawa.github.io/2007/08/10/igtd-first-impression/</link>
+      <link>http://www.metareal.org/2007/08/10/igtd-first-impression/</link>
       <pubDate>Fri, 10 Aug 2007 05:29:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/10/igtd-first-impression/</guid>
+      <guid>http://www.metareal.org/2007/08/10/igtd-first-impression/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1072315915/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1008/1072315915_bee7dddcbc_o.jpg&#34; alt=&#34;Remember The Milk To iGTD&#34; /&gt;

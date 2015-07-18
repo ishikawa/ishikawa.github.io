@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Webkit on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/webkit/</link>
+    <link>http://www.metareal.org/tags/webkit/</link>
     <description>Recent content in Webkit on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Wed, 24 Dec 2008 01:06:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/webkit/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/webkit/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>WEB&#43;DB PRESS Vol.48</title>
-      <link>http://ishikawa.github.io/2008/12/24/web-db-press-vol48/</link>
+      <link>http://www.metareal.org/2008/12/24/web-db-press-vol48/</link>
       <pubDate>Wed, 24 Dec 2008 01:06:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/12/24/web-db-press-vol48/</guid>
+      <guid>http://www.metareal.org/2008/12/24/web-db-press-vol48/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://raku.to/&#34;&gt;古谷楽人&lt;/a&gt;氏より &lt;a href=&#34;http://gihyo.jp/magazine/wdpress/archive/2009/vol48&#34;&gt;WEB+DB PRESS Vol.48&lt;/a&gt; (&lt;a href=&#34;http://www.amazon.co.jp/exec/obidos/ASIN/4774136913/&#34;&gt;amazon.co.jp&lt;/a&gt;) を献本いただきました。ありがとうございます。わたしは当雑誌、というか雑誌全般の熱心な読者ではないのですが（ごめんなさい）、ひさしぶりの技術系雑誌を楽しく読ませてもらいました。&lt;/p&gt;
@@ -47,10 +47,10 @@
     
     <item>
       <title>JavaScript ベンチマーク SunSpider 0.9</title>
-      <link>http://ishikawa.github.io/2007/12/19/new-javascript-benchmark-sunspider/</link>
+      <link>http://www.metareal.org/2007/12/19/new-javascript-benchmark-sunspider/</link>
       <pubDate>Thu, 20 Dec 2007 08:28:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/19/new-javascript-benchmark-sunspider/</guid>
+      <guid>http://www.metareal.org/2007/12/19/new-javascript-benchmark-sunspider/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://webkit.org/&#34;&gt;WebKit&lt;/a&gt; の開発者たちは素晴らしいレンダリング・エンジンだけではなく、&lt;a href=&#34;http://webkit.org/blog/61/introducing-drosera/&#34;&gt;Drosera&lt;/a&gt; や &lt;a href=&#34;http://webkit.org/blog/108/yet-another-one-more-thing-a-new-web-inspector/&#34;&gt;Web Inspector&lt;/a&gt; などの Web 開発者向けツールも提供してきたが、今度は JavaScript ベンチマークをリリースしたようだ。&lt;/p&gt;

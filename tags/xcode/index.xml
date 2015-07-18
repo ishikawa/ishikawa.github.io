@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Xcode on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/xcode/</link>
+    <link>http://www.metareal.org/tags/xcode/</link>
     <description>Recent content in Xcode on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 21 Aug 2007 05:24:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/xcode/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/xcode/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Xcode でプロジェクトの名前を変更したくなったら</title>
-      <link>http://ishikawa.github.io/2007/08/21/rename-xcode-project/</link>
+      <link>http://www.metareal.org/2007/08/21/rename-xcode-project/</link>
       <pubDate>Tue, 21 Aug 2007 05:24:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/21/rename-xcode-project/</guid>
+      <guid>http://www.metareal.org/2007/08/21/rename-xcode-project/</guid>
       <description>
 
 &lt;p&gt;Xcode でプロジェクトの名前を変えたくなった。&lt;/p&gt;
@@ -63,10 +63,10 @@
     
     <item>
       <title>Xcode で Subversion を利用するときのトラブルシューティング</title>
-      <link>http://ishikawa.github.io/2007/06/19/xcode-subversion-troubleshooting/</link>
+      <link>http://www.metareal.org/2007/06/19/xcode-subversion-troubleshooting/</link>
       <pubDate>Tue, 19 Jun 2007 09:44:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/06/19/xcode-subversion-troubleshooting/</guid>
+      <guid>http://www.metareal.org/2007/06/19/xcode-subversion-troubleshooting/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/564796906/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1293/564796906_6c386b03b5.jpg&#34; alt=&#34;Xcode SCM Preference&#34; /&gt;
@@ -98,10 +98,10 @@
     
     <item>
       <title>Xcode プロジェクトを Subversion 管理する</title>
-      <link>http://ishikawa.github.io/2007/06/17/subversion-primer-for-xcode-projects/</link>
+      <link>http://www.metareal.org/2007/06/17/subversion-primer-for-xcode-projects/</link>
       <pubDate>Mon, 18 Jun 2007 03:35:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/06/17/subversion-primer-for-xcode-projects/</guid>
+      <guid>http://www.metareal.org/2007/06/17/subversion-primer-for-xcode-projects/</guid>
       <description>
 
 &lt;p&gt;Apple の提供する開発環境 &lt;a href=&#34;http://www.apple.com/jp/macosx/features/xcode/&#34;&gt;Xcode&lt;/a&gt; で作成したプロジェクトを Subversion 管理する手順。基本的に「&lt;a href=&#34;http://rails.office.drecom.jp/ishikawa/archive/26&#34;&gt;Rails のプロジェクトを Subversion で管理する&lt;/a&gt;」の Xcode 版。&lt;/p&gt;

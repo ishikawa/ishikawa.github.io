@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/java/</link>
+    <link>http://www.metareal.org/tags/java/</link>
     <description>Recent content in Java on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Fri, 27 Jun 2008 03:41:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>kilim で Java でもジェネレーター</title>
-      <link>http://ishikawa.github.io/2008/06/26/java-generater-by-using-kilim/</link>
+      <link>http://www.metareal.org/2008/06/26/java-generater-by-using-kilim/</link>
       <pubDate>Fri, 27 Jun 2008 03:41:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/06/26/java-generater-by-using-kilim/</guid>
+      <guid>http://www.metareal.org/2008/06/26/java-generater-by-using-kilim/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://twitter.com/&#34;&gt;Twitter&lt;/a&gt; と &lt;a href=&#34;http://www.erlang.org/&#34;&gt;Erlang&lt;/a&gt; をきっかけに注目を集めるようになった軽量プロセス（とかマイクロスレッドとか）を Java で実現するためのライブラリに &lt;a href=&#34;http://www.malhar.net/sriram/kilim/&#34;&gt;kilim&lt;/a&gt; があります。&lt;/p&gt;
@@ -138,10 +138,10 @@ Fib(10) = 55
     
     <item>
       <title>PostgreSQL 7.4 の JDBC ドライバをビルド</title>
-      <link>http://ishikawa.github.io/2007/12/12/building-postgresql-7-4-jdbc-driver/</link>
+      <link>http://www.metareal.org/2007/12/12/building-postgresql-7-4-jdbc-driver/</link>
       <pubDate>Wed, 12 Dec 2007 03:59:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/12/building-postgresql-7-4-jdbc-driver/</guid>
+      <guid>http://www.metareal.org/2007/12/12/building-postgresql-7-4-jdbc-driver/</guid>
       <description>
 
 &lt;p&gt;PostgreSQL 7.4.13 以降で起こる&lt;a href=&#34;http://weblog.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/&#34;&gt;異なるエンコーディング間の変換エラー&lt;/a&gt;がいまだに尾を引いている。&lt;/p&gt;
@@ -198,10 +198,10 @@ connectclass=org.postgresql.jdbc3.Jdbc3Connection
     
     <item>
       <title>PostgreSQL 7.4.13 以降、異なるエンコーディングでの変換エラー</title>
-      <link>http://ishikawa.github.io/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</link>
+      <link>http://www.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</link>
       <pubDate>Mon, 10 Dec 2007 09:54:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</guid>
+      <guid>http://www.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</guid>
       <description>&lt;p&gt;PostgreSQL 7.4.18 で以下のようなエラーが出力されるようになった。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;ERROR:  22P05: character 0xe28094 of encoding &amp;quot;UNICODE&amp;quot; has no equivalent in &amp;quot;EUC_JP&amp;quot;
@@ -232,10 +232,10 @@ connectclass=org.postgresql.jdbc3.Jdbc3Connection
     
     <item>
       <title>Java で要素がひとつだけのコレクションをつくる</title>
-      <link>http://ishikawa.github.io/2007/10/07/java-singleton-collection/</link>
+      <link>http://www.metareal.org/2007/10/07/java-singleton-collection/</link>
       <pubDate>Sun, 07 Oct 2007 11:11:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/10/07/java-singleton-collection/</guid>
+      <guid>http://www.metareal.org/2007/10/07/java-singleton-collection/</guid>
       <description>
 
 &lt;p&gt;Java でときどき、要素がひとつだけのコレクションがほしくなるときがある。たとえば、利用しているライブラリのメソッドが引数としてコレクションを要求しているが、渡したいオブジェクトがひとつしかないとか。&lt;/p&gt;
@@ -286,10 +286,10 @@ Map&amp;lt;String, String&amp;gt; map = Collections.singletonMap(&amp;quot;key&a
     
     <item>
       <title>Java のプロジェクトで一番長いクラス名</title>
-      <link>http://ishikawa.github.io/2007/09/18/longest-java-class-name/</link>
+      <link>http://www.metareal.org/2007/09/18/longest-java-class-name/</link>
       <pubDate>Wed, 19 Sep 2007 07:38:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/18/longest-java-class-name/</guid>
+      <guid>http://www.metareal.org/2007/09/18/longest-java-class-name/</guid>
       <description>&lt;p&gt;ふと気になって書いてみた。&lt;/p&gt;
 
 &lt;p&gt;カレントディレクトリ以下の .java ファイルを、ファイル名の長さでソートするスクリプト。&lt;/p&gt;
@@ -321,10 +321,10 @@ Map&amp;lt;String, String&amp;gt; map = Collections.singletonMap(&amp;quot;key&a
     
     <item>
       <title>Java 1.5 で追加された配列の便利メソッド</title>
-      <link>http://ishikawa.github.io/2007/08/26/java-util-arrays-1-5/</link>
+      <link>http://www.metareal.org/2007/08/26/java-util-arrays-1-5/</link>
       <pubDate>Sun, 26 Aug 2007 09:55:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/26/java-util-arrays-1-5/</guid>
+      <guid>http://www.metareal.org/2007/08/26/java-util-arrays-1-5/</guid>
       <description>
 
 &lt;p&gt;Java 1.5 (J2SE 5.0) では &lt;a href=&#34;http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html&#34;&gt;&lt;code&gt;java.util.Arrays&lt;/code&gt;&lt;/a&gt; に、いくつかのメソッドが追加されている。地味ながらも、自前で書くのは面倒くさいものばかりだ。&lt;/p&gt;
@@ -358,10 +358,10 @@ Map&amp;lt;String, String&amp;gt; map = Collections.singletonMap(&amp;quot;key&a
     
     <item>
       <title>PostgreSQL 7.4 のインデックスと smallint と JDBC</title>
-      <link>http://ishikawa.github.io/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</link>
+      <link>http://www.metareal.org/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</link>
       <pubDate>Fri, 03 Aug 2007 05:41:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</guid>
+      <guid>http://www.metareal.org/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</guid>
       <description>&lt;p&gt;PostgreSQL 7.4 のマニュアル「&lt;a href=&#34;http://www.postgresql.jp/document/pg746doc/html/datatype.html#DATATYPE-INT&#34;&gt;8.1.1. 整数データ型&lt;/a&gt;」には以下のような記述がある。&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -431,10 +431,10 @@ statement: SELECT * FROM example WHERE smallint_column = &#39;1&amp;amp;#x27;
     
     <item>
       <title>Tomcat 5.5 の一部バージョンでは JavaMail の JNDI リソースが動かない</title>
-      <link>http://ishikawa.github.io/2007/07/12/problem-with-tomcat-5-5-2x-and-jndi-javamail/</link>
+      <link>http://www.metareal.org/2007/07/12/problem-with-tomcat-5-5-2x-and-jndi-javamail/</link>
       <pubDate>Fri, 13 Jul 2007 08:45:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/07/12/problem-with-tomcat-5-5-2x-and-jndi-javamail/</guid>
+      <guid>http://www.metareal.org/2007/07/12/problem-with-tomcat-5-5-2x-and-jndi-javamail/</guid>
       <description>&lt;p&gt;Tomcat のバージョンを 5.5.17 から 5.5.23 にあげたところ、次のような例外が発生するようになった。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;javax.naming.NamingException: Could not create resource factory instance [Root exception is java.lang.ClassNotFoundException: org.apache.naming.factory.MailSessionFactory]
@@ -471,10 +471,10 @@ Session session = Session.getDefaultInstance(props);
     
     <item>
       <title>java.awt.Image を BufferedImage や byte 配列に変換する方法</title>
-      <link>http://ishikawa.github.io/2007/04/02/convert-awt-image-to-buffered-image-or-byte-array/</link>
+      <link>http://www.metareal.org/2007/04/02/convert-awt-image-to-buffered-image-or-byte-array/</link>
       <pubDate>Tue, 03 Apr 2007 12:18:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/04/02/convert-awt-image-to-buffered-image-or-byte-array/</guid>
+      <guid>http://www.metareal.org/2007/04/02/convert-awt-image-to-buffered-image-or-byte-array/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/&#34;&gt;Java ImageIO で Flickr 並みのサムネイル画像をつくる&lt;/a&gt;という記事で、&lt;/p&gt;
@@ -574,10 +574,10 @@ renderedImage.getRaster().setDataElements(0, 0, w, h, pixelGrabber.getPixels());
     
     <item>
       <title>Criteria API で inner join する</title>
-      <link>http://ishikawa.github.io/2007/03/19/hibernate-inner-join-using-criteria-api/</link>
+      <link>http://www.metareal.org/2007/03/19/hibernate-inner-join-using-criteria-api/</link>
       <pubDate>Tue, 20 Mar 2007 08:36:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/03/19/hibernate-inner-join-using-criteria-api/</guid>
+      <guid>http://www.metareal.org/2007/03/19/hibernate-inner-join-using-criteria-api/</guid>
       <description>&lt;p&gt;毎回、&lt;a href=&#34;http://www.hibernate.org/&#34;&gt;Hibernate&lt;/a&gt; の使い方を Google で検索する羽目になるのだが、今日はその検索の過程で、偶々こんな記事を見つけた。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.javalobby.org/articles/hibernatequery102/&#34;&gt;Hibernate Querying 102 : The Criteria API&lt;/a&gt;&lt;/p&gt;
@@ -613,10 +613,10 @@ order by foo.b desc
     
     <item>
       <title>Java ImageIO で Flickr 並みのサムネイル画像をつくる</title>
-      <link>http://ishikawa.github.io/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/</link>
+      <link>http://www.metareal.org/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/</link>
       <pubDate>Sun, 11 Feb 2007 08:38:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/</guid>
+      <guid>http://www.metareal.org/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/</guid>
       <description>&lt;p&gt;まあ、記事のタイトルがアレですけど&amp;hellip;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://java.sun.com/javase/6/docs/technotes/guides/imageio/index.html&#34;&gt;Java の Image I/O&lt;/a&gt; で画像の縮小を行う方法として、&lt;a href=&#34;http://java.sun.com/j2se/1.3/ja/docs/ja/api/java/awt/image/AffineTransformOp.html&#34;&gt;&lt;code&gt;AffineTransformOp&lt;/code&gt;&lt;/a&gt; を利用する方法がある。&lt;/p&gt;
@@ -661,10 +661,10 @@ Image newImage = Toolkit.getDefaultToolkit().createImage(im);
     
     <item>
       <title>Redstone XML-RPC Library への不満</title>
-      <link>http://ishikawa.github.io/2007/01/13/redstone-xml-rpc-library-no-thanks/</link>
+      <link>http://www.metareal.org/2007/01/13/redstone-xml-rpc-library-no-thanks/</link>
       <pubDate>Sat, 13 Jan 2007 11:26:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/13/redstone-xml-rpc-library-no-thanks/</guid>
+      <guid>http://www.metareal.org/2007/01/13/redstone-xml-rpc-library-no-thanks/</guid>
       <description>&lt;p&gt;どうやら Java の XML-RPC ライブラリとは、あまり縁がないらしい。またもや、&lt;a href=&#34;http://weblog.metareal.org/2006/12/12/apache-xml-rpc-no-thanks/&#34;&gt;XML-RPC ライブラリへの愚痴エントリである&lt;/a&gt;。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://ws.apache.org/xmlrpc/&#34;&gt;Apache XML-RPC&lt;/a&gt; ライブラリの複雑さとドキュメントのすくなさ（いつまでホームページのロゴ画像がリンク切れなのだろう？）に辟易して、今度は &lt;a href=&#34;http://xmlrpc.sourceforge.net/&#34;&gt;Redstone&lt;/a&gt; というライブラリを試してみた。&lt;/p&gt;
@@ -708,10 +708,10 @@ Image newImage = Toolkit.getDefaultToolkit().createImage(im);
     
     <item>
       <title>Eclipse の Java プロジェクトを Subversion 管理するときの手順</title>
-      <link>http://ishikawa.github.io/2007/01/11/subversion-primer-for-eclipse-java-projects/</link>
+      <link>http://www.metareal.org/2007/01/11/subversion-primer-for-eclipse-java-projects/</link>
       <pubDate>Thu, 11 Jan 2007 09:40:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/11/subversion-primer-for-eclipse-java-projects/</guid>
+      <guid>http://www.metareal.org/2007/01/11/subversion-primer-for-eclipse-java-projects/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.eclipse.org/&#34;&gt;Eclipse&lt;/a&gt; の Java プロジェクトを Subversion 管理するときの手順を、メモも兼ねて残しておこう。ちなみに、Eclipse での Subversion サポートに使っているのは &lt;a href=&#34;http://subclipse.tigris.org/&#34;&gt;Subclipse&lt;/a&gt; プラグイン。&lt;/p&gt;
 
 &lt;p&gt;以下の &lt;code&gt;$REPO&lt;/code&gt; 変数はプロジェクトを作成する、Subversion レポジトリの URL とする（たとえば、&lt;code&gt;svn+ssh://svn.metareal.org/path/to/repo/project/&lt;/code&gt;）。&lt;/p&gt;
@@ -759,10 +759,10 @@ Image newImage = Toolkit.getDefaultToolkit().createImage(im);
     
     <item>
       <title>XML-RPC で &#34;Premature end of file.&#34;</title>
-      <link>http://ishikawa.github.io/2006/12/13/xml-rpc-premature-end-of-file/</link>
+      <link>http://www.metareal.org/2006/12/13/xml-rpc-premature-end-of-file/</link>
       <pubDate>Wed, 13 Dec 2006 10:48:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2006/12/13/xml-rpc-premature-end-of-file/</guid>
+      <guid>http://www.metareal.org/2006/12/13/xml-rpc-premature-end-of-file/</guid>
       <description>&lt;p&gt;Java で XML-RPC の開発をしている。&lt;/p&gt;
 
 &lt;p&gt;動作確認は UNIX コマンドの curl で手軽にすませているのだが、突然、すべての &lt;code&gt;curl&lt;/code&gt; コマンドで
@@ -809,10 +809,10 @@ Content-Type: **application/x-www-form-urlencoded**
     
     <item>
       <title>Java の軽量 XML パーサ</title>
-      <link>http://ishikawa.github.io/2006/12/13/java-lightweight-xml-parser/</link>
+      <link>http://www.metareal.org/2006/12/13/java-lightweight-xml-parser/</link>
       <pubDate>Wed, 13 Dec 2006 09:56:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2006/12/13/java-lightweight-xml-parser/</guid>
+      <guid>http://www.metareal.org/2006/12/13/java-lightweight-xml-parser/</guid>
       <description>&lt;p&gt;ユニットテストの実行に XML パーサが必要になった。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://java.sun.com/j2se/1.4.2/docs/api/org/xml/sax/helpers/XMLReaderFactory.html#createXMLReader&#34;&gt;&lt;code&gt;org.xml.sax.helpers.XMLReaderFactory.createXMLReader()&lt;/code&gt;&lt;/a&gt; を使っているので、SAX2 に準拠したパーサが必要だ。&lt;/p&gt;

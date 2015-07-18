@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>METAREAL</title>
-    <link>http://ishikawa.github.io/</link>
+    <link>http://www.metareal.org/</link>
     <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Fri, 18 Jan 2013 00:00:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>映画「LOOPER」</title>
-      <link>http://ishikawa.github.io/2013/01/18/looper/</link>
+      <link>http://www.metareal.org/2013/01/18/looper/</link>
       <pubDate>Fri, 18 Jan 2013 00:00:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2013/01/18/looper/</guid>
+      <guid>http://www.metareal.org/2013/01/18/looper/</guid>
       <description>&lt;p&gt;話題の映画「&lt;a href=&#34;http://looper.gaga.ne.jp/&#34;&gt;LOOPER&lt;/a&gt;」を観てきた。&lt;/p&gt;
 
 &lt;p&gt;タイムトラベルものでありながら、主人公自身はタイムトラベルしないのが珍しい。先行作品へのオマージュに満ちあふれた本作だが、以下の二点において
@@ -36,10 +36,10 @@
     
     <item>
       <title>Code Reading: Dump and Print Function in llvm::Module Class</title>
-      <link>http://ishikawa.github.io/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</link>
+      <link>http://www.metareal.org/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</link>
       <pubDate>Mon, 14 Jan 2013 00:00:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</guid>
+      <guid>http://www.metareal.org/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://llvm.org/releases/download.html#3.1&#34;&gt;LLVM 3.1&lt;/a&gt; のソースコードから、&lt;a href=&#34;http://llvm.org/doxygen/classllvm_1_1Module.html&#34;&gt;llvm::Module&lt;/a&gt; の IR 出力用関数のソースコードを読んだ。&lt;/p&gt;
@@ -169,10 +169,10 @@ raw_ostream &amp;amp;llvm::dbgs() {
     
     <item>
       <title>Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった</title>
-      <link>http://ishikawa.github.io/2010/12/16/ffi-requires-ruby-version-1-9-2/</link>
+      <link>http://www.metareal.org/2010/12/16/ffi-requires-ruby-version-1-9-2/</link>
       <pubDate>Thu, 16 Dec 2010 00:00:00 +0000</pubDate>
       
-      <guid>http://ishikawa.github.io/2010/12/16/ffi-requires-ruby-version-1-9-2/</guid>
+      <guid>http://www.metareal.org/2010/12/16/ffi-requires-ruby-version-1-9-2/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/ffi/ffi&#34;&gt;Ruby-FFI 1.0.0&lt;/a&gt; からは &lt;a href=&#34;http://groups.google.com/group/ruby-ffi/browse_thread/thread/c40766b574a15962&#34;&gt;Ruby 1.9.2 以降が必要になった&lt;/a&gt;。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% sudo gem1.8 install ffi
@@ -196,10 +196,10 @@ Installing RDoc documentation for ffi-0.6.3...
     
     <item>
       <title>Ruby FFI のメモリ管理についてメモ</title>
-      <link>http://ishikawa.github.io/2010/12/11/1292077318/</link>
+      <link>http://www.metareal.org/2010/12/11/1292077318/</link>
       <pubDate>Sat, 11 Dec 2010 00:00:00 +0000</pubDate>
       
-      <guid>http://ishikawa.github.io/2010/12/11/1292077318/</guid>
+      <guid>http://www.metareal.org/2010/12/11/1292077318/</guid>
       <description>&lt;p&gt;Ruby FFI のメモリ管理についてメモ。FFI::MemoryPointer で確保したメモリを自分で破棄する場合は、autorelease を false にする。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;error   = FFI::MemoryPointer.new(:pointer)
@@ -220,10 +220,10 @@ error.autorelease=false
     
     <item>
       <title>LLVM 2.8 の C API 差分をチェックしてはじめて気づいたけど、2.8...</title>
-      <link>http://ishikawa.github.io/2010/12/05/1291551820/</link>
+      <link>http://www.metareal.org/2010/12/05/1291551820/</link>
       <pubDate>Sun, 05 Dec 2010 09:23:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2010/12/05/1291551820/</guid>
+      <guid>http://www.metareal.org/2010/12/05/1291551820/</guid>
       <description>&lt;p&gt;LLVM 2.8 の &lt;a href=&#34;https://gist.github.com/728757&#34;&gt;C API 差分&lt;/a&gt;をチェックしてはじめて気づいたけど、2.8 からは Union Type がなくなったみたい。&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -253,10 +253,10 @@ error.autorelease=false
     
     <item>
       <title>Google Bookmark が快適すぎる</title>
-      <link>http://ishikawa.github.io/2010/02/23/google-bookmark-makes-me-feel-so-good/</link>
+      <link>http://www.metareal.org/2010/02/23/google-bookmark-makes-me-feel-so-good/</link>
       <pubDate>Tue, 23 Feb 2010 23:26:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2010/02/23/google-bookmark-makes-me-feel-so-good/</guid>
+      <guid>http://www.metareal.org/2010/02/23/google-bookmark-makes-me-feel-so-good/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.google.com/bookmarks/&#34;&gt;Google Bookmark&lt;/a&gt; を使いはじめた。シンプルながら快適な使い心地で気に入っている。&lt;/p&gt;
 
 &lt;ol&gt;
@@ -275,10 +275,10 @@ error.autorelease=false
     
     <item>
       <title>Python のクロージャとレキシカル変数を使ったシングルトンっぽいもの</title>
-      <link>http://ishikawa.github.io/2010/01/31/python-shared-instance-closure/</link>
+      <link>http://www.metareal.org/2010/01/31/python-shared-instance-closure/</link>
       <pubDate>Sun, 31 Jan 2010 18:26:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2010/01/31/python-shared-instance-closure/</guid>
+      <guid>http://www.metareal.org/2010/01/31/python-shared-instance-closure/</guid>
       <description>&lt;p&gt;実際にはシングルトンではなくて、共有インスタンスを返すメソッドを実装する、ってだけなんだけど。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class A(object):
@@ -303,10 +303,10 @@ error.autorelease=false
     
     <item>
       <title>Google AppEngine で Django 1.1 を使う</title>
-      <link>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</link>
+      <link>http://www.metareal.org/2009/12/02/running-django-1-1-on-google-appengine/</link>
       <pubDate>Thu, 03 Dec 2009 12:42:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</guid>
+      <guid>http://www.metareal.org/2009/12/02/running-django-1-1-on-google-appengine/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://code.google.com/appengine/&#34;&gt;Google AppEngine&lt;/a&gt; の SDK および実行環境には、Web アプリケーション・フレームワークの &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; がプリインストールされている。&lt;/p&gt;
@@ -386,10 +386,10 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
     
     <item>
       <title>Go</title>
-      <link>http://ishikawa.github.io/2009/11/11/go-vim/</link>
+      <link>http://www.metareal.org/2009/11/11/go-vim/</link>
       <pubDate>Wed, 11 Nov 2009 10:29:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2009/11/11/go-vim/</guid>
+      <guid>http://www.metareal.org/2009/11/11/go-vim/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://iolanguage.com/&#34;&gt;Io&lt;/a&gt; と並んで、自らの検索能力が試される名前の &lt;a href=&#34;http://golang.org/&#34;&gt;Go&lt;/a&gt; ですが、実用性と簡潔さを兼ねそなえた言語設計は好感がもてます。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;% cd $GOROOT
@@ -406,10 +406,10 @@ au BufRead,BufNewFile *.go set filetype=go
     
     <item>
       <title>伊坂幸太郎「ラッシュライフ」</title>
-      <link>http://ishikawa.github.io/2009/11/10/8/%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A9%E3%82%A4%E3%83%95-%E4%BC%8A%E5%9D%82%E5%B9%B8%E5%A4%AA%E9%83%8E</link>
+      <link>http://www.metareal.org/2009/11/10/8/%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A9%E3%82%A4%E3%83%95-%E4%BC%8A%E5%9D%82%E5%B9%B8%E5%A4%AA%E9%83%8E</link>
       <pubDate>Wed, 11 Nov 2009 01:28:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2009/11/10/8/%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A9%E3%82%A4%E3%83%95-%E4%BC%8A%E5%9D%82%E5%B9%B8%E5%A4%AA%E9%83%8E</guid>
+      <guid>http://www.metareal.org/2009/11/10/8/%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A9%E3%82%A4%E3%83%95-%E4%BC%8A%E5%9D%82%E5%B9%B8%E5%A4%AA%E9%83%8E</guid>
       <description>&lt;p&gt;すでに本棚の肥やしと化していた「ラッシュライフ」を読了した。「&lt;a href=&#34;http://www.amazon.co.jp/dp/4101250219&#34;&gt;オーデュポンの祈り&lt;/a&gt;」に引きつづき二冊目の伊坂幸太郎なので、一応、刊行順に読んでいることになる。もっとも、著者の本が文庫化されはじめた時期に衝動買いして、そのまま積んでいたというだけなのだが。&lt;/p&gt;
 
 &lt;p&gt;作品の感想は人それぞれ、どうやら評価の高い作品らしいので、個人的にトンデモに感じた箇所だけ挙げておく。&lt;/p&gt;
@@ -426,10 +426,10 @@ au BufRead,BufNewFile *.go set filetype=go
     
     <item>
       <title>Sphinx 0.6.2 にアップグレードしたときのメモ</title>
-      <link>http://ishikawa.github.io/2009/07/27/upgrading-sphinx-0-6-2/</link>
+      <link>http://www.metareal.org/2009/07/27/upgrading-sphinx-0-6-2/</link>
       <pubDate>Mon, 27 Jul 2009 10:45:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2009/07/27/upgrading-sphinx-0-6-2/</guid>
+      <guid>http://www.metareal.org/2009/07/27/upgrading-sphinx-0-6-2/</guid>
       <description>
 
 &lt;p&gt;約一年ぶりに &lt;a href=&#34;http://sphinx.pocoo.org/&#34;&gt;Sphinx&lt;/a&gt; を最新版に&amp;hellip;しようとしたら色々苦労したので、変更点や手順をメモとして残しておく。&lt;/p&gt;
@@ -487,10 +487,10 @@ Please also report this if it was a user error, so that a better error message c
     
     <item>
       <title>WEB&#43;DB PRESS Vol.48</title>
-      <link>http://ishikawa.github.io/2008/12/24/web-db-press-vol48/</link>
+      <link>http://www.metareal.org/2008/12/24/web-db-press-vol48/</link>
       <pubDate>Wed, 24 Dec 2008 01:06:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/12/24/web-db-press-vol48/</guid>
+      <guid>http://www.metareal.org/2008/12/24/web-db-press-vol48/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://raku.to/&#34;&gt;古谷楽人&lt;/a&gt;氏より &lt;a href=&#34;http://gihyo.jp/magazine/wdpress/archive/2009/vol48&#34;&gt;WEB+DB PRESS Vol.48&lt;/a&gt; (&lt;a href=&#34;http://www.amazon.co.jp/exec/obidos/ASIN/4774136913/&#34;&gt;amazon.co.jp&lt;/a&gt;) を献本いただきました。ありがとうございます。わたしは当雑誌、というか雑誌全般の熱心な読者ではないのですが（ごめんなさい）、ひさしぶりの技術系雑誌を楽しく読ませてもらいました。&lt;/p&gt;
@@ -522,10 +522,10 @@ Please also report this if it was a user error, so that a better error message c
     
     <item>
       <title>道尾秀介「背の眼」</title>
-      <link>http://ishikawa.github.io/2008/12/14/%E8%83%8C%E3%81%AE%E7%9C%BC/</link>
+      <link>http://www.metareal.org/2008/12/14/%E8%83%8C%E3%81%AE%E7%9C%BC/</link>
       <pubDate>Sun, 14 Dec 2008 08:29:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/12/14/%E8%83%8C%E3%81%AE%E7%9C%BC/</guid>
+      <guid>http://www.metareal.org/2008/12/14/%E8%83%8C%E3%81%AE%E7%9C%BC/</guid>
       <description>&lt;p&gt;「&lt;a href=&#34;http://www.metareal.org/2008/12/13/%E5%90%91%E6%97%A5%E8%91%B5%E3%81%AE%E5%92%B2%E3%81%8B%E3%81%AA%E3%81%84%E5%A4%8F/&#34;&gt;向日葵の咲かない夏&lt;/a&gt;」が期待以上に楽しめた（精神的なダメージも大きかったが&amp;hellip;）ので、道尾秀介の他作品も読んでみることにした。もちろん、今後は期待値ハードルが上がっている。&lt;/p&gt;
 
 &lt;p&gt;選んだのは、これも文庫化されていた「&lt;a href=&#34;http://www.amazon.co.jp/%E8%83%8C%E3%81%AE%E7%9C%BC%E3%80%88%E4%B8%8A%E3%80%89-%E5%B9%BB%E5%86%AC%E8%88%8E%E6%96%87%E5%BA%AB-%E9%81%93%E5%B0%BE-%E7%A7%80%E4%BB%8B/dp/434441036X%3FSubscriptionId%3D15SMZCTB9V8NGR2TW082%26tag%3Dwebloandlogic-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D434441036X&#34;&gt;背の眼&lt;/a&gt;」。著者のデビュー作だ。第五回ホラーサスペンス大賞特別賞を受賞しており、評価も高い。文庫版は上下巻二冊組だが、一冊の厚さが程々なので分量はそれほどでもない。&lt;/p&gt;
@@ -537,10 +537,10 @@ Please also report this if it was a user error, so that a better error message c
     
     <item>
       <title>道尾秀介「向日葵の咲かない夏」</title>
-      <link>http://ishikawa.github.io/2008/12/13/%E5%90%91%E6%97%A5%E8%91%B5%E3%81%AE%E5%92%B2%E3%81%8B%E3%81%AA%E3%81%84%E5%A4%8F/</link>
+      <link>http://www.metareal.org/2008/12/13/%E5%90%91%E6%97%A5%E8%91%B5%E3%81%AE%E5%92%B2%E3%81%8B%E3%81%AA%E3%81%84%E5%A4%8F/</link>
       <pubDate>Sat, 13 Dec 2008 12:06:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/12/13/%E5%90%91%E6%97%A5%E8%91%B5%E3%81%AE%E5%92%B2%E3%81%8B%E3%81%AA%E3%81%84%E5%A4%8F/</guid>
+      <guid>http://www.metareal.org/2008/12/13/%E5%90%91%E6%97%A5%E8%91%B5%E3%81%AE%E5%92%B2%E3%81%8B%E3%81%AA%E3%81%84%E5%A4%8F/</guid>
       <description>&lt;p&gt;タイトルとあらすじから、ほろ苦い青春物語を連想していたら、凄惨な話で驚いた。&lt;/p&gt;
 
 &lt;p&gt;冒頭から痛ましい事件がつづく。主人公と、その家族が置かれた状況は過酷だ。感情を抑えた筆致が悲惨さを際立たせ、それが、まだ幼い主人公の視点を通して語られているのだと思うと、胸がしめつけられる。&lt;/p&gt;
@@ -555,10 +555,10 @@ Please also report this if it was a user error, so that a better error message c
     
     <item>
       <title>GCC の警告オプションで一部の警告のみをエラー扱いにしたい</title>
-      <link>http://ishikawa.github.io/2008/12/12/gcc-options-request-or-suppress-warnings-and-errors/</link>
+      <link>http://www.metareal.org/2008/12/12/gcc-options-request-or-suppress-warnings-and-errors/</link>
       <pubDate>Fri, 12 Dec 2008 06:23:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/12/12/gcc-options-request-or-suppress-warnings-and-errors/</guid>
+      <guid>http://www.metareal.org/2008/12/12/gcc-options-request-or-suppress-warnings-and-errors/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://gcc.gnu.org/&#34;&gt;GCC&lt;/a&gt; の警告オプションでよく使うものといえば、以下のようなものがある：&lt;/p&gt;

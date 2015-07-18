@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rubyonrails on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/rubyonrails/</link>
+    <link>http://www.metareal.org/tags/rubyonrails/</link>
     <description>Recent content in Rubyonrails on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Fri, 18 Apr 2008 07:41:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/rubyonrails/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/rubyonrails/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ruby-openid でログの出力先を変更する</title>
-      <link>http://ishikawa.github.io/2008/04/18/ruby-openid-util-logger/</link>
+      <link>http://www.metareal.org/2008/04/18/ruby-openid-util-logger/</link>
       <pubDate>Fri, 18 Apr 2008 07:41:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/04/18/ruby-openid-util-logger/</guid>
+      <guid>http://www.metareal.org/2008/04/18/ruby-openid-util-logger/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://rubyforge.org/projects/ruby-openid/&#34;&gt;ruby-openid&lt;/a&gt; は Ruby の OpenID ライブラリだが、そのままだとログの出力先が標準エラー出力に向けられている。これでは何かと困ることもあるだろう（たとえば、ユニットテストの結果に ruby-openid のデバッグ出力が混じって鬱陶しい、とか）。&lt;/p&gt;
 
 &lt;p&gt;幸い OpenID::Util モジュールに、内部で使われているロガーを変更するためのメソッドが用意されている。以下のようにすれば、Rails 標準のロガーに置き換えることが可能だ。&lt;/p&gt;
@@ -30,10 +30,10 @@ OpenID::Util.logger = RAILS_DEFAULT_LOGGER
     
     <item>
       <title>find | xargs rcov</title>
-      <link>http://ishikawa.github.io/2008/02/17/find-xargs-rcov/</link>
+      <link>http://www.metareal.org/2008/02/17/find-xargs-rcov/</link>
       <pubDate>Sun, 17 Feb 2008 09:55:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/02/17/find-xargs-rcov/</guid>
+      <guid>http://www.metareal.org/2008/02/17/find-xargs-rcov/</guid>
       <description>&lt;p&gt;Rails アプリのコードカヴァレッジに &lt;a href=&#34;http://eigenclass.org/hiki.rb?rcov&#34;&gt;rcov&lt;/a&gt; を使ってみた。面倒な設定も必要なく、そこそこの速度でカヴァレッジを測定できるので便利だ。異常系のテスト洩れ確認に重宝している。&lt;/p&gt;
 
 &lt;p&gt;Rails アプリなので、test ディレクトリ以下のテストコードを実行したいわけだが、&lt;/p&gt;
@@ -52,10 +52,10 @@ OpenID::Util.logger = RAILS_DEFAULT_LOGGER
     
     <item>
       <title>Mime::Type の register メソッドで定義される定数</title>
-      <link>http://ishikawa.github.io/2008/02/15/rails-mime-type-register/</link>
+      <link>http://www.metareal.org/2008/02/15/rails-mime-type-register/</link>
       <pubDate>Fri, 15 Feb 2008 08:10:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/02/15/rails-mime-type-register/</guid>
+      <guid>http://www.metareal.org/2008/02/15/rails-mime-type-register/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://api.rubyonrails.org/classes/Mime/Type.html#M001651&#34;&gt;Mime::Type.register&lt;/a&gt; は、登録された &lt;a href=&#34;http://api.rubyonrails.org/classes/Mime/Type.html&#34;&gt;Mime::Type&lt;/a&gt; ではなく拡張子の配列を返す、という謎の挙動になっている。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;Mime::Type.register &amp;quot;image/jpeg&amp;quot;, :jpeg, [], [&amp;quot;jpg&amp;quot;, &amp;quot;pjpeg&amp;quot;]
@@ -82,10 +82,10 @@ OpenID::Util.logger = RAILS_DEFAULT_LOGGER
     
     <item>
       <title>ActiveRecord::Base.with_failsave (2)</title>
-      <link>http://ishikawa.github.io/2008/02/13/activerecord-base-with-failsave-take2/</link>
+      <link>http://www.metareal.org/2008/02/13/activerecord-base-with-failsave-take2/</link>
       <pubDate>Thu, 14 Feb 2008 08:12:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/02/13/activerecord-base-with-failsave-take2/</guid>
+      <guid>http://www.metareal.org/2008/02/13/activerecord-base-with-failsave-take2/</guid>
       <description>&lt;p&gt;実際に &lt;a href=&#34;http://weblog.metareal.org/2008/02/12/activerecord-base-with_failsave/&#34;&gt;ActiveRecord::Base.with_failsave&lt;/a&gt; でテストを書いているうちに、いくつか使い勝手の悪い部分が見つかった。というわけで、すこし改良。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;class ActiveRecord::Base
@@ -137,10 +137,10 @@ end
     
     <item>
       <title>ActiveRecord::Base.with_failsave</title>
-      <link>http://ishikawa.github.io/2008/02/12/activerecord-base-with_failsave/</link>
+      <link>http://www.metareal.org/2008/02/12/activerecord-base-with_failsave/</link>
       <pubDate>Wed, 13 Feb 2008 04:28:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/02/12/activerecord-base-with_failsave/</guid>
+      <guid>http://www.metareal.org/2008/02/12/activerecord-base-with_failsave/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://enbug.tdiary.net/20060714.html#p01&#34;&gt;failmalloc&lt;/a&gt; の精神で、必ず失敗する &lt;a href=&#34;http://api.rubyonrails.org/classes/ActiveResource/Base.html#M000848&#34;&gt;ActiveRecord::Base#save&lt;/a&gt; を書いてみた。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;class ActiveRecord::Base
@@ -175,10 +175,10 @@ end
     
     <item>
       <title>Rails の Migration で MySQL の型を指定する</title>
-      <link>http://ishikawa.github.io/2008/02/06/using-mysql-data-types-in-rails-migration/</link>
+      <link>http://www.metareal.org/2008/02/06/using-mysql-data-types-in-rails-migration/</link>
       <pubDate>Thu, 07 Feb 2008 08:37:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/02/06/using-mysql-data-types-in-rails-migration/</guid>
+      <guid>http://www.metareal.org/2008/02/06/using-mysql-data-types-in-rails-migration/</guid>
       <description>
 
 &lt;p&gt;たとえば、こんな感じの &lt;a href=&#34;http://api.rubyonrails.org/classes/ActiveRecord/Migration.html&#34;&gt;Migration&lt;/a&gt; を考えてみる。&lt;/p&gt;
@@ -295,10 +295,10 @@ end
     
     <item>
       <title>Rails 2.0 で追加された Migration 関連の Rake タスク</title>
-      <link>http://ishikawa.github.io/2008/01/31/rails-2-0-migration-related-rake-tasks/</link>
+      <link>http://www.metareal.org/2008/01/31/rails-2-0-migration-related-rake-tasks/</link>
       <pubDate>Fri, 01 Feb 2008 03:08:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/01/31/rails-2-0-migration-related-rake-tasks/</guid>
+      <guid>http://www.metareal.org/2008/01/31/rails-2-0-migration-related-rake-tasks/</guid>
       <description>
 
 &lt;h3 id=&#34;db-migrate-reset:fd9efc155b510df5c9ef382b45977609&#34;&gt;db:migrate:reset&lt;/h3&gt;
@@ -324,10 +324,10 @@ end
     
     <item>
       <title>Rails で MySQL を使うときの注意点</title>
-      <link>http://ishikawa.github.io/2007/07/24/notes-on-rubyonrails-with-mysql/</link>
+      <link>http://www.metareal.org/2007/07/24/notes-on-rubyonrails-with-mysql/</link>
       <pubDate>Tue, 24 Jul 2007 09:29:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/07/24/notes-on-rubyonrails-with-mysql/</guid>
+      <guid>http://www.metareal.org/2007/07/24/notes-on-rubyonrails-with-mysql/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://weblog.rubyonrails.com/2007/7/20/rails-and-mysql&#34;&gt;Rails のブログでも取り上げられていた&lt;/a&gt;、&amp;rdquo;&lt;a href=&#34;http://mysqldump.azundris.com/archives/72-Rubyisms.html&#34;&gt;Rubyisms - MySQL-dump&lt;/a&gt;&amp;rdquo; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。&lt;/p&gt;
@@ -418,10 +418,10 @@ end
     
     <item>
       <title>script.aculo.us の InPlaceEditor で submitOnBlur だと Safari が落ちる</title>
-      <link>http://ishikawa.github.io/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</link>
+      <link>http://www.metareal.org/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</link>
       <pubDate>Fri, 06 Jul 2007 10:57:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</guid>
+      <guid>http://www.metareal.org/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://script.aculo.us/&#34;&gt;script.aculo.us&lt;/a&gt; の &lt;a href=&#34;http://wiki.script.aculo.us/scriptaculous/show/Ajax.InPlaceEditor&#34;&gt;InPlaceEditor&lt;/a&gt; を試している。&lt;/p&gt;
 
 &lt;p&gt;設定でカスタマイズできる部分がけっこうある割に、必要なものがなかったりして（特にコールバック系）微妙に使いづらいんだが、Safari だと不意にクラッシュする、という問題もあったり。&lt;/p&gt;
@@ -434,10 +434,10 @@ end
     
     <item>
       <title>Rails の便利メソッド h, html_escape は ERB:Util にあった</title>
-      <link>http://ishikawa.github.io/2007/06/30/htmlescape-in-erb-util/</link>
+      <link>http://www.metareal.org/2007/06/30/htmlescape-in-erb-util/</link>
       <pubDate>Sun, 01 Jul 2007 07:03:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/06/30/htmlescape-in-erb-util/</guid>
+      <guid>http://www.metareal.org/2007/06/30/htmlescape-in-erb-util/</guid>
       <description>&lt;p&gt;Ruby on Rails のテンプレートでしょっちゅうお世話になる &lt;code&gt;h&lt;/code&gt; メソッド。&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;&amp;lt;&lt;/code&gt; や &lt;code&gt;&amp;amp;&lt;/code&gt; といった、HTML にはそのまま書けない文字を実体参照に置き換えてくれるメソッドだが、これをコントローラーから使いたいときがある。たとえば、Ajax のレスポンスで ad-hoc に HTML 片を返してしまいたいときとか、けっこうあるんじゃないか。&lt;/p&gt;
@@ -491,10 +491,10 @@ end
     
     <item>
       <title>Mac OS X Tiger に Ruby on Rails をインストール</title>
-      <link>http://ishikawa.github.io/2006/12/27/rubyonrails-on-macosx-tiger/</link>
+      <link>http://www.metareal.org/2006/12/27/rubyonrails-on-macosx-tiger/</link>
       <pubDate>Thu, 28 Dec 2006 12:26:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2006/12/27/rubyonrails-on-macosx-tiger/</guid>
+      <guid>http://www.metareal.org/2006/12/27/rubyonrails-on-macosx-tiger/</guid>
       <description>&lt;p&gt;さて、次は &lt;a href=&#34;http://www.rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt; のインストールだ。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://rubygems.org/&#34;&gt;RubyGems&lt;/a&gt; がインストール済みなら、これはもう簡単。&lt;/p&gt;
@@ -512,10 +512,10 @@ Successfully installed rake-0.7.1
     
     <item>
       <title>Mac OS X Tiger に RubyGems をインストール</title>
-      <link>http://ishikawa.github.io/2006/12/27/rubygems-on-macosx-tiger/</link>
+      <link>http://www.metareal.org/2006/12/27/rubygems-on-macosx-tiger/</link>
       <pubDate>Thu, 28 Dec 2006 12:02:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2006/12/27/rubygems-on-macosx-tiger/</guid>
+      <guid>http://www.metareal.org/2006/12/27/rubygems-on-macosx-tiger/</guid>
       <description>&lt;p&gt;Mac OS X Tiger 上に &lt;a href=&#34;http://www.rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt; の開発環境を構築している。&lt;/p&gt;
 
 &lt;p&gt;Ruby on Rails は &lt;a href=&#34;http://www.ruby-lang.org/ja/&#34;&gt;Ruby&lt;/a&gt; のパッケージ管理システムである &lt;a href=&#34;http://rubygems.org/&#34;&gt;RubyGems&lt;/a&gt; でインストールできるので、まずは RubyGems をインストールしてみよう。&lt;/p&gt;
@@ -545,10 +545,10 @@ Successfully installed rake-0.7.1
     
     <item>
       <title>Mac OS X  Tiger に Ruby on Rails の環境を構築する</title>
-      <link>http://ishikawa.github.io/2006/12/27/rubyonrails-on-macosx-tiger-links/</link>
+      <link>http://www.metareal.org/2006/12/27/rubyonrails-on-macosx-tiger-links/</link>
       <pubDate>Thu, 28 Dec 2006 01:32:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2006/12/27/rubyonrails-on-macosx-tiger-links/</guid>
+      <guid>http://www.metareal.org/2006/12/27/rubyonrails-on-macosx-tiger-links/</guid>
       <description>&lt;p&gt;Mac OS X Tiger (Intel) に &lt;a href=&#34;http://www.rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt; によるアプリケーション開発環境を構築するための手順まとめ。&lt;/p&gt;
 
 &lt;ul&gt;

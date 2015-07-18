@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Llvm on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/llvm/</link>
+    <link>http://www.metareal.org/tags/llvm/</link>
     <description>Recent content in Llvm on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sun, 05 Dec 2010 09:23:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/llvm/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/llvm/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>LLVM 2.8 の C API 差分をチェックしてはじめて気づいたけど、2.8...</title>
-      <link>http://ishikawa.github.io/2010/12/05/1291551820/</link>
+      <link>http://www.metareal.org/2010/12/05/1291551820/</link>
       <pubDate>Sun, 05 Dec 2010 09:23:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2010/12/05/1291551820/</guid>
+      <guid>http://www.metareal.org/2010/12/05/1291551820/</guid>
       <description>&lt;p&gt;LLVM 2.8 の &lt;a href=&#34;https://gist.github.com/728757&#34;&gt;C API 差分&lt;/a&gt;をチェックしてはじめて気づいたけど、2.8 からは Union Type がなくなったみたい。&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -45,10 +45,10 @@
     
     <item>
       <title>C/C&#43;&#43; のコードを ActionScript に変換する Adobe Alchemy を試す</title>
-      <link>http://ishikawa.github.io/2008/12/09/adobe-alchemy-first-impression/</link>
+      <link>http://www.metareal.org/2008/12/09/adobe-alchemy-first-impression/</link>
       <pubDate>Tue, 09 Dec 2008 08:34:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/12/09/adobe-alchemy-first-impression/</guid>
+      <guid>http://www.metareal.org/2008/12/09/adobe-alchemy-first-impression/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://labs.adobe.com/&#34;&gt;Adobe Labs&lt;/a&gt; の研究プロジェクト、コードネーム &lt;a href=&#34;http://labs.adobe.com/technologies/alchemy/&#34;&gt;Alchemy&lt;/a&gt; を試してみた。同プロジェクトについては、すでに多くの方が書かれており、今更な感もあるが、以前に&lt;a href=&#34;http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/&#34;&gt;紹介記事を書いている&lt;/a&gt;ことだし、備忘録も兼ねて残しておく。&lt;/p&gt;
@@ -177,10 +177,10 @@ TraceOutputFileEnable=1
     
     <item>
       <title>C 言語で書かれたソフトウェアが Flash で動くようになるかもしれない</title>
-      <link>http://ishikawa.github.io/2008/07/06/running-legacy-applications-on-flash-player/</link>
+      <link>http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/</link>
       <pubDate>Sun, 06 Jul 2008 09:35:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/07/06/running-legacy-applications-on-flash-player/</guid>
+      <guid>http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://lucille.atso-net.jp/blog/?p=555&#34;&gt;lucille development blog&lt;/a&gt; 経由。&lt;/p&gt;
@@ -237,10 +237,10 @@ TraceOutputFileEnable=1
     
     <item>
       <title>LLVM で Hello, World</title>
-      <link>http://ishikawa.github.io/2007/07/22/hello-world-llvm/</link>
+      <link>http://www.metareal.org/2007/07/22/hello-world-llvm/</link>
       <pubDate>Sun, 22 Jul 2007 10:23:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/07/22/hello-world-llvm/</guid>
+      <guid>http://www.metareal.org/2007/07/22/hello-world-llvm/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://llvm.org/&#34;&gt;LLVM&lt;/a&gt; で Hello, World プログラム。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;@.LC0 = internal constant [13 x i8] c&amp;quot;Hello world!\00&amp;quot;
@@ -267,10 +267,10 @@ Hello world!
     
     <item>
       <title>LLVM で Hello, World の puts 関数</title>
-      <link>http://ishikawa.github.io/2007/07/22/hello-world-llvm-and-runtime-libraries/</link>
+      <link>http://www.metareal.org/2007/07/22/hello-world-llvm-and-runtime-libraries/</link>
       <pubDate>Sun, 22 Jul 2007 02:06:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/07/22/hello-world-llvm-and-runtime-libraries/</guid>
+      <guid>http://www.metareal.org/2007/07/22/hello-world-llvm-and-runtime-libraries/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/07/22/hello-world-llvm/&#34;&gt;前回のように簡単なプログラム&lt;/a&gt;でも、実際に書いてみると疑問が湧いてくる。&lt;/p&gt;
 
 &lt;p&gt;まず、文字列を出力している &lt;code&gt;puts&lt;/code&gt; 関数。こいつの実体はどこにあるんだろう？ C のプログラムなら、リンカが標準ライブラリをこっそりリンクしている、という結末になるのだが&amp;hellip;。検索してみると、やはり、&lt;a href=&#34;http://lists.cs.uiuc.edu/pipermail/llvmdev/2006-December/007656.html&#34;&gt;同じように疑問をもった人がいる&lt;/a&gt;ようで、&lt;code&gt;lli&lt;/code&gt; が実行時のライブラリとして標準 C ライブラリを利用しているらしい。&lt;/p&gt;

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Haxe on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/haxe/</link>
+    <link>http://www.metareal.org/tags/haxe/</link>
     <description>Recent content in Haxe on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sat, 24 Mar 2007 06:40:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/haxe/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/haxe/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>haXe が 1.12 で Flash Lite をサポート</title>
-      <link>http://ishikawa.github.io/2007/03/23/haxe-1-12-with-flash-lite-support/</link>
+      <link>http://www.metareal.org/2007/03/23/haxe-1-12-with-flash-lite-support/</link>
       <pubDate>Sat, 24 Mar 2007 06:40:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/03/23/haxe-1-12-with-flash-lite-support/</guid>
+      <guid>http://www.metareal.org/2007/03/23/haxe-1-12-with-flash-lite-support/</guid>
       <description>&lt;p&gt;ひさしぶりに &lt;a href=&#34;http://haxe.org/&#34;&gt;haXe&lt;/a&gt; のサイトをチェックしてみると、&lt;a href=&#34;http://lists.motion-twin.com/pipermail/haxe/2007-March/007705.html&#34;&gt;バージョン 1.12 がリリース&lt;/a&gt;されている。&lt;/p&gt;
 
 &lt;p&gt;そして、&lt;a href=&#34;http://haxe.org/_media/changes.txt?id=news&amp;amp;cache=cache&#34;&gt;更新履歴&lt;/a&gt;には気になる記述が。&lt;/p&gt;
@@ -32,10 +32,10 @@
     
     <item>
       <title>haXe で FlashLite 開発ができる？</title>
-      <link>http://ishikawa.github.io/2006/12/25/development-flashlite-contents-with-haxe/</link>
+      <link>http://www.metareal.org/2006/12/25/development-flashlite-contents-with-haxe/</link>
       <pubDate>Tue, 26 Dec 2006 06:14:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2006/12/25/development-flashlite-contents-with-haxe/</guid>
+      <guid>http://www.metareal.org/2006/12/25/development-flashlite-contents-with-haxe/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://lists.motion-twin.com/pipermail/haxe/2006-January/001360.html&#34;&gt;[haXe] What about Flash Lite?&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Flash Lite 2 は Flash Player 7 と互換性があるので &lt;a href=&#34;http://haxe.org/&#34;&gt;haXe&lt;/a&gt; で開発できる、とのこと。しかし、Flash Lite 1.x は Flash Player 4 相当のため難しい。&lt;/p&gt;

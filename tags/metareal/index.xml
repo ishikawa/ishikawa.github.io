@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Metareal on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/metareal/</link>
+    <link>http://www.metareal.org/tags/metareal/</link>
     <description>Recent content in Metareal on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 17 Jul 2007 10:31:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/metareal/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/metareal/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>YUI の fonts.css だと pre &gt; code がでっかくなっちゃうね</title>
-      <link>http://ishikawa.github.io/2007/07/17/yui-fonts-css-bigger-pre-code/</link>
+      <link>http://www.metareal.org/2007/07/17/yui-fonts-css-bigger-pre-code/</link>
       <pubDate>Tue, 17 Jul 2007 10:31:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/07/17/yui-fonts-css-bigger-pre-code/</guid>
+      <guid>http://www.metareal.org/2007/07/17/yui-fonts-css-bigger-pre-code/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://developer.yahoo.com/yui/&#34;&gt;Yahoo! UI Library (YUI)&lt;/a&gt; の &lt;a href=&#34;http://developer.yahoo.com/yui/fonts/&#34;&gt;fonts.css&lt;/a&gt; では &lt;code&gt;pre&lt;/code&gt; と &lt;code&gt;code&lt;/code&gt; を次のようにスタイルづけしている。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;/**
@@ -58,10 +58,10 @@ pre, code {font:115% monospace;*font-size:100%;}
     
     <item>
       <title>&#34;Summer of &#39;69&#34; とか聴きながらブログをリニューアルしてみた</title>
-      <link>http://ishikawa.github.io/2007/06/09/summer-of-2007/</link>
+      <link>http://www.metareal.org/2007/06/09/summer-of-2007/</link>
       <pubDate>Sun, 10 Jun 2007 03:58:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/06/09/summer-of-2007/</guid>
+      <guid>http://www.metareal.org/2007/06/09/summer-of-2007/</guid>
       <description>&lt;p&gt;6 月。最近、暑くなりましたね。初夏。向暑。&lt;/p&gt;
 
 &lt;p&gt;暑くて、でも、じめじめしてて、何もやる気が起きないので、気分転換にブログを涼しげにしてみました。当初はリンクの色を爽やかに明るい水色、画像もいままでの&lt;a href=&#34;http://www.flickr.com/photos/therigby/337685001/&#34;&gt;苔の写真&lt;/a&gt;から色に合わせて&lt;a href=&#34;http://www.flickr.com/photos/ryumu/24710353/&#34;&gt;ペンギン&lt;/a&gt;にするだけのつもりだったのですが、やりだすと気になる部分がちょこちょこ出てきて、結局、手を入れた箇所は以下の通り。&lt;/p&gt;
@@ -101,10 +101,10 @@ pre, code {font:115% monospace;*font-size:100%;}
     
     <item>
       <title>AirMac Extreme</title>
-      <link>http://ishikawa.github.io/2007/05/27/meet-the-airmac-extreme/</link>
+      <link>http://www.metareal.org/2007/05/27/meet-the-airmac-extreme/</link>
       <pubDate>Sun, 27 May 2007 10:22:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/05/27/meet-the-airmac-extreme/</guid>
+      <guid>http://www.metareal.org/2007/05/27/meet-the-airmac-extreme/</guid>
       <description>&lt;p&gt;家の無線 LAN を &lt;a href=&#34;http://www.apple.com/jp/airmacexpress/&#34;&gt;AirMac Express&lt;/a&gt; から &lt;a href=&#34;http://www.apple.com/jp/airmacextreme/&#34;&gt;AirMac Extreme&lt;/a&gt; に変えてみた。特にこれといった動機はなくて、単に新しいモノを試してみたかっただけなんだけど、&lt;a href=&#34;http://www.apple.com/jp/airmacexpress/airtunes.html&#34;&gt;AirTunes&lt;/a&gt; 機能がないのは参ったなあ。おかげで &lt;a href=&#34;http://www.apple.com/jp/ipodhifi/&#34;&gt;iPod Hi-Fi&lt;/a&gt; が宝の持ち腐れ。どうするかは考え中。&lt;/p&gt;
 
 &lt;p&gt;これのブログを動かしているサーバも無線でつないでいるので（LAN ケーブルだと邪魔）、しばらくのあいだ、サーバが停まったままだった。AirMac Extreme で無線 LAN をはじめるのは簡単なのだけど、NAT やらを設定するのが面倒臭かった次第。&lt;/p&gt;
@@ -115,10 +115,10 @@ pre, code {font:115% monospace;*font-size:100%;}
     
     <item>
       <title>Mac OS X では MoinMoin が UnboundLocalError で動かない</title>
-      <link>http://ishikawa.github.io/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</link>
+      <link>http://www.metareal.org/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</link>
       <pubDate>Mon, 09 Apr 2007 02:52:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</guid>
+      <guid>http://www.metareal.org/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</guid>
       <description>&lt;p&gt;作業メモや備忘録を残しておくためのシステムがほしくて、&lt;a href=&#34;http://moinmoin.wikiwikiweb.de/&#34;&gt;MoinMoin&lt;/a&gt; を自宅サーバの Mac OS X にインストールした。&lt;/p&gt;
 
 &lt;p&gt;ブログだとやっぱり時系列で流れちゃうし、書き殴りのメモとかは公開しづらいしね。MoinMoin はページごとのパーミッションを制御できるなど、今回の用途にはぴったり。&lt;/p&gt;
@@ -136,10 +136,10 @@ pre, code {font:115% monospace;*font-size:100%;}
     
     <item>
       <title>理想の &lt;title&gt; をもとめて</title>
-      <link>http://ishikawa.github.io/2007/01/08/looking-for-loving-title-element/</link>
+      <link>http://www.metareal.org/2007/01/08/looking-for-loving-title-element/</link>
       <pubDate>Tue, 09 Jan 2007 07:28:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/08/looking-for-loving-title-element/</guid>
+      <guid>http://www.metareal.org/2007/01/08/looking-for-loving-title-element/</guid>
       <description>&lt;p&gt;WordPress のインストール直後は &lt;title&gt; タグを出力するテンプレートは以下のようになっていた。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;&amp;lt;title&amp;gt;&amp;lt;?php bloginfo(&#39;name&#39;); ?&amp;gt; &amp;lt;?php if ( is_single() ) { ?&amp;gt; &amp;amp;raquo; Blog Archive &amp;lt;?php } ?&amp;gt; &amp;lt;?php wp_title(); ?&amp;gt;&amp;lt;/title&amp;gt;
@@ -177,10 +177,10 @@ pre, code {font:115% monospace;*font-size:100%;}
     
     <item>
       <title>ホームページをとりあえず設置</title>
-      <link>http://ishikawa.github.io/2007/01/01/metareal-org-is-coming/</link>
+      <link>http://www.metareal.org/2007/01/01/metareal-org-is-coming/</link>
       <pubDate>Mon, 01 Jan 2007 01:58:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/01/metareal-org-is-coming/</guid>
+      <guid>http://www.metareal.org/2007/01/01/metareal-org-is-coming/</guid>
       <description>&lt;p&gt;このブログは &lt;a href=&#34;http://weblog.metareal.org/&#34;&gt;weblog.metareal.org&lt;/a&gt; で運営しているわけだけれども、いままで metareal.org は &lt;strong&gt;404 Not Found のまま&lt;/strong&gt;だった。&lt;/p&gt;
 
 &lt;p&gt;さすがにこのままだと不味い、というか気持ち悪いので、&lt;a href=&#34;http://metareal.org/&#34;&gt;metareal.org&lt;/a&gt; も用意した。デザインはちょっとまえに流行った Web 2.0 カラーで（もしかして、もう古い？）。&lt;/p&gt;

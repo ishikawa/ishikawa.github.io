@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tamarin on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/tamarin/</link>
+    <link>http://www.metareal.org/tags/tamarin/</link>
     <description>Recent content in Tamarin on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sun, 06 Jul 2008 09:35:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/tamarin/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/tamarin/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>C 言語で書かれたソフトウェアが Flash で動くようになるかもしれない</title>
-      <link>http://ishikawa.github.io/2008/07/06/running-legacy-applications-on-flash-player/</link>
+      <link>http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/</link>
       <pubDate>Sun, 06 Jul 2008 09:35:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/07/06/running-legacy-applications-on-flash-player/</guid>
+      <guid>http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://lucille.atso-net.jp/blog/?p=555&#34;&gt;lucille development blog&lt;/a&gt; 経由。&lt;/p&gt;

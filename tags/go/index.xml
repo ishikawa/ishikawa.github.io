@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Go on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/go/</link>
+    <link>http://www.metareal.org/tags/go/</link>
     <description>Recent content in Go on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Wed, 11 Nov 2009 10:29:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Go</title>
-      <link>http://ishikawa.github.io/2009/11/11/go-vim/</link>
+      <link>http://www.metareal.org/2009/11/11/go-vim/</link>
       <pubDate>Wed, 11 Nov 2009 10:29:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2009/11/11/go-vim/</guid>
+      <guid>http://www.metareal.org/2009/11/11/go-vim/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://iolanguage.com/&#34;&gt;Io&lt;/a&gt; と並んで、自らの検索能力が試される名前の &lt;a href=&#34;http://golang.org/&#34;&gt;Go&lt;/a&gt; ですが、実用性と簡潔さを兼ねそなえた言語設計は好感がもてます。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;% cd $GOROOT

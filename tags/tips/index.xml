@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tips on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/tips/</link>
+    <link>http://www.metareal.org/tags/tips/</link>
     <description>Recent content in Tips on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sat, 08 Dec 2007 10:00:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/tips/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/tips/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Mail.app や iGTD の vacuum を cron で自動化する</title>
-      <link>http://ishikawa.github.io/2007/12/08/vacuum-analyze-sqlite-automatically-by-cron/</link>
+      <link>http://www.metareal.org/2007/12/08/vacuum-analyze-sqlite-automatically-by-cron/</link>
       <pubDate>Sat, 08 Dec 2007 10:00:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/08/vacuum-analyze-sqlite-automatically-by-cron/</guid>
+      <guid>http://www.metareal.org/2007/12/08/vacuum-analyze-sqlite-automatically-by-cron/</guid>
       <description>&lt;p&gt;Warning&lt;/p&gt;
 
 &lt;p&gt;この方法でデータベースを VACUUM すると、Mail.app で問題が起こるようだ。Mail.app を起動中に cron が実行されるとメールを送信できない、下書き保存できない、などの問題があった。というわけで、この方法は使わないか、問題が起こらないように改良する必要がある。&lt;/p&gt;
@@ -35,10 +35,10 @@
     
     <item>
       <title>Ruby の Mongrel でお手軽 HTTP サーバ</title>
-      <link>http://ishikawa.github.io/2007/08/30/setup-simple-http-server-with-mongrel/</link>
+      <link>http://www.metareal.org/2007/08/30/setup-simple-http-server-with-mongrel/</link>
       <pubDate>Thu, 30 Aug 2007 10:25:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/30/setup-simple-http-server-with-mongrel/</guid>
+      <guid>http://www.metareal.org/2007/08/30/setup-simple-http-server-with-mongrel/</guid>
       <description>&lt;p&gt;先日、やっつけスクリプトのサーバ部分に &lt;a href=&#34;http://mongrel.rubyforge.org/&#34;&gt;Mongrel&lt;/a&gt; を使ってみたんだけど、Rails で使う以外だとドキュメント少ないのね。&lt;/p&gt;
 
 &lt;p&gt;とりあえず、&lt;a href=&#34;http://weblog.metareal.org/2007/08/25/setup-simple-http-server-with-webrick/&#34;&gt;Ruby の Webrick でお手軽 HTTP サーバ&lt;/a&gt;の Mongrel 版はこんな感じ。&lt;/p&gt;
@@ -63,10 +63,10 @@ mongrel :DocumentRoot =&amp;gt; &#39;/Users/ishikawa/Sites/spotwide&#39;,
     
     <item>
       <title>Ruby の Webrick でお手軽 HTTP サーバ</title>
-      <link>http://ishikawa.github.io/2007/08/25/setup-simple-http-server-with-webrick/</link>
+      <link>http://www.metareal.org/2007/08/25/setup-simple-http-server-with-webrick/</link>
       <pubDate>Sun, 26 Aug 2007 02:12:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/25/setup-simple-http-server-with-webrick/</guid>
+      <guid>http://www.metareal.org/2007/08/25/setup-simple-http-server-with-webrick/</guid>
       <description>
 
 &lt;p&gt;サイトの HTML や CSS を自分のパソコン上で編集するとき、不便に感じるのは画像や外部 CSS ファイルの指定方法の違いだ。&lt;/p&gt;
@@ -151,10 +151,10 @@ webrick :DocumentRoot =&amp;gt; &#39;/path/to/your/document/root&#39;,
     
     <item>
       <title>Mail.app を vacuum して高速化</title>
-      <link>http://ishikawa.github.io/2007/08/23/optimize-the-apple-mail-app-database/</link>
+      <link>http://www.metareal.org/2007/08/23/optimize-the-apple-mail-app-database/</link>
       <pubDate>Fri, 24 Aug 2007 05:38:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/23/optimize-the-apple-mail-app-database/</guid>
+      <guid>http://www.metareal.org/2007/08/23/optimize-the-apple-mail-app-database/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.sqlite.org/&#34;&gt;SQLite&lt;/a&gt; の &lt;code&gt;vacuum&lt;/code&gt; コマンドで Mail.app を高速化する。ターミナルで、&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;% cd ~/Library/Mail/; sqlite3 Envelope\ Index &amp;quot;vacuum;&amp;quot;
@@ -176,10 +176,10 @@ end tell
     
     <item>
       <title>rsync で ssh のポートを指定する方法</title>
-      <link>http://ishikawa.github.io/2007/08/20/how-does-rsync-specify-ssh-port-in-command-line/</link>
+      <link>http://www.metareal.org/2007/08/20/how-does-rsync-specify-ssh-port-in-command-line/</link>
       <pubDate>Mon, 20 Aug 2007 11:18:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/20/how-does-rsync-specify-ssh-port-in-command-line/</guid>
+      <guid>http://www.metareal.org/2007/08/20/how-does-rsync-specify-ssh-port-in-command-line/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://rsync.samba.org/&#34;&gt;rsync&lt;/a&gt; で ssh のポートを指定するには &lt;code&gt;-e&lt;/code&gt; または &lt;code&gt;--rsh&lt;/code&gt; オプションを使う。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;rsync **-e &amp;quot;ssh -p 2234&amp;quot;** ...
@@ -189,10 +189,10 @@ end tell
     
     <item>
       <title>IE でリンクをクリックするとフォントサイズが小さくなる</title>
-      <link>http://ishikawa.github.io/2007/08/08/hit-a-link-and-font-away/</link>
+      <link>http://www.metareal.org/2007/08/08/hit-a-link-and-font-away/</link>
       <pubDate>Wed, 08 Aug 2007 10:15:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/08/hit-a-link-and-font-away/</guid>
+      <guid>http://www.metareal.org/2007/08/08/hit-a-link-and-font-away/</guid>
       <description>
 
 &lt;p&gt;ひさしぶりに Windows IE 6 でブログの確認をしていたら妙なことに気がついた。&lt;strong&gt;リンクをクリックすると、一瞬、クリックしたリンクのフォントサイズが小さくなるのだ&lt;/strong&gt;。&lt;/p&gt;
@@ -235,10 +235,10 @@ end tell
     
     <item>
       <title>Terminal で作業中のディレクトリを Finder で開く</title>
-      <link>http://ishikawa.github.io/2007/05/31/open-current-directory-in-finder/</link>
+      <link>http://www.metareal.org/2007/05/31/open-current-directory-in-finder/</link>
       <pubDate>Thu, 31 May 2007 09:02:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/05/31/open-current-directory-in-finder/</guid>
+      <guid>http://www.metareal.org/2007/05/31/open-current-directory-in-finder/</guid>
       <description>&lt;p&gt;Terminal で作業中のディレクトリを Finder で表示させたいときがある。そういうときは、&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;% open .
@@ -248,10 +248,10 @@ end tell
     
     <item>
       <title>Google のリダイレクタ</title>
-      <link>http://ishikawa.github.io/2007/02/07/google-redirector/</link>
+      <link>http://www.metareal.org/2007/02/07/google-redirector/</link>
       <pubDate>Thu, 08 Feb 2007 01:15:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/02/07/google-redirector/</guid>
+      <guid>http://www.metareal.org/2007/02/07/google-redirector/</guid>
       <description>&lt;p&gt;社内の開発合宿行ったり、そこで風邪もらったりしているうちに、すっかりブログの更新から遠のいてしまった。ぼちぼち復活。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.2ch.net/&#34;&gt;2ちゃんねる&lt;/a&gt;ではリファラ隠しのために、いわゆる &lt;code&gt;ttp&lt;/code&gt; リンクや &lt;code&gt;http://ime.nu/&lt;/code&gt; などのリダイレクタが利用されている。リダイレクタという名前は勝手に使ってるだけで、正式なものか分からないけど、URL の末尾やパラメータに別の URL を指定すると、その URL にリダイレクトしてくれるページのこと。&lt;/p&gt;

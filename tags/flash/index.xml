@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Flash on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/flash/</link>
+    <link>http://www.metareal.org/tags/flash/</link>
     <description>Recent content in Flash on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 09 Dec 2008 08:34:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/flash/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/flash/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>C/C&#43;&#43; のコードを ActionScript に変換する Adobe Alchemy を試す</title>
-      <link>http://ishikawa.github.io/2008/12/09/adobe-alchemy-first-impression/</link>
+      <link>http://www.metareal.org/2008/12/09/adobe-alchemy-first-impression/</link>
       <pubDate>Tue, 09 Dec 2008 08:34:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/12/09/adobe-alchemy-first-impression/</guid>
+      <guid>http://www.metareal.org/2008/12/09/adobe-alchemy-first-impression/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://labs.adobe.com/&#34;&gt;Adobe Labs&lt;/a&gt; の研究プロジェクト、コードネーム &lt;a href=&#34;http://labs.adobe.com/technologies/alchemy/&#34;&gt;Alchemy&lt;/a&gt; を試してみた。同プロジェクトについては、すでに多くの方が書かれており、今更な感もあるが、以前に&lt;a href=&#34;http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/&#34;&gt;紹介記事を書いている&lt;/a&gt;ことだし、備忘録も兼ねて残しておく。&lt;/p&gt;
@@ -144,10 +144,10 @@ TraceOutputFileEnable=1
     
     <item>
       <title>C 言語で書かれたソフトウェアが Flash で動くようになるかもしれない</title>
-      <link>http://ishikawa.github.io/2008/07/06/running-legacy-applications-on-flash-player/</link>
+      <link>http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/</link>
       <pubDate>Sun, 06 Jul 2008 09:35:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/07/06/running-legacy-applications-on-flash-player/</guid>
+      <guid>http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://lucille.atso-net.jp/blog/?p=555&#34;&gt;lucille development blog&lt;/a&gt; 経由。&lt;/p&gt;
@@ -204,10 +204,10 @@ TraceOutputFileEnable=1
     
     <item>
       <title>Safari で ExternalInterface を使うときは this に気をつけないと無限ループ</title>
-      <link>http://ishikawa.github.io/2007/11/05/safari-external-interface-infinite-loop/</link>
+      <link>http://www.metareal.org/2007/11/05/safari-external-interface-infinite-loop/</link>
       <pubDate>Tue, 06 Nov 2007 03:23:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/11/05/safari-external-interface-infinite-loop/</guid>
+      <guid>http://www.metareal.org/2007/11/05/safari-external-interface-infinite-loop/</guid>
       <description>&lt;p&gt;以下のサイトを参考に、JavaScript から ActionScript のコードを呼び出そうとしている。&lt;/p&gt;
 
 &lt;ul&gt;
@@ -258,10 +258,10 @@ SWFInterface.prototype = {
     
     <item>
       <title>MacBook に内蔵された iSight を Flash から利用できるようにする</title>
-      <link>http://ishikawa.github.io/2007/10/10/setting-flash-camera-with-macbook-isight/</link>
+      <link>http://www.metareal.org/2007/10/10/setting-flash-camera-with-macbook-isight/</link>
       <pubDate>Thu, 11 Oct 2007 05:20:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/10/10/setting-flash-camera-with-macbook-isight/</guid>
+      <guid>http://www.metareal.org/2007/10/10/setting-flash-camera-with-macbook-isight/</guid>
       <description>&lt;p&gt;Flash の &lt;a href=&#34;http://livedocs.adobe.com/flex/2_jp/langref/flash/media/Camera.html&#34;&gt;&lt;code&gt;flash.media.Camera&lt;/code&gt;&lt;/a&gt; オブジェクトを使うと、Webcam からの入力をキャプチャすることができる。&lt;/p&gt;
 
 &lt;p&gt;しかし、そのままだと MacBook に内蔵された &lt;a href=&#34;http://www.apple.com/jp/macbook/isight.html&#34;&gt;iSight&lt;/a&gt; では映像をとることができない。どうやら、設定を変更する必要があるようだ。&lt;/p&gt;
@@ -281,10 +281,10 @@ SWFInterface.prototype = {
     
     <item>
       <title>mod_flv_streaming と Deep Tagging</title>
-      <link>http://ishikawa.github.io/2007/01/09/mod-flv-streaming-and-deep-tagging/</link>
+      <link>http://www.metareal.org/2007/01/09/mod-flv-streaming-and-deep-tagging/</link>
       <pubDate>Wed, 10 Jan 2007 03:20:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/09/mod-flv-streaming-and-deep-tagging/</guid>
+      <guid>http://www.metareal.org/2007/01/09/mod-flv-streaming-and-deep-tagging/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd-take-2/&#34;&gt;lighttpd で Flash Video (.flv) をストリーミング配信 (2)&lt;/a&gt;の &lt;code&gt;mod_flv_streaming&lt;/code&gt; って、開始フレームを指定するのに、URL のクエリー部分を使うわけだけど、これを &lt;code&gt;mod_rewrite&lt;/code&gt; で Pretty URL にしてやれば、いわゆる &lt;strong&gt;Deep Tagging&lt;/strong&gt; もいけそうね。&lt;/p&gt;
 
 &lt;ul&gt;
@@ -296,10 +296,10 @@ SWFInterface.prototype = {
     
     <item>
       <title>lighttpd で Flash Video (.flv) をストリーミング配信 (2)</title>
-      <link>http://ishikawa.github.io/2007/01/09/flash-video-streaming-with-lighttpd-take-2/</link>
+      <link>http://www.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd-take-2/</link>
       <pubDate>Tue, 09 Jan 2007 09:18:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/09/flash-video-streaming-with-lighttpd-take-2/</guid>
+      <guid>http://www.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd-take-2/</guid>
       <description>
 
 &lt;p&gt;前回の記事「&lt;a href=&#34;http://weblog.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd/&#34;&gt;lighttpd で Flash Video (.flv) をストリーミング配信&lt;/a&gt;」で、とりあえずストリーミング配信できることは書いた。今回は Flash の動画配信について調査したまとめ。&lt;/p&gt;
@@ -389,10 +389,10 @@ flv-streaming.extensions = ( &amp;quot;.flv&amp;quot; )
     
     <item>
       <title>Flash で動画をストリーミング再生</title>
-      <link>http://ishikawa.github.io/2007/01/08/flash-video-streaming/</link>
+      <link>http://www.metareal.org/2007/01/08/flash-video-streaming/</link>
       <pubDate>Tue, 09 Jan 2007 03:03:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/08/flash-video-streaming/</guid>
+      <guid>http://www.metareal.org/2007/01/08/flash-video-streaming/</guid>
       <description>&lt;p&gt;Flash で動画をストリーミング再生する方法について調査したときのメモ。&lt;/p&gt;
 
 &lt;ul&gt;
@@ -415,10 +415,10 @@ flv-streaming.extensions = ( &amp;quot;.flv&amp;quot; )
     
     <item>
       <title>lighttpd で Flash Video (.flv) をストリーミング配信</title>
-      <link>http://ishikawa.github.io/2007/01/09/flash-video-streaming-with-lighttpd/</link>
+      <link>http://www.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd/</link>
       <pubDate>Tue, 09 Jan 2007 02:38:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/09/flash-video-streaming-with-lighttpd/</guid>
+      <guid>http://www.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd/</guid>
       <description>&lt;p&gt;以前の記事「&lt;a href=&#34;http://weblog.metareal.org/2007/01/08/flash-video-streaming/&#34;&gt;Flash で動画をストリーミング再生&lt;/a&gt;」で yuin さんにコメントで教えてもらった情報：&lt;/p&gt;
 
 &lt;blockquote&gt;

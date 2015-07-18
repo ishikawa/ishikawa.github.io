@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rparsec on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/rparsec/</link>
+    <link>http://www.metareal.org/tags/rparsec/</link>
     <description>Recent content in Rparsec on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sun, 16 Dec 2007 11:10:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/rparsec/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/rparsec/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>rparsec での繰り返しと選択</title>
-      <link>http://ishikawa.github.io/2007/12/16/rparsec-quantifier-and-alternation/</link>
+      <link>http://www.metareal.org/2007/12/16/rparsec-quantifier-and-alternation/</link>
       <pubDate>Sun, 16 Dec 2007 11:10:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/16/rparsec-quantifier-and-alternation/</guid>
+      <guid>http://www.metareal.org/2007/12/16/rparsec-quantifier-and-alternation/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec&#34;&gt;rparsec&lt;/a&gt; では文法要素の繰り返しを指定する方法が複数用意されている。&lt;/p&gt;
@@ -55,10 +55,10 @@ parser.parse(&amp;quot;123 abc 56.7&amp;quot;) =&amp;gt; [&amp;quot;123&amp;quot
     
     <item>
       <title>rparsec の四則演算デモを浮動小数点に対応させる</title>
-      <link>http://ishikawa.github.io/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</link>
+      <link>http://www.metareal.org/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</link>
       <pubDate>Fri, 14 Dec 2007 10:05:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</guid>
+      <guid>http://www.metareal.org/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec&#34;&gt;rparsec&lt;/a&gt; の&lt;a href=&#34;http://weblog.metareal.org/2007/12/11/studying-rparsec-introduction/#rparsec-calculator-demo&#34;&gt;四則演算デモ&lt;/a&gt;を試しているうちに、整数による演算しかできないことに気づくことと思う。&lt;/p&gt;
 
 &lt;p&gt;四則演算デモが &lt;code&gt;calculator.rb&lt;/code&gt; にあるとして、&lt;/p&gt;
@@ -95,10 +95,10 @@ parser.parse &#39;4 * 2.5&#39;
     
     <item>
       <title>RParsec の many と many_ の違い</title>
-      <link>http://ishikawa.github.io/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</link>
+      <link>http://www.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</link>
       <pubDate>Thu, 13 Dec 2007 09:09:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</guid>
+      <guid>http://www.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/12/11/studying-rparsec-introduction/#rparsec-calculator-demo&#34;&gt;前回の四則演算デモ&lt;/a&gt;で真っ先に目を引いたのは &lt;code&gt;many_&lt;/code&gt; という奇妙な名前のメソッドだった。&lt;/p&gt;
@@ -151,10 +151,10 @@ irb(main):006:0&amp;gt; whitespace.many_.parse(&amp;quot;&amp;quot;)
     
     <item>
       <title>Ruby によるパーサ・コンビネータ rparsec</title>
-      <link>http://ishikawa.github.io/2007/12/11/studying-rparsec-introduction/</link>
+      <link>http://www.metareal.org/2007/12/11/studying-rparsec-introduction/</link>
       <pubDate>Tue, 11 Dec 2007 10:52:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/11/studying-rparsec-introduction/</guid>
+      <guid>http://www.metareal.org/2007/12/11/studying-rparsec-introduction/</guid>
       <description>
 
 &lt;p&gt;Java による &lt;a href=&#34;http://www.lab2.kuis.kyoto-u.ac.jp/~hanatani/tmp/Parsec.html&#34;&gt;parsec&lt;/a&gt; の実装 &lt;a href=&#34;http://docs.codehaus.org/display/JPARSEC/Home&#34;&gt;JParsec&lt;/a&gt; を Ruby に移植した &lt;a href=&#34;http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec&#34;&gt;rparsec&lt;/a&gt; を勉強中。&lt;/p&gt;

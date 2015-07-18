@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wordpress on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/wordpress/</link>
+    <link>http://www.metareal.org/tags/wordpress/</link>
     <description>Recent content in Wordpress on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Fri, 26 Jan 2007 07:32:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Markdown 記法でアンダースコアを複数含む変数名を書く方法</title>
-      <link>http://ishikawa.github.io/2007/01/25/writing-underscores-named-variable-with-markdown/</link>
+      <link>http://www.metareal.org/2007/01/25/writing-underscores-named-variable-with-markdown/</link>
       <pubDate>Fri, 26 Jan 2007 07:32:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/25/writing-underscores-named-variable-with-markdown/</guid>
+      <guid>http://www.metareal.org/2007/01/25/writing-underscores-named-variable-with-markdown/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://daringfireball.net/projects/markdown/basics&#34;&gt;Markdown&lt;/a&gt; ではアンダースコアで囲むと強調になるので、アンダースコアでつなげるスタイルの変数がものすごく書きづらい。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;mt&amp;amp;#x5f;convert&amp;amp;#x5f;breaks
@@ -51,10 +51,10 @@
     
     <item>
       <title>理想の &lt;title&gt; をもとめて</title>
-      <link>http://ishikawa.github.io/2007/01/08/looking-for-loving-title-element/</link>
+      <link>http://www.metareal.org/2007/01/08/looking-for-loving-title-element/</link>
       <pubDate>Tue, 09 Jan 2007 07:28:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/08/looking-for-loving-title-element/</guid>
+      <guid>http://www.metareal.org/2007/01/08/looking-for-loving-title-element/</guid>
       <description>&lt;p&gt;WordPress のインストール直後は &lt;title&gt; タグを出力するテンプレートは以下のようになっていた。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;&amp;lt;title&amp;gt;&amp;lt;?php bloginfo(&#39;name&#39;); ?&amp;gt; &amp;lt;?php if ( is_single() ) { ?&amp;gt; &amp;amp;raquo; Blog Archive &amp;lt;?php } ?&amp;gt; &amp;lt;?php wp_title(); ?&amp;gt;&amp;lt;/title&amp;gt;
@@ -92,10 +92,10 @@
     
     <item>
       <title>Weighted Categories で最後のタグの URL がおかしいのを修正する</title>
-      <link>http://ishikawa.github.io/2007/01/02/fix-weighted-categories-url-problem/</link>
+      <link>http://www.metareal.org/2007/01/02/fix-weighted-categories-url-problem/</link>
       <pubDate>Wed, 03 Jan 2007 12:48:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/02/fix-weighted-categories-url-problem/</guid>
+      <guid>http://www.metareal.org/2007/01/02/fix-weighted-categories-url-problem/</guid>
       <description>&lt;p&gt;前回書いた「&lt;a href=&#34;http://weblog.metareal.org/2007/01/02/tag-cloud-url-problem/&#34;&gt;タグクラウドのリンクがおかしい？&lt;/a&gt;」という問題は、やはり &lt;a href=&#34;http://hitormiss.org/projects/weighted-categories/&#34;&gt;Weighted Categories&lt;/a&gt; のバグだった。&lt;/p&gt;
 
 &lt;p&gt;問題は WordPress の &lt;code&gt;list_cats&lt;/code&gt; で得たカテゴリーのリスト (HTML) を、配列に変換する部分：&lt;/p&gt;
@@ -132,10 +132,10 @@
     
     <item>
       <title>タグクラウドのリンクがおかしい？</title>
-      <link>http://ishikawa.github.io/2007/01/02/tag-cloud-url-problem/</link>
+      <link>http://www.metareal.org/2007/01/02/tag-cloud-url-problem/</link>
       <pubDate>Wed, 03 Jan 2007 12:14:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/02/tag-cloud-url-problem/</guid>
+      <guid>http://www.metareal.org/2007/01/02/tag-cloud-url-problem/</guid>
       <description>&lt;p&gt;このブログのサイドバーにあるタグクラウドの表示には、&lt;a href=&#34;http://hitormiss.org/projects/weighted-categories/&#34;&gt;Weighted Categories&lt;/a&gt; という &lt;a href=&#34;http://wordpress.org/&#34;&gt;WordPress&lt;/a&gt; プラグインを使っているのですが、どうも &lt;code&gt;xmlrpc&lt;/code&gt; というタグだけ URL がおかしい。&lt;/p&gt;
 
 &lt;p&gt;他のタグは絶対 URL なのに、こいつだけ&lt;/p&gt;
@@ -149,10 +149,10 @@
     
     <item>
       <title>ブログの XML-RPC サポート</title>
-      <link>http://ishikawa.github.io/2006/12/11/weblog-xmlrpc-support/</link>
+      <link>http://www.metareal.org/2006/12/11/weblog-xmlrpc-support/</link>
       <pubDate>Mon, 11 Dec 2006 08:21:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2006/12/11/weblog-xmlrpc-support/</guid>
+      <guid>http://www.metareal.org/2006/12/11/weblog-xmlrpc-support/</guid>
       <description>&lt;p&gt;個人的メモとして、各ブログの &lt;a href=&#34;http://www.xmlrpc.com/spec&#34;&gt;XML-RPC&lt;/a&gt; サポート状況をまとめてみた。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.sixapart.jp/movabletype/mt3/&#34;&gt;Movable Type&lt;/a&gt; は
@@ -174,10 +174,10 @@ MetaWeblog API に準拠しているようだ。また、&lt;a href=&#34;http://
     
     <item>
       <title>サイドバーの Archives で日付表記を変更する</title>
-      <link>http://ishikawa.github.io/2006/12/08/wordpress-archives-date-format/</link>
+      <link>http://www.metareal.org/2006/12/08/wordpress-archives-date-format/</link>
       <pubDate>Fri, 08 Dec 2006 09:30:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2006/12/08/wordpress-archives-date-format/</guid>
+      <guid>http://www.metareal.org/2006/12/08/wordpress-archives-date-format/</guid>
       <description>&lt;p&gt;WordPress のサイドバーに表示されている「Archives」だが、日付の表記が「November 2006」のようになっている。&lt;strong&gt;私の推測では&lt;/strong&gt; November が何月なのか、すぐにわかる人はすくないはずだ。できれば、ここはなんとかしたい。&lt;/p&gt;
 
 &lt;p&gt;管理画面の「Options」にあった「Date and Time」の設定を変更してみた。しかし、&lt;strong&gt;どこにも反映されている気配がない&lt;/strong&gt;ので（わざわざ &lt;a href=&#34;http://php.net/date&#34;&gt;PHP のドキュメント&lt;/a&gt;を読んだっていうのに&amp;hellip;）、ソースコードを調べることにする。&lt;/p&gt;

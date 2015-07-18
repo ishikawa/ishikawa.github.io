@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lighttpd on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/lighttpd/</link>
+    <link>http://www.metareal.org/tags/lighttpd/</link>
     <description>Recent content in Lighttpd on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Wed, 10 Jan 2007 03:20:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/lighttpd/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/lighttpd/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>mod_flv_streaming と Deep Tagging</title>
-      <link>http://ishikawa.github.io/2007/01/09/mod-flv-streaming-and-deep-tagging/</link>
+      <link>http://www.metareal.org/2007/01/09/mod-flv-streaming-and-deep-tagging/</link>
       <pubDate>Wed, 10 Jan 2007 03:20:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/09/mod-flv-streaming-and-deep-tagging/</guid>
+      <guid>http://www.metareal.org/2007/01/09/mod-flv-streaming-and-deep-tagging/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd-take-2/&#34;&gt;lighttpd で Flash Video (.flv) をストリーミング配信 (2)&lt;/a&gt;の &lt;code&gt;mod_flv_streaming&lt;/code&gt; って、開始フレームを指定するのに、URL のクエリー部分を使うわけだけど、これを &lt;code&gt;mod_rewrite&lt;/code&gt; で Pretty URL にしてやれば、いわゆる &lt;strong&gt;Deep Tagging&lt;/strong&gt; もいけそうね。&lt;/p&gt;
 
 &lt;ul&gt;
@@ -27,10 +27,10 @@
     
     <item>
       <title>lighttpd で Flash Video (.flv) をストリーミング配信 (2)</title>
-      <link>http://ishikawa.github.io/2007/01/09/flash-video-streaming-with-lighttpd-take-2/</link>
+      <link>http://www.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd-take-2/</link>
       <pubDate>Tue, 09 Jan 2007 09:18:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/09/flash-video-streaming-with-lighttpd-take-2/</guid>
+      <guid>http://www.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd-take-2/</guid>
       <description>
 
 &lt;p&gt;前回の記事「&lt;a href=&#34;http://weblog.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd/&#34;&gt;lighttpd で Flash Video (.flv) をストリーミング配信&lt;/a&gt;」で、とりあえずストリーミング配信できることは書いた。今回は Flash の動画配信について調査したまとめ。&lt;/p&gt;
@@ -120,10 +120,10 @@ flv-streaming.extensions = ( &amp;quot;.flv&amp;quot; )
     
     <item>
       <title>lighttpd で Flash Video (.flv) をストリーミング配信</title>
-      <link>http://ishikawa.github.io/2007/01/09/flash-video-streaming-with-lighttpd/</link>
+      <link>http://www.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd/</link>
       <pubDate>Tue, 09 Jan 2007 02:38:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/09/flash-video-streaming-with-lighttpd/</guid>
+      <guid>http://www.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd/</guid>
       <description>&lt;p&gt;以前の記事「&lt;a href=&#34;http://weblog.metareal.org/2007/01/08/flash-video-streaming/&#34;&gt;Flash で動画をストリーミング再生&lt;/a&gt;」で yuin さんにコメントで教えてもらった情報：&lt;/p&gt;
 
 &lt;blockquote&gt;

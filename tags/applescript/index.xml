@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Applescript on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/applescript/</link>
+    <link>http://www.metareal.org/tags/applescript/</link>
     <description>Recent content in Applescript on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 09 Dec 2008 03:37:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/applescript/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/applescript/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Safari で開いているページのリンクを Evernote クライアントに送る</title>
-      <link>http://ishikawa.github.io/2008/12/09/copy-link-to-evernote-client-applescript/</link>
+      <link>http://www.metareal.org/2008/12/09/copy-link-to-evernote-client-applescript/</link>
       <pubDate>Tue, 09 Dec 2008 03:37:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/12/09/copy-link-to-evernote-client-applescript/</guid>
+      <guid>http://www.metareal.org/2008/12/09/copy-link-to-evernote-client-applescript/</guid>
       <description>
 
 &lt;p&gt;最近、プログラミング関係のまとめやインストール手順の記録といったものには &lt;a href=&#34;http://evernote.com/&#34;&gt;Evernote&lt;/a&gt; を利用している。&lt;/p&gt;
@@ -113,10 +113,10 @@ set the clipboard to theClipboard
     
     <item>
       <title>Mail.app を vacuum して高速化</title>
-      <link>http://ishikawa.github.io/2007/08/23/optimize-the-apple-mail-app-database/</link>
+      <link>http://www.metareal.org/2007/08/23/optimize-the-apple-mail-app-database/</link>
       <pubDate>Fri, 24 Aug 2007 05:38:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/23/optimize-the-apple-mail-app-database/</guid>
+      <guid>http://www.metareal.org/2007/08/23/optimize-the-apple-mail-app-database/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.sqlite.org/&#34;&gt;SQLite&lt;/a&gt; の &lt;code&gt;vacuum&lt;/code&gt; コマンドで Mail.app を高速化する。ターミナルで、&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;% cd ~/Library/Mail/; sqlite3 Envelope\ Index &amp;quot;vacuum;&amp;quot;
@@ -138,10 +138,10 @@ end tell
     
     <item>
       <title>QuickSilver でスクリーンセイバーを起動</title>
-      <link>http://ishikawa.github.io/2007/03/28/launch-screen-saver-from-quicksilver/</link>
+      <link>http://www.metareal.org/2007/03/28/launch-screen-saver-from-quicksilver/</link>
       <pubDate>Thu, 29 Mar 2007 01:21:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/03/28/launch-screen-saver-from-quicksilver/</guid>
+      <guid>http://www.metareal.org/2007/03/28/launch-screen-saver-from-quicksilver/</guid>
       <description>&lt;p&gt;わたしは不器用なので、スクリーンセイバーをホットコーナーから起動しようとするたびに失敗する（スクリーンセイバーが起動したとたんに、微妙にマウスを動かしてしまって、起動が解除されてしまう）。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://quicksilver.blacktree.com/&#34;&gt;QuickSilver&lt;/a&gt; から起動できたら便利だなと思って、スクリーンセイバーを起動する &lt;code&gt;AppleScript&lt;/code&gt; を書いて、&lt;code&gt;~/Library/Scripts/&lt;/code&gt; に置いてある。&lt;/p&gt;
@@ -157,10 +157,10 @@ end tell
     
     <item>
       <title>AppleScript で Markdown 記法のリンクを自動挿入 (2)</title>
-      <link>http://ishikawa.github.io/2007/01/05/markdownized-autolink-with-applescript-2/</link>
+      <link>http://www.metareal.org/2007/01/05/markdownized-autolink-with-applescript-2/</link>
       <pubDate>Sat, 06 Jan 2007 04:10:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/05/markdownized-autolink-with-applescript-2/</guid>
+      <guid>http://www.metareal.org/2007/01/05/markdownized-autolink-with-applescript-2/</guid>
       <description>&lt;p&gt;「&lt;a href=&#34;http://weblog.metareal.org/2007/01/04/markdownized-autolink-with-applescript/&#34;&gt;AppleScript で Markdown 記法のリンクを自動挿入&lt;/a&gt;」のスクリプトを更に改良して、&lt;strong&gt;選択範囲がない場合は Web ページのタイトルをそのまま挿入する&lt;/strong&gt;ようにした。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;tell first document of application &amp;quot;Safari&amp;quot;
@@ -183,10 +183,10 @@ end tell
     
     <item>
       <title>AppleScript で Markdown 記法のリンクを自動挿入</title>
-      <link>http://ishikawa.github.io/2007/01/04/markdownized-autolink-with-applescript/</link>
+      <link>http://www.metareal.org/2007/01/04/markdownized-autolink-with-applescript/</link>
       <pubDate>Fri, 05 Jan 2007 01:33:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/04/markdownized-autolink-with-applescript/</guid>
+      <guid>http://www.metareal.org/2007/01/04/markdownized-autolink-with-applescript/</guid>
       <description>&lt;p&gt;以前の記事「&lt;a href=&#34;http://weblog.metareal.org/2007/01/02/copy-page-title-with-applescript/&#34;&gt;AppleScript で Web ページのタイトルをクリップボードにコピー&lt;/a&gt;」を改良して、Markdown 記法でのリンクを自動挿入するようにしてみた（エディタは &lt;a href=&#34;http://www.mimikaki.net/&#34;&gt;mi&lt;/a&gt; に対応）。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;tell first document of application &amp;quot;Safari&amp;quot;
@@ -213,10 +213,10 @@ end
     
     <item>
       <title>AppleScript で Web ページのタイトルをクリップボードにコピー</title>
-      <link>http://ishikawa.github.io/2007/01/02/copy-page-title-with-applescript/</link>
+      <link>http://www.metareal.org/2007/01/02/copy-page-title-with-applescript/</link>
       <pubDate>Wed, 03 Jan 2007 12:18:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/02/copy-page-title-with-applescript/</guid>
+      <guid>http://www.metareal.org/2007/01/02/copy-page-title-with-applescript/</guid>
       <description>&lt;p&gt;Web ページのタイトルをブログに書くときに、毎回ソースを開いてコピーするのが面倒だった。なので、これを自動化する &lt;code&gt;AppleScript&lt;/code&gt; を書いた。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;tell application &amp;quot;Safari&amp;quot;

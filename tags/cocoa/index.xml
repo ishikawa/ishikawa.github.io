@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cocoa on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/cocoa/</link>
+    <link>http://www.metareal.org/tags/cocoa/</link>
     <description>Recent content in Cocoa on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sat, 08 Nov 2008 03:00:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/cocoa/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/cocoa/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Cocoa で独自の Text View を実装する</title>
-      <link>http://ishikawa.github.io/2008/11/08/cocoa-custom-text-view/</link>
+      <link>http://www.metareal.org/2008/11/08/cocoa-custom-text-view/</link>
       <pubDate>Sat, 08 Nov 2008 03:00:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/11/08/cocoa-custom-text-view/</guid>
+      <guid>http://www.metareal.org/2008/11/08/cocoa-custom-text-view/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://developer.apple.com/iphone/program/&#34;&gt;iPhone&lt;/a&gt; も盛り上がっていることだし、ひさしぶりに &lt;a href=&#34;http://developer.apple.com/referencelibrary/Cocoa/&#34;&gt;Cocoa&lt;/a&gt; プログラミングを始めてみる。&lt;/p&gt;
@@ -131,10 +131,10 @@
     
     <item>
       <title>280Slides in Objective-J</title>
-      <link>http://ishikawa.github.io/2008/06/06/280slides-in-objective-j/</link>
+      <link>http://www.metareal.org/2008/06/06/280slides-in-objective-j/</link>
       <pubDate>Fri, 06 Jun 2008 12:42:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/06/06/280slides-in-objective-j/</guid>
+      <guid>http://www.metareal.org/2008/06/06/280slides-in-objective-j/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://280slides.com/&#34;&gt;280Slides&lt;/a&gt; という Web サービスがすごい。&lt;/p&gt;
@@ -217,10 +217,10 @@ import &amp;quot;WelcomePanel.j&amp;quot;
     
     <item>
       <title>Xcode でプロジェクトの名前を変更したくなったら</title>
-      <link>http://ishikawa.github.io/2007/08/21/rename-xcode-project/</link>
+      <link>http://www.metareal.org/2007/08/21/rename-xcode-project/</link>
       <pubDate>Tue, 21 Aug 2007 05:24:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/21/rename-xcode-project/</guid>
+      <guid>http://www.metareal.org/2007/08/21/rename-xcode-project/</guid>
       <description>
 
 &lt;p&gt;Xcode でプロジェクトの名前を変えたくなった。&lt;/p&gt;
@@ -268,10 +268,10 @@ import &amp;quot;WelcomePanel.j&amp;quot;
     
     <item>
       <title>NSView の CGContextRef に ATSUI でテキストを描画する方法</title>
-      <link>http://ishikawa.github.io/2007/01/14/rendering-unicode-text-into-cgcontextref-with-atsui/</link>
+      <link>http://www.metareal.org/2007/01/14/rendering-unicode-text-into-cgcontextref-with-atsui/</link>
       <pubDate>Mon, 15 Jan 2007 02:00:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/14/rendering-unicode-text-into-cgcontextref-with-atsui/</guid>
+      <guid>http://www.metareal.org/2007/01/14/rendering-unicode-text-into-cgcontextref-with-atsui/</guid>
       <description>&lt;p&gt;Cocoa の &lt;a href=&#34;http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSView_Class/index.html?http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSView_Class/Reference/Reference.html&#34;&gt;&lt;code&gt;NSView&lt;/code&gt;&lt;/a&gt; に &lt;a href=&#34;http://developer.apple.com/documentation/Carbon/Reference/ATSUI_Reference/index.html&#34;&gt;Apple Type Services for Unicode Imaging (ATSUI)&lt;/a&gt; でテキストを描画する方法を紹介する。&lt;/p&gt;
 
 &lt;p&gt;ATSUI では描画に Quartz の &lt;a href=&#34;http://developer.apple.com/documentation/GraphicsImaging/Reference/CGContext/Reference/reference.html#//apple_ref/doc/uid/TP30000950-CH2g-C016175&#34;&gt;&lt;code&gt;CGContextRef&lt;/code&gt;&lt;/a&gt; を設定することができる。&lt;code&gt;CGContextRef&lt;/code&gt; は &lt;a href=&#34;http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSGraphicsContext_Class/index.html?http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSGraphicsContext_Class/Reference/Reference.html&#34;&gt;&lt;code&gt;NSGraphicsContext&lt;/code&gt;&lt;/a&gt; の &lt;code&gt;graphicsPort&lt;/code&gt; で取得できるので、以下のようなコードで設定できる。&lt;/p&gt;
@@ -339,10 +339,10 @@ ATSUSetLayoutControls(layout, 1, tags, sizes, values);
     
     <item>
       <title>Interface Builder の NSTextView で NSLayoutManager を置き換える</title>
-      <link>http://ishikawa.github.io/2007/01/14/how-to-replace-layout-manager/</link>
+      <link>http://www.metareal.org/2007/01/14/how-to-replace-layout-manager/</link>
       <pubDate>Sun, 14 Jan 2007 10:01:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/14/how-to-replace-layout-manager/</guid>
+      <guid>http://www.metareal.org/2007/01/14/how-to-replace-layout-manager/</guid>
       <description>&lt;p&gt;Cocoa の &lt;a href=&#34;http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSLayoutManager_Class/Reference/Reference.html&#34;&gt;&lt;code&gt;NSLayoutManager&lt;/code&gt;&lt;/a&gt; や &lt;a href=&#34;http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSTypesetter_Class/Reference/Reference.html&#34;&gt;&lt;code&gt;NSTypesetter&lt;/code&gt;&lt;/a&gt; をサブクラス化したい場合、Apple のドキュメント &amp;ldquo;&lt;a href=&#34;http://developer.apple.com/documentation/Cocoa/Conceptual/TextArchitecture/index.html?http://developer.apple.com/documentation/Cocoa/Conceptual/TextArchitecture/Tasks/TextEditor.html&#34;&gt;Assembling the Text System by Hand&lt;/a&gt;&amp;rdquo; にあるように、マニュアルで &lt;a href=&#34;http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSTextView_Class/Reference/Reference.html&#34;&gt;&lt;code&gt;NSTextView&lt;/code&gt;&lt;/a&gt; を構築してもいいが面倒だ。それに、このままではスクロールビューでデコレートもされてないのでノーグッド。&lt;/p&gt;
 
 &lt;p&gt;どうせなら、Interface Builder で配置した &lt;code&gt;NSTextView&lt;/code&gt; の &lt;code&gt;NSLayoutManager&lt;/code&gt; を置き換えるのが手っ取り早いだろう。コードは以下のようになる。&lt;/p&gt;
@@ -366,10 +366,10 @@ ATSUSetLayoutControls(layout, 1, tags, sizes, values);
     
     <item>
       <title>Cocoa の Text System を勉強中</title>
-      <link>http://ishikawa.github.io/2007/01/06/learning-cocoa-text-system/</link>
+      <link>http://www.metareal.org/2007/01/06/learning-cocoa-text-system/</link>
       <pubDate>Sun, 07 Jan 2007 04:13:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/06/learning-cocoa-text-system/</guid>
+      <guid>http://www.metareal.org/2007/01/06/learning-cocoa-text-system/</guid>
       <description>&lt;p&gt;Mac OS X のフレームワークである Cocoa の Text System を調べるため、ドキュメントを漁り中。&lt;/p&gt;
 
 &lt;p&gt;そのなかで、&lt;a href=&#34;http://developer.apple.com/documentation/Cocoa/Conceptual/TextArchitecture/Concepts/TextSystemFeatures.html#//apple_ref/doc/uid/20001800&#34;&gt;Text System Overview: Typographical Features of the Cocoa Text System&lt;/a&gt; の画像 &lt;strong&gt;Figure 4&lt;/strong&gt; は、&lt;/p&gt;

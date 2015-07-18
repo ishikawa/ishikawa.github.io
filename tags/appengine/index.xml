@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Appengine on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/appengine/</link>
+    <link>http://www.metareal.org/tags/appengine/</link>
     <description>Recent content in Appengine on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Thu, 03 Dec 2009 12:42:00 +0900</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/appengine/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/appengine/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Google AppEngine で Django 1.1 を使う</title>
-      <link>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</link>
+      <link>http://www.metareal.org/2009/12/02/running-django-1-1-on-google-appengine/</link>
       <pubDate>Thu, 03 Dec 2009 12:42:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</guid>
+      <guid>http://www.metareal.org/2009/12/02/running-django-1-1-on-google-appengine/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://code.google.com/appengine/&#34;&gt;Google AppEngine&lt;/a&gt; の SDK および実行環境には、Web アプリケーション・フレームワークの &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; がプリインストールされている。&lt;/p&gt;
@@ -95,10 +95,10 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
     
     <item>
       <title>Google App Engine 1.1.3 の zipserve で静的ファイルをまとめてアップロード</title>
-      <link>http://ishikawa.github.io/2008/10/03/google-app-engine-113-zipserve/</link>
+      <link>http://www.metareal.org/2008/10/03/google-app-engine-113-zipserve/</link>
       <pubDate>Fri, 03 Oct 2008 05:48:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/10/03/google-app-engine-113-zipserve/</guid>
+      <guid>http://www.metareal.org/2008/10/03/google-app-engine-113-zipserve/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://googleappengine.blogspot.com/2008/09/sdk-113-now-available-for-download.html&#34;&gt;Google App Engine SDK 1.1.3&lt;/a&gt; で追加された &lt;code&gt;zipserve&lt;/code&gt; を使うと、静的ファイルを zip にまとめてアップロードできるらしい。ただ、&lt;a href=&#34;http://code.google.com/appengine/docs/&#34;&gt;Developer&amp;rsquo;s Guide&lt;/a&gt; 内を検索してもドキュメントが見つからない。しかたがないので、&lt;a href=&#34;http://code.google.com/p/googleappengine/source/browse/trunk/python/google/appengine/ext/zipserve/__init__.py&#34;&gt;ソースコード&lt;/a&gt;のコメントを頼りに &lt;code&gt;zipserve&lt;/code&gt; を試してみる。&lt;/p&gt;
@@ -140,10 +140,10 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
     
     <item>
       <title>Google App Engine で Django 1.0 を動かす</title>
-      <link>http://ishikawa.github.io/2008/10/02/running-django-1-0-on-google-app-engine/</link>
+      <link>http://www.metareal.org/2008/10/02/running-django-1-0-on-google-app-engine/</link>
       <pubDate>Thu, 02 Oct 2008 10:26:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/10/02/running-django-1-0-on-google-app-engine/</guid>
+      <guid>http://www.metareal.org/2008/10/02/running-django-1-0-on-google-app-engine/</guid>
       <description>
 
 &lt;p&gt;このブログは &lt;a href=&#34;http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;Google App Engine と Django で動かしている&lt;/a&gt;のだが、いままで &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; はすこし古い開発版を使っていた。&lt;/p&gt;
@@ -214,10 +214,10 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
     
     <item>
       <title>Django のキャッシュで Google App Engine の Memcache API を使う</title>
-      <link>http://ishikawa.github.io/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</link>
+      <link>http://www.metareal.org/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</link>
       <pubDate>Thu, 29 May 2008 01:48:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</guid>
+      <guid>http://www.metareal.org/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://googleappengine.blogspot.com/&#34;&gt;Google App Engine ブログ&lt;/a&gt;で&lt;a href=&#34;http://googleappengine.blogspot.com/2008/05/announcing-open-signups-expected.html&#34;&gt;新しい動き&lt;/a&gt;があった。トピックは以下の通り。&lt;/p&gt;
@@ -233,7 +233,7 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
 
 &lt;h3 id=&#34;重いページをキャッシュする:566a9dac81dfb9c529763dee37b2ec7b&#34;&gt;重いページをキャッシュする&lt;/h3&gt;
 
-&lt;p&gt;このブログを &lt;a href=&#34;http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;Google App Engine に移行&lt;/a&gt;して一週間が経った。しかし、Admin Console でログを確認してみると、ところどころで警告が出ている。&lt;/p&gt;
+&lt;p&gt;このブログを &lt;a href=&#34;http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;Google App Engine に移行&lt;/a&gt;して一週間が経った。しかし、Admin Console でログを確認してみると、ところどころで警告が出ている。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;
 &amp;quot;GET /index.xml HTTP/1.1&amp;quot; 200 117413 - -
@@ -310,10 +310,10 @@ MemcacheCache.get_many = silent_missing_key_error(MemcacheCache.get_many)
     
     <item>
       <title>Google App Engine への移行</title>
-      <link>http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/</link>
+      <link>http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/</link>
       <pubDate>Tue, 20 May 2008 07:39:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/</guid>
+      <guid>http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/</guid>
       <description>
 
 &lt;p&gt;ここ数日というもの、Mac の前に座ってやっていたことといえば、&lt;a href=&#34;http://twitter.com/takanori_is&#34;&gt;Twitter&lt;/a&gt; か RSS フィードの消化か、でなければブログの移行作業だ。&lt;/p&gt;

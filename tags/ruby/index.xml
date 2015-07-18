@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/ruby/</link>
+    <link>http://www.metareal.org/tags/ruby/</link>
     <description>Recent content in Ruby on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Thu, 16 Dec 2010 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://ishikawa.github.io/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった</title>
-      <link>http://ishikawa.github.io/2010/12/16/ffi-requires-ruby-version-1-9-2/</link>
+      <link>http://www.metareal.org/2010/12/16/ffi-requires-ruby-version-1-9-2/</link>
       <pubDate>Thu, 16 Dec 2010 00:00:00 +0000</pubDate>
       
-      <guid>http://ishikawa.github.io/2010/12/16/ffi-requires-ruby-version-1-9-2/</guid>
+      <guid>http://www.metareal.org/2010/12/16/ffi-requires-ruby-version-1-9-2/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/ffi/ffi&#34;&gt;Ruby-FFI 1.0.0&lt;/a&gt; からは &lt;a href=&#34;http://groups.google.com/group/ruby-ffi/browse_thread/thread/c40766b574a15962&#34;&gt;Ruby 1.9.2 以降が必要になった&lt;/a&gt;。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% sudo gem1.8 install ffi
@@ -39,10 +39,10 @@ Installing RDoc documentation for ffi-0.6.3...
     
     <item>
       <title>Ruby FFI のメモリ管理についてメモ</title>
-      <link>http://ishikawa.github.io/2010/12/11/1292077318/</link>
+      <link>http://www.metareal.org/2010/12/11/1292077318/</link>
       <pubDate>Sat, 11 Dec 2010 00:00:00 +0000</pubDate>
       
-      <guid>http://ishikawa.github.io/2010/12/11/1292077318/</guid>
+      <guid>http://www.metareal.org/2010/12/11/1292077318/</guid>
       <description>&lt;p&gt;Ruby FFI のメモリ管理についてメモ。FFI::MemoryPointer で確保したメモリを自分で破棄する場合は、autorelease を false にする。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;error   = FFI::MemoryPointer.new(:pointer)
@@ -63,10 +63,10 @@ error.autorelease=false
     
     <item>
       <title>ruby-openid でログの出力先を変更する</title>
-      <link>http://ishikawa.github.io/2008/04/18/ruby-openid-util-logger/</link>
+      <link>http://www.metareal.org/2008/04/18/ruby-openid-util-logger/</link>
       <pubDate>Fri, 18 Apr 2008 07:41:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/04/18/ruby-openid-util-logger/</guid>
+      <guid>http://www.metareal.org/2008/04/18/ruby-openid-util-logger/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://rubyforge.org/projects/ruby-openid/&#34;&gt;ruby-openid&lt;/a&gt; は Ruby の OpenID ライブラリだが、そのままだとログの出力先が標準エラー出力に向けられている。これでは何かと困ることもあるだろう（たとえば、ユニットテストの結果に ruby-openid のデバッグ出力が混じって鬱陶しい、とか）。&lt;/p&gt;
 
 &lt;p&gt;幸い OpenID::Util モジュールに、内部で使われているロガーを変更するためのメソッドが用意されている。以下のようにすれば、Rails 標準のロガーに置き換えることが可能だ。&lt;/p&gt;
@@ -81,10 +81,10 @@ OpenID::Util.logger = RAILS_DEFAULT_LOGGER
     
     <item>
       <title>Array#product For Ruby 1.8</title>
-      <link>http://ishikawa.github.io/2008/02/16/array-product-for-ruby-1-8/</link>
+      <link>http://www.metareal.org/2008/02/16/array-product-for-ruby-1-8/</link>
       <pubDate>Sun, 17 Feb 2008 07:07:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/02/16/array-product-for-ruby-1-8/</guid>
+      <guid>http://www.metareal.org/2008/02/16/array-product-for-ruby-1-8/</guid>
       <description>&lt;p&gt;Ruby 1.9 には配列同士の組み合わせを列挙する &lt;a href=&#34;http://doc.loveruby.net/refm/api/view/method/Array/i/product&#34;&gt;Array#product&lt;/a&gt; があるらしいのだが、Ruby 1.8 でも使いたくなったので実装してみた。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;class Array
@@ -145,10 +145,10 @@ end
     
     <item>
       <title>rparsec での繰り返しと選択</title>
-      <link>http://ishikawa.github.io/2007/12/16/rparsec-quantifier-and-alternation/</link>
+      <link>http://www.metareal.org/2007/12/16/rparsec-quantifier-and-alternation/</link>
       <pubDate>Sun, 16 Dec 2007 11:10:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/16/rparsec-quantifier-and-alternation/</guid>
+      <guid>http://www.metareal.org/2007/12/16/rparsec-quantifier-and-alternation/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec&#34;&gt;rparsec&lt;/a&gt; では文法要素の繰り返しを指定する方法が複数用意されている。&lt;/p&gt;
@@ -188,10 +188,10 @@ parser.parse(&amp;quot;123 abc 56.7&amp;quot;) =&amp;gt; [&amp;quot;123&amp;quot
     
     <item>
       <title>rparsec の四則演算デモを浮動小数点に対応させる</title>
-      <link>http://ishikawa.github.io/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</link>
+      <link>http://www.metareal.org/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</link>
       <pubDate>Fri, 14 Dec 2007 10:05:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</guid>
+      <guid>http://www.metareal.org/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec&#34;&gt;rparsec&lt;/a&gt; の&lt;a href=&#34;http://weblog.metareal.org/2007/12/11/studying-rparsec-introduction/#rparsec-calculator-demo&#34;&gt;四則演算デモ&lt;/a&gt;を試しているうちに、整数による演算しかできないことに気づくことと思う。&lt;/p&gt;
 
 &lt;p&gt;四則演算デモが &lt;code&gt;calculator.rb&lt;/code&gt; にあるとして、&lt;/p&gt;
@@ -228,10 +228,10 @@ parser.parse &#39;4 * 2.5&#39;
     
     <item>
       <title>RParsec の many と many_ の違い</title>
-      <link>http://ishikawa.github.io/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</link>
+      <link>http://www.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</link>
       <pubDate>Thu, 13 Dec 2007 09:09:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</guid>
+      <guid>http://www.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/12/11/studying-rparsec-introduction/#rparsec-calculator-demo&#34;&gt;前回の四則演算デモ&lt;/a&gt;で真っ先に目を引いたのは &lt;code&gt;many_&lt;/code&gt; という奇妙な名前のメソッドだった。&lt;/p&gt;
@@ -284,10 +284,10 @@ irb(main):006:0&amp;gt; whitespace.many_.parse(&amp;quot;&amp;quot;)
     
     <item>
       <title>Ruby によるパーサ・コンビネータ rparsec</title>
-      <link>http://ishikawa.github.io/2007/12/11/studying-rparsec-introduction/</link>
+      <link>http://www.metareal.org/2007/12/11/studying-rparsec-introduction/</link>
       <pubDate>Tue, 11 Dec 2007 10:52:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/11/studying-rparsec-introduction/</guid>
+      <guid>http://www.metareal.org/2007/12/11/studying-rparsec-introduction/</guid>
       <description>
 
 &lt;p&gt;Java による &lt;a href=&#34;http://www.lab2.kuis.kyoto-u.ac.jp/~hanatani/tmp/Parsec.html&#34;&gt;parsec&lt;/a&gt; の実装 &lt;a href=&#34;http://docs.codehaus.org/display/JPARSEC/Home&#34;&gt;JParsec&lt;/a&gt; を Ruby に移植した &lt;a href=&#34;http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec&#34;&gt;rparsec&lt;/a&gt; を勉強中。&lt;/p&gt;
@@ -358,10 +358,10 @@ irb(main):002:0&amp;gt; Calculator.new.parser.parse &#39;1+2*(3-1)&#39;
     
     <item>
       <title>Ruby で16進数表記の整数を UTF-8 文字列として出力する</title>
-      <link>http://ishikawa.github.io/2007/12/10/packing-integer-into-utf8-sequence-bytes/</link>
+      <link>http://www.metareal.org/2007/12/10/packing-integer-into-utf8-sequence-bytes/</link>
       <pubDate>Mon, 10 Dec 2007 10:16:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/10/packing-integer-into-utf8-sequence-bytes/</guid>
+      <guid>http://www.metareal.org/2007/12/10/packing-integer-into-utf8-sequence-bytes/</guid>
       <description>&lt;p&gt;前回の記事「&lt;a href=&#34;http://weblog.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/&#34;&gt;PostgreSQL 7.4.13 以降、異なるエンコーディングでの変換エラー&lt;/a&gt;」でも書いたように、PostgreSQL で以下のようなエラーが出るようになった。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;ERROR:  22P05: character 0xe28094 of encoding &amp;quot;UNICODE&amp;quot; has no equivalent in &amp;quot;EUC_JP&amp;quot;
@@ -378,10 +378,10 @@ irb(main):002:0&amp;gt; Calculator.new.parser.parse &#39;1+2*(3-1)&#39;
     
     <item>
       <title>Ruby の CSS パーサはどこですか？</title>
-      <link>http://ishikawa.github.io/2007/11/23/looking-for-ruby-css-parser/</link>
+      <link>http://www.metareal.org/2007/11/23/looking-for-ruby-css-parser/</link>
       <pubDate>Sat, 24 Nov 2007 02:58:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/11/23/looking-for-ruby-css-parser/</guid>
+      <guid>http://www.metareal.org/2007/11/23/looking-for-ruby-css-parser/</guid>
       <description>
 
 &lt;p&gt;「Ruby で書かれた CSS パーサを探しています」メモ。&lt;/p&gt;
@@ -417,10 +417,10 @@ irb(main):002:0&amp;gt; Calculator.new.parser.parse &#39;1+2*(3-1)&#39;
     
     <item>
       <title>Ruby で平仮名にマッチする正規表現</title>
-      <link>http://ishikawa.github.io/2007/11/18/ruby-needs-unicode-regular-expressions/</link>
+      <link>http://www.metareal.org/2007/11/18/ruby-needs-unicode-regular-expressions/</link>
       <pubDate>Mon, 19 Nov 2007 02:31:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/11/18/ruby-needs-unicode-regular-expressions/</guid>
+      <guid>http://www.metareal.org/2007/11/18/ruby-needs-unicode-regular-expressions/</guid>
       <description>
 
 &lt;p&gt;Ruby 1.8 系で平仮名にマッチする正規表現を書きたい。&lt;/p&gt;
@@ -461,10 +461,10 @@ irb(main):002:0&amp;gt; Calculator.new.parser.parse &#39;1+2*(3-1)&#39;
     
     <item>
       <title>Ruby で外部プログラムの標準エラー出力を得る方法</title>
-      <link>http://ishikawa.github.io/2007/10/09/capture-stderr-of-external-program-into-ruby-string/</link>
+      <link>http://www.metareal.org/2007/10/09/capture-stderr-of-external-program-into-ruby-string/</link>
       <pubDate>Wed, 10 Oct 2007 06:37:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/10/09/capture-stderr-of-external-program-into-ruby-string/</guid>
+      <guid>http://www.metareal.org/2007/10/09/capture-stderr-of-external-program-into-ruby-string/</guid>
       <description>
 
 &lt;p&gt;Ruby で外部プログラムを実行するには&lt;a href=&#34;http://www.ruby-lang.org/ja/man/?cmd=view;name=%C1%C8%A4%DF%B9%FE%A4%DF%B4%D8%BF%F4#a.60.20str&#34;&gt;バッククォート文字列&lt;/a&gt;がもっとも簡単だ。&lt;/p&gt;
@@ -498,10 +498,10 @@ end
     
     <item>
       <title>Ruby の String#to_i と組み込み関数の Integer() は違う</title>
-      <link>http://ishikawa.github.io/2007/10/06/ruby-to-i-and-integer-function/</link>
+      <link>http://www.metareal.org/2007/10/06/ruby-to-i-and-integer-function/</link>
       <pubDate>Sat, 06 Oct 2007 10:37:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/10/06/ruby-to-i-and-integer-function/</guid>
+      <guid>http://www.metareal.org/2007/10/06/ruby-to-i-and-integer-function/</guid>
       <description>
 
 &lt;p&gt;文字列から数値への変換に &lt;a href=&#34;http://www.ruby-lang.org/ja/man/?cmd=view;name=String#to_i&#34;&gt;&lt;code&gt;String.to_i&lt;/code&gt;&lt;/a&gt; を使っていると、思わぬ問題に出くわすことがある。&lt;/p&gt;
@@ -556,10 +556,10 @@ ArgumentError: invalid value for Integer: &amp;quot;10fixnum&amp;quot;
     
     <item>
       <title>今日の Ruby 落とし穴</title>
-      <link>http://ishikawa.github.io/2007/09/11/ruby-pitfall-today/</link>
+      <link>http://www.metareal.org/2007/09/11/ruby-pitfall-today/</link>
       <pubDate>Wed, 12 Sep 2007 06:31:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/11/ruby-pitfall-today/</guid>
+      <guid>http://www.metareal.org/2007/09/11/ruby-pitfall-today/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.ruby-lang.org/ja/man/?cmd=view;name=Ruby%A4%CE%CD%EE%A4%C8%A4%B7%B7%EA&#34;&gt;Ruby の落とし穴&lt;/a&gt;には載っていないようなので。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;def
@@ -598,10 +598,10 @@ end
     
     <item>
       <title>Ruby の Mongrel でお手軽 HTTP サーバ</title>
-      <link>http://ishikawa.github.io/2007/08/30/setup-simple-http-server-with-mongrel/</link>
+      <link>http://www.metareal.org/2007/08/30/setup-simple-http-server-with-mongrel/</link>
       <pubDate>Thu, 30 Aug 2007 10:25:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/30/setup-simple-http-server-with-mongrel/</guid>
+      <guid>http://www.metareal.org/2007/08/30/setup-simple-http-server-with-mongrel/</guid>
       <description>&lt;p&gt;先日、やっつけスクリプトのサーバ部分に &lt;a href=&#34;http://mongrel.rubyforge.org/&#34;&gt;Mongrel&lt;/a&gt; を使ってみたんだけど、Rails で使う以外だとドキュメント少ないのね。&lt;/p&gt;
 
 &lt;p&gt;とりあえず、&lt;a href=&#34;http://weblog.metareal.org/2007/08/25/setup-simple-http-server-with-webrick/&#34;&gt;Ruby の Webrick でお手軽 HTTP サーバ&lt;/a&gt;の Mongrel 版はこんな感じ。&lt;/p&gt;
