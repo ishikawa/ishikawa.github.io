@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Typescript on METAREAL</title>
-    <link>http://www.metareal.org/tags/typescript/</link>
+    <link>http://localhost:1313/tags/typescript/</link>
     <description>Recent content in Typescript on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 07 Jul 2015 08:02:21 +0900</lastBuildDate>
-    <atom:link href="http://www.metareal.org/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>JavaScript API Response object</title>
-      <link>http://www.metareal.org/post/2015/07/javascript-api-response-object/</link>
+      <link>http://localhost:1313/post/2015/07/javascript-api-response-object/</link>
       <pubDate>Tue, 07 Jul 2015 08:02:21 +0900</pubDate>
       
-      <guid>http://www.metareal.org/post/2015/07/javascript-api-response-object/</guid>
+      <guid>http://localhost:1313/post/2015/07/javascript-api-response-object/</guid>
       <description>&lt;p&gt;JavaScript (TypeScript) でサーバーとの通信には JSON-RPC 2.0 を用いて、受け取った JSON レスポンスをオブジェクトに変換して使っている。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;class Tweet {

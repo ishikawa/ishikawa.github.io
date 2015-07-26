@@ -1,0 +1,82 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://localhost:1313/">
+  <title>Elixir 覚え書き</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://localhost:1313/post/elixir-notes/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>Elixir 覚え書き</h1>
+  <div class="metadata">
+    <p class="date">2015/06/28 6:54pm</p>
+  </div>
+  <div class="content">
+    
+
+<p>スプラトゥーンの合間をぬって <a href="http://elixir-lang.org">Elixir</a> の勉強をしている。
+ドキュメントを丁寧に読み込んで学習するのが苦手なので、興味をもったトピックをランダムにいじりつつ気になった点をメモしておく。</p>
+
+<h3 id="文字列のパターンマッチ:66bcd05a40713145965135e721e8b6a2">文字列のパターンマッチ</h3>
+
+<p>文字列（バイナリ）は連結演算子 <code>&lt;&gt;</code> でパターンマッチできる (以下は <a href="http://www.phoenixframework.org/v0.13.1/docs/channels#section-joining-channels">Phoenix Framework のドキュメント</a>から抜粋)</p>
+
+<pre><code class="language-elixir">def join(&quot;rooms:&quot; &lt;&gt; _private_room_id, _auth_msg, socket) do
+  { :error, %{ reason: &quot;unauthorized&quot; } }
+end
+</code></pre>
+
+<ul>
+<li><a href="http://elixir-lang.org/getting-started/binaries-strings-and-char-lists.html">Binaries, strings and char lists - Elixir</a></li>
+</ul>
+
+<h3 id="phoenix:66bcd05a40713145965135e721e8b6a2">Phoenix</h3>
+
+<h4 id="クライアントから-websocket-で-channel-につなぐ:66bcd05a40713145965135e721e8b6a2">クライアントから WebSocket で Channel につなぐ</h4>
+
+<p>同梱されている <a href="https://github.com/phoenixframework/phoenix/blob/master/priv/static/phoenix.js">JavaScript ライブラリ</a> を使えばいいんだけど、プロジェクトの諸事情（コーディングスタイルに適合しない、など）で使えない場合や、そもそも JavaScript 以外から通信したいときは使えない。</p>
+
+<p>ドキュメントに仕様らしきものは見当たらないので、上の <a href="https://github.com/phoenixframework/phoenix/blob/master/priv/static/phoenix.js">phoenix.js</a> や<a href="https://github.com/phoenixframework/phoenix/blob/master/test/phoenix/integration/websocket_client.exs">テスト</a> を参考に実装するしかなさそう？</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://localhost:1313/post/2015/07/javascript-api-response-object/">JavaScript API Response object</a></li>
+    
+    
+    <li class="prev"><a href="http://localhost:1313/post/migrate-to-hugo/">ブログを Hugo に移行した</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elixir on METAREAL</title>
+    <link>http://localhost:1313/tags/elixir/</link>
+    <description>Recent content in Elixir on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Sun, 28 Jun 2015 18:54:03 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/elixir/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Elixir 覚え書き</title>
+      <link>http://localhost:1313/post/elixir-notes/</link>
+      <pubDate>Sun, 28 Jun 2015 18:54:03 +0900</pubDate>
+      
+      <guid>http://localhost:1313/post/elixir-notes/</guid>
+      <description>
+
+&lt;p&gt;スプラトゥーンの合間をぬって &lt;a href=&#34;http://elixir-lang.org&#34;&gt;Elixir&lt;/a&gt; の勉強をしている。
+ドキュメントを丁寧に読み込んで学習するのが苦手なので、興味をもったトピックをランダムにいじりつつ気になった点をメモしておく。&lt;/p&gt;
+
+&lt;h3 id=&#34;文字列のパターンマッチ:66bcd05a40713145965135e721e8b6a2&#34;&gt;文字列のパターンマッチ&lt;/h3&gt;
+
+&lt;p&gt;文字列（バイナリ）は連結演算子 &lt;code&gt;&amp;lt;&amp;gt;&lt;/code&gt; でパターンマッチできる (以下は &lt;a href=&#34;http://www.phoenixframework.org/v0.13.1/docs/channels#section-joining-channels&#34;&gt;Phoenix Framework のドキュメント&lt;/a&gt;から抜粋)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-elixir&#34;&gt;def join(&amp;quot;rooms:&amp;quot; &amp;lt;&amp;gt; _private_room_id, _auth_msg, socket) do
+  { :error, %{ reason: &amp;quot;unauthorized&amp;quot; } }
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://elixir-lang.org/getting-started/binaries-strings-and-char-lists.html&#34;&gt;Binaries, strings and char lists - Elixir&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;phoenix:66bcd05a40713145965135e721e8b6a2&#34;&gt;Phoenix&lt;/h3&gt;
+
+&lt;h4 id=&#34;クライアントから-websocket-で-channel-につなぐ:66bcd05a40713145965135e721e8b6a2&#34;&gt;クライアントから WebSocket で Channel につなぐ&lt;/h4&gt;
+
+&lt;p&gt;同梱されている &lt;a href=&#34;https://github.com/phoenixframework/phoenix/blob/master/priv/static/phoenix.js&#34;&gt;JavaScript ライブラリ&lt;/a&gt; を使えばいいんだけど、プロジェクトの諸事情（コーディングスタイルに適合しない、など）で使えない場合や、そもそも JavaScript 以外から通信したいときは使えない。&lt;/p&gt;
+
+&lt;p&gt;ドキュメントに仕様らしきものは見当たらないので、上の &lt;a href=&#34;https://github.com/phoenixframework/phoenix/blob/master/priv/static/phoenix.js&#34;&gt;phoenix.js&lt;/a&gt; や&lt;a href=&#34;https://github.com/phoenixframework/phoenix/blob/master/test/phoenix/integration/websocket_client.exs&#34;&gt;テスト&lt;/a&gt; を参考に実装するしかなさそう？&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

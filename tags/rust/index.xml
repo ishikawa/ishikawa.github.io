@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rust on METAREAL</title>
+    <link>http://www.metareal.org/tags/rust/</link>
+    <description>Recent content in Rust on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Sun, 26 Jul 2015 10:10:37 +0900</lastBuildDate>
+    <atom:link href="http://www.metareal.org/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Aliasing Traits</title>
+      <link>http://www.metareal.org/post/2015/07/rust-trait-alias/</link>
+      <pubDate>Sun, 26 Jul 2015 10:10:37 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/post/2015/07/rust-trait-alias/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.rust-lang.org&#34;&gt;Rust&lt;/a&gt; の &lt;a href=&#34;https://doc.rust-lang.org/book/traits.html&#34;&gt;Traits&lt;/a&gt; による制約は &lt;a href=&#34;https://doc.rust-lang.org/stable/book/associated-types.html&#34;&gt;Associated Types&lt;/a&gt; や複数の Traits を &lt;code&gt;+&lt;/code&gt; で指定したりすると、どんどん長くなってしまう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-rust&#34;&gt;struct A&amp;lt;T: Iterator&amp;lt;Item=char&amp;gt;&amp;gt; {
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通常の型には &lt;a href=&#34;https://doc.rust-lang.org/book/type-aliases.html&#34;&gt;&lt;code&gt;type&lt;/code&gt; キーワード&lt;/a&gt;による別名づけの手段が用意されているが、これは Traits には使えない。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-rust&#34;&gt;type CharIterator = Iterator&amp;lt;Item=char&amp;gt;;
+
+// ERROR: note: `type` aliases cannot be used for traits
+struct A&amp;lt;T: CharIterator&amp;gt; {
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;過去に提案はあったようだが却下されたようだ。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/rust-lang/rust/issues/8634&#34;&gt;Allow &lt;code&gt;type&lt;/code&gt; to create an alias for several trait bounds · Issue #8634 · rust-lang/rust&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;別名を与えたい Trait を継承した空の Trait をつくればいい&lt;/li&gt;
+&lt;li&gt;言語に新しい機能をつけくわえるほどの価値はなさそう&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;たしかに、空の Trait をつくることで似たような効果を得ることはできる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-rust&#34;&gt;trait CharIterator: Iterator&amp;lt;Item=char&amp;gt; {}
+
+struct A&amp;lt;T: CharIterator&amp;gt; {
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ただし、既存の &lt;code&gt;Iterator&amp;lt;Item=char&amp;gt;&lt;/code&gt; を実装している型 (&lt;a href=&#34;https://doc.rust-lang.org/std/str/struct.Chars.html&#34;&gt;&lt;code&gt;std::str::Chars&lt;/code&gt;&lt;/a&gt; など) は、今回追加した &lt;code&gt;CharIterator&lt;/code&gt; を実装しているわけではないので、このままだと &lt;code&gt;T&lt;/code&gt; の実体として使うことができない。&lt;code&gt;Iterator&amp;lt;Item=char&amp;gt;&lt;/code&gt; を実装した型が &lt;code&gt;CharIterator&lt;/code&gt; も実装していることになるように &lt;code&gt;impl&lt;/code&gt; を記述してやる必要がある。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-rust&#34;&gt;trait CharIterator: Iterator&amp;lt;Item=char&amp;gt; {}
+impl&amp;lt;T: Iterator&amp;lt;Item=char&amp;gt;&amp;gt; CharIterator for T {}
+
+struct A&amp;lt;T: CharIterator&amp;gt; {
+    it: T,
+}
+
+...
+
+let a = A { it: &amp;quot;test&amp;quot;.chars() };
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;参考にした記事&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/rust-lang/rust/issues/8634&#34;&gt;Allow &lt;code&gt;type&lt;/code&gt; to create an alias for several trait bounds · Issue #8634 · rust-lang/rust&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/26070559/alias-on-compound-type-in-rust&#34;&gt;Alias on compound type in Rust - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/30424100/aliasing-trait-with-associated-types&#34;&gt;rust - Aliasing trait with associated types - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
