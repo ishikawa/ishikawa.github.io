@@ -42,7 +42,7 @@ struct A&lt;T: CharIterator&gt; {
 }
 </code></pre>
 
-<p>過去に提案はあったようだが却下されたようだ。</p>
+<p>過去に提案はあったが却下されたようだ。</p>
 
 <p><a href="https://github.com/rust-lang/rust/issues/8634">Allow <code>type</code> to create an alias for several trait bounds · Issue #8634 · rust-lang/rust</a></p>
 
@@ -60,7 +60,9 @@ struct A&lt;T: CharIterator&gt; {
 }
 </code></pre>
 
-<p>ただし、既存の <code>Iterator&lt;Item=char&gt;</code> を実装している型 (<a href="https://doc.rust-lang.org/std/str/struct.Chars.html"><code>std::str::Chars</code></a> など) は、今回追加した <code>CharIterator</code> を実装しているわけではないので、このままだと <code>T</code> の実体として使うことができない。<code>Iterator&lt;Item=char&gt;</code> を実装した型が <code>CharIterator</code> も実装していることになるように <code>impl</code> を記述してやる必要がある。</p>
+<p>ただし、既存の <code>Iterator&lt;Item=char&gt;</code> を実装している型 (<a href="https://doc.rust-lang.org/std/str/struct.Chars.html"><code>std::str::Chars</code></a> など) は、今回追加した <code>CharIterator</code> を実装しているわけではないので、このままだと <code>T</code> の実体として使うことができない。</p>
+
+<p>「<code>Iterator&lt;Item=char&gt;</code> を実装した型が <code>CharIterator</code> も実装している」という <code>impl</code> を書いておこう。</p>
 
 <pre><code class="language-rust">trait CharIterator: Iterator&lt;Item=char&gt; {}
 impl&lt;T: Iterator&lt;Item=char&gt;&gt; CharIterator for T {}

@@ -33,7 +33,7 @@ struct A&amp;lt;T: CharIterator&amp;gt; {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;過去に提案はあったようだが却下されたようだ。&lt;/p&gt;
+&lt;p&gt;過去に提案はあったが却下されたようだ。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/rust-lang/rust/issues/8634&#34;&gt;Allow &lt;code&gt;type&lt;/code&gt; to create an alias for several trait bounds · Issue #8634 · rust-lang/rust&lt;/a&gt;&lt;/p&gt;
 
@@ -51,7 +51,9 @@ struct A&amp;lt;T: CharIterator&amp;gt; {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;ただし、既存の &lt;code&gt;Iterator&amp;lt;Item=char&amp;gt;&lt;/code&gt; を実装している型 (&lt;a href=&#34;https://doc.rust-lang.org/std/str/struct.Chars.html&#34;&gt;&lt;code&gt;std::str::Chars&lt;/code&gt;&lt;/a&gt; など) は、今回追加した &lt;code&gt;CharIterator&lt;/code&gt; を実装しているわけではないので、このままだと &lt;code&gt;T&lt;/code&gt; の実体として使うことができない。&lt;code&gt;Iterator&amp;lt;Item=char&amp;gt;&lt;/code&gt; を実装した型が &lt;code&gt;CharIterator&lt;/code&gt; も実装していることになるように &lt;code&gt;impl&lt;/code&gt; を記述してやる必要がある。&lt;/p&gt;
+&lt;p&gt;ただし、既存の &lt;code&gt;Iterator&amp;lt;Item=char&amp;gt;&lt;/code&gt; を実装している型 (&lt;a href=&#34;https://doc.rust-lang.org/std/str/struct.Chars.html&#34;&gt;&lt;code&gt;std::str::Chars&lt;/code&gt;&lt;/a&gt; など) は、今回追加した &lt;code&gt;CharIterator&lt;/code&gt; を実装しているわけではないので、このままだと &lt;code&gt;T&lt;/code&gt; の実体として使うことができない。&lt;/p&gt;
+
+&lt;p&gt;「&lt;code&gt;Iterator&amp;lt;Item=char&amp;gt;&lt;/code&gt; を実装した型が &lt;code&gt;CharIterator&lt;/code&gt; も実装している」という &lt;code&gt;impl&lt;/code&gt; を書いておこう。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-rust&#34;&gt;trait CharIterator: Iterator&amp;lt;Item=char&amp;gt; {}
 impl&amp;lt;T: Iterator&amp;lt;Item=char&amp;gt;&amp;gt; CharIterator for T {}
