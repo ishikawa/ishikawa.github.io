@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on METAREAL</title>
-    <link>http://localhost:1313/tags/hugo/</link>
+    <link>http://www.metareal.org/tags/hugo/</link>
     <description>Recent content in Hugo on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sun, 21 Jun 2015 14:43:15 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.metareal.org/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ブログを Hugo に移行した</title>
-      <link>http://localhost:1313/post/migrate-to-hugo/</link>
+      <link>http://www.metareal.org/post/migrate-to-hugo/</link>
       <pubDate>Sun, 21 Jun 2015 14:43:15 +0900</pubDate>
       
-      <guid>http://localhost:1313/post/migrate-to-hugo/</guid>
+      <guid>http://www.metareal.org/post/migrate-to-hugo/</guid>
       <description>
 
 &lt;p&gt;すでに4年半近くの時が経過したが、ひさしぶりの投稿だ。Google AppEngine (Python + Django) で動かしていた自作ブログエンジンを &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; に移行している。&lt;/p&gt;

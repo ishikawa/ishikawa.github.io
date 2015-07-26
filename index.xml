@@ -76,6 +76,46 @@ let a = A { it: &amp;quot;test&amp;quot;.chars() };
     </item>
     
     <item>
+      <title>ブログを Hugo に移行した</title>
+      <link>http://www.metareal.org/post/migrate-to-hugo/</link>
+      <pubDate>Sun, 21 Jun 2015 14:43:15 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/post/migrate-to-hugo/</guid>
+      <description>
+
+&lt;p&gt;すでに4年半近くの時が経過したが、ひさしぶりの投稿だ。Google AppEngine (Python + Django) で動かしていた自作ブログエンジンを &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; に移行している。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://golang.org&#34;&gt;Go&lt;/a&gt; で実装されているおかげでもあるのだろうが、サイトの生成スピードが速い。組み込みサーバには、ファイルの変更を検知してサイトを更新する機能が備わっているので、ストレスなく記事を書くことができる。ブラウザのリロードも不要。&lt;/p&gt;
+
+&lt;p&gt;URL を記事ごとに指定可能なのは助かった。デフォルトだと &lt;code&gt;/post/title/&lt;/code&gt; のような URL になるのだが、古い記事は &lt;code&gt;/YYYY/MM/DD/title/&lt;/code&gt; という形式で URL を決めていたので、そのままだと URL が変わってしまう。記事中の YAML (&lt;a href=&#34;http://gohugo.io/content/front-matter/&#34;&gt;Front Matter&lt;/a&gt;) で URL を上書きしてやることで、URL を変えずにすんだ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+title: &amp;quot;Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった。&amp;quot;
+url: &amp;quot;/2010/12/16/ffi-requires-ruby-version-1-9-2/&amp;quot;
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;とはいえ、今後もこの指定をしていくのはしんどいので、この記事から URL の形式を &lt;code&gt;/post/title/&lt;/code&gt; に変えるつもり。&lt;/p&gt;
+
+&lt;h3 id=&#34;移行スクリプト:63d64c61b0a30fb30dcadfbaac2823c1&#34;&gt;移行スクリプト&lt;/h3&gt;
+
+&lt;p&gt;移行にあたっては古い記事を Markdown + Front Matter に変換する必要があり、変換スクリプトを Ruby で書いた。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;指定された記事の URL から HTML を取得&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.nokogiri.org/&#34;&gt;Nokogiri&lt;/a&gt; で HTML をパースしてタイトルや日付といったメタデータを抽出&lt;/li&gt;
+&lt;li&gt;本文を Markdown に変換&lt;/li&gt;
+&lt;li&gt;Hugo コマンドを起動してファイル作成&lt;/li&gt;
+&lt;li&gt;Markdown を書き込んで、次に実行するコマンドを出力&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;移行しながら発展させていき、最終的には上のようなスクリプトに落ち着いた。
+最初のうちは 3 までをスクリプトでやって残りは（変換結果が正しいことを確認しつつ）手作業だったのだが、
+しばらくしてから 4, 5 を実装して一気に終わらせた。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>映画「LOOPER」</title>
       <link>http://www.metareal.org/2013/01/18/looper/</link>
       <pubDate>Fri, 18 Jan 2013 00:00:00 +0900</pubDate>
@@ -597,24 +637,6 @@ Please also report this if it was a user error, so that a better error message c
 
 &lt;p&gt;解説でも触れられているように京極夏彦『&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E7%99%BE%E9%AC%BC%E5%A4%9C%E8%A1%8C%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA&#34;&gt;百鬼夜行シリーズ&lt;/a&gt;』からの影響が色濃く窺える。しかし、それも行き過ぎることはなく独自の要素が多いので、むしろ同シリーズの雰囲気が好きな人はより楽しめるのではないかと思う。デビュー作ゆえか荒削りな部分は残るものの、さまざまな謎と伏線が絡み合い、結末で「腑に落ちる」展開は熱に浮かされたような高揚感があり、本格ミステリ好きには堪らない。
 個人的に、他の作品の文庫化を心待ちにしている作家のひとり。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>道尾秀介「向日葵の咲かない夏」</title>
-      <link>http://www.metareal.org/2008/12/13/%E5%90%91%E6%97%A5%E8%91%B5%E3%81%AE%E5%92%B2%E3%81%8B%E3%81%AA%E3%81%84%E5%A4%8F/</link>
-      <pubDate>Sat, 13 Dec 2008 12:06:00 +0900</pubDate>
-      
-      <guid>http://www.metareal.org/2008/12/13/%E5%90%91%E6%97%A5%E8%91%B5%E3%81%AE%E5%92%B2%E3%81%8B%E3%81%AA%E3%81%84%E5%A4%8F/</guid>
-      <description>&lt;p&gt;タイトルとあらすじから、ほろ苦い青春物語を連想していたら、凄惨な話で驚いた。&lt;/p&gt;
-
-&lt;p&gt;冒頭から痛ましい事件がつづく。主人公と、その家族が置かれた状況は過酷だ。感情を抑えた筆致が悲惨さを際立たせ、それが、まだ幼い主人公の視点を通して語られているのだと思うと、胸がしめつけられる。&lt;/p&gt;
-
-&lt;p&gt;未読の方のために詳しくは書かないが、いくつかのミステリー的な罠がしかけられている。これが、かなりの劇薬。アンフェア（というか、作者自身、そんなことは気にしていないと思う）ではあるが、筆者が結末に構築した世界は、実に見事な蜃気楼だ。まるで、砂漠にひとり、地図もなく取り残されたような気分になる。&lt;/p&gt;
-
-&lt;p&gt;禍々しい。非常に現代的なこの物語には、そんな古くさい形容詞がよく似合う。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/%E5%90%91%E6%97%A5%E8%91%B5%E3%81%AE%E5%92%B2%E3%81%8B%E3%81%AA%E3%81%84%E5%A4%8F-%E6%96%B0%E6%BD%AE%E6%96%87%E5%BA%AB-%E9%81%93%E5%B0%BE-%E7%A7%80%E4%BB%8B/dp/4101355517%3FSubscriptionId%3D15SMZCTB9V8NGR2TW082%26tag%3Dwebloandlogic-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D4101355517&#34;&gt;向日葵の咲かない夏 (新潮文庫)&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
