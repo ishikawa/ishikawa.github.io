@@ -7,8 +7,60 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 26 Jul 2015 10:10:37 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2015 11:09:31 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ctags に Elixir を追加する</title>
+      <link>http://www.metareal.org/post/2015/09/elixir-ctags/</link>
+      <pubDate>Fri, 25 Sep 2015 11:09:31 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/post/2015/09/elixir-ctags/</guid>
+      <description>&lt;p&gt;最近、Atom エディタを使っているが、シンボルの定義場所に移動するための &lt;code&gt;Go to Declaration&lt;/code&gt;
+コマンドを動作させるためには ctags でインデックスしておく必要がある。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/atom/symbols-view&#34;&gt;atom/symbols-view&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ただ、2015年9月の現時点では &lt;a href=&#34;http://ctags.sourceforge.net/languages.html&#34;&gt;Elixir がサポートされていない&lt;/a&gt;ようなので、自分で追加してやる必要がある。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% ctags --version
+Exuberant Ctags 5.8, Copyright (C) 1996-2009 Darren Hiebert
+  Compiled: Mar 16 2015, 23:48:18
+  ...
+  Optional compiled features: +wildcards, +regex
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ctags はコマンドラインオプションで新しい言語を定義できる。毎回指定するのが面倒な場合は、
+&lt;code&gt;$HOME/.ctags&lt;/code&gt; からオプションを読み込んでくれるようだ。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ctags.sourceforge.net/EXTENDING.html&#34;&gt;Exuberant Ctags: Adding support for a new language&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;とりあえず、&lt;code&gt;defmodule&lt;/code&gt; によるモジュール定義を読み込めるようにしてみよう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;--langdef=Elixir
+--langmap=Elixir:.ex.exs
+--regex-elixir=/^[ \t]*defmodule[ \t]+([a-zA-Z0-9_]+)/\1/m,modules/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;ctags&lt;/code&gt; を実行して、生成された tags ファイルを確認する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% ctags lib/elixir/lib/task.ex
+% cat tags
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;&amp;quot; to lines/
+...
+Task	lib/elixir/lib/task.ex	/^defmodule Task do$/;&amp;quot;	m
+TaskFinder	lib/elixir/lib/task.ex	/^      defmodule TaskFinder do$/;&amp;quot;	m
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;想定通り、モジュール定義がパースできているようだ。あとは 必要なだけ &lt;code&gt;--regex-elixir&lt;/code&gt; オプションを追加してけばいい。&lt;/p&gt;
+
+&lt;p&gt;関数定義を追加したものを&lt;a href=&#34;https://gist.github.com/ishikawa/3fad0d2058d68419d3ad&#34;&gt;ここ&lt;/a&gt;に置いておく。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Aliasing Traits</title>
@@ -624,21 +676,6 @@ Please also report this if it was a user error, so that a better error message c
 &lt;h3 id=&#34;最後に:413f555c66a5164357ae2df9904875e8&#34;&gt;最後に&lt;/h3&gt;
 
 &lt;p&gt;今回、ひさしぶりに技術系雑誌を読んでみて、プロのライターと編集者による情報のパッケージングと、紙という媒体とレイアウトには、他のものには代えがたい価値がある、と感じた。腰を落ち着けて、プログラミングのさまざまなトピックスに触れるというのは、やはり、ワクワクする体験だ。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>道尾秀介「背の眼」</title>
-      <link>http://www.metareal.org/2008/12/14/%E8%83%8C%E3%81%AE%E7%9C%BC/</link>
-      <pubDate>Sun, 14 Dec 2008 08:29:00 +0900</pubDate>
-      
-      <guid>http://www.metareal.org/2008/12/14/%E8%83%8C%E3%81%AE%E7%9C%BC/</guid>
-      <description>&lt;p&gt;「&lt;a href=&#34;http://www.metareal.org/2008/12/13/%E5%90%91%E6%97%A5%E8%91%B5%E3%81%AE%E5%92%B2%E3%81%8B%E3%81%AA%E3%81%84%E5%A4%8F/&#34;&gt;向日葵の咲かない夏&lt;/a&gt;」が期待以上に楽しめた（精神的なダメージも大きかったが&amp;hellip;）ので、道尾秀介の他作品も読んでみることにした。もちろん、今後は期待値ハードルが上がっている。&lt;/p&gt;
-
-&lt;p&gt;選んだのは、これも文庫化されていた「&lt;a href=&#34;http://www.amazon.co.jp/%E8%83%8C%E3%81%AE%E7%9C%BC%E3%80%88%E4%B8%8A%E3%80%89-%E5%B9%BB%E5%86%AC%E8%88%8E%E6%96%87%E5%BA%AB-%E9%81%93%E5%B0%BE-%E7%A7%80%E4%BB%8B/dp/434441036X%3FSubscriptionId%3D15SMZCTB9V8NGR2TW082%26tag%3Dwebloandlogic-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D434441036X&#34;&gt;背の眼&lt;/a&gt;」。著者のデビュー作だ。第五回ホラーサスペンス大賞特別賞を受賞しており、評価も高い。文庫版は上下巻二冊組だが、一冊の厚さが程々なので分量はそれほどでもない。&lt;/p&gt;
-
-&lt;p&gt;解説でも触れられているように京極夏彦『&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E7%99%BE%E9%AC%BC%E5%A4%9C%E8%A1%8C%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA&#34;&gt;百鬼夜行シリーズ&lt;/a&gt;』からの影響が色濃く窺える。しかし、それも行き過ぎることはなく独自の要素が多いので、むしろ同シリーズの雰囲気が好きな人はより楽しめるのではないかと思う。デビュー作ゆえか荒削りな部分は残るものの、さまざまな謎と伏線が絡み合い、結末で「腑に落ちる」展開は熱に浮かされたような高揚感があり、本格ミステリ好きには堪らない。
-個人的に、他の作品の文庫化を心待ちにしている作家のひとり。&lt;/p&gt;
 </description>
     </item>
     

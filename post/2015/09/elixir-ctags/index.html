@@ -1,0 +1,95 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>ctags に Elixir を追加する</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/post/2015/09/elixir-ctags/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>ctags に Elixir を追加する</h1>
+  <div class="metadata">
+    <p class="date">2015/09/25 11:09am</p>
+  </div>
+  <div class="content">
+    <p>最近、Atom エディタを使っているが、シンボルの定義場所に移動するための <code>Go to Declaration</code>
+コマンドを動作させるためには ctags でインデックスしておく必要がある。</p>
+
+<ul>
+<li><a href="https://github.com/atom/symbols-view">atom/symbols-view</a></li>
+</ul>
+
+<p>ただ、2015年9月の現時点では <a href="http://ctags.sourceforge.net/languages.html">Elixir がサポートされていない</a>ようなので、自分で追加してやる必要がある。</p>
+
+<pre><code>% ctags --version
+Exuberant Ctags 5.8, Copyright (C) 1996-2009 Darren Hiebert
+  Compiled: Mar 16 2015, 23:48:18
+  ...
+  Optional compiled features: +wildcards, +regex
+</code></pre>
+
+<p>ctags はコマンドラインオプションで新しい言語を定義できる。毎回指定するのが面倒な場合は、
+<code>$HOME/.ctags</code> からオプションを読み込んでくれるようだ。</p>
+
+<ul>
+<li><a href="http://ctags.sourceforge.net/EXTENDING.html">Exuberant Ctags: Adding support for a new language</a></li>
+</ul>
+
+<p>とりあえず、<code>defmodule</code> によるモジュール定義を読み込めるようにしてみよう。</p>
+
+<pre><code class="language-bash">--langdef=Elixir
+--langmap=Elixir:.ex.exs
+--regex-elixir=/^[ \t]*defmodule[ \t]+([a-zA-Z0-9_]+)/\1/m,modules/
+</code></pre>
+
+<p><code>ctags</code> を実行して、生成された tags ファイルを確認する。</p>
+
+<pre><code class="language-bash">% ctags lib/elixir/lib/task.ex
+% cat tags
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;&quot; to lines/
+...
+Task	lib/elixir/lib/task.ex	/^defmodule Task do$/;&quot;	m
+TaskFinder	lib/elixir/lib/task.ex	/^      defmodule TaskFinder do$/;&quot;	m
+</code></pre>
+
+<p>想定通り、モジュール定義がパースできているようだ。あとは 必要なだけ <code>--regex-elixir</code> オプションを追加してけばいい。</p>
+
+<p>関数定義を追加したものを<a href="https://gist.github.com/ishikawa/3fad0d2058d68419d3ad">ここ</a>に置いておく。</p>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/post/2015/07/rust-trait-alias/">Aliasing Traits</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>
