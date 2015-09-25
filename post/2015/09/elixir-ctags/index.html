@@ -52,7 +52,7 @@ Exuberant Ctags 5.8, Copyright (C) 1996-2009 Darren Hiebert
 
 <pre><code class="language-bash">--langdef=Elixir
 --langmap=Elixir:.ex.exs
---regex-elixir=/^[ \t]*defmodule[ \t]+([a-zA-Z0-9_]+)/\1/m,modules/
+--regex-elixir=/^[ \t]*defmodule[ \t]+([a-zA-Z0-9_.]+)/\1/m,modules/
 </code></pre>
 
 <p><code>ctags</code> を実行して、生成された tags ファイルを確認する。</p>
@@ -65,9 +65,8 @@ Task	lib/elixir/lib/task.ex	/^defmodule Task do$/;&quot;	m
 TaskFinder	lib/elixir/lib/task.ex	/^      defmodule TaskFinder do$/;&quot;	m
 </code></pre>
 
-<p>想定通り、モジュール定義がパースできているようだ。あとは 必要なだけ <code>--regex-elixir</code> オプションを追加してけばいい。</p>
-
-<p>関数定義を追加したものを<a href="https://gist.github.com/ishikawa/3fad0d2058d68419d3ad">ここ</a>に置いておく。</p>
+<p>想定通り、モジュール定義がインデックスできているようだ。あとは 必要なだけ <code>--regex-elixir</code> オプションを追加していけばいい。
+参考までに、関数定義を追加したものを<a href="https://gist.github.com/ishikawa/3fad0d2058d68419d3ad">ここ</a>に置いておく。</p>
 
   </div>
 </article>
