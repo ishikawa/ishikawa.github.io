@@ -1,0 +1,88 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://www.metareal.org/">
+  <title>docker build が固まる</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://www.metareal.org/post/2015/12/hanging-up-docker-build/">
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+<article>
+  <h1>docker build が固まる</h1>
+  <div class="metadata">
+    <p class="date">2015/12/23 12:49pm</p>
+  </div>
+  <div class="content">
+    <p><a href="https://www.docker.com/">Docker</a> 試してるんですが</p>
+
+<blockquote>
+<p>「<code>docker build</code> 遅すぎ！　コーヒー飲んでも終わってない！」</p>
+</blockquote>
+
+<p>さすがに遅すぎると思ったら、<code>Setting up ca-certificates-java (20130815ubuntu1) …</code> と呟いたまま固まっていました。</p>
+
+<p>環境は以下の通り:</p>
+
+<ul>
+<li>Mac OS X El Capitan (10.11.2)</li>
+<li>VirtualBox 5.0.10 r104061</li>
+<li>Ubuntu 64bit (trusty)</li>
+<li>Docker 1.9.1</li>
+</ul>
+
+<p><a href="https://github.com/docker/docker/issues/18180">Docker 1.9.1 hanging at build step &ldquo;Setting up ca-certificates-java&rdquo; · Issue #18180 · docker/docker</a></p>
+
+<p>AUFS のバグでデッドロックしているらしい。</p>
+
+<pre><code>$ docker info
+…
+Storage Driver: aufs
+</code></pre>
+
+<p>Issue のコメントを読む限り、Docker のバージョンを 1.9.0 以前に戻すのが確実そう。</p>
+
+<p>ただ、Docker のインストールは Vagrant の <a href="https://docs.vagrantup.com/v2/provisioning/docker.html">Docker Provisioner</a> を利用していて、こいつでバージョン指定する方法が分からなかった（<a href="https://github.com/mitchellh/vagrant/blob/1b08cfcd0945d1f7c2273d9c56d90a1e456d26aa/plugins/provisioners/docker/cap/debian/docker_install.rb">ソースコード</a>を眺めた感じ、常に最新版がインストールされているみたい）。</p>
+
+<p><strong>CPU が複数ある場合は再現率がかなり低くなる</strong>ようなので、仮想 CPU 数を <code>2</code> にすることで、とりあえずの対策とした。</p>
+
+<pre><code class="language-ruby">config.vm.provider &quot;virtualbox&quot; do |vm|
+  vm.cpus = 2
+end
+</code></pre>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    
+    <li class="prev"><a href="http://www.metareal.org/post/2015/09/elixir-ctags/">ctags に Elixir を追加する</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li><a href="https://github.com/ishikawa">Github</a></li>
+  </ul>
+  <h2><a href="/">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+</body>
+</html>
