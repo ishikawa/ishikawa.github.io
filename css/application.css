@@ -3,8 +3,7 @@ html {
 }
 
 body {
-  margin: 0 auto;
-  margin-top: 30px;
+  margin: 30px auto;
   padding: 0 30px;
   max-width: 720px;
 }
@@ -205,11 +204,25 @@ footer ul.about {
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: 0.8em;
   margin-bottom: 8px;
-  text-align: right;
 }
 footer ul.about li {
-  display: inline-block;
-  margin-left: 5px;
+  float: right;
+  margin-right: 5px;
+}
+footer ul.about li a {
+  display: block;
+  text-indent: -9999px;
+  direction: ltr;
+  width: 32px;
+  height: 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+}
+footer ul.about li.twitter a {
+  background-image: url("/images/icons/Twitter_Logo_Blue.png");
+}
+footer ul.about li.github a {
+  background-image: url("/images/icons/GitHub-Mark-120px-plus.png");
 }
