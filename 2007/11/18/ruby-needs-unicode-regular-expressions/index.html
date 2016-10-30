@@ -31,7 +31,7 @@
 
 <p>正規表現で <a href="http://www.unicode.org/Public/UNIDATA/Blocks.txt">Unicode ブロック</a>が使えれば楽なのだが、残念ながら Ruby 1.8 ではサポートされていない。</p>
 
-<h3 id="鬼車:a22de2c680beb67b3057f1c9e646b25f">鬼車</h3>
+<h3 id="鬼車">鬼車</h3>
 
 <p>ちなみに 1.9 で搭載される予定の<a href="http://www.geocities.jp/kosako3/oniguruma/index_ja.html">鬼車</a>では、以下のような形式で Unicode ブロックやカテゴリを指定できるようだ（参考：<a href="http://www.geocities.jp/kosako3/oniguruma/doc/RE.ja.txt">鬼車 正規表現 Version 5.6.0</a>）。</p>
 
@@ -43,7 +43,7 @@
 
 <p>もっとも、実際に試したわけではないので、現状の Ruby 1.9 で上記のような使い方ができるのかは分からない。</p>
 
-<h3 id="ruby-1-8:a22de2c680beb67b3057f1c9e646b25f">Ruby 1.8</h3>
+<h3 id="ruby-1-8">Ruby 1.8</h3>
 
 <p>結局、Ruby 1.8 では平仮名に相当するコードポイントの範囲を直接、正規表現で指定してやるのが簡単そうだ。</p>
 
@@ -54,7 +54,7 @@
 
 <p>コードポイントから UTF-8 リテラル文字列への変換に <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=Array#pack"><code>Array#pack</code></a> を利用しているため読みづらくなっている。もっといい方法があるのかもしれない。</p>
 
-<h3 id="参考:a22de2c680beb67b3057f1c9e646b25f">参考</h3>
+<h3 id="参考">参考</h3>
 
 <ul>
 <li><a href="http://www.unicode.org/reports/tr18/">Unicode Regular Expressions</a></li>

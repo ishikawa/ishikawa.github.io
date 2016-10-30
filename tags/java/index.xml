@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Java on METAREAL</title>
-    <link>http://www.metareal.org/tags/java/</link>
-    <description>Recent content in Java on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/java/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Fri, 27 Jun 2008 03:41:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -27,7 +26,7 @@
 
 &lt;p&gt;夜中に突然 Java が書きたくなって、まだ、Examples を動かしてみた程度ですが、とりあえず &lt;a href=&#34;http://www.python.jp/doc/nightly/tut/node11.html#SECTION0011900000000000000000&#34;&gt;Python のジェネレーター&lt;/a&gt;っぽいことができるのは分かったので記事にしておきます。暇と知識が増えたら、もうすこし突っ込んだ記事もあげる予定です（自信がないので今回、ですます調）。&lt;/p&gt;
 
-&lt;h3 id=&#34;ジェネレーターの例:152df58aa8e4f658eef9140e9804f1dc&#34;&gt;ジェネレーターの例&lt;/h3&gt;
+&lt;h3 id=&#34;ジェネレーターの例&#34;&gt;ジェネレーターの例&lt;/h3&gt;
 
 &lt;p&gt;では、本当につまらない例です。フィボナッチ数を求めるプログラムをどうぞ。&lt;/p&gt;
 
@@ -66,7 +65,7 @@ public class Fib extends Generator&amp;lt;Integer&amp;gt; {
 &lt;li&gt;&lt;code&gt;kilim.Generator&lt;/code&gt; は &lt;code&gt;java.util.Iterator&lt;/code&gt; と &lt;code&gt;java.lang.Iterable&lt;/code&gt; インターフェースを実装しているので、こんなふうに使います。ますます Python&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&#34;ビルドと実行方法:152df58aa8e4f658eef9140e9804f1dc&#34;&gt;ビルドと実行方法&lt;/h3&gt;
+&lt;h3 id=&#34;ビルドと実行方法&#34;&gt;ビルドと実行方法&lt;/h3&gt;
 
 &lt;p&gt;上記のソースコードを実行するまでの手順をまとめておきます。&lt;/p&gt;
 
@@ -156,7 +155,7 @@ Fib(10) = 55
 &lt;li&gt;ビルド&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&#34;cvs-からソースコードを取得:97c884f0cbd05d3600027bb8ab201927&#34;&gt;CVS からソースコードを取得&lt;/h3&gt;
+&lt;h3 id=&#34;cvs-からソースコードを取得&#34;&gt;CVS からソースコードを取得&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://jdbc.postgresql.org/development/cvs.html&#34;&gt;PostgreSQL JDBC ドライバの CVS リポジトリ&lt;/a&gt;からバージョン 7.4 リリース時のタグを指定してソースコードを取得する。&lt;/p&gt;
 
@@ -164,7 +163,7 @@ Fib(10) = 55
 cvs -z3 -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc co **-r REL7_4_STABLE** -P pgjdbc
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;build-properties-を用意:97c884f0cbd05d3600027bb8ab201927&#34;&gt;build.properties を用意&lt;/h3&gt;
+&lt;h3 id=&#34;build-properties-を用意&#34;&gt;build.properties を用意&lt;/h3&gt;
 
 &lt;p&gt;バージョン番号情報などを指定するための &lt;code&gt;build.properties&lt;/code&gt; がないとビルドが失敗してしまう。
 トップディレクトリに &lt;code&gt;build.properties&lt;/code&gt; を作成し、以下のように書いておこう。&lt;/p&gt;
@@ -190,7 +189,7 @@ connectclass=org.postgresql.jdbc3.Jdbc3Connection
 
 &lt;p&gt;今回は JDBC3 向けのドライバをビルドしたかったので、&lt;code&gt;connectclass&lt;/code&gt; には &lt;code&gt;org.postgresql.jdbc3.Jdbc3Connection&lt;/code&gt; を指定した。&lt;/p&gt;
 
-&lt;h3 id=&#34;ビルド:97c884f0cbd05d3600027bb8ab201927&#34;&gt;ビルド&lt;/h3&gt;
+&lt;h3 id=&#34;ビルド&#34;&gt;ビルド&lt;/h3&gt;
 
 &lt;p&gt;あとは Ant を実行すると jars ディレクトリに postgresql.jar と postgresql-examples.jar ができているはずだ。&lt;/p&gt;
 </description>
@@ -249,7 +248,7 @@ doSomething(list);
 
 &lt;p&gt;だが、この方法は変換に一時変数が必要になり不格好だ。&lt;/p&gt;
 
-&lt;h3 id=&#34;arrays-aslist-を使う方法:236978ad6b2652af39bc5b2192224fdc&#34;&gt;Arrays.asList を使う方法&lt;/h3&gt;
+&lt;h3 id=&#34;arrays-aslist-を使う方法&#34;&gt;Arrays.asList を使う方法&lt;/h3&gt;
 
 &lt;p&gt;この変換は &lt;a href=&#34;http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#asList%28T...%29&#34;&gt;&lt;code&gt;Arrays.asList&lt;/code&gt;&lt;/a&gt; を使うことで簡単にできる。&lt;/p&gt;
 
@@ -261,7 +260,7 @@ doSomething(list);
 &lt;pre&gt;&lt;code&gt;doSomething(Arrays.asList(&amp;quot;element&amp;quot;));
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;collectios-singleton-系メソッド:236978ad6b2652af39bc5b2192224fdc&#34;&gt;Collectios.singleton 系メソッド&lt;/h3&gt;
+&lt;h3 id=&#34;collectios-singleton-系メソッド&#34;&gt;Collectios.singleton 系メソッド&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;Arrays.asList&lt;/code&gt; ではリスト以外のコレクションには変換できない上、要素がひとつだけのコレクションのために配列を用意しているため、まだまだメモリ的に非効率だ。&lt;/p&gt;
 
@@ -329,7 +328,7 @@ Map&amp;lt;String, String&amp;gt; map = Collections.singletonMap(&amp;quot;key&a
 
 &lt;p&gt;Java 1.5 (J2SE 5.0) では &lt;a href=&#34;http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html&#34;&gt;&lt;code&gt;java.util.Arrays&lt;/code&gt;&lt;/a&gt; に、いくつかのメソッドが追加されている。地味ながらも、自前で書くのは面倒くさいものばかりだ。&lt;/p&gt;
 
-&lt;h3 id=&#34;hashcode-tostring:627d6ae499c9537845721c2e0f3d343d&#34;&gt;hashCode, toString&lt;/h3&gt;
+&lt;h3 id=&#34;hashcode-tostring&#34;&gt;hashCode, toString&lt;/h3&gt;
 
 &lt;p&gt;配列そのものではなく、配列の各要素を比較する &lt;a href=&#34;http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#equals%28java.lang.Object[],%20java.lang.Object[]%29&#34;&gt;&lt;code&gt;Arrays.equals&lt;/code&gt;&lt;/a&gt; は 1.5 以前からあったが、Java 1.5 では、同様に配列の各要素を使う&lt;/p&gt;
 
@@ -340,7 +339,7 @@ Map&amp;lt;String, String&amp;gt; map = Collections.singletonMap(&amp;quot;key&a
 
 &lt;p&gt;が用意された。&lt;/p&gt;
 
-&lt;h3 id=&#34;deepequals-deephashcode-deeptostring:627d6ae499c9537845721c2e0f3d343d&#34;&gt;deepEquals, deepHashCode, deepToString&lt;/h3&gt;
+&lt;h3 id=&#34;deepequals-deephashcode-deeptostring&#34;&gt;deepEquals, deepHashCode, deepToString&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;Arrays.equals&lt;/code&gt;, &lt;code&gt;Arrays.hashCode&lt;/code&gt;, &lt;code&gt;Arrays.toString&lt;/code&gt; はどれも「浅い」処理しか行わないため、入れ子になった配列では期待通りに動作しない。Java 1.5 では、入れ子になった配列にも対応したバージョンが用意されている。&lt;/p&gt;
 
@@ -350,7 +349,7 @@ Map&amp;lt;String, String&amp;gt; map = Collections.singletonMap(&amp;quot;key&a
 &lt;li&gt;&lt;a href=&#34;http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#deepToString%28java.lang.Object[]%29&#34;&gt;&lt;code&gt;Arrays.deepToString&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;j2se-6-0:627d6ae499c9537845721c2e0f3d343d&#34;&gt;J2SE 6.0&lt;/h3&gt;
+&lt;h3 id=&#34;j2se-6-0&#34;&gt;J2SE 6.0&lt;/h3&gt;
 
 &lt;p&gt;更に Java 1.6 (J2SE 6.0) では&lt;a href=&#34;http://java.sun.com/javase/6/docs/api/java/util/Arrays.html#binarySearch%28T[],%20int,%20int,%20T,%20java.util.Comparator%29&#34;&gt;範囲を指定できる二分探索&lt;/a&gt;や&lt;a href=&#34;http://java.sun.com/javase/6/docs/api/java/util/Arrays.html#copyOf%28T[],%20int%29&#34;&gt;配列のコピー操作&lt;/a&gt;が追加されているようだ。&lt;/p&gt;
 </description>
@@ -485,7 +484,7 @@ Session session = Session.getDefaultInstance(props);
 
 &lt;p&gt;と書いたにも関わらず、そのまま放置になっていた（コメントで指摘されているのに気づいたのも今日だ。すまん）。&lt;/p&gt;
 
-&lt;h3 id=&#34;概要:4aa44303dc00cd0ace30b411d9cf2a91&#34;&gt;概要&lt;/h3&gt;
+&lt;h3 id=&#34;概要&#34;&gt;概要&lt;/h3&gt;
 
 &lt;p&gt;まずは &lt;a href=&#34;http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/java/awt/image/BufferedImage.html&#34;&gt;&lt;code&gt;java.awt.image.BufferedImage&lt;/code&gt;&lt;/a&gt; を &lt;code&gt;byte&lt;/code&gt; 配列に変換する方法を紹介する。&lt;/p&gt;
 
@@ -496,7 +495,7 @@ Session session = Session.getDefaultInstance(props);
 
 &lt;p&gt;が実現できるわけだ。&lt;/p&gt;
 
-&lt;h3 id=&#34;bufferedimage-を-byte-に変換する:4aa44303dc00cd0ace30b411d9cf2a91&#34;&gt;BufferedImage を byte[] に変換する&lt;/h3&gt;
+&lt;h3 id=&#34;bufferedimage-を-byte-に変換する&#34;&gt;BufferedImage を byte[] に変換する&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;BufferedImage&lt;/code&gt; から &lt;code&gt;byte&lt;/code&gt; 配列の変換は、&lt;a href=&#34;http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/javax/imageio/ImageWriter.html&#34;&gt;&lt;code&gt;javax.imageio.ImageWriter&lt;/code&gt;&lt;/a&gt; でわりかし素直に実装できる。&lt;/p&gt;
 
@@ -520,7 +519,7 @@ byte[] bytes = bytesOut.toByteArray();
 
 &lt;p&gt;&lt;a href=&#34;http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/javax/imageio/ImageWriteParam.html&#34;&gt;&lt;code&gt;ImageWriteParam&lt;/code&gt;&lt;/a&gt; も組み合わせれば、圧縮率などの設定ができる。&lt;/p&gt;
 
-&lt;h3 id=&#34;image-を-bufferedimage-をに変換する:4aa44303dc00cd0ace30b411d9cf2a91&#34;&gt;Image を BufferedImage をに変換する&lt;/h3&gt;
+&lt;h3 id=&#34;image-を-bufferedimage-をに変換する&#34;&gt;Image を BufferedImage をに変換する&lt;/h3&gt;
 
 &lt;p&gt;一筋縄ではいかないのが、Image を BufferedImage をに変換する方法だ。&lt;/p&gt;
 
@@ -636,8 +635,7 @@ transformOp.filter(originalImage, dest1);
 
 &lt;p&gt;&lt;code&gt;AffineTransformOp&lt;/code&gt; を用いた方法だと、こうなってしまう。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2448999922/&#34;&gt;&lt;img src=&#34;http://farm3.static.flickr.com/2064/2448999922_f37cf202e5_o.jpg&#34; alt=&#34;Java ImageIO AffineTransformOp&#34; /&gt;
-&lt;/a&gt;で、どうするかというと、AWT の &lt;a href=&#34;http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/java/awt/image/AreaAveragingScaleFilter.html&#34;&gt;&lt;code&gt;AreaAveragingScaleFilter&lt;/code&gt;&lt;/a&gt; を使うのがいいようだ。以下、API リファレンスより抜粋：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2448999922/&#34;&gt;&lt;img src=&#34;http://farm3.static.flickr.com/2064/2448999922_f37cf202e5_o.jpg&#34; alt=&#34;Java ImageIO AffineTransformOp&#34; /&gt;&lt;/a&gt;で、どうするかというと、AWT の &lt;a href=&#34;http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/java/awt/image/AreaAveragingScaleFilter.html&#34;&gt;&lt;code&gt;AreaAveragingScaleFilter&lt;/code&gt;&lt;/a&gt; を使うのがいいようだ。以下、API リファレンスより抜粋：&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;最近接点アルゴリズムよりもなめらかな結果が得られる、簡単な領域平均化アルゴリズムを使用してイメージをスケーリングする ImageFilter クラスです。&lt;/p&gt;
@@ -654,8 +652,7 @@ Image newImage = Toolkit.getDefaultToolkit().createImage(im);
 
 &lt;p&gt;こんな感じになる。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2448999924/&#34;&gt;&lt;img src=&#34;http://farm4.static.flickr.com/3197/2448999924_62c28b86b2_o.jpg&#34; alt=&#34;Java ImageIO AreaAveragingScaleFilter&#34; /&gt;
-&lt;/a&gt;格段にキレイだ。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2448999924/&#34;&gt;&lt;img src=&#34;http://farm4.static.flickr.com/3197/2448999924_62c28b86b2_o.jpg&#34; alt=&#34;Java ImageIO AreaAveragingScaleFilter&#34; /&gt;&lt;/a&gt;格段にキレイだ。&lt;/p&gt;
 </description>
     </item>
     

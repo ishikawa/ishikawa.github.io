@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tamarin on METAREAL</title>
-    <link>http://www.metareal.org/tags/tamarin/</link>
-    <description>Recent content in Tamarin on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/tamarin/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 06 Jul 2008 09:35:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/tamarin/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -22,7 +21,7 @@
 
 &lt;p&gt;&lt;a href=&#34;http://www.toolness.com/wp/?p=52&#34;&gt;Running C and Python Code on The Web&lt;/a&gt; によると、Adobe の Scott Petersen 氏が大変興味深いツールを開発中のようだ。このツールを使うと、C 言語で書かれたソフトウェアを Flash Player で実行できるようになる。また、このツールはオープンソースで公開されるとのこと。&lt;/p&gt;
 
-&lt;h3 id=&#34;llvm-tamarin:8d737c7358e6143323105190bb6ec8ae&#34;&gt;LLVM, Tamarin&lt;/h3&gt;
+&lt;h3 id=&#34;llvm-tamarin&#34;&gt;LLVM, Tamarin&lt;/h3&gt;
 
 &lt;p&gt;ソフトウェアを Flash Player で実行可能な形式に変換するためには、ソフトウェアのソースコードが必要になる。変換の手順は以下のとおり。&lt;/p&gt;
 
@@ -35,7 +34,7 @@
 
 &lt;p&gt;先進的な最適化を備えたバックエンドとして注目を集める LLVM プロジェクトだが、その成果物を、フロントエンドとして利用しているのが面白い（もちろん、LLVM アセンブリの段階でも、&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E5%AE%9A%E6%95%B0%E7%95%B3%E3%81%BF%E8%BE%BC%E3%81%BF&#34;&gt;定数畳み込み&lt;/a&gt;や&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%87%E3%83%83%E3%83%89%E3%82%B3%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4&#34;&gt;デッドコード削除&lt;/a&gt;といった従来の最適化は施されているはずなので、フロントエンドとしてのみ利点があるわけではない）。&lt;/p&gt;
 
-&lt;h3 id=&#34;quake-nintendo:8d737c7358e6143323105190bb6ec8ae&#34;&gt;Quake, Nintendo&lt;/h3&gt;
+&lt;h3 id=&#34;quake-nintendo&#34;&gt;Quake, Nintendo&lt;/h3&gt;
 
 &lt;p&gt;もっとも、命令単位の変換はそれほど難しいものでもないし、実用的なアプリケーションが動作するのかどうか、気になるところだ。そこで、コンパイラだけではなく、インフラも整備されている。&lt;/p&gt;
 
@@ -51,7 +50,7 @@
 
 &lt;p&gt;ゲームだけではない。デモでは同様に、&lt;a href=&#34;http://www.lua.org/&#34;&gt;Lua&lt;/a&gt;, &lt;a href=&#34;http://www.ruby-lang.org/ja/&#34;&gt;Ruby&lt;/a&gt;, &lt;a href=&#34;http://www.perl.org/&#34;&gt;Perl&lt;/a&gt;, そして &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; といった LL 言語の処理系が動作していた、という。改めて書くが、これらはすべて、&lt;strong&gt;Flash Player 上での出来事だ&lt;/strong&gt;。&lt;/p&gt;
 
-&lt;h3 id=&#34;python-javascript-nestedvm:8d737c7358e6143323105190bb6ec8ae&#34;&gt;Python, JavaScript, NestedVM&lt;/h3&gt;
+&lt;h3 id=&#34;python-javascript-nestedvm&#34;&gt;Python, JavaScript, NestedVM&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.toolness.com/wp/?p=52&#34;&gt;元記事&lt;/a&gt;ではこのあと、&lt;/p&gt;
 

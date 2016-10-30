@@ -49,7 +49,7 @@
 
 <p>問題はこれだ。<code>XViewMiddleware</code> ——名前だけでは、どんな働きをするのか見当もつかない。</p>
 
-<h3 id="xviewmiddleware-を試す:3d558506931c5ff6cd5e3e322d8daf0c">XViewMiddleware を試す</h3>
+<h3 id="xviewmiddleware-を試す">XViewMiddleware を試す</h3>
 
 <p>まずはドキュメントを読んでみようか。<a href="http://www.djangoproject.com/documentation/middleware/#django-middleware-doc-xviewmiddleware">XViewMiddleware のドキュメント</a>（<a href="http://michilu.com/django/doc-ja/middleware/#django-middleware-doc-xviewmiddleware">和訳</a>）によると、</p>
 
@@ -94,7 +94,7 @@ content-length: 0
 
 <p><strong>X-View: weblog.views.archive</strong> という行に注目してほしい。これが <code>XViewMiddleware</code> のすべて、 <code>X-View</code> ヘッダである。</p>
 
-<h3 id="x-view-ヘッダの利用:3d558506931c5ff6cd5e3e322d8daf0c">X-View ヘッダの利用</h3>
+<h3 id="x-view-ヘッダの利用">X-View ヘッダの利用</h3>
 
 <p>もう一度、<code>X-View</code> ヘッダを見てみよう。</p>
 
@@ -123,19 +123,17 @@ content-length: 0
 
 <p>この記事は Django の管理インターフェースにある機能のうち、自動ドキュメンテーション機能について書かれたものだ。自動ドキュメンテーション機能については、スクリーンショットを見てもらうのがいい。</p>
 
-<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2518433072/"><img src="http://farm3.static.flickr.com/2380/2518433072_b631bce90c_m.jpg" alt="Django Admin: Automatic Documentation" />
-</a></p>
+<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2518433072/"><img src="http://farm3.static.flickr.com/2380/2518433072_b631bce90c_m.jpg" alt="Django Admin: Automatic Documentation" /></a></p>
 
 <p>このように、View と URL の対応関係（とソースコードのドキュメント）の一覧を生成してくれる。一風変わっているのは、<strong>ブックマークレットが用意されている</strong>ことだろう。</p>
 
-<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2518433076/"><img src="http://farm4.static.flickr.com/3206/2518433076_00967f124f_m.jpg" alt="Django Admin: Documentation Bookmarklet" />
-</a></p>
+<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2518433076/"><img src="http://farm4.static.flickr.com/3206/2518433076_00967f124f_m.jpg" alt="Django Admin: Documentation Bookmarklet" /></a></p>
 
 <p>URL との対応関係を知りたいページで、ブックマークレットをクリックすれば、該当する管理インターフェースのページにリダイレクトされる、というわけ。気が利いている。</p>
 
 <p>そして、このブックマークレットは表示中の URL に HEAD リクエストを送信し、<code>X-View</code> ヘッダを見ることでリダイレクト先の URL を決定している。</p>
 
-<h3 id="まとめ:3d558506931c5ff6cd5e3e322d8daf0c">まとめ</h3>
+<h3 id="まとめ">まとめ</h3>
 
 <ul>
 <li><code>XViewMiddleware</code> は HEAD リクエストに対して <code>X-View</code> レスポンスヘッダを返す</li>

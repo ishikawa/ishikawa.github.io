@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rubyonrails on METAREAL</title>
-    <link>http://www.metareal.org/tags/rubyonrails/</link>
-    <description>Recent content in Rubyonrails on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/rubyonrails/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Fri, 18 Apr 2008 07:41:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/rubyonrails/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -230,7 +229,7 @@ end
 
 &lt;p&gt;string は MySQL の VARCHAR に、integer は int になる。これを CHAR とか SMALLINT とかにできないか、というのが今回の話題。&lt;/p&gt;
 
-&lt;h3 id=&#34;char-とか-smallint-とかにしてみる:f1b79cf6415becfface7fa647c45b8dc&#34;&gt;CHAR とか SMALLINT とかにしてみる&lt;/h3&gt;
+&lt;h3 id=&#34;char-とか-smallint-とかにしてみる&#34;&gt;CHAR とか SMALLINT とかにしてみる&lt;/h3&gt;
 
 &lt;p&gt;結論からいえば、これでよい。&lt;/p&gt;
 
@@ -264,7 +263,7 @@ end
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;limit-が効かない:f1b79cf6415becfface7fa647c45b8dc&#34;&gt;:limit が効かない&lt;/h3&gt;
+&lt;h3 id=&#34;limit-が効かない&#34;&gt;:limit が効かない&lt;/h3&gt;
 
 &lt;p&gt;SQL を見ると分かるように &lt;code&gt;coke&lt;/code&gt; が &lt;code&gt;char(1)&lt;/code&gt; となってしまい、Migration で指定した &lt;code&gt;:limit =&amp;gt; 64&lt;/code&gt; が効いていないようだ。&lt;/p&gt;
 
@@ -301,7 +300,7 @@ end
       <guid>http://www.metareal.org/2008/01/31/rails-2-0-migration-related-rake-tasks/</guid>
       <description>
 
-&lt;h3 id=&#34;db-migrate-reset:fd9efc155b510df5c9ef382b45977609&#34;&gt;db:migrate:reset&lt;/h3&gt;
+&lt;h3 id=&#34;db-migrate-reset&#34;&gt;db:migrate:reset&lt;/h3&gt;
 
 &lt;blockquote&gt;
 &lt;ul&gt;
@@ -311,7 +310,7 @@ end
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;db-migrate-redo-step-n:fd9efc155b510df5c9ef382b45977609&#34;&gt;db:migrate:redo [STEP=n]&lt;/h3&gt;
+&lt;h3 id=&#34;db-migrate-redo-step-n&#34;&gt;db:migrate:redo [STEP=n]&lt;/h3&gt;
 
 &lt;blockquote&gt;
 &lt;ul&gt;
@@ -335,7 +334,7 @@ end
 &lt;p&gt;Rubyisms - MySQL-dump
   &lt;a href=&#34;http://mysqldump.azundris.com/archives/72-Rubyisms.html&#34;&gt;http://mysqldump.azundris.com/archives/72-Rubyisms.html&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;select-が多すぎる:8c28f4d94b9da94a1e3d3c0468038cda&#34;&gt;&amp;ldquo;select *&amp;rdquo; が多すぎる&lt;/h3&gt;
+&lt;h3 id=&#34;select-が多すぎる&#34;&gt;&amp;ldquo;select *&amp;rdquo; が多すぎる&lt;/h3&gt;
 
 &lt;p&gt;ActiveRecord は、特に何も指定しないと &lt;code&gt;select *&lt;/code&gt; で、すべてのカラムを取ってくる。SQL は動的に生成されて、どのカラムが存在するかチェックしているので、スキームが変更されても大丈夫。&lt;/p&gt;
 
@@ -361,7 +360,7 @@ end
 &lt;li&gt;&lt;code&gt;ActiveRecord::Base&lt;/code&gt; をサブクラス化して、&lt;code&gt;:select&lt;/code&gt; が指定されていなければ、警告を出すようにするのがいいんじゃない？&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;文字列型がかなり無駄かも:8c28f4d94b9da94a1e3d3c0468038cda&#34;&gt;文字列型がかなり無駄かも&lt;/h3&gt;
+&lt;h3 id=&#34;文字列型がかなり無駄かも&#34;&gt;文字列型がかなり無駄かも&lt;/h3&gt;
 
 &lt;p&gt;たとえ TEXT 型（Migration だと &lt;code&gt;:text&lt;/code&gt; 型）を使っていなくても、Migration で &lt;code&gt;:string&lt;/code&gt; 型を使っているなら、気をつけた方がいい。&lt;/p&gt;
 
@@ -390,7 +389,7 @@ end
 
 &lt;p&gt;興味深い話題があります。あと、この要約が間違ってる可能性もあるので、是非&lt;a href=&#34;http://mysqldump.azundris.com/archives/72-Rubyisms.html&#34;&gt;原文&lt;/a&gt;も読むことをおすすめします。&lt;/p&gt;
 
-&lt;h3 id=&#34;補足-メモリ上の一時テーブルには-varchar-型がない:8c28f4d94b9da94a1e3d3c0468038cda&#34;&gt;補足：メモリ上の一時テーブルには VARCHAR 型がない&lt;/h3&gt;
+&lt;h3 id=&#34;補足-メモリ上の一時テーブルには-varchar-型がない&#34;&gt;補足：メモリ上の一時テーブルには VARCHAR 型がない&lt;/h3&gt;
 
 &lt;p&gt;「メモリ上の一時テーブルには VARCHAR 型がない」という記述について、気になったので調べてみた。&lt;/p&gt;
 

@@ -29,7 +29,7 @@
 
 <p><a href="http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec">rparsec</a> では文法要素の繰り返しを指定する方法が複数用意されている。</p>
 
-<h3 id="繰り返し:332ecd03518e220a494ac99f0f300b0c">繰り返し</h3>
+<h3 id="繰り返し">繰り返し</h3>
 
 <p>まずは「<a href="http://weblog.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/">RParsec の many と many_ の違い</a>」でも解説した <a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000016"><code>many</code></a> と <a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000015"><code>many_</code></a> があり、これで m 回以上の繰り返しを指定できる（正規表現でいう <code>*</code>, <code>+</code>, <code>{n,}</code>）。</p>
 
@@ -37,7 +37,7 @@
 
 <p>なお、メソッド名の最後にあるアンダースコアの有無については、「<a href="http://weblog.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/">RParsec の many と many_ の違い</a>」で解説したとおりで、アンダースコアのつかないメソッドはすべての結果を配列で返し、アンダースコアのつくメソッドは最後の結果のみを返す。</p>
 
-<h3 id="選択:332ecd03518e220a494ac99f0f300b0c">選択</h3>
+<h3 id="選択">選択</h3>
 
 <p>正規表現でいうところの選択も用意されている。このためのメソッドは <code>|</code> なので、見た目は正規表現と似通っている。</p>
 

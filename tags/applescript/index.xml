@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Applescript on METAREAL</title>
-    <link>http://www.metareal.org/tags/applescript/</link>
-    <description>Recent content in Applescript on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/applescript/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 09 Dec 2008 03:37:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/applescript/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -22,7 +21,7 @@
 
 &lt;p&gt;&lt;a href=&#34;http://netafull.net/tech/024525.html&#34;&gt;画像中の手書き文字認識&lt;/a&gt;や「&lt;a href=&#34;http://jp.techcrunch.com/archives/extend-your-brain-with-evernote-private-beta-invites/&#34;&gt;脳を拡張する&lt;/a&gt;」といった誇大広告ばかりが取り沙汰されるサービスだが、単純にメモツールとして優れており、特に &lt;a href=&#34;http://www.evernote.com/about/download/&#34;&gt;Mac クライアント&lt;/a&gt;と &lt;a href=&#34;http://www.evernote.com/about/download/iphone/&#34;&gt;iPhone クライアント&lt;/a&gt;の出来がすばらしい。&lt;/p&gt;
 
-&lt;h3 id=&#34;evernote-mac-クライアント:033b0c26ca419553b529ab6f1ee2e965&#34;&gt;Evernote: Mac クライアント&lt;/h3&gt;
+&lt;h3 id=&#34;evernote-mac-クライアント&#34;&gt;Evernote: Mac クライアント&lt;/h3&gt;
 
 &lt;p&gt;プログラミング関係の話題をノートにまとめていると、興味深いページへのリンクを多く埋め込むことになる。ノートの編集は Mac のクライアントで行うことが多いのだが、この作業がけっこう面倒だ：&lt;/p&gt;
 
@@ -36,7 +35,7 @@
 
 &lt;p&gt;この手順を毎回、繰り返さなければならない。慣れれば無意識に出来るような単純作業ではあるが、単純作業なら自動化した方がいい。&lt;/p&gt;
 
-&lt;h3 id=&#34;applescript:033b0c26ca419553b529ab6f1ee2e965&#34;&gt;AppleScript&lt;/h3&gt;
+&lt;h3 id=&#34;applescript&#34;&gt;AppleScript&lt;/h3&gt;
 
 &lt;p&gt;Mac で自動化といえば &lt;a href=&#34;http://www.apple.com/applescript/&#34;&gt;AppleScript&lt;/a&gt; の出番なのだが、残念ながら Mac 向け Evernote クライアントの AppleScript 対応は今回の要件には不十分である。そのため、今回は System Events による GUI スクリプティングにより、上記手順のキー操作やボタンクリックをエミュレートすることにした。&lt;/p&gt;
 

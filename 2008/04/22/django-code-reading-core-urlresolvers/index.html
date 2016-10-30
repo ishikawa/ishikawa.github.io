@@ -31,7 +31,7 @@
 
 <p>なお、参照したソースコードは SVN の Revision 7438 である。公開リリースの 0.96.1 とは内容が大きく異なる可能性があること、 <a href="http://code.djangoproject.com/query">Trac</a> での議論やドキュメントを読むかぎり、このへんの実装については今後大きく変更されるかもしれないことを、あらかじめお断りしておく。</p>
 
-<h3 id="urlresolvers-py:df5b3f6671d300513435b6b9f9ba9ac6">urlresolvers.py</h3>
+<h3 id="urlresolvers-py">urlresolvers.py</h3>
 
 <p>まずは、調べるソースコードを特定しよう。URL の逆マッピングをしてくれる <a href="http://www.djangoproject.com/documentation/url_dispatch/#reverse">reverse() 関数</a>が用意されていることは分かっているので、これを手がかりにソースコードを探すのがよさそうだ。</p>
 
@@ -43,7 +43,7 @@
 
 <p>と書かれているので、これが探していたソースコード（モジュール）だろう。</p>
 
-<h3 id="reverse-と-resolve:df5b3f6671d300513435b6b9f9ba9ac6">reverse() と resolve()</h3>
+<h3 id="reverse-と-resolve">reverse() と resolve()</h3>
 
 <p><code>urlresolvers.py</code> では <code>reverse()</code> だけでなく、<code>resolve()</code> も定義されている。</p>
 
@@ -79,7 +79,7 @@ a string) and returns a tuple in this format:</p>
 
 <p>がタプルで返ってくるらしい。</p>
 
-<h3 id="regexurlresolver:df5b3f6671d300513435b6b9f9ba9ac6">RegexURLResolver</h3>
+<h3 id="regexurlresolver">RegexURLResolver</h3>
 
 <p><code>reverse()</code> も <code>resolve()</code> も、実際の処理は <code>get_resolver()</code> で返ってくるオブジェクトに丸投げしている。そして、先のコメントが示唆するように、<code>get_resolver()</code> で返されるオブジェクトは <code>RegexURLResolver</code> のインスタンスになっている。</p>
 
@@ -139,7 +139,7 @@ a string) and returns a tuple in this format:</p>
 
 <p><code>resolve()</code> メソッドは <code>RegexURLPattern</code> にも <code>RegexURLResolver</code> にも実装されていることに注意。</p>
 
-<h3 id="matchchecker:df5b3f6671d300513435b6b9f9ba9ac6">MatchChecker</h3>
+<h3 id="matchchecker">MatchChecker</h3>
 
 <p><code>urlresolver.py</code> にはこの他に <code>MatchChecker</code> というクラスが定義されており、これは <code>reverse()</code> の過程で正規表現をパス文字列に変換するために使われているようだ。</p>
 

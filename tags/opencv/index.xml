@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Opencv on METAREAL</title>
-    <link>http://www.metareal.org/tags/opencv/</link>
-    <description>Recent content in Opencv on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/opencv/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Wed, 28 Mar 2007 01:18:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -20,7 +19,7 @@
 
 &lt;p&gt;物体認識もできる画像処理ライブラリ &lt;a href=&#34;http://www.intel.com/technology/computing/opencv/&#34;&gt;OpenCV 1.0.0&lt;/a&gt; を Mac OS X 10.4 にてコンパイルしてみた。&lt;/p&gt;
 
-&lt;h3 id=&#34;opencv-のインストール:c1dc197dbb1376e573c35da5ca2c9837&#34;&gt;OpenCV のインストール&lt;/h3&gt;
+&lt;h3 id=&#34;opencv-のインストール&#34;&gt;OpenCV のインストール&lt;/h3&gt;
 
 &lt;p&gt;まずは、&lt;a href=&#34;http://sourceforge.net/projects/opencvlibrary/&#34;&gt;SourceForge&lt;/a&gt; から opencv-1.0.0.tar.gz をダウンロードして解凍。&lt;/p&gt;
 
@@ -54,7 +53,7 @@ make: *** [all] Error 2
 
 &lt;p&gt;無事成功。&lt;/p&gt;
 
-&lt;h3 id=&#34;サンプル-プログラムを試す:c1dc197dbb1376e573c35da5ca2c9837&#34;&gt;サンプル・プログラムを試す&lt;/h3&gt;
+&lt;h3 id=&#34;サンプル-プログラムを試す&#34;&gt;サンプル・プログラムを試す&lt;/h3&gt;
 
 &lt;p&gt;サンプル・プログラムをコンパイルするために、&lt;code&gt;pkg-config&lt;/code&gt; の探索パスを追加しておく。&lt;/p&gt;
 

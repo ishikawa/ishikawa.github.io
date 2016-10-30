@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo on METAREAL</title>
-    <link>http://www.metareal.org/tags/hugo/</link>
-    <description>Recent content in Hugo on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/hugo/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 21 Jun 2015 14:43:15 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -32,7 +31,7 @@ url: &amp;quot;/2010/12/16/ffi-requires-ruby-version-1-9-2/&amp;quot;
 
 &lt;p&gt;とはいえ、今後もこの指定をしていくのはしんどいので、この記事から URL の形式を &lt;code&gt;/post/title/&lt;/code&gt; に変えるつもり。&lt;/p&gt;
 
-&lt;h3 id=&#34;移行スクリプト:63d64c61b0a30fb30dcadfbaac2823c1&#34;&gt;移行スクリプト&lt;/h3&gt;
+&lt;h3 id=&#34;移行スクリプト&#34;&gt;移行スクリプト&lt;/h3&gt;
 
 &lt;p&gt;移行にあたっては古い記事を Markdown + Front Matter に変換する必要があり、変換スクリプトを Ruby で書いた。&lt;/p&gt;
 

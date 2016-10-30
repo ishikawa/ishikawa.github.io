@@ -37,7 +37,7 @@
 
 <p>ここでいう Text View とは <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSTextView_Class/Reference/Reference.html">NSTextView</a> のように、IM からの入力を受け取り、テキストを表示、編集できるクラスのことだ。エディタやワープロといったアプリケーションを開発するときには必要になってくるだろう。</p>
 
-<h3 id="nsview-のサブクラス:11812e693eeb5d1ecb4e7b72cbcfa22b">NSView のサブクラス</h3>
+<h3 id="nsview-のサブクラス">NSView のサブクラス</h3>
 
 <p><a href="http://developer.apple.com/documentation/Cocoa/Conceptual/InputManager/Tasks/TextViewTask.html#//apple_ref/doc/uid/20001040">ドキュメント</a>によると、独自の Text View を実装する場合は <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSTextView_Class/Reference/Reference.html">NSTextView</a> のサブクラスか、<a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSView_Class/Reference/NSView.html">NSView</a> のサブクラスを作るようなので、今回は NSView のサブクラスとして作成することにする。</p>
 
@@ -53,7 +53,7 @@
 
 <p>インスタンス変数として <a href="http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSMutableAttributedString_Class/Reference/Reference.html">NSMutableAttributedString</a> をひとつ持つ。ここに表示、編集するテキストの内容を保持するわけだ（MVC も糞もない設計だが、今回のはあくまで例なので単純さを優先する）。</p>
 
-<h3 id="first-responder:11812e693eeb5d1ecb4e7b72cbcfa22b">First Responder</h3>
+<h3 id="first-responder">First Responder</h3>
 
 <p>最初にすることは、このクラスがキー入力を受け取れるようにすることだ。そのためには、キー入力やマウスクリックなどのイベントを受け取るれるように、<a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSResponder_Class/Reference/Reference.html#//apple_ref/occ/instm/NSResponder/acceptsFirstResponder">acceptsFirstResponder</a> をオーバーライドする必要がある。</p>
 
@@ -71,7 +71,7 @@
 
 <p>これだけ。そのまま <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSResponder_Class/Reference/Reference.html#//apple_ref/occ/instm/NSResponder/interpretKeyEvents:">interpretKeyEvents:</a> に投げている。</p>
 
-<h3 id="interpretkeyevents:11812e693eeb5d1ecb4e7b72cbcfa22b">interpretKeyEvents:</h3>
+<h3 id="interpretkeyevents">interpretKeyEvents:</h3>
 
 <p><code>interpretKeyEvents:</code> は <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSInputManager_Class/Reference/Reference.html#//apple_ref/occ/cl/NSInputManager">NSInputManager</a> を通して、最終的に、ビューの <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSResponder_Class/Reference/Reference.html#//apple_ref/occ/instm/NSResponder/insertText:">insertText:</a> や <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSResponder_Class/Reference/Reference.html#//apple_ref/occ/instm/NSResponder/insertNewline:">insertNewline:</a> などを呼び出すので、あとはこれらのメソッドを実装すればいい。</p>
 
@@ -105,7 +105,7 @@
 
 <p>なお、<code>insertText:</code> に渡される <code>aString</code> は <code>NSString</code> とは限らず、<code>NSAttributedString</code> の可能性もあるので、本来はそれも考慮したコードにするべきだ。</p>
 
-<h3 id="テキストの表示:11812e693eeb5d1ecb4e7b72cbcfa22b">テキストの表示</h3>
+<h3 id="テキストの表示">テキストの表示</h3>
 
 <p>最後に、描画部分を実装しよう。テキストのレイアウトと描画は <code>NSAttributedString</code> の <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSAttributedString_AppKitAdditions/Reference/Reference.html#//apple_ref/occ/instm/NSAttributedString/drawInRect:">drawInRect:</a> に任せてしまう。</p>
 
@@ -129,7 +129,7 @@
 
 <p>なお、今回のソースコードは <a href="http://gist.github.com/23017">gist:23017</a> に置いてある。</p>
 
-<h3 id="参考:11812e693eeb5d1ecb4e7b72cbcfa22b">参考</h3>
+<h3 id="参考">参考</h3>
 
 <ul>
 <li><a href="http://developer.apple.com/documentation/Cocoa/Conceptual/EventOverview/Introduction/chapter_1_section_1.html#//apple_ref/doc/uid/10000060i-CH1-DontLinkElementID_45">Cocoa Event-Handling Guide</a></li>

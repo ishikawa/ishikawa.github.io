@@ -41,7 +41,7 @@
 
 <p>だが、いまや状況は変わった。SDK <a href="http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes#Version_1.2.3_-_June_18,_2009">1.2.3 からは Django 1.0</a> が、SDK <a href="http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes#Version_1.2.5_-_September_3,_2009">1.2.5 からは Django 1.1</a> がサポートされ、Google AppEngine でも、簡単に Django 1.x を動かせるようになった。</p>
 
-<h3 id="google-appengine-dist-use-library:d5cbf458e70a92e96be7ede9be9f6ecd">google.appengine.dist.use_library</h3>
+<h3 id="google-appengine-dist-use-library">google.appengine.dist.use_library</h3>
 
 <p>SDK 1.2.<sup>3</sup>&frasl;<sub>1</sub>.2.5 からは <a href="http://code.google.com/p/googleappengine/source/browse/#svn/trunk/python/google/appengine/dist">google.appengine.dist</a> モジュールの <code>use_library</code> 関数を使うことで Django 1.0/1.1 を選択できるようになった。</p>
 
@@ -58,7 +58,7 @@ use_library('django', '1.1')
 
 <p>更に嬉しいことに、Django のコードをアップロードする必要もなくなった。Google AppEngine のサーバには Django 1.0/1.1 がインストールされている。ただし、SDK には Django 0.96 しか添付されていないので、1.0/1.1 を使う場合は、あらかじめローカルのマシンに Django 1.0/1.1 をインストールしておこう。</p>
 
-<h3 id="django-のバージョンと-dos-攻撃可能な脆弱性について:d5cbf458e70a92e96be7ede9be9f6ecd">Django のバージョンと DoS 攻撃可能な脆弱性について</h3>
+<h3 id="django-のバージョンと-dos-攻撃可能な脆弱性について">Django のバージョンと DoS 攻撃可能な脆弱性について</h3>
 
 <p>なお、実際に有効になる Django の詳細なバージョンは、本記事執筆時点の 2009 年 11 月で以下のようになっている（<code>django.VERSION</code> で調べた）。</p>
 
@@ -96,7 +96,7 @@ use_library('django', '1.1')
 
 <p>Google AppEngine プロジェクトに<a href="http://code.google.com/p/googleappengine/issues/detail?id=2447">報告</a>したところ、GAE で有効になるバージョンは修正済みのものである、とのこと。失礼しました。</p>
 
-<h3 id="main-py-のサンプル:d5cbf458e70a92e96be7ede9be9f6ecd">main.py のサンプル</h3>
+<h3 id="main-py-のサンプル">main.py のサンプル</h3>
 
 <p>実際に <code>use_library</code> を使ったサンプルを <a href="http://gist.github.com/245523">gist:245523</a> で公開している。</p>
 

@@ -38,7 +38,7 @@ doSomething(list);
 
 <p>だが、この方法は変換に一時変数が必要になり不格好だ。</p>
 
-<h3 id="arrays-aslist-を使う方法:236978ad6b2652af39bc5b2192224fdc">Arrays.asList を使う方法</h3>
+<h3 id="arrays-aslist-を使う方法">Arrays.asList を使う方法</h3>
 
 <p>この変換は <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#asList%28T...%29"><code>Arrays.asList</code></a> を使うことで簡単にできる。</p>
 
@@ -50,7 +50,7 @@ doSomething(list);
 <pre><code>doSomething(Arrays.asList(&quot;element&quot;));
 </code></pre>
 
-<h3 id="collectios-singleton-系メソッド:236978ad6b2652af39bc5b2192224fdc">Collectios.singleton 系メソッド</h3>
+<h3 id="collectios-singleton-系メソッド">Collectios.singleton 系メソッド</h3>
 
 <p><code>Arrays.asList</code> ではリスト以外のコレクションには変換できない上、要素がひとつだけのコレクションのために配列を用意しているため、まだまだメモリ的に非効率だ。</p>
 

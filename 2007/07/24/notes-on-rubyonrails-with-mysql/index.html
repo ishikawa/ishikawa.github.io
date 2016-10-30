@@ -32,7 +32,7 @@
 <p>Rubyisms - MySQL-dump
   <a href="http://mysqldump.azundris.com/archives/72-Rubyisms.html">http://mysqldump.azundris.com/archives/72-Rubyisms.html</a></p>
 
-<h3 id="select-が多すぎる:8c28f4d94b9da94a1e3d3c0468038cda">&ldquo;select *&rdquo; が多すぎる</h3>
+<h3 id="select-が多すぎる">&ldquo;select *&rdquo; が多すぎる</h3>
 
 <p>ActiveRecord は、特に何も指定しないと <code>select *</code> で、すべてのカラムを取ってくる。SQL は動的に生成されて、どのカラムが存在するかチェックしているので、スキームが変更されても大丈夫。</p>
 
@@ -58,7 +58,7 @@
 <li><code>ActiveRecord::Base</code> をサブクラス化して、<code>:select</code> が指定されていなければ、警告を出すようにするのがいいんじゃない？</li>
 </ul>
 
-<h3 id="文字列型がかなり無駄かも:8c28f4d94b9da94a1e3d3c0468038cda">文字列型がかなり無駄かも</h3>
+<h3 id="文字列型がかなり無駄かも">文字列型がかなり無駄かも</h3>
 
 <p>たとえ TEXT 型（Migration だと <code>:text</code> 型）を使っていなくても、Migration で <code>:string</code> 型を使っているなら、気をつけた方がいい。</p>
 
@@ -87,7 +87,7 @@
 
 <p>興味深い話題があります。あと、この要約が間違ってる可能性もあるので、是非<a href="http://mysqldump.azundris.com/archives/72-Rubyisms.html">原文</a>も読むことをおすすめします。</p>
 
-<h3 id="補足-メモリ上の一時テーブルには-varchar-型がない:8c28f4d94b9da94a1e3d3c0468038cda">補足：メモリ上の一時テーブルには VARCHAR 型がない</h3>
+<h3 id="補足-メモリ上の一時テーブルには-varchar-型がない">補足：メモリ上の一時テーブルには VARCHAR 型がない</h3>
 
 <p>「メモリ上の一時テーブルには VARCHAR 型がない」という記述について、気になったので調べてみた。</p>
 

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Eclipse on METAREAL</title>
-    <link>http://www.metareal.org/tags/eclipse/</link>
-    <description>Recent content in Eclipse on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/eclipse/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Thu, 11 Jan 2007 09:40:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/eclipse/index.xml" rel="self" type="application/rss+xml" />
     
     <item>

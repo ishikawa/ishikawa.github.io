@@ -39,7 +39,7 @@
 <li>ビルド</li>
 </ol>
 
-<h3 id="cvs-からソースコードを取得:97c884f0cbd05d3600027bb8ab201927">CVS からソースコードを取得</h3>
+<h3 id="cvs-からソースコードを取得">CVS からソースコードを取得</h3>
 
 <p><a href="http://jdbc.postgresql.org/development/cvs.html">PostgreSQL JDBC ドライバの CVS リポジトリ</a>からバージョン 7.4 リリース時のタグを指定してソースコードを取得する。</p>
 
@@ -47,7 +47,7 @@
 cvs -z3 -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc co **-r REL7_4_STABLE** -P pgjdbc
 </code></pre>
 
-<h3 id="build-properties-を用意:97c884f0cbd05d3600027bb8ab201927">build.properties を用意</h3>
+<h3 id="build-properties-を用意">build.properties を用意</h3>
 
 <p>バージョン番号情報などを指定するための <code>build.properties</code> がないとビルドが失敗してしまう。
 トップディレクトリに <code>build.properties</code> を作成し、以下のように書いておこう。</p>
@@ -73,7 +73,7 @@ connectclass=org.postgresql.jdbc3.Jdbc3Connection
 
 <p>今回は JDBC3 向けのドライバをビルドしたかったので、<code>connectclass</code> には <code>org.postgresql.jdbc3.Jdbc3Connection</code> を指定した。</p>
 
-<h3 id="ビルド:97c884f0cbd05d3600027bb8ab201927">ビルド</h3>
+<h3 id="ビルド">ビルド</h3>
 
 <p>あとは Ant を実行すると jars ディレクトリに postgresql.jar と postgresql-examples.jar ができているはずだ。</p>
 

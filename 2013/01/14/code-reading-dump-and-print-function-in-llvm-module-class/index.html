@@ -47,7 +47,7 @@ void dump() const;
 }
 </code></pre>
 
-<h2 id="llvm-module-print:3faf8e0f1caed9c18f3a51d4cc12c955">llvm::Module::print</h2>
+<h2 id="llvm-module-print">llvm::Module::print</h2>
 
 <p><code>AssemblyWriter</code> は <code>lib/VMCore/AsmWriter.cpp</code> の無名ネームスペースに定義されているクラスであり、llvm 内のさまざまな型をストリームに出力する関数を提供している。<code>AssemblyWriter::printModule</code> のコードをざっと眺めてみれば、やっていることの想像はつくだろう。</p>
 
@@ -61,7 +61,7 @@ void dump() const;
 }
 </code></pre>
 
-<h2 id="llvm-module-dump:3faf8e0f1caed9c18f3a51d4cc12c955">llvm::Module::dump</h2>
+<h2 id="llvm-module-dump">llvm::Module::dump</h2>
 
 <p>同じく <code>lib/VMCore/AsmWriter.cpp</code> の最後の方に定義されている <code>llvm::Module::dump</code> はどうなっているだろうか。</p>
 
@@ -78,7 +78,7 @@ void Module::dump() const { print(dbgs(), 0); }
 
 <p>では、第一引数に渡している dbgs 関数の戻り値はなんだろうか？</p>
 
-<h2 id="llvm-dbgs:3faf8e0f1caed9c18f3a51d4cc12c955">llvm::dbgs</h2>
+<h2 id="llvm-dbgs">llvm::dbgs</h2>
 
 <p><code>llvm::dbgs</code> の宣言は <code>include/llvm/Support/Debug.h</code> にある。デバッグ用の出力ストリーム (raw_ostream) を返す関数だ。</p>
 

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Subversion on METAREAL</title>
-    <link>http://www.metareal.org/tags/subversion/</link>
-    <description>Recent content in Subversion on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/subversion/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 19 Jun 2007 09:44:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/subversion/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -18,14 +17,13 @@
       <guid>http://www.metareal.org/2007/06/19/xcode-subversion-troubleshooting/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/564796906/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1293/564796906_6c386b03b5.jpg&#34; alt=&#34;Xcode SCM Preference&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/564796906/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1293/564796906_6c386b03b5.jpg&#34; alt=&#34;Xcode SCM Preference&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Xcode の &lt;a href=&#34;http://developer.apple.com/DOCUMENTATION/DeveloperTools/Conceptual/XcodeUserGuide/Contents/Resources/ja.lproj/04_scm/chapter_25_section_1.html#//apple_ref/doc/uid/TP40002684-BABCCJCJ&#34;&gt;SCM 連携機能&lt;/a&gt;は、すくなくとも &lt;a href=&#34;http://www.eclipse.org/&#34;&gt;Eclipse&lt;/a&gt; なんかに比べると貧弱で、実作業ではコマンドラインで &lt;code&gt;svn&lt;/code&gt; を使っている。&lt;/p&gt;
 
 &lt;p&gt;それでも一度は試しておきたい、と試してみたときの、あまり一般的ではないトラブルシューティングを覚え書き。&lt;/p&gt;
 
-&lt;h3 id=&#34;svn-ssh-で-22-番以外のポートを使いたいとき:4c169007c75ddb3eb25a6558cc5dda08&#34;&gt;svn+ssh で 22 番以外のポートを使いたいとき&lt;/h3&gt;
+&lt;h3 id=&#34;svn-ssh-で-22-番以外のポートを使いたいとき&#34;&gt;svn+ssh で 22 番以外のポートを使いたいとき&lt;/h3&gt;
 
 &lt;p&gt;これは別に Xcode に限った話じゃないけど、&lt;code&gt;svn+ssh&lt;/code&gt; プロトコルで 22 番以外のポートを使う場合は、環境変数 &lt;code&gt;SVN_SSH&lt;/code&gt; で &lt;code&gt;ssh&lt;/code&gt; プログラムの引数に指定します。&lt;/p&gt;
 
@@ -37,7 +35,7 @@
 &lt;pre&gt;&lt;code&gt;open ./Example.xcodeproj
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;それでも-パスフレーズ入力できないとき:4c169007c75ddb3eb25a6558cc5dda08&#34;&gt;それでも、パスフレーズ入力できないとき&lt;/h3&gt;
+&lt;h3 id=&#34;それでも-パスフレーズ入力できないとき&#34;&gt;それでも、パスフレーズ入力できないとき&lt;/h3&gt;
 
 &lt;p&gt;上の方法で Xcode 起動して、SCM を有効にしても、パスフレーズの入力画面などがでず、&lt;code&gt;Permission denied&lt;/code&gt; で怒られてしまうことがある &amp;hellip; というか、僕がまさにそれ。&lt;/p&gt;
 
@@ -55,7 +53,7 @@
 
 &lt;p&gt;Apple の提供する開発環境 &lt;a href=&#34;http://www.apple.com/jp/macosx/features/xcode/&#34;&gt;Xcode&lt;/a&gt; で作成したプロジェクトを Subversion 管理する手順。基本的に「&lt;a href=&#34;http://rails.office.drecom.jp/ishikawa/archive/26&#34;&gt;Rails のプロジェクトを Subversion で管理する&lt;/a&gt;」の Xcode 版。&lt;/p&gt;
 
-&lt;h3 id=&#34;リポジトリの場所を決める:84949e6a353c13bf30ea590aa956b65a&#34;&gt;リポジトリの場所を決める&lt;/h3&gt;
+&lt;h3 id=&#34;リポジトリの場所を決める&#34;&gt;リポジトリの場所を決める&lt;/h3&gt;
 
 &lt;p&gt;まずは、リポジトリのルート URL を決めて、これを環境変数に設定しよう。以降はこの変数を使うことで、長々とした URL をタイプする手間が省ける。&lt;/p&gt;
 
@@ -64,7 +62,7 @@
 
 &lt;p&gt;もちろん、実際の URL は自分で使うものに置き換えてほしい。&lt;/p&gt;
 
-&lt;h3 id=&#34;空のプロジェクトをコミットする:84949e6a353c13bf30ea590aa956b65a&#34;&gt;空のプロジェクトをコミットする&lt;/h3&gt;
+&lt;h3 id=&#34;空のプロジェクトをコミットする&#34;&gt;空のプロジェクトをコミットする&lt;/h3&gt;
 
 &lt;p&gt;ここで、いきなり Xcode を起動して新規プロジェクトをつくるのではなく、まずは、プロジェクトのディレクトリ・レイアウトを構成した、空のプロジェクトをコミットする。&lt;/p&gt;
 
@@ -87,7 +85,7 @@ Committed revision 20.
 % rm -rf tmp
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;xcode-のプロジェクトにチェックアウト:84949e6a353c13bf30ea590aa956b65a&#34;&gt;Xcode のプロジェクトにチェックアウト&lt;/h3&gt;
+&lt;h3 id=&#34;xcode-のプロジェクトにチェックアウト&#34;&gt;Xcode のプロジェクトにチェックアウト&lt;/h3&gt;
 
 &lt;p&gt;そうして、コミットした空のプロジェクトを Xocde のプロジェクト・ディレクトリにチェックアウトすれば、Subversion 管理された Xcode プロジェクトが出来上がる。この方法なら、すでに開発中のプロジェクトにも適用しやすい。&lt;/p&gt;
 
@@ -97,7 +95,7 @@ Committed revision 20.
 % svn checkout ${SVN_REPO}/trunk .
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;バージョン管理するファイルの選択:84949e6a353c13bf30ea590aa956b65a&#34;&gt;バージョン管理するファイルの選択&lt;/h3&gt;
+&lt;h3 id=&#34;バージョン管理するファイルの選択&#34;&gt;バージョン管理するファイルの選択&lt;/h3&gt;
 
 &lt;p&gt;ここまでで、&lt;/p&gt;
 

@@ -72,13 +72,13 @@ finally:
 
 <p>自作ライブラリの紹介はこれくらいにし、以降では、<strong>Python でプロパティリストを解析する他の手段</strong>と、それらのパフォーマンスを比較した結果について書いてみたい。</p>
 
-<h3 id="plistlib:0827b0ca43409c9b3c7a16a19e49fa08">plistlib</h3>
+<h3 id="plistlib">plistlib</h3>
 
 <p>Python 2.6 からは、プロパティリストの読み書きをするためのライブラリ <a href="http://docs.python.org/dev/library/plistlib.html">plistlib</a> が標準で添付されている。また、Python 2.5 以前でもソースコードや Mac 向けのディストリビューションには含まれているので、実はプロパティリストを読み込みたいだけなら、今回自作した <a href="http://github.com/ishikawa/python-plist-parser/">plist_parser</a> の有用性はすくない。</p>
 
 <p>それなら、何故わざわざ自作したのかといえば、ほぼ実装してしまってから <a href="http://docs.python.org/dev/library/plistlib.html">plistlib</a> の存在に気づいたのだ。勘弁してほしい。</p>
 
-<h3 id="xml-etree:0827b0ca43409c9b3c7a16a19e49fa08">xml.etree</h3>
+<h3 id="xml-etree">xml.etree</h3>
 
 <p>Python 2.5 から標準添付されている <a href="http://docs.python.org/lib/module-xml.etree.ElementTree.html">xml.etree</a> ライブラリを使うと XML の処理が簡潔に記述できる。作者のサイト <a href="http://effbot.org/">effbot.org</a> に掲載されている記事 <a href="http://effbot.org/zone/element-iterparse.htm">The ElementTree iterparse Function</a> に、ちょうど、このライブラリを使ってプロパティリストを読み込む例がある（以下はすこし改変してある）。</p>
 
@@ -121,7 +121,7 @@ def load(file):
 
 <p>xml.etree は C による実装 <code>xml.etree.cElementTree</code> も提供されており、これを使うとパフォーマンスでもかなりの好成績を出すようになる（具体的なパフォーマンスの比較は後述）。</p>
 
-<h3 id="パフォーマンスの比較:0827b0ca43409c9b3c7a16a19e49fa08">パフォーマンスの比較</h3>
+<h3 id="パフォーマンスの比較">パフォーマンスの比較</h3>
 
 <p>さて、プロパティリストを読み込むためのライブラリとして、</p>
 
@@ -148,8 +148,7 @@ def load(file):
 
 <p>今回は比較対象として、<a href="http://github.com/ishikawa/python-plist-parser/tree/master/tools/performance/core_foundation_parser.c">C による実装</a>を用意した。これは Mac OS X ネイティブの API を使って、プロパティリストを読み込んでいる。<strong>このプログラムの実行時間を 1 として、それぞれの実行時間を比較</strong>してみよう（なお、測定に使用したプログラムは<a href="http://github.com/ishikawa/python-plist-parser/tree/master/tools/performance/profiler.py">ここに置いてある</a>）。</p>
 
-<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2732221848/"><img src="http://farm4.static.flickr.com/3123/2732221848_38f2439737_o.png" alt="Performance of Python Property Lists Libraries" />
-</a>やはり、C によるプログラムが桁違いに速い。ちなみに、実時間でいえば 0.5 秒程度である。</p>
+<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2732221848/"><img src="http://farm4.static.flickr.com/3123/2732221848_38f2439737_o.png" alt="Performance of Python Property Lists Libraries" /></a>やはり、C によるプログラムが桁違いに速い。ちなみに、実時間でいえば 0.5 秒程度である。</p>
 
 <p>次に目立つのが <a href="http://docs.python.org/lib/module-xml.etree.ElementTree.html">xml.etree</a> によるプログラムだ。これは C による <code>xml.etree.cElementTree</code> と Python のみで実装された <code>xml.etree.ElementTree</code> のふたつがあるが、<code>xml.etree.cElementTree</code> はかなり速いことがわかる。C によるプログラムと比較しても 5 倍程度の実行時間、<a href="http://docs.python.org/dev/library/plistlib.html">plistlib</a> と比較すると 3 倍程度速く、優秀であるといえる。逆に、Python による実装の <code>xml.etree.ElementTree</code> がズバ抜けて遅いのも興味深い。</p>
 
@@ -159,7 +158,7 @@ def load(file):
 
 <p>そのため、Python 2.5 以降など、<code>xml.etree.cElementTree</code> がインストールされている環境では、同程度の速度で動作するようになっている。</p>
 
-<h3 id="最後に:0827b0ca43409c9b3c7a16a19e49fa08">最後に</h3>
+<h3 id="最後に">最後に</h3>
 
 <ul>
 <li>XML を扱うなら、<a href="http://docs.python.org/lib/module-xml.etree.ElementTree.html">xml.etree</a> は一見の価値あり</li>

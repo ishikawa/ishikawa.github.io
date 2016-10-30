@@ -43,11 +43,11 @@
 <li><p>ブラウザ以外の環境での XSS 脆弱性の可能性を修正</p></li>
 </ul>
 
-<h3 id="safari-3-における-getelementsbyselector:7fa68dfc52f7aae8cc7f2565669904d3">Safari 3 における getElementsBySelector</h3>
+<h3 id="safari-3-における-getelementsbyselector">Safari 3 における getElementsBySelector</h3>
 
 <p>Safari では無効になっていた <a href="http://www.w3.org/TR/2004/NOTE-DOM-Level-3-XPath-20040226/">DOM 3 XPath</a> が有効になったようだ（無効になっていたのは Safari のバグ絡み？）。ただし、<code>Selector#shouldUseXPath</code> が false を返した場合は、いままでどおり無効になる。</p>
 
-<h3 id="ブラウザ以外の環境での-xss-脆弱性の修正:7fa68dfc52f7aae8cc7f2565669904d3">ブラウザ以外の環境での XSS 脆弱性の修正</h3>
+<h3 id="ブラウザ以外の環境での-xss-脆弱性の修正">ブラウザ以外の環境での XSS 脆弱性の修正</h3>
 
 <p>これまで <a href="http://www.prototypejs.org/api/ajax/request">Ajax.Request</a> における JavaScript の実行（Automatic JavaScript response evaluation）では、</p>
 

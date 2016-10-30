@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lifehacks on METAREAL</title>
-    <link>http://www.metareal.org/tags/lifehacks/</link>
-    <description>Recent content in Lifehacks on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/lifehacks/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 19 Aug 2007 01:23:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/lifehacks/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -150,8 +149,7 @@
       <guid>http://www.metareal.org/2007/08/11/review-my-igtd-experience/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1077839654/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1373/1077839654_3a2455e628_o.gif&#34; alt=&#34;iGTD Screenshot&#34; /&gt;
-&lt;/a&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1077839654/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1373/1077839654_3a2455e628_o.gif&#34; alt=&#34;iGTD Screenshot&#34; /&gt;&lt;/a&gt;
     © &lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/&#34;&gt;Takanori Ishikawa&lt;/a&gt;, Some rights reserved&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/08/10/igtd-first-impression/&#34;&gt;前回&lt;/a&gt;書いたように、&lt;a href=&#34;http://www.rememberthemilk.com/&#34;&gt;Remember The Milk&lt;/a&gt; から &lt;a href=&#34;http://igtd.pl/iGTD/&#34;&gt;iGTD&lt;/a&gt; に乗り換えた。&lt;/p&gt;
@@ -167,7 +165,7 @@
 
 &lt;p&gt;ふたつしかない。荒削りな部分もあるが、UI はまとまっていると思う。&lt;/p&gt;
 
-&lt;h3 id=&#34;ちょっとした不満:2544569988e59c8c88b3ad0f2bc6f7c7&#34;&gt;ちょっとした不満&lt;/h3&gt;
+&lt;h3 id=&#34;ちょっとした不満&#34;&gt;ちょっとした不満&lt;/h3&gt;
 
 &lt;p&gt;これらはヘルプを読んでも片づかなかった不満。&lt;/p&gt;
 
@@ -179,7 +177,7 @@
 &lt;li&gt;&lt;strong&gt;アイコン&lt;/strong&gt; かわいくない&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&#34;最後に:2544569988e59c8c88b3ad0f2bc6f7c7&#34;&gt;最後に&lt;/h3&gt;
+&lt;h3 id=&#34;最後に&#34;&gt;最後に&lt;/h3&gt;
 
 &lt;p&gt;やはり、デスクトップ・アプリケーションの強みなのだが、&lt;/p&gt;
 
@@ -200,8 +198,7 @@
       <guid>http://www.metareal.org/2007/08/10/igtd-first-impression/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1072315915/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1008/1072315915_bee7dddcbc_o.jpg&#34; alt=&#34;Remember The Milk To iGTD&#34; /&gt;
-&lt;/a&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1072315915/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1008/1072315915_bee7dddcbc_o.jpg&#34; alt=&#34;Remember The Milk To iGTD&#34; /&gt;&lt;/a&gt;
     © &lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/&#34;&gt;Takanori Ishikawa&lt;/a&gt;, Some rights reserved&lt;/p&gt;
 
 &lt;p&gt;これまで TODO 管理には &lt;a href=&#34;http://www.rememberthemilk.com/&#34;&gt;Remember The Milk&lt;/a&gt; を愛用していた。&lt;/p&gt;
@@ -212,7 +209,7 @@
 
 &lt;p&gt;でも、今日、&lt;a href=&#34;http://igtd.pl/iGTD/&#34;&gt;iGTD&lt;/a&gt; に乗り換えた。何故か？&lt;/p&gt;
 
-&lt;h3 id=&#34;何故-remember-the-milk-では駄目になったのか:2d36c0a37064aeb015b97f8bfa877375&#34;&gt;何故、Remember The Milk では駄目になったのか&lt;/h3&gt;
+&lt;h3 id=&#34;何故-remember-the-milk-では駄目になったのか&#34;&gt;何故、Remember The Milk では駄目になったのか&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;重い&lt;/strong&gt;。特にログイン後、タスクを表示するときが重い。&lt;/li&gt;
@@ -222,7 +219,7 @@
 
 &lt;p&gt;他にも「マニュアルでソートできない」とか細かい不満もあるのだが、こうしてみると、自分にとっての GTD アプリは「思いついたときに、即座に使えること」が重要なのが分かる。&lt;/p&gt;
 
-&lt;h3 id=&#34;web-アプリケーションと-gtd:2d36c0a37064aeb015b97f8bfa877375&#34;&gt;Web アプリケーションと GTD&lt;/h3&gt;
+&lt;h3 id=&#34;web-アプリケーションと-gtd&#34;&gt;Web アプリケーションと GTD&lt;/h3&gt;
 
 &lt;p&gt;そして、上にあげた不満点は &lt;a href=&#34;http://www.rememberthemilk.com/&#34;&gt;Remember The Milk&lt;/a&gt; に限った話ではなく、多かれ少なかれ、&lt;strong&gt;すべての Web アプリケーションに当てはまる&lt;/strong&gt;ものばかりだ。今回、デスクトップ・アプリケーションである &lt;a href=&#34;http://igtd.pl/iGTD/&#34;&gt;iGTD&lt;/a&gt; に乗り換えたのは必然、といえば必然の流れなのかもしれない。&lt;/p&gt;
 

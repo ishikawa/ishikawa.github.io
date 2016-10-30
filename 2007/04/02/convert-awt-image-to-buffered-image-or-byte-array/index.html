@@ -35,7 +35,7 @@
 
 <p>と書いたにも関わらず、そのまま放置になっていた（コメントで指摘されているのに気づいたのも今日だ。すまん）。</p>
 
-<h3 id="概要:4aa44303dc00cd0ace30b411d9cf2a91">概要</h3>
+<h3 id="概要">概要</h3>
 
 <p>まずは <a href="http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/java/awt/image/BufferedImage.html"><code>java.awt.image.BufferedImage</code></a> を <code>byte</code> 配列に変換する方法を紹介する。</p>
 
@@ -46,7 +46,7 @@
 
 <p>が実現できるわけだ。</p>
 
-<h3 id="bufferedimage-を-byte-に変換する:4aa44303dc00cd0ace30b411d9cf2a91">BufferedImage を byte[] に変換する</h3>
+<h3 id="bufferedimage-を-byte-に変換する">BufferedImage を byte[] に変換する</h3>
 
 <p><code>BufferedImage</code> から <code>byte</code> 配列の変換は、<a href="http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/javax/imageio/ImageWriter.html"><code>javax.imageio.ImageWriter</code></a> でわりかし素直に実装できる。</p>
 
@@ -70,7 +70,7 @@ byte[] bytes = bytesOut.toByteArray();
 
 <p><a href="http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/javax/imageio/ImageWriteParam.html"><code>ImageWriteParam</code></a> も組み合わせれば、圧縮率などの設定ができる。</p>
 
-<h3 id="image-を-bufferedimage-をに変換する:4aa44303dc00cd0ace30b411d9cf2a91">Image を BufferedImage をに変換する</h3>
+<h3 id="image-を-bufferedimage-をに変換する">Image を BufferedImage をに変換する</h3>
 
 <p>一筋縄ではいかないのが、Image を BufferedImage をに変換する方法だ。</p>
 

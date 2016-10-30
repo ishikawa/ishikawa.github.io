@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mac on METAREAL</title>
-    <link>http://www.metareal.org/tags/mac/</link>
-    <description>Recent content in Mac on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/mac/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 09 Dec 2008 03:37:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -22,7 +21,7 @@
 
 &lt;p&gt;&lt;a href=&#34;http://netafull.net/tech/024525.html&#34;&gt;画像中の手書き文字認識&lt;/a&gt;や「&lt;a href=&#34;http://jp.techcrunch.com/archives/extend-your-brain-with-evernote-private-beta-invites/&#34;&gt;脳を拡張する&lt;/a&gt;」といった誇大広告ばかりが取り沙汰されるサービスだが、単純にメモツールとして優れており、特に &lt;a href=&#34;http://www.evernote.com/about/download/&#34;&gt;Mac クライアント&lt;/a&gt;と &lt;a href=&#34;http://www.evernote.com/about/download/iphone/&#34;&gt;iPhone クライアント&lt;/a&gt;の出来がすばらしい。&lt;/p&gt;
 
-&lt;h3 id=&#34;evernote-mac-クライアント:033b0c26ca419553b529ab6f1ee2e965&#34;&gt;Evernote: Mac クライアント&lt;/h3&gt;
+&lt;h3 id=&#34;evernote-mac-クライアント&#34;&gt;Evernote: Mac クライアント&lt;/h3&gt;
 
 &lt;p&gt;プログラミング関係の話題をノートにまとめていると、興味深いページへのリンクを多く埋め込むことになる。ノートの編集は Mac のクライアントで行うことが多いのだが、この作業がけっこう面倒だ：&lt;/p&gt;
 
@@ -36,7 +35,7 @@
 
 &lt;p&gt;この手順を毎回、繰り返さなければならない。慣れれば無意識に出来るような単純作業ではあるが、単純作業なら自動化した方がいい。&lt;/p&gt;
 
-&lt;h3 id=&#34;applescript:033b0c26ca419553b529ab6f1ee2e965&#34;&gt;AppleScript&lt;/h3&gt;
+&lt;h3 id=&#34;applescript&#34;&gt;AppleScript&lt;/h3&gt;
 
 &lt;p&gt;Mac で自動化といえば &lt;a href=&#34;http://www.apple.com/applescript/&#34;&gt;AppleScript&lt;/a&gt; の出番なのだが、残念ながら Mac 向け Evernote クライアントの AppleScript 対応は今回の要件には不十分である。そのため、今回は System Events による GUI スクリプティングにより、上記手順のキー操作やボタンクリックをエミュレートすることにした。&lt;/p&gt;
 
@@ -164,13 +163,13 @@ finally:
 
 &lt;p&gt;自作ライブラリの紹介はこれくらいにし、以降では、&lt;strong&gt;Python でプロパティリストを解析する他の手段&lt;/strong&gt;と、それらのパフォーマンスを比較した結果について書いてみたい。&lt;/p&gt;
 
-&lt;h3 id=&#34;plistlib:0827b0ca43409c9b3c7a16a19e49fa08&#34;&gt;plistlib&lt;/h3&gt;
+&lt;h3 id=&#34;plistlib&#34;&gt;plistlib&lt;/h3&gt;
 
 &lt;p&gt;Python 2.6 からは、プロパティリストの読み書きをするためのライブラリ &lt;a href=&#34;http://docs.python.org/dev/library/plistlib.html&#34;&gt;plistlib&lt;/a&gt; が標準で添付されている。また、Python 2.5 以前でもソースコードや Mac 向けのディストリビューションには含まれているので、実はプロパティリストを読み込みたいだけなら、今回自作した &lt;a href=&#34;http://github.com/ishikawa/python-plist-parser/&#34;&gt;plist_parser&lt;/a&gt; の有用性はすくない。&lt;/p&gt;
 
 &lt;p&gt;それなら、何故わざわざ自作したのかといえば、ほぼ実装してしまってから &lt;a href=&#34;http://docs.python.org/dev/library/plistlib.html&#34;&gt;plistlib&lt;/a&gt; の存在に気づいたのだ。勘弁してほしい。&lt;/p&gt;
 
-&lt;h3 id=&#34;xml-etree:0827b0ca43409c9b3c7a16a19e49fa08&#34;&gt;xml.etree&lt;/h3&gt;
+&lt;h3 id=&#34;xml-etree&#34;&gt;xml.etree&lt;/h3&gt;
 
 &lt;p&gt;Python 2.5 から標準添付されている &lt;a href=&#34;http://docs.python.org/lib/module-xml.etree.ElementTree.html&#34;&gt;xml.etree&lt;/a&gt; ライブラリを使うと XML の処理が簡潔に記述できる。作者のサイト &lt;a href=&#34;http://effbot.org/&#34;&gt;effbot.org&lt;/a&gt; に掲載されている記事 &lt;a href=&#34;http://effbot.org/zone/element-iterparse.htm&#34;&gt;The ElementTree iterparse Function&lt;/a&gt; に、ちょうど、このライブラリを使ってプロパティリストを読み込む例がある（以下はすこし改変してある）。&lt;/p&gt;
 
@@ -213,7 +212,7 @@ def load(file):
 
 &lt;p&gt;xml.etree は C による実装 &lt;code&gt;xml.etree.cElementTree&lt;/code&gt; も提供されており、これを使うとパフォーマンスでもかなりの好成績を出すようになる（具体的なパフォーマンスの比較は後述）。&lt;/p&gt;
 
-&lt;h3 id=&#34;パフォーマンスの比較:0827b0ca43409c9b3c7a16a19e49fa08&#34;&gt;パフォーマンスの比較&lt;/h3&gt;
+&lt;h3 id=&#34;パフォーマンスの比較&#34;&gt;パフォーマンスの比較&lt;/h3&gt;
 
 &lt;p&gt;さて、プロパティリストを読み込むためのライブラリとして、&lt;/p&gt;
 
@@ -240,8 +239,7 @@ def load(file):
 
 &lt;p&gt;今回は比較対象として、&lt;a href=&#34;http://github.com/ishikawa/python-plist-parser/tree/master/tools/performance/core_foundation_parser.c&#34;&gt;C による実装&lt;/a&gt;を用意した。これは Mac OS X ネイティブの API を使って、プロパティリストを読み込んでいる。&lt;strong&gt;このプログラムの実行時間を 1 として、それぞれの実行時間を比較&lt;/strong&gt;してみよう（なお、測定に使用したプログラムは&lt;a href=&#34;http://github.com/ishikawa/python-plist-parser/tree/master/tools/performance/profiler.py&#34;&gt;ここに置いてある&lt;/a&gt;）。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2732221848/&#34;&gt;&lt;img src=&#34;http://farm4.static.flickr.com/3123/2732221848_38f2439737_o.png&#34; alt=&#34;Performance of Python Property Lists Libraries&#34; /&gt;
-&lt;/a&gt;やはり、C によるプログラムが桁違いに速い。ちなみに、実時間でいえば 0.5 秒程度である。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2732221848/&#34;&gt;&lt;img src=&#34;http://farm4.static.flickr.com/3123/2732221848_38f2439737_o.png&#34; alt=&#34;Performance of Python Property Lists Libraries&#34; /&gt;&lt;/a&gt;やはり、C によるプログラムが桁違いに速い。ちなみに、実時間でいえば 0.5 秒程度である。&lt;/p&gt;
 
 &lt;p&gt;次に目立つのが &lt;a href=&#34;http://docs.python.org/lib/module-xml.etree.ElementTree.html&#34;&gt;xml.etree&lt;/a&gt; によるプログラムだ。これは C による &lt;code&gt;xml.etree.cElementTree&lt;/code&gt; と Python のみで実装された &lt;code&gt;xml.etree.ElementTree&lt;/code&gt; のふたつがあるが、&lt;code&gt;xml.etree.cElementTree&lt;/code&gt; はかなり速いことがわかる。C によるプログラムと比較しても 5 倍程度の実行時間、&lt;a href=&#34;http://docs.python.org/dev/library/plistlib.html&#34;&gt;plistlib&lt;/a&gt; と比較すると 3 倍程度速く、優秀であるといえる。逆に、Python による実装の &lt;code&gt;xml.etree.ElementTree&lt;/code&gt; がズバ抜けて遅いのも興味深い。&lt;/p&gt;
 
@@ -251,7 +249,7 @@ def load(file):
 
 &lt;p&gt;そのため、Python 2.5 以降など、&lt;code&gt;xml.etree.cElementTree&lt;/code&gt; がインストールされている環境では、同程度の速度で動作するようになっている。&lt;/p&gt;
 
-&lt;h3 id=&#34;最後に:0827b0ca43409c9b3c7a16a19e49fa08&#34;&gt;最後に&lt;/h3&gt;
+&lt;h3 id=&#34;最後に&#34;&gt;最後に&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;XML を扱うなら、&lt;a href=&#34;http://docs.python.org/lib/module-xml.etree.ElementTree.html&#34;&gt;xml.etree&lt;/a&gt; は一見の価値あり&lt;/li&gt;
@@ -290,7 +288,7 @@ checking for rl_completion_matches in -lreadline... no
 
 &lt;p&gt;ヒストリ機能やキャレット移動のショートカットが使えないのは、やはり不便だ。これはなんとかしたい。&lt;/p&gt;
 
-&lt;h3 id=&#34;macports-で-gnu-readline-ライブラリをインストール:5839a3b3f349c2d8d881ce8086a647d3&#34;&gt;MacPorts で GNU Readline ライブラリをインストール&lt;/h3&gt;
+&lt;h3 id=&#34;macports-で-gnu-readline-ライブラリをインストール&#34;&gt;MacPorts で GNU Readline ライブラリをインストール&lt;/h3&gt;
 
 &lt;p&gt;まずは &lt;a href=&#34;http://tiswww.case.edu/php/chet/readline/rltop.html&#34;&gt;GNU Readline&lt;/a&gt; ライブラリをインストールしよう。&lt;a href=&#34;http://www.macports.org/&#34;&gt;MacPorts&lt;/a&gt; を利用するのが簡単だろう。&lt;/p&gt;
 
@@ -306,7 +304,7 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.5.dyl
 lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib -&amp;gt; libreadline.5.1.dylib
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;gnu-readline-ライブラリの場所を指定して-python-をビルド:5839a3b3f349c2d8d881ce8086a647d3&#34;&gt;GNU Readline ライブラリの場所を指定して Python をビルド&lt;/h3&gt;
+&lt;h3 id=&#34;gnu-readline-ライブラリの場所を指定して-python-をビルド&#34;&gt;GNU Readline ライブラリの場所を指定して Python をビルド&lt;/h3&gt;
 
 &lt;p&gt;あとは新しくインストールされたライブラリの場所を指定して、Python をビルドしなおすだけだ。&lt;/p&gt;
 
@@ -414,7 +412,7 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
 
 &lt;p&gt;おそらく、完了したタスクも削除されることはなく、ずっと溜まっているのが原因だろう。iGTD は内部のデータベースとして SQLite を使っているので、&lt;a href=&#34;http://weblog.metareal.org/2007/08/23/optimize-the-apple-mail-app-database/&#34;&gt;Mail.app を vacuum して高速化&lt;/a&gt;と同じ方法で高速化できる。&lt;/p&gt;
 
-&lt;h3 id=&#34;vacuum-analyze:4706c69e147ab72c3d52ed11f5f71025&#34;&gt;VACUUM ANALYZE&lt;/h3&gt;
+&lt;h3 id=&#34;vacuum-analyze&#34;&gt;VACUUM ANALYZE&lt;/h3&gt;
 
 &lt;p&gt;手順は簡単で、ターミナルから以下のコマンドを実行するだけだ（iGTD が起動中なら終了する必要があるかもしれない）。&lt;/p&gt;
 
@@ -423,7 +421,7 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
 
 &lt;p&gt;このコマンドはデータベースから不要な領域を回収し、統計情報を更新することで実行速度を向上させる。これだけで体感的にはかなり速くなった。&lt;/p&gt;
 
-&lt;h3 id=&#34;参考:4706c69e147ab72c3d52ed11f5f71025&#34;&gt;参考&lt;/h3&gt;
+&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.sqlite.org/lang_analyze.html&#34;&gt;SQLite Query Language: ANALYZE&lt;/a&gt;&lt;/li&gt;
@@ -448,8 +446,7 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
 &lt;li&gt;カメラの種類を選択するプルダウンメニューが表示されるので「&lt;strong&gt;USB Video Class Video&lt;/strong&gt;」を選択&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2448186075/&#34;&gt;&lt;img src=&#34;http://farm3.static.flickr.com/2189/2448186075_9e2d68a91b_o.gif&#34; alt=&#34;Webcam on Flash Player&#34; /&gt;
-&lt;/a&gt;これで iSight からの入力を受け取れるようになる。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2448186075/&#34;&gt;&lt;img src=&#34;http://farm3.static.flickr.com/2189/2448186075_9e2d68a91b_o.gif&#34; alt=&#34;Webcam on Flash Player&#34; /&gt;&lt;/a&gt;これで iSight からの入力を受け取れるようになる。&lt;/p&gt;
 
 &lt;p&gt;ちなみに、ここまでして見たかったページは &lt;a href=&#34;http://incubator.quasimondo.com/flash/minority_cube.php&#34;&gt;Quasimondo : Incubator : Processing : Minority Cube&lt;/a&gt;、Webcam に映した手の動きでキューブを回せる、というデモ。実際に操作してみると、不思議な満足感がある。面白い。&lt;/p&gt;
 </description>
@@ -491,13 +488,13 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
 
 &lt;p&gt;というわけで、Apple のパッチを適用した Python 2.5.1 の&lt;a href=&#34;http://snipplr.com/view/6028/apples-modifications-to-python-251-localepy-/&#34;&gt;パッチファイルをアップしておく&lt;/a&gt;。以降は、このパッチファイルを作成するまでの詳細である。&lt;/p&gt;
 
-&lt;h3 id=&#34;mac-os-x-に標準でパッケージングされている-python:363e045729c80ba947d40f29bb6d79a6&#34;&gt;Mac OS X に標準でパッケージングされている Python&lt;/h3&gt;
+&lt;h3 id=&#34;mac-os-x-に標準でパッケージングされている-python&#34;&gt;Mac OS X に標準でパッケージングされている Python&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://developer.apple.com/&#34;&gt;Apple Developer Connection&lt;/a&gt; の &lt;a href=&#34;http://developer.apple.com/opensource/index.html&#34;&gt;Open Source&lt;/a&gt; ページでは Mac OS X のベースとなっている Darwin のソースコードが公開されている。&lt;a href=&#34;http://www.opensource.apple.com/darwinsource/10.4.9.x86/&#34;&gt;現時点での最新版は Mac OS X 10.4.9 のもの&lt;/a&gt;なので、今回のパッチはこれを基にした。&lt;/p&gt;
 
 &lt;p&gt;上記ページからダウンロードできる &lt;a href=&#34;http://www.opensource.apple.com/darwinsource/tarballs/other/python-16.1.3.tar.gz&#34;&gt;python-16.1.3.tar.gz&lt;/a&gt; には Mac OS X にバンドルされている Python に適用されたパッチが含まれているので、このうち、ロケール周りに関係あるものを Python 2.5.1 のソースコードに適用すればよさそうだ。&lt;/p&gt;
 
-&lt;h3 id=&#34;apple-のパッチを-python-2-5-1-に適用する:363e045729c80ba947d40f29bb6d79a6&#34;&gt;Apple のパッチを Python 2.5.1 に適用する&lt;/h3&gt;
+&lt;h3 id=&#34;apple-のパッチを-python-2-5-1-に適用する&#34;&gt;Apple のパッチを Python 2.5.1 に適用する&lt;/h3&gt;
 
 &lt;p&gt;まずは、Python 2.5.1 のソースコードと Apple のパッチ (python-16.1.3.tar.gz) を同じディレクトリにダウンロードして展開する。&lt;/p&gt;
 
@@ -669,8 +666,7 @@ end tell
       <guid>http://www.metareal.org/2007/08/11/review-my-igtd-experience/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1077839654/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1373/1077839654_3a2455e628_o.gif&#34; alt=&#34;iGTD Screenshot&#34; /&gt;
-&lt;/a&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1077839654/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1373/1077839654_3a2455e628_o.gif&#34; alt=&#34;iGTD Screenshot&#34; /&gt;&lt;/a&gt;
     © &lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/&#34;&gt;Takanori Ishikawa&lt;/a&gt;, Some rights reserved&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/08/10/igtd-first-impression/&#34;&gt;前回&lt;/a&gt;書いたように、&lt;a href=&#34;http://www.rememberthemilk.com/&#34;&gt;Remember The Milk&lt;/a&gt; から &lt;a href=&#34;http://igtd.pl/iGTD/&#34;&gt;iGTD&lt;/a&gt; に乗り換えた。&lt;/p&gt;
@@ -686,7 +682,7 @@ end tell
 
 &lt;p&gt;ふたつしかない。荒削りな部分もあるが、UI はまとまっていると思う。&lt;/p&gt;
 
-&lt;h3 id=&#34;ちょっとした不満:2544569988e59c8c88b3ad0f2bc6f7c7&#34;&gt;ちょっとした不満&lt;/h3&gt;
+&lt;h3 id=&#34;ちょっとした不満&#34;&gt;ちょっとした不満&lt;/h3&gt;
 
 &lt;p&gt;これらはヘルプを読んでも片づかなかった不満。&lt;/p&gt;
 
@@ -698,7 +694,7 @@ end tell
 &lt;li&gt;&lt;strong&gt;アイコン&lt;/strong&gt; かわいくない&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&#34;最後に:2544569988e59c8c88b3ad0f2bc6f7c7&#34;&gt;最後に&lt;/h3&gt;
+&lt;h3 id=&#34;最後に&#34;&gt;最後に&lt;/h3&gt;
 
 &lt;p&gt;やはり、デスクトップ・アプリケーションの強みなのだが、&lt;/p&gt;
 
@@ -719,8 +715,7 @@ end tell
       <guid>http://www.metareal.org/2007/08/10/igtd-first-impression/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1072315915/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1008/1072315915_bee7dddcbc_o.jpg&#34; alt=&#34;Remember The Milk To iGTD&#34; /&gt;
-&lt;/a&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1072315915/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1008/1072315915_bee7dddcbc_o.jpg&#34; alt=&#34;Remember The Milk To iGTD&#34; /&gt;&lt;/a&gt;
     © &lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/&#34;&gt;Takanori Ishikawa&lt;/a&gt;, Some rights reserved&lt;/p&gt;
 
 &lt;p&gt;これまで TODO 管理には &lt;a href=&#34;http://www.rememberthemilk.com/&#34;&gt;Remember The Milk&lt;/a&gt; を愛用していた。&lt;/p&gt;
@@ -731,7 +726,7 @@ end tell
 
 &lt;p&gt;でも、今日、&lt;a href=&#34;http://igtd.pl/iGTD/&#34;&gt;iGTD&lt;/a&gt; に乗り換えた。何故か？&lt;/p&gt;
 
-&lt;h3 id=&#34;何故-remember-the-milk-では駄目になったのか:2d36c0a37064aeb015b97f8bfa877375&#34;&gt;何故、Remember The Milk では駄目になったのか&lt;/h3&gt;
+&lt;h3 id=&#34;何故-remember-the-milk-では駄目になったのか&#34;&gt;何故、Remember The Milk では駄目になったのか&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;重い&lt;/strong&gt;。特にログイン後、タスクを表示するときが重い。&lt;/li&gt;
@@ -741,7 +736,7 @@ end tell
 
 &lt;p&gt;他にも「マニュアルでソートできない」とか細かい不満もあるのだが、こうしてみると、自分にとっての GTD アプリは「思いついたときに、即座に使えること」が重要なのが分かる。&lt;/p&gt;
 
-&lt;h3 id=&#34;web-アプリケーションと-gtd:2d36c0a37064aeb015b97f8bfa877375&#34;&gt;Web アプリケーションと GTD&lt;/h3&gt;
+&lt;h3 id=&#34;web-アプリケーションと-gtd&#34;&gt;Web アプリケーションと GTD&lt;/h3&gt;
 
 &lt;p&gt;そして、上にあげた不満点は &lt;a href=&#34;http://www.rememberthemilk.com/&#34;&gt;Remember The Milk&lt;/a&gt; に限った話ではなく、多かれ少なかれ、&lt;strong&gt;すべての Web アプリケーションに当てはまる&lt;/strong&gt;ものばかりだ。今回、デスクトップ・アプリケーションである &lt;a href=&#34;http://igtd.pl/iGTD/&#34;&gt;iGTD&lt;/a&gt; に乗り換えたのは必然、といえば必然の流れなのかもしれない。&lt;/p&gt;
 
@@ -887,7 +882,7 @@ LookupError: unknown encoding: X-MAC-JAPANESE
 
 &lt;p&gt;です。&lt;/p&gt;
 
-&lt;h3 id=&#34;ソースコードを読む:420dbfa210f789f3a114411bdddb14ea&#34;&gt;ソースコードを読む&lt;/h3&gt;
+&lt;h3 id=&#34;ソースコードを読む&#34;&gt;ソースコードを読む&lt;/h3&gt;
 
 &lt;p&gt;スタックトレースから例外の発生箇所は簡単に分かるので、ソースコードを読んでみる (&lt;code&gt;/trac/util/datefmt.py&lt;/code&gt;) 。&lt;/p&gt;
 
@@ -919,7 +914,7 @@ LookupError: unknown encoding: X-MAC-JAPANESE
 
 &lt;p&gt;まあ、1. が真っ当なんだろうけど、2. でも問題ないというか、むしろ、&lt;code&gt;getpreferredencoding&lt;/code&gt; という名前のメソッドがサポートされていないエンコーディングを返すよりいいんじゃないだろうか。&lt;/p&gt;
 
-&lt;h3 id=&#34;localmodule-c-を変更:420dbfa210f789f3a114411bdddb14ea&#34;&gt;_localmodule.c を変更&lt;/h3&gt;
+&lt;h3 id=&#34;localmodule-c-を変更&#34;&gt;_localmodule.c を変更&lt;/h3&gt;
 
 &lt;p&gt;とりあえず、Python 2.5.1 の &lt;code&gt;Modules/_localemodule.c&lt;/code&gt; で、&lt;code&gt;X-MAC-JAPANESE&lt;/code&gt; の場合は &lt;code&gt;shift_jis&lt;/code&gt; を返すように変更してみた。&lt;/p&gt;
 

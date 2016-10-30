@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Google on METAREAL</title>
-    <link>http://www.metareal.org/tags/google/</link>
-    <description>Recent content in Google on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/google/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 23 Feb 2010 23:26:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/google/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -66,7 +65,7 @@ au BufRead,BufNewFile *.go set filetype=go
 
 &lt;p&gt;Google が開発、公開している JavaScript 処理系は、その名も &lt;a href=&#34;http://code.google.com/p/v8/&#34;&gt;v8&lt;/a&gt;。&lt;/p&gt;
 
-&lt;h3 id=&#34;v8-の特徴:6b1900b58191e8d3cb79ebccaf274941&#34;&gt;v8 の特徴&lt;/h3&gt;
+&lt;h3 id=&#34;v8-の特徴&#34;&gt;v8 の特徴&lt;/h3&gt;
 
 &lt;p&gt;では、v8 には既存の処理系に比べて、どのような利点があるのだろうか。Google がわざわざ独自に開発し、Chrome という重要なプロダクトに搭載して公開するくらいだから、そこには他の処理系では達成できないアドバンテージがあるはずである。&lt;/p&gt;
 
@@ -94,7 +93,7 @@ v8 のガベージコレクションの特徴は以下のとおりである：&l
 
 &lt;p&gt;総じて、バランスの良い実装を選びながら、特にメモリ効率に気をつかっている印象を受ける。&lt;/p&gt;
 
-&lt;h3 id=&#34;試す:6b1900b58191e8d3cb79ebccaf274941&#34;&gt;試す&lt;/h3&gt;
+&lt;h3 id=&#34;試す&#34;&gt;試す&lt;/h3&gt;
 
 &lt;p&gt;どうだろう？ v8 に興味が湧いてきたんじゃないだろうか。&lt;/p&gt;
 
@@ -137,7 +136,7 @@ scons: Building targets ...
 
 &lt;p&gt;同じディレクトリに &lt;code&gt;libv8.a&lt;/code&gt; というライブラリができたはずだ。&lt;/p&gt;
 
-&lt;h3 id=&#34;簡単な-c-プログラムで使ってみよう:6b1900b58191e8d3cb79ebccaf274941&#34;&gt;簡単な C++ プログラムで使ってみよう&lt;/h3&gt;
+&lt;h3 id=&#34;簡単な-c-プログラムで使ってみよう&#34;&gt;簡単な C++ プログラムで使ってみよう&lt;/h3&gt;
 
 &lt;p&gt;他の C++ プログラムに組み込んで使うことを念頭に開発されているのも、v8 の特徴だ。プロジェクト・サイトにある &lt;a href=&#34;http://code.google.com/apis/v8/get_started.html&#34;&gt;Hello World プログラム&lt;/a&gt;よりは実用的なプログラムで感触をつかんでみよう。&lt;/p&gt;
 
@@ -210,7 +209,7 @@ fib(10)
 55
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;最後に:6b1900b58191e8d3cb79ebccaf274941&#34;&gt;最後に&lt;/h3&gt;
+&lt;h3 id=&#34;最後に&#34;&gt;最後に&lt;/h3&gt;
 
 &lt;p&gt;現時点では、v8 が実際のところどれだけのものなのか、確証をもって言えることは多くない。しかし、v8 の登場で強く感じたことがふたつある。&lt;/p&gt;
 
@@ -234,7 +233,7 @@ fib(10)
 
 &lt;p&gt;改行やインデントを加えて読みやすくしたソースコードを基に、履歴を保存する処理や興味深い部分を紹介する。&lt;/p&gt;
 
-&lt;h3 id=&#34;検索クエリーの保存:34a1dfb20d7c6856f926f07ef5ad2cdf&#34;&gt;検索クエリーの保存&lt;/h3&gt;
+&lt;h3 id=&#34;検索クエリーの保存&#34;&gt;検索クエリーの保存&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;if (document.images) {
   new Image().src=&amp;quot;/url?sa=Q&amp;amp;client=safari&amp;amp;rls=ja-jp&amp;amp;q=...&amp;quot;;
@@ -245,7 +244,7 @@ fib(10)
 
 &lt;p&gt;URL から推測するに検索クエリーを保存しているのだろう。&lt;/p&gt;
 
-&lt;h3 id=&#34;クリックされたページの-url-を保存:34a1dfb20d7c6856f926f07ef5ad2cdf&#34;&gt;クリックされたページの URL を保存&lt;/h3&gt;
+&lt;h3 id=&#34;クリックされたページの-url-を保存&#34;&gt;クリックされたページの URL を保存&lt;/h3&gt;
 
 &lt;p&gt;クリックされたページの URL を保存する処理は、各リンクの &lt;code&gt;onmousedown&lt;/code&gt; に JavaScript を仕込むことで実現している。&lt;/p&gt;
 
@@ -254,7 +253,7 @@ fib(10)
 
 &lt;p&gt;リンクをクリックすると &lt;code&gt;asq&lt;/code&gt; 関数が実行されたのち、ページに遷移する、というわけだ。&lt;/p&gt;
 
-&lt;h3 id=&#34;asq-関数の実装:34a1dfb20d7c6856f926f07ef5ad2cdf&#34;&gt;asq 関数の実装&lt;/h3&gt;
+&lt;h3 id=&#34;asq-関数の実装&#34;&gt;asq 関数の実装&lt;/h3&gt;
 
 &lt;p&gt;では、&lt;code&gt;asq&lt;/code&gt; 関数はどのような実装になっているのだろう。それなりに長いので些末な部分は削除したソースは以下の通り。&lt;/p&gt;
 
@@ -293,7 +292,7 @@ fib(10)
 
 &lt;p&gt;&lt;code&gt;XMLHttpRequest&lt;/code&gt; を使って、クリックされたページの URL を非同期送信している。強調した部分では、&lt;code&gt;setTimeout&lt;/code&gt; でタイムアウト処理をしているようだ。&lt;/p&gt;
 
-&lt;h3 id=&#34;ie-6-以下の場合は:34a1dfb20d7c6856f926f07ef5ad2cdf&#34;&gt;IE 6 以下の場合は？&lt;/h3&gt;
+&lt;h3 id=&#34;ie-6-以下の場合は&#34;&gt;IE 6 以下の場合は？&lt;/h3&gt;
 
 &lt;p&gt;見ての通り、&lt;code&gt;asq&lt;/code&gt; 関数の実装は &lt;code&gt;XMLHttpRequest&lt;/code&gt; オブジェクトがあるかどうかに依存している。&lt;/p&gt;
 

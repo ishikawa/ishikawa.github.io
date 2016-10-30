@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rparsec on METAREAL</title>
-    <link>http://www.metareal.org/tags/rparsec/</link>
-    <description>Recent content in Rparsec on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/rparsec/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 16 Dec 2007 11:10:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/rparsec/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -20,7 +19,7 @@
 
 &lt;p&gt;&lt;a href=&#34;http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec&#34;&gt;rparsec&lt;/a&gt; では文法要素の繰り返しを指定する方法が複数用意されている。&lt;/p&gt;
 
-&lt;h3 id=&#34;繰り返し:332ecd03518e220a494ac99f0f300b0c&#34;&gt;繰り返し&lt;/h3&gt;
+&lt;h3 id=&#34;繰り返し&#34;&gt;繰り返し&lt;/h3&gt;
 
 &lt;p&gt;まずは「&lt;a href=&#34;http://weblog.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/&#34;&gt;RParsec の many と many_ の違い&lt;/a&gt;」でも解説した &lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000016&#34;&gt;&lt;code&gt;many&lt;/code&gt;&lt;/a&gt; と &lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000015&#34;&gt;&lt;code&gt;many_&lt;/code&gt;&lt;/a&gt; があり、これで m 回以上の繰り返しを指定できる（正規表現でいう &lt;code&gt;*&lt;/code&gt;, &lt;code&gt;+&lt;/code&gt;, &lt;code&gt;{n,}&lt;/code&gt;）。&lt;/p&gt;
 
@@ -28,7 +27,7 @@
 
 &lt;p&gt;なお、メソッド名の最後にあるアンダースコアの有無については、「&lt;a href=&#34;http://weblog.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/&#34;&gt;RParsec の many と many_ の違い&lt;/a&gt;」で解説したとおりで、アンダースコアのつかないメソッドはすべての結果を配列で返し、アンダースコアのつくメソッドは最後の結果のみを返す。&lt;/p&gt;
 
-&lt;h3 id=&#34;選択:332ecd03518e220a494ac99f0f300b0c&#34;&gt;選択&lt;/h3&gt;
+&lt;h3 id=&#34;選択&#34;&gt;選択&lt;/h3&gt;
 
 &lt;p&gt;正規表現でいうところの選択も用意されている。このためのメソッドは &lt;code&gt;|&lt;/code&gt; なので、見た目は正規表現と似通っている。&lt;/p&gt;
 
@@ -112,7 +111,7 @@ parser.parse &#39;4 * 2.5&#39;
 
 &lt;p&gt;両者の違いは何だろう？&lt;/p&gt;
 
-&lt;h3 id=&#34;many-と-many-の違い:15dabfe992c245acbc1c9576207a5c48&#34;&gt;many と many_ の違い&lt;/h3&gt;
+&lt;h3 id=&#34;many-と-many-の違い&#34;&gt;many と many_ の違い&lt;/h3&gt;
 
 &lt;p&gt;上記リンク先の API リファレンスによれば、&lt;/p&gt;
 
@@ -164,7 +163,7 @@ irb(main):006:0&amp;gt; whitespace.many_.parse(&amp;quot;&amp;quot;)
 &lt;li&gt;&lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/&#34;&gt;rparsec RDoc&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;パーサ-コンビネータ:524e73b247063345d6608a37dd357fd4&#34;&gt;パーサ・コンビネータ&lt;/h3&gt;
+&lt;h3 id=&#34;パーサ-コンビネータ&#34;&gt;パーサ・コンビネータ&lt;/h3&gt;
 
 &lt;p&gt;Parsec、パーサ・コンビネータについては「&lt;a href=&#34;http://d.hatena.ne.jp/tanakh/20040730&#34;&gt;最強のパーザー、Parser Combinator - 純粋関数型雑記帳&lt;/a&gt;」が参考になる。&lt;/p&gt;
 
@@ -178,14 +177,14 @@ irb(main):006:0&amp;gt; whitespace.many_.parse(&amp;quot;&amp;quot;)
 
 &lt;p&gt;などがあるようだ。&lt;/p&gt;
 
-&lt;h3 id=&#34;rparsec-のインストール:524e73b247063345d6608a37dd357fd4&#34;&gt;rparsec のインストール&lt;/h3&gt;
+&lt;h3 id=&#34;rparsec-のインストール&#34;&gt;rparsec のインストール&lt;/h3&gt;
 
 &lt;p&gt;普通に &lt;a href=&#34;http://rubyforge.org/projects/rparsec/&#34;&gt;RubyForge&lt;/a&gt; で gem がホスティングされているので、&lt;code&gt;gem&lt;/code&gt; コマンド一発でインストールできる。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;% sudo gem install rparsec
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;四則演算デモ:524e73b247063345d6608a37dd357fd4&#34;&gt;四則演算デモ&lt;/h3&gt;
+&lt;h3 id=&#34;四則演算デモ&#34;&gt;四則演算デモ&lt;/h3&gt;
 
 &lt;p&gt;まずは公式ページにもデモとして紹介されている四則演算から。&lt;/p&gt;
 

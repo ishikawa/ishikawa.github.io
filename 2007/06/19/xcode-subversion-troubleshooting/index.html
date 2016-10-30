@@ -27,14 +27,13 @@
   <div class="content">
     
 
-<p><a href="http://www.flickr.com/photos/ishikawa_takanori/564796906/"><img src="http://farm2.static.flickr.com/1293/564796906_6c386b03b5.jpg" alt="Xcode SCM Preference" />
-</a></p>
+<p><a href="http://www.flickr.com/photos/ishikawa_takanori/564796906/"><img src="http://farm2.static.flickr.com/1293/564796906_6c386b03b5.jpg" alt="Xcode SCM Preference" /></a></p>
 
 <p>Xcode の <a href="http://developer.apple.com/DOCUMENTATION/DeveloperTools/Conceptual/XcodeUserGuide/Contents/Resources/ja.lproj/04_scm/chapter_25_section_1.html#//apple_ref/doc/uid/TP40002684-BABCCJCJ">SCM 連携機能</a>は、すくなくとも <a href="http://www.eclipse.org/">Eclipse</a> なんかに比べると貧弱で、実作業ではコマンドラインで <code>svn</code> を使っている。</p>
 
 <p>それでも一度は試しておきたい、と試してみたときの、あまり一般的ではないトラブルシューティングを覚え書き。</p>
 
-<h3 id="svn-ssh-で-22-番以外のポートを使いたいとき:4c169007c75ddb3eb25a6558cc5dda08">svn+ssh で 22 番以外のポートを使いたいとき</h3>
+<h3 id="svn-ssh-で-22-番以外のポートを使いたいとき">svn+ssh で 22 番以外のポートを使いたいとき</h3>
 
 <p>これは別に Xcode に限った話じゃないけど、<code>svn+ssh</code> プロトコルで 22 番以外のポートを使う場合は、環境変数 <code>SVN_SSH</code> で <code>ssh</code> プログラムの引数に指定します。</p>
 
@@ -46,7 +45,7 @@
 <pre><code>open ./Example.xcodeproj
 </code></pre>
 
-<h3 id="それでも-パスフレーズ入力できないとき:4c169007c75ddb3eb25a6558cc5dda08">それでも、パスフレーズ入力できないとき</h3>
+<h3 id="それでも-パスフレーズ入力できないとき">それでも、パスフレーズ入力できないとき</h3>
 
 <p>上の方法で Xcode 起動して、SCM を有効にしても、パスフレーズの入力画面などがでず、<code>Permission denied</code> で怒られてしまうことがある &hellip; というか、僕がまさにそれ。</p>
 

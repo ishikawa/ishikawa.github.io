@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Flash on METAREAL</title>
-    <link>http://www.metareal.org/tags/flash/</link>
-    <description>Recent content in Flash on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/flash/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 09 Dec 2008 08:34:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/flash/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -20,7 +19,7 @@
 
 &lt;p&gt;&lt;a href=&#34;http://labs.adobe.com/&#34;&gt;Adobe Labs&lt;/a&gt; の研究プロジェクト、コードネーム &lt;a href=&#34;http://labs.adobe.com/technologies/alchemy/&#34;&gt;Alchemy&lt;/a&gt; を試してみた。同プロジェクトについては、すでに多くの方が書かれており、今更な感もあるが、以前に&lt;a href=&#34;http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/&#34;&gt;紹介記事を書いている&lt;/a&gt;ことだし、備忘録も兼ねて残しておく。&lt;/p&gt;
 
-&lt;h3 id=&#34;alchemy-について:9f30228ae7bbbce1de769aa05d1ff356&#34;&gt;Alchemy について&lt;/h3&gt;
+&lt;h3 id=&#34;alchemy-について&#34;&gt;Alchemy について&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://labs.adobe.com/technologies/alchemy/&#34;&gt;Alchemy&lt;/a&gt; プロジェクトで&lt;a href=&#34;http://labs.adobe.com/downloads/alchemy.html&#34;&gt;配布&lt;/a&gt;されているツールを使うと、C/C++ コードで記述されたプログラムを ActionScript Virtual Machine (AVM2) で動作するように変換できる（AVM2 については &lt;a href=&#34;http://www.adobe.com/devnet/actionscript/articles/avm2overview.pdf&#34;&gt;Adobe ActionScript Virtual Machine 2 (AVM2) Overview (PDF, 400K)&lt;/a&gt; を参照）。&lt;/p&gt;
 
@@ -33,7 +32,7 @@
 &lt;li&gt;C/C++ コードから &lt;code&gt;&amp;quot;AS3.h&amp;quot;&lt;/code&gt; で宣言された API を使うことで、Flash Player にアクセス可能&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;インストール:9f30228ae7bbbce1de769aa05d1ff356&#34;&gt;インストール&lt;/h3&gt;
+&lt;h3 id=&#34;インストール&#34;&gt;インストール&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://labs.adobe.com/wiki/index.php/Alchemy:Documentation:Getting_Started&#34;&gt;Alchemy:Documentation:Getting Started&lt;/a&gt; を参考に、インストール作業を進めていく。&lt;/p&gt;
 
@@ -70,7 +69,7 @@ PATH=${PATH}:${ALCHEMY_HOME}/achacks
 export PATH
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;サンプルを試す:9f30228ae7bbbce1de769aa05d1ff356&#34;&gt;サンプルを試す&lt;/h3&gt;
+&lt;h3 id=&#34;サンプルを試す&#34;&gt;サンプルを試す&lt;/h3&gt;
 
 &lt;p&gt;では、同梱されているサンプルを試してみよう：&lt;/p&gt;
 
@@ -131,7 +130,7 @@ TraceOutputFileEnable=1
 
 &lt;p&gt;やっとデバッグの準備が整った。デバッグ用 Flash Player で &lt;code&gt;EchoTest.swf&lt;/code&gt; を開き、&lt;code&gt;flashlog.txt&lt;/code&gt; に &lt;strong&gt;foo&lt;/strong&gt; という文字列が書き込まれれば成功だ。Alchemy でコンパイルしたプログラムが無事、動作していることになる。&lt;/p&gt;
 
-&lt;h3 id=&#34;参考情報:9f30228ae7bbbce1de769aa05d1ff356&#34;&gt;参考情報&lt;/h3&gt;
+&lt;h3 id=&#34;参考情報&#34;&gt;参考情報&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://labs.adobe.com/wiki/index.php/Alchemy:FAQ&#34;&gt;Alchemy:FAQ - Adobe Labs&lt;/a&gt;&lt;/li&gt;
@@ -154,7 +153,7 @@ TraceOutputFileEnable=1
 
 &lt;p&gt;&lt;a href=&#34;http://www.toolness.com/wp/?p=52&#34;&gt;Running C and Python Code on The Web&lt;/a&gt; によると、Adobe の Scott Petersen 氏が大変興味深いツールを開発中のようだ。このツールを使うと、C 言語で書かれたソフトウェアを Flash Player で実行できるようになる。また、このツールはオープンソースで公開されるとのこと。&lt;/p&gt;
 
-&lt;h3 id=&#34;llvm-tamarin:8d737c7358e6143323105190bb6ec8ae&#34;&gt;LLVM, Tamarin&lt;/h3&gt;
+&lt;h3 id=&#34;llvm-tamarin&#34;&gt;LLVM, Tamarin&lt;/h3&gt;
 
 &lt;p&gt;ソフトウェアを Flash Player で実行可能な形式に変換するためには、ソフトウェアのソースコードが必要になる。変換の手順は以下のとおり。&lt;/p&gt;
 
@@ -167,7 +166,7 @@ TraceOutputFileEnable=1
 
 &lt;p&gt;先進的な最適化を備えたバックエンドとして注目を集める LLVM プロジェクトだが、その成果物を、フロントエンドとして利用しているのが面白い（もちろん、LLVM アセンブリの段階でも、&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E5%AE%9A%E6%95%B0%E7%95%B3%E3%81%BF%E8%BE%BC%E3%81%BF&#34;&gt;定数畳み込み&lt;/a&gt;や&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%87%E3%83%83%E3%83%89%E3%82%B3%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4&#34;&gt;デッドコード削除&lt;/a&gt;といった従来の最適化は施されているはずなので、フロントエンドとしてのみ利点があるわけではない）。&lt;/p&gt;
 
-&lt;h3 id=&#34;quake-nintendo:8d737c7358e6143323105190bb6ec8ae&#34;&gt;Quake, Nintendo&lt;/h3&gt;
+&lt;h3 id=&#34;quake-nintendo&#34;&gt;Quake, Nintendo&lt;/h3&gt;
 
 &lt;p&gt;もっとも、命令単位の変換はそれほど難しいものでもないし、実用的なアプリケーションが動作するのかどうか、気になるところだ。そこで、コンパイラだけではなく、インフラも整備されている。&lt;/p&gt;
 
@@ -183,7 +182,7 @@ TraceOutputFileEnable=1
 
 &lt;p&gt;ゲームだけではない。デモでは同様に、&lt;a href=&#34;http://www.lua.org/&#34;&gt;Lua&lt;/a&gt;, &lt;a href=&#34;http://www.ruby-lang.org/ja/&#34;&gt;Ruby&lt;/a&gt;, &lt;a href=&#34;http://www.perl.org/&#34;&gt;Perl&lt;/a&gt;, そして &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; といった LL 言語の処理系が動作していた、という。改めて書くが、これらはすべて、&lt;strong&gt;Flash Player 上での出来事だ&lt;/strong&gt;。&lt;/p&gt;
 
-&lt;h3 id=&#34;python-javascript-nestedvm:8d737c7358e6143323105190bb6ec8ae&#34;&gt;Python, JavaScript, NestedVM&lt;/h3&gt;
+&lt;h3 id=&#34;python-javascript-nestedvm&#34;&gt;Python, JavaScript, NestedVM&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.toolness.com/wp/?p=52&#34;&gt;元記事&lt;/a&gt;ではこのあと、&lt;/p&gt;
 
@@ -272,8 +271,7 @@ SWFInterface.prototype = {
 &lt;li&gt;カメラの種類を選択するプルダウンメニューが表示されるので「&lt;strong&gt;USB Video Class Video&lt;/strong&gt;」を選択&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2448186075/&#34;&gt;&lt;img src=&#34;http://farm3.static.flickr.com/2189/2448186075_9e2d68a91b_o.gif&#34; alt=&#34;Webcam on Flash Player&#34; /&gt;
-&lt;/a&gt;これで iSight からの入力を受け取れるようになる。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2448186075/&#34;&gt;&lt;img src=&#34;http://farm3.static.flickr.com/2189/2448186075_9e2d68a91b_o.gif&#34; alt=&#34;Webcam on Flash Player&#34; /&gt;&lt;/a&gt;これで iSight からの入力を受け取れるようになる。&lt;/p&gt;
 
 &lt;p&gt;ちなみに、ここまでして見たかったページは &lt;a href=&#34;http://incubator.quasimondo.com/flash/minority_cube.php&#34;&gt;Quasimondo : Incubator : Processing : Minority Cube&lt;/a&gt;、Webcam に映した手の動きでキューブを回せる、というデモ。実際に操作してみると、不思議な満足感がある。面白い。&lt;/p&gt;
 </description>
@@ -304,7 +302,7 @@ SWFInterface.prototype = {
 
 &lt;p&gt;前回の記事「&lt;a href=&#34;http://weblog.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd/&#34;&gt;lighttpd で Flash Video (.flv) をストリーミング配信&lt;/a&gt;」で、とりあえずストリーミング配信できることは書いた。今回は Flash の動画配信について調査したまとめ。&lt;/p&gt;
 
-&lt;h3 id=&#34;how-much:7711e8cf11829fcff8aa72c2c0c82c6a&#34;&gt;How much?&lt;/h3&gt;
+&lt;h3 id=&#34;how-much&#34;&gt;How much?&lt;/h3&gt;
 
 &lt;p&gt;一番気になっていたのは、あの馬鹿高い「&lt;a href=&#34;http://www.adobe.com/jp/products/flashmediaserver/&#34;&gt;フラッシュなんちゃらサーバ&lt;/a&gt;」を購入しないとあかんの？　というところでしたが、yuin さんがコメントしてくれた情報で解決しました。&lt;/p&gt;
 
@@ -312,7 +310,7 @@ SWFInterface.prototype = {
 
 &lt;p&gt;まあ、要するに&lt;strong&gt;タダだよ&lt;/strong&gt;、と。&lt;/p&gt;
 
-&lt;h3 id=&#34;動画フォーマット:7711e8cf11829fcff8aa72c2c0c82c6a&#34;&gt;動画フォーマット&lt;/h3&gt;
+&lt;h3 id=&#34;動画フォーマット&#34;&gt;動画フォーマット&lt;/h3&gt;
 
 &lt;p&gt;まず、動画フォーマットは &lt;strong&gt;Flash Video (&lt;code&gt;.flv&lt;/code&gt;)&lt;/strong&gt; になる。
 これについては、&lt;code&gt;.mpeg&lt;/code&gt; や &lt;code&gt;.mov&lt;/code&gt; からの変換ツールがごろごろあるはずなので詳細は割愛。&lt;/p&gt;
@@ -324,7 +322,7 @@ SWFInterface.prototype = {
 &lt;li&gt;&lt;a href=&#34;http://rubyforge.org/projects/flvtool2/&#34;&gt;FLVTool2&lt;/a&gt;  &lt;code&gt;.flv&lt;/code&gt; を操作。メタデータ追加など。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;flash-player-の事情:7711e8cf11829fcff8aa72c2c0c82c6a&#34;&gt;Flash Player の事情&lt;/h3&gt;
+&lt;h3 id=&#34;flash-player-の事情&#34;&gt;Flash Player の事情&lt;/h3&gt;
 
 &lt;p&gt;クライアント (Flash Player) 側では、&lt;a href=&#34;http://livedocs.macromedia.com/flex/2_jp/langref/flash/net/NetConnection.html&#34;&gt;&lt;code&gt;NetConnection&lt;/code&gt;&lt;/a&gt; でサーバに接続する。そして、その接続から &lt;a href=&#34;http://livedocs.macromedia.com/flex/2_jp/langref/flash/net/NetStream.html&#34;&gt;&lt;code&gt;NetStream&lt;/code&gt;&lt;/a&gt; インスタンスを生成し、これを &lt;code&gt;Video&lt;/code&gt; インスタンスに &lt;code&gt;attachVideo()&lt;/code&gt; することで &lt;code&gt;.flv&lt;/code&gt; の再生が可能になる。&lt;/p&gt;
 
@@ -343,7 +341,7 @@ video.attachVideo(_ns);
 &lt;li&gt;&lt;a href=&#34;http://www.osflash.org/red5/&#34;&gt;Red5 : Open Source Flash Server&lt;/a&gt; (RTMP を自力で解析)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;flash-player-7-以降:7711e8cf11829fcff8aa72c2c0c82c6a&#34;&gt;Flash Player 7 以降&lt;/h3&gt;
+&lt;h3 id=&#34;flash-player-7-以降&#34;&gt;Flash Player 7 以降&lt;/h3&gt;
 
 &lt;p&gt;しかし、&lt;strong&gt;Flash Player 7&lt;/strong&gt; 以降では &lt;code&gt;NetConnection&lt;/code&gt; が HTTP による接続をサポートするようになったため、サーバ上の &lt;code&gt;.flv&lt;/code&gt; に HTTP でアクセスするだけでストリーミング（&lt;strong&gt;っぽい&lt;/strong&gt;）再生が可能になった。&lt;/p&gt;
 
@@ -355,7 +353,7 @@ video.attachVideo(_ns);
 &lt;li&gt;クライアントのローカルディスクにキャッシュされちゃう&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&#34;lighttpd:7711e8cf11829fcff8aa72c2c0c82c6a&#34;&gt;lighttpd&lt;/h3&gt;
+&lt;h3 id=&#34;lighttpd&#34;&gt;lighttpd&lt;/h3&gt;
 
 &lt;p&gt;そこで &lt;a href=&#34;http://www.lighttpd.net/&#34;&gt;lighttpd&lt;/a&gt; ですよ。&lt;/p&gt;
 

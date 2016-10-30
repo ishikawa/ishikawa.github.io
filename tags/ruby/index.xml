@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ruby on METAREAL</title>
-    <link>http://www.metareal.org/tags/ruby/</link>
-    <description>Recent content in Ruby on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/ruby/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Thu, 16 Dec 2010 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>FileUtils in Rakefile</title>
+      <link>http://www.metareal.org/post/2016/09/fileutils-in-rakefile/</link>
+      <pubDate>Thu, 22 Sep 2016 19:26:18 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/post/2016/09/fileutils-in-rakefile/</guid>
+      <description>&lt;p&gt;いつまでたっても Rakefile の書き方を覚える気になれないのだが、Rakefile では
+&lt;a href=&#34;https://docs.ruby-lang.org/ja/latest/class/FileUtils.html&#34;&gt;FileUtils&lt;/a&gt; が
+インクルードされており &lt;code&gt;cp&lt;/code&gt; や &lt;code&gt;mkdir_p&lt;/code&gt; といったメソッドが使える。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;mkdir_p &amp;quot;dir1/dir2&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;また、いくつかの拡張がされており、コマンドの実行が失敗したときに例外が投げられたり、&lt;code&gt;sh&lt;/code&gt; メソッドという
+&lt;code&gt;Kernel.system&lt;/code&gt; にように外部コマンドを呼び出すメソッドが追加されている。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/vzvu3k6k/items/7e6e5520eeb829ec1c8b&#34;&gt;Rakeのshで外部コマンドを実行する - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ruby/rake/blob/master/lib/rake/file_utils.rb&#34;&gt;rake/file_utils.rb at master · ruby/rake&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった</title>
@@ -153,7 +175,7 @@ end
 
 &lt;p&gt;&lt;a href=&#34;http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec&#34;&gt;rparsec&lt;/a&gt; では文法要素の繰り返しを指定する方法が複数用意されている。&lt;/p&gt;
 
-&lt;h3 id=&#34;繰り返し:332ecd03518e220a494ac99f0f300b0c&#34;&gt;繰り返し&lt;/h3&gt;
+&lt;h3 id=&#34;繰り返し&#34;&gt;繰り返し&lt;/h3&gt;
 
 &lt;p&gt;まずは「&lt;a href=&#34;http://weblog.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/&#34;&gt;RParsec の many と many_ の違い&lt;/a&gt;」でも解説した &lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000016&#34;&gt;&lt;code&gt;many&lt;/code&gt;&lt;/a&gt; と &lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000015&#34;&gt;&lt;code&gt;many_&lt;/code&gt;&lt;/a&gt; があり、これで m 回以上の繰り返しを指定できる（正規表現でいう &lt;code&gt;*&lt;/code&gt;, &lt;code&gt;+&lt;/code&gt;, &lt;code&gt;{n,}&lt;/code&gt;）。&lt;/p&gt;
 
@@ -161,7 +183,7 @@ end
 
 &lt;p&gt;なお、メソッド名の最後にあるアンダースコアの有無については、「&lt;a href=&#34;http://weblog.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/&#34;&gt;RParsec の many と many_ の違い&lt;/a&gt;」で解説したとおりで、アンダースコアのつかないメソッドはすべての結果を配列で返し、アンダースコアのつくメソッドは最後の結果のみを返す。&lt;/p&gt;
 
-&lt;h3 id=&#34;選択:332ecd03518e220a494ac99f0f300b0c&#34;&gt;選択&lt;/h3&gt;
+&lt;h3 id=&#34;選択&#34;&gt;選択&lt;/h3&gt;
 
 &lt;p&gt;正規表現でいうところの選択も用意されている。このためのメソッドは &lt;code&gt;|&lt;/code&gt; なので、見た目は正規表現と似通っている。&lt;/p&gt;
 
@@ -245,7 +267,7 @@ parser.parse &#39;4 * 2.5&#39;
 
 &lt;p&gt;両者の違いは何だろう？&lt;/p&gt;
 
-&lt;h3 id=&#34;many-と-many-の違い:15dabfe992c245acbc1c9576207a5c48&#34;&gt;many と many_ の違い&lt;/h3&gt;
+&lt;h3 id=&#34;many-と-many-の違い&#34;&gt;many と many_ の違い&lt;/h3&gt;
 
 &lt;p&gt;上記リンク先の API リファレンスによれば、&lt;/p&gt;
 
@@ -297,7 +319,7 @@ irb(main):006:0&amp;gt; whitespace.many_.parse(&amp;quot;&amp;quot;)
 &lt;li&gt;&lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/&#34;&gt;rparsec RDoc&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;パーサ-コンビネータ:524e73b247063345d6608a37dd357fd4&#34;&gt;パーサ・コンビネータ&lt;/h3&gt;
+&lt;h3 id=&#34;パーサ-コンビネータ&#34;&gt;パーサ・コンビネータ&lt;/h3&gt;
 
 &lt;p&gt;Parsec、パーサ・コンビネータについては「&lt;a href=&#34;http://d.hatena.ne.jp/tanakh/20040730&#34;&gt;最強のパーザー、Parser Combinator - 純粋関数型雑記帳&lt;/a&gt;」が参考になる。&lt;/p&gt;
 
@@ -311,14 +333,14 @@ irb(main):006:0&amp;gt; whitespace.many_.parse(&amp;quot;&amp;quot;)
 
 &lt;p&gt;などがあるようだ。&lt;/p&gt;
 
-&lt;h3 id=&#34;rparsec-のインストール:524e73b247063345d6608a37dd357fd4&#34;&gt;rparsec のインストール&lt;/h3&gt;
+&lt;h3 id=&#34;rparsec-のインストール&#34;&gt;rparsec のインストール&lt;/h3&gt;
 
 &lt;p&gt;普通に &lt;a href=&#34;http://rubyforge.org/projects/rparsec/&#34;&gt;RubyForge&lt;/a&gt; で gem がホスティングされているので、&lt;code&gt;gem&lt;/code&gt; コマンド一発でインストールできる。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;% sudo gem install rparsec
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;四則演算デモ:524e73b247063345d6608a37dd357fd4&#34;&gt;四則演算デモ&lt;/h3&gt;
+&lt;h3 id=&#34;四則演算デモ&#34;&gt;四則演算デモ&lt;/h3&gt;
 
 &lt;p&gt;まずは公式ページにもデモとして紹介されている四則演算から。&lt;/p&gt;
 
@@ -386,7 +408,7 @@ irb(main):002:0&amp;gt; Calculator.new.parser.parse &#39;1+2*(3-1)&#39;
 
 &lt;p&gt;「Ruby で書かれた CSS パーサを探しています」メモ。&lt;/p&gt;
 
-&lt;h3 id=&#34;ruby-css-parser-http-rubyforge-org-projects-cssparser:5c9a0d1659f01ae002c059e62562b7c3&#34;&gt;&lt;a href=&#34;http://rubyforge.org/projects/cssparser/&#34;&gt;Ruby CSS Parser&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;ruby-css-parser-http-rubyforge-org-projects-cssparser&#34;&gt;&lt;a href=&#34;http://rubyforge.org/projects/cssparser/&#34;&gt;Ruby CSS Parser&lt;/a&gt;&lt;/h3&gt;
 
 &lt;p&gt;最近 RubyForge に登録されたばかりのプロジェクト&lt;/p&gt;
 
@@ -399,7 +421,7 @@ irb(main):002:0&amp;gt; Calculator.new.parser.parse &#39;1+2*(3-1)&#39;
 &lt;li&gt;まだ実用ではない、ということだろう&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;csspool-http-rubyforge-org-projects-csspool:5c9a0d1659f01ae002c059e62562b7c3&#34;&gt;&lt;a href=&#34;http://rubyforge.org/projects/csspool/&#34;&gt;csspool&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;csspool-http-rubyforge-org-projects-csspool&#34;&gt;&lt;a href=&#34;http://rubyforge.org/projects/csspool/&#34;&gt;csspool&lt;/a&gt;&lt;/h3&gt;
 
 &lt;p&gt;W3C で公開されている CSS パーサのための共通 API &lt;a href=&#34;http://www.w3.org/TR/SAC/&#34;&gt;SAC&lt;/a&gt;（&lt;a href=&#34;http://www2.airnet.ne.jp/sardine/docs/NOTE-SAC-20000728.ja.html&#34;&gt;和訳&lt;/a&gt;）の Ruby による実装。&lt;/p&gt;
 
@@ -427,7 +449,7 @@ irb(main):002:0&amp;gt; Calculator.new.parser.parse &#39;1+2*(3-1)&#39;
 
 &lt;p&gt;正規表現で &lt;a href=&#34;http://www.unicode.org/Public/UNIDATA/Blocks.txt&#34;&gt;Unicode ブロック&lt;/a&gt;が使えれば楽なのだが、残念ながら Ruby 1.8 ではサポートされていない。&lt;/p&gt;
 
-&lt;h3 id=&#34;鬼車:a22de2c680beb67b3057f1c9e646b25f&#34;&gt;鬼車&lt;/h3&gt;
+&lt;h3 id=&#34;鬼車&#34;&gt;鬼車&lt;/h3&gt;
 
 &lt;p&gt;ちなみに 1.9 で搭載される予定の&lt;a href=&#34;http://www.geocities.jp/kosako3/oniguruma/index_ja.html&#34;&gt;鬼車&lt;/a&gt;では、以下のような形式で Unicode ブロックやカテゴリを指定できるようだ（参考：&lt;a href=&#34;http://www.geocities.jp/kosako3/oniguruma/doc/RE.ja.txt&#34;&gt;鬼車 正規表現 Version 5.6.0&lt;/a&gt;）。&lt;/p&gt;
 
@@ -439,7 +461,7 @@ irb(main):002:0&amp;gt; Calculator.new.parser.parse &#39;1+2*(3-1)&#39;
 
 &lt;p&gt;もっとも、実際に試したわけではないので、現状の Ruby 1.9 で上記のような使い方ができるのかは分からない。&lt;/p&gt;
 
-&lt;h3 id=&#34;ruby-1-8:a22de2c680beb67b3057f1c9e646b25f&#34;&gt;Ruby 1.8&lt;/h3&gt;
+&lt;h3 id=&#34;ruby-1-8&#34;&gt;Ruby 1.8&lt;/h3&gt;
 
 &lt;p&gt;結局、Ruby 1.8 では平仮名に相当するコードポイントの範囲を直接、正規表現で指定してやるのが簡単そうだ。&lt;/p&gt;
 
@@ -450,7 +472,7 @@ irb(main):002:0&amp;gt; Calculator.new.parser.parse &#39;1+2*(3-1)&#39;
 
 &lt;p&gt;コードポイントから UTF-8 リテラル文字列への変換に &lt;a href=&#34;http://www.ruby-lang.org/ja/man/?cmd=view;name=Array#pack&#34;&gt;&lt;code&gt;Array#pack&lt;/code&gt;&lt;/a&gt; を利用しているため読みづらくなっている。もっといい方法があるのかもしれない。&lt;/p&gt;
 
-&lt;h3 id=&#34;参考:a22de2c680beb67b3057f1c9e646b25f&#34;&gt;参考&lt;/h3&gt;
+&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.unicode.org/reports/tr18/&#34;&gt;Unicode Regular Expressions&lt;/a&gt;&lt;/li&gt;
@@ -476,7 +498,7 @@ irb(main):002:0&amp;gt; Calculator.new.parser.parse &#39;1+2*(3-1)&#39;
 
 &lt;p&gt;だが、標準エラーへの出力を得るには別の手段を用いなくてはいけない。&lt;/p&gt;
 
-&lt;h3 id=&#34;open3:bf64ca4bcf4991a32549260bf39aa479&#34;&gt;open3&lt;/h3&gt;
+&lt;h3 id=&#34;open3&#34;&gt;open3&lt;/h3&gt;
 
 &lt;p&gt;もちろん、あくまでバッククォート文字列にこだわって、標準エラーを標準出力にリダイレクトする、なんてのもあるわけだが、&lt;/p&gt;
 
@@ -535,7 +557,7 @@ irb(main):002:0&amp;gt; &amp;quot;fixnum&amp;quot;.to_i =&amp;gt; 0
 
 &lt;p&gt;という挙動らしい。&lt;/p&gt;
 
-&lt;h3 id=&#34;変換できない場合はエラーにする:ebe712bdfb27e8b7d6bbdd52423336a7&#34;&gt;変換できない場合はエラーにする&lt;/h3&gt;
+&lt;h3 id=&#34;変換できない場合はエラーにする&#34;&gt;変換できない場合はエラーにする&lt;/h3&gt;
 
 &lt;p&gt;変換できないときに &lt;code&gt;0&lt;/code&gt; を返すのはコードをシンプルにできるが、バグの原因にもなりやすい。&lt;/p&gt;
 
@@ -593,34 +615,6 @@ end
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;このコードは意図通りに動作しないどころか、&lt;strong&gt;ブロックが実行されない&lt;/strong&gt;、というのには驚いた。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Ruby の Mongrel でお手軽 HTTP サーバ</title>
-      <link>http://www.metareal.org/2007/08/30/setup-simple-http-server-with-mongrel/</link>
-      <pubDate>Thu, 30 Aug 2007 10:25:00 +0900</pubDate>
-      
-      <guid>http://www.metareal.org/2007/08/30/setup-simple-http-server-with-mongrel/</guid>
-      <description>&lt;p&gt;先日、やっつけスクリプトのサーバ部分に &lt;a href=&#34;http://mongrel.rubyforge.org/&#34;&gt;Mongrel&lt;/a&gt; を使ってみたんだけど、Rails で使う以外だとドキュメント少ないのね。&lt;/p&gt;
-
-&lt;p&gt;とりあえず、&lt;a href=&#34;http://weblog.metareal.org/2007/08/25/setup-simple-http-server-with-webrick/&#34;&gt;Ruby の Webrick でお手軽 HTTP サーバ&lt;/a&gt;の Mongrel 版はこんな感じ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/usr/local/bin/ruby
-require &#39;rubygems&#39;
-require &#39;mongrel&#39;
-
-def mongrel(config = {})
-  server = Mongrel::HttpServer.new(&#39;localhost&#39;, config[:Port])
-  server.register(&amp;quot;/&amp;quot;, Mongrel::DirHandler.new(config[:DocumentRoot]))
-  server.run.join
-end
-
-mongrel :DocumentRoot =&amp;gt; &#39;/Users/ishikawa/Sites/spotwide&#39;,
-        :Port =&amp;gt; 5001
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;まあ、これくらいなら &lt;a href=&#34;http://mongrel.rubyforge.org/rdoc/index.html&#34;&gt;API ドキュメント&lt;/a&gt;眺めたら書ける（というか載ってる）けど。&lt;/p&gt;
 </description>
     </item>
     

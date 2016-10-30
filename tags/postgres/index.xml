@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Postgres on METAREAL</title>
-    <link>http://www.metareal.org/tags/postgres/</link>
-    <description>Recent content in Postgres on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/postgres/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Wed, 19 Dec 2007 07:18:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -20,7 +19,7 @@
 
 &lt;p&gt;PostgreSQL で使われていないインデックスを調べる方法について。いつも忘れるのでこちらにも書く。&lt;/p&gt;
 
-&lt;h3 id=&#34;統計情報の収集:db838809b9ae69e4063ddbb397a3db40&#34;&gt;統計情報の収集&lt;/h3&gt;
+&lt;h3 id=&#34;統計情報の収集&#34;&gt;統計情報の収集&lt;/h3&gt;
 
 &lt;p&gt;まずは、インデックスの使用状況を統計情報として残すよう、PostgreSQL の設定ファイル &lt;code&gt;postgresql.conf&lt;/code&gt; で以下の変数を &lt;code&gt;true&lt;/code&gt; にする。&lt;/p&gt;
 
@@ -31,7 +30,7 @@
 
 &lt;p&gt;各々の詳細についてはリンク先の &lt;a href=&#34;http://www.postgresql.jp/document/pg825doc/index.html&#34;&gt;PostgreSQL ドキュメント&lt;/a&gt;を参照してほしい。&lt;/p&gt;
 
-&lt;h3 id=&#34;統計情報ビュー:db838809b9ae69e4063ddbb397a3db40&#34;&gt;統計情報ビュー&lt;/h3&gt;
+&lt;h3 id=&#34;統計情報ビュー&#34;&gt;統計情報ビュー&lt;/h3&gt;
 
 &lt;p&gt;収集した統計情報の表示のために&lt;a href=&#34;http://www.postgresql.jp/document/pg825doc/html/monitoring-stats.html#MONITORING-STATS-VIEWS&#34;&gt;多くのビューが用意されている&lt;/a&gt;。&lt;/p&gt;
 
@@ -76,7 +75,7 @@ where
 &lt;li&gt;ビルド&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&#34;cvs-からソースコードを取得:97c884f0cbd05d3600027bb8ab201927&#34;&gt;CVS からソースコードを取得&lt;/h3&gt;
+&lt;h3 id=&#34;cvs-からソースコードを取得&#34;&gt;CVS からソースコードを取得&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://jdbc.postgresql.org/development/cvs.html&#34;&gt;PostgreSQL JDBC ドライバの CVS リポジトリ&lt;/a&gt;からバージョン 7.4 リリース時のタグを指定してソースコードを取得する。&lt;/p&gt;
 
@@ -84,7 +83,7 @@ where
 cvs -z3 -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc co **-r REL7_4_STABLE** -P pgjdbc
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;build-properties-を用意:97c884f0cbd05d3600027bb8ab201927&#34;&gt;build.properties を用意&lt;/h3&gt;
+&lt;h3 id=&#34;build-properties-を用意&#34;&gt;build.properties を用意&lt;/h3&gt;
 
 &lt;p&gt;バージョン番号情報などを指定するための &lt;code&gt;build.properties&lt;/code&gt; がないとビルドが失敗してしまう。
 トップディレクトリに &lt;code&gt;build.properties&lt;/code&gt; を作成し、以下のように書いておこう。&lt;/p&gt;
@@ -110,7 +109,7 @@ connectclass=org.postgresql.jdbc3.Jdbc3Connection
 
 &lt;p&gt;今回は JDBC3 向けのドライバをビルドしたかったので、&lt;code&gt;connectclass&lt;/code&gt; には &lt;code&gt;org.postgresql.jdbc3.Jdbc3Connection&lt;/code&gt; を指定した。&lt;/p&gt;
 
-&lt;h3 id=&#34;ビルド:97c884f0cbd05d3600027bb8ab201927&#34;&gt;ビルド&lt;/h3&gt;
+&lt;h3 id=&#34;ビルド&#34;&gt;ビルド&lt;/h3&gt;
 
 &lt;p&gt;あとは Ant を実行すると jars ディレクトリに postgresql.jar と postgresql-examples.jar ができているはずだ。&lt;/p&gt;
 </description>

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Imaging on METAREAL</title>
-    <link>http://www.metareal.org/tags/imaging/</link>
-    <description>Recent content in Imaging on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/imaging/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 03 Apr 2007 12:18:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/imaging/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -26,7 +25,7 @@
 
 &lt;p&gt;と書いたにも関わらず、そのまま放置になっていた（コメントで指摘されているのに気づいたのも今日だ。すまん）。&lt;/p&gt;
 
-&lt;h3 id=&#34;概要:4aa44303dc00cd0ace30b411d9cf2a91&#34;&gt;概要&lt;/h3&gt;
+&lt;h3 id=&#34;概要&#34;&gt;概要&lt;/h3&gt;
 
 &lt;p&gt;まずは &lt;a href=&#34;http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/java/awt/image/BufferedImage.html&#34;&gt;&lt;code&gt;java.awt.image.BufferedImage&lt;/code&gt;&lt;/a&gt; を &lt;code&gt;byte&lt;/code&gt; 配列に変換する方法を紹介する。&lt;/p&gt;
 
@@ -37,7 +36,7 @@
 
 &lt;p&gt;が実現できるわけだ。&lt;/p&gt;
 
-&lt;h3 id=&#34;bufferedimage-を-byte-に変換する:4aa44303dc00cd0ace30b411d9cf2a91&#34;&gt;BufferedImage を byte[] に変換する&lt;/h3&gt;
+&lt;h3 id=&#34;bufferedimage-を-byte-に変換する&#34;&gt;BufferedImage を byte[] に変換する&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;BufferedImage&lt;/code&gt; から &lt;code&gt;byte&lt;/code&gt; 配列の変換は、&lt;a href=&#34;http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/javax/imageio/ImageWriter.html&#34;&gt;&lt;code&gt;javax.imageio.ImageWriter&lt;/code&gt;&lt;/a&gt; でわりかし素直に実装できる。&lt;/p&gt;
 
@@ -61,7 +60,7 @@ byte[] bytes = bytesOut.toByteArray();
 
 &lt;p&gt;&lt;a href=&#34;http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/javax/imageio/ImageWriteParam.html&#34;&gt;&lt;code&gt;ImageWriteParam&lt;/code&gt;&lt;/a&gt; も組み合わせれば、圧縮率などの設定ができる。&lt;/p&gt;
 
-&lt;h3 id=&#34;image-を-bufferedimage-をに変換する:4aa44303dc00cd0ace30b411d9cf2a91&#34;&gt;Image を BufferedImage をに変換する&lt;/h3&gt;
+&lt;h3 id=&#34;image-を-bufferedimage-をに変換する&#34;&gt;Image を BufferedImage をに変換する&lt;/h3&gt;
 
 &lt;p&gt;一筋縄ではいかないのが、Image を BufferedImage をに変換する方法だ。&lt;/p&gt;
 
@@ -123,7 +122,7 @@ renderedImage.getRaster().setDataElements(0, 0, w, h, pixelGrabber.getPixels());
 
 &lt;p&gt;物体認識もできる画像処理ライブラリ &lt;a href=&#34;http://www.intel.com/technology/computing/opencv/&#34;&gt;OpenCV 1.0.0&lt;/a&gt; を Mac OS X 10.4 にてコンパイルしてみた。&lt;/p&gt;
 
-&lt;h3 id=&#34;opencv-のインストール:c1dc197dbb1376e573c35da5ca2c9837&#34;&gt;OpenCV のインストール&lt;/h3&gt;
+&lt;h3 id=&#34;opencv-のインストール&#34;&gt;OpenCV のインストール&lt;/h3&gt;
 
 &lt;p&gt;まずは、&lt;a href=&#34;http://sourceforge.net/projects/opencvlibrary/&#34;&gt;SourceForge&lt;/a&gt; から opencv-1.0.0.tar.gz をダウンロードして解凍。&lt;/p&gt;
 
@@ -157,7 +156,7 @@ make: *** [all] Error 2
 
 &lt;p&gt;無事成功。&lt;/p&gt;
 
-&lt;h3 id=&#34;サンプル-プログラムを試す:c1dc197dbb1376e573c35da5ca2c9837&#34;&gt;サンプル・プログラムを試す&lt;/h3&gt;
+&lt;h3 id=&#34;サンプル-プログラムを試す&#34;&gt;サンプル・プログラムを試す&lt;/h3&gt;
 
 &lt;p&gt;サンプル・プログラムをコンパイルするために、&lt;code&gt;pkg-config&lt;/code&gt; の探索パスを追加しておく。&lt;/p&gt;
 
@@ -200,8 +199,7 @@ transformOp.filter(originalImage, dest1);
 
 &lt;p&gt;&lt;code&gt;AffineTransformOp&lt;/code&gt; を用いた方法だと、こうなってしまう。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2448999922/&#34;&gt;&lt;img src=&#34;http://farm3.static.flickr.com/2064/2448999922_f37cf202e5_o.jpg&#34; alt=&#34;Java ImageIO AffineTransformOp&#34; /&gt;
-&lt;/a&gt;で、どうするかというと、AWT の &lt;a href=&#34;http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/java/awt/image/AreaAveragingScaleFilter.html&#34;&gt;&lt;code&gt;AreaAveragingScaleFilter&lt;/code&gt;&lt;/a&gt; を使うのがいいようだ。以下、API リファレンスより抜粋：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2448999922/&#34;&gt;&lt;img src=&#34;http://farm3.static.flickr.com/2064/2448999922_f37cf202e5_o.jpg&#34; alt=&#34;Java ImageIO AffineTransformOp&#34; /&gt;&lt;/a&gt;で、どうするかというと、AWT の &lt;a href=&#34;http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/java/awt/image/AreaAveragingScaleFilter.html&#34;&gt;&lt;code&gt;AreaAveragingScaleFilter&lt;/code&gt;&lt;/a&gt; を使うのがいいようだ。以下、API リファレンスより抜粋：&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;最近接点アルゴリズムよりもなめらかな結果が得られる、簡単な領域平均化アルゴリズムを使用してイメージをスケーリングする ImageFilter クラスです。&lt;/p&gt;
@@ -218,8 +216,7 @@ Image newImage = Toolkit.getDefaultToolkit().createImage(im);
 
 &lt;p&gt;こんな感じになる。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2448999924/&#34;&gt;&lt;img src=&#34;http://farm4.static.flickr.com/3197/2448999924_62c28b86b2_o.jpg&#34; alt=&#34;Java ImageIO AreaAveragingScaleFilter&#34; /&gt;
-&lt;/a&gt;格段にキレイだ。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2448999924/&#34;&gt;&lt;img src=&#34;http://farm4.static.flickr.com/3197/2448999924_62c28b86b2_o.jpg&#34; alt=&#34;Java ImageIO AreaAveragingScaleFilter&#34; /&gt;&lt;/a&gt;格段にキレイだ。&lt;/p&gt;
 </description>
     </item>
     

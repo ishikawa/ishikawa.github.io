@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Django on METAREAL</title>
-    <link>http://www.metareal.org/tags/django/</link>
-    <description>Recent content in Django on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/django/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Thu, 03 Dec 2009 12:42:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/django/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -32,7 +31,7 @@
 
 &lt;p&gt;だが、いまや状況は変わった。SDK &lt;a href=&#34;http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes#Version_1.2.3_-_June_18,_2009&#34;&gt;1.2.3 からは Django 1.0&lt;/a&gt; が、SDK &lt;a href=&#34;http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes#Version_1.2.5_-_September_3,_2009&#34;&gt;1.2.5 からは Django 1.1&lt;/a&gt; がサポートされ、Google AppEngine でも、簡単に Django 1.x を動かせるようになった。&lt;/p&gt;
 
-&lt;h3 id=&#34;google-appengine-dist-use-library:d5cbf458e70a92e96be7ede9be9f6ecd&#34;&gt;google.appengine.dist.use_library&lt;/h3&gt;
+&lt;h3 id=&#34;google-appengine-dist-use-library&#34;&gt;google.appengine.dist.use_library&lt;/h3&gt;
 
 &lt;p&gt;SDK 1.2.&lt;sup&gt;3&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;.2.5 からは &lt;a href=&#34;http://code.google.com/p/googleappengine/source/browse/#svn/trunk/python/google/appengine/dist&#34;&gt;google.appengine.dist&lt;/a&gt; モジュールの &lt;code&gt;use_library&lt;/code&gt; 関数を使うことで Django 1.0/1.1 を選択できるようになった。&lt;/p&gt;
 
@@ -49,7 +48,7 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
 
 &lt;p&gt;更に嬉しいことに、Django のコードをアップロードする必要もなくなった。Google AppEngine のサーバには Django 1.0/1.1 がインストールされている。ただし、SDK には Django 0.96 しか添付されていないので、1.0/1.1 を使う場合は、あらかじめローカルのマシンに Django 1.0/1.1 をインストールしておこう。&lt;/p&gt;
 
-&lt;h3 id=&#34;django-のバージョンと-dos-攻撃可能な脆弱性について:d5cbf458e70a92e96be7ede9be9f6ecd&#34;&gt;Django のバージョンと DoS 攻撃可能な脆弱性について&lt;/h3&gt;
+&lt;h3 id=&#34;django-のバージョンと-dos-攻撃可能な脆弱性について&#34;&gt;Django のバージョンと DoS 攻撃可能な脆弱性について&lt;/h3&gt;
 
 &lt;p&gt;なお、実際に有効になる Django の詳細なバージョンは、本記事執筆時点の 2009 年 11 月で以下のようになっている（&lt;code&gt;django.VERSION&lt;/code&gt; で調べた）。&lt;/p&gt;
 
@@ -87,7 +86,7 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
 
 &lt;p&gt;Google AppEngine プロジェクトに&lt;a href=&#34;http://code.google.com/p/googleappengine/issues/detail?id=2447&#34;&gt;報告&lt;/a&gt;したところ、GAE で有効になるバージョンは修正済みのものである、とのこと。失礼しました。&lt;/p&gt;
 
-&lt;h3 id=&#34;main-py-のサンプル:d5cbf458e70a92e96be7ede9be9f6ecd&#34;&gt;main.py のサンプル&lt;/h3&gt;
+&lt;h3 id=&#34;main-py-のサンプル&#34;&gt;main.py のサンプル&lt;/h3&gt;
 
 &lt;p&gt;実際に &lt;code&gt;use_library&lt;/code&gt; を使ったサンプルを &lt;a href=&#34;http://gist.github.com/245523&#34;&gt;gist:245523&lt;/a&gt; で公開している。&lt;/p&gt;
 </description>
@@ -107,7 +106,7 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
 
 &lt;p&gt;また、Django を Google App Engine 上で動かす方法については、もともと、&lt;a href=&#34;http://code.google.com/appengine/articles/django.html&#34;&gt;Running Django on Google App Engine&lt;/a&gt; を参考にしている。そのため、他の手段、たとえば &lt;a href=&#34;http://code.google.com/p/google-app-engine-django/&#34;&gt;Google App Engine Helper for Django&lt;/a&gt; を使っている人にとっては、この記事は役に立たないだろう。&lt;/p&gt;
 
-&lt;h3 id=&#34;django-dispatch-dispatcher-connect:2e9d2f1f60c8b832fa1e9948aa4c7865&#34;&gt;django.dispatch.dispatcher.connect&lt;/h3&gt;
+&lt;h3 id=&#34;django-dispatch-dispatcher-connect&#34;&gt;django.dispatch.dispatcher.connect&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;django.dispatch.dispatcher.connect&lt;/code&gt;, &lt;code&gt;django.dispatch.dispatcher.disconnect&lt;/code&gt; は使えなくなっていた。&lt;/p&gt;
 
@@ -137,7 +136,7 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
 +signals.got_request_exception.disconnect(_rollback_on_exception)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;newforms:2e9d2f1f60c8b832fa1e9948aa4c7865&#34;&gt;newforms&lt;/h3&gt;
+&lt;h3 id=&#34;newforms&#34;&gt;newforms&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;django.newforms&lt;/code&gt; を &lt;code&gt;django.forms&lt;/code&gt; に置き換える。&lt;/p&gt;
 
@@ -158,7 +157,7 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
 
 &lt;p&gt;そういえば、Google App Engine は SDK 1.1.3 から zipserve という新しいモジュールが追加されたり、と徐々に機能も増えてるので、このへんも使っていきたい。&lt;/p&gt;
 
-&lt;h3 id=&#34;参考:2e9d2f1f60c8b832fa1e9948aa4c7865&#34;&gt;参考&lt;/h3&gt;
+&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://djangoproject.jp/doc/ja/1.0/releases/1.0-porting-guide.html&#34;&gt;アプリケーションを Django 0.96 から 1.0 に移行する — Django v1.0 documentation&lt;/a&gt;&lt;/li&gt;
@@ -186,7 +185,7 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
 
 &lt;p&gt;どれひとつとっても、重大な発表ばかりだ。プラットホームとしての Google App Engine に注目している方は 1. 2. が特に気になるだろうし、利用者からすれば、3. 4. は待ち焦がれていた機能だろう。&lt;/p&gt;
 
-&lt;h3 id=&#34;重いページをキャッシュする:566a9dac81dfb9c529763dee37b2ec7b&#34;&gt;重いページをキャッシュする&lt;/h3&gt;
+&lt;h3 id=&#34;重いページをキャッシュする&#34;&gt;重いページをキャッシュする&lt;/h3&gt;
 
 &lt;p&gt;このブログを &lt;a href=&#34;http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;Google App Engine に移行&lt;/a&gt;して一週間が経った。しかし、Admin Console でログを確認してみると、ところどころで警告が出ている。&lt;/p&gt;
 
@@ -200,7 +199,7 @@ This request used a high amount of CPU, and was roughly 5.5 times over the avera
 
 &lt;p&gt;考えてみれば、フィードがリクエストされるたびに、この重い処理を繰り返す必要はない。どうせ、記事の更新があるまでは生成される内容は同じだし、記事の更新をリアルタイムに反映する必要もないだろう。キャッシュしてしまおう。&lt;/p&gt;
 
-&lt;h3 id=&#34;the-django-cache-framework:566a9dac81dfb9c529763dee37b2ec7b&#34;&gt;The Django cache framework&lt;/h3&gt;
+&lt;h3 id=&#34;the-django-cache-framework&#34;&gt;The Django cache framework&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; には&lt;a href=&#34;http://www.djangoproject.com/documentation/cache/&#34;&gt;簡単に使えるキャッシュ・フレームワーク&lt;/a&gt;（&lt;a href=&#34;http://ymasuda.jp/python/django/docs/cache.html&#34;&gt;和訳&lt;/a&gt;）が組込まれており、&lt;a href=&#34;http://danga.com/memcached/&#34;&gt;memcached&lt;/a&gt; もサポートされている。&lt;/p&gt;
 
@@ -235,7 +234,7 @@ def archive_tag(request, slug, page=1):
 
 &lt;p&gt;たったこれだけで、初回リクエスト以降、重いフィード生成の処理をキャッシュしてくれるようになった。&lt;/p&gt;
 
-&lt;h3 id=&#34;keyerror:566a9dac81dfb9c529763dee37b2ec7b&#34;&gt;KeyError&lt;/h3&gt;
+&lt;h3 id=&#34;keyerror&#34;&gt;KeyError&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;（2008.5.29 追記）&lt;/strong&gt;memcached.Client#get が &lt;code&gt;KeyError&lt;/code&gt; を返すことがあるようだ。&lt;a href=&#34;http://code.google.com/appengine/docs/memcache/clientclass.html#Client_get&#34;&gt;キーが存在しない場合は None を返すはず&lt;/a&gt;なので、バグかもしれない。&lt;/p&gt;
 
@@ -293,7 +292,7 @@ MemcacheCache.get_many = silent_missing_key_error(MemcacheCache.get_many)
 
 &lt;p&gt;問題はこれだ。&lt;code&gt;XViewMiddleware&lt;/code&gt; ——名前だけでは、どんな働きをするのか見当もつかない。&lt;/p&gt;
 
-&lt;h3 id=&#34;xviewmiddleware-を試す:3d558506931c5ff6cd5e3e322d8daf0c&#34;&gt;XViewMiddleware を試す&lt;/h3&gt;
+&lt;h3 id=&#34;xviewmiddleware-を試す&#34;&gt;XViewMiddleware を試す&lt;/h3&gt;
 
 &lt;p&gt;まずはドキュメントを読んでみようか。&lt;a href=&#34;http://www.djangoproject.com/documentation/middleware/#django-middleware-doc-xviewmiddleware&#34;&gt;XViewMiddleware のドキュメント&lt;/a&gt;（&lt;a href=&#34;http://michilu.com/django/doc-ja/middleware/#django-middleware-doc-xviewmiddleware&#34;&gt;和訳&lt;/a&gt;）によると、&lt;/p&gt;
 
@@ -338,7 +337,7 @@ content-length: 0
 
 &lt;p&gt;&lt;strong&gt;X-View: weblog.views.archive&lt;/strong&gt; という行に注目してほしい。これが &lt;code&gt;XViewMiddleware&lt;/code&gt; のすべて、 &lt;code&gt;X-View&lt;/code&gt; ヘッダである。&lt;/p&gt;
 
-&lt;h3 id=&#34;x-view-ヘッダの利用:3d558506931c5ff6cd5e3e322d8daf0c&#34;&gt;X-View ヘッダの利用&lt;/h3&gt;
+&lt;h3 id=&#34;x-view-ヘッダの利用&#34;&gt;X-View ヘッダの利用&lt;/h3&gt;
 
 &lt;p&gt;もう一度、&lt;code&gt;X-View&lt;/code&gt; ヘッダを見てみよう。&lt;/p&gt;
 
@@ -367,19 +366,17 @@ content-length: 0
 
 &lt;p&gt;この記事は Django の管理インターフェースにある機能のうち、自動ドキュメンテーション機能について書かれたものだ。自動ドキュメンテーション機能については、スクリーンショットを見てもらうのがいい。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2518433072/&#34;&gt;&lt;img src=&#34;http://farm3.static.flickr.com/2380/2518433072_b631bce90c_m.jpg&#34; alt=&#34;Django Admin: Automatic Documentation&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2518433072/&#34;&gt;&lt;img src=&#34;http://farm3.static.flickr.com/2380/2518433072_b631bce90c_m.jpg&#34; alt=&#34;Django Admin: Automatic Documentation&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;このように、View と URL の対応関係（とソースコードのドキュメント）の一覧を生成してくれる。一風変わっているのは、&lt;strong&gt;ブックマークレットが用意されている&lt;/strong&gt;ことだろう。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2518433076/&#34;&gt;&lt;img src=&#34;http://farm4.static.flickr.com/3206/2518433076_00967f124f_m.jpg&#34; alt=&#34;Django Admin: Documentation Bookmarklet&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2518433076/&#34;&gt;&lt;img src=&#34;http://farm4.static.flickr.com/3206/2518433076_00967f124f_m.jpg&#34; alt=&#34;Django Admin: Documentation Bookmarklet&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;URL との対応関係を知りたいページで、ブックマークレットをクリックすれば、該当する管理インターフェースのページにリダイレクトされる、というわけ。気が利いている。&lt;/p&gt;
 
 &lt;p&gt;そして、このブックマークレットは表示中の URL に HEAD リクエストを送信し、&lt;code&gt;X-View&lt;/code&gt; ヘッダを見ることでリダイレクト先の URL を決定している。&lt;/p&gt;
 
-&lt;h3 id=&#34;まとめ:3d558506931c5ff6cd5e3e322d8daf0c&#34;&gt;まとめ&lt;/h3&gt;
+&lt;h3 id=&#34;まとめ&#34;&gt;まとめ&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;XViewMiddleware&lt;/code&gt; は HEAD リクエストに対して &lt;code&gt;X-View&lt;/code&gt; レスポンスヘッダを返す&lt;/li&gt;
@@ -405,7 +402,7 @@ content-length: 0
 
 &lt;p&gt;それを更に、&lt;a href=&#34;http://code.google.com/appengine/&#34;&gt;Google App Engine&lt;/a&gt; に移植しましたよ、というのが今回のお話。&lt;/p&gt;
 
-&lt;h3 id=&#34;google-app-engine-に移植した理由:787806c84788060e978a12ba017b9ce9&#34;&gt;Google App Engine に移植した理由&lt;/h3&gt;
+&lt;h3 id=&#34;google-app-engine-に移植した理由&#34;&gt;Google App Engine に移植した理由&lt;/h3&gt;
 
 &lt;p&gt;まずは、Google App Engine（以下、GAE）に移植した理由から説明させてほしい。いままで Wordpress を動かしていたサーバでそのまま新しいブログシステムを動かすこともできた。&lt;/p&gt;
 
@@ -417,7 +414,7 @@ content-length: 0
 
 &lt;p&gt;&lt;a href=&#34;http://code.google.com/appengine/docs/&#34;&gt;GAE のオンラインドキュメント&lt;/a&gt; を参考に、ほとんど単純作業による変換だったが、細かい変更や思わぬ問題などもあったので、開発中にとったメモを片手につらつらと書いてみる。&lt;/p&gt;
 
-&lt;h3 id=&#34;django:787806c84788060e978a12ba017b9ce9&#34;&gt;Django&lt;/h3&gt;
+&lt;h3 id=&#34;django&#34;&gt;Django&lt;/h3&gt;
 
 &lt;p&gt;Django は &lt;a href=&#34;http://code.google.com/appengine/articles/django.html&#34;&gt;Running Django on Google App Engine&lt;/a&gt; を参考に、開発版のものを動かしている。&lt;/p&gt;
 
@@ -425,11 +422,11 @@ content-length: 0
 
 &lt;p&gt;ただ、Generic View は簡単な変更で動きそうだ。実際、&lt;a href=&#34;http://www.djangoproject.com/documentation/pagination/&#34;&gt;Pagination&lt;/a&gt; の処理では &lt;code&gt;django.core.QuerySetPaginator&lt;/code&gt; に GAE の &lt;a href=&#34;http://code.google.com/appengine/docs/datastore/queryclass.html&#34;&gt;Query&lt;/a&gt; オブジェクトをそのまま渡して動作していた（GAE の Query オブジェクトも &lt;code&gt;[]&lt;/code&gt; アクセスを適切な &lt;code&gt;fetch()&lt;/code&gt; に変換してくれる）。&lt;/p&gt;
 
-&lt;h3 id=&#34;akismet:787806c84788060e978a12ba017b9ce9&#34;&gt;Akismet&lt;/h3&gt;
+&lt;h3 id=&#34;akismet&#34;&gt;Akismet&lt;/h3&gt;
 
 &lt;p&gt;スパムコメント対策として &lt;a href=&#34;http://www.hashcash.org/&#34;&gt;Hashcash&lt;/a&gt; と &lt;a href=&#34;http://akismet.com/&#34;&gt;Akismet&lt;/a&gt; を使っているのだが、外部リソースへのアクセスは GAE の &lt;a href=&#34;http://code.google.com/appengine/docs/urlfetch/&#34;&gt;URL Fetch API&lt;/a&gt; に変更が必要だ。Akismet への問い合わせ処理は、外部リソースへのアクセスなので URL Fetch API を使うように変更が必要だった。&lt;/p&gt;
 
-&lt;h3 id=&#34;docutils-pygments:787806c84788060e978a12ba017b9ce9&#34;&gt;docutils, pygments&lt;/h3&gt;
+&lt;h3 id=&#34;docutils-pygments&#34;&gt;docutils, pygments&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://docutils.sourceforge.net/rst.html&#34;&gt;reStructuredText&lt;/a&gt; でブログを書くために &lt;a href=&#34;http://docutils.sourceforge.net/&#34;&gt;docutils&lt;/a&gt; を、そして、ソースコードのハイライトするために &lt;a href=&#34;http://pygments.org/&#34;&gt;pygments&lt;/a&gt; をソースコードに含めるようにした（トップレベルだと邪魔なので、&lt;code&gt;lib&lt;/code&gt; というディレクトリにパスを通して、そこに必要なライブラリを置くようにした）。&lt;/p&gt;
 
@@ -445,11 +442,11 @@ content-length: 0
 
 &lt;p&gt;この部分は潔くコメントアウトした。&lt;/p&gt;
 
-&lt;h3 id=&#34;検索機能:787806c84788060e978a12ba017b9ce9&#34;&gt;検索機能&lt;/h3&gt;
+&lt;h3 id=&#34;検索機能&#34;&gt;検索機能&lt;/h3&gt;
 
 &lt;p&gt;モデルクラスで db.Model ではなく、そのサブクラスである google.appengine.ext.search.SearchableModel を継承することで、モデルの検索ができるようになるようだ（&lt;a href=&#34;http://groups.google.com/group/google-appengine/browse_thread/thread/ba4a4a4ccefb96c5/0e3f0ab63c4c8afd&#34;&gt;Indexing Large Chunks of Text for Search - Google App Engine | Google グループ&lt;/a&gt; を参照）。「検索機能を備えたクラスを継承する」というだけでもダサいのに、日本語での使用とか不安なので、検索機能はとりあえず見送った。&lt;/p&gt;
 
-&lt;h3 id=&#34;デプロイして直面した問題:787806c84788060e978a12ba017b9ce9&#34;&gt;デプロイして直面した問題&lt;/h3&gt;
+&lt;h3 id=&#34;デプロイして直面した問題&#34;&gt;デプロイして直面した問題&lt;/h3&gt;
 
 &lt;p&gt;Web アプリケーションの宿命で、最大の問題はデプロイ後にやってくる。&lt;/p&gt;
 
@@ -474,7 +471,7 @@ content-length: 0
   upload: public/robots\.txt
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;gae-にしてよかったこと-不満:787806c84788060e978a12ba017b9ce9&#34;&gt;GAE にしてよかったこと・不満&lt;/h3&gt;
+&lt;h3 id=&#34;gae-にしてよかったこと-不満&#34;&gt;GAE にしてよかったこと・不満&lt;/h3&gt;
 
 &lt;p&gt;最後に感想でも。&lt;/p&gt;
 
@@ -545,7 +542,7 @@ content-length: 0
 
 &lt;p&gt;なお、参照したソースコードは SVN の Revision 7438 である。公開リリースの 0.96.1 とは内容が大きく異なる可能性があること、 &lt;a href=&#34;http://code.djangoproject.com/query&#34;&gt;Trac&lt;/a&gt; での議論やドキュメントを読むかぎり、このへんの実装については今後大きく変更されるかもしれないことを、あらかじめお断りしておく。&lt;/p&gt;
 
-&lt;h3 id=&#34;urlresolvers-py:df5b3f6671d300513435b6b9f9ba9ac6&#34;&gt;urlresolvers.py&lt;/h3&gt;
+&lt;h3 id=&#34;urlresolvers-py&#34;&gt;urlresolvers.py&lt;/h3&gt;
 
 &lt;p&gt;まずは、調べるソースコードを特定しよう。URL の逆マッピングをしてくれる &lt;a href=&#34;http://www.djangoproject.com/documentation/url_dispatch/#reverse&#34;&gt;reverse() 関数&lt;/a&gt;が用意されていることは分かっているので、これを手がかりにソースコードを探すのがよさそうだ。&lt;/p&gt;
 
@@ -557,7 +554,7 @@ content-length: 0
 
 &lt;p&gt;と書かれているので、これが探していたソースコード（モジュール）だろう。&lt;/p&gt;
 
-&lt;h3 id=&#34;reverse-と-resolve:df5b3f6671d300513435b6b9f9ba9ac6&#34;&gt;reverse() と resolve()&lt;/h3&gt;
+&lt;h3 id=&#34;reverse-と-resolve&#34;&gt;reverse() と resolve()&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;urlresolvers.py&lt;/code&gt; では &lt;code&gt;reverse()&lt;/code&gt; だけでなく、&lt;code&gt;resolve()&lt;/code&gt; も定義されている。&lt;/p&gt;
 
@@ -593,7 +590,7 @@ a string) and returns a tuple in this format:&lt;/p&gt;
 
 &lt;p&gt;がタプルで返ってくるらしい。&lt;/p&gt;
 
-&lt;h3 id=&#34;regexurlresolver:df5b3f6671d300513435b6b9f9ba9ac6&#34;&gt;RegexURLResolver&lt;/h3&gt;
+&lt;h3 id=&#34;regexurlresolver&#34;&gt;RegexURLResolver&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;reverse()&lt;/code&gt; も &lt;code&gt;resolve()&lt;/code&gt; も、実際の処理は &lt;code&gt;get_resolver()&lt;/code&gt; で返ってくるオブジェクトに丸投げしている。そして、先のコメントが示唆するように、&lt;code&gt;get_resolver()&lt;/code&gt; で返されるオブジェクトは &lt;code&gt;RegexURLResolver&lt;/code&gt; のインスタンスになっている。&lt;/p&gt;
 
@@ -653,7 +650,7 @@ a string) and returns a tuple in this format:&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;resolve()&lt;/code&gt; メソッドは &lt;code&gt;RegexURLPattern&lt;/code&gt; にも &lt;code&gt;RegexURLResolver&lt;/code&gt; にも実装されていることに注意。&lt;/p&gt;
 
-&lt;h3 id=&#34;matchchecker:df5b3f6671d300513435b6b9f9ba9ac6&#34;&gt;MatchChecker&lt;/h3&gt;
+&lt;h3 id=&#34;matchchecker&#34;&gt;MatchChecker&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;urlresolver.py&lt;/code&gt; にはこの他に &lt;code&gt;MatchChecker&lt;/code&gt; というクラスが定義されており、これは &lt;code&gt;reverse()&lt;/code&gt; の過程で正規表現をパス文字列に変換するために使われているようだ。&lt;/p&gt;
 
@@ -708,7 +705,7 @@ a string) and returns a tuple in this format:&lt;/p&gt;
 
 &lt;p&gt;Inline literal start-string without end-string.&lt;/p&gt;
 
-&lt;h3 id=&#34;モデルには-str-ではなく-unicode-を実装する:3b09cb17e796826b168e2323e1bf17ef&#34;&gt;モデルには &lt;strong&gt;str&lt;/strong&gt; ではなく &lt;strong&gt;unicode&lt;/strong&gt; を実装する&lt;/h3&gt;
+&lt;h3 id=&#34;モデルには-str-ではなく-unicode-を実装する&#34;&gt;モデルには &lt;strong&gt;str&lt;/strong&gt; ではなく &lt;strong&gt;unicode&lt;/strong&gt; を実装する&lt;/h3&gt;
 
 &lt;p&gt;Django オンラインドキュメント和訳の &lt;a href=&#34;http://michilu.com/django/doc-ja/unicode/#str-unicode&#34;&gt;&lt;strong&gt;str&lt;/strong&gt;() と &lt;strong&gt;unicode&lt;/strong&gt;() のどちらを使うべきか&lt;/a&gt;に、そのものズバリの回答があった。&lt;/p&gt;
 
@@ -718,7 +715,7 @@ a string) and returns a tuple in this format:&lt;/p&gt;
 
 &lt;p&gt;本当だ。モデルに書いていた &lt;strong&gt;str&lt;/strong&gt; メソッドを &lt;strong&gt;unicode&lt;/strong&gt; に変えるだけで解決しちゃったよ。&lt;/p&gt;
 
-&lt;h3 id=&#34;force-unicode:3b09cb17e796826b168e2323e1bf17ef&#34;&gt;force_unicode&lt;/h3&gt;
+&lt;h3 id=&#34;force-unicode&#34;&gt;force_unicode&lt;/h3&gt;
 
 &lt;p&gt;エラーのスタックトレースを辿って、Django の &lt;code&gt;django/utils/encodings.py&lt;/code&gt; を見てみると、&lt;/p&gt;
 

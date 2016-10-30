@@ -29,7 +29,7 @@
 
 <p>約一年ぶりに <a href="http://sphinx.pocoo.org/">Sphinx</a> を最新版に&hellip;しようとしたら色々苦労したので、変更点や手順をメモとして残しておく。</p>
 
-<h3 id="sphinx-0-6-2-jinja2-2-1-1:27e83262ac07d97e8e96230e1937876f">Sphinx 0.6.2 &amp; Jinja2 2.1.1</h3>
+<h3 id="sphinx-0-6-2-jinja2-2-1-1">Sphinx 0.6.2 &amp; Jinja2 2.1.1</h3>
 
 <p>easy_install でインストールしようとしたが、<a href="http://jinja.pocoo.org/2/">Jinja2</a> のセットアップ・スクリプトがうまく動いていないらしく、Jinja2 に依存している Sphinx もインストールできない。原因を調べる気力はないので、ソースコードからビルドしてインストールすることにした。</p>
 
@@ -49,7 +49,7 @@
 % sudo python setup.py install
 </code></pre>
 
-<h3 id="sphinx-builder:27e83262ac07d97e8e96230e1937876f">sphinx.builder</h3>
+<h3 id="sphinx-builder">sphinx.builder</h3>
 
 <p>Sphinx 0.6.2 では <code>sphinx.builder</code> が非推奨扱いになっていた (<a href="http://bitbucket.org/birkenfeld/sphinx/changeset/254e0ff435e8/">changeset:254e0ff435e8</a>)。</p>
 
@@ -64,7 +64,7 @@ DeprecationWarning: The sphinx.builder module is deprecated; please import build
 +from sphinx.builders.html import StandaloneHTMLBuilder
 </code></pre>
 
-<h3 id="unicodedecodeerror:27e83262ac07d97e8e96230e1937876f">UnicodeDecodeError</h3>
+<h3 id="unicodedecodeerror">UnicodeDecodeError</h3>
 
 <p>今度は、日本語を含むドキュメントを変換しようとすると UnicodeDecodeError が発生する。</p>
 

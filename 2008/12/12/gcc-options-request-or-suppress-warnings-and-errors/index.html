@@ -35,13 +35,13 @@
 <li><a href="http://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Warning-Options.html#index-Werror-226"><code>-Werror</code></a> 警告をエラー扱いにする</li>
 </ul>
 
-<h3 id="wunused-parameter:39611ef83396f44a16b5ef53d31a6ecd">-Wunused-parameter</h3>
+<h3 id="wunused-parameter">-Wunused-parameter</h3>
 
 <p>ところで、警告オプションのひとつ、<a href="http://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Warning-Options.html#index-Wunused-303">-Wunused</a> は <code>-Wextra (-W)</code> が有効な場合、<a href="http://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/Warning-Options.html#index-Wunused_002dparameter-297">-Wunused-parameter</a> も有効にする。<code>-Wunused-parameter</code> は関数で使われていない引数があった場合に警告を出力するオプションだ。なお、<code>-Wunused</code> は <code>-Wall</code> によっても暗黙的に指定されるため、<code>-Wextra (-W)</code> と <code>-Wall</code> を両方指定したときも、<code>-Wunused-parameter</code> が有効になる。</p>
 
 <p>このとき、もし、<code>-Werror</code> も有効になっていると、未使用の関数引数があった場合にコンパイルエラーになってしまう。意図した通りの動作ではあるものの、これでは都合が悪いときもある。たとえば、テスト駆動開発では関数の実装を空にしておくことがあるが、上記の場合は、これがエラーとなってしまう。</p>
 
-<h3 id="wno-unused-parameter:39611ef83396f44a16b5ef53d31a6ecd">-Wno-unused-parameter</h3>
+<h3 id="wno-unused-parameter">-Wno-unused-parameter</h3>
 
 <p>Mac OS X Leopard (Xcode 3.1) に付属する gcc は Apple gcc 4.0 と 4.2 だが、デフォルトは gcc 4.0 が使われる。</p>
 
@@ -57,7 +57,7 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 <pre><code>% gcc -std=c++98 -pedantic -Wall -Wextra -Werror -Wno-unused-parameter -c -o src/utils.o src/utils.cpp
 </code></pre>
 
-<h3 id="werror-wno-error:39611ef83396f44a16b5ef53d31a6ecd">-Werror=, -Wno-error=</h3>
+<h3 id="werror-wno-error">-Werror=, -Wno-error=</h3>
 
 <p><a href="http://gcc.gnu.org/onlinedocs/gcc-4.2.4/gcc/">オンラインマニュアル</a>によると、<a href="http://gcc.gnu.org/gcc-4.2/">gcc 4.2</a> からは <a href="http://gcc.gnu.org/onlinedocs/gcc-4.2.4/gcc/Warning-Options.html#index-Werror_003d-325">-Werror= および -Wno-error= というオプション</a>が追加され、エラー扱いにする警告を個別に指定できるようだ。このオプションを使えば、<code>-Wunused-parameter</code> は警告のまま、その他の警告をエラーに出来るだろう。Mac OS X では gcc 4.2 は <code>gcc-4.2</code> という名前でインストールされている。</p>
 
@@ -69,7 +69,7 @@ src/utils.cpp:108: warning: unused parameter 'positiveOnly'
 
 <p>しかし、Mac の場合、gcc 4.0 がデフォルトなので、このオプションを使っていいのか悩むところ。</p>
 
-<h3 id="環境変数の利用:39611ef83396f44a16b5ef53d31a6ecd">環境変数の利用</h3>
+<h3 id="環境変数の利用">環境変数の利用</h3>
 
 <p>いまのところ、Makefile には直接書かずに、環境変数で指定する、という方法で対応している：</p>
 

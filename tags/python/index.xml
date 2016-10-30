@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on METAREAL</title>
-    <link>http://www.metareal.org/tags/python/</link>
-    <description>Recent content in Python on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/python/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 31 Jan 2010 18:26:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -60,7 +59,7 @@
 
 &lt;p&gt;だが、いまや状況は変わった。SDK &lt;a href=&#34;http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes#Version_1.2.3_-_June_18,_2009&#34;&gt;1.2.3 からは Django 1.0&lt;/a&gt; が、SDK &lt;a href=&#34;http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes#Version_1.2.5_-_September_3,_2009&#34;&gt;1.2.5 からは Django 1.1&lt;/a&gt; がサポートされ、Google AppEngine でも、簡単に Django 1.x を動かせるようになった。&lt;/p&gt;
 
-&lt;h3 id=&#34;google-appengine-dist-use-library:d5cbf458e70a92e96be7ede9be9f6ecd&#34;&gt;google.appengine.dist.use_library&lt;/h3&gt;
+&lt;h3 id=&#34;google-appengine-dist-use-library&#34;&gt;google.appengine.dist.use_library&lt;/h3&gt;
 
 &lt;p&gt;SDK 1.2.&lt;sup&gt;3&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;.2.5 からは &lt;a href=&#34;http://code.google.com/p/googleappengine/source/browse/#svn/trunk/python/google/appengine/dist&#34;&gt;google.appengine.dist&lt;/a&gt; モジュールの &lt;code&gt;use_library&lt;/code&gt; 関数を使うことで Django 1.0/1.1 を選択できるようになった。&lt;/p&gt;
 
@@ -77,7 +76,7 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
 
 &lt;p&gt;更に嬉しいことに、Django のコードをアップロードする必要もなくなった。Google AppEngine のサーバには Django 1.0/1.1 がインストールされている。ただし、SDK には Django 0.96 しか添付されていないので、1.0/1.1 を使う場合は、あらかじめローカルのマシンに Django 1.0/1.1 をインストールしておこう。&lt;/p&gt;
 
-&lt;h3 id=&#34;django-のバージョンと-dos-攻撃可能な脆弱性について:d5cbf458e70a92e96be7ede9be9f6ecd&#34;&gt;Django のバージョンと DoS 攻撃可能な脆弱性について&lt;/h3&gt;
+&lt;h3 id=&#34;django-のバージョンと-dos-攻撃可能な脆弱性について&#34;&gt;Django のバージョンと DoS 攻撃可能な脆弱性について&lt;/h3&gt;
 
 &lt;p&gt;なお、実際に有効になる Django の詳細なバージョンは、本記事執筆時点の 2009 年 11 月で以下のようになっている（&lt;code&gt;django.VERSION&lt;/code&gt; で調べた）。&lt;/p&gt;
 
@@ -115,7 +114,7 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
 
 &lt;p&gt;Google AppEngine プロジェクトに&lt;a href=&#34;http://code.google.com/p/googleappengine/issues/detail?id=2447&#34;&gt;報告&lt;/a&gt;したところ、GAE で有効になるバージョンは修正済みのものである、とのこと。失礼しました。&lt;/p&gt;
 
-&lt;h3 id=&#34;main-py-のサンプル:d5cbf458e70a92e96be7ede9be9f6ecd&#34;&gt;main.py のサンプル&lt;/h3&gt;
+&lt;h3 id=&#34;main-py-のサンプル&#34;&gt;main.py のサンプル&lt;/h3&gt;
 
 &lt;p&gt;実際に &lt;code&gt;use_library&lt;/code&gt; を使ったサンプルを &lt;a href=&#34;http://gist.github.com/245523&#34;&gt;gist:245523&lt;/a&gt; で公開している。&lt;/p&gt;
 </description>
@@ -131,7 +130,7 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
 
 &lt;p&gt;約一年ぶりに &lt;a href=&#34;http://sphinx.pocoo.org/&#34;&gt;Sphinx&lt;/a&gt; を最新版に&amp;hellip;しようとしたら色々苦労したので、変更点や手順をメモとして残しておく。&lt;/p&gt;
 
-&lt;h3 id=&#34;sphinx-0-6-2-jinja2-2-1-1:27e83262ac07d97e8e96230e1937876f&#34;&gt;Sphinx 0.6.2 &amp;amp; Jinja2 2.1.1&lt;/h3&gt;
+&lt;h3 id=&#34;sphinx-0-6-2-jinja2-2-1-1&#34;&gt;Sphinx 0.6.2 &amp;amp; Jinja2 2.1.1&lt;/h3&gt;
 
 &lt;p&gt;easy_install でインストールしようとしたが、&lt;a href=&#34;http://jinja.pocoo.org/2/&#34;&gt;Jinja2&lt;/a&gt; のセットアップ・スクリプトがうまく動いていないらしく、Jinja2 に依存している Sphinx もインストールできない。原因を調べる気力はないので、ソースコードからビルドしてインストールすることにした。&lt;/p&gt;
 
@@ -151,7 +150,7 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
 % sudo python setup.py install
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;sphinx-builder:27e83262ac07d97e8e96230e1937876f&#34;&gt;sphinx.builder&lt;/h3&gt;
+&lt;h3 id=&#34;sphinx-builder&#34;&gt;sphinx.builder&lt;/h3&gt;
 
 &lt;p&gt;Sphinx 0.6.2 では &lt;code&gt;sphinx.builder&lt;/code&gt; が非推奨扱いになっていた (&lt;a href=&#34;http://bitbucket.org/birkenfeld/sphinx/changeset/254e0ff435e8/&#34;&gt;changeset:254e0ff435e8&lt;/a&gt;)。&lt;/p&gt;
 
@@ -166,7 +165,7 @@ DeprecationWarning: The sphinx.builder module is deprecated; please import build
 +from sphinx.builders.html import StandaloneHTMLBuilder
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;unicodedecodeerror:27e83262ac07d97e8e96230e1937876f&#34;&gt;UnicodeDecodeError&lt;/h3&gt;
+&lt;h3 id=&#34;unicodedecodeerror&#34;&gt;UnicodeDecodeError&lt;/h3&gt;
 
 &lt;p&gt;今度は、日本語を含むドキュメントを変換しようとすると UnicodeDecodeError が発生する。&lt;/p&gt;
 
@@ -192,7 +191,7 @@ Please also report this if it was a user error, so that a better error message c
 
 &lt;p&gt;&lt;a href=&#34;http://www.metareal.org/2008/09/25/disassembling-python-import-statements/&#34;&gt;前回の記事&lt;/a&gt;への追記が長くなりそうなので、新しい記事にまとめました。&lt;/p&gt;
 
-&lt;h3 id=&#34;import-module-と-import-module-as-name:c67c4be80ba8b08362387226c770cc35&#34;&gt;import &lt;module&gt; と import &lt;module&gt; as &lt;name&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;import-module-と-import-module-as-name&#34;&gt;import &lt;module&gt; と import &lt;module&gt; as &lt;name&gt;&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;import &amp;lt;module&amp;gt;&lt;/code&gt; と &lt;code&gt;import &amp;lt;module&amp;gt; as &amp;lt;name&amp;gt;&lt;/code&gt; では、どのようなバイトコードにコンパイルされるか、つまり、実行時の振る舞いが&lt;strong&gt;微妙に異なる&lt;/strong&gt;ことに注意しよう。&lt;/p&gt;
 
@@ -219,7 +218,7 @@ Please also report this if it was a user error, so that a better error message c
 
 &lt;p&gt;それにたいして、後者の &lt;code&gt;import os.path as os_path&lt;/code&gt; では &lt;code&gt;IMPORT_NAME os.path&lt;/code&gt; でロードされたモジュールから &lt;code&gt;LOAD_ATTR path&lt;/code&gt; で取り出した &lt;em&gt;os.path&lt;/em&gt; モジュールを &lt;code&gt;os_path&lt;/code&gt; という名前でシンボルテーブルに登録する。このように、&lt;code&gt;import &amp;lt;module&amp;gt;&lt;/code&gt; と &lt;code&gt;import &amp;lt;module&amp;gt; as &amp;lt;name&amp;gt;&lt;/code&gt; では、実行時の振る舞いが微妙に異なっている。&lt;/p&gt;
 
-&lt;h3 id=&#34;import-a-と-import-a-b:c67c4be80ba8b08362387226c770cc35&#34;&gt;import A と import A.B&lt;/h3&gt;
+&lt;h3 id=&#34;import-a-と-import-a-b&#34;&gt;import A と import A.B&lt;/h3&gt;
 
 &lt;p&gt;ここからはバイトコードを離れて、&lt;code&gt;import&lt;/code&gt; の動作をみていこう。まずは前節の&lt;code&gt;import os.path as os_path&lt;/code&gt; を振り返る。&lt;/p&gt;
 
@@ -308,7 +307,7 @@ AttributeError: &#39;module&#39; object has no attribute &#39;B&#39;
 
 &lt;p&gt;&lt;a href=&#34;http://docs.python.org/ref/&#34;&gt;Python Reference Manual&lt;/a&gt; の &lt;a href=&#34;http://docs.python.org/ref/import.html&#34;&gt;6.12 The import statement&lt;/a&gt; を参考に、さまざまな形式の import 文を &lt;a href=&#34;http://docs.python.org/lib/module-dis.html&#34;&gt;dis&lt;/a&gt; モジュールで &lt;code&gt;disassemble&lt;/code&gt; してみた。&lt;/p&gt;
 
-&lt;h3 id=&#34;import:8592ba189cdb8aa120e1fb84b538c680&#34;&gt;import &amp;hellip;&lt;/h3&gt;
+&lt;h3 id=&#34;import&#34;&gt;import &amp;hellip;&lt;/h3&gt;
 
 &lt;p&gt;まずは、もっとも単純な &lt;code&gt;import ...&lt;/code&gt;&lt;/p&gt;
 
@@ -334,7 +333,7 @@ AttributeError: &#39;module&#39; object has no attribute &#39;B&#39;
 
 &lt;p&gt;&lt;code&gt;STORE_NAME&lt;/code&gt; の引数が &lt;code&gt;os&lt;/code&gt; から &lt;code&gt;os2&lt;/code&gt; に変わった。つまり、登録するシンボル名は &lt;code&gt;STORE_NAME&lt;/code&gt; で指定されるということだろう。&lt;/p&gt;
 
-&lt;h3 id=&#34;import-1:8592ba189cdb8aa120e1fb84b538c680&#34;&gt;import &amp;hellip;, &amp;hellip;&lt;/h3&gt;
+&lt;h3 id=&#34;import-1&#34;&gt;import &amp;hellip;, &amp;hellip;&lt;/h3&gt;
 
 &lt;p&gt;複数のモジュールを &lt;code&gt;import&lt;/code&gt; してみよう。&lt;/p&gt;
 
@@ -353,7 +352,7 @@ AttributeError: &#39;module&#39; object has no attribute &#39;B&#39;
 
 &lt;p&gt;特別なバイトコードが用意されているわけではなく、引数だけが異なるバイトコードが繰り返されるようだ。&lt;/p&gt;
 
-&lt;h3 id=&#34;from-import:8592ba189cdb8aa120e1fb84b538c680&#34;&gt;from &amp;hellip; import &amp;hellip;&lt;/h3&gt;
+&lt;h3 id=&#34;from-import&#34;&gt;from &amp;hellip; import &amp;hellip;&lt;/h3&gt;
 
 &lt;p&gt;モジュールから特定のシンボルだけを &lt;code&gt;import&lt;/code&gt; する &lt;code&gt;from ... import ...&lt;/code&gt;&lt;/p&gt;
 
@@ -395,7 +394,7 @@ AttributeError: &#39;module&#39; object has no attribute &#39;B&#39;
 
 &lt;p&gt;&lt;code&gt;STORE_NAME&lt;/code&gt; がなくなり、専用の &lt;code&gt;IMPORT_STAR&lt;/code&gt; が使われている。&lt;/p&gt;
 
-&lt;h3 id=&#34;relative-imports:8592ba189cdb8aa120e1fb84b538c680&#34;&gt;Relative Imports&lt;/h3&gt;
+&lt;h3 id=&#34;relative-imports&#34;&gt;Relative Imports&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://docs.python.org/whatsnew/pep-328.html&#34;&gt;相対インポート&lt;/a&gt;はどのように実現されているのだろう？&lt;/p&gt;
 
@@ -412,7 +411,7 @@ AttributeError: &#39;module&#39; object has no attribute &#39;B&#39;
 
 &lt;p&gt;一見すると、&lt;code&gt;from b import B&lt;/code&gt; から変わったところは見当たらない。しかし、最初の &lt;code&gt;LOAD_CONST&lt;/code&gt; に注目してほしい。いままで &lt;code&gt;-1&lt;/code&gt; だった引数が 2 になっている。ここで相対インポートの深さを指定しているわけだ。&lt;/p&gt;
 
-&lt;h3 id=&#34;from-future-import:8592ba189cdb8aa120e1fb84b538c680&#34;&gt;from &lt;strong&gt;future&lt;/strong&gt; import &amp;hellip;&lt;/h3&gt;
+&lt;h3 id=&#34;from-future-import&#34;&gt;from &lt;strong&gt;future&lt;/strong&gt; import &amp;hellip;&lt;/h3&gt;
 
 &lt;p&gt;最後に &lt;code&gt;from __future__&lt;/code&gt; がどのようにコンパイルされるのか見ておこう。&lt;/p&gt;
 
@@ -433,7 +432,7 @@ AttributeError: &#39;module&#39; object has no attribute &#39;B&#39;
 
 &lt;p&gt;&lt;a href=&#34;http://www.metareal.org/2008/09/25/disassembling-python-import-statements-take2/&#34;&gt;追記が長くなったので、つづきを別の記事として書きました&lt;/a&gt;。&lt;/p&gt;
 
-&lt;h3 id=&#34;reference:8592ba189cdb8aa120e1fb84b538c680&#34;&gt;Reference&lt;/h3&gt;
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://docs.python.org/ref/import.html&#34;&gt;6.12 The import statement&lt;/a&gt;&lt;/li&gt;
@@ -498,13 +497,13 @@ finally:
 
 &lt;p&gt;自作ライブラリの紹介はこれくらいにし、以降では、&lt;strong&gt;Python でプロパティリストを解析する他の手段&lt;/strong&gt;と、それらのパフォーマンスを比較した結果について書いてみたい。&lt;/p&gt;
 
-&lt;h3 id=&#34;plistlib:0827b0ca43409c9b3c7a16a19e49fa08&#34;&gt;plistlib&lt;/h3&gt;
+&lt;h3 id=&#34;plistlib&#34;&gt;plistlib&lt;/h3&gt;
 
 &lt;p&gt;Python 2.6 からは、プロパティリストの読み書きをするためのライブラリ &lt;a href=&#34;http://docs.python.org/dev/library/plistlib.html&#34;&gt;plistlib&lt;/a&gt; が標準で添付されている。また、Python 2.5 以前でもソースコードや Mac 向けのディストリビューションには含まれているので、実はプロパティリストを読み込みたいだけなら、今回自作した &lt;a href=&#34;http://github.com/ishikawa/python-plist-parser/&#34;&gt;plist_parser&lt;/a&gt; の有用性はすくない。&lt;/p&gt;
 
 &lt;p&gt;それなら、何故わざわざ自作したのかといえば、ほぼ実装してしまってから &lt;a href=&#34;http://docs.python.org/dev/library/plistlib.html&#34;&gt;plistlib&lt;/a&gt; の存在に気づいたのだ。勘弁してほしい。&lt;/p&gt;
 
-&lt;h3 id=&#34;xml-etree:0827b0ca43409c9b3c7a16a19e49fa08&#34;&gt;xml.etree&lt;/h3&gt;
+&lt;h3 id=&#34;xml-etree&#34;&gt;xml.etree&lt;/h3&gt;
 
 &lt;p&gt;Python 2.5 から標準添付されている &lt;a href=&#34;http://docs.python.org/lib/module-xml.etree.ElementTree.html&#34;&gt;xml.etree&lt;/a&gt; ライブラリを使うと XML の処理が簡潔に記述できる。作者のサイト &lt;a href=&#34;http://effbot.org/&#34;&gt;effbot.org&lt;/a&gt; に掲載されている記事 &lt;a href=&#34;http://effbot.org/zone/element-iterparse.htm&#34;&gt;The ElementTree iterparse Function&lt;/a&gt; に、ちょうど、このライブラリを使ってプロパティリストを読み込む例がある（以下はすこし改変してある）。&lt;/p&gt;
 
@@ -547,7 +546,7 @@ def load(file):
 
 &lt;p&gt;xml.etree は C による実装 &lt;code&gt;xml.etree.cElementTree&lt;/code&gt; も提供されており、これを使うとパフォーマンスでもかなりの好成績を出すようになる（具体的なパフォーマンスの比較は後述）。&lt;/p&gt;
 
-&lt;h3 id=&#34;パフォーマンスの比較:0827b0ca43409c9b3c7a16a19e49fa08&#34;&gt;パフォーマンスの比較&lt;/h3&gt;
+&lt;h3 id=&#34;パフォーマンスの比較&#34;&gt;パフォーマンスの比較&lt;/h3&gt;
 
 &lt;p&gt;さて、プロパティリストを読み込むためのライブラリとして、&lt;/p&gt;
 
@@ -574,8 +573,7 @@ def load(file):
 
 &lt;p&gt;今回は比較対象として、&lt;a href=&#34;http://github.com/ishikawa/python-plist-parser/tree/master/tools/performance/core_foundation_parser.c&#34;&gt;C による実装&lt;/a&gt;を用意した。これは Mac OS X ネイティブの API を使って、プロパティリストを読み込んでいる。&lt;strong&gt;このプログラムの実行時間を 1 として、それぞれの実行時間を比較&lt;/strong&gt;してみよう（なお、測定に使用したプログラムは&lt;a href=&#34;http://github.com/ishikawa/python-plist-parser/tree/master/tools/performance/profiler.py&#34;&gt;ここに置いてある&lt;/a&gt;）。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2732221848/&#34;&gt;&lt;img src=&#34;http://farm4.static.flickr.com/3123/2732221848_38f2439737_o.png&#34; alt=&#34;Performance of Python Property Lists Libraries&#34; /&gt;
-&lt;/a&gt;やはり、C によるプログラムが桁違いに速い。ちなみに、実時間でいえば 0.5 秒程度である。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2732221848/&#34;&gt;&lt;img src=&#34;http://farm4.static.flickr.com/3123/2732221848_38f2439737_o.png&#34; alt=&#34;Performance of Python Property Lists Libraries&#34; /&gt;&lt;/a&gt;やはり、C によるプログラムが桁違いに速い。ちなみに、実時間でいえば 0.5 秒程度である。&lt;/p&gt;
 
 &lt;p&gt;次に目立つのが &lt;a href=&#34;http://docs.python.org/lib/module-xml.etree.ElementTree.html&#34;&gt;xml.etree&lt;/a&gt; によるプログラムだ。これは C による &lt;code&gt;xml.etree.cElementTree&lt;/code&gt; と Python のみで実装された &lt;code&gt;xml.etree.ElementTree&lt;/code&gt; のふたつがあるが、&lt;code&gt;xml.etree.cElementTree&lt;/code&gt; はかなり速いことがわかる。C によるプログラムと比較しても 5 倍程度の実行時間、&lt;a href=&#34;http://docs.python.org/dev/library/plistlib.html&#34;&gt;plistlib&lt;/a&gt; と比較すると 3 倍程度速く、優秀であるといえる。逆に、Python による実装の &lt;code&gt;xml.etree.ElementTree&lt;/code&gt; がズバ抜けて遅いのも興味深い。&lt;/p&gt;
 
@@ -585,7 +583,7 @@ def load(file):
 
 &lt;p&gt;そのため、Python 2.5 以降など、&lt;code&gt;xml.etree.cElementTree&lt;/code&gt; がインストールされている環境では、同程度の速度で動作するようになっている。&lt;/p&gt;
 
-&lt;h3 id=&#34;最後に:0827b0ca43409c9b3c7a16a19e49fa08&#34;&gt;最後に&lt;/h3&gt;
+&lt;h3 id=&#34;最後に&#34;&gt;最後に&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;XML を扱うなら、&lt;a href=&#34;http://docs.python.org/lib/module-xml.etree.ElementTree.html&#34;&gt;xml.etree&lt;/a&gt; は一見の価値あり&lt;/li&gt;
@@ -609,7 +607,7 @@ def load(file):
 
 &lt;p&gt;それを更に、&lt;a href=&#34;http://code.google.com/appengine/&#34;&gt;Google App Engine&lt;/a&gt; に移植しましたよ、というのが今回のお話。&lt;/p&gt;
 
-&lt;h3 id=&#34;google-app-engine-に移植した理由:787806c84788060e978a12ba017b9ce9&#34;&gt;Google App Engine に移植した理由&lt;/h3&gt;
+&lt;h3 id=&#34;google-app-engine-に移植した理由&#34;&gt;Google App Engine に移植した理由&lt;/h3&gt;
 
 &lt;p&gt;まずは、Google App Engine（以下、GAE）に移植した理由から説明させてほしい。いままで Wordpress を動かしていたサーバでそのまま新しいブログシステムを動かすこともできた。&lt;/p&gt;
 
@@ -621,7 +619,7 @@ def load(file):
 
 &lt;p&gt;&lt;a href=&#34;http://code.google.com/appengine/docs/&#34;&gt;GAE のオンラインドキュメント&lt;/a&gt; を参考に、ほとんど単純作業による変換だったが、細かい変更や思わぬ問題などもあったので、開発中にとったメモを片手につらつらと書いてみる。&lt;/p&gt;
 
-&lt;h3 id=&#34;django:787806c84788060e978a12ba017b9ce9&#34;&gt;Django&lt;/h3&gt;
+&lt;h3 id=&#34;django&#34;&gt;Django&lt;/h3&gt;
 
 &lt;p&gt;Django は &lt;a href=&#34;http://code.google.com/appengine/articles/django.html&#34;&gt;Running Django on Google App Engine&lt;/a&gt; を参考に、開発版のものを動かしている。&lt;/p&gt;
 
@@ -629,11 +627,11 @@ def load(file):
 
 &lt;p&gt;ただ、Generic View は簡単な変更で動きそうだ。実際、&lt;a href=&#34;http://www.djangoproject.com/documentation/pagination/&#34;&gt;Pagination&lt;/a&gt; の処理では &lt;code&gt;django.core.QuerySetPaginator&lt;/code&gt; に GAE の &lt;a href=&#34;http://code.google.com/appengine/docs/datastore/queryclass.html&#34;&gt;Query&lt;/a&gt; オブジェクトをそのまま渡して動作していた（GAE の Query オブジェクトも &lt;code&gt;[]&lt;/code&gt; アクセスを適切な &lt;code&gt;fetch()&lt;/code&gt; に変換してくれる）。&lt;/p&gt;
 
-&lt;h3 id=&#34;akismet:787806c84788060e978a12ba017b9ce9&#34;&gt;Akismet&lt;/h3&gt;
+&lt;h3 id=&#34;akismet&#34;&gt;Akismet&lt;/h3&gt;
 
 &lt;p&gt;スパムコメント対策として &lt;a href=&#34;http://www.hashcash.org/&#34;&gt;Hashcash&lt;/a&gt; と &lt;a href=&#34;http://akismet.com/&#34;&gt;Akismet&lt;/a&gt; を使っているのだが、外部リソースへのアクセスは GAE の &lt;a href=&#34;http://code.google.com/appengine/docs/urlfetch/&#34;&gt;URL Fetch API&lt;/a&gt; に変更が必要だ。Akismet への問い合わせ処理は、外部リソースへのアクセスなので URL Fetch API を使うように変更が必要だった。&lt;/p&gt;
 
-&lt;h3 id=&#34;docutils-pygments:787806c84788060e978a12ba017b9ce9&#34;&gt;docutils, pygments&lt;/h3&gt;
+&lt;h3 id=&#34;docutils-pygments&#34;&gt;docutils, pygments&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://docutils.sourceforge.net/rst.html&#34;&gt;reStructuredText&lt;/a&gt; でブログを書くために &lt;a href=&#34;http://docutils.sourceforge.net/&#34;&gt;docutils&lt;/a&gt; を、そして、ソースコードのハイライトするために &lt;a href=&#34;http://pygments.org/&#34;&gt;pygments&lt;/a&gt; をソースコードに含めるようにした（トップレベルだと邪魔なので、&lt;code&gt;lib&lt;/code&gt; というディレクトリにパスを通して、そこに必要なライブラリを置くようにした）。&lt;/p&gt;
 
@@ -649,11 +647,11 @@ def load(file):
 
 &lt;p&gt;この部分は潔くコメントアウトした。&lt;/p&gt;
 
-&lt;h3 id=&#34;検索機能:787806c84788060e978a12ba017b9ce9&#34;&gt;検索機能&lt;/h3&gt;
+&lt;h3 id=&#34;検索機能&#34;&gt;検索機能&lt;/h3&gt;
 
 &lt;p&gt;モデルクラスで db.Model ではなく、そのサブクラスである google.appengine.ext.search.SearchableModel を継承することで、モデルの検索ができるようになるようだ（&lt;a href=&#34;http://groups.google.com/group/google-appengine/browse_thread/thread/ba4a4a4ccefb96c5/0e3f0ab63c4c8afd&#34;&gt;Indexing Large Chunks of Text for Search - Google App Engine | Google グループ&lt;/a&gt; を参照）。「検索機能を備えたクラスを継承する」というだけでもダサいのに、日本語での使用とか不安なので、検索機能はとりあえず見送った。&lt;/p&gt;
 
-&lt;h3 id=&#34;デプロイして直面した問題:787806c84788060e978a12ba017b9ce9&#34;&gt;デプロイして直面した問題&lt;/h3&gt;
+&lt;h3 id=&#34;デプロイして直面した問題&#34;&gt;デプロイして直面した問題&lt;/h3&gt;
 
 &lt;p&gt;Web アプリケーションの宿命で、最大の問題はデプロイ後にやってくる。&lt;/p&gt;
 
@@ -678,7 +676,7 @@ def load(file):
   upload: public/robots\.txt
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;gae-にしてよかったこと-不満:787806c84788060e978a12ba017b9ce9&#34;&gt;GAE にしてよかったこと・不満&lt;/h3&gt;
+&lt;h3 id=&#34;gae-にしてよかったこと-不満&#34;&gt;GAE にしてよかったこと・不満&lt;/h3&gt;
 
 &lt;p&gt;最後に感想でも。&lt;/p&gt;
 
@@ -709,7 +707,7 @@ def load(file):
 
 &lt;p&gt;なお、参照したソースコードは SVN の Revision 7438 である。公開リリースの 0.96.1 とは内容が大きく異なる可能性があること、 &lt;a href=&#34;http://code.djangoproject.com/query&#34;&gt;Trac&lt;/a&gt; での議論やドキュメントを読むかぎり、このへんの実装については今後大きく変更されるかもしれないことを、あらかじめお断りしておく。&lt;/p&gt;
 
-&lt;h3 id=&#34;urlresolvers-py:df5b3f6671d300513435b6b9f9ba9ac6&#34;&gt;urlresolvers.py&lt;/h3&gt;
+&lt;h3 id=&#34;urlresolvers-py&#34;&gt;urlresolvers.py&lt;/h3&gt;
 
 &lt;p&gt;まずは、調べるソースコードを特定しよう。URL の逆マッピングをしてくれる &lt;a href=&#34;http://www.djangoproject.com/documentation/url_dispatch/#reverse&#34;&gt;reverse() 関数&lt;/a&gt;が用意されていることは分かっているので、これを手がかりにソースコードを探すのがよさそうだ。&lt;/p&gt;
 
@@ -721,7 +719,7 @@ def load(file):
 
 &lt;p&gt;と書かれているので、これが探していたソースコード（モジュール）だろう。&lt;/p&gt;
 
-&lt;h3 id=&#34;reverse-と-resolve:df5b3f6671d300513435b6b9f9ba9ac6&#34;&gt;reverse() と resolve()&lt;/h3&gt;
+&lt;h3 id=&#34;reverse-と-resolve&#34;&gt;reverse() と resolve()&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;urlresolvers.py&lt;/code&gt; では &lt;code&gt;reverse()&lt;/code&gt; だけでなく、&lt;code&gt;resolve()&lt;/code&gt; も定義されている。&lt;/p&gt;
 
@@ -757,7 +755,7 @@ a string) and returns a tuple in this format:&lt;/p&gt;
 
 &lt;p&gt;がタプルで返ってくるらしい。&lt;/p&gt;
 
-&lt;h3 id=&#34;regexurlresolver:df5b3f6671d300513435b6b9f9ba9ac6&#34;&gt;RegexURLResolver&lt;/h3&gt;
+&lt;h3 id=&#34;regexurlresolver&#34;&gt;RegexURLResolver&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;reverse()&lt;/code&gt; も &lt;code&gt;resolve()&lt;/code&gt; も、実際の処理は &lt;code&gt;get_resolver()&lt;/code&gt; で返ってくるオブジェクトに丸投げしている。そして、先のコメントが示唆するように、&lt;code&gt;get_resolver()&lt;/code&gt; で返されるオブジェクトは &lt;code&gt;RegexURLResolver&lt;/code&gt; のインスタンスになっている。&lt;/p&gt;
 
@@ -817,7 +815,7 @@ a string) and returns a tuple in this format:&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;resolve()&lt;/code&gt; メソッドは &lt;code&gt;RegexURLPattern&lt;/code&gt; にも &lt;code&gt;RegexURLResolver&lt;/code&gt; にも実装されていることに注意。&lt;/p&gt;
 
-&lt;h3 id=&#34;matchchecker:df5b3f6671d300513435b6b9f9ba9ac6&#34;&gt;MatchChecker&lt;/h3&gt;
+&lt;h3 id=&#34;matchchecker&#34;&gt;MatchChecker&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;urlresolver.py&lt;/code&gt; にはこの他に &lt;code&gt;MatchChecker&lt;/code&gt; というクラスが定義されており、これは &lt;code&gt;reverse()&lt;/code&gt; の過程で正規表現をパス文字列に変換するために使われているようだ。&lt;/p&gt;
 
@@ -872,7 +870,7 @@ a string) and returns a tuple in this format:&lt;/p&gt;
 
 &lt;p&gt;Inline literal start-string without end-string.&lt;/p&gt;
 
-&lt;h3 id=&#34;モデルには-str-ではなく-unicode-を実装する:3b09cb17e796826b168e2323e1bf17ef&#34;&gt;モデルには &lt;strong&gt;str&lt;/strong&gt; ではなく &lt;strong&gt;unicode&lt;/strong&gt; を実装する&lt;/h3&gt;
+&lt;h3 id=&#34;モデルには-str-ではなく-unicode-を実装する&#34;&gt;モデルには &lt;strong&gt;str&lt;/strong&gt; ではなく &lt;strong&gt;unicode&lt;/strong&gt; を実装する&lt;/h3&gt;
 
 &lt;p&gt;Django オンラインドキュメント和訳の &lt;a href=&#34;http://michilu.com/django/doc-ja/unicode/#str-unicode&#34;&gt;&lt;strong&gt;str&lt;/strong&gt;() と &lt;strong&gt;unicode&lt;/strong&gt;() のどちらを使うべきか&lt;/a&gt;に、そのものズバリの回答があった。&lt;/p&gt;
 
@@ -882,7 +880,7 @@ a string) and returns a tuple in this format:&lt;/p&gt;
 
 &lt;p&gt;本当だ。モデルに書いていた &lt;strong&gt;str&lt;/strong&gt; メソッドを &lt;strong&gt;unicode&lt;/strong&gt; に変えるだけで解決しちゃったよ。&lt;/p&gt;
 
-&lt;h3 id=&#34;force-unicode:3b09cb17e796826b168e2323e1bf17ef&#34;&gt;force_unicode&lt;/h3&gt;
+&lt;h3 id=&#34;force-unicode&#34;&gt;force_unicode&lt;/h3&gt;
 
 &lt;p&gt;エラーのスタックトレースを辿って、Django の &lt;code&gt;django/utils/encodings.py&lt;/code&gt; を見てみると、&lt;/p&gt;
 
@@ -930,7 +928,7 @@ checking for rl_completion_matches in -lreadline... no
 
 &lt;p&gt;ヒストリ機能やキャレット移動のショートカットが使えないのは、やはり不便だ。これはなんとかしたい。&lt;/p&gt;
 
-&lt;h3 id=&#34;macports-で-gnu-readline-ライブラリをインストール:5839a3b3f349c2d8d881ce8086a647d3&#34;&gt;MacPorts で GNU Readline ライブラリをインストール&lt;/h3&gt;
+&lt;h3 id=&#34;macports-で-gnu-readline-ライブラリをインストール&#34;&gt;MacPorts で GNU Readline ライブラリをインストール&lt;/h3&gt;
 
 &lt;p&gt;まずは &lt;a href=&#34;http://tiswww.case.edu/php/chet/readline/rltop.html&#34;&gt;GNU Readline&lt;/a&gt; ライブラリをインストールしよう。&lt;a href=&#34;http://www.macports.org/&#34;&gt;MacPorts&lt;/a&gt; を利用するのが簡単だろう。&lt;/p&gt;
 
@@ -946,7 +944,7 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.5.dyl
 lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib -&amp;gt; libreadline.5.1.dylib
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;gnu-readline-ライブラリの場所を指定して-python-をビルド:5839a3b3f349c2d8d881ce8086a647d3&#34;&gt;GNU Readline ライブラリの場所を指定して Python をビルド&lt;/h3&gt;
+&lt;h3 id=&#34;gnu-readline-ライブラリの場所を指定して-python-をビルド&#34;&gt;GNU Readline ライブラリの場所を指定して Python をビルド&lt;/h3&gt;
 
 &lt;p&gt;あとは新しくインストールされたライブラリの場所を指定して、Python をビルドしなおすだけだ。&lt;/p&gt;
 
@@ -1034,13 +1032,13 @@ lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib
 
 &lt;p&gt;というわけで、Apple のパッチを適用した Python 2.5.1 の&lt;a href=&#34;http://snipplr.com/view/6028/apples-modifications-to-python-251-localepy-/&#34;&gt;パッチファイルをアップしておく&lt;/a&gt;。以降は、このパッチファイルを作成するまでの詳細である。&lt;/p&gt;
 
-&lt;h3 id=&#34;mac-os-x-に標準でパッケージングされている-python:363e045729c80ba947d40f29bb6d79a6&#34;&gt;Mac OS X に標準でパッケージングされている Python&lt;/h3&gt;
+&lt;h3 id=&#34;mac-os-x-に標準でパッケージングされている-python&#34;&gt;Mac OS X に標準でパッケージングされている Python&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://developer.apple.com/&#34;&gt;Apple Developer Connection&lt;/a&gt; の &lt;a href=&#34;http://developer.apple.com/opensource/index.html&#34;&gt;Open Source&lt;/a&gt; ページでは Mac OS X のベースとなっている Darwin のソースコードが公開されている。&lt;a href=&#34;http://www.opensource.apple.com/darwinsource/10.4.9.x86/&#34;&gt;現時点での最新版は Mac OS X 10.4.9 のもの&lt;/a&gt;なので、今回のパッチはこれを基にした。&lt;/p&gt;
 
 &lt;p&gt;上記ページからダウンロードできる &lt;a href=&#34;http://www.opensource.apple.com/darwinsource/tarballs/other/python-16.1.3.tar.gz&#34;&gt;python-16.1.3.tar.gz&lt;/a&gt; には Mac OS X にバンドルされている Python に適用されたパッチが含まれているので、このうち、ロケール周りに関係あるものを Python 2.5.1 のソースコードに適用すればよさそうだ。&lt;/p&gt;
 
-&lt;h3 id=&#34;apple-のパッチを-python-2-5-1-に適用する:363e045729c80ba947d40f29bb6d79a6&#34;&gt;Apple のパッチを Python 2.5.1 に適用する&lt;/h3&gt;
+&lt;h3 id=&#34;apple-のパッチを-python-2-5-1-に適用する&#34;&gt;Apple のパッチを Python 2.5.1 に適用する&lt;/h3&gt;
 
 &lt;p&gt;まずは、Python 2.5.1 のソースコードと Apple のパッチ (python-16.1.3.tar.gz) を同じディレクトリにダウンロードして展開する。&lt;/p&gt;
 
@@ -1110,7 +1108,7 @@ LookupError: unknown encoding: X-MAC-JAPANESE
 
 &lt;p&gt;です。&lt;/p&gt;
 
-&lt;h3 id=&#34;ソースコードを読む:420dbfa210f789f3a114411bdddb14ea&#34;&gt;ソースコードを読む&lt;/h3&gt;
+&lt;h3 id=&#34;ソースコードを読む&#34;&gt;ソースコードを読む&lt;/h3&gt;
 
 &lt;p&gt;スタックトレースから例外の発生箇所は簡単に分かるので、ソースコードを読んでみる (&lt;code&gt;/trac/util/datefmt.py&lt;/code&gt;) 。&lt;/p&gt;
 
@@ -1142,7 +1140,7 @@ LookupError: unknown encoding: X-MAC-JAPANESE
 
 &lt;p&gt;まあ、1. が真っ当なんだろうけど、2. でも問題ないというか、むしろ、&lt;code&gt;getpreferredencoding&lt;/code&gt; という名前のメソッドがサポートされていないエンコーディングを返すよりいいんじゃないだろうか。&lt;/p&gt;
 
-&lt;h3 id=&#34;localmodule-c-を変更:420dbfa210f789f3a114411bdddb14ea&#34;&gt;_localmodule.c を変更&lt;/h3&gt;
+&lt;h3 id=&#34;localmodule-c-を変更&#34;&gt;_localmodule.c を変更&lt;/h3&gt;
 
 &lt;p&gt;とりあえず、Python 2.5.1 の &lt;code&gt;Modules/_localemodule.c&lt;/code&gt; で、&lt;code&gt;X-MAC-JAPANESE&lt;/code&gt; の場合は &lt;code&gt;shift_jis&lt;/code&gt; を返すように変更してみた。&lt;/p&gt;
 

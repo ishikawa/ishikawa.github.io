@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Webkit on METAREAL</title>
-    <link>http://www.metareal.org/tags/webkit/</link>
-    <description>Recent content in Webkit on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/webkit/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Wed, 24 Dec 2008 01:06:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/webkit/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -22,7 +21,7 @@
 
 &lt;p&gt;WEB+DB PRESS Vol.48 で氏は「[最速]JavaScript エンジン徹底比較」と題して、最近のブラウザ事情に聡いプログラマなら気になるであろう、最新 JavaScript エンジンの比較と検証記事を執筆されています。以下では、記事内容の簡単な紹介と一読した感想などを書いていきます。&lt;/p&gt;
 
-&lt;h3 id=&#34;最速-javascript-エンジン徹底比較:413f555c66a5164357ae2df9904875e8&#34;&gt;[最速]JavaScript エンジン徹底比較&lt;/h3&gt;
+&lt;h3 id=&#34;最速-javascript-エンジン徹底比較&#34;&gt;[最速]JavaScript エンジン徹底比較&lt;/h3&gt;
 
 &lt;p&gt;（ここから文体をいつもどおりに戻して&amp;hellip;）記事は三章から構成されており、それぞれの章題は：&lt;/p&gt;
 
@@ -39,7 +38,7 @@
 &lt;p&gt;個々のトピックについては WEB 上にも詳細に解説されたサイトがあるものの、雑誌という紙媒体で、こうして一本にまとめられた情報は珍しいのではないだろうか&amp;hellip;って、普段、雑誌を読まない人が書いても説得力に乏しい。スミマセン。もっとも、珍しかろうが珍しくなかろうが、日本語で読める貴重な情報源のひとつであることに変わりはない。
 特に、SquirrelFish Extreme で採用されている Polymorphic Inline Cache (PIC) や V8 の高速なプロパティ・アクセスを実現するための &lt;a href=&#34;http://code.google.com/intl/ja-JP/apis/v8/design.html#prop_access&#34;&gt;Hidden Class&lt;/a&gt; の解説は、現代的な動的言語の裏舞台を知る、という意味で興味深い。たとえ、言語処理系の実装詳細に興味がなくとも、普段使っている道具がどのように作られているかを知ることは益になるだろう。&lt;/p&gt;
 
-&lt;h3 id=&#34;最後に:413f555c66a5164357ae2df9904875e8&#34;&gt;最後に&lt;/h3&gt;
+&lt;h3 id=&#34;最後に&#34;&gt;最後に&lt;/h3&gt;
 
 &lt;p&gt;今回、ひさしぶりに技術系雑誌を読んでみて、プロのライターと編集者による情報のパッケージングと、紙という媒体とレイアウトには、他のものには代えがたい価値がある、と感じた。腰を落ち着けて、プログラミングのさまざまなトピックスに触れるというのは、やはり、ワクワクする体験だ。&lt;/p&gt;
 </description>
@@ -57,7 +56,7 @@
 
 &lt;p&gt;このベンチマークはJavaScript 言語のコアに絞ったベンチマークを提供しており、これまでの、Web 開発者が使うツールというよりは言語処理系開発者向けのツールといえる。&lt;/p&gt;
 
-&lt;h3 id=&#34;sunspider-0-9:34f2cfef7b24314ebc3ea9e94a1e7bb4&#34;&gt;SunSpider 0.9&lt;/h3&gt;
+&lt;h3 id=&#34;sunspider-0-9&#34;&gt;SunSpider 0.9&lt;/h3&gt;
 
 &lt;p&gt;このベンチマークは &lt;a href=&#34;http://webkit.org/blog/&#34;&gt;Surfin’ Safari&lt;/a&gt; のブログ上で公開がアナウンスされている。&lt;/p&gt;
 

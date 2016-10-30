@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Streaming on METAREAL</title>
-    <link>http://www.metareal.org/tags/streaming/</link>
-    <description>Recent content in Streaming on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/streaming/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Wed, 10 Jan 2007 03:20:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/streaming/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -35,7 +34,7 @@
 
 &lt;p&gt;前回の記事「&lt;a href=&#34;http://weblog.metareal.org/2007/01/09/flash-video-streaming-with-lighttpd/&#34;&gt;lighttpd で Flash Video (.flv) をストリーミング配信&lt;/a&gt;」で、とりあえずストリーミング配信できることは書いた。今回は Flash の動画配信について調査したまとめ。&lt;/p&gt;
 
-&lt;h3 id=&#34;how-much:7711e8cf11829fcff8aa72c2c0c82c6a&#34;&gt;How much?&lt;/h3&gt;
+&lt;h3 id=&#34;how-much&#34;&gt;How much?&lt;/h3&gt;
 
 &lt;p&gt;一番気になっていたのは、あの馬鹿高い「&lt;a href=&#34;http://www.adobe.com/jp/products/flashmediaserver/&#34;&gt;フラッシュなんちゃらサーバ&lt;/a&gt;」を購入しないとあかんの？　というところでしたが、yuin さんがコメントしてくれた情報で解決しました。&lt;/p&gt;
 
@@ -43,7 +42,7 @@
 
 &lt;p&gt;まあ、要するに&lt;strong&gt;タダだよ&lt;/strong&gt;、と。&lt;/p&gt;
 
-&lt;h3 id=&#34;動画フォーマット:7711e8cf11829fcff8aa72c2c0c82c6a&#34;&gt;動画フォーマット&lt;/h3&gt;
+&lt;h3 id=&#34;動画フォーマット&#34;&gt;動画フォーマット&lt;/h3&gt;
 
 &lt;p&gt;まず、動画フォーマットは &lt;strong&gt;Flash Video (&lt;code&gt;.flv&lt;/code&gt;)&lt;/strong&gt; になる。
 これについては、&lt;code&gt;.mpeg&lt;/code&gt; や &lt;code&gt;.mov&lt;/code&gt; からの変換ツールがごろごろあるはずなので詳細は割愛。&lt;/p&gt;
@@ -55,7 +54,7 @@
 &lt;li&gt;&lt;a href=&#34;http://rubyforge.org/projects/flvtool2/&#34;&gt;FLVTool2&lt;/a&gt;  &lt;code&gt;.flv&lt;/code&gt; を操作。メタデータ追加など。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;flash-player-の事情:7711e8cf11829fcff8aa72c2c0c82c6a&#34;&gt;Flash Player の事情&lt;/h3&gt;
+&lt;h3 id=&#34;flash-player-の事情&#34;&gt;Flash Player の事情&lt;/h3&gt;
 
 &lt;p&gt;クライアント (Flash Player) 側では、&lt;a href=&#34;http://livedocs.macromedia.com/flex/2_jp/langref/flash/net/NetConnection.html&#34;&gt;&lt;code&gt;NetConnection&lt;/code&gt;&lt;/a&gt; でサーバに接続する。そして、その接続から &lt;a href=&#34;http://livedocs.macromedia.com/flex/2_jp/langref/flash/net/NetStream.html&#34;&gt;&lt;code&gt;NetStream&lt;/code&gt;&lt;/a&gt; インスタンスを生成し、これを &lt;code&gt;Video&lt;/code&gt; インスタンスに &lt;code&gt;attachVideo()&lt;/code&gt; することで &lt;code&gt;.flv&lt;/code&gt; の再生が可能になる。&lt;/p&gt;
 
@@ -74,7 +73,7 @@ video.attachVideo(_ns);
 &lt;li&gt;&lt;a href=&#34;http://www.osflash.org/red5/&#34;&gt;Red5 : Open Source Flash Server&lt;/a&gt; (RTMP を自力で解析)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;flash-player-7-以降:7711e8cf11829fcff8aa72c2c0c82c6a&#34;&gt;Flash Player 7 以降&lt;/h3&gt;
+&lt;h3 id=&#34;flash-player-7-以降&#34;&gt;Flash Player 7 以降&lt;/h3&gt;
 
 &lt;p&gt;しかし、&lt;strong&gt;Flash Player 7&lt;/strong&gt; 以降では &lt;code&gt;NetConnection&lt;/code&gt; が HTTP による接続をサポートするようになったため、サーバ上の &lt;code&gt;.flv&lt;/code&gt; に HTTP でアクセスするだけでストリーミング（&lt;strong&gt;っぽい&lt;/strong&gt;）再生が可能になった。&lt;/p&gt;
 
@@ -86,7 +85,7 @@ video.attachVideo(_ns);
 &lt;li&gt;クライアントのローカルディスクにキャッシュされちゃう&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&#34;lighttpd:7711e8cf11829fcff8aa72c2c0c82c6a&#34;&gt;lighttpd&lt;/h3&gt;
+&lt;h3 id=&#34;lighttpd&#34;&gt;lighttpd&lt;/h3&gt;
 
 &lt;p&gt;そこで &lt;a href=&#34;http://www.lighttpd.net/&#34;&gt;lighttpd&lt;/a&gt; ですよ。&lt;/p&gt;
 

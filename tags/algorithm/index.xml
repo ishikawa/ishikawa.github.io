@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Algorithm on METAREAL</title>
-    <link>http://www.metareal.org/tags/algorithm/</link>
-    <description>Recent content in Algorithm on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/algorithm/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Mon, 08 Sep 2008 02:25:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -26,32 +25,29 @@
 
 &lt;p&gt;恥ずかしながら、いままで「まあ、省略しても対数時間ということは分かるし、 そういうもんなんだろう」程度にしか考えていなかったが、書籍「&lt;a href=&#34;http://www.amazon.co.jp/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3-Jon-Kleinberg/dp/4320122178&#34;&gt;アルゴリズムデザイン&lt;/a&gt;」に分かりやすい説明があった。&lt;/p&gt;
 
-&lt;h3 id=&#34;説明:459a77d8bbd05810f05f9a10b6c386ce&#34;&gt;説明&lt;/h3&gt;
+&lt;h3 id=&#34;説明&#34;&gt;説明&lt;/h3&gt;
 
 &lt;p&gt;まず、対数自体を忘れかけている自分自身のために、ものすごく基本的なところから。対数 logbn とは &lt;em&gt;bx = n&lt;/em&gt; になる &lt;em&gt;x&lt;/em&gt; に等しい数のことである。&lt;/p&gt;
 
 &lt;p&gt;そして、&lt;a href=&#34;http://www.geisya.or.jp/~mwm48961/kou2/log2.html&#34;&gt;底の変換公式&lt;/a&gt;により、異なる底をもつ対数同士を相互に変換できる。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B%5Clog_b%20n%7D%7B%5Clog_b%20a%7D&#34;&gt;&lt;img src=&#34;http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B%5Clog_b%20n%7D%7B%5Clog_b%20a%7D.png&#34; alt=&#34;img&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B%5Clog_b%20n%7D%7B%5Clog_b%20a%7D&#34;&gt;&lt;img src=&#34;http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B%5Clog_b%20n%7D%7B%5Clog_b%20a%7D.png&#34; alt=&#34;img&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;そして、右辺を変形すると：&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B1%7D%7B%5Clog_b%20a%7D%5Ctimes%20%5Clog_b%20n&#34;&gt;&lt;img src=&#34;http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B1%7D%7B%5Clog_b%20a%7D%5Ctimes%20%5Clog_b%20n.png&#34; alt=&#34;img&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B1%7D%7B%5Clog_b%20a%7D%5Ctimes%20%5Clog_b%20n&#34;&gt;&lt;img src=&#34;http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B1%7D%7B%5Clog_b%20a%7D%5Ctimes%20%5Clog_b%20n.png&#34; alt=&#34;img&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;ここで大事なのは、1/logba は定数になる、ということだ。&lt;/p&gt;
 
 &lt;p&gt;つまり、左辺と右辺では定数係数のみが異なることになる。O 記法においては定数係数は無視できるため、異なる底をもつ対数は等価とみなせる。よって、O 記法では対数の底がしばしば省略されるのである。&lt;/p&gt;
 
-&lt;h3 id=&#34;但し書き:459a77d8bbd05810f05f9a10b6c386ce&#34;&gt;但し書き&lt;/h3&gt;
+&lt;h3 id=&#34;但し書き&#34;&gt;但し書き&lt;/h3&gt;
 
 &lt;p&gt;最後に、ふたつばかり但し書きを。&lt;/p&gt;
 
 &lt;p&gt;書籍「&lt;a href=&#34;http://www.amazon.co.jp/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3-Jon-Kleinberg/dp/4320122178&#34;&gt;アルゴリズムデザイン&lt;/a&gt;」では上記の説明を、最終的に：&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://formula.s21g.com/?%5Clog_a%20n%3D%5CTheta%20(%5Clog_b%20n)&#34;&gt;&lt;img src=&#34;http://formula.s21g.com/?%5Clog_a%20n%3D%5CTheta%20(%5Clog_b%20n).png&#34; alt=&#34;img&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://formula.s21g.com/?%5Clog_a%20n%3D%5CTheta%20(%5Clog_b%20n)&#34;&gt;&lt;img src=&#34;http://formula.s21g.com/?%5Clog_a%20n%3D%5CTheta%20(%5Clog_b%20n).png&#34; alt=&#34;img&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;となることから結論づけているが、O 以外の記号を導入するのが面倒だったので、この記事の説明では端折ってある。&lt;/p&gt;
 

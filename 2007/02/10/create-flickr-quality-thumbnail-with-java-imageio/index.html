@@ -44,8 +44,7 @@ transformOp.filter(originalImage, dest1);
 
 <p><code>AffineTransformOp</code> を用いた方法だと、こうなってしまう。</p>
 
-<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2448999922/"><img src="http://farm3.static.flickr.com/2064/2448999922_f37cf202e5_o.jpg" alt="Java ImageIO AffineTransformOp" />
-</a>で、どうするかというと、AWT の <a href="http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/java/awt/image/AreaAveragingScaleFilter.html"><code>AreaAveragingScaleFilter</code></a> を使うのがいいようだ。以下、API リファレンスより抜粋：</p>
+<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2448999922/"><img src="http://farm3.static.flickr.com/2064/2448999922_f37cf202e5_o.jpg" alt="Java ImageIO AffineTransformOp" /></a>で、どうするかというと、AWT の <a href="http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/java/awt/image/AreaAveragingScaleFilter.html"><code>AreaAveragingScaleFilter</code></a> を使うのがいいようだ。以下、API リファレンスより抜粋：</p>
 
 <blockquote>
 <p>最近接点アルゴリズムよりもなめらかな結果が得られる、簡単な領域平均化アルゴリズムを使用してイメージをスケーリングする ImageFilter クラスです。</p>
@@ -62,8 +61,7 @@ Image newImage = Toolkit.getDefaultToolkit().createImage(im);
 
 <p>こんな感じになる。</p>
 
-<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2448999924/"><img src="http://farm4.static.flickr.com/3197/2448999924_62c28b86b2_o.jpg" alt="Java ImageIO AreaAveragingScaleFilter" />
-</a>格段にキレイだ。</p>
+<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2448999924/"><img src="http://farm4.static.flickr.com/3197/2448999924_62c28b86b2_o.jpg" alt="Java ImageIO AreaAveragingScaleFilter" /></a>格段にキレイだ。</p>
 
   </div>
 </article>

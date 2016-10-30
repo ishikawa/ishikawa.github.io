@@ -33,7 +33,7 @@
 
 <p>改行やインデントを加えて読みやすくしたソースコードを基に、履歴を保存する処理や興味深い部分を紹介する。</p>
 
-<h3 id="検索クエリーの保存:34a1dfb20d7c6856f926f07ef5ad2cdf">検索クエリーの保存</h3>
+<h3 id="検索クエリーの保存">検索クエリーの保存</h3>
 
 <pre><code>if (document.images) {
   new Image().src=&quot;/url?sa=Q&amp;client=safari&amp;rls=ja-jp&amp;q=...&quot;;
@@ -44,7 +44,7 @@
 
 <p>URL から推測するに検索クエリーを保存しているのだろう。</p>
 
-<h3 id="クリックされたページの-url-を保存:34a1dfb20d7c6856f926f07ef5ad2cdf">クリックされたページの URL を保存</h3>
+<h3 id="クリックされたページの-url-を保存">クリックされたページの URL を保存</h3>
 
 <p>クリックされたページの URL を保存する処理は、各リンクの <code>onmousedown</code> に JavaScript を仕込むことで実現している。</p>
 
@@ -53,7 +53,7 @@
 
 <p>リンクをクリックすると <code>asq</code> 関数が実行されたのち、ページに遷移する、というわけだ。</p>
 
-<h3 id="asq-関数の実装:34a1dfb20d7c6856f926f07ef5ad2cdf">asq 関数の実装</h3>
+<h3 id="asq-関数の実装">asq 関数の実装</h3>
 
 <p>では、<code>asq</code> 関数はどのような実装になっているのだろう。それなりに長いので些末な部分は削除したソースは以下の通り。</p>
 
@@ -92,7 +92,7 @@
 
 <p><code>XMLHttpRequest</code> を使って、クリックされたページの URL を非同期送信している。強調した部分では、<code>setTimeout</code> でタイムアウト処理をしているようだ。</p>
 
-<h3 id="ie-6-以下の場合は:34a1dfb20d7c6856f926f07ef5ad2cdf">IE 6 以下の場合は？</h3>
+<h3 id="ie-6-以下の場合は">IE 6 以下の場合は？</h3>
 
 <p>見ての通り、<code>asq</code> 関数の実装は <code>XMLHttpRequest</code> オブジェクトがあるかどうかに依存している。</p>
 

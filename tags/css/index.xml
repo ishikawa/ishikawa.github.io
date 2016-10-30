@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Css on METAREAL</title>
-    <link>http://www.metareal.org/tags/css/</link>
-    <description>Recent content in Css on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/css/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sat, 24 Nov 2007 02:58:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/css/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -20,7 +19,7 @@
 
 &lt;p&gt;「Ruby で書かれた CSS パーサを探しています」メモ。&lt;/p&gt;
 
-&lt;h3 id=&#34;ruby-css-parser-http-rubyforge-org-projects-cssparser:5c9a0d1659f01ae002c059e62562b7c3&#34;&gt;&lt;a href=&#34;http://rubyforge.org/projects/cssparser/&#34;&gt;Ruby CSS Parser&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;ruby-css-parser-http-rubyforge-org-projects-cssparser&#34;&gt;&lt;a href=&#34;http://rubyforge.org/projects/cssparser/&#34;&gt;Ruby CSS Parser&lt;/a&gt;&lt;/h3&gt;
 
 &lt;p&gt;最近 RubyForge に登録されたばかりのプロジェクト&lt;/p&gt;
 
@@ -33,7 +32,7 @@
 &lt;li&gt;まだ実用ではない、ということだろう&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;csspool-http-rubyforge-org-projects-csspool:5c9a0d1659f01ae002c059e62562b7c3&#34;&gt;&lt;a href=&#34;http://rubyforge.org/projects/csspool/&#34;&gt;csspool&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;csspool-http-rubyforge-org-projects-csspool&#34;&gt;&lt;a href=&#34;http://rubyforge.org/projects/csspool/&#34;&gt;csspool&lt;/a&gt;&lt;/h3&gt;
 
 &lt;p&gt;W3C で公開されている CSS パーサのための共通 API &lt;a href=&#34;http://www.w3.org/TR/SAC/&#34;&gt;SAC&lt;/a&gt;（&lt;a href=&#34;http://www2.airnet.ne.jp/sardine/docs/NOTE-SAC-20000728.ja.html&#34;&gt;和訳&lt;/a&gt;）の Ruby による実装。&lt;/p&gt;
 
@@ -59,21 +58,19 @@
 
 &lt;p&gt;ひさしぶりに Windows IE 6 でブログの確認をしていたら妙なことに気がついた。&lt;strong&gt;リンクをクリックすると、一瞬、クリックしたリンクのフォントサイズが小さくなるのだ&lt;/strong&gt;。&lt;/p&gt;
 
-&lt;h3 id=&#34;図解入りバージョン:6c7eb0128b81359668694779da75e39f&#34;&gt;図解入りバージョン&lt;/h3&gt;
+&lt;h3 id=&#34;図解入りバージョン&#34;&gt;図解入りバージョン&lt;/h3&gt;
 
 &lt;p&gt;ひさしぶりに Windows IE 6 でブログの確認をしていたら妙なことに気がついた。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1040192167/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1071/1040192167_618f353c8f_o.gif&#34; alt=&#34;Hit a link and font away 1&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1040192167/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1071/1040192167_618f353c8f_o.gif&#34; alt=&#34;Hit a link and font away 1&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;リンクをクリックすると、一瞬、&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1040192173/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1016/1040192173_1715963324_o.gif&#34; alt=&#34;Hit a link and font away 2&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1040192173/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1016/1040192173_1715963324_o.gif&#34; alt=&#34;Hit a link and font away 2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;クリックしたリンクのフォントサイズが小さくなるのだ。&lt;/p&gt;
 
-&lt;h3 id=&#34;考えられる原因とか対策:6c7eb0128b81359668694779da75e39f&#34;&gt;考えられる原因とか対策&lt;/h3&gt;
+&lt;h3 id=&#34;考えられる原因とか対策&#34;&gt;考えられる原因とか対策&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://developer.yahoo.com/yui/&#34;&gt;YUI&lt;/a&gt; の &lt;a href=&#34;http://developer.yahoo.com/yui/reset/&#34;&gt;Reset CSS&lt;/a&gt; や &lt;a href=&#34;http://developer.yahoo.com/yui/fonts/&#34;&gt;Fonts CSS&lt;/a&gt; を使っているせいかも？&lt;/li&gt;
@@ -89,7 +86,7 @@
 
 &lt;p&gt;このブログの場合、上記 CSS を &lt;code&gt;reset.css&lt;/code&gt; の最後に追加した。&lt;/p&gt;
 
-&lt;h3 id=&#34;結論:6c7eb0128b81359668694779da75e39f&#34;&gt;結論&lt;/h3&gt;
+&lt;h3 id=&#34;結論&#34;&gt;結論&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://d.hatena.ne.jp/Hamachiya2/20070804/browser_crasher&#34;&gt;CSS ハックも可能な IE&lt;/a&gt; って面白いですね。&lt;/p&gt;
 </description>

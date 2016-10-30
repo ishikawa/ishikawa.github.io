@@ -39,7 +39,7 @@
 
 <p>Inline literal start-string without end-string.</p>
 
-<h3 id="モデルには-str-ではなく-unicode-を実装する:3b09cb17e796826b168e2323e1bf17ef">モデルには <strong>str</strong> ではなく <strong>unicode</strong> を実装する</h3>
+<h3 id="モデルには-str-ではなく-unicode-を実装する">モデルには <strong>str</strong> ではなく <strong>unicode</strong> を実装する</h3>
 
 <p>Django オンラインドキュメント和訳の <a href="http://michilu.com/django/doc-ja/unicode/#str-unicode"><strong>str</strong>() と <strong>unicode</strong>() のどちらを使うべきか</a>に、そのものズバリの回答があった。</p>
 
@@ -49,7 +49,7 @@
 
 <p>本当だ。モデルに書いていた <strong>str</strong> メソッドを <strong>unicode</strong> に変えるだけで解決しちゃったよ。</p>
 
-<h3 id="force-unicode:3b09cb17e796826b168e2323e1bf17ef">force_unicode</h3>
+<h3 id="force-unicode">force_unicode</h3>
 
 <p>エラーのスタックトレースを辿って、Django の <code>django/utils/encodings.py</code> を見てみると、</p>
 

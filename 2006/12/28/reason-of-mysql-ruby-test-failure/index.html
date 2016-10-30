@@ -53,7 +53,7 @@ Class: &lt;Mysql::Error&gt;
 <p>うまくいくわけがない。
 <strong>コマンドライン引数による指定が無視されている</strong>わけだ。</p>
 
-<h3 id="何故-コマンドライン引数が無視されるのか:a0ad2bbe2dfcfdaac60391f0916030d9">何故、コマンドライン引数が無視されるのか</h3>
+<h3 id="何故-コマンドライン引数が無視されるのか">何故、コマンドライン引数が無視されるのか</h3>
 
 <p>コマンドライン引数が無視される原因を調べてみると、どうやら <code>test.rb</code> が使っている <a href="http://www.ruby-lang.org/ja/man/index.cgi?cmd=view;name=Test%3A%3AUnit"><code>Test::Unit</code></a> が悪さをしているらしい（<code>Test::Unit</code> は Ruby の標準添付ライブラリで、いわゆる xUnit ツールの Ruby 版である）。</p>
 
@@ -84,7 +84,7 @@ Finished in 0.000316 seconds.
 
 <p>ユニットテストを実行する前では ARGV に引数の <code>1, 2, 3</code> が格納されているが、テストの内部では <strong>ARGV が空になっている</strong>。となると、<code>Test::Unit</code> が渡ってきた引数を食べてしまっているのに違いない。</p>
 
-<h3 id="test-unit-のソースを調べる:a0ad2bbe2dfcfdaac60391f0916030d9">Test::Unit のソースを調べる</h3>
+<h3 id="test-unit-のソースを調べる">Test::Unit のソースを調べる</h3>
 
 <p>実際のとこ、どうなっているのか。ソースコードに聞いてみよう。場所は <code>/usr/local/lib/ruby/1.8/test/</code>。まずは動作を確認するために、<code>unit.rb</code> の 276 行目だ。</p>
 
@@ -137,7 +137,7 @@ end
 
 <p>とのことなので、<strong>ここで ARGV の中身が破壊されている</strong>のは明白だ。</p>
 
-<h3 id="test-rb-を変更して対策:a0ad2bbe2dfcfdaac60391f0916030d9">test.rb を変更して対策</h3>
+<h3 id="test-rb-を変更して対策">test.rb を変更して対策</h3>
 
 <p>では、どうするか？</p>
 

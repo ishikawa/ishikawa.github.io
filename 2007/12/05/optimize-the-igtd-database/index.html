@@ -31,7 +31,7 @@
 
 <p>おそらく、完了したタスクも削除されることはなく、ずっと溜まっているのが原因だろう。iGTD は内部のデータベースとして SQLite を使っているので、<a href="http://weblog.metareal.org/2007/08/23/optimize-the-apple-mail-app-database/">Mail.app を vacuum して高速化</a>と同じ方法で高速化できる。</p>
 
-<h3 id="vacuum-analyze:4706c69e147ab72c3d52ed11f5f71025">VACUUM ANALYZE</h3>
+<h3 id="vacuum-analyze">VACUUM ANALYZE</h3>
 
 <p>手順は簡単で、ターミナルから以下のコマンドを実行するだけだ（iGTD が起動中なら終了する必要があるかもしれない）。</p>
 
@@ -40,7 +40,7 @@
 
 <p>このコマンドはデータベースから不要な領域を回収し、統計情報を更新することで実行速度を向上させる。これだけで体感的にはかなり速くなった。</p>
 
-<h3 id="参考:4706c69e147ab72c3d52ed11f5f71025">参考</h3>
+<h3 id="参考">参考</h3>
 
 <ul>
 <li><a href="http://www.sqlite.org/lang_analyze.html">SQLite Query Language: ANALYZE</a></li>

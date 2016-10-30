@@ -55,13 +55,13 @@
 
 <p>というわけで、Apple のパッチを適用した Python 2.5.1 の<a href="http://snipplr.com/view/6028/apples-modifications-to-python-251-localepy-/">パッチファイルをアップしておく</a>。以降は、このパッチファイルを作成するまでの詳細である。</p>
 
-<h3 id="mac-os-x-に標準でパッケージングされている-python:363e045729c80ba947d40f29bb6d79a6">Mac OS X に標準でパッケージングされている Python</h3>
+<h3 id="mac-os-x-に標準でパッケージングされている-python">Mac OS X に標準でパッケージングされている Python</h3>
 
 <p><a href="http://developer.apple.com/">Apple Developer Connection</a> の <a href="http://developer.apple.com/opensource/index.html">Open Source</a> ページでは Mac OS X のベースとなっている Darwin のソースコードが公開されている。<a href="http://www.opensource.apple.com/darwinsource/10.4.9.x86/">現時点での最新版は Mac OS X 10.4.9 のもの</a>なので、今回のパッチはこれを基にした。</p>
 
 <p>上記ページからダウンロードできる <a href="http://www.opensource.apple.com/darwinsource/tarballs/other/python-16.1.3.tar.gz">python-16.1.3.tar.gz</a> には Mac OS X にバンドルされている Python に適用されたパッチが含まれているので、このうち、ロケール周りに関係あるものを Python 2.5.1 のソースコードに適用すればよさそうだ。</p>
 
-<h3 id="apple-のパッチを-python-2-5-1-に適用する:363e045729c80ba947d40f29bb6d79a6">Apple のパッチを Python 2.5.1 に適用する</h3>
+<h3 id="apple-のパッチを-python-2-5-1-に適用する">Apple のパッチを Python 2.5.1 に適用する</h3>
 
 <p>まずは、Python 2.5.1 のソースコードと Apple のパッチ (python-16.1.3.tar.gz) を同じディレクトリにダウンロードして展開する。</p>
 

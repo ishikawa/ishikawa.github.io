@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kilim on METAREAL</title>
-    <link>http://www.metareal.org/tags/kilim/</link>
-    <description>Recent content in Kilim on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/kilim/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Fri, 27 Jun 2008 03:41:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/kilim/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -27,7 +26,7 @@
 
 &lt;p&gt;夜中に突然 Java が書きたくなって、まだ、Examples を動かしてみた程度ですが、とりあえず &lt;a href=&#34;http://www.python.jp/doc/nightly/tut/node11.html#SECTION0011900000000000000000&#34;&gt;Python のジェネレーター&lt;/a&gt;っぽいことができるのは分かったので記事にしておきます。暇と知識が増えたら、もうすこし突っ込んだ記事もあげる予定です（自信がないので今回、ですます調）。&lt;/p&gt;
 
-&lt;h3 id=&#34;ジェネレーターの例:152df58aa8e4f658eef9140e9804f1dc&#34;&gt;ジェネレーターの例&lt;/h3&gt;
+&lt;h3 id=&#34;ジェネレーターの例&#34;&gt;ジェネレーターの例&lt;/h3&gt;
 
 &lt;p&gt;では、本当につまらない例です。フィボナッチ数を求めるプログラムをどうぞ。&lt;/p&gt;
 
@@ -66,7 +65,7 @@ public class Fib extends Generator&amp;lt;Integer&amp;gt; {
 &lt;li&gt;&lt;code&gt;kilim.Generator&lt;/code&gt; は &lt;code&gt;java.util.Iterator&lt;/code&gt; と &lt;code&gt;java.lang.Iterable&lt;/code&gt; インターフェースを実装しているので、こんなふうに使います。ますます Python&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&#34;ビルドと実行方法:152df58aa8e4f658eef9140e9804f1dc&#34;&gt;ビルドと実行方法&lt;/h3&gt;
+&lt;h3 id=&#34;ビルドと実行方法&#34;&gt;ビルドと実行方法&lt;/h3&gt;
 
 &lt;p&gt;上記のソースコードを実行するまでの手順をまとめておきます。&lt;/p&gt;
 

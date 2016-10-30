@@ -56,7 +56,7 @@ LookupError: unknown encoding: X-MAC-JAPANESE
 
 <p>です。</p>
 
-<h3 id="ソースコードを読む:420dbfa210f789f3a114411bdddb14ea">ソースコードを読む</h3>
+<h3 id="ソースコードを読む">ソースコードを読む</h3>
 
 <p>スタックトレースから例外の発生箇所は簡単に分かるので、ソースコードを読んでみる (<code>/trac/util/datefmt.py</code>) 。</p>
 
@@ -88,7 +88,7 @@ LookupError: unknown encoding: X-MAC-JAPANESE
 
 <p>まあ、1. が真っ当なんだろうけど、2. でも問題ないというか、むしろ、<code>getpreferredencoding</code> という名前のメソッドがサポートされていないエンコーディングを返すよりいいんじゃないだろうか。</p>
 
-<h3 id="localmodule-c-を変更:420dbfa210f789f3a114411bdddb14ea">_localmodule.c を変更</h3>
+<h3 id="localmodule-c-を変更">_localmodule.c を変更</h3>
 
 <p>とりあえず、Python 2.5.1 の <code>Modules/_localemodule.c</code> で、<code>X-MAC-JAPANESE</code> の場合は <code>shift_jis</code> を返すように変更してみた。</p>
 

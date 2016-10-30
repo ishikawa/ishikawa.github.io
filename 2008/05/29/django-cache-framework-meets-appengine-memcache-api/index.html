@@ -38,7 +38,7 @@
 
 <p>どれひとつとっても、重大な発表ばかりだ。プラットホームとしての Google App Engine に注目している方は 1. 2. が特に気になるだろうし、利用者からすれば、3. 4. は待ち焦がれていた機能だろう。</p>
 
-<h3 id="重いページをキャッシュする:566a9dac81dfb9c529763dee37b2ec7b">重いページをキャッシュする</h3>
+<h3 id="重いページをキャッシュする">重いページをキャッシュする</h3>
 
 <p>このブログを <a href="/2008/05/20/porting-weblog-to-google-app-engine/">Google App Engine に移行</a>して一週間が経った。しかし、Admin Console でログを確認してみると、ところどころで警告が出ている。</p>
 
@@ -52,7 +52,7 @@ This request used a high amount of CPU, and was roughly 5.5 times over the avera
 
 <p>考えてみれば、フィードがリクエストされるたびに、この重い処理を繰り返す必要はない。どうせ、記事の更新があるまでは生成される内容は同じだし、記事の更新をリアルタイムに反映する必要もないだろう。キャッシュしてしまおう。</p>
 
-<h3 id="the-django-cache-framework:566a9dac81dfb9c529763dee37b2ec7b">The Django cache framework</h3>
+<h3 id="the-django-cache-framework">The Django cache framework</h3>
 
 <p><a href="http://www.djangoproject.com/">Django</a> には<a href="http://www.djangoproject.com/documentation/cache/">簡単に使えるキャッシュ・フレームワーク</a>（<a href="http://ymasuda.jp/python/django/docs/cache.html">和訳</a>）が組込まれており、<a href="http://danga.com/memcached/">memcached</a> もサポートされている。</p>
 
@@ -87,7 +87,7 @@ def archive_tag(request, slug, page=1):
 
 <p>たったこれだけで、初回リクエスト以降、重いフィード生成の処理をキャッシュしてくれるようになった。</p>
 
-<h3 id="keyerror:566a9dac81dfb9c529763dee37b2ec7b">KeyError</h3>
+<h3 id="keyerror">KeyError</h3>
 
 <p><strong>（2008.5.29 追記）</strong>memcached.Client#get が <code>KeyError</code> を返すことがあるようだ。<a href="http://code.google.com/appengine/docs/memcache/clientclass.html#Client_get">キーが存在しない場合は None を返すはず</a>なので、バグかもしれない。</p>
 

@@ -29,7 +29,7 @@
 
 <p>Java 1.5 (J2SE 5.0) では <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html"><code>java.util.Arrays</code></a> に、いくつかのメソッドが追加されている。地味ながらも、自前で書くのは面倒くさいものばかりだ。</p>
 
-<h3 id="hashcode-tostring:627d6ae499c9537845721c2e0f3d343d">hashCode, toString</h3>
+<h3 id="hashcode-tostring">hashCode, toString</h3>
 
 <p>配列そのものではなく、配列の各要素を比較する <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#equals%28java.lang.Object[],%20java.lang.Object[]%29"><code>Arrays.equals</code></a> は 1.5 以前からあったが、Java 1.5 では、同様に配列の各要素を使う</p>
 
@@ -40,7 +40,7 @@
 
 <p>が用意された。</p>
 
-<h3 id="deepequals-deephashcode-deeptostring:627d6ae499c9537845721c2e0f3d343d">deepEquals, deepHashCode, deepToString</h3>
+<h3 id="deepequals-deephashcode-deeptostring">deepEquals, deepHashCode, deepToString</h3>
 
 <p><code>Arrays.equals</code>, <code>Arrays.hashCode</code>, <code>Arrays.toString</code> はどれも「浅い」処理しか行わないため、入れ子になった配列では期待通りに動作しない。Java 1.5 では、入れ子になった配列にも対応したバージョンが用意されている。</p>
 
@@ -50,7 +50,7 @@
 <li><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#deepToString%28java.lang.Object[]%29"><code>Arrays.deepToString</code></a></li>
 </ul>
 
-<h3 id="j2se-6-0:627d6ae499c9537845721c2e0f3d343d">J2SE 6.0</h3>
+<h3 id="j2se-6-0">J2SE 6.0</h3>
 
 <p>更に Java 1.6 (J2SE 6.0) では<a href="http://java.sun.com/javase/6/docs/api/java/util/Arrays.html#binarySearch%28T[],%20int,%20int,%20T,%20java.util.Comparator%29">範囲を指定できる二分探索</a>や<a href="http://java.sun.com/javase/6/docs/api/java/util/Arrays.html#copyOf%28T[],%20int%29">配列のコピー操作</a>が追加されているようだ。</p>
 

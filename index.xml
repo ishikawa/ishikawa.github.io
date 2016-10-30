@@ -2,13 +2,67 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>METAREAL</title>
-    <link>http://www.metareal.org/</link>
+    <link>http://www.metareal.org/index.xml</link>
     <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Wed, 23 Dec 2015 12:49:25 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 25 Sep 2016 14:47:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Phoenix (Cowboy) の Gzip 圧縮サポート</title>
+      <link>http://www.metareal.org/post/2016/09/gzip-compression-in-cowboy/</link>
+      <pubDate>Sun, 25 Sep 2016 14:47:00 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/post/2016/09/gzip-compression-in-cowboy/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.phoenixframework.org&#34;&gt;Phoenix framework&lt;/a&gt; でレスポンスの GZip 圧縮を有効にするには
+&lt;a href=&#34;https://github.com/ninenines/cowboy&#34;&gt;Cowboy&lt;/a&gt; に &lt;code&gt;compress: true&lt;/code&gt; を渡すように、
+Phoenix.Endpoint を設定する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-elixir&#34;&gt;config :example_app, ExampleApp.Endpoint,
+  http: [port: 4040, compress: true],
+  debug_errors: true,
+  code_reloader: true,
+  check_origin: false,
+  watchers: []
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;HTTP リクエストを送るときに &lt;code&gt;Accept-Encoding&lt;/code&gt; ヘッダーを設定する (&lt;code&gt;curl&lt;/code&gt; コマンドなら &lt;code&gt;--compressed&lt;/code&gt; オプション)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Accept-Encoding: gzip, deflate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;また、レスポンス・ボディのサイズが 300 バイトを超えていない場合も GZip 圧縮されないようだ。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ninenines/cowboy/commit/01f57ad65d7c75fb455f48e354bb3a328c472ce4#diff-2db000a0dd01503e2f022387f23413cbR942&#34;&gt;https://github.com/ninenines/cowboy/commit/01f57ad65d7c75fb455f48e354bb3a328c472ce4#diff-2db000a0dd01503e2f022387f23413cbR942&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>FileUtils in Rakefile</title>
+      <link>http://www.metareal.org/post/2016/09/fileutils-in-rakefile/</link>
+      <pubDate>Thu, 22 Sep 2016 19:26:18 +0900</pubDate>
+      
+      <guid>http://www.metareal.org/post/2016/09/fileutils-in-rakefile/</guid>
+      <description>&lt;p&gt;いつまでたっても Rakefile の書き方を覚える気になれないのだが、Rakefile では
+&lt;a href=&#34;https://docs.ruby-lang.org/ja/latest/class/FileUtils.html&#34;&gt;FileUtils&lt;/a&gt; が
+インクルードされており &lt;code&gt;cp&lt;/code&gt; や &lt;code&gt;mkdir_p&lt;/code&gt; といったメソッドが使える。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;mkdir_p &amp;quot;dir1/dir2&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;また、いくつかの拡張がされており、コマンドの実行が失敗したときに例外が投げられたり、&lt;code&gt;sh&lt;/code&gt; メソッドという
+&lt;code&gt;Kernel.system&lt;/code&gt; にように外部コマンドを呼び出すメソッドが追加されている。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/vzvu3k6k/items/7e6e5520eeb829ec1c8b&#34;&gt;Rakeのshで外部コマンドを実行する - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ruby/rake/blob/master/lib/rake/file_utils.rb&#34;&gt;rake/file_utils.rb at master · ruby/rake&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>docker build が固まる</title>
@@ -195,7 +249,7 @@ url: &amp;quot;/2010/12/16/ffi-requires-ruby-version-1-9-2/&amp;quot;
 
 &lt;p&gt;とはいえ、今後もこの指定をしていくのはしんどいので、この記事から URL の形式を &lt;code&gt;/post/title/&lt;/code&gt; に変えるつもり。&lt;/p&gt;
 
-&lt;h3 id=&#34;移行スクリプト:63d64c61b0a30fb30dcadfbaac2823c1&#34;&gt;移行スクリプト&lt;/h3&gt;
+&lt;h3 id=&#34;移行スクリプト&#34;&gt;移行スクリプト&lt;/h3&gt;
 
 &lt;p&gt;移行にあたっては古い記事を Markdown + Front Matter に変換する必要があり、変換スクリプトを Ruby で書いた。&lt;/p&gt;
 
@@ -265,7 +319,7 @@ void dump() const;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;llvm-module-print:3faf8e0f1caed9c18f3a51d4cc12c955&#34;&gt;llvm::Module::print&lt;/h2&gt;
+&lt;h2 id=&#34;llvm-module-print&#34;&gt;llvm::Module::print&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;AssemblyWriter&lt;/code&gt; は &lt;code&gt;lib/VMCore/AsmWriter.cpp&lt;/code&gt; の無名ネームスペースに定義されているクラスであり、llvm 内のさまざまな型をストリームに出力する関数を提供している。&lt;code&gt;AssemblyWriter::printModule&lt;/code&gt; のコードをざっと眺めてみれば、やっていることの想像はつくだろう。&lt;/p&gt;
 
@@ -279,7 +333,7 @@ void dump() const;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;llvm-module-dump:3faf8e0f1caed9c18f3a51d4cc12c955&#34;&gt;llvm::Module::dump&lt;/h2&gt;
+&lt;h2 id=&#34;llvm-module-dump&#34;&gt;llvm::Module::dump&lt;/h2&gt;
 
 &lt;p&gt;同じく &lt;code&gt;lib/VMCore/AsmWriter.cpp&lt;/code&gt; の最後の方に定義されている &lt;code&gt;llvm::Module::dump&lt;/code&gt; はどうなっているだろうか。&lt;/p&gt;
 
@@ -296,7 +350,7 @@ void Module::dump() const { print(dbgs(), 0); }
 
 &lt;p&gt;では、第一引数に渡している dbgs 関数の戻り値はなんだろうか？&lt;/p&gt;
 
-&lt;h2 id=&#34;llvm-dbgs:3faf8e0f1caed9c18f3a51d4cc12c955&#34;&gt;llvm::dbgs&lt;/h2&gt;
+&lt;h2 id=&#34;llvm-dbgs&#34;&gt;llvm::dbgs&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;llvm::dbgs&lt;/code&gt; の宣言は &lt;code&gt;include/llvm/Support/Debug.h&lt;/code&gt; にある。デバッグ用の出力ストリーム (raw_ostream) を返す関数だ。&lt;/p&gt;
 
@@ -526,7 +580,7 @@ error.autorelease=false
 
 &lt;p&gt;だが、いまや状況は変わった。SDK &lt;a href=&#34;http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes#Version_1.2.3_-_June_18,_2009&#34;&gt;1.2.3 からは Django 1.0&lt;/a&gt; が、SDK &lt;a href=&#34;http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes#Version_1.2.5_-_September_3,_2009&#34;&gt;1.2.5 からは Django 1.1&lt;/a&gt; がサポートされ、Google AppEngine でも、簡単に Django 1.x を動かせるようになった。&lt;/p&gt;
 
-&lt;h3 id=&#34;google-appengine-dist-use-library:d5cbf458e70a92e96be7ede9be9f6ecd&#34;&gt;google.appengine.dist.use_library&lt;/h3&gt;
+&lt;h3 id=&#34;google-appengine-dist-use-library&#34;&gt;google.appengine.dist.use_library&lt;/h3&gt;
 
 &lt;p&gt;SDK 1.2.&lt;sup&gt;3&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;.2.5 からは &lt;a href=&#34;http://code.google.com/p/googleappengine/source/browse/#svn/trunk/python/google/appengine/dist&#34;&gt;google.appengine.dist&lt;/a&gt; モジュールの &lt;code&gt;use_library&lt;/code&gt; 関数を使うことで Django 1.0/1.1 を選択できるようになった。&lt;/p&gt;
 
@@ -543,7 +597,7 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
 
 &lt;p&gt;更に嬉しいことに、Django のコードをアップロードする必要もなくなった。Google AppEngine のサーバには Django 1.0/1.1 がインストールされている。ただし、SDK には Django 0.96 しか添付されていないので、1.0/1.1 を使う場合は、あらかじめローカルのマシンに Django 1.0/1.1 をインストールしておこう。&lt;/p&gt;
 
-&lt;h3 id=&#34;django-のバージョンと-dos-攻撃可能な脆弱性について:d5cbf458e70a92e96be7ede9be9f6ecd&#34;&gt;Django のバージョンと DoS 攻撃可能な脆弱性について&lt;/h3&gt;
+&lt;h3 id=&#34;django-のバージョンと-dos-攻撃可能な脆弱性について&#34;&gt;Django のバージョンと DoS 攻撃可能な脆弱性について&lt;/h3&gt;
 
 &lt;p&gt;なお、実際に有効になる Django の詳細なバージョンは、本記事執筆時点の 2009 年 11 月で以下のようになっている（&lt;code&gt;django.VERSION&lt;/code&gt; で調べた）。&lt;/p&gt;
 
@@ -581,7 +635,7 @@ use_library(&#39;django&#39;, &#39;1.1&#39;)
 
 &lt;p&gt;Google AppEngine プロジェクトに&lt;a href=&#34;http://code.google.com/p/googleappengine/issues/detail?id=2447&#34;&gt;報告&lt;/a&gt;したところ、GAE で有効になるバージョンは修正済みのものである、とのこと。失礼しました。&lt;/p&gt;
 
-&lt;h3 id=&#34;main-py-のサンプル:d5cbf458e70a92e96be7ede9be9f6ecd&#34;&gt;main.py のサンプル&lt;/h3&gt;
+&lt;h3 id=&#34;main-py-のサンプル&#34;&gt;main.py のサンプル&lt;/h3&gt;
 
 &lt;p&gt;実際に &lt;code&gt;use_library&lt;/code&gt; を使ったサンプルを &lt;a href=&#34;http://gist.github.com/245523&#34;&gt;gist:245523&lt;/a&gt; で公開している。&lt;/p&gt;
 </description>
@@ -604,87 +658,6 @@ au BufRead,BufNewFile *.go set filetype=go
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;今日はここまで。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>伊坂幸太郎「ラッシュライフ」</title>
-      <link>http://www.metareal.org/2009/11/10/8/%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A9%E3%82%A4%E3%83%95-%E4%BC%8A%E5%9D%82%E5%B9%B8%E5%A4%AA%E9%83%8E</link>
-      <pubDate>Wed, 11 Nov 2009 01:28:00 +0900</pubDate>
-      
-      <guid>http://www.metareal.org/2009/11/10/8/%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A9%E3%82%A4%E3%83%95-%E4%BC%8A%E5%9D%82%E5%B9%B8%E5%A4%AA%E9%83%8E</guid>
-      <description>&lt;p&gt;すでに本棚の肥やしと化していた「ラッシュライフ」を読了した。「&lt;a href=&#34;http://www.amazon.co.jp/dp/4101250219&#34;&gt;オーデュポンの祈り&lt;/a&gt;」に引きつづき二冊目の伊坂幸太郎なので、一応、刊行順に読んでいることになる。もっとも、著者の本が文庫化されはじめた時期に衝動買いして、そのまま積んでいたというだけなのだが。&lt;/p&gt;
-
-&lt;p&gt;作品の感想は人それぞれ、どうやら評価の高い作品らしいので、個人的にトンデモに感じた箇所だけ挙げておく。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;豊田の連れている犬が饒舌すぎる。いっそのこと喋らせてしまえば、まだ面白かった。&lt;/li&gt;
-&lt;li&gt;ある事件の背景を、登場人物たちが「会話」で説明してくれる。&lt;/li&gt;
-&lt;li&gt;複雑にみえる構成も「偶然って不思議ね」程度の意味しかない。実は、都合のいい部分をつなげているだけなので、それほど複雑でもない。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;ただ、「最高時速240キロの場所から物語が始まる」という書き出しは素晴らしい。気障だけど格好いいし、はまっている。これが本書のすべてだと思う。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Sphinx 0.6.2 にアップグレードしたときのメモ</title>
-      <link>http://www.metareal.org/2009/07/27/upgrading-sphinx-0-6-2/</link>
-      <pubDate>Mon, 27 Jul 2009 10:45:00 +0900</pubDate>
-      
-      <guid>http://www.metareal.org/2009/07/27/upgrading-sphinx-0-6-2/</guid>
-      <description>
-
-&lt;p&gt;約一年ぶりに &lt;a href=&#34;http://sphinx.pocoo.org/&#34;&gt;Sphinx&lt;/a&gt; を最新版に&amp;hellip;しようとしたら色々苦労したので、変更点や手順をメモとして残しておく。&lt;/p&gt;
-
-&lt;h3 id=&#34;sphinx-0-6-2-jinja2-2-1-1:27e83262ac07d97e8e96230e1937876f&#34;&gt;Sphinx 0.6.2 &amp;amp; Jinja2 2.1.1&lt;/h3&gt;
-
-&lt;p&gt;easy_install でインストールしようとしたが、&lt;a href=&#34;http://jinja.pocoo.org/2/&#34;&gt;Jinja2&lt;/a&gt; のセットアップ・スクリプトがうまく動いていないらしく、Jinja2 に依存している Sphinx もインストールできない。原因を調べる気力はないので、ソースコードからビルドしてインストールすることにした。&lt;/p&gt;
-
-&lt;p&gt;まずは &lt;a href=&#34;http://pypi.python.org/pypi/Jinja2&#34;&gt;Jinja2 2.1.1&lt;/a&gt; をビルドしてインストール。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% curl -LO http://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.1.1.tar.gz
-% tar xvzf Jinja2-2.1.1.tar.gz
-% cd Jinja2-2.1.1
-% sudo python setup.py install
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;つづいて &lt;a href=&#34;http://pypi.python.org/pypi/Sphinx/0.6.2&#34;&gt;Sphinx 0.6.2&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% curl -LO http://pypi.python.org/packages/source/S/Sphinx/Sphinx-0.6.2.tar.gz
-% tar xvzf Sphinx-0.6.2.tar.gz
-% cd Sphinx-0.6.2
-% sudo python setup.py install
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;sphinx-builder:27e83262ac07d97e8e96230e1937876f&#34;&gt;sphinx.builder&lt;/h3&gt;
-
-&lt;p&gt;Sphinx 0.6.2 では &lt;code&gt;sphinx.builder&lt;/code&gt; が非推奨扱いになっていた (&lt;a href=&#34;http://bitbucket.org/birkenfeld/sphinx/changeset/254e0ff435e8/&#34;&gt;changeset:254e0ff435e8&lt;/a&gt;)。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Running Sphinx v0.6.2
-docs/ja/source/../../sphinxext/__init__.py:1:
-DeprecationWarning: The sphinx.builder module is deprecated; please import builders from the respective sphinx.builders submodules.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;次のバージョンでは&lt;a href=&#34;http://bitbucket.org/birkenfeld/sphinx/changeset/7da5ae249f61/&#34;&gt;削除されている&lt;/a&gt;ようだし、モジュール名を適切に直す。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;-from sphinx.builder import StandaloneHTMLBuilder
-+from sphinx.builders.html import StandaloneHTMLBuilder
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;unicodedecodeerror:27e83262ac07d97e8e96230e1937876f&#34;&gt;UnicodeDecodeError&lt;/h3&gt;
-
-&lt;p&gt;今度は、日本語を含むドキュメントを変換しようとすると UnicodeDecodeError が発生する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Exception occurred:
-  File &amp;quot;/Library/Python/2.5/site-packages/Sphinx-0.6.2-py2.5.egg/sphinx/themes/basic/layout.html&amp;quot;, line 19, in block &amp;quot;rootrellink&amp;quot;
-    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;{{ pathto(master_doc) }}&amp;quot;&amp;gt;{{ shorttitle|e }}&amp;lt;/a&amp;gt;{{ reldelim1 }}&amp;lt;/li&amp;gt;
-UnicodeDecodeError: &#39;ascii&#39; codec can&#39;t decode byte 0xe3 in position 8: ordinal not in range(128)
-The full traceback has been saved in /var/folders/Xg/XgsbIugsGWiYSnTBrMoebU+++TI/-Tmp-/sphinx-err-cfE9NN.log, if you want to report the issue to the author.
-Please also report this if it was a user error, so that a better error message can be provided next time.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;どうやら、&lt;code&gt;conf.py&lt;/code&gt; に &lt;strong&gt;str&lt;/strong&gt; で日本語を書いていたのが原因らしい。&lt;strong&gt;unicode&lt;/strong&gt; リテラルで書き直したらうまくいった。&lt;a href=&#34;http://jinja.pocoo.org/2/documentation/api#unicode&#34;&gt;Jinja2 の Unicode 対応&lt;/a&gt;が原因だろうか。&lt;/p&gt;
 </description>
     </item>
     

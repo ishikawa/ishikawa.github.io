@@ -49,7 +49,7 @@
 
 <p>ただし、Mac IE では <code>window.onload</code> で代用するように実装してある。まあ、スクリプトエラーが出るよりマシだろう。</p>
 
-<h3 id="使い方:48dc3b5eda896e1cf587f0f4905fb350">使い方</h3>
+<h3 id="使い方">使い方</h3>
 
 <p>まず、domready.js を読み込む。</p>
 
@@ -71,7 +71,7 @@
 
 <p>他のイベントと登録方法が異なるのは直感的じゃない、とか言われそうだけど、正直あんまり気にならない。</p>
 
-<h3 id="経緯-window-onload-の欠点:48dc3b5eda896e1cf587f0f4905fb350">経緯: window.onload の欠点</h3>
+<h3 id="経緯-window-onload-の欠点">経緯: window.onload の欠点</h3>
 
 <p>多くの Ajax 系実装では、ページ読み込み完了時に初期化などを実行するようになっている。</p>
 
@@ -88,7 +88,7 @@
 
 <p>もちろん、<code>window.onload</code> は完全じゃない &hellip; いや、それは嘘で、<strong>完全すぎる</strong>。DOM ツリーの構築を待つだけじゃなく、すべての画像の読み込みも待ってしまうんだ。そうすると、画像を多く含むようなページでは、Ajax の処理がいつまでたってもはじまらない、なんてことが起こって、これは、あんまり嬉しくない。</p>
 
-<h3 id="解決策-ondomcontentloaded-とクロスブラウザな実装:48dc3b5eda896e1cf587f0f4905fb350">解決策: onDOMContentLoaded とクロスブラウザな実装</h3>
+<h3 id="解決策-ondomcontentloaded-とクロスブラウザな実装">解決策: onDOMContentLoaded とクロスブラウザな実装</h3>
 
 <p>ブラウザごとにさまざまな解決策がある。</p>
 

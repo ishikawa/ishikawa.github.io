@@ -29,7 +29,7 @@
 
 <p><a href="http://labs.adobe.com/">Adobe Labs</a> の研究プロジェクト、コードネーム <a href="http://labs.adobe.com/technologies/alchemy/">Alchemy</a> を試してみた。同プロジェクトについては、すでに多くの方が書かれており、今更な感もあるが、以前に<a href="http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/">紹介記事を書いている</a>ことだし、備忘録も兼ねて残しておく。</p>
 
-<h3 id="alchemy-について:9f30228ae7bbbce1de769aa05d1ff356">Alchemy について</h3>
+<h3 id="alchemy-について">Alchemy について</h3>
 
 <p><a href="http://labs.adobe.com/technologies/alchemy/">Alchemy</a> プロジェクトで<a href="http://labs.adobe.com/downloads/alchemy.html">配布</a>されているツールを使うと、C/C++ コードで記述されたプログラムを ActionScript Virtual Machine (AVM2) で動作するように変換できる（AVM2 については <a href="http://www.adobe.com/devnet/actionscript/articles/avm2overview.pdf">Adobe ActionScript Virtual Machine 2 (AVM2) Overview (PDF, 400K)</a> を参照）。</p>
 
@@ -42,7 +42,7 @@
 <li>C/C++ コードから <code>&quot;AS3.h&quot;</code> で宣言された API を使うことで、Flash Player にアクセス可能</li>
 </ul>
 
-<h3 id="インストール:9f30228ae7bbbce1de769aa05d1ff356">インストール</h3>
+<h3 id="インストール">インストール</h3>
 
 <p><a href="http://labs.adobe.com/wiki/index.php/Alchemy:Documentation:Getting_Started">Alchemy:Documentation:Getting Started</a> を参考に、インストール作業を進めていく。</p>
 
@@ -79,7 +79,7 @@ PATH=${PATH}:${ALCHEMY_HOME}/achacks
 export PATH
 </code></pre>
 
-<h3 id="サンプルを試す:9f30228ae7bbbce1de769aa05d1ff356">サンプルを試す</h3>
+<h3 id="サンプルを試す">サンプルを試す</h3>
 
 <p>では、同梱されているサンプルを試してみよう：</p>
 
@@ -140,7 +140,7 @@ TraceOutputFileEnable=1
 
 <p>やっとデバッグの準備が整った。デバッグ用 Flash Player で <code>EchoTest.swf</code> を開き、<code>flashlog.txt</code> に <strong>foo</strong> という文字列が書き込まれれば成功だ。Alchemy でコンパイルしたプログラムが無事、動作していることになる。</p>
 
-<h3 id="参考情報:9f30228ae7bbbce1de769aa05d1ff356">参考情報</h3>
+<h3 id="参考情報">参考情報</h3>
 
 <ul>
 <li><a href="http://labs.adobe.com/wiki/index.php/Alchemy:FAQ">Alchemy:FAQ - Adobe Labs</a></li>

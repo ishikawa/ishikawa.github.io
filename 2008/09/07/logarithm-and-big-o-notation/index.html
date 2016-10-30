@@ -35,32 +35,29 @@
 
 <p>恥ずかしながら、いままで「まあ、省略しても対数時間ということは分かるし、 そういうもんなんだろう」程度にしか考えていなかったが、書籍「<a href="http://www.amazon.co.jp/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3-Jon-Kleinberg/dp/4320122178">アルゴリズムデザイン</a>」に分かりやすい説明があった。</p>
 
-<h3 id="説明:459a77d8bbd05810f05f9a10b6c386ce">説明</h3>
+<h3 id="説明">説明</h3>
 
 <p>まず、対数自体を忘れかけている自分自身のために、ものすごく基本的なところから。対数 logbn とは <em>bx = n</em> になる <em>x</em> に等しい数のことである。</p>
 
 <p>そして、<a href="http://www.geisya.or.jp/~mwm48961/kou2/log2.html">底の変換公式</a>により、異なる底をもつ対数同士を相互に変換できる。</p>
 
-<p><a href="http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B%5Clog_b%20n%7D%7B%5Clog_b%20a%7D"><img src="http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B%5Clog_b%20n%7D%7B%5Clog_b%20a%7D.png" alt="img" />
-</a></p>
+<p><a href="http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B%5Clog_b%20n%7D%7B%5Clog_b%20a%7D"><img src="http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B%5Clog_b%20n%7D%7B%5Clog_b%20a%7D.png" alt="img" /></a></p>
 
 <p>そして、右辺を変形すると：</p>
 
-<p><a href="http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B1%7D%7B%5Clog_b%20a%7D%5Ctimes%20%5Clog_b%20n"><img src="http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B1%7D%7B%5Clog_b%20a%7D%5Ctimes%20%5Clog_b%20n.png" alt="img" />
-</a></p>
+<p><a href="http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B1%7D%7B%5Clog_b%20a%7D%5Ctimes%20%5Clog_b%20n"><img src="http://formula.s21g.com/?%5Clog_a%20n%3D%5Cfrac%7B1%7D%7B%5Clog_b%20a%7D%5Ctimes%20%5Clog_b%20n.png" alt="img" /></a></p>
 
 <p>ここで大事なのは、1/logba は定数になる、ということだ。</p>
 
 <p>つまり、左辺と右辺では定数係数のみが異なることになる。O 記法においては定数係数は無視できるため、異なる底をもつ対数は等価とみなせる。よって、O 記法では対数の底がしばしば省略されるのである。</p>
 
-<h3 id="但し書き:459a77d8bbd05810f05f9a10b6c386ce">但し書き</h3>
+<h3 id="但し書き">但し書き</h3>
 
 <p>最後に、ふたつばかり但し書きを。</p>
 
 <p>書籍「<a href="http://www.amazon.co.jp/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3-Jon-Kleinberg/dp/4320122178">アルゴリズムデザイン</a>」では上記の説明を、最終的に：</p>
 
-<p><a href="http://formula.s21g.com/?%5Clog_a%20n%3D%5CTheta%20(%5Clog_b%20n)"><img src="http://formula.s21g.com/?%5Clog_a%20n%3D%5CTheta%20(%5Clog_b%20n).png" alt="img" />
-</a></p>
+<p><a href="http://formula.s21g.com/?%5Clog_a%20n%3D%5CTheta%20(%5Clog_b%20n)"><img src="http://formula.s21g.com/?%5Clog_a%20n%3D%5CTheta%20(%5Clog_b%20n).png" alt="img" /></a></p>
 
 <p>となることから結論づけているが、O 以外の記号を導入するのが面倒だったので、この記事の説明では端折ってある。</p>
 

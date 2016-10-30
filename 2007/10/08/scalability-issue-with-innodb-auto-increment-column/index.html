@@ -48,7 +48,7 @@
 
 <p>恥ずかしながら、AUTO_INCREMENT のスケーラビリティについては、いままであまり意識したことがなかった。</p>
 
-<h3 id="innodb-の特別なテーブルロックモード-auto-inc:e6282503b262b44c5726a59dab8eabeb">InnoDB の特別なテーブルロックモード AUTO-INC</h3>
+<h3 id="innodb-の特別なテーブルロックモード-auto-inc">InnoDB の特別なテーブルロックモード AUTO-INC</h3>
 
 <p>リファレンスマニュアルの「13.5.16. InnoDB テーブル上の制約」にもあるように、AUTO_INCREMENT を使うときはテーブルロックが必要だ。</p>
 
@@ -58,7 +58,7 @@
 
 <p>AUTO_INCREMENT が設定された InnoDB のテーブルでは、AUTO-INC テーブルロックを同時にひとつのトランザクションしか利用できない。これはスケーラビリティの点で問題になりうる。</p>
 
-<h3 id="mysql-5-1-22-では解決済み:e6282503b262b44c5726a59dab8eabeb">MySQL 5.1.22 では解決済み</h3>
+<h3 id="mysql-5-1-22-では解決済み">MySQL 5.1.22 では解決済み</h3>
 
 <p>しかし、嬉しいことに <a href="http://www.mysqlperformanceblog.com/2007/09/26/innodb-auto-inc-scalability-fixed/">InnoDB auto-inc scalability fixed</a> によると、最新版の <a href="http://dev.mysql.com/downloads/mysql/5.1.html">MySQL 5.1.22</a> ではこの問題が解決されたようだ。</p>
 

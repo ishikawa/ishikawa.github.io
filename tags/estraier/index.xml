@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Estraier on METAREAL</title>
-    <link>http://www.metareal.org/tags/estraier/</link>
-    <description>Recent content in Estraier on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/estraier/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 04 Mar 2008 12:12:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/estraier/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -27,7 +26,7 @@
 &lt;code&gt;/usr/lib/libz.1.2.3.dylib&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;qdbm:2400c0312f106b401d66328bb6a52ad9&#34;&gt;QDBM&lt;/h3&gt;
+&lt;h3 id=&#34;qdbm&#34;&gt;QDBM&lt;/h3&gt;
 
 &lt;p&gt;まずは &lt;a href=&#34;http://qdbm.sourceforge.net/index.ja.html&#34;&gt;QDBM&lt;/a&gt; をインストールする。バージョンは最新の 1.8.77 を選択した。&lt;/p&gt;
 
@@ -48,7 +47,7 @@
 
 &lt;p&gt;&lt;code&gt;/usr/local/lib/libqdbm.dylib&lt;/code&gt; にライブラリがインストールされる。&lt;/p&gt;
 
-&lt;h3 id=&#34;hyper-estraier:2400c0312f106b401d66328bb6a52ad9&#34;&gt;Hyper Estraier&lt;/h3&gt;
+&lt;h3 id=&#34;hyper-estraier&#34;&gt;Hyper Estraier&lt;/h3&gt;
 
 &lt;p&gt;最新のソースパッケージであるバージョン 1.4.13 を選択した。&lt;/p&gt;
 
@@ -62,7 +61,7 @@
 % sudo make install-mac
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;動作確認:2400c0312f106b401d66328bb6a52ad9&#34;&gt;動作確認&lt;/h3&gt;
+&lt;h3 id=&#34;動作確認&#34;&gt;動作確認&lt;/h3&gt;
 
 &lt;p&gt;動作確認として、Hyper Estraier のソースパッケージに含まれるドキュメントをインデックス化してみよう。&lt;/p&gt;
 

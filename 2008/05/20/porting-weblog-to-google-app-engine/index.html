@@ -33,7 +33,7 @@
 
 <p>それを更に、<a href="http://code.google.com/appengine/">Google App Engine</a> に移植しましたよ、というのが今回のお話。</p>
 
-<h3 id="google-app-engine-に移植した理由:787806c84788060e978a12ba017b9ce9">Google App Engine に移植した理由</h3>
+<h3 id="google-app-engine-に移植した理由">Google App Engine に移植した理由</h3>
 
 <p>まずは、Google App Engine（以下、GAE）に移植した理由から説明させてほしい。いままで Wordpress を動かしていたサーバでそのまま新しいブログシステムを動かすこともできた。</p>
 
@@ -45,7 +45,7 @@
 
 <p><a href="http://code.google.com/appengine/docs/">GAE のオンラインドキュメント</a> を参考に、ほとんど単純作業による変換だったが、細かい変更や思わぬ問題などもあったので、開発中にとったメモを片手につらつらと書いてみる。</p>
 
-<h3 id="django:787806c84788060e978a12ba017b9ce9">Django</h3>
+<h3 id="django">Django</h3>
 
 <p>Django は <a href="http://code.google.com/appengine/articles/django.html">Running Django on Google App Engine</a> を参考に、開発版のものを動かしている。</p>
 
@@ -53,11 +53,11 @@
 
 <p>ただ、Generic View は簡単な変更で動きそうだ。実際、<a href="http://www.djangoproject.com/documentation/pagination/">Pagination</a> の処理では <code>django.core.QuerySetPaginator</code> に GAE の <a href="http://code.google.com/appengine/docs/datastore/queryclass.html">Query</a> オブジェクトをそのまま渡して動作していた（GAE の Query オブジェクトも <code>[]</code> アクセスを適切な <code>fetch()</code> に変換してくれる）。</p>
 
-<h3 id="akismet:787806c84788060e978a12ba017b9ce9">Akismet</h3>
+<h3 id="akismet">Akismet</h3>
 
 <p>スパムコメント対策として <a href="http://www.hashcash.org/">Hashcash</a> と <a href="http://akismet.com/">Akismet</a> を使っているのだが、外部リソースへのアクセスは GAE の <a href="http://code.google.com/appengine/docs/urlfetch/">URL Fetch API</a> に変更が必要だ。Akismet への問い合わせ処理は、外部リソースへのアクセスなので URL Fetch API を使うように変更が必要だった。</p>
 
-<h3 id="docutils-pygments:787806c84788060e978a12ba017b9ce9">docutils, pygments</h3>
+<h3 id="docutils-pygments">docutils, pygments</h3>
 
 <p><a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> でブログを書くために <a href="http://docutils.sourceforge.net/">docutils</a> を、そして、ソースコードのハイライトするために <a href="http://pygments.org/">pygments</a> をソースコードに含めるようにした（トップレベルだと邪魔なので、<code>lib</code> というディレクトリにパスを通して、そこに必要なライブラリを置くようにした）。</p>
 
@@ -73,11 +73,11 @@
 
 <p>この部分は潔くコメントアウトした。</p>
 
-<h3 id="検索機能:787806c84788060e978a12ba017b9ce9">検索機能</h3>
+<h3 id="検索機能">検索機能</h3>
 
 <p>モデルクラスで db.Model ではなく、そのサブクラスである google.appengine.ext.search.SearchableModel を継承することで、モデルの検索ができるようになるようだ（<a href="http://groups.google.com/group/google-appengine/browse_thread/thread/ba4a4a4ccefb96c5/0e3f0ab63c4c8afd">Indexing Large Chunks of Text for Search - Google App Engine | Google グループ</a> を参照）。「検索機能を備えたクラスを継承する」というだけでもダサいのに、日本語での使用とか不安なので、検索機能はとりあえず見送った。</p>
 
-<h3 id="デプロイして直面した問題:787806c84788060e978a12ba017b9ce9">デプロイして直面した問題</h3>
+<h3 id="デプロイして直面した問題">デプロイして直面した問題</h3>
 
 <p>Web アプリケーションの宿命で、最大の問題はデプロイ後にやってくる。</p>
 
@@ -102,7 +102,7 @@
   upload: public/robots\.txt
 </code></pre>
 
-<h3 id="gae-にしてよかったこと-不満:787806c84788060e978a12ba017b9ce9">GAE にしてよかったこと・不満</h3>
+<h3 id="gae-にしてよかったこと-不満">GAE にしてよかったこと・不満</h3>
 
 <p>最後に感想でも。</p>
 

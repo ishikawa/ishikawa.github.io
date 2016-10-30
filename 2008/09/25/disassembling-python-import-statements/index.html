@@ -29,7 +29,7 @@
 
 <p><a href="http://docs.python.org/ref/">Python Reference Manual</a> の <a href="http://docs.python.org/ref/import.html">6.12 The import statement</a> を参考に、さまざまな形式の import 文を <a href="http://docs.python.org/lib/module-dis.html">dis</a> モジュールで <code>disassemble</code> してみた。</p>
 
-<h3 id="import:8592ba189cdb8aa120e1fb84b538c680">import &hellip;</h3>
+<h3 id="import">import &hellip;</h3>
 
 <p>まずは、もっとも単純な <code>import ...</code></p>
 
@@ -55,7 +55,7 @@
 
 <p><code>STORE_NAME</code> の引数が <code>os</code> から <code>os2</code> に変わった。つまり、登録するシンボル名は <code>STORE_NAME</code> で指定されるということだろう。</p>
 
-<h3 id="import-1:8592ba189cdb8aa120e1fb84b538c680">import &hellip;, &hellip;</h3>
+<h3 id="import-1">import &hellip;, &hellip;</h3>
 
 <p>複数のモジュールを <code>import</code> してみよう。</p>
 
@@ -74,7 +74,7 @@
 
 <p>特別なバイトコードが用意されているわけではなく、引数だけが異なるバイトコードが繰り返されるようだ。</p>
 
-<h3 id="from-import:8592ba189cdb8aa120e1fb84b538c680">from &hellip; import &hellip;</h3>
+<h3 id="from-import">from &hellip; import &hellip;</h3>
 
 <p>モジュールから特定のシンボルだけを <code>import</code> する <code>from ... import ...</code></p>
 
@@ -116,7 +116,7 @@
 
 <p><code>STORE_NAME</code> がなくなり、専用の <code>IMPORT_STAR</code> が使われている。</p>
 
-<h3 id="relative-imports:8592ba189cdb8aa120e1fb84b538c680">Relative Imports</h3>
+<h3 id="relative-imports">Relative Imports</h3>
 
 <p><a href="http://docs.python.org/whatsnew/pep-328.html">相対インポート</a>はどのように実現されているのだろう？</p>
 
@@ -133,7 +133,7 @@
 
 <p>一見すると、<code>from b import B</code> から変わったところは見当たらない。しかし、最初の <code>LOAD_CONST</code> に注目してほしい。いままで <code>-1</code> だった引数が 2 になっている。ここで相対インポートの深さを指定しているわけだ。</p>
 
-<h3 id="from-future-import:8592ba189cdb8aa120e1fb84b538c680">from <strong>future</strong> import &hellip;</h3>
+<h3 id="from-future-import">from <strong>future</strong> import &hellip;</h3>
 
 <p>最後に <code>from __future__</code> がどのようにコンパイルされるのか見ておこう。</p>
 
@@ -154,7 +154,7 @@
 
 <p><a href="/2008/09/25/disassembling-python-import-statements-take2/">追記が長くなったので、つづきを別の記事として書きました</a>。</p>
 
-<h3 id="reference:8592ba189cdb8aa120e1fb84b538c680">Reference</h3>
+<h3 id="reference">Reference</h3>
 
 <ul>
 <li><a href="http://docs.python.org/ref/import.html">6.12 The import statement</a></li>

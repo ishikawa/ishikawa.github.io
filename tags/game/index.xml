@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Game on METAREAL</title>
-    <link>http://www.metareal.org/tags/game/</link>
-    <description>Recent content in Game on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/game/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Mon, 20 Aug 2007 02:29:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/game/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -72,8 +71,7 @@
 
 &lt;p&gt;&lt;a href=&#34;http://www.goodpic.com/mt/aws/index.html&#34;&gt;hReview&lt;/a&gt; by Takanori Ishikawa ,  2007/05/17&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/exec/obidos/ASIN/B000N5DBHG/webloandlogic-22/ref=nosim/&#34;&gt;&lt;img src=&#34;http://ec1.images-amazon.com/images/I/21zDpIw+N7L.jpg&#34; alt=&#34;photo&#34; /&gt;
-&lt;/a&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/exec/obidos/ASIN/B000N5DBHG/webloandlogic-22/ref=nosim/&#34;&gt;&lt;img src=&#34;http://ec1.images-amazon.com/images/I/21zDpIw+N7L.jpg&#34; alt=&#34;photo&#34; /&gt;&lt;/a&gt;
 &lt;a href=&#34;http://www.amazon.co.jp/exec/obidos/ASIN/B000N5DBHG/webloandlogic-22/ref=nosim/&#34;&gt;ファイナルファンタジータクティクス 獅子戦争&lt;/a&gt;
 スクウェア・エニックス 2007-05-10&lt;/p&gt;
 </description>

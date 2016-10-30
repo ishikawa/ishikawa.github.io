@@ -76,7 +76,7 @@ end
 
 <p>string は MySQL の VARCHAR に、integer は int になる。これを CHAR とか SMALLINT とかにできないか、というのが今回の話題。</p>
 
-<h3 id="char-とか-smallint-とかにしてみる:f1b79cf6415becfface7fa647c45b8dc">CHAR とか SMALLINT とかにしてみる</h3>
+<h3 id="char-とか-smallint-とかにしてみる">CHAR とか SMALLINT とかにしてみる</h3>
 
 <p>結論からいえば、これでよい。</p>
 
@@ -110,7 +110,7 @@ end
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 </code></pre>
 
-<h3 id="limit-が効かない:f1b79cf6415becfface7fa647c45b8dc">:limit が効かない</h3>
+<h3 id="limit-が効かない">:limit が効かない</h3>
 
 <p>SQL を見ると分かるように <code>coke</code> が <code>char(1)</code> となってしまい、Migration で指定した <code>:limit =&gt; 64</code> が効いていないようだ。</p>
 

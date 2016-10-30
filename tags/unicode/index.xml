@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Unicode on METAREAL</title>
-    <link>http://www.metareal.org/tags/unicode/</link>
-    <description>Recent content in Unicode on METAREAL</description>
+    <title>METAREAL</title>
+    <link>http://www.metareal.org/tags/unicode/index.xml</link>
+    <description>Recent content on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Mon, 19 Nov 2007 02:31:00 +0900</lastBuildDate>
     <atom:link href="http://www.metareal.org/tags/unicode/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -22,7 +21,7 @@
 
 &lt;p&gt;正規表現で &lt;a href=&#34;http://www.unicode.org/Public/UNIDATA/Blocks.txt&#34;&gt;Unicode ブロック&lt;/a&gt;が使えれば楽なのだが、残念ながら Ruby 1.8 ではサポートされていない。&lt;/p&gt;
 
-&lt;h3 id=&#34;鬼車:a22de2c680beb67b3057f1c9e646b25f&#34;&gt;鬼車&lt;/h3&gt;
+&lt;h3 id=&#34;鬼車&#34;&gt;鬼車&lt;/h3&gt;
 
 &lt;p&gt;ちなみに 1.9 で搭載される予定の&lt;a href=&#34;http://www.geocities.jp/kosako3/oniguruma/index_ja.html&#34;&gt;鬼車&lt;/a&gt;では、以下のような形式で Unicode ブロックやカテゴリを指定できるようだ（参考：&lt;a href=&#34;http://www.geocities.jp/kosako3/oniguruma/doc/RE.ja.txt&#34;&gt;鬼車 正規表現 Version 5.6.0&lt;/a&gt;）。&lt;/p&gt;
 
@@ -34,7 +33,7 @@
 
 &lt;p&gt;もっとも、実際に試したわけではないので、現状の Ruby 1.9 で上記のような使い方ができるのかは分からない。&lt;/p&gt;
 
-&lt;h3 id=&#34;ruby-1-8:a22de2c680beb67b3057f1c9e646b25f&#34;&gt;Ruby 1.8&lt;/h3&gt;
+&lt;h3 id=&#34;ruby-1-8&#34;&gt;Ruby 1.8&lt;/h3&gt;
 
 &lt;p&gt;結局、Ruby 1.8 では平仮名に相当するコードポイントの範囲を直接、正規表現で指定してやるのが簡単そうだ。&lt;/p&gt;
 
@@ -45,7 +44,7 @@
 
 &lt;p&gt;コードポイントから UTF-8 リテラル文字列への変換に &lt;a href=&#34;http://www.ruby-lang.org/ja/man/?cmd=view;name=Array#pack&#34;&gt;&lt;code&gt;Array#pack&lt;/code&gt;&lt;/a&gt; を利用しているため読みづらくなっている。もっといい方法があるのかもしれない。&lt;/p&gt;
 
-&lt;h3 id=&#34;参考:a22de2c680beb67b3057f1c9e646b25f&#34;&gt;参考&lt;/h3&gt;
+&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.unicode.org/reports/tr18/&#34;&gt;Unicode Regular Expressions&lt;/a&gt;&lt;/li&gt;
