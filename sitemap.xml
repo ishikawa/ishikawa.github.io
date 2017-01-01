@@ -2,11 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.metareal.org/</loc>
-    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://www.metareal.org/post/2016/09/gzip-compression-in-cowboy/</loc>
     <lastmod>2016-09-25T14:47:00+09:00</lastmod>
   </url>
@@ -994,6 +989,557 @@
   <url>
     <loc>http://www.metareal.org/2006/11/21/hello-world/</loc>
     <lastmod>2006-11-21T12:45:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/alchemy/</loc>
+    <lastmod>2008-12-09T08:34:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/algorithm/</loc>
+    <lastmod>2008-09-08T02:25:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/apache/</loc>
+    <lastmod>2007-01-02T11:35:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/appengine/</loc>
+    <lastmod>2009-12-03T12:42:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/applescript/</loc>
+    <lastmod>2008-12-09T03:37:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/bookmark/</loc>
+    <lastmod>2010-02-23T23:26:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/books/</loc>
+    <lastmod>2009-11-11T01:28:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/cache/</loc>
+    <lastmod>2008-05-29T01:48:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/cocoa/</loc>
+    <lastmod>2008-11-08T03:00:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/comic/</loc>
+    <lastmod>2007-02-11T04:33:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/compiler/</loc>
+    <lastmod>2008-12-12T06:23:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/concurrent/</loc>
+    <lastmod>2008-06-27T03:41:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/cowbody/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/css/</loc>
+    <lastmod>2007-11-24T02:58:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/ctags/</loc>
+    <lastmod>2015-09-25T11:09:31+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/daylife/</loc>
+    <lastmod>2007-06-10T03:58:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/disassemble/</loc>
+    <lastmod>2008-09-25T17:39:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/django/</loc>
+    <lastmod>2009-12-03T12:42:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/docker/</loc>
+    <lastmod>2015-12-23T12:49:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/drama/</loc>
+    <lastmod>2007-01-09T11:11:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/eclipse/</loc>
+    <lastmod>2007-01-11T09:40:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/elixir/</loc>
+    <lastmod>2015-09-25T11:09:31+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/erlang/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/estraier/</loc>
+    <lastmod>2008-03-04T12:12:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/evernote/</loc>
+    <lastmod>2008-12-09T03:37:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/fantasy/</loc>
+    <lastmod>2007-09-13T06:59:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/flash/</loc>
+    <lastmod>2008-12-09T08:34:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/flashlite/</loc>
+    <lastmod>2007-03-24T06:40:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/flickr/</loc>
+    <lastmod>2008-06-15T10:09:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/game/</loc>
+    <lastmod>2007-08-20T02:29:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/gcc/</loc>
+    <lastmod>2008-12-12T06:23:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/go/</loc>
+    <lastmod>2009-11-11T10:29:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/google/</loc>
+    <lastmod>2010-02-23T23:26:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/gtd/</loc>
+    <lastmod>2007-12-06T08:08:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/haxe/</loc>
+    <lastmod>2007-03-24T06:40:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/hibernate/</loc>
+    <lastmod>2007-03-20T08:36:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/hugo/</loc>
+    <lastmod>2015-06-21T14:43:15+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/idea/</loc>
+    <lastmod>2007-01-10T03:20:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/imaging/</loc>
+    <lastmod>2007-04-03T12:18:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/java/</loc>
+    <lastmod>2008-06-27T03:41:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/javascript/</loc>
+    <lastmod>2008-12-24T01:06:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/json/</loc>
+    <lastmod>2008-06-15T10:09:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/kilim/</loc>
+    <lastmod>2008-06-27T03:41:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/lifehacks/</loc>
+    <lastmod>2007-08-19T01:23:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/lighttpd/</loc>
+    <lastmod>2007-01-10T03:20:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/llvm/</loc>
+    <lastmod>2010-12-05T09:23:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/mac/</loc>
+    <lastmod>2008-12-09T03:37:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/magazine/</loc>
+    <lastmod>2008-12-24T01:06:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/megazone23/</loc>
+    <lastmod>2006-12-26T06:04:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/metareal/</loc>
+    <lastmod>2007-07-17T10:31:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/moinmoin/</loc>
+    <lastmod>2007-04-09T02:52:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/movie/</loc>
+    <lastmod>2013-01-18T00:00:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/movies/</loc>
+    <lastmod>2007-09-13T08:33:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/mysql/</loc>
+    <lastmod>2008-02-07T08:37:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/mystery/</loc>
+    <lastmod>2009-11-11T01:28:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/nonfiction/</loc>
+    <lastmod>2007-07-14T08:14:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/objective-c/</loc>
+    <lastmod>2008-06-06T12:42:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/opencv/</loc>
+    <lastmod>2007-03-28T01:18:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/postgres/</loc>
+    <lastmod>2007-12-19T07:18:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/post/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/programming/</loc>
+    <lastmod>2007-03-27T01:00:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/prototypejs/</loc>
+    <lastmod>2008-01-31T12:40:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/python/</loc>
+    <lastmod>2010-01-31T18:26:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/quicksilver/</loc>
+    <lastmod>2007-08-15T05:18:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/rake/</loc>
+    <lastmod>2016-09-22T19:26:18+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/review/</loc>
+    <lastmod>2008-12-24T01:06:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/rparsec/</loc>
+    <lastmod>2007-12-16T11:10:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/ruby/</loc>
+    <lastmod>2016-09-22T19:26:18+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/rubyonrails/</loc>
+    <lastmod>2008-04-18T07:41:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/rust/</loc>
+    <lastmod>2015-07-26T10:10:37+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/science/</loc>
+    <lastmod>2007-06-12T09:25:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/scriptaculous/</loc>
+    <lastmod>2007-07-08T09:47:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/security/</loc>
+    <lastmod>2007-03-08T09:33:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/sf/</loc>
+    <lastmod>2007-08-07T10:44:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/sphinx/</loc>
+    <lastmod>2009-07-27T10:45:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/streaming/</loc>
+    <lastmod>2007-01-10T03:20:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/subversion/</loc>
+    <lastmod>2007-06-19T09:44:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/tamarin/</loc>
+    <lastmod>2008-07-06T09:35:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/tips/</loc>
+    <lastmod>2007-12-08T10:00:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/trac/</loc>
+    <lastmod>2007-09-09T11:49:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/typography/</loc>
+    <lastmod>2008-11-08T03:00:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/unicode/</loc>
+    <lastmod>2007-11-19T02:31:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/v8/</loc>
+    <lastmod>2008-12-24T01:06:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/vagrant/</loc>
+    <lastmod>2015-12-23T12:49:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/webkit/</loc>
+    <lastmod>2008-12-24T01:06:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/wordpress/</loc>
+    <lastmod>2007-01-26T07:32:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/xcode/</loc>
+    <lastmod>2007-08-21T05:24:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/xmlrpc/</loc>
+    <lastmod>2007-01-26T07:04:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/%E4%BC%8A%E5%9D%82%E5%B9%B8%E5%A4%AA%E9%83%8E/</loc>
+    <lastmod>2009-11-11T01:28:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.metareal.org/tags/%E9%81%93%E5%B0%BE%E7%A7%80%E4%BB%8B/</loc>
+    <lastmod>2008-12-14T08:29:00+09:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>

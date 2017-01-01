@@ -83,12 +83,44 @@ Content-Type: **application/x-www-form-urlencoded**
 
 <footer>
   <ul class="about">
-    <li class="github"><a href="https://github.com/ishikawa">Github</a></li>
-    <li class="twitter"><a href="https://twitter.com/takanori_is">Twitter</a></li>
+    <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
+    <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
   <h2><a href="/">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+  
+  
+  
+  var all = MathJax.Hub.getAllJax(), i;
+  for(i = 0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 </body>

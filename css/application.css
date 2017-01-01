@@ -1,3 +1,35 @@
+@font-face {
+    font-family: 'Mono Social Icons Font';
+    src: url('/fonts/MonoSocialIconsFont-1.10.eot');
+    src: url('/fonts/MonoSocialIconsFont-1.10.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/MonoSocialIconsFont-1.10.woff') format('woff'),
+         url('/fonts/MonoSocialIconsFont-1.10.ttf') format('truetype'),
+         url('/fonts/MonoSocialIconsFont-1.10.svg#MonoSocialIconsFont') format('svg');
+    src: url('/fonts/MonoSocialIconsFont-1.10.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.symbol, a.symbol:before {
+    font-family: 'Mono Social Icons Font';
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    -ms-text-rendering: optimizeLegibility;
+    -o-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+
+a.symbol:before {
+    content: attr(title);
+    margin-right: 0.3em;
+    font-size: 130%;
+}
+
 html {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 }
@@ -151,6 +183,13 @@ ul.pagination li.disabled a:hover {
   color: #CCC;
 }
 
+code.has-jax {
+  font: inherit;
+  font-size: 100%;
+  background: inherit;
+  border: inherit;
+}
+
 nav.pagination ul {
   margin: 0;
   padding: 0;
@@ -205,24 +244,9 @@ footer ul.about {
   padding: 0;
   list-style: none;
   margin-bottom: 8px;
+  font-size: 200%;
 }
 footer ul.about li {
   float: right;
   margin-right: 5px;
-}
-footer ul.about li a {
-  display: block;
-  text-indent: -9999px;
-  direction: ltr;
-  width: 32px;
-  height: 32px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 32px 32px;
-}
-footer ul.about li.twitter a {
-  background-image: url("/images/icons/Twitter_Logo_Blue.png");
-}
-footer ul.about li.github a {
-  background-image: url("/images/icons/GitHub-Mark-120px-plus.png");
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>METAREAL</title>
+    <title>Postgres on METAREAL</title>
     <link>http://www.metareal.org/tags/postgres/index.xml</link>
-    <description>Recent content on METAREAL</description>
+    <description>Recent content in Postgres on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
