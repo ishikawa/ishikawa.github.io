@@ -245,8 +245,8 @@ footer ul.about {
   list-style: none;
   margin-bottom: 8px;
   font-size: 200%;
+  text-align: center;
 }
 footer ul.about li {
-  float: right;
-  margin-right: 5px;
+  display: inline-block;
 }
