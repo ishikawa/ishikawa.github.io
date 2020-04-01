@@ -1,73 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sphinx on METAREAL</title>
-    <link>http://www.metareal.org/tags/sphinx/index.xml</link>
-    <description>Recent content in Sphinx on METAREAL</description>
+    <title>sphinx on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/sphinx/</link>
+    <description>Recent content in sphinx on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/sphinx/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Jul 2009 10:45:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/sphinx/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Sphinx 0.6.2 にアップグレードしたときのメモ</title>
-      <link>http://www.metareal.org/2009/07/27/upgrading-sphinx-0-6-2/</link>
+      <link>http://ishikawa.github.io/2009/07/27/upgrading-sphinx-0-6-2/</link>
       <pubDate>Mon, 27 Jul 2009 10:45:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2009/07/27/upgrading-sphinx-0-6-2/</guid>
-      <description>
-
-&lt;p&gt;約一年ぶりに &lt;a href=&#34;http://sphinx.pocoo.org/&#34;&gt;Sphinx&lt;/a&gt; を最新版に&amp;hellip;しようとしたら色々苦労したので、変更点や手順をメモとして残しておく。&lt;/p&gt;
-
-&lt;h3 id=&#34;sphinx-0-6-2-jinja2-2-1-1&#34;&gt;Sphinx 0.6.2 &amp;amp; Jinja2 2.1.1&lt;/h3&gt;
-
-&lt;p&gt;easy_install でインストールしようとしたが、&lt;a href=&#34;http://jinja.pocoo.org/2/&#34;&gt;Jinja2&lt;/a&gt; のセットアップ・スクリプトがうまく動いていないらしく、Jinja2 に依存している Sphinx もインストールできない。原因を調べる気力はないので、ソースコードからビルドしてインストールすることにした。&lt;/p&gt;
-
-&lt;p&gt;まずは &lt;a href=&#34;http://pypi.python.org/pypi/Jinja2&#34;&gt;Jinja2 2.1.1&lt;/a&gt; をビルドしてインストール。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% curl -LO http://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.1.1.tar.gz
-% tar xvzf Jinja2-2.1.1.tar.gz
-% cd Jinja2-2.1.1
-% sudo python setup.py install
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;つづいて &lt;a href=&#34;http://pypi.python.org/pypi/Sphinx/0.6.2&#34;&gt;Sphinx 0.6.2&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% curl -LO http://pypi.python.org/packages/source/S/Sphinx/Sphinx-0.6.2.tar.gz
-% tar xvzf Sphinx-0.6.2.tar.gz
-% cd Sphinx-0.6.2
-% sudo python setup.py install
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;sphinx-builder&#34;&gt;sphinx.builder&lt;/h3&gt;
-
-&lt;p&gt;Sphinx 0.6.2 では &lt;code&gt;sphinx.builder&lt;/code&gt; が非推奨扱いになっていた (&lt;a href=&#34;http://bitbucket.org/birkenfeld/sphinx/changeset/254e0ff435e8/&#34;&gt;changeset:254e0ff435e8&lt;/a&gt;)。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Running Sphinx v0.6.2
-docs/ja/source/../../sphinxext/__init__.py:1:
-DeprecationWarning: The sphinx.builder module is deprecated; please import builders from the respective sphinx.builders submodules.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;次のバージョンでは&lt;a href=&#34;http://bitbucket.org/birkenfeld/sphinx/changeset/7da5ae249f61/&#34;&gt;削除されている&lt;/a&gt;ようだし、モジュール名を適切に直す。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;-from sphinx.builder import StandaloneHTMLBuilder
-+from sphinx.builders.html import StandaloneHTMLBuilder
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;unicodedecodeerror&#34;&gt;UnicodeDecodeError&lt;/h3&gt;
-
-&lt;p&gt;今度は、日本語を含むドキュメントを変換しようとすると UnicodeDecodeError が発生する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Exception occurred:
-  File &amp;quot;/Library/Python/2.5/site-packages/Sphinx-0.6.2-py2.5.egg/sphinx/themes/basic/layout.html&amp;quot;, line 19, in block &amp;quot;rootrellink&amp;quot;
-    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;{{ pathto(master_doc) }}&amp;quot;&amp;gt;{{ shorttitle|e }}&amp;lt;/a&amp;gt;{{ reldelim1 }}&amp;lt;/li&amp;gt;
-UnicodeDecodeError: &#39;ascii&#39; codec can&#39;t decode byte 0xe3 in position 8: ordinal not in range(128)
-The full traceback has been saved in /var/folders/Xg/XgsbIugsGWiYSnTBrMoebU+++TI/-Tmp-/sphinx-err-cfE9NN.log, if you want to report the issue to the author.
-Please also report this if it was a user error, so that a better error message can be provided next time.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;どうやら、&lt;code&gt;conf.py&lt;/code&gt; に &lt;strong&gt;str&lt;/strong&gt; で日本語を書いていたのが原因らしい。&lt;strong&gt;unicode&lt;/strong&gt; リテラルで書き直したらうまくいった。&lt;a href=&#34;http://jinja.pocoo.org/2/documentation/api#unicode&#34;&gt;Jinja2 の Unicode 対応&lt;/a&gt;が原因だろうか。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2009/07/27/upgrading-sphinx-0-6-2/</guid>
+      <description>約一年ぶりに Sphinx を最新版に&amp;hellip;しようとしたら色々苦労したので、変更点や手順をメモとして残しておく。
+Sphinx 0.6.2 &amp;amp; Jinja2 2.1.1 easy_install でインストールしようとしたが、Jinja2 のセットアップ・スクリプトがうまく動いていないらしく、Jinja2 に依存している Sphinx もインストールできない。原因を調べる気力はないので、ソースコードからビルドしてインストールすることにした。
+まずは Jinja2 2.1.1 をビルドしてインストール。
+% curl -LO http://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.1.1.tar.gz % tar xvzf Jinja2-2.1.1.tar.gz % cd Jinja2-2.1.1 % sudo python setup.py install  つづいて Sphinx 0.6.2
+% curl -LO http://pypi.python.org/packages/source/S/Sphinx/Sphinx-0.6.2.tar.gz % tar xvzf Sphinx-0.6.2.tar.gz % cd Sphinx-0.6.2 % sudo python setup.py install  sphinx.builder Sphinx 0.6.2 では sphinx.builder が非推奨扱いになっていた (changeset:254e0ff435e8)。
+Running Sphinx v0.6.2 docs/ja/source/../../sphinxext/__init__.py:1: DeprecationWarning: The sphinx.builder module is deprecated; please import builders from the respective sphinx.</description>
     </item>
     
   </channel>

@@ -1,144 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Alchemy on METAREAL</title>
-    <link>http://www.metareal.org/tags/alchemy/index.xml</link>
-    <description>Recent content in Alchemy on METAREAL</description>
+    <title>alchemy on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/alchemy/</link>
+    <description>Recent content in alchemy on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/alchemy/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Dec 2008 08:34:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/alchemy/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>C/C&#43;&#43; のコードを ActionScript に変換する Adobe Alchemy を試す</title>
-      <link>http://www.metareal.org/2008/12/09/adobe-alchemy-first-impression/</link>
+      <link>http://ishikawa.github.io/2008/12/09/adobe-alchemy-first-impression/</link>
       <pubDate>Tue, 09 Dec 2008 08:34:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/12/09/adobe-alchemy-first-impression/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://labs.adobe.com/&#34;&gt;Adobe Labs&lt;/a&gt; の研究プロジェクト、コードネーム &lt;a href=&#34;http://labs.adobe.com/technologies/alchemy/&#34;&gt;Alchemy&lt;/a&gt; を試してみた。同プロジェクトについては、すでに多くの方が書かれており、今更な感もあるが、以前に&lt;a href=&#34;http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/&#34;&gt;紹介記事を書いている&lt;/a&gt;ことだし、備忘録も兼ねて残しておく。&lt;/p&gt;
-
-&lt;h3 id=&#34;alchemy-について&#34;&gt;Alchemy について&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://labs.adobe.com/technologies/alchemy/&#34;&gt;Alchemy&lt;/a&gt; プロジェクトで&lt;a href=&#34;http://labs.adobe.com/downloads/alchemy.html&#34;&gt;配布&lt;/a&gt;されているツールを使うと、C/C++ コードで記述されたプログラムを ActionScript Virtual Machine (AVM2) で動作するように変換できる（AVM2 については &lt;a href=&#34;http://www.adobe.com/devnet/actionscript/articles/avm2overview.pdf&#34;&gt;Adobe ActionScript Virtual Machine 2 (AVM2) Overview (PDF, 400K)&lt;/a&gt; を参照）。&lt;/p&gt;
-
-&lt;p&gt;これはつまり、既存の C/C++ プログラムが Flash Player や AIR 上で動作することを意味している。また、C/C++ プログラムのコンパイルには LLVM を利用しており、そこで生成された中間コードが ActionScript 3.0 のソースコードに変換される（&lt;strong&gt;そのままバイトコードには変換しない&lt;/strong&gt;）。その後、生成された ActionScript コードが Alchemy 独自の ActionScript コンパイラで ActionScript Byte Code (ABC) にコンパイルされるようだ。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;既存の C/C++ ライブラリの再利用に。特に OS 非依存なもの（例：オーディオ／ビデオ、XML パース、暗号処理、シミュレーション）&lt;/li&gt;
-&lt;li&gt;CPU バウンドなプログラムなら Alchemy でコンパイルすると 10 倍ほども速くなるかもしれない。これは、LLVM による最適化の恩恵と、&lt;code&gt;ByteArray&lt;/code&gt; に関する最適化された命令が理由（ActionScript コンパイラではまだ使われていない）&lt;/li&gt;
-&lt;li&gt;C/C++ コードは ActionScript 3.0 の SWF または SWC にコンパイルされる。SWF/SWC のセキュリティ制限やサンドボックスは通常の SWF/SWC と同様&lt;/li&gt;
-&lt;li&gt;C/C++ コードから &lt;code&gt;&amp;quot;AS3.h&amp;quot;&lt;/code&gt; で宣言された API を使うことで、Flash Player にアクセス可能&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;インストール&#34;&gt;インストール&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://labs.adobe.com/wiki/index.php/Alchemy:Documentation:Getting_Started&#34;&gt;Alchemy:Documentation:Getting Started&lt;/a&gt; を参考に、インストール作業を進めていく。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.adobe.com/support/flashplayer/downloads.html&#34;&gt;Flash Player 10&lt;/a&gt; が必要（開発用に &lt;code&gt;content debugger&lt;/code&gt; の方が便利）&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://labs.adobe.com/downloads/alchemy.html&#34;&gt;ダウンロードページ&lt;/a&gt;から Alchemy ツールキットを落とす（思ったより軽い）&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.adobe.com/products/flex/flexdownloads/#sdk&#34;&gt;Flex SDK 3.2&lt;/a&gt; をダウンロードする&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;code&gt;$FLEX_HOME/bin&lt;/code&gt; を &lt;code&gt;PATH&lt;/code&gt; に追加する&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% adt -version
-adt version &amp;quot;1.5.0.7220&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Alchemy のディレクトリに移動し、&lt;code&gt;config&lt;/code&gt; プログラムを実行する&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% cd Developer/System/Flash/alchemy-darwin-v0.4a/
-% ./config
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;config&lt;/code&gt; プログラムで生成された &lt;code&gt;alchemy-setup&lt;/code&gt; をシェルの起動時に読み込むようにする：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;source /Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/alchemy-setup
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;また、&lt;code&gt;alchemy-setup&lt;/code&gt; は &lt;strong&gt;PATH を変更する前&lt;/strong&gt;に読み込むらしい。そして、次に、&lt;code&gt;${ALCHEMY_HOME}/achacks&lt;/code&gt; を &lt;code&gt;PATH&lt;/code&gt; に追加する。最終的には以下のようになる：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# Flash, Flex, Alchemy ...
-source /Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/alchemy-setup
-PATH=${PATH}:/Users/ishikawa/Developer/System/Flash/flex_sdk_3/bin
-PATH=${PATH}:${ALCHEMY_HOME}/achacks
-...
-export PATH
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;サンプルを試す&#34;&gt;サンプルを試す&lt;/h3&gt;
-
-&lt;p&gt;では、同梱されているサンプルを試してみよう：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% cd $ALCHEMY_HOME/samples/stringecho
-% which gcc
-/usr/bin/gcc
-% alc-on; which gcc
-/Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/achacks/gcc
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;まず、&lt;code&gt;alc-on&lt;/code&gt; を実行すると、&lt;code&gt;gcc&lt;/code&gt; が Alchemy 独自のものに切り替わるのが分かると思う。そして、&lt;code&gt;samples/stringecho&lt;/code&gt; にあるファイルは以下の通り：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;as3/EchoTest.as&lt;/li&gt;
-&lt;li&gt;readme.txt&lt;/li&gt;
-&lt;li&gt;stringecho.c&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;ここで、Alchemy 独自の gcc で &lt;code&gt;stringecho.c&lt;/code&gt; をコンパイルする&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% gcc stringecho.c -O3 -Wall -swc -o stringecho.swc
-WARNING: While resolving call to function &#39;main&#39; arguments were dropped!
-...
-464.achacks.swf, 362566 bytes written
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;WARNING はとりあえず無視で。コンパイルの結果、&lt;code&gt;stringecho.swc&lt;/code&gt; が出来た。
-そして、as3 ディレクトリにある &lt;code&gt;EchoTest.as&lt;/code&gt; が &lt;code&gt;stringecho.swc&lt;/code&gt; を使う AS3 のプログラムである。EchoTest.as を覗いてみると、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import cmodule.stringecho.CLibInit;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;という &lt;code&gt;import&lt;/code&gt; 文があり、これがコンパイルされた C プログラムを参照しているのだと分かる。また、&lt;code&gt;trace()&lt;/code&gt; を使って文字列を出力している：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;trace(lib.echo(&amp;quot;foo&amp;quot;));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;では、この &lt;code&gt;EchoTest.as&lt;/code&gt; を &lt;code&gt;mxmlc&lt;/code&gt; でコンパイルしよう：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% mxmlc -library-path+=stringecho.swc --target-player=10.0.0 as3/EchoTest.as
-Loading configuration file /Users/ishikawa/Developer/System/Flash/flex_sdk_3/frameworks/flex-config.xml
-/Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/samples/stringecho/as3/EchoTest.swf (142882 bytes)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ここで思い出してほしい。このプログラムは &lt;code&gt;trace()&lt;/code&gt; で文字列を出力するだけのプログラムだった。なので、&lt;a href=&#34;http://www.adobe.com/support/flashplayer/downloads.html&#34;&gt;デバッグ版の Flash Player 10&lt;/a&gt; でログが出力されるように、&lt;a href=&#34;http://livedocs.adobe.com/flex/3/html/help.html?content=logging_04.html#179436&#34;&gt;mm.cfg でログを出力するように設定&lt;/a&gt;しておこう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% cat &amp;amp;gt; /Library/Application\ Support/Macromedia/mm.cfg
-ErrorReportingEnable=1
-TraceOutputFileEnable=1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Mac OS X の場合、&lt;code&gt;mm.cfg&lt;/code&gt; を置く場所は &lt;code&gt;~/mm.cfg&lt;/code&gt; でもいいようなことがコメントにはあるけど、出来れば、&lt;code&gt;~/Library/Application Support/Macromedia/mm.cfg&lt;/code&gt; も見てくれないだろうか。それはともかく、ログファイルは &lt;code&gt;~/Library/Preferences/Macromedia/Flash Player/Logs/&lt;/code&gt; に &lt;code&gt;flashlog.txt&lt;/code&gt; という名前で保存される。&lt;/p&gt;
-
-&lt;p&gt;Console.app からログを確認できるように、&lt;code&gt;~/Library/Logs&lt;/code&gt; にシンボリックリンクを作成しておこう：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% ln -s ~/Library/Preferences/Macromedia/Flash\ Player/Logs/flashlog.txt ~/Library/Logs/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;やっとデバッグの準備が整った。デバッグ用 Flash Player で &lt;code&gt;EchoTest.swf&lt;/code&gt; を開き、&lt;code&gt;flashlog.txt&lt;/code&gt; に &lt;strong&gt;foo&lt;/strong&gt; という文字列が書き込まれれば成功だ。Alchemy でコンパイルしたプログラムが無事、動作していることになる。&lt;/p&gt;
-
-&lt;h3 id=&#34;参考情報&#34;&gt;参考情報&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://labs.adobe.com/wiki/index.php/Alchemy:FAQ&#34;&gt;Alchemy:FAQ - Adobe Labs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://journal.mycom.co.jp/news/2008/11/21/005/index.html&#34;&gt;Adobe Alchemy登場、C/C++アプリをFlashで動作させる研究にLLVM技術採用 | エンタープライズ | マイコミジャーナル&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://slashdot.jp/developers/article.pl?sid=08/11/23/0717231&#34;&gt;スラッシュドット・ジャパン | C/C++でFlashアプリが開発できるAdobe Alchemy&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://d.hatena.ne.jp/amachang/20081118/1227005285&#34;&gt;C/C++ のコードを Flash Player で動かす！ Alchemy を速攻試してみる。 - IT戦記&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/12/09/adobe-alchemy-first-impression/</guid>
+      <description>Adobe Labs の研究プロジェクト、コードネーム Alchemy を試してみた。同プロジェクトについては、すでに多くの方が書かれており、今更な感もあるが、以前に紹介記事を書いていることだし、備忘録も兼ねて残しておく。
+Alchemy について Alchemy プロジェクトで配布されているツールを使うと、C/C++ コードで記述されたプログラムを ActionScript Virtual Machine (AVM2) で動作するように変換できる（AVM2 については Adobe ActionScript Virtual Machine 2 (AVM2) Overview (PDF, 400K) を参照）。
+これはつまり、既存の C/C++ プログラムが Flash Player や AIR 上で動作することを意味している。また、C/C++ プログラムのコンパイルには LLVM を利用しており、そこで生成された中間コードが ActionScript 3.0 のソースコードに変換される（そのままバイトコードには変換しない）。その後、生成された ActionScript コードが Alchemy 独自の ActionScript コンパイラで ActionScript Byte Code (ABC) にコンパイルされるようだ。
+ 既存の C/C++ ライブラリの再利用に。特に OS 非依存なもの（例：オーディオ／ビデオ、XML パース、暗号処理、シミュレーション） CPU バウンドなプログラムなら Alchemy でコンパイルすると 10 倍ほども速くなるかもしれない。これは、LLVM による最適化の恩恵と、ByteArray に関する最適化された命令が理由（ActionScript コンパイラではまだ使われていない） C/C++ コードは ActionScript 3.</description>
     </item>
     
   </channel>

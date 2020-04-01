@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Science on METAREAL</title>
-    <link>http://www.metareal.org/tags/science/index.xml</link>
-    <description>Recent content in Science on METAREAL</description>
+    <title>science on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/science/</link>
+    <description>Recent content in science on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/science/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Jun 2007 09:25:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/science/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>アミール・Ｄ・アクゼル「相対論がもたらした時空の奇妙な幾何学―アインシュタインと膨張する宇宙」</title>
-      <link>http://www.metareal.org/2007/06/12/%E7%9B%B8%E5%AF%BE%E8%AB%96%E3%81%8C%E3%82%82%E3%81%9F%E3%82%89%E3%81%97%E3%81%9F%E6%99%82%E7%A9%BA%E3%81%AE%E5%A5%87%E5%A6%99%E3%81%AA%E5%B9%BE%E4%BD%95%E5%AD%A6/</link>
+      <link>http://ishikawa.github.io/2007/06/12/%E7%9B%B8%E5%AF%BE%E8%AB%96%E3%81%8C%E3%82%82%E3%81%9F%E3%82%89%E3%81%97%E3%81%9F%E6%99%82%E7%A9%BA%E3%81%AE%E5%A5%87%E5%A6%99%E3%81%AA%E5%B9%BE%E4%BD%95%E5%AD%A6/</link>
       <pubDate>Tue, 12 Jun 2007 09:25:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/06/12/%E7%9B%B8%E5%AF%BE%E8%AB%96%E3%81%8C%E3%82%82%E3%81%9F%E3%82%89%E3%81%97%E3%81%9F%E6%99%82%E7%A9%BA%E3%81%AE%E5%A5%87%E5%A6%99%E3%81%AA%E5%B9%BE%E4%BD%95%E5%AD%A6/</guid>
-      <description>&lt;p&gt;相対性理論の本を何冊も読んでいる。とはいえアカデミックな専門書ではなく、どれも一般向けや科学雑誌の特集ばかり。そんな僕がもう一冊読んでみた。&lt;/p&gt;
-
-&lt;p&gt;「&lt;a href=&#34;http://www.amazon.co.jp/gp/product/415050282X?ie=UTF8&amp;amp;tag=webloandlogic-22&amp;amp;linkCode=as2&amp;amp;camp=247&amp;amp;creative=1211&amp;amp;creativeASIN=415050282X&#34;&gt;天才数学者たちが挑んだ最大の難問―フェルマーの最終定理が解けるまで&lt;/a&gt;」と同じ著者だと気づいたのは読みおわったあとのこと。資料をもとにドキュメンタリータッチで追うスタイルはたしかに似ている。&lt;/p&gt;
-
-&lt;p&gt;特殊相対性理論と一般相対性理論。特殊相対性理論から一般相対性理論に至る葛藤や重要性、そのへんがやっと腑に落ちた気がする。難をいえば、アインシュタインの人となりが見えてこないことか。むしろ周辺の人たちの方が活き活きと描かれている。「いままでにないアインシュタイン像」みたいなことが前書きにはあったので、そのへんは残念だった。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/%E7%9B%B8%E5%AF%BE%E8%AB%96%E3%81%8C%E3%82%82%E3%81%9F%E3%82%89%E3%81%97%E3%81%9F%E6%99%82%E7%A9%BA%E3%81%AE%E5%A5%87%E5%A6%99%E3%81%AA%E5%B9%BE%E4%BD%95%E5%AD%A6%E2%80%95%E3%82%A2%E3%82%A4%E3%83%B3%E3%82%B7%E3%83%A5%E3%82%BF%E3%82%A4%E3%83%B3%E3%81%A8%E8%86%A8%E5%BC%B5%E3%81%99%E3%82%8B%E5%AE%87%E5%AE%99-%E3%83%8F%E3%83%A4%E3%82%AB%E3%83%AF%E6%96%87%E5%BA%ABNF%E2%80%95%E2%80%9C%E6%95%B0%E7%90%86%E3%82%92%E6%84%89%E3%81%97%E3%82%80%E2%80%9D%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA-%E3%82%A2%E3%83%9F%E3%83%BC%E3%83%AB%E3%83%BBD-%E3%82%A2%E3%82%AF%E3%82%BC%E3%83%AB/dp/4150503214%3FSubscriptionId%3D15SMZCTB9V8NGR2TW082%26tag%3Dwebloandlogic-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D4150503214&#34;&gt;相対論がもたらした時空の奇妙な幾何学―アインシュタインと膨張する宇宙 (ハヤカワ文庫NF―“数理を愉しむ”シリーズ)&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/06/12/%E7%9B%B8%E5%AF%BE%E8%AB%96%E3%81%8C%E3%82%82%E3%81%9F%E3%82%89%E3%81%97%E3%81%9F%E6%99%82%E7%A9%BA%E3%81%AE%E5%A5%87%E5%A6%99%E3%81%AA%E5%B9%BE%E4%BD%95%E5%AD%A6/</guid>
+      <description>相対性理論の本を何冊も読んでいる。とはいえアカデミックな専門書ではなく、どれも一般向けや科学雑誌の特集ばかり。そんな僕がもう一冊読んでみた。
+「天才数学者たちが挑んだ最大の難問―フェルマーの最終定理が解けるまで」と同じ著者だと気づいたのは読みおわったあとのこと。資料をもとにドキュメンタリータッチで追うスタイルはたしかに似ている。
+特殊相対性理論と一般相対性理論。特殊相対性理論から一般相対性理論に至る葛藤や重要性、そのへんがやっと腑に落ちた気がする。難をいえば、アインシュタインの人となりが見えてこないことか。むしろ周辺の人たちの方が活き活きと描かれている。「いままでにないアインシュタイン像」みたいなことが前書きにはあったので、そのへんは残念だった。
+相対論がもたらした時空の奇妙な幾何学―アインシュタインと膨張する宇宙 (ハヤカワ文庫NF―“数理を愉しむ”シリーズ)</description>
     </item>
     
   </channel>

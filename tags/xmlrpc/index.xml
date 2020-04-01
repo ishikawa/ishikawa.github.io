@@ -1,183 +1,87 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Xmlrpc on METAREAL</title>
-    <link>http://www.metareal.org/tags/xmlrpc/index.xml</link>
-    <description>Recent content in Xmlrpc on METAREAL</description>
+    <title>xmlrpc on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/xmlrpc/</link>
+    <description>Recent content in xmlrpc on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/xmlrpc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Jan 2007 07:04:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/xmlrpc/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Movable Type の XML-RPC API による記事投稿メモ</title>
-      <link>http://www.metareal.org/2007/01/25/movable-type-xml-rpc-api-memo/</link>
+      <link>http://ishikawa.github.io/2007/01/25/movable-type-xml-rpc-api-memo/</link>
       <pubDate>Fri, 26 Jan 2007 07:04:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/01/25/movable-type-xml-rpc-api-memo/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://www.sixapart.com/developers/xmlrpc/&#34;&gt;Movable Type の XML-RPC API&lt;/a&gt; を調べていて、&lt;code&gt;metaWeblog.newPost&lt;/code&gt; や &lt;code&gt;metaWeblog.editPost&lt;/code&gt; に渡すパラメータについて気になったのでメモ。&lt;/p&gt;
-
-&lt;p&gt;記事の投稿内容を &lt;code&gt;content&lt;/code&gt; 構造体パラメーターで指定するのだが、このパラメーターには Movable Type の独自実装として、たとえば「コメントを許可するかどうか」などを含めることができる。&lt;/p&gt;
-
-&lt;p&gt;しかし、これらのうち、いわゆるフラグ系（真偽値）の指定の仕方がちょっと変わっている。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;mt_allow_comments&lt;/strong&gt; &lt;code&gt;(int)&lt;/code&gt; 0 なら &lt;code&gt;false&lt;/code&gt;、1 なら &lt;code&gt;true&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;mt_allow_pings&lt;/strong&gt; &lt;code&gt;(int)&lt;/code&gt; 0 なら &lt;code&gt;false&lt;/code&gt;、1 なら &lt;code&gt;true&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;mt_convert_breaks&lt;/strong&gt; &lt;code&gt;(string)&lt;/code&gt; &amp;ldquo;0&amp;rdquo; または &amp;ldquo;none&amp;rdquo; で &lt;code&gt;false&lt;/code&gt;、&amp;rdquo;1&amp;rdquo; または &amp;ldquo;convert_breaks&amp;rdquo; で &lt;code&gt;true&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;mt_convert_breaks&lt;/code&gt; が &lt;code&gt;string&lt;/code&gt; なのは、&lt;a href=&#34;http://www.sixapart.com/developers/xmlrpc/movable_type_api/mtsupportedtextfilters.html&#34;&gt;mt.supportedTextFilters&lt;/a&gt; で返ってきた値を使えるようにするためなんだろうな。たぶん。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/01/25/movable-type-xml-rpc-api-memo/</guid>
+      <description>Movable Type の XML-RPC API を調べていて、metaWeblog.newPost や metaWeblog.editPost に渡すパラメータについて気になったのでメモ。
+記事の投稿内容を content 構造体パラメーターで指定するのだが、このパラメーターには Movable Type の独自実装として、たとえば「コメントを許可するかどうか」などを含めることができる。
+しかし、これらのうち、いわゆるフラグ系（真偽値）の指定の仕方がちょっと変わっている。
+ mt_allow_comments (int) 0 なら false、1 なら true mt_allow_pings (int) 0 なら false、1 なら true mt_convert_breaks (string) &amp;ldquo;0&amp;rdquo; または &amp;ldquo;none&amp;rdquo; で false、&amp;rdquo;1&amp;rdquo; または &amp;ldquo;convert_breaks&amp;rdquo; で true  mt_convert_breaks が string なのは、mt.supportedTextFilters で返ってきた値を使えるようにするためなんだろうな。たぶん。</description>
     </item>
     
     <item>
       <title>Redstone XML-RPC Library への不満</title>
-      <link>http://www.metareal.org/2007/01/13/redstone-xml-rpc-library-no-thanks/</link>
+      <link>http://ishikawa.github.io/2007/01/13/redstone-xml-rpc-library-no-thanks/</link>
       <pubDate>Sat, 13 Jan 2007 11:26:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/01/13/redstone-xml-rpc-library-no-thanks/</guid>
-      <description>&lt;p&gt;どうやら Java の XML-RPC ライブラリとは、あまり縁がないらしい。またもや、&lt;a href=&#34;http://weblog.metareal.org/2006/12/12/apache-xml-rpc-no-thanks/&#34;&gt;XML-RPC ライブラリへの愚痴エントリである&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ws.apache.org/xmlrpc/&#34;&gt;Apache XML-RPC&lt;/a&gt; ライブラリの複雑さとドキュメントのすくなさ（いつまでホームページのロゴ画像がリンク切れなのだろう？）に辟易して、今度は &lt;a href=&#34;http://xmlrpc.sourceforge.net/&#34;&gt;Redstone&lt;/a&gt; というライブラリを試してみた。&lt;/p&gt;
-
-&lt;p&gt;Redstone の前身である Marquee というライブラリは &lt;a href=&#34;http://www-06.ibm.com/jp/developerworks/java/040227/j_j-xmlrpc.html&#34;&gt;developerWorks に紹介記事だって載っている&lt;/a&gt;由緒正しい（？）XML-RPC ライブラリだ。&lt;/p&gt;
-
-&lt;p&gt;最初は何も問題ないかのように思えた。すべてが順調で平和だった。API は&lt;a href=&#34;http://xmlrpc.sourceforge.net/javadoc/index.html&#34;&gt;シンプル&lt;/a&gt;で、ホームページの簡潔なチュートリアルも必要十分に思えた。&lt;/p&gt;
-
-&lt;p&gt;だが、決して小さくはない欠陥が&lt;strong&gt;いくつも&lt;/strong&gt;あることがわかってきた（バージョンは &lt;code&gt;1.0.1&lt;/code&gt;）。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;contentType&lt;/code&gt; の指定が&lt;strong&gt;無視される&lt;/strong&gt;。&lt;/li&gt;
-&lt;li&gt;エラー処理がいいかげん&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;methodResponse&gt; の &lt;code&gt;faultCode&lt;/code&gt; がハードコーディングされている。&lt;/li&gt;
-&lt;li&gt;そのエンコーディングも &lt;code&gt;ISO-8859-1&lt;/code&gt; でハードコーディング。日本語書けない。せめて &lt;code&gt;UTF-8&lt;/code&gt; にしてよ&amp;hellip;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Base64 のコードがバグっていて、&lt;strong&gt;複数行にエンコードされていると対応できない。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;カスタマイズが困難。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;API がシンプルで一見、拡張しやすく見えるが、実際には重要なポイントが &lt;code&gt;private&lt;/code&gt; だったりしてサブクラス化しづらい。&lt;/li&gt;
-&lt;li&gt;たとえば、&lt;a href=&#34;http://xmlrpc.sourceforge.net/javadoc/index.html&#34;&gt;&lt;code&gt;XmlRpcDispatcher&lt;/code&gt;&lt;/a&gt; を拡張しても、それを使っている &lt;a href=&#34;http://xmlrpc.sourceforge.net/javadoc/index.html&#34;&gt;&lt;code&gt;XmlRpcServer&lt;/code&gt;&lt;/a&gt; に独自の &lt;code&gt;XmlRpcDispatcher&lt;/code&gt; を設定する API がない（ので、結局、こいつもサブクラス化して、さらに、サブクラス化した &lt;code&gt;XmlRpcServer&lt;/code&gt; を使う &lt;code&gt;XmlRpcServlet&lt;/code&gt; を書いて &amp;hellip;）。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://xmlrpc.sourceforge.net/javadoc/index.html&#34;&gt;&lt;code&gt;XmlRpcParser&lt;/code&gt;&lt;/a&gt; は XML-RPC の xml を解析できるが、肝心の結果は &lt;code&gt;private&lt;/code&gt; になっているため、これ単体で使えない。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;実は 3. までの問題を修正するためのラッパーライブラリを、テストコード含めて 800 行ほど書いていた。しかし、それも 4. の理由により挫折しかけている。まあ、&lt;code&gt;ad-hoc&lt;/code&gt; な修正の塊なので、コード自体はもったいなくないのだが。&lt;/p&gt;
-
-&lt;p&gt;誰も XML-RPC なんて使ってないのかな&amp;hellip;。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/01/13/redstone-xml-rpc-library-no-thanks/</guid>
+      <description>どうやら Java の XML-RPC ライブラリとは、あまり縁がないらしい。またもや、XML-RPC ライブラリへの愚痴エントリである。
+Apache XML-RPC ライブラリの複雑さとドキュメントのすくなさ（いつまでホームページのロゴ画像がリンク切れなのだろう？）に辟易して、今度は Redstone というライブラリを試してみた。
+Redstone の前身である Marquee というライブラリは developerWorks に紹介記事だって載っている由緒正しい（？）XML-RPC ライブラリだ。
+最初は何も問題ないかのように思えた。すべてが順調で平和だった。API はシンプルで、ホームページの簡潔なチュートリアルも必要十分に思えた。
+だが、決して小さくはない欠陥がいくつもあることがわかってきた（バージョンは 1.0.1）。
+ contentType の指定が無視される。 エラー処理がいいかげん     の faultCode がハードコーディングされている。 そのエンコーディングも ISO-8859-1 でハードコーディング。日本語書けない。せめて UTF-8 にしてよ&amp;hellip;    Base64 のコードがバグっていて、複数行にエンコードされていると対応できない。 カスタマイズが困難。    API がシンプルで一見、拡張しやすく見えるが、実際には重要なポイントが private だったりしてサブクラス化しづらい。 たとえば、XmlRpcDispatcher を拡張しても、それを使っている XmlRpcServer に独自の XmlRpcDispatcher を設定する API がない（ので、結局、こいつもサブクラス化して、さらに、サブクラス化した XmlRpcServer を使う XmlRpcServlet を書いて &amp;hellip;）。 XmlRpcParser は XML-RPC の xml を解析できるが、肝心の結果は private になっているため、これ単体で使えない。   実は 3.</description>
     </item>
     
     <item>
       <title>XML-RPC で &#34;Premature end of file.&#34;</title>
-      <link>http://www.metareal.org/2006/12/13/xml-rpc-premature-end-of-file/</link>
+      <link>http://ishikawa.github.io/2006/12/13/xml-rpc-premature-end-of-file/</link>
       <pubDate>Wed, 13 Dec 2006 10:48:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2006/12/13/xml-rpc-premature-end-of-file/</guid>
-      <description>&lt;p&gt;Java で XML-RPC の開発をしている。&lt;/p&gt;
-
-&lt;p&gt;動作確認は UNIX コマンドの curl で手軽にすませているのだが、突然、すべての &lt;code&gt;curl&lt;/code&gt; コマンドで
-&lt;code&gt;Premature end of file.&lt;/code&gt; というエラーが出るようになった。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[Fatal Error] :-1:-1: Premature end of file.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;このエラーには見覚えがある。たしか、XML の絡んだ通信で接続状態が悪くなり、&lt;strong&gt;通信が途絶えた場合などに
-ぼろぼろ出ていたやつ&lt;/strong&gt;だ。つまり、XML が不完全なのだろう。&lt;/p&gt;
-
-&lt;p&gt;しかし、curl の POST で送っているデータをいくら調べてもおかしい部分が見つからない。
-問題になりがちな改行を取り除いても、コンソールのエンコーディングを変更しても同じ。&lt;/p&gt;
-
-&lt;p&gt;しかたがないので、デバッガでブレークポイントを設定し、動作を追ってみた。&lt;/p&gt;
-
-&lt;p&gt;その結果、リクエストオブジェクトの入力ストリームから読み出す時点でデータが空なことが判明。つまり、&lt;strong&gt;curl で POST したデータを読みだせていない&lt;/strong&gt;わけだ。&lt;/p&gt;
-
-&lt;p&gt;では、何が原因でデータを読みだせていないんだろう？　curl の &lt;code&gt;-v&lt;/code&gt; オプションの出力を眺めているうちに気がついた。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;POST /api/xmlrpc HTTP/1.1
-User-Agent: curl/7.13.1 (powerpc-apple-darwin8.0) libcurl/7.13.1 OpenSSL/0.9.7l zlib/1.2.3
-Host: example.com
-Pragma: no-cache
-Accept: */*
-Content-Length: 123
-Content-Type: **application/x-www-form-urlencoded**
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt; で POST しているせいだ。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;Content-Type&lt;/code&gt; が &lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt; だと、&lt;a href=&#34;http://sdc.sun.co.jp/java/docs/j2ee/sdk_1.3/ja/techdocs/api/javax/servlet/http/HttpServletRequest.html&#34;&gt;&lt;code&gt;HttpServletRequest&lt;/code&gt;&lt;/a&gt; がパラメータとして解析するために先に入力を読みだしてしまうので、&lt;code&gt;HttpServletRequest#getInputStream()&lt;/code&gt; から読みだすときは空なわけだ。&lt;/p&gt;
-
-&lt;p&gt;次のように POST すれば、正常に動作した（&lt;code&gt;--data-ascii&lt;/code&gt; の XML は省略）。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% curl -v **-H &amp;quot;Content-Type: text/xml&amp;quot;** --data-ascii &amp;quot;...&amp;quot; &amp;quot;http://example.com/api/xmlrpc&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;どうやら、昨日まではちゃんと &lt;code&gt;-H&lt;/code&gt; オプションで &lt;code&gt;Content-Type&lt;/code&gt; を指定していたのだが、&lt;strong&gt;一日寝ると忘れてしまったようだ&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;だから、ブログに書いている。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2006/12/13/xml-rpc-premature-end-of-file/</guid>
+      <description>Java で XML-RPC の開発をしている。
+動作確認は UNIX コマンドの curl で手軽にすませているのだが、突然、すべての curl コマンドで Premature end of file. というエラーが出るようになった。
+[Fatal Error] :-1:-1: Premature end of file.  このエラーには見覚えがある。たしか、XML の絡んだ通信で接続状態が悪くなり、通信が途絶えた場合などに ぼろぼろ出ていたやつだ。つまり、XML が不完全なのだろう。
+しかし、curl の POST で送っているデータをいくら調べてもおかしい部分が見つからない。 問題になりがちな改行を取り除いても、コンソールのエンコーディングを変更しても同じ。
+しかたがないので、デバッガでブレークポイントを設定し、動作を追ってみた。
+その結果、リクエストオブジェクトの入力ストリームから読み出す時点でデータが空なことが判明。つまり、curl で POST したデータを読みだせていないわけだ。
+では、何が原因でデータを読みだせていないんだろう？　curl の -v オプションの出力を眺めているうちに気がついた。
+POST /api/xmlrpc HTTP/1.1 User-Agent: curl/7.13.1 (powerpc-apple-darwin8.0) libcurl/7.13.1 OpenSSL/0.9.7l zlib/1.2.3 Host: example.com Pragma: no-cache Accept: */* Content-Length: 123 Content-Type: **application/x-www-form-urlencoded**  application/x-www-form-urlencoded で POST しているせいだ。
+Content-Type が application/x-www-form-urlencoded だと、HttpServletRequest がパラメータとして解析するために先に入力を読みだしてしまうので、HttpServletRequest#getInputStream() から読みだすときは空なわけだ。</description>
     </item>
     
     <item>
       <title>Apache XML-RPC への不満</title>
-      <link>http://www.metareal.org/2006/12/12/apache-xml-rpc-no-thanks/</link>
+      <link>http://ishikawa.github.io/2006/12/12/apache-xml-rpc-no-thanks/</link>
       <pubDate>Wed, 13 Dec 2006 03:06:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2006/12/12/apache-xml-rpc-no-thanks/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://ws.apache.org/&#34;&gt;Apache Web Services Project&lt;/a&gt; の一環として開発されている &lt;a href=&#34;http://ws.apache.org/xmlrpc/&#34;&gt;Apache XML-RPC&lt;/a&gt; は Web に紹介記事も多く、もっとも利用されている印象を受ける。&lt;/p&gt;
-
-&lt;p&gt;実際、これまで仕事でも XML-RPC クライアントとして Apache XML-RPC を使用していた。他の選択肢を知らなかった、というのもあるが、Apache というブランドの影響も大きいと思う。&lt;/p&gt;
-
-&lt;p&gt;しかし、不満がないわけではない。&lt;/p&gt;
-
-&lt;p&gt;特に、クラス階層が複雑なのには手こずった。動作をカスタマイズしたいときなど、あるクラスがどのインターフェースを実装し、どのファクトリで生成されるかを調べるだけでも大変だ（&lt;a href=&#34;http://ws.apache.org/xmlrpc/apidocs/org/apache/xmlrpc/server/RequestProcessorFactoryFactory.html&#34;&gt;RequestProcessorFactoryFactory&lt;/a&gt; インターフェースまでくると、もう冗談のように思えてくる）。&lt;/p&gt;
-
-&lt;p&gt;実例をあげよう。&lt;/p&gt;
-
-&lt;p&gt;RPC の結果として不正な XML が返ってきた場合のエラー処理。
-たとえば、&lt;strong&gt;XML 宣言の前に PHP のエラーが出力されている&lt;/strong&gt;、なんてことはざらにある（現実とはそういう世界なのだ）。こういうときでも、XML 宣言以降は正当な XML なので、できるだけ XML をパースして処理の結果を拾いたい。&lt;/p&gt;
-
-&lt;p&gt;そして、このリカバリ処理自体は難しくない。例外をキャッチして、結果の文字列を XML 宣言までスキップして、再度パースしてみるだけだ。&lt;/p&gt;
-
-&lt;p&gt;だが、結局、その処理をするためには、&lt;strong&gt;ダウンロードした Apache XML-RPC のソースコードから既存のクラスをコピーして別のクラスを作成する必要があった&lt;/strong&gt;。どうしてだろう？　もしかすると、他にエレガントな解決方法があったのかもしれない。だが、発見できなかった。&lt;/p&gt;
-
-&lt;p&gt;そして、いま、サーバサイドの XML-RPC サービスを実装しているのだが、今度は&lt;strong&gt;出力エンコーディングを設定する方法が分からない&lt;/strong&gt;。きっとどこかで、エレガントな解決方法が、発見されるのを待っているのだろう。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2006/12/12/apache-xml-rpc-no-thanks/</guid>
+      <description>Apache Web Services Project の一環として開発されている Apache XML-RPC は Web に紹介記事も多く、もっとも利用されている印象を受ける。
+実際、これまで仕事でも XML-RPC クライアントとして Apache XML-RPC を使用していた。他の選択肢を知らなかった、というのもあるが、Apache というブランドの影響も大きいと思う。
+しかし、不満がないわけではない。
+特に、クラス階層が複雑なのには手こずった。動作をカスタマイズしたいときなど、あるクラスがどのインターフェースを実装し、どのファクトリで生成されるかを調べるだけでも大変だ（RequestProcessorFactoryFactory インターフェースまでくると、もう冗談のように思えてくる）。
+実例をあげよう。
+RPC の結果として不正な XML が返ってきた場合のエラー処理。 たとえば、XML 宣言の前に PHP のエラーが出力されている、なんてことはざらにある（現実とはそういう世界なのだ）。こういうときでも、XML 宣言以降は正当な XML なので、できるだけ XML をパースして処理の結果を拾いたい。
+そして、このリカバリ処理自体は難しくない。例外をキャッチして、結果の文字列を XML 宣言までスキップして、再度パースしてみるだけだ。
+だが、結局、その処理をするためには、ダウンロードした Apache XML-RPC のソースコードから既存のクラスをコピーして別のクラスを作成する必要があった。どうしてだろう？　もしかすると、他にエレガントな解決方法があったのかもしれない。だが、発見できなかった。
+そして、いま、サーバサイドの XML-RPC サービスを実装しているのだが、今度は出力エンコーディングを設定する方法が分からない。きっとどこかで、エレガントな解決方法が、発見されるのを待っているのだろう。</description>
     </item>
     
     <item>
       <title>ブログの XML-RPC サポート</title>
-      <link>http://www.metareal.org/2006/12/11/weblog-xmlrpc-support/</link>
+      <link>http://ishikawa.github.io/2006/12/11/weblog-xmlrpc-support/</link>
       <pubDate>Mon, 11 Dec 2006 08:21:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2006/12/11/weblog-xmlrpc-support/</guid>
-      <description>&lt;p&gt;個人的メモとして、各ブログの &lt;a href=&#34;http://www.xmlrpc.com/spec&#34;&gt;XML-RPC&lt;/a&gt; サポート状況をまとめてみた。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.sixapart.jp/movabletype/mt3/&#34;&gt;Movable Type&lt;/a&gt; は
-&lt;a href=&#34;http://www.blogger.com/&#34;&gt;Blogger&lt;/a&gt; の API と、&lt;a href=&#34;http://www.userland.com/&#34;&gt;米 UserLand Software 社&lt;/a&gt;の
-MetaWeblog API に準拠しているようだ。また、&lt;a href=&#34;http://wordpress.org/&#34;&gt;WordPress&lt;/a&gt; も &lt;a href=&#34;http://codex.wordpress.org/XML-RPC_Support&#34;&gt;Movable Type に準ずるかたちになっている&lt;/a&gt;。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.sixapart.jp/movabletype/manual/3.3/03_blog_admin_guide/customizing_blogs/xmlrpc_api.html&#34;&gt;Movable Type 3.3 マニュアル - XML-RPC API&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.na.rim.or.jp/~tsupo/program/blogTool/mt_xmlRpc.html&#34;&gt;Movable Type で使える XML-RPC API&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.xmlrpc.com/metaWeblogApi&#34;&gt;MetaWeblog API&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;面白いのは Blogger。
-現在は XML-RPC ではなく、 &lt;a href=&#34;http://code.google.com/apis/gdata/overview.html&#34;&gt;Google Data APIs (GData)&lt;/a&gt; による &lt;a href=&#34;http://code.google.com/apis/gdata/blogger.html&#34;&gt;Blogger Data API&lt;/a&gt; を使用している。&lt;/p&gt;
-
-&lt;p&gt;Web ページのサイドバーには他にも &lt;strong&gt;&amp;ldquo;Calendar Data API&amp;rdquo;&lt;/strong&gt; や &lt;strong&gt;&amp;ldquo;Spreadsheets Data API&amp;rdquo;&lt;/strong&gt; など、Google の他サービスの名前が並んでいるので、GData はこれらのサービスでも実装されているのだろう。GData によるサービス同士の連携もあるのかもしれない。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2006/12/11/weblog-xmlrpc-support/</guid>
+      <description>個人的メモとして、各ブログの XML-RPC サポート状況をまとめてみた。
+Movable Type は Blogger の API と、米 UserLand Software 社の MetaWeblog API に準拠しているようだ。また、WordPress も Movable Type に準ずるかたちになっている。
+ Movable Type 3.3 マニュアル - XML-RPC API Movable Type で使える XML-RPC API MetaWeblog API  面白いのは Blogger。 現在は XML-RPC ではなく、 Google Data APIs (GData) による Blogger Data API を使用している。
+Web ページのサイドバーには他にも &amp;ldquo;Calendar Data API&amp;rdquo; や &amp;ldquo;Spreadsheets Data API&amp;rdquo; など、Google の他サービスの名前が並んでいるので、GData はこれらのサービスでも実装されているのだろう。GData によるサービス同士の連携もあるのかもしれない。</description>
     </item>
     
   </channel>

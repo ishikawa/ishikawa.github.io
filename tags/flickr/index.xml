@@ -1,160 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Flickr on METAREAL</title>
-    <link>http://www.metareal.org/tags/flickr/index.xml</link>
-    <description>Recent content in Flickr on METAREAL</description>
+    <title>flickr on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/flickr/</link>
+    <description>Recent content in flickr on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/flickr/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Jun 2008 10:09:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/flickr/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Flickr の JSON フィードで自作ブログパーツ</title>
-      <link>http://www.metareal.org/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</link>
+      <link>http://ishikawa.github.io/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</link>
       <pubDate>Sun, 15 Jun 2008 10:09:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</guid>
-      <description>
-
-&lt;p&gt;写真を撮るのが好きじゃない。&lt;/p&gt;
-
-&lt;p&gt;カメラは荷物になるし、壊れやすいから気をつかう。いざ撮影になると、バッグから取り出して、電源ボタンを押す、レンズを向ける、ピントを合わせて、と面倒だ。衆人環視の中、うんうん唸りながらシャッターを切るのも粋じゃない。&lt;/p&gt;
-
-&lt;p&gt;では、何が楽しくて写真を撮るのかといえば、補正が楽しい。&lt;a href=&#34;http://www.adobe.com/jp/products/photoshopelwin/&#34;&gt;Photoshop Elements&lt;/a&gt; の自動補正がよく出来ていて、何も考えずにボタンを押していくだけで、それなりの見栄えになってくれる。これは楽しい（ただし、たまに自力で補正に挑戦しても、自動補正の方がキレイで気分が悪い）。&lt;/p&gt;
-
-&lt;p&gt;そのうち、出来上がった写真を他人に見せびらかしたくなるのが自然の流れ。写真を &lt;a href=&#34;http://www.flickr.com/&#34;&gt;Flickr&lt;/a&gt; にアップロードするようになった。さらに、&lt;a href=&#34;http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;このブログをリニューアル&lt;/a&gt;するさいには、&lt;a href=&#34;http://www.flickr.com/&#34;&gt;Flickr&lt;/a&gt; にアップロードした写真を表示するブログパーツを追加するつもりだった。&lt;/p&gt;
-
-&lt;p&gt;公式のブログパーツは &lt;a href=&#34;http://www.flickr.com/badge.gne&#34;&gt;Flickr Badge&lt;/a&gt; という名前で Flash 版と HTML 版が用意されている。しかし、いくつかの理由により、どちらも使う気になれなかった。幸い、Flickr では&lt;a href=&#34;http://www.flickr.com/services/feeds/&#34;&gt;さまざまなフィードが提供されている&lt;/a&gt;。これらを利用すれば、&lt;strong&gt;自作のブログパーツをつくるのは難しくない&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;h3 id=&#34;公式ブログパーツの不満点&#34;&gt;公式ブログパーツの不満点&lt;/h3&gt;
-
-&lt;p&gt;提供されているもので満足なら自作する必要はない。公式ブログパーツの不満点も挙げておこう。&lt;/p&gt;
-
-&lt;p&gt;まずは、Flash 版だが、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;サムネイルがちいさい&lt;/li&gt;
-&lt;li&gt;一定時間ごとにアニメーションで拡大するのは面白いが、読者からすれば煩わしいものだ&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;という不満がある。&lt;/p&gt;
-
-&lt;p&gt;一方、HTML 版はというと、サムネイルの大きさは選択可能、レイアウトも CSS で設定できるので自由度も高い。ただし、ブログパーツを挿入するための JavaScript が好みじゃない（以下、一部整形済み）。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var b_txt = &#39;&#39;;
-
-b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_image&amp;quot; id=&amp;quot;flickr_badge_image1&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.flickr.com/photos/ishikawa_takanori/2555186680/&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;http://farm4.static.flickr.com/3006/2555186680_7c18b8cc1a_s.jpg&amp;quot; alt=&amp;quot;A photo on Flickr&amp;quot; title=&amp;quot;BUFFET STYLE&amp;quot; height=&amp;quot;75&amp;quot; width=&amp;quot;75&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&#39;;
-
-b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_image&amp;quot; id=&amp;quot;flickr_badge_image2&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.flickr.com/photos/ishikawa_takanori/2555186616/&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;http://farm4.static.flickr.com/3140/2555186616_823d69311e_s.jpg&amp;quot; alt=&amp;quot;A photo on Flickr&amp;quot; title=&amp;quot;spaghetti with Genova style basil sauce&amp;quot; height=&amp;quot;75&amp;quot; width=&amp;quot;75&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&#39;;
-
-b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_image&amp;quot; id=&amp;quot;flickr_badge_image3&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.flickr.com/photos/ishikawa_takanori/2553633584/&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;http://farm4.static.flickr.com/3274/2553633584_0e3633ebe6_s.jpg&amp;quot; alt=&amp;quot;A photo on Flickr&amp;quot; title=&amp;quot;The Technorati Monster escaped again.&amp;quot; height=&amp;quot;75&amp;quot; width=&amp;quot;75&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&#39;;
-
-document.write(b_txt)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ごらんのとおり、古典的な &lt;code&gt;document.write&lt;/code&gt; のブログパーツである。&lt;a href=&#34;http://la.ma.la/blog/diary_200507160912.htm&#34;&gt;最速インターフェース研究会 :: ページレンダリングを妨げない広告挿入手法に関する覚書&lt;/a&gt;でも説明されているように、この手法だとページの表示を妨げる可能性がある。ブログパーツはあくまでオマケ。ページの表示が遅れるのは嬉しくない。&lt;/p&gt;
-
-&lt;p&gt;今回自作するブログパーツでは、ページの読み込み後にブログパーツの表示を行うことで、この問題による影響を軽減している。&lt;/p&gt;
-
-&lt;h3 id=&#34;flickr-の-json-フィード&#34;&gt;Flickr の JSON フィード&lt;/h3&gt;
-
-&lt;p&gt;Flickr では&lt;a href=&#34;http://www.flickr.com/services/feeds/&#34;&gt;さまざまなフィードが提供されている&lt;/a&gt;が、ありがたいことに JSONP (JSON with Padding) 形式のフィードも提供されている。&lt;/p&gt;
-
-&lt;p&gt;JSONP については以下の記事に詳しい（最初の記事は &lt;a href=&#34;http://mochikit.com/&#34;&gt;MochiKit&lt;/a&gt; の作者による解説。これが初出っぽい）。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://bob.pythonmac.org/archives/2005/12/05/remote-json-jsonp/&#34;&gt;from &lt;strong&gt;future&lt;/strong&gt; import * » Remote JSON - JSONP&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.baldanders.info/spiegel/remark/archives/000222.shtml&#34;&gt;[鏡] 入門 JSON 3 &amp;ndash; JSONP とコールバック関数 &amp;ndash; 戯れ言++&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;まずは、実例をみるのがいいだろう。&lt;/p&gt;
-
-&lt;p&gt;たとえば、&lt;a href=&#34;http://api.flickr.com/services/feeds/photos_public.gne?id=23956121%40N00&amp;amp;tags=green&amp;amp;format=json&#34;&gt;http://api.flickr.com/services/feeds/photos_public.gne?id=23956121%40N00&amp;amp;tags=green&amp;amp;format=json&lt;/a&gt; を開くと、次のような JavaScript が返ってくる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;jsonFlickrFeed({
-    &amp;quot;title&amp;quot;: &amp;quot;Uploads from Takanori Ishikawa, tagged green&amp;quot;,
-    &amp;quot;link&amp;quot;: &amp;quot;http://www.flickr.com/photos/ishikawa_takanori/tags/green/&amp;quot;,
-    &amp;quot;description&amp;quot;: &amp;quot;&amp;quot;,
-    &amp;quot;modified&amp;quot;: &amp;quot;2008-05-24T07:39:52Z&amp;quot;,
-    &amp;quot;generator&amp;quot;: &amp;quot;http://www.flickr.com/&amp;quot;,
-    &amp;quot;items&amp;quot;: [
-     {
-      &amp;quot;title&amp;quot;: &amp;quot;Shadow Game&amp;quot;,
-      &amp;quot;link&amp;quot;: &amp;quot;http://www.flickr.com/photos/ishikawa_takanori/2517368623/&amp;quot;,
-      &amp;quot;media&amp;quot;: {&amp;quot;m&amp;quot;:&amp;quot;http://farm3.static.flickr.com/2141/2517368623_9c15a8e38dv&amp;quot;},
-      &amp;quot;date_taken&amp;quot;: &amp;quot;2008-05-04T15:15:36-08:00&amp;quot;,
-      &amp;quot;description&amp;quot;: &amp;quot;...&amp;quot;,
-      &amp;quot;published&amp;quot;: &amp;quot;2008-05-24T07:39:52Z&amp;quot;,
-      &amp;quot;author&amp;quot;: &amp;quot;nobody@flickr.com (Takanori Ishikawa)&amp;quot;,
-      &amp;quot;author_id&amp;quot;: &amp;quot;23956121@N00&amp;quot;,
-      &amp;quot;tags&amp;quot;: &amp;quot;green nara horyuji&amp;quot;
-     },
-...
-        ]
-})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;返ってくるのが JavaScript&lt;/strong&gt; というのがミソで、つまり、次のような使い方ができる。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;上記 URL を &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; タグに指定し、JavaScript を読み込む&lt;/li&gt;
-&lt;li&gt;読み込みが完了すると、&lt;code&gt;jsonFlickrFeed&lt;/code&gt; 関数が呼ばれる&lt;/li&gt;
-&lt;li&gt;そのときの引数は写真のデータを格納した連想配列&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;このとき渡される引数の詳細については &lt;a href=&#34;http://www.flickr.com/services/api/response.json.html&#34;&gt;JSON Response Format&lt;/a&gt; を参考にしてほしい（参照先にも書かれているように、呼び出される関数の名前を指定することも可能だ）。&lt;/p&gt;
-
-&lt;p&gt;では、実際に &lt;a href=&#34;http://www.flickr.com/services/feeds/&#34;&gt;Flickr JSON フィード&lt;/a&gt;を使って、写真を表示してみよう。&lt;/p&gt;
-
-&lt;p&gt;この即席ブログパーツの &lt;code&gt;jsonFlickrFeed&lt;/code&gt; 関数は以下のようになっている。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function jsonFlickrFeed(json) {
-  var div = document.getElementById(&amp;quot;flickr-json-api-example-001&amp;quot;);
-  var items = json.items.slice(0, 6);
-
-  for (var i = 0; i &amp;lt; items.length; i++) {
-    var item = items[i];
-    var a = document.createElement(&amp;quot;a&amp;quot;);
-    var img = document.createElement(&amp;quot;img&amp;quot;);
-    var media = item.media.m.replace(/_m.(jpe?g)$/, &amp;quot;_t.$1&amp;quot;); // (1)
-
-    img.setAttribute(&amp;quot;src&amp;quot;, media);
-    a.setAttribute(&amp;quot;href&amp;quot;, item.link);
-    a.setAttribute(&amp;quot;title&amp;quot;, item.title);
-
-    a.appendChild(img);
-    div.appendChild(a);
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;特に問題はないと思う。引数で渡される連想配列には &lt;code&gt;items&lt;/code&gt; という名前で各写真のデータが入っている。それをループで回して &lt;code&gt;img&lt;/code&gt; 要素を作成している。&lt;/p&gt;
-
-&lt;p&gt;説明がいるとすれば、写真の URL を正規表現でいじっている部分だろうか（コメントで &lt;code&gt;(1)&lt;/code&gt; と書いた行）。Flickr の写真にはいくかのサイズがあって、それぞれに URL の形式が決まっている。このへんの写真 URL の形式については &lt;a href=&#34;http://www.flickr.com/services/api/misc.urls.html&#34;&gt;Photo Source URLs&lt;/a&gt; が詳しい。&lt;/p&gt;
-
-&lt;p&gt;あとは、&lt;code&gt;script&lt;/code&gt; 要素で JSON フィードの URL を指定する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;script src=&amp;quot;http://api.flickr.com/services/feeds/photos_public.gne?id=23956121%40N00&amp;amp;amp;tags=popular&amp;amp;amp;jsoncallback=flickrJsonAPIExample001&amp;amp;amp;format=json&amp;quot; type=&amp;quot;text/javascript&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;また、この &lt;code&gt;script&lt;/code&gt; 要素を置く場所を &lt;code&gt;&amp;lt;/body&amp;gt;&lt;/code&gt; タグの直前にしておけば、JavaScript の読み込みがはじまったときには他の部分が表示されているので、ページの表示の妨げになりにくい。&lt;/p&gt;
-
-&lt;h3 id=&#34;json-フィードの手軽さ&#34;&gt;JSON フィードの手軽さ&lt;/h3&gt;
-
-&lt;p&gt;Flickr が JSON フィードを利用すれば、写真を表示するブログパーツが簡単に自作できることが分かった。&lt;/p&gt;
-
-&lt;p&gt;JavaScript と親和性が高いのみならず、ただの外部スクリプト読み込みなので、&lt;code&gt;XMLHttpRequest&lt;/code&gt; につきもののクロスドメイン制限がないのもありがたい。&lt;/p&gt;
-
-&lt;p&gt;最後に、参考リンクをまとめておく。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/services/feeds/&#34;&gt;Flickr で提供されているフィード一覧&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/services/api/misc.urls.html&#34;&gt;写真の URL の形式について&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/services/api/response.json.html&#34;&gt;JSONP で渡される引数について&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.flickr.com/services/api/explore/?method=flickr.favorites.getList&#34;&gt;Flickr API Explorer&lt;/a&gt; API のテスト用ページ。自分の User ID を確認できる&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</guid>
+      <description>写真を撮るのが好きじゃない。
+カメラは荷物になるし、壊れやすいから気をつかう。いざ撮影になると、バッグから取り出して、電源ボタンを押す、レンズを向ける、ピントを合わせて、と面倒だ。衆人環視の中、うんうん唸りながらシャッターを切るのも粋じゃない。
+では、何が楽しくて写真を撮るのかといえば、補正が楽しい。Photoshop Elements の自動補正がよく出来ていて、何も考えずにボタンを押していくだけで、それなりの見栄えになってくれる。これは楽しい（ただし、たまに自力で補正に挑戦しても、自動補正の方がキレイで気分が悪い）。
+そのうち、出来上がった写真を他人に見せびらかしたくなるのが自然の流れ。写真を Flickr にアップロードするようになった。さらに、このブログをリニューアルするさいには、Flickr にアップロードした写真を表示するブログパーツを追加するつもりだった。
+公式のブログパーツは Flickr Badge という名前で Flash 版と HTML 版が用意されている。しかし、いくつかの理由により、どちらも使う気になれなかった。幸い、Flickr ではさまざまなフィードが提供されている。これらを利用すれば、自作のブログパーツをつくるのは難しくない。
+公式ブログパーツの不満点 提供されているもので満足なら自作する必要はない。公式ブログパーツの不満点も挙げておこう。
+まずは、Flash 版だが、
+ サムネイルがちいさい 一定時間ごとにアニメーションで拡大するのは面白いが、読者からすれば煩わしいものだ  という不満がある。
+一方、HTML 版はというと、サムネイルの大きさは選択可能、レイアウトも CSS で設定できるので自由度も高い。ただし、ブログパーツを挿入するための JavaScript が好みじゃない（以下、一部整形済み）。
+var b_txt = &#39;&#39;; b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_image&amp;quot; id=&amp;quot;flickr_badge_image1&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.flickr.com/photos/ishikawa_takanori/2555186680/&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;http://farm4.static.flickr.com/3006/2555186680_7c18b8cc1a_s.jpg&amp;quot; alt=&amp;quot;A photo on Flickr&amp;quot; title=&amp;quot;BUFFET STYLE&amp;quot; height=&amp;quot;75&amp;quot; width=&amp;quot;75&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&#39;; b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_image&amp;quot; id=&amp;quot;flickr_badge_image2&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.flickr.com/photos/ishikawa_takanori/2555186616/&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;http://farm4.static.flickr.com/3140/2555186616_823d69311e_s.jpg&amp;quot; alt=&amp;quot;A photo on Flickr&amp;quot; title=&amp;quot;spaghetti with Genova style basil sauce&amp;quot; height=&amp;quot;75&amp;quot; width=&amp;quot;75&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&#39;; b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_image&amp;quot; id=&amp;quot;flickr_badge_image3&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.</description>
     </item>
     
   </channel>

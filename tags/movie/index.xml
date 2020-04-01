@@ -1,36 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Movie on METAREAL</title>
-    <link>http://www.metareal.org/tags/movie/index.xml</link>
-    <description>Recent content in Movie on METAREAL</description>
+    <title>movie on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/movie/</link>
+    <description>Recent content in movie on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/movie/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 18 Jan 2013 00:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/movie/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>映画「LOOPER」</title>
-      <link>http://www.metareal.org/2013/01/18/looper/</link>
+      <link>http://ishikawa.github.io/2013/01/18/looper/</link>
       <pubDate>Fri, 18 Jan 2013 00:00:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2013/01/18/looper/</guid>
-      <description>&lt;p&gt;話題の映画「&lt;a href=&#34;http://looper.gaga.ne.jp/&#34;&gt;LOOPER&lt;/a&gt;」を観てきた。&lt;/p&gt;
-
-&lt;p&gt;タイムトラベルものでありながら、主人公自身はタイムトラベルしないのが珍しい。先行作品へのオマージュに満ちあふれた本作だが、以下の二点において
-映画「&lt;a href=&#34;http://www.amazon.co.jp/dp/B000BX4ANY&#34;&gt;ターミネーター&lt;/a&gt;」がもっとも近い気がした。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;未来と現代が拮抗する物語である&lt;/li&gt;
-&lt;li&gt;タイムトラベルが両者の衝突を生み出すための道具としてしか使われていない&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;一見、自己犠牲に見えるラストも、個人的には「ターミネーター」の別解として考えるのが腑に落ちた。&lt;/p&gt;
-
-&lt;p&gt;前半は最高にスリリングで、申し分のない面白さ。惜しむらくは、後半の展開が少々雑というか、色んな要素を詰め込みすぎた感はある。 未来の悪党どもに利用され蹂躙されている現代社会や、登場人物たちの悲劇の連鎖、といったループ構造が物語の本質だと思うが、飾りが多くてそこが見えづらい。とても楽しませてもらったのだけど、観賞後、冷静になってみるといまいちスッキリしないモヤモヤ感が残った（だからこそ観終わったあとに語りたくなって、話題になるのかもしれない）。&lt;/p&gt;
-
-&lt;p&gt;とはいえ、斬新なアイデアとサービス精神たっぷりのエンターテイメント作品であることは間違いない。新宿バルト9の前列席は音量が大きすぎて、銃撃戦は片耳を塞がないとツラかったが&amp;hellip;。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2013/01/18/looper/</guid>
+      <description>話題の映画「LOOPER」を観てきた。
+タイムトラベルものでありながら、主人公自身はタイムトラベルしないのが珍しい。先行作品へのオマージュに満ちあふれた本作だが、以下の二点において 映画「ターミネーター」がもっとも近い気がした。
+ 未来と現代が拮抗する物語である タイムトラベルが両者の衝突を生み出すための道具としてしか使われていない  一見、自己犠牲に見えるラストも、個人的には「ターミネーター」の別解として考えるのが腑に落ちた。
+前半は最高にスリリングで、申し分のない面白さ。惜しむらくは、後半の展開が少々雑というか、色んな要素を詰め込みすぎた感はある。 未来の悪党どもに利用され蹂躙されている現代社会や、登場人物たちの悲劇の連鎖、といったループ構造が物語の本質だと思うが、飾りが多くてそこが見えづらい。とても楽しませてもらったのだけど、観賞後、冷静になってみるといまいちスッキリしないモヤモヤ感が残った（だからこそ観終わったあとに語りたくなって、話題になるのかもしれない）。
+とはいえ、斬新なアイデアとサービス精神たっぷりのエンターテイメント作品であることは間違いない。新宿バルト9の前列席は音量が大きすぎて、銃撃戦は片耳を塞がないとツラかったが&amp;hellip;。</description>
     </item>
     
   </channel>

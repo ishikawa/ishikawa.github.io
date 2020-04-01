@@ -1,63 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Elixir on METAREAL</title>
-    <link>http://www.metareal.org/tags/elixir/index.xml</link>
-    <description>Recent content in Elixir on METAREAL</description>
+    <title>elixir on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/elixir/</link>
+    <description>Recent content in elixir on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/elixir/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 Sep 2015 11:09:31 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/elixir/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>ctags に Elixir を追加する</title>
-      <link>http://www.metareal.org/post/2015/09/elixir-ctags/</link>
+      <link>http://ishikawa.github.io/post/2015/09/elixir-ctags/</link>
       <pubDate>Fri, 25 Sep 2015 11:09:31 +0900</pubDate>
       
-      <guid>http://www.metareal.org/post/2015/09/elixir-ctags/</guid>
-      <description>&lt;p&gt;最近、Atom エディタを使っているが、シンボルの定義場所に移動するための &lt;code&gt;Go to Declaration&lt;/code&gt;
-コマンドを動作させるためには ctags でインデックスしておく必要がある。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/atom/symbols-view&#34;&gt;atom/symbols-view&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;ただ、2015年9月の現時点では &lt;a href=&#34;http://ctags.sourceforge.net/languages.html&#34;&gt;Elixir がサポートされていない&lt;/a&gt;ようなので、自分で追加してやる必要がある。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% ctags --version
-Exuberant Ctags 5.8, Copyright (C) 1996-2009 Darren Hiebert
-  Compiled: Mar 16 2015, 23:48:18
-  ...
-  Optional compiled features: +wildcards, +regex
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ctags はコマンドラインオプションで新しい言語を定義できる。毎回指定するのが面倒な場合は、
-&lt;code&gt;$HOME/.ctags&lt;/code&gt; からオプションを読み込んでくれるようだ。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://ctags.sourceforge.net/EXTENDING.html&#34;&gt;Exuberant Ctags: Adding support for a new language&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;とりあえず、&lt;code&gt;defmodule&lt;/code&gt; によるモジュール定義を読み込めるようにしてみよう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;--langdef=Elixir
---langmap=Elixir:.ex.exs
---regex-elixir=/^[ \t]*defmodule[ \t]+([a-zA-Z0-9_.]+)/\1/m,modules/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;ctags&lt;/code&gt; を実行して、生成された tags ファイルを確認する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% ctags lib/elixir/lib/task.ex
-% cat tags
-!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;&amp;quot; to lines/
-...
-Task	lib/elixir/lib/task.ex	/^defmodule Task do$/;&amp;quot;	m
-TaskFinder	lib/elixir/lib/task.ex	/^      defmodule TaskFinder do$/;&amp;quot;	m
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;想定通り、モジュール定義がインデックスできているようだ。あとは 必要なだけ &lt;code&gt;--regex-elixir&lt;/code&gt; オプションを追加していけばいい。
-参考までに、関数定義を追加したものを&lt;a href=&#34;https://gist.github.com/ishikawa/3fad0d2058d68419d3ad&#34;&gt;ここ&lt;/a&gt;に置いておく。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/post/2015/09/elixir-ctags/</guid>
+      <description>最近、Atom エディタを使っているが、シンボルの定義場所に移動するための Go to Declaration コマンドを動作させるためには ctags でインデックスしておく必要がある。
+ atom/symbols-view  ただ、2015年9月の現時点では Elixir がサポートされていないようなので、自分で追加してやる必要がある。
+% ctags --version Exuberant Ctags 5.8, Copyright (C) 1996-2009 Darren Hiebert Compiled: Mar 16 2015, 23:48:18 ... Optional compiled features: +wildcards, +regex  ctags はコマンドラインオプションで新しい言語を定義できる。毎回指定するのが面倒な場合は、 $HOME/.ctags からオプションを読み込んでくれるようだ。
+ Exuberant Ctags: Adding support for a new language  とりあえず、defmodule によるモジュール定義を読み込めるようにしてみよう。
+--langdef=Elixir --langmap=Elixir:.ex.exs --regex-elixir=/^[ \t]*defmodule[ \t]+([a-zA-Z0-9_.]+)/\1/m,modules/  ctags を実行して、生成された tags ファイルを確認する。
+% ctags lib/elixir/lib/task.ex % cat tags !_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;&amp;quot; to lines/ .</description>
     </item>
     
   </channel>

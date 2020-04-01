@@ -1,57 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Vagrant on METAREAL</title>
-    <link>http://www.metareal.org/tags/vagrant/index.xml</link>
-    <description>Recent content in Vagrant on METAREAL</description>
+    <title>vagrant on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/vagrant/</link>
+    <description>Recent content in vagrant on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Dec 2015 12:49:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>docker build が固まる</title>
-      <link>http://www.metareal.org/post/2015/12/hanging-up-docker-build/</link>
+      <link>http://ishikawa.github.io/post/2015/12/hanging-up-docker-build/</link>
       <pubDate>Wed, 23 Dec 2015 12:49:25 +0900</pubDate>
       
-      <guid>http://www.metareal.org/post/2015/12/hanging-up-docker-build/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt; 試してるんですが&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;「&lt;code&gt;docker build&lt;/code&gt; 遅すぎ！　コーヒー飲んでも終わってない！」&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;さすがに遅すぎると思ったら、&lt;code&gt;Setting up ca-certificates-java (20130815ubuntu1) …&lt;/code&gt; と呟いたまま固まっていました。&lt;/p&gt;
-
-&lt;p&gt;環境は以下の通り:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Mac OS X El Capitan (10.11.2)&lt;/li&gt;
-&lt;li&gt;VirtualBox 5.0.10 r104061&lt;/li&gt;
-&lt;li&gt;Ubuntu 64bit (trusty)&lt;/li&gt;
-&lt;li&gt;Docker 1.9.1&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/docker/docker/issues/18180&#34;&gt;Docker 1.9.1 hanging at build step &amp;ldquo;Setting up ca-certificates-java&amp;rdquo; · Issue #18180 · docker/docker&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;AUFS のバグでデッドロックしているらしい。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ docker info
-…
-Storage Driver: aufs
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Issue のコメントを読む限り、Docker のバージョンを 1.9.0 以前に戻すのが確実そう。&lt;/p&gt;
-
-&lt;p&gt;ただ、Docker のインストールは Vagrant の &lt;a href=&#34;https://docs.vagrantup.com/v2/provisioning/docker.html&#34;&gt;Docker Provisioner&lt;/a&gt; を利用していて、こいつでバージョン指定する方法が分からなかった（&lt;a href=&#34;https://github.com/mitchellh/vagrant/blob/1b08cfcd0945d1f7c2273d9c56d90a1e456d26aa/plugins/provisioners/docker/cap/debian/docker_install.rb&#34;&gt;ソースコード&lt;/a&gt;を眺めた感じ、常に最新版がインストールされているみたい）。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;CPU が複数ある場合は再現率がかなり低くなる&lt;/strong&gt;ようなので、仮想 CPU 数を &lt;code&gt;2&lt;/code&gt; にすることで、とりあえずの対策とした。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;config.vm.provider &amp;quot;virtualbox&amp;quot; do |vm|
-  vm.cpus = 2
-end
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://ishikawa.github.io/post/2015/12/hanging-up-docker-build/</guid>
+      <description>Docker 試してるんですが
+ 「docker build 遅すぎ！　コーヒー飲んでも終わってない！」
+ さすがに遅すぎると思ったら、Setting up ca-certificates-java (20130815ubuntu1) … と呟いたまま固まっていました。
+環境は以下の通り:
+ Mac OS X El Capitan (10.11.2) VirtualBox 5.0.10 r104061 Ubuntu 64bit (trusty) Docker 1.9.1  Docker 1.9.1 hanging at build step &amp;ldquo;Setting up ca-certificates-java&amp;rdquo; · Issue #18180 · docker/docker
+AUFS のバグでデッドロックしているらしい。
+$ docker info … Storage Driver: aufs  Issue のコメントを読む限り、Docker のバージョンを 1.9.0 以前に戻すのが確実そう。
+ただ、Docker のインストールは Vagrant の Docker Provisioner を利用していて、こいつでバージョン指定する方法が分からなかった（ソースコードを眺めた感じ、常に最新版がインストールされているみたい）。
+CPU が複数ある場合は再現率がかなり低くなるようなので、仮想 CPU 数を 2 にすることで、とりあえずの対策とした。</description>
     </item>
     
   </channel>

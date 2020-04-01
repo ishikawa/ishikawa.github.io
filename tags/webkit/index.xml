@@ -1,80 +1,43 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Webkit on METAREAL</title>
-    <link>http://www.metareal.org/tags/webkit/index.xml</link>
-    <description>Recent content in Webkit on METAREAL</description>
+    <title>webkit on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/webkit/</link>
+    <description>Recent content in webkit on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/webkit/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Dec 2008 01:06:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/webkit/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>WEB&#43;DB PRESS Vol.48</title>
-      <link>http://www.metareal.org/2008/12/24/web-db-press-vol48/</link>
+      <link>http://ishikawa.github.io/2008/12/24/web-db-press-vol48/</link>
       <pubDate>Wed, 24 Dec 2008 01:06:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/12/24/web-db-press-vol48/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://raku.to/&#34;&gt;古谷楽人&lt;/a&gt;氏より &lt;a href=&#34;http://gihyo.jp/magazine/wdpress/archive/2009/vol48&#34;&gt;WEB+DB PRESS Vol.48&lt;/a&gt; (&lt;a href=&#34;http://www.amazon.co.jp/exec/obidos/ASIN/4774136913/&#34;&gt;amazon.co.jp&lt;/a&gt;) を献本いただきました。ありがとうございます。わたしは当雑誌、というか雑誌全般の熱心な読者ではないのですが（ごめんなさい）、ひさしぶりの技術系雑誌を楽しく読ませてもらいました。&lt;/p&gt;
-
-&lt;p&gt;WEB+DB PRESS Vol.48 で氏は「[最速]JavaScript エンジン徹底比較」と題して、最近のブラウザ事情に聡いプログラマなら気になるであろう、最新 JavaScript エンジンの比較と検証記事を執筆されています。以下では、記事内容の簡単な紹介と一読した感想などを書いていきます。&lt;/p&gt;
-
-&lt;h3 id=&#34;最速-javascript-エンジン徹底比較&#34;&gt;[最速]JavaScript エンジン徹底比較&lt;/h3&gt;
-
-&lt;p&gt;（ここから文体をいつもどおりに戻して&amp;hellip;）記事は三章から構成されており、それぞれの章題は：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;JavaScript エンジンの比較&lt;/li&gt;
-&lt;li&gt;SquirrelFish Extreme / WebKit の最適化手法&lt;/li&gt;
-&lt;li&gt;注目の Google Chrome に搭載された V8&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;である。&lt;/p&gt;
-
-&lt;p&gt;章題からも推測できるように、第一章が複数ベンチマークスイートによる各 JavaScript エンジンのパフォーマンス比較、第二章と第三章ではコンパイラと仮想機械の一般的な説明から始まり、WebKit の &lt;a href=&#34;http://webkit.org/blog/214/introducing-squirrelfish-extreme/&#34;&gt;SquirrelFish Extreme&lt;/a&gt;、および Google の &lt;a href=&#34;http://code.google.com/p/v8/&#34;&gt;V8&lt;/a&gt; が用いる最適化手法について多くのページが割かれている。&lt;/p&gt;
-
-&lt;p&gt;個々のトピックについては WEB 上にも詳細に解説されたサイトがあるものの、雑誌という紙媒体で、こうして一本にまとめられた情報は珍しいのではないだろうか&amp;hellip;って、普段、雑誌を読まない人が書いても説得力に乏しい。スミマセン。もっとも、珍しかろうが珍しくなかろうが、日本語で読める貴重な情報源のひとつであることに変わりはない。
-特に、SquirrelFish Extreme で採用されている Polymorphic Inline Cache (PIC) や V8 の高速なプロパティ・アクセスを実現するための &lt;a href=&#34;http://code.google.com/intl/ja-JP/apis/v8/design.html#prop_access&#34;&gt;Hidden Class&lt;/a&gt; の解説は、現代的な動的言語の裏舞台を知る、という意味で興味深い。たとえ、言語処理系の実装詳細に興味がなくとも、普段使っている道具がどのように作られているかを知ることは益になるだろう。&lt;/p&gt;
-
-&lt;h3 id=&#34;最後に&#34;&gt;最後に&lt;/h3&gt;
-
-&lt;p&gt;今回、ひさしぶりに技術系雑誌を読んでみて、プロのライターと編集者による情報のパッケージングと、紙という媒体とレイアウトには、他のものには代えがたい価値がある、と感じた。腰を落ち着けて、プログラミングのさまざまなトピックスに触れるというのは、やはり、ワクワクする体験だ。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/12/24/web-db-press-vol48/</guid>
+      <description>古谷楽人氏より WEB+DB PRESS Vol.48 (amazon.co.jp) を献本いただきました。ありがとうございます。わたしは当雑誌、というか雑誌全般の熱心な読者ではないのですが（ごめんなさい）、ひさしぶりの技術系雑誌を楽しく読ませてもらいました。
+WEB+DB PRESS Vol.48 で氏は「[最速]JavaScript エンジン徹底比較」と題して、最近のブラウザ事情に聡いプログラマなら気になるであろう、最新 JavaScript エンジンの比較と検証記事を執筆されています。以下では、記事内容の簡単な紹介と一読した感想などを書いていきます。
+[最速]JavaScript エンジン徹底比較 （ここから文体をいつもどおりに戻して&amp;hellip;）記事は三章から構成されており、それぞれの章題は：
+ JavaScript エンジンの比較 SquirrelFish Extreme / WebKit の最適化手法 注目の Google Chrome に搭載された V8  である。
+章題からも推測できるように、第一章が複数ベンチマークスイートによる各 JavaScript エンジンのパフォーマンス比較、第二章と第三章ではコンパイラと仮想機械の一般的な説明から始まり、WebKit の SquirrelFish Extreme、および Google の V8 が用いる最適化手法について多くのページが割かれている。
+個々のトピックについては WEB 上にも詳細に解説されたサイトがあるものの、雑誌という紙媒体で、こうして一本にまとめられた情報は珍しいのではないだろうか&amp;hellip;って、普段、雑誌を読まない人が書いても説得力に乏しい。スミマセン。もっとも、珍しかろうが珍しくなかろうが、日本語で読める貴重な情報源のひとつであることに変わりはない。 特に、SquirrelFish Extreme で採用されている Polymorphic Inline Cache (PIC) や V8 の高速なプロパティ・アクセスを実現するための Hidden Class の解説は、現代的な動的言語の裏舞台を知る、という意味で興味深い。たとえ、言語処理系の実装詳細に興味がなくとも、普段使っている道具がどのように作られているかを知ることは益になるだろう。
+最後に 今回、ひさしぶりに技術系雑誌を読んでみて、プロのライターと編集者による情報のパッケージングと、紙という媒体とレイアウトには、他のものには代えがたい価値がある、と感じた。腰を落ち着けて、プログラミングのさまざまなトピックスに触れるというのは、やはり、ワクワクする体験だ。</description>
     </item>
     
     <item>
       <title>JavaScript ベンチマーク SunSpider 0.9</title>
-      <link>http://www.metareal.org/2007/12/19/new-javascript-benchmark-sunspider/</link>
+      <link>http://ishikawa.github.io/2007/12/19/new-javascript-benchmark-sunspider/</link>
       <pubDate>Thu, 20 Dec 2007 08:28:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/19/new-javascript-benchmark-sunspider/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://webkit.org/&#34;&gt;WebKit&lt;/a&gt; の開発者たちは素晴らしいレンダリング・エンジンだけではなく、&lt;a href=&#34;http://webkit.org/blog/61/introducing-drosera/&#34;&gt;Drosera&lt;/a&gt; や &lt;a href=&#34;http://webkit.org/blog/108/yet-another-one-more-thing-a-new-web-inspector/&#34;&gt;Web Inspector&lt;/a&gt; などの Web 開発者向けツールも提供してきたが、今度は JavaScript ベンチマークをリリースしたようだ。&lt;/p&gt;
-
-&lt;p&gt;このベンチマークはJavaScript 言語のコアに絞ったベンチマークを提供しており、これまでの、Web 開発者が使うツールというよりは言語処理系開発者向けのツールといえる。&lt;/p&gt;
-
-&lt;h3 id=&#34;sunspider-0-9&#34;&gt;SunSpider 0.9&lt;/h3&gt;
-
-&lt;p&gt;このベンチマークは &lt;a href=&#34;http://webkit.org/blog/&#34;&gt;Surfin’ Safari&lt;/a&gt; のブログ上で公開がアナウンスされている。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://webkit.org/blog/152/announcing-sunspider-09/&#34;&gt;Surfin’ Safari - Blog Archive » Announcing SunSpider 0.9&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;この記事では、他にも多くの JavaScript ベンチマークが存在することを認めたうえで、SunSpider には以下のような特徴があるとしている。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;マイクロベンチマークではなく、実際にアプリケーションで使用されているコードである&lt;/li&gt;
-&lt;li&gt;テスト対象に DOM は含まず、JavaScript 言語のコアのベンチマークに焦点を合わせている&lt;/li&gt;
-&lt;li&gt;ブラウザ／コンソール両方で簡単に実行できる&lt;/li&gt;
-&lt;li&gt;実行時間のブレも計測できるので、どの程度安定した計測なのかが分かる&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://webkit.org/perf/sunspider-0.9/sunspider.html&#34;&gt;このページ&lt;/a&gt;でベンチマークを実行することができる。実際に実行してみると計測結果をパーマリンクとして保存できたり、それらを比較できたりと興味深い。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/12/19/new-javascript-benchmark-sunspider/</guid>
+      <description>WebKit の開発者たちは素晴らしいレンダリング・エンジンだけではなく、Drosera や Web Inspector などの Web 開発者向けツールも提供してきたが、今度は JavaScript ベンチマークをリリースしたようだ。
+このベンチマークはJavaScript 言語のコアに絞ったベンチマークを提供しており、これまでの、Web 開発者が使うツールというよりは言語処理系開発者向けのツールといえる。
+SunSpider 0.9 このベンチマークは Surfin’ Safari のブログ上で公開がアナウンスされている。
+ Surfin’ Safari - Blog Archive » Announcing SunSpider 0.9  この記事では、他にも多くの JavaScript ベンチマークが存在することを認めたうえで、SunSpider には以下のような特徴があるとしている。
+ マイクロベンチマークではなく、実際にアプリケーションで使用されているコードである テスト対象に DOM は含まず、JavaScript 言語のコアのベンチマークに焦点を合わせている ブラウザ／コンソール両方で簡単に実行できる 実行時間のブレも計測できるので、どの程度安定した計測なのかが分かる  このページでベンチマークを実行することができる。実際に実行してみると計測結果をパーマリンクとして保存できたり、それらを比較できたりと興味深い。</description>
     </item>
     
   </channel>

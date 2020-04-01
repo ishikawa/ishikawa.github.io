@@ -1,141 +1,60 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Css on METAREAL</title>
-    <link>http://www.metareal.org/tags/css/index.xml</link>
-    <description>Recent content in Css on METAREAL</description>
+    <title>css on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/css/</link>
+    <description>Recent content in css on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Nov 2007 02:58:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Ruby の CSS パーサはどこですか？</title>
-      <link>http://www.metareal.org/2007/11/23/looking-for-ruby-css-parser/</link>
+      <link>http://ishikawa.github.io/2007/11/23/looking-for-ruby-css-parser/</link>
       <pubDate>Sat, 24 Nov 2007 02:58:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/11/23/looking-for-ruby-css-parser/</guid>
-      <description>
-
-&lt;p&gt;「Ruby で書かれた CSS パーサを探しています」メモ。&lt;/p&gt;
-
-&lt;h3 id=&#34;ruby-css-parser-http-rubyforge-org-projects-cssparser&#34;&gt;&lt;a href=&#34;http://rubyforge.org/projects/cssparser/&#34;&gt;Ruby CSS Parser&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;最近 RubyForge に登録されたばかりのプロジェクト&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;gem install css_parser&lt;/code&gt; で試してみる&lt;/li&gt;
-&lt;li&gt;いきなり、&lt;a href=&#34;http://code.dunae.ca/css_parser/&#34;&gt;ドキュメント&lt;/a&gt;と実際の挙動が違う。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;CssParser::Parser#load_file!&lt;/code&gt; というメソッドはなくて &lt;code&gt;CssParser::Parser#load_uri!&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;とりあえずローカルファイルを読み込む方法がないようだ&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.w3.org/StyleSheets/home.css&#34;&gt;W3C のスタイルシート&lt;/a&gt;で試してみたがエラー&lt;/li&gt;
-&lt;li&gt;まだ実用ではない、ということだろう&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;csspool-http-rubyforge-org-projects-csspool&#34;&gt;&lt;a href=&#34;http://rubyforge.org/projects/csspool/&#34;&gt;csspool&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;W3C で公開されている CSS パーサのための共通 API &lt;a href=&#34;http://www.w3.org/TR/SAC/&#34;&gt;SAC&lt;/a&gt;（&lt;a href=&#34;http://www2.airnet.ne.jp/sardine/docs/NOTE-SAC-20000728.ja.html&#34;&gt;和訳&lt;/a&gt;）の Ruby による実装。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;なので、委員会っぽい API&lt;/li&gt;
-&lt;li&gt;あらかじめ &lt;a href=&#34;http://i.loveruby.net/ja/projects/racc/&#34;&gt;racc&lt;/a&gt;, &lt;a href=&#34;http://onestepback.org/software/flexmock/&#34;&gt;flexmock&lt;/a&gt; のインストールが必要&lt;/li&gt;
-&lt;li&gt;何を間違ったのか、gem でインストールしたあとに、手動で rake しないと動かなかった&lt;/li&gt;
-&lt;li&gt;パースできるファイルとできないファイルがある&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;@charset&lt;/code&gt; 規則があるものは駄目&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;うーん、単に特定のプロパティをもつセレクタを抜き出したいだけなんだが、どちらのライブラリでも出来ないという罠。自分で書き捨てのスクリプトでも書いて、急場を凌ぐしかないのか。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/11/23/looking-for-ruby-css-parser/</guid>
+      <description>「Ruby で書かれた CSS パーサを探しています」メモ。
+Ruby CSS Parser 最近 RubyForge に登録されたばかりのプロジェクト
+ gem install css_parser で試してみる いきなり、ドキュメントと実際の挙動が違う。 CssParser::Parser#load_file! というメソッドはなくて CssParser::Parser#load_uri! とりあえずローカルファイルを読み込む方法がないようだ W3C のスタイルシートで試してみたがエラー まだ実用ではない、ということだろう  csspool W3C で公開されている CSS パーサのための共通 API SAC（和訳）の Ruby による実装。
+ なので、委員会っぽい API あらかじめ racc, flexmock のインストールが必要 何を間違ったのか、gem でインストールしたあとに、手動で rake しないと動かなかった パースできるファイルとできないファイルがある @charset 規則があるものは駄目  うーん、単に特定のプロパティをもつセレクタを抜き出したいだけなんだが、どちらのライブラリでも出来ないという罠。自分で書き捨てのスクリプトでも書いて、急場を凌ぐしかないのか。</description>
     </item>
     
     <item>
       <title>IE でリンクをクリックするとフォントサイズが小さくなる</title>
-      <link>http://www.metareal.org/2007/08/08/hit-a-link-and-font-away/</link>
+      <link>http://ishikawa.github.io/2007/08/08/hit-a-link-and-font-away/</link>
       <pubDate>Wed, 08 Aug 2007 10:15:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/08/hit-a-link-and-font-away/</guid>
-      <description>
+      <guid>http://ishikawa.github.io/2007/08/08/hit-a-link-and-font-away/</guid>
+      <description>ひさしぶりに Windows IE 6 でブログの確認をしていたら妙なことに気がついた。リンクをクリックすると、一瞬、クリックしたリンクのフォントサイズが小さくなるのだ。
+図解入りバージョン ひさしぶりに Windows IE 6 でブログの確認をしていたら妙なことに気がついた。
 
-&lt;p&gt;ひさしぶりに Windows IE 6 でブログの確認をしていたら妙なことに気がついた。&lt;strong&gt;リンクをクリックすると、一瞬、クリックしたリンクのフォントサイズが小さくなるのだ&lt;/strong&gt;。&lt;/p&gt;
+リンクをクリックすると、一瞬、
 
-&lt;h3 id=&#34;図解入りバージョン&#34;&gt;図解入りバージョン&lt;/h3&gt;
-
-&lt;p&gt;ひさしぶりに Windows IE 6 でブログの確認をしていたら妙なことに気がついた。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1040192167/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1071/1040192167_618f353c8f_o.gif&#34; alt=&#34;Hit a link and font away 1&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;リンクをクリックすると、一瞬、&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1040192173/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1016/1040192173_1715963324_o.gif&#34; alt=&#34;Hit a link and font away 2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;クリックしたリンクのフォントサイズが小さくなるのだ。&lt;/p&gt;
-
-&lt;h3 id=&#34;考えられる原因とか対策&#34;&gt;考えられる原因とか対策&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://developer.yahoo.com/yui/&#34;&gt;YUI&lt;/a&gt; の &lt;a href=&#34;http://developer.yahoo.com/yui/reset/&#34;&gt;Reset CSS&lt;/a&gt; や &lt;a href=&#34;http://developer.yahoo.com/yui/fonts/&#34;&gt;Fonts CSS&lt;/a&gt; を使っているせいかも？&lt;/li&gt;
-&lt;li&gt;てか、いま気づいたけど、YUI に &lt;a href=&#34;http://developer.yahoo.com/yui/base/&#34;&gt;Base CSS&lt;/a&gt; なんて追加されたのね（&lt;a href=&#34;http://yuiblog.com/blog/2007/07/31/yui-2-3-0-released/&#34;&gt;他にも色々増えたようだ&lt;/a&gt;）&lt;/li&gt;
-&lt;li&gt;いやいや、メイリオとか日本語の場合だけ駄目とか&lt;/li&gt;
-&lt;li&gt;検証する気力がない&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;とりあえず、強制的に &lt;code&gt;font-size&lt;/code&gt; を指定してやることで、この問題は起きなくなるようだ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* {font-size:100%;}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;このブログの場合、上記 CSS を &lt;code&gt;reset.css&lt;/code&gt; の最後に追加した。&lt;/p&gt;
-
-&lt;h3 id=&#34;結論&#34;&gt;結論&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://d.hatena.ne.jp/Hamachiya2/20070804/browser_crasher&#34;&gt;CSS ハックも可能な IE&lt;/a&gt; って面白いですね。&lt;/p&gt;
-</description>
+クリックしたリンクのフォントサイズが小さくなるのだ。
+考えられる原因とか対策  YUI の Reset CSS や Fonts CSS を使っているせいかも？ てか、いま気づいたけど、YUI に Base CSS なんて追加されたのね（他にも色々増えたようだ） いやいや、メイリオとか日本語の場合だけ駄目とか 検証する気力がない  とりあえず、強制的に font-size を指定してやることで、この問題は起きなくなるようだ。
+* {font-size:100%;}  このブログの場合、上記 CSS を reset.css の最後に追加した。
+結論 CSS ハックも可能な IE って面白いですね。</description>
     </item>
     
     <item>
       <title>YUI の fonts.css だと pre &gt; code がでっかくなっちゃうね</title>
-      <link>http://www.metareal.org/2007/07/17/yui-fonts-css-bigger-pre-code/</link>
+      <link>http://ishikawa.github.io/2007/07/17/yui-fonts-css-bigger-pre-code/</link>
       <pubDate>Tue, 17 Jul 2007 10:31:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/07/17/yui-fonts-css-bigger-pre-code/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://developer.yahoo.com/yui/&#34;&gt;Yahoo! UI Library (YUI)&lt;/a&gt; の &lt;a href=&#34;http://developer.yahoo.com/yui/fonts/&#34;&gt;fonts.css&lt;/a&gt; では &lt;code&gt;pre&lt;/code&gt; と &lt;code&gt;code&lt;/code&gt; を次のようにスタイルづけしている。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;/**
- * Bump up !IE to get to 13px equivalent
- */
-pre, code {font:115% monospace;*font-size:100%;}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;要するに、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;等幅フォント&lt;/li&gt;
-&lt;li&gt;IE では &lt;code&gt;font-size:100%&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;それ以外は &lt;code&gt;font-size:115%&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;ってことなんだが、このブログみたいにサンプルコードとかを pre 要素と code 要素でマークアップしている場合は IE 以外でフォントが大きくなってしまう（&lt;code&gt;font-size:115%&lt;/code&gt; が二回適用される）。&lt;/p&gt;
-
-&lt;p&gt;なので、別のスタイルシートにでも&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;pre &amp;gt; code { font-size: 100%; }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;こういうのを追加しておくといい、と思った。ただ、実際にはインラインのコード片には code 要素を使っていて、これも &lt;code&gt;font-size:115%&lt;/code&gt; とかされると行間がガタガタになってしまうので、単純に、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;code { font-size: 100%; }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;とかしてしまった方がいいかも（このへん、いつか整理しないと駄目だな&amp;hellip;）。&lt;/p&gt;
-
-&lt;p&gt;ちなみに、プロパティ名の先頭にアスタリスクをつける CSS ハックが、fonts.css の随所で使われているが、これについては以下のブログ記事を参照。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://hail2u.net/blog/webdesign/asterisk-hack.html&#34;&gt;アスタリスクをプロパティ名の頭につけるというCSSハック&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/07/17/yui-fonts-css-bigger-pre-code/</guid>
+      <description>Yahoo! UI Library (YUI) の fonts.css では pre と code を次のようにスタイルづけしている。
+/** * Bump up !IE to get to 13px equivalent */ pre, code {font:115% monospace;*font-size:100%;}  要するに、
+ 等幅フォント IE では font-size:100% それ以外は font-size:115%  ってことなんだが、このブログみたいにサンプルコードとかを pre 要素と code 要素でマークアップしている場合は IE 以外でフォントが大きくなってしまう（font-size:115% が二回適用される）。
+なので、別のスタイルシートにでも
+pre &amp;gt; code { font-size: 100%; }  こういうのを追加しておくといい、と思った。ただ、実際にはインラインのコード片には code 要素を使っていて、これも font-size:115% とかされると行間がガタガタになってしまうので、単純に、
+code { font-size: 100%; }  とかしてしまった方がいいかも（このへん、いつか整理しないと駄目だな&amp;hellip;）。
+ちなみに、プロパティ名の先頭にアスタリスクをつける CSS ハックが、fonts.css の随所で使われているが、これについては以下のブログ記事を参照。
+  アスタリスクをプロパティ名の頭につけるというCSSハック   </description>
     </item>
     
   </channel>

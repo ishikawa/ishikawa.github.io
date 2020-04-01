@@ -1,346 +1,102 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Postgres on METAREAL</title>
-    <link>http://www.metareal.org/tags/postgres/index.xml</link>
-    <description>Recent content in Postgres on METAREAL</description>
+    <title>postgres on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/postgres/</link>
+    <description>Recent content in postgres on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Dec 2007 07:18:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>PostgreSQL で使われていないインデックスを調べる</title>
-      <link>http://www.metareal.org/2007/12/18/postgresql-looking-for-unused-indexes/</link>
+      <link>http://ishikawa.github.io/2007/12/18/postgresql-looking-for-unused-indexes/</link>
       <pubDate>Wed, 19 Dec 2007 07:18:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/18/postgresql-looking-for-unused-indexes/</guid>
-      <description>
-
-&lt;p&gt;PostgreSQL で使われていないインデックスを調べる方法について。いつも忘れるのでこちらにも書く。&lt;/p&gt;
-
-&lt;h3 id=&#34;統計情報の収集&#34;&gt;統計情報の収集&lt;/h3&gt;
-
-&lt;p&gt;まずは、インデックスの使用状況を統計情報として残すよう、PostgreSQL の設定ファイル &lt;code&gt;postgresql.conf&lt;/code&gt; で以下の変数を &lt;code&gt;true&lt;/code&gt; にする。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.postgresql.jp/document/pg825doc/html/runtime-config-statistics.html#GUC-STATS-START-COLLECTOR&#34;&gt;&lt;code&gt;stats_start_collector&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.postgresql.jp/document/pg825doc/html/runtime-config-statistics.html#GUC-STATS-ROW-LEVEL&#34;&gt;&lt;code&gt;stats_row_level&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;各々の詳細についてはリンク先の &lt;a href=&#34;http://www.postgresql.jp/document/pg825doc/index.html&#34;&gt;PostgreSQL ドキュメント&lt;/a&gt;を参照してほしい。&lt;/p&gt;
-
-&lt;h3 id=&#34;統計情報ビュー&#34;&gt;統計情報ビュー&lt;/h3&gt;
-
-&lt;p&gt;収集した統計情報の表示のために&lt;a href=&#34;http://www.postgresql.jp/document/pg825doc/html/monitoring-stats.html#MONITORING-STATS-VIEWS&#34;&gt;多くのビューが用意されている&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;使われていないインデックスを調べるには &lt;code&gt;pg_stat_user_indexes&lt;/code&gt; を見るのが手っ取り早い。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;select indexrelname, idx_scan, idx_tup_read, idx_tup_fetch
-from pg_stat_user_indexes
-where
-  indexrelname not like &#39;%_pkey&#39; and
-  idx_scan = 0;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;プライマリーキーっぽいものは除いてみた。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;indexrelname&lt;/code&gt; がインデックスの名前、&lt;code&gt;relname&lt;/code&gt; がテーブルの名前。なので、特定のテーブルのインデックスに絞ることも簡単にできる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;select indexrelname, idx_scan, idx_tup_read, idx_tup_fetch
-from pg_stat_user_indexes
-where
-  relname = &#39;users&#39;;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/12/18/postgresql-looking-for-unused-indexes/</guid>
+      <description> PostgreSQL で使われていないインデックスを調べる方法について。いつも忘れるのでこちらにも書く。
+統計情報の収集 まずは、インデックスの使用状況を統計情報として残すよう、PostgreSQL の設定ファイル postgresql.conf で以下の変数を true にする。
+ stats_start_collector stats_row_level  各々の詳細についてはリンク先の PostgreSQL ドキュメントを参照してほしい。
+統計情報ビュー 収集した統計情報の表示のために多くのビューが用意されている。
+使われていないインデックスを調べるには pg_stat_user_indexes を見るのが手っ取り早い。
+select indexrelname, idx_scan, idx_tup_read, idx_tup_fetch from pg_stat_user_indexes where indexrelname not like &#39;%_pkey&#39; and idx_scan = 0;  プライマリーキーっぽいものは除いてみた。
+indexrelname がインデックスの名前、relname がテーブルの名前。なので、特定のテーブルのインデックスに絞ることも簡単にできる。
+select indexrelname, idx_scan, idx_tup_read, idx_tup_fetch from pg_stat_user_indexes where relname = &#39;users&#39;;  </description>
     </item>
     
     <item>
       <title>PostgreSQL 7.4 の JDBC ドライバをビルド</title>
-      <link>http://www.metareal.org/2007/12/12/building-postgresql-7-4-jdbc-driver/</link>
+      <link>http://ishikawa.github.io/2007/12/12/building-postgresql-7-4-jdbc-driver/</link>
       <pubDate>Wed, 12 Dec 2007 03:59:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/12/building-postgresql-7-4-jdbc-driver/</guid>
-      <description>
-
-&lt;p&gt;PostgreSQL 7.4.13 以降で起こる&lt;a href=&#34;http://weblog.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/&#34;&gt;異なるエンコーディング間の変換エラー&lt;/a&gt;がいまだに尾を引いている。&lt;/p&gt;
-
-&lt;p&gt;悩んだ末、JDBC ドライバのソースコードを読むだけではなく、実際にビルドして動作を確認してみた方がいいだろう、ということになった。JDBC ドライバにパッチを当てて問題を回避することも視野に入れている。できれば、やりたくないけれど&amp;hellip;。&lt;/p&gt;
-
-&lt;p&gt;PostgreSQL 7.4 の JDBC ドライバをビルドするために必要な手順は、おおまかに分けると以下のようになる。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;CVS からソースコードを取得&lt;/li&gt;
-&lt;li&gt;build.properties を用意&lt;/li&gt;
-&lt;li&gt;ビルド&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;cvs-からソースコードを取得&#34;&gt;CVS からソースコードを取得&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://jdbc.postgresql.org/development/cvs.html&#34;&gt;PostgreSQL JDBC ドライバの CVS リポジトリ&lt;/a&gt;からバージョン 7.4 リリース時のタグを指定してソースコードを取得する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cvs -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc login
-cvs -z3 -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc co **-r REL7_4_STABLE** -P pgjdbc
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;build-properties-を用意&#34;&gt;build.properties を用意&lt;/h3&gt;
-
-&lt;p&gt;バージョン番号情報などを指定するための &lt;code&gt;build.properties&lt;/code&gt; がないとビルドが失敗してしまう。
-トップディレクトリに &lt;code&gt;build.properties&lt;/code&gt; を作成し、以下のように書いておこう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;major=7
-minor=4
-fullversion=7.4.5
-edition=JDBC3
-def_pgport=5432
-enable_debug=no
-connectclass=org.postgresql.jdbc3.Jdbc3Connection
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;major&lt;/code&gt;, &lt;code&gt;minor&lt;/code&gt;, &lt;code&gt;fullversion&lt;/code&gt;, &lt;code&gt;edition&lt;/code&gt; は &lt;code&gt;org.postgresql.Driver.getVersion()&lt;/code&gt; で使われる。&lt;/p&gt;
-
-&lt;p&gt;それ以外の変数には以下のような意味があるようだ。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;def_pgport&lt;/strong&gt; デフォルトの接続ポート番号&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;enable_debug&lt;/strong&gt; デバッグ情報つきでコンパイルする場合は yes&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;connectclass&lt;/strong&gt; &lt;a href=&#34;http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/java/sql/Connection.html&#34;&gt;&lt;code&gt;java.sql.Connection&lt;/code&gt;&lt;/a&gt; 実装クラス&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;今回は JDBC3 向けのドライバをビルドしたかったので、&lt;code&gt;connectclass&lt;/code&gt; には &lt;code&gt;org.postgresql.jdbc3.Jdbc3Connection&lt;/code&gt; を指定した。&lt;/p&gt;
-
-&lt;h3 id=&#34;ビルド&#34;&gt;ビルド&lt;/h3&gt;
-
-&lt;p&gt;あとは Ant を実行すると jars ディレクトリに postgresql.jar と postgresql-examples.jar ができているはずだ。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/12/12/building-postgresql-7-4-jdbc-driver/</guid>
+      <description>PostgreSQL 7.4.13 以降で起こる異なるエンコーディング間の変換エラーがいまだに尾を引いている。
+悩んだ末、JDBC ドライバのソースコードを読むだけではなく、実際にビルドして動作を確認してみた方がいいだろう、ということになった。JDBC ドライバにパッチを当てて問題を回避することも視野に入れている。できれば、やりたくないけれど&amp;hellip;。
+PostgreSQL 7.4 の JDBC ドライバをビルドするために必要な手順は、おおまかに分けると以下のようになる。
+ CVS からソースコードを取得 build.properties を用意 ビルド  CVS からソースコードを取得 PostgreSQL JDBC ドライバの CVS リポジトリからバージョン 7.4 リリース時のタグを指定してソースコードを取得する。
+cvs -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc login cvs -z3 -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc co **-r REL7_4_STABLE** -P pgjdbc  build.properties を用意 バージョン番号情報などを指定するための build.properties がないとビルドが失敗してしまう。 トップディレクトリに build.properties を作成し、以下のように書いておこう。
+major=7 minor=4 fullversion=7.4.5 edition=JDBC3 def_pgport=5432 enable_debug=no connectclass=org.postgresql.jdbc3.Jdbc3Connection  major, minor, fullversion, edition は org.postgresql.Driver.getVersion() で使われる。
+それ以外の変数には以下のような意味があるようだ。
+ def_pgport デフォルトの接続ポート番号 enable_debug デバッグ情報つきでコンパイルする場合は yes connectclass java.</description>
     </item>
     
     <item>
       <title>PostgreSQL 7.4.13 以降、異なるエンコーディングでの変換エラー</title>
-      <link>http://www.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</link>
+      <link>http://ishikawa.github.io/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</link>
       <pubDate>Mon, 10 Dec 2007 09:54:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</guid>
-      <description>&lt;p&gt;PostgreSQL 7.4.18 で以下のようなエラーが出力されるようになった。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ERROR:  22P05: character 0xe28094 of encoding &amp;quot;UNICODE&amp;quot; has no equivalent in &amp;quot;EUC_JP&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://jdbc.postgresql.org/&#34;&gt;PostgreSQL の JDBC ドライバ&lt;/a&gt;はバックエンド (PostgreSQL) のバージョンが 7.3 以降の場合、接続時に必ず &lt;code&gt;set client_encoding = &amp;quot;UNICODE&amp;quot;&lt;/code&gt; を発行する。&lt;/p&gt;
-
-&lt;p&gt;以下は &lt;a href=&#34;http://cvs.pgfoundry.org/cgi-bin/cvsweb.cgi/jdbc/pgjdbc/org/postgresql/jdbc1/Attic/AbstractJdbc1Connection.java?only_with_tag=REL7_4&#34;&gt;org/postgresql/jdbc1/Attic/AbstractJdbc1Connection.java&lt;/a&gt; の 509 行目から抜粋。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;if (haveMinimumServerVersion(&amp;quot;7.3&amp;quot;))
-{
-  BaseResultSet acRset =
-  //TODO: if protocol V3 we can set the client encoding in startup
-  execSQL(&amp;quot;set client_encoding = &#39;UNICODE&#39;&amp;quot;);
-  //set encoding to be unicode
-  encoding = Encoding.getEncoding(&amp;quot;UNICODE&amp;quot;, null);
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;また、&lt;a href=&#34;http://www.postgresql.org/docs/7.4/static/release-7-4-13.html&#34;&gt;PostgreSQL 7.4.13 からは変換できないバイト列をすべてエラー扱いする&lt;/a&gt;ようになった。&lt;/p&gt;
-
-&lt;p&gt;そのため、データベース側のエンコーディングに UNICODE (UTF-8) 以外を使用している場合（ここではエラーからも分かるように、EUC-JP にしていた）、往々にしてこのエラーが起こるようだ。&lt;/p&gt;
-
-&lt;p&gt;回避策としては、データベース側のエンコーディングも UNICODE (UTF-8) にしてしまえば、PostgreSQL のコード変換を使用しないのでエラーは起こらなくなる。可能なら、これが一番よさそうだ。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</guid>
+      <description>PostgreSQL 7.4.18 で以下のようなエラーが出力されるようになった。
+ERROR: 22P05: character 0xe28094 of encoding &amp;quot;UNICODE&amp;quot; has no equivalent in &amp;quot;EUC_JP&amp;quot;  PostgreSQL の JDBC ドライバはバックエンド (PostgreSQL) のバージョンが 7.3 以降の場合、接続時に必ず set client_encoding = &amp;quot;UNICODE&amp;quot; を発行する。
+以下は org/postgresql/jdbc1/Attic/AbstractJdbc1Connection.java の 509 行目から抜粋。
+if (haveMinimumServerVersion(&amp;quot;7.3&amp;quot;)) { BaseResultSet acRset = //TODO: if protocol V3 we can set the client encoding in startup execSQL(&amp;quot;set client_encoding = &#39;UNICODE&#39;&amp;quot;); //set encoding to be unicode encoding = Encoding.getEncoding(&amp;quot;UNICODE&amp;quot;, null); }  また、PostgreSQL 7.4.13 からは変換できないバイト列をすべてエラー扱いするようになった。</description>
     </item>
     
     <item>
       <title>PostgreSQL 7.4 のインデックスと smallint と JDBC</title>
-      <link>http://www.metareal.org/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</link>
+      <link>http://ishikawa.github.io/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</link>
       <pubDate>Fri, 03 Aug 2007 05:41:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</guid>
-      <description>&lt;p&gt;PostgreSQL 7.4 のマニュアル「&lt;a href=&#34;http://www.postgresql.jp/document/pg746doc/html/datatype.html#DATATYPE-INT&#34;&gt;8.1.1. 整数データ型&lt;/a&gt;」には以下のような記述がある。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; インデックスが付けられた smallint あるいは bigint の列がテーブルにある場合、システムがそのインデックスを使用しようとした時に問題を引き起こすことがあります。 例えば句が次のような形式の場合、&lt;/p&gt;
-
-&lt;p&gt;&amp;hellip; WHERE smallint_column = 42&lt;/p&gt;
-
-&lt;p&gt;システムはインデックスを使用しません。 なぜなら42という定数にシステムが integer を割り当てるからです。 今の所PostgreSQLは2つの異なるデータ型が混在している時には、インデックスを使うことができません。 問題を回避するには以下のように定数部分を単一引用符で括ります。&lt;/p&gt;
-
-&lt;p&gt;&amp;hellip; WHERE smallint_column = &amp;lsquo;42&amp;rsquo;&lt;/p&gt;
-
-&lt;p&gt;こうすると、システムは型分析を後廻しにしてこの定数に正しいデータ型を割り振ります。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;（なお、PostgreSQL 8.x のドキュメントからは&lt;a href=&#34;http://www.postgresql.jp/document/pg800doc/html/datatype.html#DATATYPE-INT&#34;&gt;該当する部分が削除されている&lt;/a&gt;ので、バージョン 8 以降にはこの制限はないのかもしれない。未確認）&lt;/p&gt;
-
-&lt;p&gt;なんにせよ、PostgreSQL 7.4 では smallint のカラムを条件に含める場合は、 &lt;code&gt;smallint_column = &#39;42&#39;&lt;/code&gt; と単一引用符で囲むか、&lt;code&gt;smallint_column = 42::smallint&lt;/code&gt; みたいに型を指定しないと、インデックスが使われないらしい。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;こういう些細な注意事項は忘れてしまうのが常&lt;/strong&gt;なので、よほどサイズが重要でないかぎりは int を使うのが安全。どうしても smallint を使う場合は、ちゃんと SQL を explain してみて引用符で囲み、理由をコメントなりで書いておくようにするべきだろう。&lt;/p&gt;
-
-&lt;p&gt;ただ、問題は JDBC とかの抽象層をかます場合で、このときに&lt;strong&gt;どんな SQL が発行されるかを把握しておく必要がある&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;PostgreSQL 側で、実際に発行されている SQL をログに記録して確認してみた。Java のコードと PostgreSQL のログに残されていた SQL ステートメントの両方を載せてある。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;java.sql.PreparedStatement.setInt(int, int)&lt;/code&gt; を使った場合、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int type = ...;
-stmt.setInt(1, type);
-...
-statement: SELECT * FROM example WHERE smallint_column = 1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;java.sql.PreparedStatement.setShort(int, short)&lt;/code&gt; を使った場合、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int type = ...;
-stmt.setShort(1, (short)type);
-...
-statement: SELECT * FROM example WHERE smallint_column = 1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;java.sql.PreparedStatement.setObject(int, Object, int)&lt;/code&gt; を使った場合、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int type = ...;
-stmt.setObject(3, Integer.valueOf(type), java.sql.Types.SMALLINT);
-...
-statement: SELECT * FROM example WHERE smallint_column = 1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;java.sql.PreparedStatement.setString(int, String)&lt;/code&gt; を使った場合、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int type = ...;
-stmt.setString(1, Integer.toString(type));
-...
-statement: SELECT * FROM example WHERE smallint_column = &#39;1&amp;amp;#x27;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;setShort や setObject で SQL の型を指定しても、実際に発行される SQL では型指定がないのでインデックスが使用されない。setString を使えば、引用符に囲まれ、インデックスが使われるようになる。&lt;/p&gt;
-
-&lt;p&gt;最後に、今回の検証に使用した環境は以下のとおり。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;PostgreSQL 7.4.7&lt;/li&gt;
-&lt;li&gt;pg74.216.jdbc3.jar&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</guid>
+      <description>PostgreSQL 7.4 のマニュアル「8.1.1. 整数データ型」には以下のような記述がある。
+ 注意: インデックスが付けられた smallint あるいは bigint の列がテーブルにある場合、システムがそのインデックスを使用しようとした時に問題を引き起こすことがあります。 例えば句が次のような形式の場合、
+&amp;hellip; WHERE smallint_column = 42
+システムはインデックスを使用しません。 なぜなら42という定数にシステムが integer を割り当てるからです。 今の所PostgreSQLは2つの異なるデータ型が混在している時には、インデックスを使うことができません。 問題を回避するには以下のように定数部分を単一引用符で括ります。
+&amp;hellip; WHERE smallint_column = &amp;lsquo;42&amp;rsquo;
+こうすると、システムは型分析を後廻しにしてこの定数に正しいデータ型を割り振ります。
+ （なお、PostgreSQL 8.x のドキュメントからは該当する部分が削除されているので、バージョン 8 以降にはこの制限はないのかもしれない。未確認）
+なんにせよ、PostgreSQL 7.4 では smallint のカラムを条件に含める場合は、 smallint_column = &#39;42&#39; と単一引用符で囲むか、smallint_column = 42::smallint みたいに型を指定しないと、インデックスが使われないらしい。
+こういう些細な注意事項は忘れてしまうのが常なので、よほどサイズが重要でないかぎりは int を使うのが安全。どうしても smallint を使う場合は、ちゃんと SQL を explain してみて引用符で囲み、理由をコメントなりで書いておくようにするべきだろう。
+ただ、問題は JDBC とかの抽象層をかます場合で、このときにどんな SQL が発行されるかを把握しておく必要がある。
+PostgreSQL 側で、実際に発行されている SQL をログに記録して確認してみた。Java のコードと PostgreSQL のログに残されていた SQL ステートメントの両方を載せてある。</description>
     </item>
     
     <item>
       <title>PostgreSQL 7.4 を Intel Mac にインストールする方法</title>
-      <link>http://www.metareal.org/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</link>
+      <link>http://ishikawa.github.io/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</link>
       <pubDate>Wed, 25 Jul 2007 04:24:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</guid>
-      <description>&lt;p&gt;理由あって &lt;a href=&#34;http://www.postgresql.org/&#34;&gt;PostgreSQL&lt;/a&gt; 7.4 を Mac OS X にインストールすることになった。早速、ダウンロードページから手に入る中で最新の 7.4.17 をダウンロードしてインストールしようとするも、エラーが出てコンパイルできない。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% ./configure
-% make
-...
-gcc -no-cpp-precomp -O2 -fno-strict-aliasing -Wall -Wmissing-prototypes -Wmissing-declarations -I../../../../src/include   -c -o xlog.o xlog.c
-In file included from ../../../../src/include/storage/spin.h:50,
-                 from xlog.c:35:
-../../../../src/include/storage/s_lock.h:543:2: error: #error **PostgreSQL does not have native spinlock support on this platform. To continue the compilation, rerun configure using --disable-spinlocks. However, performance will be poor. Please report this to pgsql-bugs@postgresql.org.**
-In file included from ../../../../src/include/storage/spin.h:50,
-                 from xlog.c:35:
-../../../../src/include/storage/s_lock.h:551: error: conflicting types for ‘slock_t’
-../../../../src/include/pg_config_os.h:11: error: previous declaration of ‘slock_t’ was here
-make[4]: *** [xlog.o] Error 1
-make[3]: *** [transam-recursive] Error 2
-make[2]: *** [access-recursive] Error 2
-make[1]: *** [all] Error 2
-make: *** [all] Error 2
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ちなみに環境は以下の通り。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;PostgreSQL 7.4.17 (download)&lt;/li&gt;
-&lt;li&gt;Mac OS X 10.4.10&lt;/li&gt;
-&lt;li&gt;MacBook Intel Core 2 Duo&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;エラーメッセージには、&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;PostgreSQL does not have native spinlock support on this platform. To continue the compilation, rerun configure using &amp;ndash;disable-spinlocks. However, performance will be poor. Please report this to pgsql-bugs@postgresql.org.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;とあるので、言われたとおり &lt;code&gt;--disable-spinlocks&lt;/code&gt; オプションつきでコンパイルを試みる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% make clean
-% ./configure --disable-spinlocks
-...
-In file included from ../../../../src/include/storage/spin.h:50,
-                 from xlog.c:35:
-../../../../src/include/storage/s_lock.h:551: error: conflicting types for ‘slock_t’
-../../../../src/include/pg_config_os.h:11: error: previous declaration of ‘slock_t’ was here
-make[4]: *** [xlog.o] Error 1
-make[3]: *** [transam-recursive] Error 2
-make[2]: *** [access-recursive] Error 2
-make[1]: *** [all] Error 2
-make: *** [all] Error 2
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;やはり駄目だ。該当のエラーはなくなったけど、そのあとのエラーが直らない。&lt;/p&gt;
-
-&lt;p&gt;Google で検索してみると、同様に困っている人も何人かいるようだ。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://archives.postgresql.org/pgsql-bugs/2006-08/msg00083.php&#34;&gt;no native spinlock support on os x 10.4.7&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://archives.postgresql.org/pgsql-ports/2006-01/msg00000.php&#34;&gt;Postgresql7.4.11 compilation failing on Mac Intels&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;しかし、解決策は書かれていない（最新版使えよ、ってのはあるけど&amp;hellip;）。&lt;/p&gt;
-
-&lt;p&gt;しょうがないので、無理矢理コンパイルを通すことにした。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;--- src/include/port/darwin.h.org       2007-07-24 17:15:54.000000000 +0900
-+++ src/include/port/darwin.h   2007-07-24 17:15:58.000000000 +0900
-@@ -1,8 +1,6 @@
- #define __darwin__     1
-
--#if defined(__ppc__)
- #define HAS_TEST_AND_SET
--#endif
-
- #if defined(__ppc__)
- typedef unsigned int slock_t;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ざっとソースコードを眺めた感じ、Intel Mac のチェックが抜けているだけのように思えた（というか、読む気が失せて、そう思い込むことにした）ので、こんな適当な変更でコンパイルしてみる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% make clean
-% ./configure
-% make
-...
-All of PostgreSQL successfully made. Ready to install.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;psql&lt;/code&gt; が動作することと、&lt;code&gt;make check&lt;/code&gt; がパスすることは確認ずみ。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</guid>
+      <description>理由あって PostgreSQL 7.4 を Mac OS X にインストールすることになった。早速、ダウンロードページから手に入る中で最新の 7.4.17 をダウンロードしてインストールしようとするも、エラーが出てコンパイルできない。
+% ./configure % make ... gcc -no-cpp-precomp -O2 -fno-strict-aliasing -Wall -Wmissing-prototypes -Wmissing-declarations -I../../../../src/include -c -o xlog.o xlog.c In file included from ../../../../src/include/storage/spin.h:50, from xlog.c:35: ../../../../src/include/storage/s_lock.h:543:2: error: #error **PostgreSQL does not have native spinlock support on this platform. To continue the compilation, rerun configure using --disable-spinlocks. However, performance will be poor. Please report this to pgsql-bugs@postgresql.org.** In file included from ../../../../src/include/storage/spin.h:50, from xlog.</description>
     </item>
     
     <item>
       <title>空文字列で検索すると PostgreSQL のインデックスが効かない</title>
-      <link>http://www.metareal.org/2007/02/19/query-with-empty-string-cause-full-table-scan/</link>
+      <link>http://ishikawa.github.io/2007/02/19/query-with-empty-string-cause-full-table-scan/</link>
       <pubDate>Tue, 20 Feb 2007 03:53:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/02/19/query-with-empty-string-cause-full-table-scan/</guid>
-      <description>&lt;p&gt;きちんと調べたわけじゃないけど、PostgreSQL で空文字列で検索するとインデックスが効かない気がする。&lt;/p&gt;
-
-&lt;p&gt;具体的には、こういうやつ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;select * from table where column = &#39;&#39;;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;table&lt;/code&gt; の &lt;code&gt;column&lt;/code&gt; にインデックスがあっても、&lt;code&gt;explain&lt;/code&gt; してみると &lt;code&gt;Seq Scan&lt;/code&gt; になってしまう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;select * from table where column = &#39;hoge&#39;;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;とかだと問題ない。&lt;code&gt;Index Scan&lt;/code&gt; してくれる。&lt;/p&gt;
-
-&lt;p&gt;PostgreSQL が古い 7.4 系のせいかも。MySQL は調べてない。そもそも、空文字はインデックスに含めてない気もしてきた。&lt;/p&gt;
-
-&lt;p&gt;とりあえず、空文字の検索で結果がないのが分かってる場合は、クエリを実行せずに無条件で失敗させるのがよさそう。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/02/19/query-with-empty-string-cause-full-table-scan/</guid>
+      <description>きちんと調べたわけじゃないけど、PostgreSQL で空文字列で検索するとインデックスが効かない気がする。
+具体的には、こういうやつ。
+select * from table where column = &#39;&#39;;  table の column にインデックスがあっても、explain してみると Seq Scan になってしまう。
+select * from table where column = &#39;hoge&#39;;  とかだと問題ない。Index Scan してくれる。
+PostgreSQL が古い 7.4 系のせいかも。MySQL は調べてない。そもそも、空文字はインデックスに含めてない気もしてきた。
+とりあえず、空文字の検索で結果がないのが分かってる場合は、クエリを実行せずに無条件で失敗させるのがよさそう。</description>
     </item>
     
   </channel>

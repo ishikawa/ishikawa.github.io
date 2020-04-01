@@ -1,43 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Erlang on METAREAL</title>
-    <link>http://www.metareal.org/tags/erlang/index.xml</link>
-    <description>Recent content in Erlang on METAREAL</description>
+    <title>erlang on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/erlang/</link>
+    <description>Recent content in erlang on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/erlang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Sep 2016 14:47:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/erlang/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Phoenix (Cowboy) の Gzip 圧縮サポート</title>
-      <link>http://www.metareal.org/post/2016/09/gzip-compression-in-cowboy/</link>
+      <link>http://ishikawa.github.io/post/2016/09/gzip-compression-in-cowboy/</link>
       <pubDate>Sun, 25 Sep 2016 14:47:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/post/2016/09/gzip-compression-in-cowboy/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://www.phoenixframework.org&#34;&gt;Phoenix framework&lt;/a&gt; でレスポンスの GZip 圧縮を有効にするには
-&lt;a href=&#34;https://github.com/ninenines/cowboy&#34;&gt;Cowboy&lt;/a&gt; に &lt;code&gt;compress: true&lt;/code&gt; を渡すように、
-Phoenix.Endpoint を設定する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-elixir&#34;&gt;config :example_app, ExampleApp.Endpoint,
-  http: [port: 4040, compress: true],
-  debug_errors: true,
-  code_reloader: true,
-  check_origin: false,
-  watchers: []
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;HTTP リクエストを送るときに &lt;code&gt;Accept-Encoding&lt;/code&gt; ヘッダーを設定する (&lt;code&gt;curl&lt;/code&gt; コマンドなら &lt;code&gt;--compressed&lt;/code&gt; オプション)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Accept-Encoding: gzip, deflate
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;また、レスポンス・ボディのサイズが 300 バイトを超えていない場合も GZip 圧縮されないようだ。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/ninenines/cowboy/commit/01f57ad65d7c75fb455f48e354bb3a328c472ce4#diff-2db000a0dd01503e2f022387f23413cbR942&#34;&gt;https://github.com/ninenines/cowboy/commit/01f57ad65d7c75fb455f48e354bb3a328c472ce4#diff-2db000a0dd01503e2f022387f23413cbR942&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://ishikawa.github.io/post/2016/09/gzip-compression-in-cowboy/</guid>
+      <description>Phoenix framework でレスポンスの GZip 圧縮を有効にするには Cowboy に compress: true を渡すように、 Phoenix.Endpoint を設定する。
+config :example_app, ExampleApp.Endpoint, http: [port: 4040, compress: true], debug_errors: true, code_reloader: true, check_origin: false, watchers: []  HTTP リクエストを送るときに Accept-Encoding ヘッダーを設定する (curl コマンドなら --compressed オプション)
+Accept-Encoding: gzip, deflate  また、レスポンス・ボディのサイズが 300 バイトを超えていない場合も GZip 圧縮されないようだ。
+ https://github.com/ninenines/cowboy/commit/01f57ad65d7c75fb455f48e354bb3a328c472ce4#diff-2db000a0dd01503e2f022387f23413cbR942  </description>
     </item>
     
   </channel>

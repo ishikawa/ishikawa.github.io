@@ -1,842 +1,272 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Java on METAREAL</title>
-    <link>http://www.metareal.org/tags/java/index.xml</link>
-    <description>Recent content in Java on METAREAL</description>
+    <title>java on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/java/</link>
+    <description>Recent content in java on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Jun 2008 03:41:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>kilim で Java でもジェネレーター</title>
-      <link>http://www.metareal.org/2008/06/26/java-generater-by-using-kilim/</link>
+      <link>http://ishikawa.github.io/2008/06/26/java-generater-by-using-kilim/</link>
       <pubDate>Fri, 27 Jun 2008 03:41:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/06/26/java-generater-by-using-kilim/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://twitter.com/&#34;&gt;Twitter&lt;/a&gt; と &lt;a href=&#34;http://www.erlang.org/&#34;&gt;Erlang&lt;/a&gt; をきっかけに注目を集めるようになった軽量プロセス（とかマイクロスレッドとか）を Java で実現するためのライブラリに &lt;a href=&#34;http://www.malhar.net/sriram/kilim/&#34;&gt;kilim&lt;/a&gt; があります。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.malhar.net/sriram/talks/kilim-google.pdf&#34;&gt;Isolation-typed actors for Java&lt;/a&gt; (PDF)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.infoq.com/news/2008/06/kilim-message-passing-in-java&#34;&gt;InfoQ: Kilim - actors and message passing in Java&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;夜中に突然 Java が書きたくなって、まだ、Examples を動かしてみた程度ですが、とりあえず &lt;a href=&#34;http://www.python.jp/doc/nightly/tut/node11.html#SECTION0011900000000000000000&#34;&gt;Python のジェネレーター&lt;/a&gt;っぽいことができるのは分かったので記事にしておきます。暇と知識が増えたら、もうすこし突っ込んだ記事もあげる予定です（自信がないので今回、ですます調）。&lt;/p&gt;
-
-&lt;h3 id=&#34;ジェネレーターの例&#34;&gt;ジェネレーターの例&lt;/h3&gt;
-
-&lt;p&gt;では、本当につまらない例です。フィボナッチ数を求めるプログラムをどうぞ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import kilim.Generator;
-import kilim.pausable;
-
-public class Fib extends Generator&amp;lt;Integer&amp;gt; {
-
-  public @pausable void execute() {  // (1)
-    int fib1 = 0;
-    int fib2 = 1;
-
-    while (true) {
-      yield(fib1);  // (2)
-      fib2 = fib1 + fib2;
-      fib1 = fib2 - fib1;
-    }
-  }
-
-  public static void main(String[] args) {
-    final Fib fib = new Fib();
-
-    for (int i = 0; i &amp;lt;= 10; i++) {
-      System.out.printf(&amp;quot;Fib(%d) = %d\n&amp;quot;, i, fib.next()); // (3)
-    }
-  }
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;面白い箇所の行にコメントで番号を振りました。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;協調動作させたいメソッドは、このように &lt;code&gt;@pausable&lt;/code&gt; アノテーションで指示します&lt;/li&gt;
-&lt;li&gt;呼び出し側に制御を戻すときは &lt;code&gt;yield&lt;/code&gt; メソッドを使います。Python 的&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;kilim.Generator&lt;/code&gt; は &lt;code&gt;java.util.Iterator&lt;/code&gt; と &lt;code&gt;java.lang.Iterable&lt;/code&gt; インターフェースを実装しているので、こんなふうに使います。ますます Python&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;ビルドと実行方法&#34;&gt;ビルドと実行方法&lt;/h3&gt;
-
-&lt;p&gt;上記のソースコードを実行するまでの手順をまとめておきます。&lt;/p&gt;
-
-&lt;p&gt;まずは&lt;a href=&#34;http://www.malhar.net/sriram/kilim/&#34;&gt;公式サイト&lt;/a&gt;からソースコードをダウンロードして展開、ビルドします。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% tar xvzf kilim-0.5.tgz.tar
-% cd kilim-0.5
-% ant
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;.jar&lt;/code&gt; も作っておきましょう（&lt;strong&gt;2008/6/27追記&lt;/strong&gt;：&lt;code&gt;cd classes&lt;/code&gt; が抜けていたので追記しました）。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% cd classes/
-% jar cvf kilim-0.5.jar kilim
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;適当なディレクトリを作成して、さきほど作成した &lt;code&gt;kilim-0.5.jar&lt;/code&gt; とソースコードに含まれている &lt;code&gt;asm-all-2.2.3.jar&lt;/code&gt; をコピーします。また、上記のサンプルプログラムを &lt;code&gt;Fib.java&lt;/code&gt; という名前で、同じディレクトリに保存してください。&lt;/p&gt;
-
-&lt;p&gt;早速、&lt;code&gt;Fib.java&lt;/code&gt; をコンパイルします。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% javac -cp ./kilim-0.5.jar ./Fib.java
-% ls
-Fib.class               Fib.java                asm-all-2.2.3.jar       kilim-0.5.jar
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;Fib.class&lt;/code&gt; が作成されているのでコンパイルは成功しています。実行してみましょう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% java -cp .:./kilim-0.5.jar Fib
-############################################################
-Task class Fib has either not been woven or the classpath is incorrect
-############################################################
-java.lang.Exception: Stack trace
-        at java.lang.Thread.dumpStack(Thread.java:1176)
-        at kilim.Task.errNotWoven(Task.java:188)
-        at kilim.Task.execute(Task.java:252)
-        at kilim.Task._runExecute(Task.java:291)
-        at kilim.Generator.next(Generator.java:47)
-        at Fib.main(Fib.java:22)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;あらら &amp;hellip; 不可解なエラーが出てしまいました。&lt;/p&gt;
-
-&lt;p&gt;種を明かすと kilim はバイトコード改変を利用しています。そのため、実行する前に、対象の &lt;code&gt;.class&lt;/code&gt; ファイルを &lt;code&gt;kilim.tools.Weaver&lt;/code&gt; で変換してやらないといけません（ソースコードのコメントを読むと、継続渡し形式(CPS)変換をしているらしい）。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% java -cp .:./kilim-0.5.jar:./asm-all-2.2.3.jar kilim.tools.Weaver -d . Fib
-Wrote: ./kilim/S_I2.class
-Wrote: ./Fib.class
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;なんだか &lt;code&gt;.class&lt;/code&gt; が増えちゃったけど、いまのところ気にしない&amp;hellip;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% java -cp .:./kilim-0.5.jar Fib
-Fib(0) = 0
-Fib(1) = 1
-Fib(2) = 1
-Fib(3) = 2
-Fib(4) = 3
-Fib(5) = 5
-Fib(6) = 8
-Fib(7) = 13
-Fib(8) = 21
-Fib(9) = 34
-Fib(10) = 55
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;今度は実行できました。フィボナッチ数が順番に出力されているのが分かると思います。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/06/26/java-generater-by-using-kilim/</guid>
+      <description>Twitter と Erlang をきっかけに注目を集めるようになった軽量プロセス（とかマイクロスレッドとか）を Java で実現するためのライブラリに kilim があります。
+ Isolation-typed actors for Java (PDF) InfoQ: Kilim - actors and message passing in Java  夜中に突然 Java が書きたくなって、まだ、Examples を動かしてみた程度ですが、とりあえず Python のジェネレーターっぽいことができるのは分かったので記事にしておきます。暇と知識が増えたら、もうすこし突っ込んだ記事もあげる予定です（自信がないので今回、ですます調）。
+ジェネレーターの例 では、本当につまらない例です。フィボナッチ数を求めるプログラムをどうぞ。
+import kilim.Generator; import kilim.pausable; public class Fib extends Generator&amp;lt;Integer&amp;gt; { public @pausable void execute() { // (1) int fib1 = 0; int fib2 = 1; while (true) { yield(fib1); // (2) fib2 = fib1 + fib2; fib1 = fib2 - fib1; } } public static void main(String[] args) { final Fib fib = new Fib(); for (int i = 0; i &amp;lt;= 10; i++) { System.</description>
     </item>
     
     <item>
       <title>PostgreSQL 7.4 の JDBC ドライバをビルド</title>
-      <link>http://www.metareal.org/2007/12/12/building-postgresql-7-4-jdbc-driver/</link>
+      <link>http://ishikawa.github.io/2007/12/12/building-postgresql-7-4-jdbc-driver/</link>
       <pubDate>Wed, 12 Dec 2007 03:59:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/12/building-postgresql-7-4-jdbc-driver/</guid>
-      <description>
-
-&lt;p&gt;PostgreSQL 7.4.13 以降で起こる&lt;a href=&#34;http://weblog.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/&#34;&gt;異なるエンコーディング間の変換エラー&lt;/a&gt;がいまだに尾を引いている。&lt;/p&gt;
-
-&lt;p&gt;悩んだ末、JDBC ドライバのソースコードを読むだけではなく、実際にビルドして動作を確認してみた方がいいだろう、ということになった。JDBC ドライバにパッチを当てて問題を回避することも視野に入れている。できれば、やりたくないけれど&amp;hellip;。&lt;/p&gt;
-
-&lt;p&gt;PostgreSQL 7.4 の JDBC ドライバをビルドするために必要な手順は、おおまかに分けると以下のようになる。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;CVS からソースコードを取得&lt;/li&gt;
-&lt;li&gt;build.properties を用意&lt;/li&gt;
-&lt;li&gt;ビルド&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;cvs-からソースコードを取得&#34;&gt;CVS からソースコードを取得&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://jdbc.postgresql.org/development/cvs.html&#34;&gt;PostgreSQL JDBC ドライバの CVS リポジトリ&lt;/a&gt;からバージョン 7.4 リリース時のタグを指定してソースコードを取得する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cvs -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc login
-cvs -z3 -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc co **-r REL7_4_STABLE** -P pgjdbc
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;build-properties-を用意&#34;&gt;build.properties を用意&lt;/h3&gt;
-
-&lt;p&gt;バージョン番号情報などを指定するための &lt;code&gt;build.properties&lt;/code&gt; がないとビルドが失敗してしまう。
-トップディレクトリに &lt;code&gt;build.properties&lt;/code&gt; を作成し、以下のように書いておこう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;major=7
-minor=4
-fullversion=7.4.5
-edition=JDBC3
-def_pgport=5432
-enable_debug=no
-connectclass=org.postgresql.jdbc3.Jdbc3Connection
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;major&lt;/code&gt;, &lt;code&gt;minor&lt;/code&gt;, &lt;code&gt;fullversion&lt;/code&gt;, &lt;code&gt;edition&lt;/code&gt; は &lt;code&gt;org.postgresql.Driver.getVersion()&lt;/code&gt; で使われる。&lt;/p&gt;
-
-&lt;p&gt;それ以外の変数には以下のような意味があるようだ。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;def_pgport&lt;/strong&gt; デフォルトの接続ポート番号&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;enable_debug&lt;/strong&gt; デバッグ情報つきでコンパイルする場合は yes&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;connectclass&lt;/strong&gt; &lt;a href=&#34;http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/java/sql/Connection.html&#34;&gt;&lt;code&gt;java.sql.Connection&lt;/code&gt;&lt;/a&gt; 実装クラス&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;今回は JDBC3 向けのドライバをビルドしたかったので、&lt;code&gt;connectclass&lt;/code&gt; には &lt;code&gt;org.postgresql.jdbc3.Jdbc3Connection&lt;/code&gt; を指定した。&lt;/p&gt;
-
-&lt;h3 id=&#34;ビルド&#34;&gt;ビルド&lt;/h3&gt;
-
-&lt;p&gt;あとは Ant を実行すると jars ディレクトリに postgresql.jar と postgresql-examples.jar ができているはずだ。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/12/12/building-postgresql-7-4-jdbc-driver/</guid>
+      <description>PostgreSQL 7.4.13 以降で起こる異なるエンコーディング間の変換エラーがいまだに尾を引いている。
+悩んだ末、JDBC ドライバのソースコードを読むだけではなく、実際にビルドして動作を確認してみた方がいいだろう、ということになった。JDBC ドライバにパッチを当てて問題を回避することも視野に入れている。できれば、やりたくないけれど&amp;hellip;。
+PostgreSQL 7.4 の JDBC ドライバをビルドするために必要な手順は、おおまかに分けると以下のようになる。
+ CVS からソースコードを取得 build.properties を用意 ビルド  CVS からソースコードを取得 PostgreSQL JDBC ドライバの CVS リポジトリからバージョン 7.4 リリース時のタグを指定してソースコードを取得する。
+cvs -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc login cvs -z3 -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc co **-r REL7_4_STABLE** -P pgjdbc  build.properties を用意 バージョン番号情報などを指定するための build.properties がないとビルドが失敗してしまう。 トップディレクトリに build.properties を作成し、以下のように書いておこう。
+major=7 minor=4 fullversion=7.4.5 edition=JDBC3 def_pgport=5432 enable_debug=no connectclass=org.postgresql.jdbc3.Jdbc3Connection  major, minor, fullversion, edition は org.postgresql.Driver.getVersion() で使われる。
+それ以外の変数には以下のような意味があるようだ。
+ def_pgport デフォルトの接続ポート番号 enable_debug デバッグ情報つきでコンパイルする場合は yes connectclass java.</description>
     </item>
     
     <item>
       <title>PostgreSQL 7.4.13 以降、異なるエンコーディングでの変換エラー</title>
-      <link>http://www.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</link>
+      <link>http://ishikawa.github.io/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</link>
       <pubDate>Mon, 10 Dec 2007 09:54:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</guid>
-      <description>&lt;p&gt;PostgreSQL 7.4.18 で以下のようなエラーが出力されるようになった。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ERROR:  22P05: character 0xe28094 of encoding &amp;quot;UNICODE&amp;quot; has no equivalent in &amp;quot;EUC_JP&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://jdbc.postgresql.org/&#34;&gt;PostgreSQL の JDBC ドライバ&lt;/a&gt;はバックエンド (PostgreSQL) のバージョンが 7.3 以降の場合、接続時に必ず &lt;code&gt;set client_encoding = &amp;quot;UNICODE&amp;quot;&lt;/code&gt; を発行する。&lt;/p&gt;
-
-&lt;p&gt;以下は &lt;a href=&#34;http://cvs.pgfoundry.org/cgi-bin/cvsweb.cgi/jdbc/pgjdbc/org/postgresql/jdbc1/Attic/AbstractJdbc1Connection.java?only_with_tag=REL7_4&#34;&gt;org/postgresql/jdbc1/Attic/AbstractJdbc1Connection.java&lt;/a&gt; の 509 行目から抜粋。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;if (haveMinimumServerVersion(&amp;quot;7.3&amp;quot;))
-{
-  BaseResultSet acRset =
-  //TODO: if protocol V3 we can set the client encoding in startup
-  execSQL(&amp;quot;set client_encoding = &#39;UNICODE&#39;&amp;quot;);
-  //set encoding to be unicode
-  encoding = Encoding.getEncoding(&amp;quot;UNICODE&amp;quot;, null);
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;また、&lt;a href=&#34;http://www.postgresql.org/docs/7.4/static/release-7-4-13.html&#34;&gt;PostgreSQL 7.4.13 からは変換できないバイト列をすべてエラー扱いする&lt;/a&gt;ようになった。&lt;/p&gt;
-
-&lt;p&gt;そのため、データベース側のエンコーディングに UNICODE (UTF-8) 以外を使用している場合（ここではエラーからも分かるように、EUC-JP にしていた）、往々にしてこのエラーが起こるようだ。&lt;/p&gt;
-
-&lt;p&gt;回避策としては、データベース側のエンコーディングも UNICODE (UTF-8) にしてしまえば、PostgreSQL のコード変換を使用しないのでエラーは起こらなくなる。可能なら、これが一番よさそうだ。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</guid>
+      <description>PostgreSQL 7.4.18 で以下のようなエラーが出力されるようになった。
+ERROR: 22P05: character 0xe28094 of encoding &amp;quot;UNICODE&amp;quot; has no equivalent in &amp;quot;EUC_JP&amp;quot;  PostgreSQL の JDBC ドライバはバックエンド (PostgreSQL) のバージョンが 7.3 以降の場合、接続時に必ず set client_encoding = &amp;quot;UNICODE&amp;quot; を発行する。
+以下は org/postgresql/jdbc1/Attic/AbstractJdbc1Connection.java の 509 行目から抜粋。
+if (haveMinimumServerVersion(&amp;quot;7.3&amp;quot;)) { BaseResultSet acRset = //TODO: if protocol V3 we can set the client encoding in startup execSQL(&amp;quot;set client_encoding = &#39;UNICODE&#39;&amp;quot;); //set encoding to be unicode encoding = Encoding.getEncoding(&amp;quot;UNICODE&amp;quot;, null); }  また、PostgreSQL 7.4.13 からは変換できないバイト列をすべてエラー扱いするようになった。</description>
     </item>
     
     <item>
       <title>Java で要素がひとつだけのコレクションをつくる</title>
-      <link>http://www.metareal.org/2007/10/07/java-singleton-collection/</link>
+      <link>http://ishikawa.github.io/2007/10/07/java-singleton-collection/</link>
       <pubDate>Sun, 07 Oct 2007 11:11:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/10/07/java-singleton-collection/</guid>
-      <description>
-
-&lt;p&gt;Java でときどき、要素がひとつだけのコレクションがほしくなるときがある。たとえば、利用しているライブラリのメソッドが引数としてコレクションを要求しているが、渡したいオブジェクトがひとつしかないとか。&lt;/p&gt;
-
-&lt;p&gt;こういう場合、コレクションの型が &lt;code&gt;List&lt;/code&gt; だとすると、まず思いつくのは、新しく生成した &lt;code&gt;ArrayList&lt;/code&gt; に要素をひとつだけ追加する方法だ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;String&amp;gt;();
-list.add(&amp;quot;element&amp;quot;);
-doSomething(list);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;だが、この方法は変換に一時変数が必要になり不格好だ。&lt;/p&gt;
-
-&lt;h3 id=&#34;arrays-aslist-を使う方法&#34;&gt;Arrays.asList を使う方法&lt;/h3&gt;
-
-&lt;p&gt;この変換は &lt;a href=&#34;http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#asList%28T...%29&#34;&gt;&lt;code&gt;Arrays.asList&lt;/code&gt;&lt;/a&gt; を使うことで簡単にできる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;doSomething(Arrays.asList(new String[]{&amp;quot;element&amp;quot;}));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;要素がひとつだけの配列をリストに変換する、と捉え直すわけだ。そして、Java 1.5 から &lt;a href=&#34;http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#asList%28T...%29&#34;&gt;&lt;code&gt;Arrays.asList&lt;/code&gt;&lt;/a&gt; は配列ではなく可変長引数をとるようになったので、更に簡単に書ける。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;doSomething(Arrays.asList(&amp;quot;element&amp;quot;));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;collectios-singleton-系メソッド&#34;&gt;Collectios.singleton 系メソッド&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;Arrays.asList&lt;/code&gt; ではリスト以外のコレクションには変換できない上、要素がひとつだけのコレクションのために配列を用意しているため、まだまだメモリ的に非効率だ。&lt;/p&gt;
-
-&lt;p&gt;実は &lt;a href=&#34;file:///System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Resources/Documentation/Reference/doc/api/java/util/Collections.html&#34;&gt;&lt;code&gt;java.util.Collections&lt;/code&gt;&lt;/a&gt; にはこうした用途に使えるメソッドがすでに用意されている。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;file:///System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Resources/Documentation/Reference/doc/api/java/util/Collections.html#singleton%28T%29&#34;&gt;&lt;code&gt;singleton&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;file:///System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Resources/Documentation/Reference/doc/api/java/util/Collections.html#singletonList%28T%29&#34;&gt;&lt;code&gt;singletonList&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;file:///System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Resources/Documentation/Reference/doc/api/java/util/Collections.html#singletonMap%28K,%20V%29&#34;&gt;&lt;code&gt;singletonMap&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;上記のメソッドはそれぞれ、渡されたオブジェクトを要素がひとつだけのコレクションに変換するメソッドだ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Set&amp;lt;String&amp;gt; set = Collections.singleton(&amp;quot;element&amp;quot;);
-List&amp;lt;String&amp;gt; list = Collections.singletonList(&amp;quot;element&amp;quot;);
-Map&amp;lt;String, String&amp;gt; map = Collections.singletonMap(&amp;quot;key&amp;quot;, &amp;quot;value&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;また、変換後のコレクションには、要素をインスタンス変数として直接もつ独自のコレクション・クラスを利用しているため、メモリ効率も一番良い。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/10/07/java-singleton-collection/</guid>
+      <description>Java でときどき、要素がひとつだけのコレクションがほしくなるときがある。たとえば、利用しているライブラリのメソッドが引数としてコレクションを要求しているが、渡したいオブジェクトがひとつしかないとか。
+こういう場合、コレクションの型が List だとすると、まず思いつくのは、新しく生成した ArrayList に要素をひとつだけ追加する方法だ。
+List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;String&amp;gt;(); list.add(&amp;quot;element&amp;quot;); doSomething(list);  だが、この方法は変換に一時変数が必要になり不格好だ。
+Arrays.asList を使う方法 この変換は Arrays.asList を使うことで簡単にできる。
+doSomething(Arrays.asList(new String[]{&amp;quot;element&amp;quot;}));  要素がひとつだけの配列をリストに変換する、と捉え直すわけだ。そして、Java 1.5 から Arrays.asList は配列ではなく可変長引数をとるようになったので、更に簡単に書ける。
+doSomething(Arrays.asList(&amp;quot;element&amp;quot;));  Collectios.singleton 系メソッド Arrays.asList ではリスト以外のコレクションには変換できない上、要素がひとつだけのコレクションのために配列を用意しているため、まだまだメモリ的に非効率だ。
+実は java.util.Collections にはこうした用途に使えるメソッドがすでに用意されている。
+ singleton singletonList singletonMap  上記のメソッドはそれぞれ、渡されたオブジェクトを要素がひとつだけのコレクションに変換するメソッドだ。
+Set&amp;lt;String&amp;gt; set = Collections.singleton(&amp;quot;element&amp;quot;); List&amp;lt;String&amp;gt; list = Collections.singletonList(&amp;quot;element&amp;quot;); Map&amp;lt;String, String&amp;gt; map = Collections.singletonMap(&amp;quot;key&amp;quot;, &amp;quot;value&amp;quot;)  また、変換後のコレクションには、要素をインスタンス変数として直接もつ独自のコレクション・クラスを利用しているため、メモリ効率も一番良い。</description>
     </item>
     
     <item>
       <title>Java のプロジェクトで一番長いクラス名</title>
-      <link>http://www.metareal.org/2007/09/18/longest-java-class-name/</link>
+      <link>http://ishikawa.github.io/2007/09/18/longest-java-class-name/</link>
       <pubDate>Wed, 19 Sep 2007 07:38:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/18/longest-java-class-name/</guid>
-      <description>&lt;p&gt;ふと気になって書いてみた。&lt;/p&gt;
-
-&lt;p&gt;カレントディレクトリ以下の .java ファイルを、ファイル名の長さでソートするスクリプト。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% find . -name &amp;quot;*.java&amp;quot; -exec basename -s .java {} \; | ruby -ne &#39;$_.chomp!; puts &amp;quot;#{$_.size} #{$_}&amp;quot;&#39; | sort -n
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://jruby.codehaus.org/&#34;&gt;JRuby&lt;/a&gt; だとこんな感じ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;3 Dir
-3 Pwd
-4 Glob
-4 Iter
-4 Java
-...
-30 DumpingInvocationMethodFactory
-32 DumpingInvocationCallbackFactory
-32 MultipleAssignmentReWriteVisitor
-32 OSEnvironmentReaderFromApacheAnt
-34 OSEnvironmentReaderFromRuntimeExec
-40 OSEnvironmentReaderFromJava5SystemGetenv
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;左側の数字がファイル名の文字数だ。つまり、一番長いファイル名（クラス名）は &lt;code&gt;OSEnvironmentReaderFromJava5SystemGetenv&lt;/code&gt; で 40 文字。&lt;/p&gt;
-
-&lt;p&gt;ちなみに、いま仕事で関わっているプロジェクトでは 37 文字が最長だった。負けた。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/09/18/longest-java-class-name/</guid>
+      <description>ふと気になって書いてみた。
+カレントディレクトリ以下の .java ファイルを、ファイル名の長さでソートするスクリプト。
+% find . -name &amp;quot;*.java&amp;quot; -exec basename -s .java {} \; | ruby -ne &#39;$_.chomp!; puts &amp;quot;#{$_.size} #{$_}&amp;quot;&#39; | sort -n  JRuby だとこんな感じ。
+3 Dir 3 Pwd 4 Glob 4 Iter 4 Java ... 30 DumpingInvocationMethodFactory 32 DumpingInvocationCallbackFactory 32 MultipleAssignmentReWriteVisitor 32 OSEnvironmentReaderFromApacheAnt 34 OSEnvironmentReaderFromRuntimeExec 40 OSEnvironmentReaderFromJava5SystemGetenv  左側の数字がファイル名の文字数だ。つまり、一番長いファイル名（クラス名）は OSEnvironmentReaderFromJava5SystemGetenv で 40 文字。
+ちなみに、いま仕事で関わっているプロジェクトでは 37 文字が最長だった。負けた。</description>
     </item>
     
     <item>
       <title>Java 1.5 で追加された配列の便利メソッド</title>
-      <link>http://www.metareal.org/2007/08/26/java-util-arrays-1-5/</link>
+      <link>http://ishikawa.github.io/2007/08/26/java-util-arrays-1-5/</link>
       <pubDate>Sun, 26 Aug 2007 09:55:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/26/java-util-arrays-1-5/</guid>
-      <description>
-
-&lt;p&gt;Java 1.5 (J2SE 5.0) では &lt;a href=&#34;http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html&#34;&gt;&lt;code&gt;java.util.Arrays&lt;/code&gt;&lt;/a&gt; に、いくつかのメソッドが追加されている。地味ながらも、自前で書くのは面倒くさいものばかりだ。&lt;/p&gt;
-
-&lt;h3 id=&#34;hashcode-tostring&#34;&gt;hashCode, toString&lt;/h3&gt;
-
-&lt;p&gt;配列そのものではなく、配列の各要素を比較する &lt;a href=&#34;http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#equals%28java.lang.Object[],%20java.lang.Object[]%29&#34;&gt;&lt;code&gt;Arrays.equals&lt;/code&gt;&lt;/a&gt; は 1.5 以前からあったが、Java 1.5 では、同様に配列の各要素を使う&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#hashCode%28java.lang.Object[]%29&#34;&gt;&lt;code&gt;Arrays.hashCode&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#toString%28java.lang.Object[]%29&#34;&gt;&lt;code&gt;Arrays.toString&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;が用意された。&lt;/p&gt;
-
-&lt;h3 id=&#34;deepequals-deephashcode-deeptostring&#34;&gt;deepEquals, deepHashCode, deepToString&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;Arrays.equals&lt;/code&gt;, &lt;code&gt;Arrays.hashCode&lt;/code&gt;, &lt;code&gt;Arrays.toString&lt;/code&gt; はどれも「浅い」処理しか行わないため、入れ子になった配列では期待通りに動作しない。Java 1.5 では、入れ子になった配列にも対応したバージョンが用意されている。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#deepEquals%28java.lang.Object[],%20java.lang.Object[]%29&#34;&gt;&lt;code&gt;Arrays.deepEquals&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#deepHashCode%28java.lang.Object[]%29&#34;&gt;&lt;code&gt;Arrays.deepHashCode&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#deepToString%28java.lang.Object[]%29&#34;&gt;&lt;code&gt;Arrays.deepToString&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;j2se-6-0&#34;&gt;J2SE 6.0&lt;/h3&gt;
-
-&lt;p&gt;更に Java 1.6 (J2SE 6.0) では&lt;a href=&#34;http://java.sun.com/javase/6/docs/api/java/util/Arrays.html#binarySearch%28T[],%20int,%20int,%20T,%20java.util.Comparator%29&#34;&gt;範囲を指定できる二分探索&lt;/a&gt;や&lt;a href=&#34;http://java.sun.com/javase/6/docs/api/java/util/Arrays.html#copyOf%28T[],%20int%29&#34;&gt;配列のコピー操作&lt;/a&gt;が追加されているようだ。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/08/26/java-util-arrays-1-5/</guid>
+      <description>Java 1.5 (J2SE 5.0) では java.util.Arrays に、いくつかのメソッドが追加されている。地味ながらも、自前で書くのは面倒くさいものばかりだ。
+hashCode, toString 配列そのものではなく、配列の各要素を比較する Arrays.equals は 1.5 以前からあったが、Java 1.5 では、同様に配列の各要素を使う
+ Arrays.hashCode Arrays.toString  が用意された。
+deepEquals, deepHashCode, deepToString Arrays.equals, Arrays.hashCode, Arrays.toString はどれも「浅い」処理しか行わないため、入れ子になった配列では期待通りに動作しない。Java 1.5 では、入れ子になった配列にも対応したバージョンが用意されている。
+ Arrays.deepEquals Arrays.deepHashCode Arrays.deepToString  J2SE 6.0 更に Java 1.6 (J2SE 6.0) では範囲を指定できる二分探索や配列のコピー操作が追加されているようだ。</description>
     </item>
     
     <item>
       <title>PostgreSQL 7.4 のインデックスと smallint と JDBC</title>
-      <link>http://www.metareal.org/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</link>
+      <link>http://ishikawa.github.io/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</link>
       <pubDate>Fri, 03 Aug 2007 05:41:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</guid>
-      <description>&lt;p&gt;PostgreSQL 7.4 のマニュアル「&lt;a href=&#34;http://www.postgresql.jp/document/pg746doc/html/datatype.html#DATATYPE-INT&#34;&gt;8.1.1. 整数データ型&lt;/a&gt;」には以下のような記述がある。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; インデックスが付けられた smallint あるいは bigint の列がテーブルにある場合、システムがそのインデックスを使用しようとした時に問題を引き起こすことがあります。 例えば句が次のような形式の場合、&lt;/p&gt;
-
-&lt;p&gt;&amp;hellip; WHERE smallint_column = 42&lt;/p&gt;
-
-&lt;p&gt;システムはインデックスを使用しません。 なぜなら42という定数にシステムが integer を割り当てるからです。 今の所PostgreSQLは2つの異なるデータ型が混在している時には、インデックスを使うことができません。 問題を回避するには以下のように定数部分を単一引用符で括ります。&lt;/p&gt;
-
-&lt;p&gt;&amp;hellip; WHERE smallint_column = &amp;lsquo;42&amp;rsquo;&lt;/p&gt;
-
-&lt;p&gt;こうすると、システムは型分析を後廻しにしてこの定数に正しいデータ型を割り振ります。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;（なお、PostgreSQL 8.x のドキュメントからは&lt;a href=&#34;http://www.postgresql.jp/document/pg800doc/html/datatype.html#DATATYPE-INT&#34;&gt;該当する部分が削除されている&lt;/a&gt;ので、バージョン 8 以降にはこの制限はないのかもしれない。未確認）&lt;/p&gt;
-
-&lt;p&gt;なんにせよ、PostgreSQL 7.4 では smallint のカラムを条件に含める場合は、 &lt;code&gt;smallint_column = &#39;42&#39;&lt;/code&gt; と単一引用符で囲むか、&lt;code&gt;smallint_column = 42::smallint&lt;/code&gt; みたいに型を指定しないと、インデックスが使われないらしい。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;こういう些細な注意事項は忘れてしまうのが常&lt;/strong&gt;なので、よほどサイズが重要でないかぎりは int を使うのが安全。どうしても smallint を使う場合は、ちゃんと SQL を explain してみて引用符で囲み、理由をコメントなりで書いておくようにするべきだろう。&lt;/p&gt;
-
-&lt;p&gt;ただ、問題は JDBC とかの抽象層をかます場合で、このときに&lt;strong&gt;どんな SQL が発行されるかを把握しておく必要がある&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;PostgreSQL 側で、実際に発行されている SQL をログに記録して確認してみた。Java のコードと PostgreSQL のログに残されていた SQL ステートメントの両方を載せてある。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;java.sql.PreparedStatement.setInt(int, int)&lt;/code&gt; を使った場合、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int type = ...;
-stmt.setInt(1, type);
-...
-statement: SELECT * FROM example WHERE smallint_column = 1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;java.sql.PreparedStatement.setShort(int, short)&lt;/code&gt; を使った場合、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int type = ...;
-stmt.setShort(1, (short)type);
-...
-statement: SELECT * FROM example WHERE smallint_column = 1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;java.sql.PreparedStatement.setObject(int, Object, int)&lt;/code&gt; を使った場合、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int type = ...;
-stmt.setObject(3, Integer.valueOf(type), java.sql.Types.SMALLINT);
-...
-statement: SELECT * FROM example WHERE smallint_column = 1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;java.sql.PreparedStatement.setString(int, String)&lt;/code&gt; を使った場合、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int type = ...;
-stmt.setString(1, Integer.toString(type));
-...
-statement: SELECT * FROM example WHERE smallint_column = &#39;1&amp;amp;#x27;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;setShort や setObject で SQL の型を指定しても、実際に発行される SQL では型指定がないのでインデックスが使用されない。setString を使えば、引用符に囲まれ、インデックスが使われるようになる。&lt;/p&gt;
-
-&lt;p&gt;最後に、今回の検証に使用した環境は以下のとおり。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;PostgreSQL 7.4.7&lt;/li&gt;
-&lt;li&gt;pg74.216.jdbc3.jar&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</guid>
+      <description>PostgreSQL 7.4 のマニュアル「8.1.1. 整数データ型」には以下のような記述がある。
+ 注意: インデックスが付けられた smallint あるいは bigint の列がテーブルにある場合、システムがそのインデックスを使用しようとした時に問題を引き起こすことがあります。 例えば句が次のような形式の場合、
+&amp;hellip; WHERE smallint_column = 42
+システムはインデックスを使用しません。 なぜなら42という定数にシステムが integer を割り当てるからです。 今の所PostgreSQLは2つの異なるデータ型が混在している時には、インデックスを使うことができません。 問題を回避するには以下のように定数部分を単一引用符で括ります。
+&amp;hellip; WHERE smallint_column = &amp;lsquo;42&amp;rsquo;
+こうすると、システムは型分析を後廻しにしてこの定数に正しいデータ型を割り振ります。
+ （なお、PostgreSQL 8.x のドキュメントからは該当する部分が削除されているので、バージョン 8 以降にはこの制限はないのかもしれない。未確認）
+なんにせよ、PostgreSQL 7.4 では smallint のカラムを条件に含める場合は、 smallint_column = &#39;42&#39; と単一引用符で囲むか、smallint_column = 42::smallint みたいに型を指定しないと、インデックスが使われないらしい。
+こういう些細な注意事項は忘れてしまうのが常なので、よほどサイズが重要でないかぎりは int を使うのが安全。どうしても smallint を使う場合は、ちゃんと SQL を explain してみて引用符で囲み、理由をコメントなりで書いておくようにするべきだろう。
+ただ、問題は JDBC とかの抽象層をかます場合で、このときにどんな SQL が発行されるかを把握しておく必要がある。
+PostgreSQL 側で、実際に発行されている SQL をログに記録して確認してみた。Java のコードと PostgreSQL のログに残されていた SQL ステートメントの両方を載せてある。</description>
     </item>
     
     <item>
       <title>Tomcat 5.5 の一部バージョンでは JavaMail の JNDI リソースが動かない</title>
-      <link>http://www.metareal.org/2007/07/12/problem-with-tomcat-5-5-2x-and-jndi-javamail/</link>
+      <link>http://ishikawa.github.io/2007/07/12/problem-with-tomcat-5-5-2x-and-jndi-javamail/</link>
       <pubDate>Fri, 13 Jul 2007 08:45:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/07/12/problem-with-tomcat-5-5-2x-and-jndi-javamail/</guid>
-      <description>&lt;p&gt;Tomcat のバージョンを 5.5.17 から 5.5.23 にあげたところ、次のような例外が発生するようになった。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;javax.naming.NamingException: Could not create resource factory instance [Root exception is java.lang.ClassNotFoundException: org.apache.naming.factory.MailSessionFactory]
-  at org.apache.naming.factory.ResourceFactory.getObjectInstance(ResourceFactory.java:132)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;JNDI から &lt;a href=&#34;http://java.sun.com/products/javamail/&#34;&gt;JavaMail&lt;/a&gt; の &lt;code&gt;javax.mail.Session&lt;/code&gt; を取り出すときに失敗しているようだ。&lt;/p&gt;
-
-&lt;p&gt;「&lt;code&gt;MailSessionFactory&lt;/code&gt; が見つからないってことは&lt;strong&gt;また&lt;/strong&gt;クラスパス周りの問題かな、面倒くさいな&amp;hellip;」と思いきや、検索してみると、次のようなバグ報告が。&lt;/p&gt;
-
-&lt;p&gt;Bug 40668 - MailSessionFactory is missing in Tomcat 5.5.23
-  &lt;a href=&#34;http://issues.apache.org/bugzilla/show_bug.cgi?id=40668&#34;&gt;http://issues.apache.org/bugzilla/show_bug.cgi?id=40668&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Tomcat 5.5.20 から現時点での最新バージョンである 5.5.23 では &lt;strong&gt;Tomcat 自体のビルドプロセスに問題&lt;/strong&gt;があって（クラスパスに JavaMail が含まれていない？）、&lt;code&gt;naming-factory.jar&lt;/code&gt; に JavaMail 関連のクラスがなくなっているらしい。&lt;/p&gt;
-
-&lt;p&gt;いまだに直ってない、ってのがすごいな。&lt;/p&gt;
-
-&lt;p&gt;この際、SMTP でメールを送信するくらいの用途なら、JNDI やめちゃうってのも手だと思う。JNDI のルックアップって非結合になっているようで、結局、新しい依存性を持ち込んでるだけ、というか、テストを考えると余計面倒だし。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Context context = new InitialContext();
-Session session = (Session) context.lookup(&amp;quot;java:comp/env/mail/Session&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これを&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Properties props = new Properties();
-props.put(&amp;quot;mail.smtp.host&amp;quot;, smtpHost);
-Session session = Session.getDefaultInstance(props);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;こんな感じで。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/07/12/problem-with-tomcat-5-5-2x-and-jndi-javamail/</guid>
+      <description>Tomcat のバージョンを 5.5.17 から 5.5.23 にあげたところ、次のような例外が発生するようになった。
+javax.naming.NamingException: Could not create resource factory instance [Root exception is java.lang.ClassNotFoundException: org.apache.naming.factory.MailSessionFactory] at org.apache.naming.factory.ResourceFactory.getObjectInstance(ResourceFactory.java:132)  JNDI から JavaMail の javax.mail.Session を取り出すときに失敗しているようだ。
+「MailSessionFactory が見つからないってことはまたクラスパス周りの問題かな、面倒くさいな&amp;hellip;」と思いきや、検索してみると、次のようなバグ報告が。
+Bug 40668 - MailSessionFactory is missing in Tomcat 5.5.23 http://issues.apache.org/bugzilla/show_bug.cgi?id=40668
+Tomcat 5.5.20 から現時点での最新バージョンである 5.5.23 では Tomcat 自体のビルドプロセスに問題があって（クラスパスに JavaMail が含まれていない？）、naming-factory.jar に JavaMail 関連のクラスがなくなっているらしい。
+いまだに直ってない、ってのがすごいな。
+この際、SMTP でメールを送信するくらいの用途なら、JNDI やめちゃうってのも手だと思う。JNDI のルックアップって非結合になっているようで、結局、新しい依存性を持ち込んでるだけ、というか、テストを考えると余計面倒だし。
+Context context = new InitialContext(); Session session = (Session) context.lookup(&amp;quot;java:comp/env/mail/Session&amp;quot;);  これを
+Properties props = new Properties(); props.</description>
     </item>
     
     <item>
       <title>java.awt.Image を BufferedImage や byte 配列に変換する方法</title>
-      <link>http://www.metareal.org/2007/04/02/convert-awt-image-to-buffered-image-or-byte-array/</link>
+      <link>http://ishikawa.github.io/2007/04/02/convert-awt-image-to-buffered-image-or-byte-array/</link>
       <pubDate>Tue, 03 Apr 2007 12:18:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/04/02/convert-awt-image-to-buffered-image-or-byte-array/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/&#34;&gt;Java ImageIO で Flickr 並みのサムネイル画像をつくる&lt;/a&gt;という記事で、&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;java.awt.Image を BufferedImage や byte 配列に変換する方法は次回。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;と書いたにも関わらず、そのまま放置になっていた（コメントで指摘されているのに気づいたのも今日だ。すまん）。&lt;/p&gt;
-
-&lt;h3 id=&#34;概要&#34;&gt;概要&lt;/h3&gt;
-
-&lt;p&gt;まずは &lt;a href=&#34;http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/java/awt/image/BufferedImage.html&#34;&gt;&lt;code&gt;java.awt.image.BufferedImage&lt;/code&gt;&lt;/a&gt; を &lt;code&gt;byte&lt;/code&gt; 配列に変換する方法を紹介する。&lt;/p&gt;
-
-&lt;p&gt;そのあと、&lt;a href=&#34;http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/java/awt/Image.html&#34;&gt;&lt;code&gt;java.awt.Image&lt;/code&gt;&lt;/a&gt; を &lt;code&gt;java.awt.image.BufferedImage&lt;/code&gt; に変換する方法を紹介するので、このふたつを組み合わせれば、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Image --&amp;gt; BufferedImage --&amp;gt; byte[]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;が実現できるわけだ。&lt;/p&gt;
-
-&lt;h3 id=&#34;bufferedimage-を-byte-に変換する&#34;&gt;BufferedImage を byte[] に変換する&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;BufferedImage&lt;/code&gt; から &lt;code&gt;byte&lt;/code&gt; 配列の変換は、&lt;a href=&#34;http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/javax/imageio/ImageWriter.html&#34;&gt;&lt;code&gt;javax.imageio.ImageWriter&lt;/code&gt;&lt;/a&gt; でわりかし素直に実装できる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;BufferedImage image = ...;
-ByteArrayOutputStream bytesOut = new ByteArrayOutputStream();
-ImageWriter writer = ImageIOKit.getImageWritersByFormatName(formatName);
-ImageOutputStream stream = ImageIO.createImageOutputStream(bytesOut);
-
-try {
-  writer.setOutput(stream);
-  writer.write(image);
-  stream.flush();
-} finally {
-  writer.dispose();
-  if (stream != null) try { stream.close(); } catch (Throwable t) {;}
-}
-
-byte[] bytes = bytesOut.toByteArray();
-...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/javax/imageio/ImageWriteParam.html&#34;&gt;&lt;code&gt;ImageWriteParam&lt;/code&gt;&lt;/a&gt; も組み合わせれば、圧縮率などの設定ができる。&lt;/p&gt;
-
-&lt;h3 id=&#34;image-を-bufferedimage-をに変換する&#34;&gt;Image を BufferedImage をに変換する&lt;/h3&gt;
-
-&lt;p&gt;一筋縄ではいかないのが、Image を BufferedImage をに変換する方法だ。&lt;/p&gt;
-
-&lt;p&gt;以下では、&lt;code&gt;image&lt;/code&gt; 変数が &lt;code&gt;java.awt.Image&lt;/code&gt; のインスタンスであるとして、順を追って説明する。&lt;/p&gt;
-
-&lt;p&gt;まず、&lt;code&gt;image&lt;/code&gt; が &lt;code&gt;BufferedImage&lt;/code&gt; のインスタンスなら、以降は何もする必要がない。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;if (image instanceof BufferedImage) {
-  ...
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;次に、&lt;code&gt;java.awt.Image&lt;/code&gt; のインスタンスは、実際のデータが非同期でロードされているかもしれないので、変換処理を行う前に、&lt;a href=&#34;http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/java/awt/MediaTracker.html&#34;&gt;&lt;code&gt;java.awt.MediaTracker&lt;/code&gt;&lt;/a&gt; でロードが完了するまで待機する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;// java.awt.MediaTracker でロードを待機
-MediaTracker tracker = new MediaTracker(new Component(){});
-tracker.addImage(image, 0);
-tracker.waitForAll();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ここからが実際の変換処理になるが、基本的に、&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;新規に &lt;code&gt;BufferedImage&lt;/code&gt; を生成&lt;/li&gt;
-&lt;li&gt;生成した &lt;code&gt;BufferedImage&lt;/code&gt; に &lt;code&gt;Image&lt;/code&gt; のピクセルをコピー&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;という処理になる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;PixelGrabber pixelGrabber = new PixelGrabber(image, 0, 0, -1, -1, false);
-pixelGrabber.grabPixels();
-ColorModel cm = pixelGrabber.getColorModel();
-
-final int w = pixelGrabber.getWidth();
-final int h = pixelGrabber.getHeight();
-WritableRaster raster = cm.createCompatibleWritableRaster(w, h);
-BufferedImage renderedImage =
-  new BufferedImage(
-    cm,
-    raster,
-    cm.isAlphaPremultiplied(),
-    new Hashtable());
-renderedImage.getRaster().setDataElements(0, 0, w, h, pixelGrabber.getPixels());
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;上記のコードでは、元の &lt;a href=&#34;http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/java/awt/image/ColorModel.html&#34;&gt;&lt;code&gt;ColorModel&lt;/code&gt;&lt;/a&gt; もサポートするために、&lt;a href=&#34;http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/java/awt/image/PixelGrabber.html&#34;&gt;PixelGrabber&lt;/a&gt; を使っている。&lt;/p&gt;
-
-&lt;p&gt;あとは、ここで生成した &lt;code&gt;BufferedImage&lt;/code&gt; を &lt;code&gt;byte&lt;/code&gt; 配列に変換してやればよい。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/04/02/convert-awt-image-to-buffered-image-or-byte-array/</guid>
+      <description>Java ImageIO で Flickr 並みのサムネイル画像をつくるという記事で、
+ java.awt.Image を BufferedImage や byte 配列に変換する方法は次回。
+ と書いたにも関わらず、そのまま放置になっていた（コメントで指摘されているのに気づいたのも今日だ。すまん）。
+概要 まずは java.awt.image.BufferedImage を byte 配列に変換する方法を紹介する。
+そのあと、java.awt.Image を java.awt.image.BufferedImage に変換する方法を紹介するので、このふたつを組み合わせれば、
+Image --&amp;gt; BufferedImage --&amp;gt; byte[]  が実現できるわけだ。
+BufferedImage を byte[] に変換する BufferedImage から byte 配列の変換は、javax.imageio.ImageWriter でわりかし素直に実装できる。
+BufferedImage image = ...; ByteArrayOutputStream bytesOut = new ByteArrayOutputStream(); ImageWriter writer = ImageIOKit.getImageWritersByFormatName(formatName); ImageOutputStream stream = ImageIO.createImageOutputStream(bytesOut); try { writer.setOutput(stream); writer.write(image); stream.flush(); } finally { writer.dispose(); if (stream != null) try { stream.</description>
     </item>
     
     <item>
       <title>Criteria API で inner join する</title>
-      <link>http://www.metareal.org/2007/03/19/hibernate-inner-join-using-criteria-api/</link>
+      <link>http://ishikawa.github.io/2007/03/19/hibernate-inner-join-using-criteria-api/</link>
       <pubDate>Tue, 20 Mar 2007 08:36:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/03/19/hibernate-inner-join-using-criteria-api/</guid>
-      <description>&lt;p&gt;毎回、&lt;a href=&#34;http://www.hibernate.org/&#34;&gt;Hibernate&lt;/a&gt; の使い方を Google で検索する羽目になるのだが、今日はその検索の過程で、偶々こんな記事を見つけた。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.javalobby.org/articles/hibernatequery102/&#34;&gt;Hibernate Querying 102 : The Criteria API&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Hibernate の Criteria API について網羅的に解説した記事。
-実は、&lt;code&gt;inner join&lt;/code&gt; も Criteria API で記述できることを知って驚いた。&lt;/p&gt;
-
-&lt;p&gt;いままで、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from Foo as foo
-inner join fetch foo.bar
-where foo.a = :a and
-      foo.b between :x and :y
-order by foo.b desc
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;こんなふうに HQL で書いていた &lt;code&gt;inner join&lt;/code&gt; も、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;getSession()
-.createCriteria(Foo.class)
-.add(Expression.eq(&amp;quot;a&amp;quot;, a))
-.add(Expression.between(&amp;quot;b&amp;quot;, x, y))
-.addOrder(Order.desc(&amp;quot;b&amp;quot;))
-.createCriteria(&amp;quot;bar&amp;quot;)
-.list();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Criteria API で書ける。&lt;/p&gt;
-
-&lt;p&gt;Criteria の便利さと保守のしやすさを知るたびに、独自 SQL 文法で書く気が失せるな。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/03/19/hibernate-inner-join-using-criteria-api/</guid>
+      <description>毎回、Hibernate の使い方を Google で検索する羽目になるのだが、今日はその検索の過程で、偶々こんな記事を見つけた。
+Hibernate Querying 102 : The Criteria API
+Hibernate の Criteria API について網羅的に解説した記事。 実は、inner join も Criteria API で記述できることを知って驚いた。
+いままで、
+from Foo as foo inner join fetch foo.bar where foo.a = :a and foo.b between :x and :y order by foo.b desc  こんなふうに HQL で書いていた inner join も、
+getSession() .createCriteria(Foo.class) .add(Expression.eq(&amp;quot;a&amp;quot;, a)) .add(Expression.between(&amp;quot;b&amp;quot;, x, y)) .addOrder(Order.desc(&amp;quot;b&amp;quot;)) .createCriteria(&amp;quot;bar&amp;quot;) .list();  Criteria API で書ける。
+Criteria の便利さと保守のしやすさを知るたびに、独自 SQL 文法で書く気が失せるな。</description>
     </item>
     
     <item>
       <title>Java ImageIO で Flickr 並みのサムネイル画像をつくる</title>
-      <link>http://www.metareal.org/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/</link>
+      <link>http://ishikawa.github.io/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/</link>
       <pubDate>Sun, 11 Feb 2007 08:38:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/</guid>
-      <description>&lt;p&gt;まあ、記事のタイトルがアレですけど&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://java.sun.com/javase/6/docs/technotes/guides/imageio/index.html&#34;&gt;Java の Image I/O&lt;/a&gt; で画像の縮小を行う方法として、&lt;a href=&#34;http://java.sun.com/j2se/1.3/ja/docs/ja/api/java/awt/image/AffineTransformOp.html&#34;&gt;&lt;code&gt;AffineTransformOp&lt;/code&gt;&lt;/a&gt; を利用する方法がある。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;final double scale = 0.5;
-AffineTransformOp transformOp = new AffineTransformOp(AffineTransform.getScaleInstance(scale, scale), null);
-BufferedImage dest1 = new BufferedImage(
-    (int)(originalImage.getWidth() * scale),
-    (int)(originalImage.getHeight() * scale),
-    originalImage.getType());
-transformOp.filter(originalImage, dest1);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;しかし、この方法だとジャギーが目立ってしまい、&lt;a href=&#34;http://flickr.com/&#34;&gt;Flickr&lt;/a&gt; ほどキレイなサムネイルにはならない。&lt;/p&gt;
-
-&lt;p&gt;たとえば、Flickr で見つけた&lt;a href=&#34;http://www.flickr.com/photos/39388734@N00/385464032/&#34;&gt;この写真&lt;/a&gt;。Flickr のサムネイルはこんな感じだが、&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;AffineTransformOp&lt;/code&gt; を用いた方法だと、こうなってしまう。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2448999922/&#34;&gt;&lt;img src=&#34;http://farm3.static.flickr.com/2064/2448999922_f37cf202e5_o.jpg&#34; alt=&#34;Java ImageIO AffineTransformOp&#34; /&gt;&lt;/a&gt;で、どうするかというと、AWT の &lt;a href=&#34;http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/java/awt/image/AreaAveragingScaleFilter.html&#34;&gt;&lt;code&gt;AreaAveragingScaleFilter&lt;/code&gt;&lt;/a&gt; を使うのがいいようだ。以下、API リファレンスより抜粋：&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;最近接点アルゴリズムよりもなめらかな結果が得られる、簡単な領域平均化アルゴリズムを使用してイメージをスケーリングする ImageFilter クラスです。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;では、試してみる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ImageFilter filter = new AreaAveragingScaleFilter(w, h);
-ImageProducer im = new FilteredImageSource(image.getSource(), filter);
-Image newImage = Toolkit.getDefaultToolkit().createImage(im);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;フィルタした結果の &lt;a href=&#34;http://java.sun.com/j2se/1.4.2/docs/api/java/awt/Image.html&#34;&gt;&lt;code&gt;java.awt.Image&lt;/code&gt;&lt;/a&gt; を &lt;a href=&#34;http://java.sun.com/j2se/1.3/ja/docs/ja/api/java/awt/image/BufferedImage.html&#34;&gt;BufferedImage&lt;/a&gt; や &lt;code&gt;byte&lt;/code&gt; 配列に変換する方法は次回。&lt;/p&gt;
-
-&lt;p&gt;こんな感じになる。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/2448999924/&#34;&gt;&lt;img src=&#34;http://farm4.static.flickr.com/3197/2448999924_62c28b86b2_o.jpg&#34; alt=&#34;Java ImageIO AreaAveragingScaleFilter&#34; /&gt;&lt;/a&gt;格段にキレイだ。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/</guid>
+      <description>まあ、記事のタイトルがアレですけど&amp;hellip;
+Java の Image I/O で画像の縮小を行う方法として、AffineTransformOp を利用する方法がある。
+final double scale = 0.5; AffineTransformOp transformOp = new AffineTransformOp(AffineTransform.getScaleInstance(scale, scale), null); BufferedImage dest1 = new BufferedImage( (int)(originalImage.getWidth() * scale), (int)(originalImage.getHeight() * scale), originalImage.getType()); transformOp.filter(originalImage, dest1);  しかし、この方法だとジャギーが目立ってしまい、Flickr ほどキレイなサムネイルにはならない。
+たとえば、Flickr で見つけたこの写真。Flickr のサムネイルはこんな感じだが、
+AffineTransformOp を用いた方法だと、こうなってしまう。
+で、どうするかというと、AWT の AreaAveragingScaleFilter を使うのがいいようだ。以下、API リファレンスより抜粋：
+ 最近接点アルゴリズムよりもなめらかな結果が得られる、簡単な領域平均化アルゴリズムを使用してイメージをスケーリングする ImageFilter クラスです。
+ では、試してみる。
+ImageFilter filter = new AreaAveragingScaleFilter(w, h); ImageProducer im = new FilteredImageSource(image.getSource(), filter); Image newImage = Toolkit.getDefaultToolkit().createImage(im);  フィルタした結果の java.</description>
     </item>
     
     <item>
       <title>Redstone XML-RPC Library への不満</title>
-      <link>http://www.metareal.org/2007/01/13/redstone-xml-rpc-library-no-thanks/</link>
+      <link>http://ishikawa.github.io/2007/01/13/redstone-xml-rpc-library-no-thanks/</link>
       <pubDate>Sat, 13 Jan 2007 11:26:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/01/13/redstone-xml-rpc-library-no-thanks/</guid>
-      <description>&lt;p&gt;どうやら Java の XML-RPC ライブラリとは、あまり縁がないらしい。またもや、&lt;a href=&#34;http://weblog.metareal.org/2006/12/12/apache-xml-rpc-no-thanks/&#34;&gt;XML-RPC ライブラリへの愚痴エントリである&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ws.apache.org/xmlrpc/&#34;&gt;Apache XML-RPC&lt;/a&gt; ライブラリの複雑さとドキュメントのすくなさ（いつまでホームページのロゴ画像がリンク切れなのだろう？）に辟易して、今度は &lt;a href=&#34;http://xmlrpc.sourceforge.net/&#34;&gt;Redstone&lt;/a&gt; というライブラリを試してみた。&lt;/p&gt;
-
-&lt;p&gt;Redstone の前身である Marquee というライブラリは &lt;a href=&#34;http://www-06.ibm.com/jp/developerworks/java/040227/j_j-xmlrpc.html&#34;&gt;developerWorks に紹介記事だって載っている&lt;/a&gt;由緒正しい（？）XML-RPC ライブラリだ。&lt;/p&gt;
-
-&lt;p&gt;最初は何も問題ないかのように思えた。すべてが順調で平和だった。API は&lt;a href=&#34;http://xmlrpc.sourceforge.net/javadoc/index.html&#34;&gt;シンプル&lt;/a&gt;で、ホームページの簡潔なチュートリアルも必要十分に思えた。&lt;/p&gt;
-
-&lt;p&gt;だが、決して小さくはない欠陥が&lt;strong&gt;いくつも&lt;/strong&gt;あることがわかってきた（バージョンは &lt;code&gt;1.0.1&lt;/code&gt;）。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;contentType&lt;/code&gt; の指定が&lt;strong&gt;無視される&lt;/strong&gt;。&lt;/li&gt;
-&lt;li&gt;エラー処理がいいかげん&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;methodResponse&gt; の &lt;code&gt;faultCode&lt;/code&gt; がハードコーディングされている。&lt;/li&gt;
-&lt;li&gt;そのエンコーディングも &lt;code&gt;ISO-8859-1&lt;/code&gt; でハードコーディング。日本語書けない。せめて &lt;code&gt;UTF-8&lt;/code&gt; にしてよ&amp;hellip;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Base64 のコードがバグっていて、&lt;strong&gt;複数行にエンコードされていると対応できない。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;カスタマイズが困難。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;API がシンプルで一見、拡張しやすく見えるが、実際には重要なポイントが &lt;code&gt;private&lt;/code&gt; だったりしてサブクラス化しづらい。&lt;/li&gt;
-&lt;li&gt;たとえば、&lt;a href=&#34;http://xmlrpc.sourceforge.net/javadoc/index.html&#34;&gt;&lt;code&gt;XmlRpcDispatcher&lt;/code&gt;&lt;/a&gt; を拡張しても、それを使っている &lt;a href=&#34;http://xmlrpc.sourceforge.net/javadoc/index.html&#34;&gt;&lt;code&gt;XmlRpcServer&lt;/code&gt;&lt;/a&gt; に独自の &lt;code&gt;XmlRpcDispatcher&lt;/code&gt; を設定する API がない（ので、結局、こいつもサブクラス化して、さらに、サブクラス化した &lt;code&gt;XmlRpcServer&lt;/code&gt; を使う &lt;code&gt;XmlRpcServlet&lt;/code&gt; を書いて &amp;hellip;）。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://xmlrpc.sourceforge.net/javadoc/index.html&#34;&gt;&lt;code&gt;XmlRpcParser&lt;/code&gt;&lt;/a&gt; は XML-RPC の xml を解析できるが、肝心の結果は &lt;code&gt;private&lt;/code&gt; になっているため、これ単体で使えない。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;実は 3. までの問題を修正するためのラッパーライブラリを、テストコード含めて 800 行ほど書いていた。しかし、それも 4. の理由により挫折しかけている。まあ、&lt;code&gt;ad-hoc&lt;/code&gt; な修正の塊なので、コード自体はもったいなくないのだが。&lt;/p&gt;
-
-&lt;p&gt;誰も XML-RPC なんて使ってないのかな&amp;hellip;。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/01/13/redstone-xml-rpc-library-no-thanks/</guid>
+      <description>どうやら Java の XML-RPC ライブラリとは、あまり縁がないらしい。またもや、XML-RPC ライブラリへの愚痴エントリである。
+Apache XML-RPC ライブラリの複雑さとドキュメントのすくなさ（いつまでホームページのロゴ画像がリンク切れなのだろう？）に辟易して、今度は Redstone というライブラリを試してみた。
+Redstone の前身である Marquee というライブラリは developerWorks に紹介記事だって載っている由緒正しい（？）XML-RPC ライブラリだ。
+最初は何も問題ないかのように思えた。すべてが順調で平和だった。API はシンプルで、ホームページの簡潔なチュートリアルも必要十分に思えた。
+だが、決して小さくはない欠陥がいくつもあることがわかってきた（バージョンは 1.0.1）。
+ contentType の指定が無視される。 エラー処理がいいかげん     の faultCode がハードコーディングされている。 そのエンコーディングも ISO-8859-1 でハードコーディング。日本語書けない。せめて UTF-8 にしてよ&amp;hellip;    Base64 のコードがバグっていて、複数行にエンコードされていると対応できない。 カスタマイズが困難。    API がシンプルで一見、拡張しやすく見えるが、実際には重要なポイントが private だったりしてサブクラス化しづらい。 たとえば、XmlRpcDispatcher を拡張しても、それを使っている XmlRpcServer に独自の XmlRpcDispatcher を設定する API がない（ので、結局、こいつもサブクラス化して、さらに、サブクラス化した XmlRpcServer を使う XmlRpcServlet を書いて &amp;hellip;）。 XmlRpcParser は XML-RPC の xml を解析できるが、肝心の結果は private になっているため、これ単体で使えない。   実は 3.</description>
     </item>
     
     <item>
       <title>Eclipse の Java プロジェクトを Subversion 管理するときの手順</title>
-      <link>http://www.metareal.org/2007/01/11/subversion-primer-for-eclipse-java-projects/</link>
+      <link>http://ishikawa.github.io/2007/01/11/subversion-primer-for-eclipse-java-projects/</link>
       <pubDate>Thu, 11 Jan 2007 09:40:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/01/11/subversion-primer-for-eclipse-java-projects/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://www.eclipse.org/&#34;&gt;Eclipse&lt;/a&gt; の Java プロジェクトを Subversion 管理するときの手順を、メモも兼ねて残しておこう。ちなみに、Eclipse での Subversion サポートに使っているのは &lt;a href=&#34;http://subclipse.tigris.org/&#34;&gt;Subclipse&lt;/a&gt; プラグイン。&lt;/p&gt;
-
-&lt;p&gt;以下の &lt;code&gt;$REPO&lt;/code&gt; 変数はプロジェクトを作成する、Subversion レポジトリの URL とする（たとえば、&lt;code&gt;svn+ssh://svn.metareal.org/path/to/repo/project/&lt;/code&gt;）。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% mkdir tmp
-% cd tmp
-% mkdir trunk branches tags
-% svn import -m &amp;quot;initial import&amp;quot; . $REPO
-% cd ../
-% rm -rf tmp
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Eclipse で新規 Java プロジェクトを作成する。&lt;/p&gt;
-
-&lt;p&gt;そして、新規作成されたプロジェクトのディレクトリに、Subversion レポジトリからチェックアウト。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% cd /path/to/workspace/project/
-% svn co $REPO/trunk .
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;いつも使っているディレクトリレイアウトを作成して必要なものを &lt;code&gt;svn add&lt;/code&gt; しておく。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% mkdir -p build/classes build/test-classes build/reports
-% mkdir -p docs/api
-% mkdir -p src/java src/test
-% svn add . --force
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;不要なものは &lt;code&gt;revert&lt;/code&gt; して、&lt;code&gt;svn:ignore&lt;/code&gt; を設定。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% svn revert build/*
-% svn revert docs/api -R
-% svn propset svn:ignore &amp;quot;*&amp;quot; build
-% svn propset svn:ignore &amp;quot;api&amp;quot; docs
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Eclipse でビルドディレクトリや諸々の設定をすませたらコミット。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% svn commit -m &amp;quot;New project&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Eclipse 側でプロジェクトが Subversion 管理されていないようなら、プロジェクトのアイコンを右クリック、「Team」＞「Share Project&amp;hellip;」で設定できる（すでにある &lt;code&gt;.svn&lt;/code&gt; を認識してくれるので、設定は簡単）。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/01/11/subversion-primer-for-eclipse-java-projects/</guid>
+      <description>Eclipse の Java プロジェクトを Subversion 管理するときの手順を、メモも兼ねて残しておこう。ちなみに、Eclipse での Subversion サポートに使っているのは Subclipse プラグイン。
+以下の $REPO 変数はプロジェクトを作成する、Subversion レポジトリの URL とする（たとえば、svn+ssh://svn.metareal.org/path/to/repo/project/）。
+% mkdir tmp % cd tmp % mkdir trunk branches tags % svn import -m &amp;quot;initial import&amp;quot; . $REPO % cd ../ % rm -rf tmp  Eclipse で新規 Java プロジェクトを作成する。
+そして、新規作成されたプロジェクトのディレクトリに、Subversion レポジトリからチェックアウト。
+% cd /path/to/workspace/project/ % svn co $REPO/trunk .  いつも使っているディレクトリレイアウトを作成して必要なものを svn add しておく。
+% mkdir -p build/classes build/test-classes build/reports % mkdir -p docs/api % mkdir -p src/java src/test % svn add .</description>
     </item>
     
     <item>
       <title>XML-RPC で &#34;Premature end of file.&#34;</title>
-      <link>http://www.metareal.org/2006/12/13/xml-rpc-premature-end-of-file/</link>
+      <link>http://ishikawa.github.io/2006/12/13/xml-rpc-premature-end-of-file/</link>
       <pubDate>Wed, 13 Dec 2006 10:48:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2006/12/13/xml-rpc-premature-end-of-file/</guid>
-      <description>&lt;p&gt;Java で XML-RPC の開発をしている。&lt;/p&gt;
-
-&lt;p&gt;動作確認は UNIX コマンドの curl で手軽にすませているのだが、突然、すべての &lt;code&gt;curl&lt;/code&gt; コマンドで
-&lt;code&gt;Premature end of file.&lt;/code&gt; というエラーが出るようになった。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[Fatal Error] :-1:-1: Premature end of file.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;このエラーには見覚えがある。たしか、XML の絡んだ通信で接続状態が悪くなり、&lt;strong&gt;通信が途絶えた場合などに
-ぼろぼろ出ていたやつ&lt;/strong&gt;だ。つまり、XML が不完全なのだろう。&lt;/p&gt;
-
-&lt;p&gt;しかし、curl の POST で送っているデータをいくら調べてもおかしい部分が見つからない。
-問題になりがちな改行を取り除いても、コンソールのエンコーディングを変更しても同じ。&lt;/p&gt;
-
-&lt;p&gt;しかたがないので、デバッガでブレークポイントを設定し、動作を追ってみた。&lt;/p&gt;
-
-&lt;p&gt;その結果、リクエストオブジェクトの入力ストリームから読み出す時点でデータが空なことが判明。つまり、&lt;strong&gt;curl で POST したデータを読みだせていない&lt;/strong&gt;わけだ。&lt;/p&gt;
-
-&lt;p&gt;では、何が原因でデータを読みだせていないんだろう？　curl の &lt;code&gt;-v&lt;/code&gt; オプションの出力を眺めているうちに気がついた。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;POST /api/xmlrpc HTTP/1.1
-User-Agent: curl/7.13.1 (powerpc-apple-darwin8.0) libcurl/7.13.1 OpenSSL/0.9.7l zlib/1.2.3
-Host: example.com
-Pragma: no-cache
-Accept: */*
-Content-Length: 123
-Content-Type: **application/x-www-form-urlencoded**
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt; で POST しているせいだ。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;Content-Type&lt;/code&gt; が &lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt; だと、&lt;a href=&#34;http://sdc.sun.co.jp/java/docs/j2ee/sdk_1.3/ja/techdocs/api/javax/servlet/http/HttpServletRequest.html&#34;&gt;&lt;code&gt;HttpServletRequest&lt;/code&gt;&lt;/a&gt; がパラメータとして解析するために先に入力を読みだしてしまうので、&lt;code&gt;HttpServletRequest#getInputStream()&lt;/code&gt; から読みだすときは空なわけだ。&lt;/p&gt;
-
-&lt;p&gt;次のように POST すれば、正常に動作した（&lt;code&gt;--data-ascii&lt;/code&gt; の XML は省略）。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% curl -v **-H &amp;quot;Content-Type: text/xml&amp;quot;** --data-ascii &amp;quot;...&amp;quot; &amp;quot;http://example.com/api/xmlrpc&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;どうやら、昨日まではちゃんと &lt;code&gt;-H&lt;/code&gt; オプションで &lt;code&gt;Content-Type&lt;/code&gt; を指定していたのだが、&lt;strong&gt;一日寝ると忘れてしまったようだ&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;だから、ブログに書いている。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2006/12/13/xml-rpc-premature-end-of-file/</guid>
+      <description>Java で XML-RPC の開発をしている。
+動作確認は UNIX コマンドの curl で手軽にすませているのだが、突然、すべての curl コマンドで Premature end of file. というエラーが出るようになった。
+[Fatal Error] :-1:-1: Premature end of file.  このエラーには見覚えがある。たしか、XML の絡んだ通信で接続状態が悪くなり、通信が途絶えた場合などに ぼろぼろ出ていたやつだ。つまり、XML が不完全なのだろう。
+しかし、curl の POST で送っているデータをいくら調べてもおかしい部分が見つからない。 問題になりがちな改行を取り除いても、コンソールのエンコーディングを変更しても同じ。
+しかたがないので、デバッガでブレークポイントを設定し、動作を追ってみた。
+その結果、リクエストオブジェクトの入力ストリームから読み出す時点でデータが空なことが判明。つまり、curl で POST したデータを読みだせていないわけだ。
+では、何が原因でデータを読みだせていないんだろう？　curl の -v オプションの出力を眺めているうちに気がついた。
+POST /api/xmlrpc HTTP/1.1 User-Agent: curl/7.13.1 (powerpc-apple-darwin8.0) libcurl/7.13.1 OpenSSL/0.9.7l zlib/1.2.3 Host: example.com Pragma: no-cache Accept: */* Content-Length: 123 Content-Type: **application/x-www-form-urlencoded**  application/x-www-form-urlencoded で POST しているせいだ。
+Content-Type が application/x-www-form-urlencoded だと、HttpServletRequest がパラメータとして解析するために先に入力を読みだしてしまうので、HttpServletRequest#getInputStream() から読みだすときは空なわけだ。</description>
     </item>
     
     <item>
       <title>Java の軽量 XML パーサ</title>
-      <link>http://www.metareal.org/2006/12/13/java-lightweight-xml-parser/</link>
+      <link>http://ishikawa.github.io/2006/12/13/java-lightweight-xml-parser/</link>
       <pubDate>Wed, 13 Dec 2006 09:56:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2006/12/13/java-lightweight-xml-parser/</guid>
-      <description>&lt;p&gt;ユニットテストの実行に XML パーサが必要になった。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://java.sun.com/j2se/1.4.2/docs/api/org/xml/sax/helpers/XMLReaderFactory.html#createXMLReader&#34;&gt;&lt;code&gt;org.xml.sax.helpers.XMLReaderFactory.createXMLReader()&lt;/code&gt;&lt;/a&gt; を使っているので、SAX2 に準拠したパーサが必要だ。&lt;/p&gt;
-
-&lt;p&gt;また、ユニットテストのためだけに &lt;a href=&#34;http://xerces.apache.org/xerces2-j/&#34;&gt;Xerces&lt;/a&gt; のような横綱級ライブラリを含めたくはない。パーサのライブラリは軽くなくてはいけない。&lt;/p&gt;
-
-&lt;p&gt;探してみると、条件に当てはまりそうなライブラリがふたつ見つかった。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://nanoxml.cyberelf.be/&#34;&gt;NanoXML&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://piccolo.sourceforge.net/&#34;&gt;Piccolo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;.jar&lt;/code&gt; の容量だけでいえば NanoXML の圧勝。&lt;/p&gt;
-
-&lt;p&gt;SAX サポートを追加するための &lt;code&gt;nanoxml-sax-2.2.3.jar&lt;/code&gt; を含めても、40KB に満たないコンパクトさだ（なお、NanoXML Lite というバージョンもあり、こちらは &lt;strong&gt;6KB 以下&lt;/strong&gt;）。ただ、残念なことに SAX 2 が実装されていないようだった。&lt;/p&gt;
-
-&lt;p&gt;他方、Piccolo では SAX2 が実装されているようなので、こちらを使うことにする。ドキュメントをよると、 開発に構文解析器 (&lt;a href=&#34;http://www.jflex.de/&#34;&gt;JFlex&lt;/a&gt;)とコンパイラ・コンパイラ (&lt;a href=&#34;http://troi.lincom-asg.com/~rjamison/byacc/&#34;&gt;BYACC/J&lt;/a&gt;) を用いているのがユニークな点らしい。&lt;/p&gt;
-
-&lt;p&gt;SAX パーサは &lt;code&gt;java&lt;/code&gt; コマンドに &lt;code&gt;-D&lt;/code&gt; オプションで指定するのが一般的だが、今回は &lt;code&gt;System.setProperty&lt;/code&gt; で指定した。Piccolo の SAX2 パーサは &lt;a href=&#34;http://piccolo.sourceforge.net/javadoc/com/bluecast/xml/Piccolo.html&#34;&gt;&lt;code&gt;com.bluecast.xml.Piccolo&lt;/code&gt;&lt;/a&gt; になる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;System.setProperty(&amp;quot;org.xml.sax.driver&amp;quot;, &amp;quot;com.bluecast.xml.Piccolo&amp;quot;);
-...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これで無事、ユニットテストが動作した。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2006/12/13/java-lightweight-xml-parser/</guid>
+      <description>ユニットテストの実行に XML パーサが必要になった。
+org.xml.sax.helpers.XMLReaderFactory.createXMLReader() を使っているので、SAX2 に準拠したパーサが必要だ。
+また、ユニットテストのためだけに Xerces のような横綱級ライブラリを含めたくはない。パーサのライブラリは軽くなくてはいけない。
+探してみると、条件に当てはまりそうなライブラリがふたつ見つかった。
+ NanoXML Piccolo  .jar の容量だけでいえば NanoXML の圧勝。
+SAX サポートを追加するための nanoxml-sax-2.2.3.jar を含めても、40KB に満たないコンパクトさだ（なお、NanoXML Lite というバージョンもあり、こちらは 6KB 以下）。ただ、残念なことに SAX 2 が実装されていないようだった。
+他方、Piccolo では SAX2 が実装されているようなので、こちらを使うことにする。ドキュメントをよると、 開発に構文解析器 (JFlex)とコンパイラ・コンパイラ (BYACC/J) を用いているのがユニークな点らしい。
+SAX パーサは java コマンドに -D オプションで指定するのが一般的だが、今回は System.setProperty で指定した。Piccolo の SAX2 パーサは com.bluecast.xml.Piccolo になる。
+System.setProperty(&amp;quot;org.xml.sax.driver&amp;quot;, &amp;quot;com.bluecast.xml.Piccolo&amp;quot;); ...  これで無事、ユニットテストが動作した。</description>
+    </item>
+    
+    <item>
+      <title>Apache XML-RPC への不満</title>
+      <link>http://ishikawa.github.io/2006/12/12/apache-xml-rpc-no-thanks/</link>
+      <pubDate>Wed, 13 Dec 2006 03:06:00 +0900</pubDate>
+      
+      <guid>http://ishikawa.github.io/2006/12/12/apache-xml-rpc-no-thanks/</guid>
+      <description>Apache Web Services Project の一環として開発されている Apache XML-RPC は Web に紹介記事も多く、もっとも利用されている印象を受ける。
+実際、これまで仕事でも XML-RPC クライアントとして Apache XML-RPC を使用していた。他の選択肢を知らなかった、というのもあるが、Apache というブランドの影響も大きいと思う。
+しかし、不満がないわけではない。
+特に、クラス階層が複雑なのには手こずった。動作をカスタマイズしたいときなど、あるクラスがどのインターフェースを実装し、どのファクトリで生成されるかを調べるだけでも大変だ（RequestProcessorFactoryFactory インターフェースまでくると、もう冗談のように思えてくる）。
+実例をあげよう。
+RPC の結果として不正な XML が返ってきた場合のエラー処理。 たとえば、XML 宣言の前に PHP のエラーが出力されている、なんてことはざらにある（現実とはそういう世界なのだ）。こういうときでも、XML 宣言以降は正当な XML なので、できるだけ XML をパースして処理の結果を拾いたい。
+そして、このリカバリ処理自体は難しくない。例外をキャッチして、結果の文字列を XML 宣言までスキップして、再度パースしてみるだけだ。
+だが、結局、その処理をするためには、ダウンロードした Apache XML-RPC のソースコードから既存のクラスをコピーして別のクラスを作成する必要があった。どうしてだろう？　もしかすると、他にエレガントな解決方法があったのかもしれない。だが、発見できなかった。
+そして、いま、サーバサイドの XML-RPC サービスを実装しているのだが、今度は出力エンコーディングを設定する方法が分からない。きっとどこかで、エレガントな解決方法が、発見されるのを待っているのだろう。</description>
+    </item>
+    
+    <item>
+      <title>Apache XML-RPC のファイル名</title>
+      <link>http://ishikawa.github.io/2006/12/09/apache-xmlrpc-filename/</link>
+      <pubDate>Sun, 10 Dec 2006 01:04:00 +0900</pubDate>
+      
+      <guid>http://ishikawa.github.io/2006/12/09/apache-xmlrpc-filename/</guid>
+      <description>Apache XML-RPC で 配布されている .jar は依存ライブラリを除くと 3 つあるのですが、
+ xmlrpc-client-3.0.jar xmlrpc-common-3.0.jar xmlrpc-server-3.0.jar  ファイル名を Mac の Finder からエディタにコピペして気づいた。
+xmlrpc-client-3.0.jar xmlrpc-common-3.0.jar xmlrpc-server-3.0.jar  すべて文字数が一緒なんです。</description>
     </item>
     
   </channel>

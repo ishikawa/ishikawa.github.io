@@ -1,236 +1,77 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lifehacks on METAREAL</title>
-    <link>http://www.metareal.org/tags/lifehacks/index.xml</link>
-    <description>Recent content in Lifehacks on METAREAL</description>
+    <title>lifehacks on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/lifehacks/</link>
+    <description>Recent content in lifehacks on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/lifehacks/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Aug 2007 01:23:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/lifehacks/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>テーブルトークとブレインストーミング</title>
-      <link>http://www.metareal.org/2007/08/18/tabletalking-and-brainstorming/</link>
+      <link>http://ishikawa.github.io/2007/08/18/tabletalking-and-brainstorming/</link>
       <pubDate>Sun, 19 Aug 2007 01:23:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/18/tabletalking-and-brainstorming/</guid>
-      <description>&lt;p&gt;そういえば、テーブルトーク RPG って、まさにブレインストーミングだ。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://lifehacking.jp/&#34;&gt;Lifehacking.jp&lt;/a&gt; の記事「&lt;a href=&#34;http://lifehacking.jp/2007/08/brainstorming-is-dead/&#34;&gt;ブレインストーミングは死んだ！ ブレインストーミング万歳！&lt;/a&gt;」より（強調は引用者）。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;セッションのまとめ役の経験不足： 意見の交通整理をしたり、理解しにくいアイディアをかみくだいて全員に提示したり、時間管理や、問題から議論の流れが外れたときの対応など、&lt;strong&gt;D&amp;amp;D のダンジョンマスターのような経験をもっている公平なまとめ役がいない。&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;この記事で触れられている D&amp;amp;D（&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%80%E3%83%B3%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%BA%26%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%82%BA&#34;&gt;ダンジョンズ＆ドラゴンズ&lt;/a&gt;）こそ、テーブルトーク RPG の元祖。コンピュータゲームや映画、小説にもなっているため知っている人もすくなくないだろう（そもそも、テーブルトーク RPG がどんなものか、については &lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%83%88%E3%83%BC%E3%82%AFRPG&#34;&gt;Wikipedia の解説&lt;/a&gt;なりをどうぞ）。&lt;/p&gt;
-
-&lt;p&gt;テーブルトーク RPG のセッションで、ゲームマスターが用意するものといえば、最低限のストーリー進行と場面場面のイベント設定、そして、妥当なエンディングをひとつかふたつくらい。&lt;/p&gt;
-
-&lt;p&gt;あとはプレイヤーとの会話や駆け引きで場を演出し、ひとつのゲーム体験をつくっていく。&lt;/p&gt;
-
-&lt;p&gt;ブレインストーミングのノリに近いと思うし、失敗する原因もだいたい似ているんじゃないか。プレイヤーたちのひょんな行動から思いもよらぬ方向へストーリーが進んだり、迷惑なプレイヤー（ルールの重箱の隅をつつくのが好き、奇抜な行動しかとりたがらない、&amp;hellip; etc）のせいで悲惨なセッションになったり。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/08/18/tabletalking-and-brainstorming/</guid>
+      <description>そういえば、テーブルトーク RPG って、まさにブレインストーミングだ。
+Lifehacking.jp の記事「ブレインストーミングは死んだ！ ブレインストーミング万歳！」より（強調は引用者）。
+  セッションのまとめ役の経験不足： 意見の交通整理をしたり、理解しにくいアイディアをかみくだいて全員に提示したり、時間管理や、問題から議論の流れが外れたときの対応など、D&amp;amp;D のダンジョンマスターのような経験をもっている公平なまとめ役がいない。   この記事で触れられている D&amp;amp;D（ダンジョンズ＆ドラゴンズ）こそ、テーブルトーク RPG の元祖。コンピュータゲームや映画、小説にもなっているため知っている人もすくなくないだろう（そもそも、テーブルトーク RPG がどんなものか、については Wikipedia の解説なりをどうぞ）。
+テーブルトーク RPG のセッションで、ゲームマスターが用意するものといえば、最低限のストーリー進行と場面場面のイベント設定、そして、妥当なエンディングをひとつかふたつくらい。
+あとはプレイヤーとの会話や駆け引きで場を演出し、ひとつのゲーム体験をつくっていく。
+ブレインストーミングのノリに近いと思うし、失敗する原因もだいたい似ているんじゃないか。プレイヤーたちのひょんな行動から思いもよらぬ方向へストーリーが進んだり、迷惑なプレイヤー（ルールの重箱の隅をつつくのが好き、奇抜な行動しかとりたがらない、&amp;hellip; etc）のせいで悲惨なセッションになったり。</description>
     </item>
     
     <item>
       <title>iGTD と QuickSilver の連携</title>
-      <link>http://www.metareal.org/2007/08/15/about-igtd-quicksilver-plugin/</link>
+      <link>http://ishikawa.github.io/2007/08/15/about-igtd-quicksilver-plugin/</link>
       <pubDate>Wed, 15 Aug 2007 05:18:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/15/about-igtd-quicksilver-plugin/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://igtd.pl/iGTD/&#34;&gt;iGTD&lt;/a&gt; のインストール用ディスクイメージには &lt;a href=&#34;http://docs.blacktree.com/quicksilver/what_is_quicksilver&#34;&gt;QuickSilver&lt;/a&gt; と連携するためのプラグインが同梱されている（参考：&lt;a href=&#34;http://bargiel.home.pl/iGTD/help/quicksilver/index.html&#34;&gt;iGTD &amp;amp; Quicksilver&lt;/a&gt;）。&lt;/p&gt;
-
-&lt;p&gt;このプラグインで追加される &lt;strong&gt;Put into iGTD inbox&lt;/strong&gt; を使えば、QuickSilver で選択したものは何でも（テキスト、ファイル、ブックマーク、あるいはアプリケーションも）iGTD の inbox に放り込むことが可能だ。QuickSilver でテキストを入力すれば、それがそのままタスクの名前になるし、ファイルやブックマークはタスクにリンクが付随したかたちで登録される。&lt;/p&gt;
-
-&lt;p&gt;また、タスクを登録するときは、あらかじめ決められたフォーマットに従うことで、たとえば、登録先のコンテキストやプロジェクトを指定することができる。&lt;/p&gt;
-
-&lt;p&gt;以下に、使用できるフォーマットをまとめた。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;コンテキストを指定する&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;@development&lt;/strong&gt; Remove a bug with link field&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;@dev&lt;/strong&gt; Remove a bug with link field&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;プロジェクトを指定する&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;A nice new feature &lt;strong&gt;[igtd]&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;A nice new feature &lt;strong&gt;[ig]&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;ノートを指定する&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;@dev A nice new feature [igtd]&lt;strong&gt;: quicksilver integration&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;@dev A nice new feature&lt;strong&gt;: quicksilver integration&lt;/strong&gt; [igtd]&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;優先度を指定する&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;@dev A nice new feature&lt;strong&gt;!!&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;@dev A nice new feature&lt;strong&gt;!&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;@dev A nice new feature&lt;/li&gt;
-&lt;li&gt;@dev A nice new feature&lt;strong&gt;?&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;@dev A nice new feature&lt;strong&gt;??&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;開始日時を指定する&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;@dev do it!! [igtd]: new release &lt;strong&gt;#friday,&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;終了日時を指定する&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;@dev do it!! [igtd]: new release &lt;strong&gt;#today&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;@dev do it! [igtd]: new release &lt;strong&gt;#next week&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;開始／終了日時を指定する&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;@dev do it!! [igtd]: new release &lt;strong&gt;#friday,sunday&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;タグを指定する&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;@dev a task! [igtd]: new release &lt;strong&gt;{concept,1.5}&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;インストール用ディスクイメージには同様の機能をもつ Dashboard ウィジェットも同梱されているので、好きな方を使えばいいだろう。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/08/15/about-igtd-quicksilver-plugin/</guid>
+      <description>iGTD のインストール用ディスクイメージには QuickSilver と連携するためのプラグインが同梱されている（参考：iGTD &amp;amp; Quicksilver）。
+このプラグインで追加される Put into iGTD inbox を使えば、QuickSilver で選択したものは何でも（テキスト、ファイル、ブックマーク、あるいはアプリケーションも）iGTD の inbox に放り込むことが可能だ。QuickSilver でテキストを入力すれば、それがそのままタスクの名前になるし、ファイルやブックマークはタスクにリンクが付随したかたちで登録される。
+また、タスクを登録するときは、あらかじめ決められたフォーマットに従うことで、たとえば、登録先のコンテキストやプロジェクトを指定することができる。
+以下に、使用できるフォーマットをまとめた。
+ コンテキストを指定する    @development Remove a bug with link field @dev Remove a bug with link field    プロジェクトを指定する    A nice new feature [igtd] A nice new feature [ig]    ノートを指定する    @dev A nice new feature [igtd]: quicksilver integration @dev A nice new feature: quicksilver integration [igtd]    優先度を指定する    @dev A nice new feature!</description>
     </item>
     
     <item>
       <title>Mac の GTD アプリ、iGTD を試してみた (2)</title>
-      <link>http://www.metareal.org/2007/08/11/review-my-igtd-experience/</link>
+      <link>http://ishikawa.github.io/2007/08/11/review-my-igtd-experience/</link>
       <pubDate>Sat, 11 Aug 2007 08:59:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/11/review-my-igtd-experience/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1077839654/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1373/1077839654_3a2455e628_o.gif&#34; alt=&#34;iGTD Screenshot&#34; /&gt;&lt;/a&gt;
-    © &lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/&#34;&gt;Takanori Ishikawa&lt;/a&gt;, Some rights reserved&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/08/10/igtd-first-impression/&#34;&gt;前回&lt;/a&gt;書いたように、&lt;a href=&#34;http://www.rememberthemilk.com/&#34;&gt;Remember The Milk&lt;/a&gt; から &lt;a href=&#34;http://igtd.pl/iGTD/&#34;&gt;iGTD&lt;/a&gt; に乗り換えた。&lt;/p&gt;
-
-&lt;p&gt;数日使ってみて、コンテキスト（背景）には「仕事」「プライベート」の二種類、そして、三つのプロジェクトを登録してある（シンプルな人生だ）。段々と日常的なワークフローに組み込まれつつある感じ。いまのところ全般的な使い勝手はいい。&lt;/p&gt;
-
-&lt;p&gt;もっとも、最初から順風満帆だったわけではなく、最初使ってみたときは戸惑う部分もあった。ヘルプを読むまで分からなかった「直感的に」使えなかった部分をまとめてみる。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;タスクを手動で並び替える&lt;/strong&gt;。タスクを名前や優先度で並び替えるのは簡単にできる。その項目名をクリックするだけだ。しかし、手動で並び替えをしようとタスクをドラッグ＆ドロップしてもできない。メニューの「View」&amp;gt;「Toggle natural sorting」を選択すると、タスクをドラッグ＆ドロップで並び替えできるようになる（&lt;a href=&#34;http://bargiel.home.pl/iGTD/help/usingtasks/sorting/index.html&#34;&gt;Sorting tasks&lt;/a&gt;）。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;完了したタスクが表示されないようにする&lt;/strong&gt;。完了したタスクのチェックボックスをチェックしても、タスクは消えるわけじゃない。タスクの「掃除」をするまでは未完了のまま残ることになる。手動で「Tasks」&amp;gt;「Clean up」を実行するか。自動的に実行されるように、環境設定で設定しておこう（&lt;a href=&#34;http://bargiel.home.pl/iGTD/help/usingtasks/cleaningup/index.html&#34;&gt;Cleaning up&lt;/a&gt;）。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;ふたつしかない。荒削りな部分もあるが、UI はまとまっていると思う。&lt;/p&gt;
-
-&lt;h3 id=&#34;ちょっとした不満&#34;&gt;ちょっとした不満&lt;/h3&gt;
-
-&lt;p&gt;これらはヘルプを読んでも片づかなかった不満。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;フォントサイズ&lt;/strong&gt; Large だと Priority の表示がずれてしまう&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;検索&lt;/strong&gt; 表示中のタスクからしか検索できない（すべてひっくるめて大域的に検索できない）&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;並び替え&lt;/strong&gt; プロジェクトやアーカイブ表示で手動による並び替えができない&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;アーカイブ&lt;/strong&gt; アイデアや興味深いリンクやファイル、といったタスク以外の諸々をまとめておけるアーカイブ。是非欲しかった機能だが、まだまだ発展途上。並び替えができないのも痛いが、アイデアがタスクになったとき（「今日は、このアイデアやってみよう」）に、アーカイブからタスクに移動できない&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;アイコン&lt;/strong&gt; かわいくない&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;最後に&#34;&gt;最後に&lt;/h3&gt;
-
-&lt;p&gt;やはり、デスクトップ・アプリケーションの強みなのだが、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;速い&lt;/strong&gt;。タスクの粒度がちょっと大きいかなー、と思ったらサクサク分割していける。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;常駐しやすい&lt;/strong&gt;。ひとつの Web アプリケーションをずっと表示している、というのは稀だ。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;この二点は GTD アプリケーションとしては重要な反面、Web アプリケーションではなかなか得難いのではないか、と思う。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/08/11/review-my-igtd-experience/</guid>
+      <description>© Takanori Ishikawa, Some rights reserved
+前回書いたように、Remember The Milk から iGTD に乗り換えた。
+数日使ってみて、コンテキスト（背景）には「仕事」「プライベート」の二種類、そして、三つのプロジェクトを登録してある（シンプルな人生だ）。段々と日常的なワークフローに組み込まれつつある感じ。いまのところ全般的な使い勝手はいい。
+もっとも、最初から順風満帆だったわけではなく、最初使ってみたときは戸惑う部分もあった。ヘルプを読むまで分からなかった「直感的に」使えなかった部分をまとめてみる。
+ タスクを手動で並び替える。タスクを名前や優先度で並び替えるのは簡単にできる。その項目名をクリックするだけだ。しかし、手動で並び替えをしようとタスクをドラッグ＆ドロップしてもできない。メニューの「View」&amp;gt;「Toggle natural sorting」を選択すると、タスクをドラッグ＆ドロップで並び替えできるようになる（Sorting tasks）。 完了したタスクが表示されないようにする。完了したタスクのチェックボックスをチェックしても、タスクは消えるわけじゃない。タスクの「掃除」をするまでは未完了のまま残ることになる。手動で「Tasks」&amp;gt;「Clean up」を実行するか。自動的に実行されるように、環境設定で設定しておこう（Cleaning up）。  ふたつしかない。荒削りな部分もあるが、UI はまとまっていると思う。
+ちょっとした不満 これらはヘルプを読んでも片づかなかった不満。
+ フォントサイズ Large だと Priority の表示がずれてしまう 検索 表示中のタスクからしか検索できない（すべてひっくるめて大域的に検索できない） 並び替え プロジェクトやアーカイブ表示で手動による並び替えができない アーカイブ アイデアや興味深いリンクやファイル、といったタスク以外の諸々をまとめておけるアーカイブ。是非欲しかった機能だが、まだまだ発展途上。並び替えができないのも痛いが、アイデアがタスクになったとき（「今日は、このアイデアやってみよう」）に、アーカイブからタスクに移動できない アイコン かわいくない  最後に やはり、デスクトップ・アプリケーションの強みなのだが、
+ 速い。タスクの粒度がちょっと大きいかなー、と思ったらサクサク分割していける。 常駐しやすい。ひとつの Web アプリケーションをずっと表示している、というのは稀だ。  この二点は GTD アプリケーションとしては重要な反面、Web アプリケーションではなかなか得難いのではないか、と思う。</description>
     </item>
     
     <item>
       <title>Mac の GTD アプリ、iGTD を試してみた</title>
-      <link>http://www.metareal.org/2007/08/10/igtd-first-impression/</link>
+      <link>http://ishikawa.github.io/2007/08/10/igtd-first-impression/</link>
       <pubDate>Fri, 10 Aug 2007 05:29:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/10/igtd-first-impression/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/1072315915/&#34;&gt;&lt;img src=&#34;http://farm2.static.flickr.com/1008/1072315915_bee7dddcbc_o.jpg&#34; alt=&#34;Remember The Milk To iGTD&#34; /&gt;&lt;/a&gt;
-    © &lt;a href=&#34;http://www.flickr.com/photos/ishikawa_takanori/&#34;&gt;Takanori Ishikawa&lt;/a&gt;, Some rights reserved&lt;/p&gt;
-
-&lt;p&gt;これまで TODO 管理には &lt;a href=&#34;http://www.rememberthemilk.com/&#34;&gt;Remember The Milk&lt;/a&gt; を愛用していた。&lt;/p&gt;
-
-&lt;p&gt;ユーザーインターフェースはシンプルかつ高機能だし、&lt;strong&gt;タスクに期限を設定するとメールやメッセンジャーで通知してくれる&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;この機能が非常に便利で重宝していた（かつて、&lt;a href=&#34;http://www.checkpad.jp/&#34;&gt;checkpad&lt;/a&gt; から移行した理由でもある）。そして、なにより名前が洒落ている。そうだ、牛乳買わなきゃ。&lt;/p&gt;
-
-&lt;p&gt;でも、今日、&lt;a href=&#34;http://igtd.pl/iGTD/&#34;&gt;iGTD&lt;/a&gt; に乗り換えた。何故か？&lt;/p&gt;
-
-&lt;h3 id=&#34;何故-remember-the-milk-では駄目になったのか&#34;&gt;何故、Remember The Milk では駄目になったのか&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;重い&lt;/strong&gt;。特にログイン後、タスクを表示するときが重い。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;パスワード入力が面倒&lt;/strong&gt;。クッキーは頻繁に削除するので自動ログインは使っていない。もちろん、Safari が自動入力してくれるのだが、ログイン画面で Enter を毎回押すのは、想像する以上の精神的負担だ。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;オンラインでないと使えない&lt;/strong&gt;。&lt;a href=&#34;http://gears.google.com/&#34;&gt;Google Gears&lt;/a&gt; をインストールすればオフラインでも使えるが、Safari に対応していない（開発中ではある）。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;他にも「マニュアルでソートできない」とか細かい不満もあるのだが、こうしてみると、自分にとっての GTD アプリは「思いついたときに、即座に使えること」が重要なのが分かる。&lt;/p&gt;
-
-&lt;h3 id=&#34;web-アプリケーションと-gtd&#34;&gt;Web アプリケーションと GTD&lt;/h3&gt;
-
-&lt;p&gt;そして、上にあげた不満点は &lt;a href=&#34;http://www.rememberthemilk.com/&#34;&gt;Remember The Milk&lt;/a&gt; に限った話ではなく、多かれ少なかれ、&lt;strong&gt;すべての Web アプリケーションに当てはまる&lt;/strong&gt;ものばかりだ。今回、デスクトップ・アプリケーションである &lt;a href=&#34;http://igtd.pl/iGTD/&#34;&gt;iGTD&lt;/a&gt; に乗り換えたのは必然、といえば必然の流れなのかもしれない。&lt;/p&gt;
-
-&lt;p&gt;Web アプリケーションにも利点はある。たとえば、Remember The Milk のメール通知機能は便利なので、これからも「来週控えている用事を忘れないように」といった用途専用に使いつづけるだろう。&lt;/p&gt;
-
-&lt;p&gt;そもそも、Remember The Milk はこういった素朴な TODO 管理、というか備忘メモ的な方が向いているのかもしれない（「そうだ、牛乳買わなきゃ」）。&lt;/p&gt;
-
-&lt;p&gt;いうなれば防御的。&lt;/p&gt;
-
-&lt;p&gt;でも、GTD から受ける印象は、どちらかというと攻撃的だ。積極的にタスクを切りだしては片づけていく。攻撃こそ最大の防御ということか。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/08/10/igtd-first-impression/</guid>
+      <description>© Takanori Ishikawa, Some rights reserved
+これまで TODO 管理には Remember The Milk を愛用していた。
+ユーザーインターフェースはシンプルかつ高機能だし、タスクに期限を設定するとメールやメッセンジャーで通知してくれる。
+この機能が非常に便利で重宝していた（かつて、checkpad から移行した理由でもある）。そして、なにより名前が洒落ている。そうだ、牛乳買わなきゃ。
+でも、今日、iGTD に乗り換えた。何故か？
+何故、Remember The Milk では駄目になったのか  重い。特にログイン後、タスクを表示するときが重い。 パスワード入力が面倒。クッキーは頻繁に削除するので自動ログインは使っていない。もちろん、Safari が自動入力してくれるのだが、ログイン画面で Enter を毎回押すのは、想像する以上の精神的負担だ。 オンラインでないと使えない。Google Gears をインストールすればオフラインでも使えるが、Safari に対応していない（開発中ではある）。  他にも「マニュアルでソートできない」とか細かい不満もあるのだが、こうしてみると、自分にとっての GTD アプリは「思いついたときに、即座に使えること」が重要なのが分かる。
+Web アプリケーションと GTD そして、上にあげた不満点は Remember The Milk に限った話ではなく、多かれ少なかれ、すべての Web アプリケーションに当てはまるものばかりだ。今回、デスクトップ・アプリケーションである iGTD に乗り換えたのは必然、といえば必然の流れなのかもしれない。
+Web アプリケーションにも利点はある。たとえば、Remember The Milk のメール通知機能は便利なので、これからも「来週控えている用事を忘れないように」といった用途専用に使いつづけるだろう。
+そもそも、Remember The Milk はこういった素朴な TODO 管理、というか備忘メモ的な方が向いているのかもしれない（「そうだ、牛乳買わなきゃ」）。
+いうなれば防御的。
+でも、GTD から受ける印象は、どちらかというと攻撃的だ。積極的にタスクを切りだしては片づけていく。攻撃こそ最大の防御ということか。</description>
     </item>
     
   </channel>

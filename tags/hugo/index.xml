@@ -1,52 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo on METAREAL</title>
-    <link>http://www.metareal.org/tags/hugo/index.xml</link>
-    <description>Recent content in Hugo on METAREAL</description>
+    <title>hugo on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/hugo/</link>
+    <description>Recent content in hugo on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Jun 2015 14:43:15 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>ブログを Hugo に移行した</title>
-      <link>http://www.metareal.org/post/migrate-to-hugo/</link>
+      <link>http://ishikawa.github.io/post/migrate-to-hugo/</link>
       <pubDate>Sun, 21 Jun 2015 14:43:15 +0900</pubDate>
       
-      <guid>http://www.metareal.org/post/migrate-to-hugo/</guid>
-      <description>
-
-&lt;p&gt;すでに4年半近くの時が経過したが、ひさしぶりの投稿だ。Google AppEngine (Python + Django) で動かしていた自作ブログエンジンを &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; に移行している。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://golang.org&#34;&gt;Go&lt;/a&gt; で実装されているおかげでもあるのだろうが、サイトの生成スピードが速い。組み込みサーバには、ファイルの変更を検知してサイトを更新する機能が備わっているので、ストレスなく記事を書くことができる。ブラウザのリロードも不要。&lt;/p&gt;
-
-&lt;p&gt;URL を記事ごとに指定可能なのは助かった。デフォルトだと &lt;code&gt;/post/title/&lt;/code&gt; のような URL になるのだが、古い記事は &lt;code&gt;/YYYY/MM/DD/title/&lt;/code&gt; という形式で URL を決めていたので、そのままだと URL が変わってしまう。記事中の YAML (&lt;a href=&#34;http://gohugo.io/content/front-matter/&#34;&gt;Front Matter&lt;/a&gt;) で URL を上書きしてやることで、URL を変えずにすんだ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
-title: &amp;quot;Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった。&amp;quot;
-url: &amp;quot;/2010/12/16/ffi-requires-ruby-version-1-9-2/&amp;quot;
-...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;とはいえ、今後もこの指定をしていくのはしんどいので、この記事から URL の形式を &lt;code&gt;/post/title/&lt;/code&gt; に変えるつもり。&lt;/p&gt;
-
-&lt;h3 id=&#34;移行スクリプト&#34;&gt;移行スクリプト&lt;/h3&gt;
-
-&lt;p&gt;移行にあたっては古い記事を Markdown + Front Matter に変換する必要があり、変換スクリプトを Ruby で書いた。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;指定された記事の URL から HTML を取得&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.nokogiri.org/&#34;&gt;Nokogiri&lt;/a&gt; で HTML をパースしてタイトルや日付といったメタデータを抽出&lt;/li&gt;
-&lt;li&gt;本文を Markdown に変換&lt;/li&gt;
-&lt;li&gt;Hugo コマンドを起動してファイル作成&lt;/li&gt;
-&lt;li&gt;Markdown を書き込んで、次に実行するコマンドを出力&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;移行しながら発展させていき、最終的には上のようなスクリプトに落ち着いた。
-最初のうちは 3 までをスクリプトでやって残りは（変換結果が正しいことを確認しつつ）手作業だったのだが、
-しばらくしてから 4, 5 を実装して一気に終わらせた。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/post/migrate-to-hugo/</guid>
+      <description>すでに4年半近くの時が経過したが、ひさしぶりの投稿だ。Google AppEngine (Python + Django) で動かしていた自作ブログエンジンを Hugo に移行している。
+Go で実装されているおかげでもあるのだろうが、サイトの生成スピードが速い。組み込みサーバには、ファイルの変更を検知してサイトを更新する機能が備わっているので、ストレスなく記事を書くことができる。ブラウザのリロードも不要。
+URL を記事ごとに指定可能なのは助かった。デフォルトだと /post/title/ のような URL になるのだが、古い記事は /YYYY/MM/DD/title/ という形式で URL を決めていたので、そのままだと URL が変わってしまう。記事中の YAML (Front Matter) で URL を上書きしてやることで、URL を変えずにすんだ。
+--- title: &amp;quot;Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった。&amp;quot; url: &amp;quot;/2010/12/16/ffi-requires-ruby-version-1-9-2/&amp;quot; ...  とはいえ、今後もこの指定をしていくのはしんどいので、この記事から URL の形式を /post/title/ に変えるつもり。
+移行スクリプト 移行にあたっては古い記事を Markdown + Front Matter に変換する必要があり、変換スクリプトを Ruby で書いた。
+ 指定された記事の URL から HTML を取得 Nokogiri で HTML をパースしてタイトルや日付といったメタデータを抽出 本文を Markdown に変換 Hugo コマンドを起動してファイル作成 Markdown を書き込んで、次に実行するコマンドを出力  移行しながら発展させていき、最終的には上のようなスクリプトに落ち着いた。 最初のうちは 3 までをスクリプトでやって残りは（変換結果が正しいことを確認しつつ）手作業だったのだが、 しばらくしてから 4, 5 を実装して一気に終わらせた。</description>
     </item>
     
   </channel>

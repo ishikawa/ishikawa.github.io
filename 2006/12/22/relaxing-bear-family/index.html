@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <base href="http://www.metareal.org/">
+  <base href="http://ishikawa.github.io">
   <title>熊の家族</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="http://www.metareal.org/2006/12/22/relaxing-bear-family/">
+  <link rel="canonical" href="http://ishikawa.github.io/2006/12/22/relaxing-bear-family/">
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
@@ -39,10 +39,10 @@
 <nav class="pagination">
   <ul>
     
-    <li class="next"><i class="fa fa-angle-left"></i><a href="http://www.metareal.org/2006/12/24/install-subversion-with-swig-bindings/">Subversion を SWIG サポートつきでインストールする</a></li>
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://ishikawa.github.io/2006/12/24/install-subversion-with-swig-bindings/">Subversion を SWIG サポートつきでインストールする</a></li>
     
     
-    <li class="prev"><a href="http://www.metareal.org/2006/12/22/firefox-canvas-bug/">Firefox の &lt;canvas&gt; 要素バグ</a><i class="fa fa-angle-right"></i></li>
+    <li class="prev"><a href="http://ishikawa.github.io/2006/12/22/firefox-canvas-bug/">Firefox の &lt;canvas&gt; 要素バグ</a><i class="fa fa-angle-right"></i></li>
     
   </ul>
 </nav>
@@ -76,11 +76,11 @@ MathJax.Hub.Config({
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Queue(function() {
-  
-  
-  
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
   var all = MathJax.Hub.getAllJax(), i;
-  for(i = 0; i < all.length; i += 1) {
+  for(i = 0; i &lt; all.length; i += 1) {
       all[i].SourceElement().parentNode.className += ' has-jax';
   }
 });

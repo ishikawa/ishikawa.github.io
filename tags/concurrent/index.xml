@@ -1,159 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Concurrent on METAREAL</title>
-    <link>http://www.metareal.org/tags/concurrent/index.xml</link>
-    <description>Recent content in Concurrent on METAREAL</description>
+    <title>concurrent on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/concurrent/</link>
+    <description>Recent content in concurrent on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/concurrent/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Jun 2008 03:41:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/concurrent/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>kilim で Java でもジェネレーター</title>
-      <link>http://www.metareal.org/2008/06/26/java-generater-by-using-kilim/</link>
+      <link>http://ishikawa.github.io/2008/06/26/java-generater-by-using-kilim/</link>
       <pubDate>Fri, 27 Jun 2008 03:41:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/06/26/java-generater-by-using-kilim/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://twitter.com/&#34;&gt;Twitter&lt;/a&gt; と &lt;a href=&#34;http://www.erlang.org/&#34;&gt;Erlang&lt;/a&gt; をきっかけに注目を集めるようになった軽量プロセス（とかマイクロスレッドとか）を Java で実現するためのライブラリに &lt;a href=&#34;http://www.malhar.net/sriram/kilim/&#34;&gt;kilim&lt;/a&gt; があります。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.malhar.net/sriram/talks/kilim-google.pdf&#34;&gt;Isolation-typed actors for Java&lt;/a&gt; (PDF)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.infoq.com/news/2008/06/kilim-message-passing-in-java&#34;&gt;InfoQ: Kilim - actors and message passing in Java&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;夜中に突然 Java が書きたくなって、まだ、Examples を動かしてみた程度ですが、とりあえず &lt;a href=&#34;http://www.python.jp/doc/nightly/tut/node11.html#SECTION0011900000000000000000&#34;&gt;Python のジェネレーター&lt;/a&gt;っぽいことができるのは分かったので記事にしておきます。暇と知識が増えたら、もうすこし突っ込んだ記事もあげる予定です（自信がないので今回、ですます調）。&lt;/p&gt;
-
-&lt;h3 id=&#34;ジェネレーターの例&#34;&gt;ジェネレーターの例&lt;/h3&gt;
-
-&lt;p&gt;では、本当につまらない例です。フィボナッチ数を求めるプログラムをどうぞ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import kilim.Generator;
-import kilim.pausable;
-
-public class Fib extends Generator&amp;lt;Integer&amp;gt; {
-
-  public @pausable void execute() {  // (1)
-    int fib1 = 0;
-    int fib2 = 1;
-
-    while (true) {
-      yield(fib1);  // (2)
-      fib2 = fib1 + fib2;
-      fib1 = fib2 - fib1;
-    }
-  }
-
-  public static void main(String[] args) {
-    final Fib fib = new Fib();
-
-    for (int i = 0; i &amp;lt;= 10; i++) {
-      System.out.printf(&amp;quot;Fib(%d) = %d\n&amp;quot;, i, fib.next()); // (3)
-    }
-  }
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;面白い箇所の行にコメントで番号を振りました。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;協調動作させたいメソッドは、このように &lt;code&gt;@pausable&lt;/code&gt; アノテーションで指示します&lt;/li&gt;
-&lt;li&gt;呼び出し側に制御を戻すときは &lt;code&gt;yield&lt;/code&gt; メソッドを使います。Python 的&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;kilim.Generator&lt;/code&gt; は &lt;code&gt;java.util.Iterator&lt;/code&gt; と &lt;code&gt;java.lang.Iterable&lt;/code&gt; インターフェースを実装しているので、こんなふうに使います。ますます Python&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;ビルドと実行方法&#34;&gt;ビルドと実行方法&lt;/h3&gt;
-
-&lt;p&gt;上記のソースコードを実行するまでの手順をまとめておきます。&lt;/p&gt;
-
-&lt;p&gt;まずは&lt;a href=&#34;http://www.malhar.net/sriram/kilim/&#34;&gt;公式サイト&lt;/a&gt;からソースコードをダウンロードして展開、ビルドします。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% tar xvzf kilim-0.5.tgz.tar
-% cd kilim-0.5
-% ant
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;.jar&lt;/code&gt; も作っておきましょう（&lt;strong&gt;2008/6/27追記&lt;/strong&gt;：&lt;code&gt;cd classes&lt;/code&gt; が抜けていたので追記しました）。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% cd classes/
-% jar cvf kilim-0.5.jar kilim
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;適当なディレクトリを作成して、さきほど作成した &lt;code&gt;kilim-0.5.jar&lt;/code&gt; とソースコードに含まれている &lt;code&gt;asm-all-2.2.3.jar&lt;/code&gt; をコピーします。また、上記のサンプルプログラムを &lt;code&gt;Fib.java&lt;/code&gt; という名前で、同じディレクトリに保存してください。&lt;/p&gt;
-
-&lt;p&gt;早速、&lt;code&gt;Fib.java&lt;/code&gt; をコンパイルします。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% javac -cp ./kilim-0.5.jar ./Fib.java
-% ls
-Fib.class               Fib.java                asm-all-2.2.3.jar       kilim-0.5.jar
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;Fib.class&lt;/code&gt; が作成されているのでコンパイルは成功しています。実行してみましょう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% java -cp .:./kilim-0.5.jar Fib
-############################################################
-Task class Fib has either not been woven or the classpath is incorrect
-############################################################
-java.lang.Exception: Stack trace
-        at java.lang.Thread.dumpStack(Thread.java:1176)
-        at kilim.Task.errNotWoven(Task.java:188)
-        at kilim.Task.execute(Task.java:252)
-        at kilim.Task._runExecute(Task.java:291)
-        at kilim.Generator.next(Generator.java:47)
-        at Fib.main(Fib.java:22)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;あらら &amp;hellip; 不可解なエラーが出てしまいました。&lt;/p&gt;
-
-&lt;p&gt;種を明かすと kilim はバイトコード改変を利用しています。そのため、実行する前に、対象の &lt;code&gt;.class&lt;/code&gt; ファイルを &lt;code&gt;kilim.tools.Weaver&lt;/code&gt; で変換してやらないといけません（ソースコードのコメントを読むと、継続渡し形式(CPS)変換をしているらしい）。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% java -cp .:./kilim-0.5.jar:./asm-all-2.2.3.jar kilim.tools.Weaver -d . Fib
-Wrote: ./kilim/S_I2.class
-Wrote: ./Fib.class
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;なんだか &lt;code&gt;.class&lt;/code&gt; が増えちゃったけど、いまのところ気にしない&amp;hellip;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% java -cp .:./kilim-0.5.jar Fib
-Fib(0) = 0
-Fib(1) = 1
-Fib(2) = 1
-Fib(3) = 2
-Fib(4) = 3
-Fib(5) = 5
-Fib(6) = 8
-Fib(7) = 13
-Fib(8) = 21
-Fib(9) = 34
-Fib(10) = 55
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;今度は実行できました。フィボナッチ数が順番に出力されているのが分かると思います。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/06/26/java-generater-by-using-kilim/</guid>
+      <description>Twitter と Erlang をきっかけに注目を集めるようになった軽量プロセス（とかマイクロスレッドとか）を Java で実現するためのライブラリに kilim があります。
+ Isolation-typed actors for Java (PDF) InfoQ: Kilim - actors and message passing in Java  夜中に突然 Java が書きたくなって、まだ、Examples を動かしてみた程度ですが、とりあえず Python のジェネレーターっぽいことができるのは分かったので記事にしておきます。暇と知識が増えたら、もうすこし突っ込んだ記事もあげる予定です（自信がないので今回、ですます調）。
+ジェネレーターの例 では、本当につまらない例です。フィボナッチ数を求めるプログラムをどうぞ。
+import kilim.Generator; import kilim.pausable; public class Fib extends Generator&amp;lt;Integer&amp;gt; { public @pausable void execute() { // (1) int fib1 = 0; int fib2 = 1; while (true) { yield(fib1); // (2) fib2 = fib1 + fib2; fib1 = fib2 - fib1; } } public static void main(String[] args) { final Fib fib = new Fib(); for (int i = 0; i &amp;lt;= 10; i++) { System.</description>
     </item>
     
     <item>
       <title>ruby 1.8.6 と fastthread</title>
-      <link>http://www.metareal.org/2007/03/28/ruby-1-8-6-and-fastthread/</link>
+      <link>http://ishikawa.github.io/2007/03/28/ruby-1-8-6-and-fastthread/</link>
       <pubDate>Thu, 29 Mar 2007 08:42:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/03/28/ruby-1-8-6-and-fastthread/</guid>
-      <description>&lt;p&gt;新しい MacBook に &lt;a href=&#34;http://mongrel.rubyforge.org/&#34;&gt;Mongrel&lt;/a&gt; をインストールした。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% sudo gem install mongrel
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;そうすると、依存関係にある &lt;code&gt;fastthread&lt;/code&gt; という &lt;code&gt;gem&lt;/code&gt; が気になってしかたない。&lt;/p&gt;
-
-&lt;p&gt;検索してみると、「&lt;a href=&#34;http://d.hatena.ne.jp/someeda/20070104&#34;&gt;Mongrelと依存関係のあるfastthreadって？&lt;/a&gt;」というそのものズバリの記事があって、そういや前にも読んだぞ、この記事、てへ、とか思っていると、どうやら &lt;a href=&#34;http://www.ruby-lang.org/ja/news/2007/03/12/ruby-1-8-6-release/&#34;&gt;ruby 1.8.6&lt;/a&gt; には&lt;a href=&#34;http://svn.ruby-lang.org/repos/ruby/tags/v1_8_6/NEWS&#34;&gt;取り込まれているらしい&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;知らなかったよ。というか、1.8.6 もまだ試してないよ。&lt;/p&gt;
-
-&lt;p&gt;ちなみに、&lt;a href=&#34;http://www.nabble.com/-ruby-dev:30412--fastthread%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6-t3286461.html&#34;&gt;ruby-dev での議論もあった&lt;/a&gt;。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/03/28/ruby-1-8-6-and-fastthread/</guid>
+      <description>新しい MacBook に Mongrel をインストールした。
+% sudo gem install mongrel  そうすると、依存関係にある fastthread という gem が気になってしかたない。
+検索してみると、「Mongrelと依存関係のあるfastthreadって？」というそのものズバリの記事があって、そういや前にも読んだぞ、この記事、てへ、とか思っていると、どうやら ruby 1.8.6 には取り込まれているらしい。
+知らなかったよ。というか、1.8.6 もまだ試してないよ。
+ちなみに、ruby-dev での議論もあった。</description>
     </item>
     
   </channel>

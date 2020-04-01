@@ -1,221 +1,95 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Wordpress on METAREAL</title>
-    <link>http://www.metareal.org/tags/wordpress/index.xml</link>
-    <description>Recent content in Wordpress on METAREAL</description>
+    <title>wordpress on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/wordpress/</link>
+    <description>Recent content in wordpress on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Jan 2007 07:32:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Markdown 記法でアンダースコアを複数含む変数名を書く方法</title>
-      <link>http://www.metareal.org/2007/01/25/writing-underscores-named-variable-with-markdown/</link>
+      <link>http://ishikawa.github.io/2007/01/25/writing-underscores-named-variable-with-markdown/</link>
       <pubDate>Fri, 26 Jan 2007 07:32:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/01/25/writing-underscores-named-variable-with-markdown/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://daringfireball.net/projects/markdown/basics&#34;&gt;Markdown&lt;/a&gt; ではアンダースコアで囲むと強調になるので、アンダースコアでつなげるスタイルの変数がものすごく書きづらい。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;mt&amp;amp;#x5f;convert&amp;amp;#x5f;breaks
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;数値参照を使って、こんなふうに書くしかないのかね。&lt;/p&gt;
-
-&lt;p&gt;更に、等幅フォントで強調にするには、HTML タグを使わないと駄目っぽい。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;&amp;lt;strong&amp;gt;mt&amp;amp;#x5f;convert&amp;amp;#x5f;breaks&amp;lt;/strong&amp;gt;&amp;lt;/code&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;まあ、すでに Markdown じゃないわけだが。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;（追記）&lt;/strong&gt; yuin さんのコメントで気づいた。バッククォートで囲めば等幅フォントでそのまま出せるね。Markdown による記述と変換後の HTML で書くと、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;`mt_convert_breaks\ ` --&amp;gt; &amp;lt;code&amp;gt;mt_convert_breaks&amp;lt;/code&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;こうなるので大丈夫。&lt;/p&gt;
-
-&lt;p&gt;ただ、等幅フォントで強調もしようとすると大変になるみたい。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;(1) `__\ mt_convert_breaks__` --&amp;gt; &amp;lt;code&amp;gt;__mt_convert_breaks__&amp;lt;/code&amp;gt;
-(2) __\ `mt_convert_breaks`__\  --&amp;gt; &amp;lt;strong&amp;gt;&amp;lt;code&amp;gt;hoge_foo_bar&amp;lt;/code&amp;gt;&amp;lt;/strong&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-&lt;li&gt;は上手くいってそうなんだが、このブログでは &lt;a href=&#34;http://developer.yahoo.com/yui/&#34;&gt;YUI&lt;/a&gt; の &lt;code&gt;reset.css&lt;/code&gt; で &lt;code&gt;oode{font-style:normal;font-weight:normal;}&lt;/code&gt; となっているため効果なし。&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/01/25/writing-underscores-named-variable-with-markdown/</guid>
+      <description>Markdown ではアンダースコアで囲むと強調になるので、アンダースコアでつなげるスタイルの変数がものすごく書きづらい。
+mt&amp;amp;#x5f;convert&amp;amp;#x5f;breaks  数値参照を使って、こんなふうに書くしかないのかね。
+更に、等幅フォントで強調にするには、HTML タグを使わないと駄目っぽい。
+&amp;lt;code&amp;gt;&amp;lt;strong&amp;gt;mt&amp;amp;#x5f;convert&amp;amp;#x5f;breaks&amp;lt;/strong&amp;gt;&amp;lt;/code&amp;gt;  まあ、すでに Markdown じゃないわけだが。
+（追記） yuin さんのコメントで気づいた。バッククォートで囲めば等幅フォントでそのまま出せるね。Markdown による記述と変換後の HTML で書くと、
+`mt_convert_breaks\ ` --&amp;gt; &amp;lt;code&amp;gt;mt_convert_breaks&amp;lt;/code&amp;gt;  こうなるので大丈夫。
+ただ、等幅フォントで強調もしようとすると大変になるみたい。
+(1) `__\ mt_convert_breaks__` --&amp;gt; &amp;lt;code&amp;gt;__mt_convert_breaks__&amp;lt;/code&amp;gt; (2) __\ `mt_convert_breaks`__\ --&amp;gt; &amp;lt;strong&amp;gt;&amp;lt;code&amp;gt;hoge_foo_bar&amp;lt;/code&amp;gt;&amp;lt;/strong&amp;gt;   は上手くいってそうなんだが、このブログでは YUI の reset.css で oode{font-style:normal;font-weight:normal;} となっているため効果なし。  </description>
     </item>
     
     <item>
       <title>理想の &lt;title&gt; をもとめて</title>
-      <link>http://www.metareal.org/2007/01/08/looking-for-loving-title-element/</link>
+      <link>http://ishikawa.github.io/2007/01/08/looking-for-loving-title-element/</link>
       <pubDate>Tue, 09 Jan 2007 07:28:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/01/08/looking-for-loving-title-element/</guid>
-      <description>&lt;p&gt;WordPress のインストール直後は &lt;title&gt; タグを出力するテンプレートは以下のようになっていた。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;title&amp;gt;&amp;lt;?php bloginfo(&#39;name&#39;); ?&amp;gt; &amp;lt;?php if ( is_single() ) { ?&amp;gt; &amp;amp;raquo; Blog Archive &amp;lt;?php } ?&amp;gt; &amp;lt;?php wp_title(); ?&amp;gt;&amp;lt;/title&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これだと記事のタイトルは「&lt;strong&gt;ブログ名 » Blog Archive » 記事タイトル&lt;/strong&gt;」のようになる。これを「&lt;strong&gt;記事タイトル - ブログ名&lt;/strong&gt;」にしたくて、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;title&amp;gt;&amp;lt;?php
-  wp_title(&#39; &#39;);
-  if (wp_title(&#39; &#39;, false)) echo &#39; - &#39;;
-  bloginfo(&#39;name&#39;); ?&amp;gt;&amp;lt;/title&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;というテンプレートをいままでは使っていた。&lt;/p&gt;
-
-&lt;p&gt;しかし、今日はじめて気づいたのだが、これだと「&lt;strong&gt;  記事タイトル - ブログ名&lt;/strong&gt;」というふうに、タイトルの直前に余分なスペースが残ってしまう。&lt;/p&gt;
-
-&lt;p&gt;どうやら、&lt;a href=&#34;http://codex.wordpress.org/Template_Tags/wp_title&#34;&gt;wp_title()&lt;/a&gt; は区切り文字が空文字のときでも、周囲のスペースを挿入してしまうらしい。&lt;/p&gt;
-
-&lt;p&gt;しょうがないので、力技だが、出力前に &lt;code&gt;trim()&lt;/code&gt; してみる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;title&amp;gt;&amp;lt;?php
-  echo trim(wp_title(&#39;&#39;, false));
-  if (wp_title(&#39;&#39;, false)) echo &#39; - &#39;;
-  bloginfo(&#39;name&#39;); ?&amp;gt;&amp;lt;/title&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これでやっと「&lt;strong&gt;記事タイトル - ブログ名&lt;/strong&gt;」にできた。&lt;/p&gt;
-
-&lt;p&gt;なお、&lt;a href=&#34;http://elasticdog.com/2004/09/optimal-title/&#34;&gt;Optimal Title&lt;/a&gt; というプラグインもあるようだ。このプラグインをインストールすれば、区切り文字を末尾に追加してくれるバージョンの &lt;code&gt;wp_title()&lt;/code&gt; として、&lt;code&gt;optimal_title()&lt;/code&gt; が使えるようになる、とのこと。&lt;/p&gt;
-
-&lt;p&gt;うーん、&lt;code&gt;wp_title()&lt;/code&gt; がもうちょっと汎用的につくってあってもいいと思うんだけど&amp;hellip;。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/01/08/looking-for-loving-title-element/</guid>
+      <description>WordPress のインストール直後は  タグを出力するテンプレートは以下のようになっていた。
+&amp;lt;title&amp;gt;&amp;lt;?php bloginfo(&#39;name&#39;); ?&amp;gt; &amp;lt;?php if ( is_single() ) { ?&amp;gt; &amp;amp;raquo; Blog Archive &amp;lt;?php } ?&amp;gt; &amp;lt;?php wp_title(); ?&amp;gt;&amp;lt;/title&amp;gt;  これだと記事のタイトルは「ブログ名 » Blog Archive » 記事タイトル」のようになる。これを「記事タイトル - ブログ名」にしたくて、
+&amp;lt;title&amp;gt;&amp;lt;?php wp_title(&#39; &#39;); if (wp_title(&#39; &#39;, false)) echo &#39; - &#39;; bloginfo(&#39;name&#39;); ?&amp;gt;&amp;lt;/title&amp;gt;  というテンプレートをいままでは使っていた。
+しかし、今日はじめて気づいたのだが、これだと「 記事タイトル - ブログ名」というふうに、タイトルの直前に余分なスペースが残ってしまう。
+どうやら、wp_title() は区切り文字が空文字のときでも、周囲のスペースを挿入してしまうらしい。
+しょうがないので、力技だが、出力前に trim() してみる。
+&amp;lt;title&amp;gt;&amp;lt;?php echo trim(wp_title(&#39;&#39;, false)); if (wp_title(&#39;&#39;, false)) echo &#39; - &#39;; bloginfo(&#39;name&#39;); ?&amp;gt;&amp;lt;/title&amp;gt;  これでやっと「記事タイトル - ブログ名」にできた。</description>
     </item>
     
     <item>
       <title>Weighted Categories で最後のタグの URL がおかしいのを修正する</title>
-      <link>http://www.metareal.org/2007/01/02/fix-weighted-categories-url-problem/</link>
+      <link>http://ishikawa.github.io/2007/01/02/fix-weighted-categories-url-problem/</link>
       <pubDate>Wed, 03 Jan 2007 12:48:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/01/02/fix-weighted-categories-url-problem/</guid>
-      <description>&lt;p&gt;前回書いた「&lt;a href=&#34;http://weblog.metareal.org/2007/01/02/tag-cloud-url-problem/&#34;&gt;タグクラウドのリンクがおかしい？&lt;/a&gt;」という問題は、やはり &lt;a href=&#34;http://hitormiss.org/projects/weighted-categories/&#34;&gt;Weighted Categories&lt;/a&gt; のバグだった。&lt;/p&gt;
-
-&lt;p&gt;問題は WordPress の &lt;code&gt;list_cats&lt;/code&gt; で得たカテゴリーのリスト (HTML) を、配列に変換する部分：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function weighted_categories($smallest=10, $largest=48, $unit=&amp;quot;pt&amp;quot;, $exclude=&#39;&#39;)
-{
-      $cats = list_cats(1, &#39;all&#39;, &#39;name&#39;, &#39;asc&#39;, &#39;&#39;, 0, 0, 1, 1, 0, 1, 1, 0, 1, &#39;&#39;, &#39;&#39;, $exclude, 0);
-
-      **$cats = explode(&amp;quot;\n&amp;quot;, $cats);**
-      foreach ($cats as $cat)
-      {
-              ...
-      }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;強調部分で &lt;code&gt;$cats&lt;/code&gt; には末尾に改行が含まれているため、&lt;strong&gt;変換後の配列の最後の要素は空白文字列になる&lt;/strong&gt;。そのため、最後のタグの URL がおかしくなっていた。&lt;/p&gt;
-
-&lt;p&gt;つまり、末尾の空白を取り除いておけば、問題は解決する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;--- weighted_categories.php.origin    2007-01-02 15:27:48.000000000 +0900
-+++ weighted_categories.php   2007-01-02 15:38:13.000000000 +0900
-@@ -11,7 +11,7 @@
- {
-      $cats = list_cats(1, &#39;all&#39;, &#39;name&#39;, &#39;asc&#39;, &#39;&#39;, 0, 0, 1, 1, 0, 1, 1, 0, 1, &#39;&#39;, &#39;&#39;, $exclude, 0);
-
--     $cats = explode(&amp;quot;\n&amp;quot;, $cats);
-+     $cats = explode(&amp;quot;\n&amp;quot;, **trim($cats)**);
-      foreach ($cats as $cat)
-      {
-              eregi(&amp;quot;a href=\&amp;quot;(.+)\&amp;quot; &amp;quot;, $cat, $regs);
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/01/02/fix-weighted-categories-url-problem/</guid>
+      <description>前回書いた「タグクラウドのリンクがおかしい？」という問題は、やはり Weighted Categories のバグだった。
+問題は WordPress の list_cats で得たカテゴリーのリスト (HTML) を、配列に変換する部分：
+function weighted_categories($smallest=10, $largest=48, $unit=&amp;quot;pt&amp;quot;, $exclude=&#39;&#39;) { $cats = list_cats(1, &#39;all&#39;, &#39;name&#39;, &#39;asc&#39;, &#39;&#39;, 0, 0, 1, 1, 0, 1, 1, 0, 1, &#39;&#39;, &#39;&#39;, $exclude, 0); **$cats = explode(&amp;quot;\n&amp;quot;, $cats);** foreach ($cats as $cat) { ... }  強調部分で $cats には末尾に改行が含まれているため、変換後の配列の最後の要素は空白文字列になる。そのため、最後のタグの URL がおかしくなっていた。
+つまり、末尾の空白を取り除いておけば、問題は解決する。
+--- weighted_categories.php.origin 2007-01-02 15:27:48.000000000 +0900 +++ weighted_categories.php 2007-01-02 15:38:13.000000000 +0900 @@ -11,7 +11,7 @@ { $cats = list_cats(1, &#39;all&#39;, &#39;name&#39;, &#39;asc&#39;, &#39;&#39;, 0, 0, 1, 1, 0, 1, 1, 0, 1, &#39;&#39;, &#39;&#39;, $exclude, 0); - $cats = explode(&amp;quot;\n&amp;quot;, $cats); + $cats = explode(&amp;quot;\n&amp;quot;, **trim($cats)**); foreach ($cats as $cat) { eregi(&amp;quot;a href=\&amp;quot;(.</description>
     </item>
     
     <item>
       <title>タグクラウドのリンクがおかしい？</title>
-      <link>http://www.metareal.org/2007/01/02/tag-cloud-url-problem/</link>
+      <link>http://ishikawa.github.io/2007/01/02/tag-cloud-url-problem/</link>
       <pubDate>Wed, 03 Jan 2007 12:14:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/01/02/tag-cloud-url-problem/</guid>
-      <description>&lt;p&gt;このブログのサイドバーにあるタグクラウドの表示には、&lt;a href=&#34;http://hitormiss.org/projects/weighted-categories/&#34;&gt;Weighted Categories&lt;/a&gt; という &lt;a href=&#34;http://wordpress.org/&#34;&gt;WordPress&lt;/a&gt; プラグインを使っているのですが、どうも &lt;code&gt;xmlrpc&lt;/code&gt; というタグだけ URL がおかしい。&lt;/p&gt;
-
-&lt;p&gt;他のタグは絶対 URL なのに、こいつだけ&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;xmlrpc&amp;quot; title=&amp;quot;3 entries&amp;quot; style=&amp;quot;font-size: 15.6px;&amp;quot;&amp;gt;xmlrpc&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;こんな感じで URL が間違っている。うーん、プラグインのバグなのかなあ。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/01/02/tag-cloud-url-problem/</guid>
+      <description>このブログのサイドバーにあるタグクラウドの表示には、Weighted Categories という WordPress プラグインを使っているのですが、どうも xmlrpc というタグだけ URL がおかしい。
+他のタグは絶対 URL なのに、こいつだけ
+&amp;lt;a href=&amp;quot;xmlrpc&amp;quot; title=&amp;quot;3 entries&amp;quot; style=&amp;quot;font-size: 15.6px;&amp;quot;&amp;gt;xmlrpc&amp;lt;/a&amp;gt;  こんな感じで URL が間違っている。うーん、プラグインのバグなのかなあ。</description>
     </item>
     
     <item>
       <title>ブログの XML-RPC サポート</title>
-      <link>http://www.metareal.org/2006/12/11/weblog-xmlrpc-support/</link>
+      <link>http://ishikawa.github.io/2006/12/11/weblog-xmlrpc-support/</link>
       <pubDate>Mon, 11 Dec 2006 08:21:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2006/12/11/weblog-xmlrpc-support/</guid>
-      <description>&lt;p&gt;個人的メモとして、各ブログの &lt;a href=&#34;http://www.xmlrpc.com/spec&#34;&gt;XML-RPC&lt;/a&gt; サポート状況をまとめてみた。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.sixapart.jp/movabletype/mt3/&#34;&gt;Movable Type&lt;/a&gt; は
-&lt;a href=&#34;http://www.blogger.com/&#34;&gt;Blogger&lt;/a&gt; の API と、&lt;a href=&#34;http://www.userland.com/&#34;&gt;米 UserLand Software 社&lt;/a&gt;の
-MetaWeblog API に準拠しているようだ。また、&lt;a href=&#34;http://wordpress.org/&#34;&gt;WordPress&lt;/a&gt; も &lt;a href=&#34;http://codex.wordpress.org/XML-RPC_Support&#34;&gt;Movable Type に準ずるかたちになっている&lt;/a&gt;。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.sixapart.jp/movabletype/manual/3.3/03_blog_admin_guide/customizing_blogs/xmlrpc_api.html&#34;&gt;Movable Type 3.3 マニュアル - XML-RPC API&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.na.rim.or.jp/~tsupo/program/blogTool/mt_xmlRpc.html&#34;&gt;Movable Type で使える XML-RPC API&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.xmlrpc.com/metaWeblogApi&#34;&gt;MetaWeblog API&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;面白いのは Blogger。
-現在は XML-RPC ではなく、 &lt;a href=&#34;http://code.google.com/apis/gdata/overview.html&#34;&gt;Google Data APIs (GData)&lt;/a&gt; による &lt;a href=&#34;http://code.google.com/apis/gdata/blogger.html&#34;&gt;Blogger Data API&lt;/a&gt; を使用している。&lt;/p&gt;
-
-&lt;p&gt;Web ページのサイドバーには他にも &lt;strong&gt;&amp;ldquo;Calendar Data API&amp;rdquo;&lt;/strong&gt; や &lt;strong&gt;&amp;ldquo;Spreadsheets Data API&amp;rdquo;&lt;/strong&gt; など、Google の他サービスの名前が並んでいるので、GData はこれらのサービスでも実装されているのだろう。GData によるサービス同士の連携もあるのかもしれない。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2006/12/11/weblog-xmlrpc-support/</guid>
+      <description>個人的メモとして、各ブログの XML-RPC サポート状況をまとめてみた。
+Movable Type は Blogger の API と、米 UserLand Software 社の MetaWeblog API に準拠しているようだ。また、WordPress も Movable Type に準ずるかたちになっている。
+ Movable Type 3.3 マニュアル - XML-RPC API Movable Type で使える XML-RPC API MetaWeblog API  面白いのは Blogger。 現在は XML-RPC ではなく、 Google Data APIs (GData) による Blogger Data API を使用している。
+Web ページのサイドバーには他にも &amp;ldquo;Calendar Data API&amp;rdquo; や &amp;ldquo;Spreadsheets Data API&amp;rdquo; など、Google の他サービスの名前が並んでいるので、GData はこれらのサービスでも実装されているのだろう。GData によるサービス同士の連携もあるのかもしれない。</description>
     </item>
     
     <item>
       <title>サイドバーの Archives で日付表記を変更する</title>
-      <link>http://www.metareal.org/2006/12/08/wordpress-archives-date-format/</link>
+      <link>http://ishikawa.github.io/2006/12/08/wordpress-archives-date-format/</link>
       <pubDate>Fri, 08 Dec 2006 09:30:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2006/12/08/wordpress-archives-date-format/</guid>
-      <description>&lt;p&gt;WordPress のサイドバーに表示されている「Archives」だが、日付の表記が「November 2006」のようになっている。&lt;strong&gt;私の推測では&lt;/strong&gt; November が何月なのか、すぐにわかる人はすくないはずだ。できれば、ここはなんとかしたい。&lt;/p&gt;
-
-&lt;p&gt;管理画面の「Options」にあった「Date and Time」の設定を変更してみた。しかし、&lt;strong&gt;どこにも反映されている気配がない&lt;/strong&gt;ので（わざわざ &lt;a href=&#34;http://php.net/date&#34;&gt;PHP のドキュメント&lt;/a&gt;を読んだっていうのに&amp;hellip;）、ソースコードを調べることにする。&lt;/p&gt;
-
-&lt;p&gt;テンプレートを眺めてみると、&lt;code&gt;wp_get_archives&lt;/code&gt; という PHP の関数を呼び出している。で、こいつは引数の解析だけやって、実際の処理は &lt;code&gt;get_archives&lt;/code&gt; 関数が行う。&lt;/p&gt;
-
-&lt;p&gt;ファイルは &lt;code&gt;wp-includes/template-functions-general.php&lt;/code&gt; の 300 行目あたり。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function get_archives($type=&#39;&#39;, $limit=&#39;&#39;, $format=&#39;html&#39;, $before = &#39;&#39;, $after = &#39;&#39;, $show_post_count = false) {
-  ...
-  if ( &#39;monthly&#39; == $type ) {
-    ...
-        if ( $show_post_count ) {
-          **$text = sprintf(&#39;%s %d&#39;, $month[zeroise($arcresult-&amp;gt;month,2)], $arcresult-&amp;gt;year);**
-          $after = &#39; (&#39;.$arcresult-&amp;gt;posts.&#39;)&#39; . $afterafter;
-        } else {
-          **$text = sprintf(&#39;%s %d&#39;, $month[zeroise($arcresult-&amp;gt;month,2)], $arcresult-&amp;gt;year);**
-        }
-        echo get_archives_link($url, $text, $format, $before, $after);
-      }
-    }
-  } elseif ( &#39;daily&#39; == $type ) {
-  ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;どうやら月別表示のフォーマットは &lt;code&gt;sprintf&lt;/code&gt; で決め打ちらしいので、アドホックなコードにはアドホックな修正で対応する。PHP でプログラミングをしたことはないが、まあ&lt;strong&gt;適当に書いたら動くだろう&lt;/strong&gt;、という魂胆。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function get_archives($type=&#39;&#39;, $limit=&#39;&#39;, $format=&#39;html&#39;, $before = &#39;&#39;, $after = &#39;&#39;, $show_post_count = false) {
-  ...
-  if ( &#39;monthly&#39; == $type ) {
-      $url = get_month_link($arcresult-&amp;gt;year, $arcresult-&amp;gt;month);
-      **$text = sprintf(&#39;%04d/%02d&#39;, $arcresult-&amp;gt;year, $arcresult-&amp;gt;month);**
-      if ( $show_post_count ) {
-        $after = &#39; (&#39;.$arcresult-&amp;gt;posts.&#39;)&#39; . $afterafter;
-      }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これで「November 2006」が「2006/11」と表示されるようになった。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2006/12/08/wordpress-archives-date-format/</guid>
+      <description>WordPress のサイドバーに表示されている「Archives」だが、日付の表記が「November 2006」のようになっている。私の推測では November が何月なのか、すぐにわかる人はすくないはずだ。できれば、ここはなんとかしたい。
+管理画面の「Options」にあった「Date and Time」の設定を変更してみた。しかし、どこにも反映されている気配がないので（わざわざ PHP のドキュメントを読んだっていうのに&amp;hellip;）、ソースコードを調べることにする。
+テンプレートを眺めてみると、wp_get_archives という PHP の関数を呼び出している。で、こいつは引数の解析だけやって、実際の処理は get_archives 関数が行う。
+ファイルは wp-includes/template-functions-general.php の 300 行目あたり。
+function get_archives($type=&#39;&#39;, $limit=&#39;&#39;, $format=&#39;html&#39;, $before = &#39;&#39;, $after = &#39;&#39;, $show_post_count = false) { ... if ( &#39;monthly&#39; == $type ) { ... if ( $show_post_count ) { **$text = sprintf(&#39;%s %d&#39;, $month[zeroise($arcresult-&amp;gt;month,2)], $arcresult-&amp;gt;year);** $after = &#39; (&#39;.$arcresult-&amp;gt;posts.&#39;)&#39; . $afterafter; } else { **$text = sprintf(&#39;%s %d&#39;, $month[zeroise($arcresult-&amp;gt;month,2)], $arcresult-&amp;gt;year);** } echo get_archives_link($url, $text, $format, $before, $after); } } } elseif ( &#39;daily&#39; == $type ) { .</description>
     </item>
     
   </channel>

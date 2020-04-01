@@ -1,225 +1,80 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rparsec on METAREAL</title>
-    <link>http://www.metareal.org/tags/rparsec/index.xml</link>
-    <description>Recent content in Rparsec on METAREAL</description>
+    <title>rparsec on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/rparsec/</link>
+    <description>Recent content in rparsec on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/rparsec/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Dec 2007 11:10:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/rparsec/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>rparsec での繰り返しと選択</title>
-      <link>http://www.metareal.org/2007/12/16/rparsec-quantifier-and-alternation/</link>
+      <link>http://ishikawa.github.io/2007/12/16/rparsec-quantifier-and-alternation/</link>
       <pubDate>Sun, 16 Dec 2007 11:10:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/16/rparsec-quantifier-and-alternation/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec&#34;&gt;rparsec&lt;/a&gt; では文法要素の繰り返しを指定する方法が複数用意されている。&lt;/p&gt;
-
-&lt;h3 id=&#34;繰り返し&#34;&gt;繰り返し&lt;/h3&gt;
-
-&lt;p&gt;まずは「&lt;a href=&#34;http://weblog.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/&#34;&gt;RParsec の many と many_ の違い&lt;/a&gt;」でも解説した &lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000016&#34;&gt;&lt;code&gt;many&lt;/code&gt;&lt;/a&gt; と &lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000015&#34;&gt;&lt;code&gt;many_&lt;/code&gt;&lt;/a&gt; があり、これで m 回以上の繰り返しを指定できる（正規表現でいう &lt;code&gt;*&lt;/code&gt;, &lt;code&gt;+&lt;/code&gt;, &lt;code&gt;{n,}&lt;/code&gt;）。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000014&#34;&gt;&lt;code&gt;repeat&lt;/code&gt;&lt;/a&gt;, &lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000013&#34;&gt;&lt;code&gt;repeat_&lt;/code&gt;&lt;/a&gt; は m 回以上、最大 n 回の繰り返しを指定できる（正規表現でいえば &lt;code&gt;{m,n}&lt;/code&gt;）。また、&lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000018&#34;&gt;&lt;code&gt;some&lt;/code&gt;&lt;/a&gt;, &lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000017&#34;&gt;&lt;code&gt;some_&lt;/code&gt;&lt;/a&gt; では最大 n 回の繰り返しを指定できる（正規表現でいえば &lt;code&gt;{0,n}&lt;/code&gt;。実際のところ、some は &lt;code&gt;min&lt;/code&gt; 引数に &lt;code&gt;0&lt;/code&gt; を指定して、repeat を呼び出しているにすぎない）。&lt;/p&gt;
-
-&lt;p&gt;なお、メソッド名の最後にあるアンダースコアの有無については、「&lt;a href=&#34;http://weblog.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/&#34;&gt;RParsec の many と many_ の違い&lt;/a&gt;」で解説したとおりで、アンダースコアのつかないメソッドはすべての結果を配列で返し、アンダースコアのつくメソッドは最後の結果のみを返す。&lt;/p&gt;
-
-&lt;h3 id=&#34;選択&#34;&gt;選択&lt;/h3&gt;
-
-&lt;p&gt;正規表現でいうところの選択も用意されている。このためのメソッドは &lt;code&gt;|&lt;/code&gt; なので、見た目は正規表現と似通っている。&lt;/p&gt;
-
-&lt;p&gt;たとえば、以下のコードは、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;number | word
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;数値、または一般的な識別子を解釈するためのパーサになる。&lt;/p&gt;
-
-&lt;p&gt;また、文法要素のグループ化は簡単で、通常の Ruby プログラムと同じく括弧で囲めばよい。たとえば、空白区切りの数値、または識別子を解釈するためのパーサは以下のように書ける。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;parser = ((number | word) &amp;lt;&amp;lt; whitespace.many_).many
-parser.parse(&amp;quot;123 abc 56.7&amp;quot;) =&amp;gt; [&amp;quot;123&amp;quot;, &amp;quot;abc&amp;quot;, &amp;quot;56.7&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000022&#34;&gt;&lt;code&gt;Parser#delimited&lt;/code&gt;&lt;/a&gt; を使って、もっと直感的に書くこともできる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;parser = (number | word).delimited(whitespaces)
-parser.parse(&amp;quot;123 abc 56.7&amp;quot;) =&amp;gt; [&amp;quot;123&amp;quot;, &amp;quot;abc&amp;quot;, &amp;quot;56.7&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/12/16/rparsec-quantifier-and-alternation/</guid>
+      <description>rparsec では文法要素の繰り返しを指定する方法が複数用意されている。
+繰り返し まずは「RParsec の many と many_ の違い」でも解説した many と many_ があり、これで m 回以上の繰り返しを指定できる（正規表現でいう *, +, {n,}）。
+repeat, repeat_ は m 回以上、最大 n 回の繰り返しを指定できる（正規表現でいえば {m,n}）。また、some, some_ では最大 n 回の繰り返しを指定できる（正規表現でいえば {0,n}。実際のところ、some は min 引数に 0 を指定して、repeat を呼び出しているにすぎない）。
+なお、メソッド名の最後にあるアンダースコアの有無については、「RParsec の many と many_ の違い」で解説したとおりで、アンダースコアのつかないメソッドはすべての結果を配列で返し、アンダースコアのつくメソッドは最後の結果のみを返す。
+選択 正規表現でいうところの選択も用意されている。このためのメソッドは | なので、見た目は正規表現と似通っている。
+たとえば、以下のコードは、
+number | word  数値、または一般的な識別子を解釈するためのパーサになる。
+また、文法要素のグループ化は簡単で、通常の Ruby プログラムと同じく括弧で囲めばよい。たとえば、空白区切りの数値、または識別子を解釈するためのパーサは以下のように書ける。
+parser = ((number | word) &amp;lt;&amp;lt; whitespace.many_).many parser.parse(&amp;quot;123 abc 56.7&amp;quot;) =&amp;gt; [&amp;quot;123&amp;quot;, &amp;quot;abc&amp;quot;, &amp;quot;56.</description>
     </item>
     
     <item>
       <title>rparsec の四則演算デモを浮動小数点に対応させる</title>
-      <link>http://www.metareal.org/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</link>
+      <link>http://ishikawa.github.io/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</link>
       <pubDate>Fri, 14 Dec 2007 10:05:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec&#34;&gt;rparsec&lt;/a&gt; の&lt;a href=&#34;http://weblog.metareal.org/2007/12/11/studying-rparsec-introduction/#rparsec-calculator-demo&#34;&gt;四則演算デモ&lt;/a&gt;を試しているうちに、整数による演算しかできないことに気づくことと思う。&lt;/p&gt;
-
-&lt;p&gt;四則演算デモが &lt;code&gt;calculator.rb&lt;/code&gt; にあるとして、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;require &#39;calculator.rb&#39;
-parser = Calculator.new.parser
-parser.parse &#39;1+2*(3-1)&#39;
-=&amp;gt; 5
-parser.parse &#39;4 * 2.5&#39;
-=&amp;gt; 8
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;小数を計算させてみると、エラーにはならないものの、計算結果がおかしなことになっている。&lt;/p&gt;
-
-&lt;p&gt;実は、この四則演算デモは数値として整数しか解釈しない。そのため、&lt;code&gt;4 * 2.5&lt;/code&gt; を計算させたときは、&lt;code&gt;2.5&lt;/code&gt; の &lt;code&gt;&amp;quot;.&amp;quot;&lt;/code&gt; で解釈をやめてしまい、そこまでの &lt;code&gt;4 * 2&lt;/code&gt; を計算して返した、という具合だ。&lt;/p&gt;
-
-&lt;p&gt;ソースコードで数値をパースしている箇所は、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;term = integer.map(&amp;amp;To_i) | char(&#39;(&#39;) &amp;gt;&amp;gt; lazy{expr} &amp;lt;&amp;lt; char(&#39;)&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;どうみても、この行の左半分なので、ここを &lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/&#34;&gt;API リファレンス&lt;/a&gt;を参考に、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;term = number.map(&amp;amp;To_f) | char(&#39;(&#39;) &amp;gt;&amp;gt; lazy{expr} &amp;lt;&amp;lt; char(&#39;)&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;こう書き換えれば動く。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;parser.parse &#39;4 * 2.5&#39;
-=&amp;gt; 10.0
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</guid>
+      <description>rparsec の四則演算デモを試しているうちに、整数による演算しかできないことに気づくことと思う。
+四則演算デモが calculator.rb にあるとして、
+require &#39;calculator.rb&#39; parser = Calculator.new.parser parser.parse &#39;1+2*(3-1)&#39; =&amp;gt; 5 parser.parse &#39;4 * 2.5&#39; =&amp;gt; 8  小数を計算させてみると、エラーにはならないものの、計算結果がおかしなことになっている。
+実は、この四則演算デモは数値として整数しか解釈しない。そのため、4 * 2.5 を計算させたときは、2.5 の &amp;quot;.&amp;quot; で解釈をやめてしまい、そこまでの 4 * 2 を計算して返した、という具合だ。
+ソースコードで数値をパースしている箇所は、
+term = integer.map(&amp;amp;To_i) | char(&#39;(&#39;) &amp;gt;&amp;gt; lazy{expr} &amp;lt;&amp;lt; char(&#39;)&#39;)  どうみても、この行の左半分なので、ここを API リファレンスを参考に、
+term = number.map(&amp;amp;To_f) | char(&#39;(&#39;) &amp;gt;&amp;gt; lazy{expr} &amp;lt;&amp;lt; char(&#39;)&#39;)  こう書き換えれば動く。
+parser.parse &#39;4 * 2.5&#39; =&amp;gt; 10.0  </description>
     </item>
     
     <item>
       <title>RParsec の many と many_ の違い</title>
-      <link>http://www.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</link>
+      <link>http://ishikawa.github.io/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</link>
       <pubDate>Thu, 13 Dec 2007 09:09:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/12/11/studying-rparsec-introduction/#rparsec-calculator-demo&#34;&gt;前回の四則演算デモ&lt;/a&gt;で真っ先に目を引いたのは &lt;code&gt;many_&lt;/code&gt; という奇妙な名前のメソッドだった。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;delim = whitespace.many_
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;他にもっと注目すべきところがあるだろうと言われそうだが、&lt;strong&gt;非公開の関数か一時変数のようなメソッド&lt;/strong&gt;が公開 API の一部というのに驚いた。&lt;/p&gt;
-
-&lt;p&gt;また、&lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000015&#34;&gt;many_&lt;/a&gt; は &lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/classes/Parser.html&#34;&gt;Parser&lt;/a&gt; クラスのメソッドだが、このクラスには他にも &lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000016&#34;&gt;many&lt;/a&gt; というメソッドが用意されている。&lt;/p&gt;
-
-&lt;p&gt;両者の違いは何だろう？&lt;/p&gt;
-
-&lt;h3 id=&#34;many-と-many-の違い&#34;&gt;many と many_ の違い&lt;/h3&gt;
-
-&lt;p&gt;上記リンク先の API リファレンスによれば、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;many は複数回マッチしたそれぞれの結果を配列で返し、&lt;/li&gt;
-&lt;li&gt;many_ は最後にマッチした結果のみを返す&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;という違いだけのようだ。irb で実際に動作を確認してみよう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% irb
-irb(main):001:0&amp;gt; require &#39;rubygems&#39;
-irb(main):002:0&amp;gt; require &#39;rparsec&#39;
-irb(main):003:0&amp;gt; include Parsers
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;まずは必要な require や include を済ませておく。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;irb(main):004:0&amp;gt; whitespace.many.parse(&amp;quot;\t\r\n&amp;quot;)
-=&amp;gt; [9, 13, 10]
-irb(main):005:0&amp;gt; whitespace.many_.parse(&amp;quot;\t\r\n&amp;quot;)
-=&amp;gt; 10
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;many では引数で渡した文字列（タブと改行）の各文字が配列で返されるのにたいして、many_ では最後の改行文字のみが返されているのが確認できた。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;irb(main):007:0&amp;gt; whitespace.many.parse(&amp;quot;&amp;quot;)
-=&amp;gt; []
-irb(main):006:0&amp;gt; whitespace.many_.parse(&amp;quot;&amp;quot;)
-=&amp;gt; nil
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ちなみに、一度もマッチしなかった場合は many では空の配列、many_ では nil が返されるようだ。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</guid>
+      <description>前回の四則演算デモで真っ先に目を引いたのは many_ という奇妙な名前のメソッドだった。
+delim = whitespace.many_  他にもっと注目すべきところがあるだろうと言われそうだが、非公開の関数か一時変数のようなメソッドが公開 API の一部というのに驚いた。
+また、many_ は Parser クラスのメソッドだが、このクラスには他にも many というメソッドが用意されている。
+両者の違いは何だろう？
+many と many_ の違い 上記リンク先の API リファレンスによれば、
+ many は複数回マッチしたそれぞれの結果を配列で返し、 many_ は最後にマッチした結果のみを返す  という違いだけのようだ。irb で実際に動作を確認してみよう。
+% irb irb(main):001:0&amp;gt; require &#39;rubygems&#39; irb(main):002:0&amp;gt; require &#39;rparsec&#39; irb(main):003:0&amp;gt; include Parsers  まずは必要な require や include を済ませておく。
+irb(main):004:0&amp;gt; whitespace.many.parse(&amp;quot;\t\r\n&amp;quot;) =&amp;gt; [9, 13, 10] irb(main):005:0&amp;gt; whitespace.many_.parse(&amp;quot;\t\r\n&amp;quot;) =&amp;gt; 10  many では引数で渡した文字列（タブと改行）の各文字が配列で返されるのにたいして、many_ では最後の改行文字のみが返されているのが確認できた。
+irb(main):007:0&amp;gt; whitespace.many.parse(&amp;quot;&amp;quot;) =&amp;gt; [] irb(main):006:0&amp;gt; whitespace.many_.parse(&amp;quot;&amp;quot;) =&amp;gt; nil  ちなみに、一度もマッチしなかった場合は many では空の配列、many_ では nil が返されるようだ。</description>
     </item>
     
     <item>
       <title>Ruby によるパーサ・コンビネータ rparsec</title>
-      <link>http://www.metareal.org/2007/12/11/studying-rparsec-introduction/</link>
+      <link>http://ishikawa.github.io/2007/12/11/studying-rparsec-introduction/</link>
       <pubDate>Tue, 11 Dec 2007 10:52:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/12/11/studying-rparsec-introduction/</guid>
-      <description>
-
-&lt;p&gt;Java による &lt;a href=&#34;http://www.lab2.kuis.kyoto-u.ac.jp/~hanatani/tmp/Parsec.html&#34;&gt;parsec&lt;/a&gt; の実装 &lt;a href=&#34;http://docs.codehaus.org/display/JPARSEC/Home&#34;&gt;JParsec&lt;/a&gt; を Ruby に移植した &lt;a href=&#34;http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec&#34;&gt;rparsec&lt;/a&gt; を勉強中。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://docs.codehaus.org/display/JPARSEC/rparsec+overview&#34;&gt;rparsec overview&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://jparsec.codehaus.org/rparsec/api/&#34;&gt;rparsec RDoc&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;パーサ-コンビネータ&#34;&gt;パーサ・コンビネータ&lt;/h3&gt;
-
-&lt;p&gt;Parsec、パーサ・コンビネータについては「&lt;a href=&#34;http://d.hatena.ne.jp/tanakh/20040730&#34;&gt;最強のパーザー、Parser Combinator - 純粋関数型雑記帳&lt;/a&gt;」が参考になる。&lt;/p&gt;
-
-&lt;p&gt;Yacc や Bison などのコンパイラ・コンパイラと比較したときのパーサ・コンビネータの強味としては、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;パーサを実装言語と同じ言語で書ける&lt;/li&gt;
-&lt;li&gt;プログラムがそのまま文法定義のように読める&lt;/li&gt;
-&lt;li&gt;パーサは普通の関数やオブジェクトなので、パーサをラップした別のパーサを生成する関数を定義したりするのも簡単にできる&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;などがあるようだ。&lt;/p&gt;
-
-&lt;h3 id=&#34;rparsec-のインストール&#34;&gt;rparsec のインストール&lt;/h3&gt;
-
-&lt;p&gt;普通に &lt;a href=&#34;http://rubyforge.org/projects/rparsec/&#34;&gt;RubyForge&lt;/a&gt; で gem がホスティングされているので、&lt;code&gt;gem&lt;/code&gt; コマンド一発でインストールできる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% sudo gem install rparsec
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;四則演算デモ&#34;&gt;四則演算デモ&lt;/h3&gt;
-
-&lt;p&gt;まずは公式ページにもデモとして紹介されている四則演算から。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/usr/local/bin/ruby
-require &#39;rubygems&#39;
-require &#39;rparsec&#39;
-
-class Calculator
-  include Parsers
-  include Functors
-  def parser
-    ops = OperatorTable.new.
-      infixl(char(?+) &amp;gt;&amp;gt; Plus, 20).
-      infixl(char(?-) &amp;gt;&amp;gt; Minus, 20).
-      infixl(char(?*) &amp;gt;&amp;gt; Mul, 40).
-      infixl(char(?/) &amp;gt;&amp;gt; Div, 40).
-      prefix(char(?-) &amp;gt;&amp;gt; Neg, 60)
-    expr = nil
-    term = integer.map(&amp;amp;To_i) | char(&#39;(&#39;) &amp;gt;&amp;gt; lazy{expr} &amp;lt;&amp;lt; char (&#39;)&#39;)
-    delim = whitespace.many_
-    expr = delim &amp;gt;&amp;gt; Expressions.build(term, ops, delim)
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これを calc.rb として保存し、irb から簡単な数式を処理させてみる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% irb
-irb(main):001:0&amp;gt; require &#39;calc&#39;
-=&amp;gt; true
-irb(main):002:0&amp;gt; Calculator.new.parser.parse &#39;1+2*(3-1)&#39;
-=&amp;gt; 5
-# =&amp;gt; 5
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/12/11/studying-rparsec-introduction/</guid>
+      <description>Java による parsec の実装 JParsec を Ruby に移植した rparsec を勉強中。
+ rparsec overview rparsec RDoc  パーサ・コンビネータ Parsec、パーサ・コンビネータについては「最強のパーザー、Parser Combinator - 純粋関数型雑記帳」が参考になる。
+Yacc や Bison などのコンパイラ・コンパイラと比較したときのパーサ・コンビネータの強味としては、
+ パーサを実装言語と同じ言語で書ける プログラムがそのまま文法定義のように読める パーサは普通の関数やオブジェクトなので、パーサをラップした別のパーサを生成する関数を定義したりするのも簡単にできる  などがあるようだ。
+rparsec のインストール 普通に RubyForge で gem がホスティングされているので、gem コマンド一発でインストールできる。
+% sudo gem install rparsec  四則演算デモ まずは公式ページにもデモとして紹介されている四則演算から。
+#!/usr/local/bin/ruby require &#39;rubygems&#39; require &#39;rparsec&#39; class Calculator include Parsers include Functors def parser ops = OperatorTable.new. infixl(char(?+) &amp;gt;&amp;gt; Plus, 20). infixl(char(?-) &amp;gt;&amp;gt; Minus, 20).</description>
     </item>
     
   </channel>

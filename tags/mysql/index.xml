@@ -1,655 +1,118 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mysql on METAREAL</title>
-    <link>http://www.metareal.org/tags/mysql/index.xml</link>
-    <description>Recent content in Mysql on METAREAL</description>
+    <title>mysql on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/mysql/</link>
+    <description>Recent content in mysql on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Feb 2008 08:37:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Rails の Migration で MySQL の型を指定する</title>
-      <link>http://www.metareal.org/2008/02/06/using-mysql-data-types-in-rails-migration/</link>
+      <link>http://ishikawa.github.io/2008/02/06/using-mysql-data-types-in-rails-migration/</link>
       <pubDate>Thu, 07 Feb 2008 08:37:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/02/06/using-mysql-data-types-in-rails-migration/</guid>
-      <description>
-
-&lt;p&gt;たとえば、こんな感じの &lt;a href=&#34;http://api.rubyonrails.org/classes/ActiveRecord/Migration.html&#34;&gt;Migration&lt;/a&gt; を考えてみる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class CreatePepsi &amp;lt; ActiveRecord::Migration
-  def self.up
-    create_table :pepsies do |t|
-      t.column :coke,       :string, :limit =&amp;gt; 64
-      t.column :jolt,       :integer
-      t.column :created_at, :datetime
-      t.column :updated_at, :datetime
-    end
-  end
-
-  def self.down
-    drop_table :addresses
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Rails 2.0 の &lt;a href=&#34;http://ryandaigle.com/articles/2007/5/6/what-s-new-in-edge-rails-bringin-sexy-back&#34;&gt;sexy migration&lt;/a&gt; ではこんなふうにも書けるんだけど、個人的に馴染まないので今回はスルー。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class CreatePepsi &amp;lt; ActiveRecord::Migration
-  def self.up
-    create_table :pepsies do |t|
-      t.string  :coke, :limit =&amp;gt; 64
-      t.integer :jolt
-      t.timestamps
-    end
-  end
-
-  def self.down
-    drop_table :addresses
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;rake db:migrate&lt;/code&gt; したときの &lt;code&gt;CREATE TABLE&lt;/code&gt; はこうなる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;CREATE TABLE `pepsies` (
-  `id` int(11) NOT NULL auto_increment,
-  `coke` varchar(64) default NULL,
-  `jolt` int(11) default NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;string は MySQL の VARCHAR に、integer は int になる。これを CHAR とか SMALLINT とかにできないか、というのが今回の話題。&lt;/p&gt;
-
-&lt;h3 id=&#34;char-とか-smallint-とかにしてみる&#34;&gt;CHAR とか SMALLINT とかにしてみる&lt;/h3&gt;
-
-&lt;p&gt;結論からいえば、これでよい。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class CreatePepsi &amp;lt; ActiveRecord::Migration
-  def self.up
-    create_table :pepsies do |t|
-      t.column :coke,       :CHAR, :limit =&amp;gt; 64
-      t.column :jolt,       :SMALLINT
-      t.column :created_at, :datetime
-      t.column :updated_at, :datetime
-    end
-  end
-
-  def self.down
-    drop_table :addresses
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;本当に CHAR とか SMALLINT とかにしてみただけである（といっても Symbol になってるけど）。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;CREATE TABLE&lt;/code&gt; はこうなる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;CREATE TABLE `pepsies` (
-  `id` int(11) NOT NULL auto_increment,
-  `coke` char(1) default NULL,
-  `jolt` smallint(6) default NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;limit-が効かない&#34;&gt;:limit が効かない&lt;/h3&gt;
-
-&lt;p&gt;SQL を見ると分かるように &lt;code&gt;coke&lt;/code&gt; が &lt;code&gt;char(1)&lt;/code&gt; となってしまい、Migration で指定した &lt;code&gt;:limit =&amp;gt; 64&lt;/code&gt; が効いていないようだ。&lt;/p&gt;
-
-&lt;p&gt;とりあえず素直に対応してみよう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class CreatePepsi &amp;lt; ActiveRecord::Migration
-  def self.up
-    create_table :pepsies do |t|
-      t.column :coke,       :&amp;quot;CHAR(64)&amp;quot;
-      t.column :jolt,       :SMALLINT
-...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;:CHAR&lt;/code&gt; という指定を &lt;code&gt;:&amp;quot;CHAR(64)&amp;quot;&lt;/code&gt; にしたわけだ（&lt;a href=&#34;http://www.ruby-lang.org/ja/man/html/_A5EAA5C6A5E9A5EB.html#a.a5.b7.a5.f3.a5.dc.a5.eb&#34;&gt;Ruby の Symbol リテラルでは :&amp;ldquo;&amp;hellip;&amp;rdquo; や :&amp;lsquo;&amp;hellip;&amp;rsquo; の形式で、任意のシンボルを定義することができる&lt;/a&gt;）。&lt;/p&gt;
-
-&lt;p&gt;再度、&lt;code&gt;CREATE TABLE&lt;/code&gt; を確認。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;CREATE TABLE `pepsies` (
-  `id` int(11) NOT NULL auto_increment,
-  `coke` char(64) default NULL,
-  `jolt` smallint(6) default NULL,
-...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;うまくいったらしい。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/02/06/using-mysql-data-types-in-rails-migration/</guid>
+      <description>たとえば、こんな感じの Migration を考えてみる。
+class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pepsies do |t| t.column :coke, :string, :limit =&amp;gt; 64 t.column :jolt, :integer t.column :created_at, :datetime t.column :updated_at, :datetime end end def self.down drop_table :addresses end end  Rails 2.0 の sexy migration ではこんなふうにも書けるんだけど、個人的に馴染まないので今回はスルー。
+class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pepsies do |t| t.string :coke, :limit =&amp;gt; 64 t.integer :jolt t.timestamps end end def self.down drop_table :addresses end end  rake db:migrate したときの CREATE TABLE はこうなる。</description>
     </item>
     
     <item>
       <title>InnoDB の AUTO_INCREMENT とロック</title>
-      <link>http://www.metareal.org/2007/10/08/scalability-issue-with-innodb-auto-increment-column/</link>
+      <link>http://ishikawa.github.io/2007/10/08/scalability-issue-with-innodb-auto-increment-column/</link>
       <pubDate>Tue, 09 Oct 2007 12:29:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/10/08/scalability-issue-with-innodb-auto-increment-column/</guid>
-      <description>
-
-&lt;p&gt;きっかけは &lt;a href=&#34;http://www.mysql-ucj2007.jp/index.html&#34;&gt;MySQL Users Conference Japan 2007&lt;/a&gt; の講演資料「新ストレージエンジン Falcon のアーキテクチャ詳細技術解説」だった。&lt;/p&gt;
-
-&lt;p&gt;Falcon とは MySQL 6.0 で搭載予定の新しいストレージエンジンである。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://dev.mysql.com/doc/falcon/en/index.html&#34;&gt;MySQL AB :: Falcon Storage Engine Guide&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://journal.mycom.co.jp/special/2007/falcon/&#34;&gt;MySQLの新ストレージエンジン Falcon 徹底リサーチ | マイコミジャーナル&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;この講演資料で Falcon が InnoDB より優れている点として、&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;AUTO_INCREMENT の割当にテーブルロックをかけない&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;があげられており、少々驚いた。&lt;/p&gt;
-
-&lt;p&gt;これはつまり、&lt;strong&gt;InnoDB の AUTO_INCREMENT がテーブルロックをかける&lt;/strong&gt;、ということであり、そのことをいままで知らなかったからだ。&lt;/p&gt;
-
-&lt;p&gt;恥ずかしながら、AUTO_INCREMENT のスケーラビリティについては、いままであまり意識したことがなかった。&lt;/p&gt;
-
-&lt;h3 id=&#34;innodb-の特別なテーブルロックモード-auto-inc&#34;&gt;InnoDB の特別なテーブルロックモード AUTO-INC&lt;/h3&gt;
-
-&lt;p&gt;リファレンスマニュアルの「13.5.16. InnoDB テーブル上の制約」にもあるように、AUTO_INCREMENT を使うときはテーブルロックが必要だ。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;自動インクリメント カウンタにアクセスする時、InnoDB は、トランザクション全体の最後までではなく、現在の SQL ステートメントの最後まで続く、特別なテーブル ロック モード AUTO-INC を利用します。AUTO-INC テーブル ロックが行われている間は、別のクライアントはテーブルに挿入ができない事に注意してください。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;AUTO_INCREMENT が設定された InnoDB のテーブルでは、AUTO-INC テーブルロックを同時にひとつのトランザクションしか利用できない。これはスケーラビリティの点で問題になりうる。&lt;/p&gt;
-
-&lt;h3 id=&#34;mysql-5-1-22-では解決済み&#34;&gt;MySQL 5.1.22 では解決済み&lt;/h3&gt;
-
-&lt;p&gt;しかし、嬉しいことに &lt;a href=&#34;http://www.mysqlperformanceblog.com/2007/09/26/innodb-auto-inc-scalability-fixed/&#34;&gt;InnoDB auto-inc scalability fixed&lt;/a&gt; によると、最新版の &lt;a href=&#34;http://dev.mysql.com/downloads/mysql/5.1.html&#34;&gt;MySQL 5.1.22&lt;/a&gt; ではこの問題が解決されたようだ。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://bugs.mysql.com/bug.php?id=16979&#34;&gt;Bugs: #16979: AUTO_INC lock in InnoDB works a table level lock&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://dev.mysql.com/doc/refman/5.1/en/innodb-auto-increment-handling.html&#34;&gt;How AUTO_INCREMENT Handling Works in InnoDB&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;リファレンスマニュアルの &lt;a href=&#34;http://dev.mysql.com/doc/refman/5.1/en/innodb-auto-increment-handling.html&#34;&gt;How AUTO_INCREMENT Handling Works in InnoDB&lt;/a&gt; に詳しいが、5.1.22 からは AUTO_INCREMENT カウンタのロック方法として、よりスケーラビリティの高い方式が導入された。&lt;/p&gt;
-
-&lt;p&gt;また、&lt;code&gt;innodb_autoinc_lock_mode&lt;/code&gt; パラメータを設定することで、新しい方式を利用するかどうかを設定可能で、&lt;strong&gt;デフォルトでは単純な INSERT でのみ&lt;/strong&gt;、新しい方式を利用するようになっている。&lt;/p&gt;
-
-&lt;p&gt;ただし、新しいロック方式ではいくつかの点で注意が必要だ。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;ステートメントベースのレプリケーションでは問題が起こる可能性がある&lt;/li&gt;
-&lt;li&gt;連番になるとは限らない（さまざまな理由で値にはギャップが生じる）&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;これらは &lt;code&gt;innodb_autoinc_lock_mode&lt;/code&gt; の値によっても異なってくるので、リファレンスマニュアルの &lt;a href=&#34;http://dev.mysql.com/doc/refman/5.1/en/innodb-auto-increment-handling.html&#34;&gt;How AUTO_INCREMENT Handling Works in InnoDB&lt;/a&gt; で詳細を確認した方がよいだろう（AUTO_INCREMENT の実装について詳しく書かれているため、機会があれば記事にしたい）。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/10/08/scalability-issue-with-innodb-auto-increment-column/</guid>
+      <description>きっかけは MySQL Users Conference Japan 2007 の講演資料「新ストレージエンジン Falcon のアーキテクチャ詳細技術解説」だった。
+Falcon とは MySQL 6.0 で搭載予定の新しいストレージエンジンである。
+ MySQL AB :: Falcon Storage Engine Guide MySQLの新ストレージエンジン Falcon 徹底リサーチ | マイコミジャーナル  この講演資料で Falcon が InnoDB より優れている点として、
+ AUTO_INCREMENT の割当にテーブルロックをかけない
+ があげられており、少々驚いた。
+これはつまり、InnoDB の AUTO_INCREMENT がテーブルロックをかける、ということであり、そのことをいままで知らなかったからだ。
+恥ずかしながら、AUTO_INCREMENT のスケーラビリティについては、いままであまり意識したことがなかった。
+InnoDB の特別なテーブルロックモード AUTO-INC リファレンスマニュアルの「13.5.16. InnoDB テーブル上の制約」にもあるように、AUTO_INCREMENT を使うときはテーブルロックが必要だ。
+ 自動インクリメント カウンタにアクセスする時、InnoDB は、トランザクション全体の最後までではなく、現在の SQL ステートメントの最後まで続く、特別なテーブル ロック モード AUTO-INC を利用します。AUTO-INC テーブル ロックが行われている間は、別のクライアントはテーブルに挿入ができない事に注意してください。
+ AUTO_INCREMENT が設定された InnoDB のテーブルでは、AUTO-INC テーブルロックを同時にひとつのトランザクションしか利用できない。これはスケーラビリティの点で問題になりうる。</description>
     </item>
     
     <item>
       <title>Rails で MySQL を使うときの注意点</title>
-      <link>http://www.metareal.org/2007/07/24/notes-on-rubyonrails-with-mysql/</link>
+      <link>http://ishikawa.github.io/2007/07/24/notes-on-rubyonrails-with-mysql/</link>
       <pubDate>Tue, 24 Jul 2007 09:29:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/07/24/notes-on-rubyonrails-with-mysql/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://weblog.rubyonrails.com/2007/7/20/rails-and-mysql&#34;&gt;Rails のブログでも取り上げられていた&lt;/a&gt;、&amp;rdquo;&lt;a href=&#34;http://mysqldump.azundris.com/archives/72-Rubyisms.html&#34;&gt;Rubyisms - MySQL-dump&lt;/a&gt;&amp;rdquo; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。&lt;/p&gt;
-
-&lt;p&gt;Rubyisms - MySQL-dump
-  &lt;a href=&#34;http://mysqldump.azundris.com/archives/72-Rubyisms.html&#34;&gt;http://mysqldump.azundris.com/archives/72-Rubyisms.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;select-が多すぎる&#34;&gt;&amp;ldquo;select *&amp;rdquo; が多すぎる&lt;/h3&gt;
-
-&lt;p&gt;ActiveRecord は、特に何も指定しないと &lt;code&gt;select *&lt;/code&gt; で、すべてのカラムを取ってくる。SQL は動的に生成されて、どのカラムが存在するかチェックしているので、スキームが変更されても大丈夫。&lt;/p&gt;
-
-&lt;p&gt;でも、必要のないデータまで取ってきてしまう、という問題はあるよね。そして、何が無駄かっていうと、必要のないデータのために一時的なテーブルが使われるかもしれない、ってことなんだ（SQL を &lt;code&gt;EXPLAIN&lt;/code&gt; してみて、&amp;rdquo;using temporary&amp;rdquo; となっていれば、そういう事態が発生しているサインだ）。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;TEXT や BLOB をもつテーブルではもっと悪くて、一時テーブルは&lt;strong&gt;ディスク上に&lt;/strong&gt;作られる&lt;/li&gt;
-&lt;li&gt;これには &lt;code&gt;tmp_table_size&lt;/code&gt; や &lt;code&gt;max_heap_table_size&lt;/code&gt; の設定は&lt;strong&gt;関係ない&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;そういう場合は、SQL を二段階に分けるといい&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;まず、最初の SQL でレコードの ID だけを SELECT する（&lt;code&gt;int&lt;/code&gt; だけなので、このときの一時テーブルはメモリ上に作られる）&lt;/li&gt;
-&lt;li&gt;次に、その ID で必要な TEXT や BLOB を SELECT するんだ（これは ID による単純な検索なので一時テーブルは使われない）&lt;/li&gt;
-&lt;li&gt;ActiveRecord では &lt;code&gt;find([id1, id2, ...])&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;では、ActiveRecord で &lt;code&gt;select *&lt;/code&gt; を避けるにはどうするか？&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;find(...)&lt;/code&gt; の最後の引数に指定するハッシュに &lt;code&gt;:select =&amp;gt; [ fieldlist ]&lt;/code&gt; として指定する&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ActiveRecord::Base&lt;/code&gt; をサブクラス化して、&lt;code&gt;:select&lt;/code&gt; が指定されていなければ、警告を出すようにするのがいいんじゃない？&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;文字列型がかなり無駄かも&#34;&gt;文字列型がかなり無駄かも&lt;/h3&gt;
-
-&lt;p&gt;たとえ TEXT 型（Migration だと &lt;code&gt;:text&lt;/code&gt; 型）を使っていなくても、Migration で &lt;code&gt;:string&lt;/code&gt; 型を使っているなら、気をつけた方がいい。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;普通、これは VARCHAR(255)&lt;/li&gt;
-&lt;li&gt;エンコーディングは &lt;code&gt;utf8&lt;/code&gt; になっているだろう&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;さて、MySQL では&lt;strong&gt;メモリ上の一時テーブルには&lt;/strong&gt; VARCHAR 型がない（「補足：メモリ上の一時テーブルには VARCHAR 型がない」参照）&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;代わりに VARCHAR は CHAR に変換される&lt;/li&gt;
-&lt;li&gt;つまり、VARCHAR(255) は CHAR(255) ってこと&lt;/li&gt;
-&lt;li&gt;そして、&lt;code&gt;utf8&lt;/code&gt; では 1 文字 3 バイトとして換算されるから &amp;hellip;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;:string&lt;/code&gt; 型のカラムひとつごとに 765 バイトを占有する &amp;hellip; なんてこった。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;だから、デフォルトの &lt;code&gt;utf8&lt;/code&gt; ではなく、&lt;code&gt;latin1&lt;/code&gt; などの多バイトではないエンコーディングを使うことも考慮した方がよい。そして、&lt;code&gt;:string&lt;/code&gt; 型には必ず &lt;code&gt;:limit&lt;/code&gt; を指定しよう。&lt;/p&gt;
-
-&lt;p&gt;以上、MySQL の一時テーブルの特性とか、知らないとどうにもならん部分が多い。他にも、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;なんでテーブル名とかをバッククォートで囲んでないの？　とか、&lt;/li&gt;
-&lt;li&gt;トランザクション内部ではクエリーキャッシュが使われない、とか&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;興味深い話題があります。あと、この要約が間違ってる可能性もあるので、是非&lt;a href=&#34;http://mysqldump.azundris.com/archives/72-Rubyisms.html&#34;&gt;原文&lt;/a&gt;も読むことをおすすめします。&lt;/p&gt;
-
-&lt;h3 id=&#34;補足-メモリ上の一時テーブルには-varchar-型がない&#34;&gt;補足：メモリ上の一時テーブルには VARCHAR 型がない&lt;/h3&gt;
-
-&lt;p&gt;「メモリ上の一時テーブルには VARCHAR 型がない」という記述について、気になったので調べてみた。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.jpipes.com/index.php?/archives/177-Common-Questions-and-Answers-from-Performance-Tuning-Webinars.html&#34;&gt;Common Questions and Answers from Performance Tuning Webinars - Jay Pipes&lt;/a&gt; という記事にて、&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;A temporary table is implicitly created to handle a GROUP BY or ORDER BY clause and a VARCHAR column is in the SELECT statement&lt;/li&gt;
-&lt;li&gt;A temporary table is created explicitly which contains a VARCHAR column&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In these cases, the length of the VARCHAR columns does come into play. Why? Because &lt;strong&gt;temporary tables in memory are actually just tables of the MEMORY storage engine.&lt;/strong&gt; The MEMORY storage engine, for some reason, treats all VARCHAR(X) columns as CHAR(X) columns.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;つまり、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;メモリ上の一時テーブルは &lt;a href=&#34;http://dev.mysql.com/doc/refman/5.0/en/memory-storage-engine.html&#34;&gt;MEMORY ストレージエンジン&lt;/a&gt;である&lt;/li&gt;
-&lt;li&gt;そして、MEMORY ストレージエンジンは &lt;code&gt;VARCHAR(X)&lt;/code&gt; を &lt;code&gt;CHAR(X)&lt;/code&gt; として扱う&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;ということのようだ。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/07/24/notes-on-rubyonrails-with-mysql/</guid>
+      <description>Rails のブログでも取り上げられていた、&amp;rdquo;Rubyisms - MySQL-dump&amp;rdquo; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。
+Rubyisms - MySQL-dump http://mysqldump.azundris.com/archives/72-Rubyisms.html
+&amp;ldquo;select *&amp;rdquo; が多すぎる ActiveRecord は、特に何も指定しないと select * で、すべてのカラムを取ってくる。SQL は動的に生成されて、どのカラムが存在するかチェックしているので、スキームが変更されても大丈夫。
+でも、必要のないデータまで取ってきてしまう、という問題はあるよね。そして、何が無駄かっていうと、必要のないデータのために一時的なテーブルが使われるかもしれない、ってことなんだ（SQL を EXPLAIN してみて、&amp;rdquo;using temporary&amp;rdquo; となっていれば、そういう事態が発生しているサインだ）。
+ TEXT や BLOB をもつテーブルではもっと悪くて、一時テーブルはディスク上に作られる これには tmp_table_size や max_heap_table_size の設定は関係ない  そういう場合は、SQL を二段階に分けるといい
+ まず、最初の SQL でレコードの ID だけを SELECT する（int だけなので、このときの一時テーブルはメモリ上に作られる） 次に、その ID で必要な TEXT や BLOB を SELECT するんだ（これは ID による単純な検索なので一時テーブルは使われない） ActiveRecord では find([id1, id2, ...])  では、ActiveRecord で select * を避けるにはどうするか？
+ find(.</description>
     </item>
     
     <item>
       <title>Mac OS X  Tiger に MySQL 5.0.27 をインストール</title>
-      <link>http://www.metareal.org/2006/12/27/mysql-on-macosx-tiger/</link>
+      <link>http://ishikawa.github.io/2006/12/27/mysql-on-macosx-tiger/</link>
       <pubDate>Thu, 28 Dec 2006 12:54:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2006/12/27/mysql-on-macosx-tiger/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://www.rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt; で開発するアプリケーションのバックエンドだが、データベースには &lt;a href=&#34;http://www.mysql.com/&#34;&gt;MySQL&lt;/a&gt; を使用するつもりなので、これもインストールしてやる。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://dev.mysql.com/downloads/mysql/5.0.html&#34;&gt;MySQL 5.0 のダウンロードページ&lt;/a&gt;には、Mac OS X 向けのバイナリも配布されているので、通常はこちらを使うのがよさそうだ。&lt;/p&gt;
-
-&lt;p&gt;まあ、コンパイルも楽しいので、今回は自前でソースコードからインストールしてみる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% curl --location &amp;quot;http://dev.mysql.com/get/Downloads/MySQL-5.0/mysql-5.0.27.tar.gz/from/http://mirror.mysql-partners-jp.biz/&amp;quot; &amp;gt; mysql-5.0.27.tar.gz
-% tar xvzf mysql-5.0.27.tar.gz
-% cd mysql-5.0.27
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;configure&lt;/code&gt; のオプションは&lt;a href=&#34;http://dev.mysql.com/doc/refman/5.0/en/mac-os-x.html&#34;&gt;マニュアルに載っていた&lt;/a&gt;ものを参考にした。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;CC=gcc CFLAGS=&amp;quot;-O3 -fno-omit-frame-pointer&amp;quot; CXX=gcc \
-CXXFLAGS=&amp;quot;-O3 -fno-omit-frame-pointer -felide-constructors \
-    -fno-exceptions -fno-rtti&amp;quot; \
-    ./configure --prefix=/usr/local/mysql \
-    --with-extra-charsets=complex --enable-thread-safe-client \
-    --enable-local-infile --disable-shared
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;あとは、&lt;code&gt;make, make install&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% make
-% sudo make install
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://ishikawa.github.io/2006/12/27/mysql-on-macosx-tiger/</guid>
+      <description>Ruby on Rails で開発するアプリケーションのバックエンドだが、データベースには MySQL を使用するつもりなので、これもインストールしてやる。
+MySQL 5.0 のダウンロードページには、Mac OS X 向けのバイナリも配布されているので、通常はこちらを使うのがよさそうだ。
+まあ、コンパイルも楽しいので、今回は自前でソースコードからインストールしてみる。
+% curl --location &amp;quot;http://dev.mysql.com/get/Downloads/MySQL-5.0/mysql-5.0.27.tar.gz/from/http://mirror.mysql-partners-jp.biz/&amp;quot; &amp;gt; mysql-5.0.27.tar.gz % tar xvzf mysql-5.0.27.tar.gz % cd mysql-5.0.27  configure のオプションはマニュアルに載っていたものを参考にした。
+CC=gcc CFLAGS=&amp;quot;-O3 -fno-omit-frame-pointer&amp;quot; CXX=gcc \ CXXFLAGS=&amp;quot;-O3 -fno-omit-frame-pointer -felide-constructors \ -fno-exceptions -fno-rtti&amp;quot; \ ./configure --prefix=/usr/local/mysql \ --with-extra-charsets=complex --enable-thread-safe-client \ --enable-local-infile --disable-shared  あとは、make, make install
+% make % sudo make install  </description>
     </item>
     
     <item>
       <title>MySQL/Ruby の test.rb が失敗する理由と対策</title>
-      <link>http://www.metareal.org/2006/12/28/reason-of-mysql-ruby-test-failure/</link>
+      <link>http://ishikawa.github.io/2006/12/28/reason-of-mysql-ruby-test-failure/</link>
       <pubDate>Thu, 28 Dec 2006 10:07:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2006/12/28/reason-of-mysql-ruby-test-failure/</guid>
-      <description>
-
-&lt;p&gt;前回書いた、&lt;a href=&#34;http://weblog.metareal.org/2006/12/27/mysql-bindings-on-macosx-tiger/&#34;&gt;MySQL/Ruby の test.rb が失敗する&lt;/a&gt;原因を調査する。&lt;/p&gt;
-
-&lt;p&gt;まずは、実行結果の出力を調べてみよう。
-&lt;strong&gt;すべてのテストが失敗しているため&lt;/strong&gt;長いので、最初のテスト結果のみ抜粋する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% ruby ./test.rb localhost root newpass
-...
-1) Failure:
-test_connect(TC_Mysql) [./test.rb:39]:
-Exception raised:
-Class: &amp;lt;Mysql::Error&amp;gt;
-**Message: &amp;lt;&amp;quot;Access denied for user &#39;ishikawa&#39;@&#39;localhost&#39; (using password: NO)&amp;quot;&amp;gt;**
----Backtrace---
-./test.rb:39:in `connect&#39;
-./test.rb:39:in `test_connect&#39;
-./test.rb:39:in `test_connect&#39;
-...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;MySQL のエラーで &lt;tt&gt;&amp;ldquo;Access denied for user &amp;lsquo;ishikawa&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; (using password: NO)&amp;rdquo;&lt;/tt&gt; と出力されているので、これは単なるアクセス制御の問題だ。&lt;/p&gt;
-
-&lt;p&gt;そして、&lt;code&gt;test.rb&lt;/code&gt; のコマンドライン引数で &lt;code&gt;root&lt;/code&gt; ユーザを指定しているにも関わらず、実際には &lt;code&gt;ishikawa&lt;/code&gt; ユーザでアクセスしようとしている。&lt;/p&gt;
-
-&lt;p&gt;うまくいくわけがない。
-&lt;strong&gt;コマンドライン引数による指定が無視されている&lt;/strong&gt;わけだ。&lt;/p&gt;
-
-&lt;h3 id=&#34;何故-コマンドライン引数が無視されるのか&#34;&gt;何故、コマンドライン引数が無視されるのか&lt;/h3&gt;
-
-&lt;p&gt;コマンドライン引数が無視される原因を調べてみると、どうやら &lt;code&gt;test.rb&lt;/code&gt; が使っている &lt;a href=&#34;http://www.ruby-lang.org/ja/man/index.cgi?cmd=view;name=Test%3A%3AUnit&#34;&gt;&lt;code&gt;Test::Unit&lt;/code&gt;&lt;/a&gt; が悪さをしているらしい（&lt;code&gt;Test::Unit&lt;/code&gt; は Ruby の標準添付ライブラリで、いわゆる xUnit ツールの Ruby 版である）。&lt;/p&gt;
-
-&lt;p&gt;簡単な検証スクリプトを書いてみる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;require &amp;quot;test/unit&amp;quot;
-
-puts &amp;quot;before test: ARGV = #{ARGV.inspect}&amp;quot;
-class SimpleTestCase &amp;lt; Test::Unit::TestCase
-  def test_argv()
-    puts &amp;quot;in test: ARGV = #{ARGV.inspect}&amp;quot;
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ユニットテストが実行される前と、実行されるときに ARGV（コマンドライン引数の配列）をダンプするだけのスクリプトだ。これを適当な引数つきで実行して、その結果を確認する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% ruby ./simple_test.rb 1 2 3
-**before test: ARGV = [&amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;]**
-Loaded suite ./simple_test
-Started
-**in test: ARGV = **
-.
-Finished in 0.000316 seconds.
-
-1 tests, 0 assertions, 0 failures, 0 errors
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ユニットテストを実行する前では ARGV に引数の &lt;code&gt;1, 2, 3&lt;/code&gt; が格納されているが、テストの内部では &lt;strong&gt;ARGV が空になっている&lt;/strong&gt;。となると、&lt;code&gt;Test::Unit&lt;/code&gt; が渡ってきた引数を食べてしまっているのに違いない。&lt;/p&gt;
-
-&lt;h3 id=&#34;test-unit-のソースを調べる&#34;&gt;Test::Unit のソースを調べる&lt;/h3&gt;
-
-&lt;p&gt;実際のとこ、どうなっているのか。ソースコードに聞いてみよう。場所は &lt;code&gt;/usr/local/lib/ruby/1.8/test/&lt;/code&gt;。まずは動作を確認するために、&lt;code&gt;unit.rb&lt;/code&gt; の 276 行目だ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;at_exit do
-  unless $! || Test::Unit.run?
-    exit **Test::Unit::AutoRunner.run**
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;このコードは &lt;code&gt;require&lt;/code&gt; されたときに実行され、&lt;code&gt;at_exit&lt;/code&gt; で &lt;code&gt;Test::Unit::AutoRunner&lt;/code&gt; の &lt;code&gt;run&lt;/code&gt; メソッドが呼び出される。この定義は &lt;code&gt;autorunner.rb&lt;/code&gt; だ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;module Test
-  module Unit
-    class AutoRunner
-      def self.run(force_standalone=false, default_dir=nil, **argv=ARGV**, &amp;amp;block)
-        r = new(force_standalone || standalone?, &amp;amp;block)
-        if((**!r.process_args(argv)**) &amp;amp;&amp;amp; default_dir)
-          r.to_run &amp;lt;&amp;lt; default_dir
-        end
-        r.run
-      end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;怪しげなコードを発見できた。
-インスタンスの &lt;code&gt;process_args&lt;/code&gt; メソッドに ARGV をそのまま渡している。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def process_args(args = ARGV)
-  begin
-    **options.order!(args)** {|arg| @to_run &amp;lt;&amp;lt; arg}
-  rescue OptionParser::ParseError =&amp;gt; e
-    puts e
-    puts options
-    $! = nil
-    abort
-  else
-    @filters &amp;lt;&amp;lt; proc{false} unless(@filters.empty?)
-  end
-  not @to_run.empty?
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;肝になるのは &lt;code&gt;options.order!(args)&lt;/code&gt; の部分だ。&lt;code&gt;options&lt;/code&gt; では、&lt;a href=&#34;http://www.ruby-lang.org/ja/man/index.cgi?cmd=view;name=OptionParser&#34;&gt;&lt;code&gt;OptionParser&lt;/code&gt;&lt;/a&gt; インスタンスが返り、そして、&lt;code&gt;OptionParser#order!&lt;/code&gt; はマニュアルによると、&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;与えられた argv を順番にパースします。 オプションではないコマンドの引数(下の例で言うと somefile)に出会うと、パースを中断します。 ブロックが与えられている場合は、パースを中断せずに 引数をブロックに渡してブロックを評価し、パースを継続します。argv を返します。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;order! は与えられた argv を破壊的にパースします。 argv からオプションがすべて取り除かれます。&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;とのことなので、&lt;strong&gt;ここで ARGV の中身が破壊されている&lt;/strong&gt;のは明白だ。&lt;/p&gt;
-
-&lt;h3 id=&#34;test-rb-を変更して対策&#34;&gt;test.rb を変更して対策&lt;/h3&gt;
-
-&lt;p&gt;では、どうするか？&lt;/p&gt;
-
-&lt;p&gt;結局、&lt;code&gt;Test::Unit::AutoRunner.run&lt;/code&gt; で直接 ARGV を渡してしまうのが不味いわけで、自前で &lt;code&gt;Test::Unit::AutoRunner.run&lt;/code&gt; を呼び出し、そのさいに ARGV のコピーを渡すようにしてみた。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;--- test.rb.orig        2006-12-28 01:20:19.000000000 +0900
-+++ test.rb     2006-12-28 01:21:04.000000000 +0900
-@@ -1429,3 +1429,4 @@
-   end
-
- end if Mysql.client_version &amp;gt;= 40100
-+Test::Unit::AutoRunner.run(false, nil, ARGV.dup)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これでテストも実行できるはず &amp;hellip;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% ruby ./test.rb localhost root
-Loaded suite ./test
-Started
-....................................................................FF...........................................
-Finished in 0.32177 seconds.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;通った！&amp;hellip;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;1) Failure:
-test_fetch_double(TC_MysqlStmt2) [./test.rb:920]:
-&amp;lt;-1.79769313486232e+308&amp;gt; and
-&amp;lt;-1.79769313486232e+308&amp;gt; expected to be within
-&amp;lt;2.22044604925031e-16&amp;gt; of each other.
-
-  2) Failure:
-test_fetch_double_unsigned(TC_MysqlStmt2) [./test.rb:937]:
-&amp;lt;1.79769313486232e+308&amp;gt; and
-&amp;lt;1.79769313486232e+308&amp;gt; expected to be within
-&amp;lt;2.22044604925031e-16&amp;gt; of each other.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;hellip; と思ったら駄目でした。&lt;/p&gt;
-
-&lt;p&gt;うーん、高速化パッチを適用せずにテストしても同じ結果なので、これはまた別の原因だな。
-まあ、浮動小数点関係っぽいので環境依存かもしれん、、てことでスルーしとこう。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2006/12/28/reason-of-mysql-ruby-test-failure/</guid>
+      <description>前回書いた、MySQL/Ruby の test.rb が失敗する原因を調査する。
+まずは、実行結果の出力を調べてみよう。 すべてのテストが失敗しているため長いので、最初のテスト結果のみ抜粋する。
+% ruby ./test.rb localhost root newpass ... 1) Failure: test_connect(TC_Mysql) [./test.rb:39]: Exception raised: Class: &amp;lt;Mysql::Error&amp;gt; **Message: &amp;lt;&amp;quot;Access denied for user &#39;ishikawa&#39;@&#39;localhost&#39; (using password: NO)&amp;quot;&amp;gt;** ---Backtrace--- ./test.rb:39:in `connect&#39; ./test.rb:39:in `test_connect&#39; ./test.rb:39:in `test_connect&#39; ...  MySQL のエラーで &amp;ldquo;Access denied for user &amp;lsquo;ishikawa&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; (using password: NO)&amp;rdquo; と出力されているので、これは単なるアクセス制御の問題だ。
+そして、test.rb のコマンドライン引数で root ユーザを指定しているにも関わらず、実際には ishikawa ユーザでアクセスしようとしている。
+うまくいくわけがない。 コマンドライン引数による指定が無視されているわけだ。
+何故、コマンドライン引数が無視されるのか コマンドライン引数が無視される原因を調べてみると、どうやら test.rb が使っている Test::Unit が悪さをしているらしい（Test::Unit は Ruby の標準添付ライブラリで、いわゆる xUnit ツールの Ruby 版である）。</description>
     </item>
     
     <item>
       <title>Mac OS X に MySQL/Ruby をインストール &#43; 高速化パッチ</title>
-      <link>http://www.metareal.org/2006/12/27/mysql-bindings-on-macosx-tiger/</link>
+      <link>http://ishikawa.github.io/2006/12/27/mysql-bindings-on-macosx-tiger/</link>
       <pubDate>Thu, 28 Dec 2006 03:14:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2006/12/27/mysql-bindings-on-macosx-tiger/</guid>
-      <description>&lt;p&gt;長かった Ruby on Rails 環境構築シリーズもやっと終盤です。&lt;/p&gt;
-
-&lt;p&gt;Ruby から MySQL につなぐためのバインディングである &lt;a href=&#34;http://www.tmtm.org/mysql/ruby/&#34;&gt;MySQL/Ruby&lt;/a&gt; をインストールすれば、&lt;a href=&#34;http://www.rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt; の開発環境構築は一段落。&lt;/p&gt;
-
-&lt;p&gt;なお、同様のバインディングである &lt;a href=&#34;http://www.tmtm.org/ruby/mysql/&#34;&gt;Ruby/MySQL&lt;/a&gt; もあり、こちらは Ruby で書かれているためコンパイルが不要。MySQL/Ruby とも、ほぼ互換性がある。ただ、今回はパフォーマンス優先でいきたいと思う。&lt;/p&gt;
-
-&lt;p&gt;さて、&lt;a href=&#34;http://tmtm.org/downloads/mysql/ruby/&#34;&gt;ダウンロードページ&lt;/a&gt;から最新版をダウンロード。現時点では &lt;a href=&#34;http://tmtm.org/downloads/mysql/ruby/mysql-ruby-2.7.3.tar.gz&#34;&gt;&lt;code&gt;mysql-ruby-2.7.3.tar.gz&lt;/code&gt;&lt;/a&gt; が最新版のようだ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% curl --location -O http://tmtm.org/downloads/mysql/ruby/mysql-ruby-2.7.3.tar.gz
-% tar xvzf mysql-ruby-2.7.3.tar.gz
-% cd mysql-ruby-2.7.3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;さきほど「パフォーマンス優先」と書いたけど、&lt;a href=&#34;http://railsexpress.de/blog/&#34;&gt;RailsExpress.blog&lt;/a&gt; の人が &lt;a href=&#34;http://railsexpress.de/blog/articles/2006/10/05/make-ruby-mysql-create-less-garbage&#34;&gt;MySQL/Ruby を 30% 高速にするパッチを公開&lt;/a&gt;している。記事を読んだときから試してみたかったので、これを機会に使ってみよう。&lt;/p&gt;
-
-&lt;p&gt;パッチをダウンロードして、MySQL/Ruby の展開先に置いたら、&lt;code&gt;patch&lt;/code&gt; コマンドでパッチを適用する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% curl -O http://railsexpress.de/downloads/mysql-ruby-2.7-less-string-copies-in-each-hash.diff
-% patch &amp;lt; mysql-ruby-2.7-less-string-copies-in-each-hash.diff
-patching file mysql.c.in
-Hunk #1 succeeded at 1009 (offset -1 lines).
-Hunk #2 succeeded at 1027 (offset -1 lines).
-Hunk #3 succeeded at 1059 (offset -1 lines).
-Hunk #4 succeeded at 1136 (offset -1 lines).
-Hunk #5 succeeded at 2079 (offset 3 lines).
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;無事、パッチを適用できたようなので、そのままインストールに進む。&lt;code&gt;extconf.rb&lt;/code&gt; を実行するときに、&lt;code&gt;--with-mysql-dir&lt;/code&gt; オプションで MySQL のインストール先ディレクトリを指定する必要があった。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% ruby extconf.rb --with-mysql-dir=/usr/local/mysql
-checking for mysql_query() in -lmysqlclient... no
-checking for main() in -lm... yes
-checking for mysql_query() in -lmysqlclient... no
-checking for main() in -lz... yes
-checking for mysql_query() in -lmysqlclient... yes
-checking for mysql_ssl_set()... yes
-checking for mysql.h... no
-checking for mysql/mysql.h... yes
-creating Makefile
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;さて、コンパイル &amp;hellip;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% make
-...
-mysql.c: In function &#39;Init_mysql&#39;:
-mysql.c:2018: error: &#39;ulong&#39; undeclared (first use in this function)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;怒られてしまった。&lt;code&gt;ulong&lt;/code&gt; 型が定義されていないようだ。
-検索してみて、&lt;a href=&#34;http://www.maxdunn.com/typo/articles/2006/12/12/installing-mysql-gem-on-mac-os-x-10-4&#34;&gt;ここ&lt;/a&gt;に書かれている解決策を採用。ただし &lt;code&gt;unsigned long&lt;/code&gt; ではなく &lt;code&gt;u_long&lt;/code&gt; にしておく。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;mysql.c&lt;/code&gt; の最初（16 行目くらい）に&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#define ulong u_long
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;を追加してリトライ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% make
-gcc -I. -I. -I/usr/local/lib/ruby/1.8/i686-darwin8.8.3 -I. -DHAVE_MYSQL_SSL_SET -DHAVE_MYSQL_MYSQL_H -I/usr/local/mysql/include  -fno-common -g -O2 -pipe -fno-common  -c mysql.c
-cc -dynamic -bundle -undefined suppress -flat_namespace  -L&amp;quot;/usr/local/mysql/lib&amp;quot; -L&amp;quot;/usr/local/lib&amp;quot; -L&amp;quot;/usr/local/mysql/lib/mysql&amp;quot; -o mysql.bundle mysql.o  -lmysqlclient -lz -lm  -ldl -lobjc
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;無事コンパイルできた。
-しかし、テストが通らない &amp;hellip;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% ruby ./test.rb localhost ishikawa password
-...
-113 tests, 44 assertions, 3 failures, 177 errors
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;うーむ。つづきは&lt;a href=&#34;http://weblog.metareal.org/2006/12/28/reason-of-mysql-ruby-test-failure/&#34;&gt;今度&lt;/a&gt;。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2006/12/27/mysql-bindings-on-macosx-tiger/</guid>
+      <description>長かった Ruby on Rails 環境構築シリーズもやっと終盤です。
+Ruby から MySQL につなぐためのバインディングである MySQL/Ruby をインストールすれば、Ruby on Rails の開発環境構築は一段落。
+なお、同様のバインディングである Ruby/MySQL もあり、こちらは Ruby で書かれているためコンパイルが不要。MySQL/Ruby とも、ほぼ互換性がある。ただ、今回はパフォーマンス優先でいきたいと思う。
+さて、ダウンロードページから最新版をダウンロード。現時点では mysql-ruby-2.7.3.tar.gz が最新版のようだ。
+% curl --location -O http://tmtm.org/downloads/mysql/ruby/mysql-ruby-2.7.3.tar.gz % tar xvzf mysql-ruby-2.7.3.tar.gz % cd mysql-ruby-2.7.3  さきほど「パフォーマンス優先」と書いたけど、RailsExpress.blog の人が MySQL/Ruby を 30% 高速にするパッチを公開している。記事を読んだときから試してみたかったので、これを機会に使ってみよう。
+パッチをダウンロードして、MySQL/Ruby の展開先に置いたら、patch コマンドでパッチを適用する。
+% curl -O http://railsexpress.de/downloads/mysql-ruby-2.7-less-string-copies-in-each-hash.diff % patch &amp;lt; mysql-ruby-2.7-less-string-copies-in-each-hash.diff patching file mysql.c.in Hunk #1 succeeded at 1009 (offset -1 lines). Hunk #2 succeeded at 1027 (offset -1 lines).</description>
     </item>
     
     <item>
       <title>MySQL をインストールしたあとの作業</title>
-      <link>http://www.metareal.org/2006/12/27/mysql-post-installation/</link>
+      <link>http://ishikawa.github.io/2006/12/27/mysql-post-installation/</link>
       <pubDate>Thu, 28 Dec 2006 02:49:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2006/12/27/mysql-post-installation/</guid>
-      <description>
-
-&lt;h3 id=&#34;初期化&#34;&gt;初期化&lt;/h3&gt;
-
-&lt;p&gt;MySQL のインストールが完了したら、&lt;a href=&#34;http://dev.mysql.com/doc/refman/5.0/en/post-installation.html&#34;&gt;マニュアル通り&lt;/a&gt;、インストール後の作業を進めていく。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;mysql_install_db&lt;/code&gt; でデータ格納ディレクトリとアカウントを初期化する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% cd /usr/local/mysql/
-% sudo chown -R mysql:mysql /usr/local/mysql
-% sudo bin/mysql_install_db --user=mysql
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;データベースを起動。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% sudo bin/mysqld_safe --user=mysql &amp;amp;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;いくつかのコマンドを実行して、動作を確認。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% bin/mysqladmin version
-% bin/mysqladmin variables
-% bin/mysqlshow
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;停止。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% sudo bin/mysqladmin -u root shutdown
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;アカウントの設定&#34;&gt;アカウントの設定&lt;/h3&gt;
-
-&lt;p&gt;インストール直後の MySQL には 2 つのアカウントが用意されている。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;root&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;パスワードなし&lt;/li&gt;
-&lt;li&gt;local host からの接続のみ許可&lt;/li&gt;
-&lt;li&gt;匿名アカウント&lt;/li&gt;
-&lt;li&gt;パスワードなし&lt;/li&gt;
-&lt;li&gt;local host からの接続のみ許可&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;test&lt;/code&gt; または &lt;code&gt;test_&lt;/code&gt; で始まる名前のデータベースへの権限&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;つまり、最初から用意されているアカウントには、いずれも&lt;strong&gt;パスワードが設定されていない&lt;/strong&gt;。これはセキュリティ的によろしくないので、次のふたつを実行する。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;匿名アカウントの削除&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;root&lt;/code&gt; にパスワードを設定&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;MySQL を起動し、&lt;code&gt;mysql -u root&lt;/code&gt; で接続。&lt;/p&gt;
-
-&lt;p&gt;まずは、匿名アカウントの削除を削除する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;mysql&amp;gt; DELETE FROM mysql.user WHERE User = &#39;&#39;;
-mysql&amp;gt; FLUSH PRIVILEGES;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;root&lt;/code&gt; にパスワードを設定する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;mysql&amp;gt; SET PASSWORD FOR &#39;root&#39;\@&#39;localhost&#39; = PASSWORD(&#39;newpwd&#39;);
-mysql&amp;gt; SET PASSWORD FOR &#39;root&#39;\@&#39;%&#39; = PASSWORD(&#39;newpwd&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;アカウントの追加&#34;&gt;アカウントの追加&lt;/h3&gt;
-
-&lt;p&gt;実際に、アプリケーションを開発する場合は、自分のアカウントを作っておいた方がいいだろう。&lt;/p&gt;
-
-&lt;p&gt;アカウントの追加は &lt;code&gt;GRANT&lt;/code&gt; コマンドで行う。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;mysql&amp;gt; GRANT ALL PRIVILEGES ON *.* TO &#39;ishikawa&#39;\@&#39;localhost&#39;
-    -&amp;gt; IDENTIFIED BY &#39;newpwd&#39; WITH GRANT OPTION;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ここでは &lt;code&gt;ishikawa&lt;/code&gt; というアカウントを作成した。開発用のため、外部から接続する必要はないので、local host からのみのアクセスを許可した。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2006/12/27/mysql-post-installation/</guid>
+      <description>初期化 MySQL のインストールが完了したら、マニュアル通り、インストール後の作業を進めていく。
+mysql_install_db でデータ格納ディレクトリとアカウントを初期化する。
+% cd /usr/local/mysql/ % sudo chown -R mysql:mysql /usr/local/mysql % sudo bin/mysql_install_db --user=mysql  データベースを起動。
+% sudo bin/mysqld_safe --user=mysql &amp;amp;  いくつかのコマンドを実行して、動作を確認。
+% bin/mysqladmin version % bin/mysqladmin variables % bin/mysqlshow  停止。
+% sudo bin/mysqladmin -u root shutdown  アカウントの設定 インストール直後の MySQL には 2 つのアカウントが用意されている。
+ root パスワードなし local host からの接続のみ許可 匿名アカウント パスワードなし local host からの接続のみ許可 test または test_ で始まる名前のデータベースへの権限  つまり、最初から用意されているアカウントには、いずれもパスワードが設定されていない。これはセキュリティ的によろしくないので、次のふたつを実行する。
+ 匿名アカウントの削除 root にパスワードを設定  MySQL を起動し、mysql -u root で接続。</description>
     </item>
     
   </channel>

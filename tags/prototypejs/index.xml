@@ -1,557 +1,162 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Prototypejs on METAREAL</title>
-    <link>http://www.metareal.org/tags/prototypejs/index.xml</link>
-    <description>Recent content in Prototypejs on METAREAL</description>
+    <title>prototypejs on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/prototypejs/</link>
+    <description>Recent content in prototypejs on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/prototypejs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 31 Jan 2008 12:40:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/prototypejs/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Prototype 1.6.0.2 公開</title>
-      <link>http://www.metareal.org/2008/01/30/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security/</link>
+      <link>http://ishikawa.github.io/2008/01/30/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security/</link>
       <pubDate>Thu, 31 Jan 2008 12:40:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/01/30/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security/</guid>
-      <description>
-
-&lt;p&gt;気づけば &lt;a href=&#34;http://www.prototypejs.org/2008/1/25/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security&#34;&gt;Prototype 1.6.0.2&lt;/a&gt; がリリースされていた。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;28 のバグ修正と性能の向上&lt;/li&gt;
-&lt;li&gt;Safari 3 における &lt;a href=&#34;http://www.prototypejs.org/api/element/getelementsbyselector&#34;&gt;&lt;code&gt;Element#getElementsBySelector&lt;/code&gt;&lt;/a&gt; の性能向上&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;すべてのブラウザで以下のメソッドの性能向上
-&lt;a href=&#34;http://www.prototypejs.org/api/element/up&#34;&gt;&lt;code&gt;Element#up&lt;/code&gt;&lt;/a&gt;, &lt;a href=&#34;http://www.prototypejs.org/api/element/down&#34;&gt;&lt;code&gt;Element#down&lt;/code&gt;&lt;/a&gt;
-&lt;a href=&#34;http://www.prototypejs.org/api/element/next&#34;&gt;&lt;code&gt;Element#next&lt;/code&gt;&lt;/a&gt;, &lt;a href=&#34;http://www.prototypejs.org/api/element/previous&#34;&gt;&lt;code&gt;Element#previous&lt;/code&gt;&lt;/a&gt;
-&lt;a href=&#34;http://www.prototypejs.org/api/event/findElement&#34;&gt;&lt;code&gt;Event#findElement&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://jp.opera.com/&#34;&gt;Opera&lt;/a&gt; 9.25 以降が公式にサポート対象となった&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;ブラウザ以外の環境での XSS 脆弱性の可能性を修正&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;safari-3-における-getelementsbyselector&#34;&gt;Safari 3 における getElementsBySelector&lt;/h3&gt;
-
-&lt;p&gt;Safari では無効になっていた &lt;a href=&#34;http://www.w3.org/TR/2004/NOTE-DOM-Level-3-XPath-20040226/&#34;&gt;DOM 3 XPath&lt;/a&gt; が有効になったようだ（無効になっていたのは Safari のバグ絡み？）。ただし、&lt;code&gt;Selector#shouldUseXPath&lt;/code&gt; が false を返した場合は、いままでどおり無効になる。&lt;/p&gt;
-
-&lt;h3 id=&#34;ブラウザ以外の環境での-xss-脆弱性の修正&#34;&gt;ブラウザ以外の環境での XSS 脆弱性の修正&lt;/h3&gt;
-
-&lt;p&gt;これまで &lt;a href=&#34;http://www.prototypejs.org/api/ajax/request&#34;&gt;Ajax.Request&lt;/a&gt; における JavaScript の実行（Automatic JavaScript response evaluation）では、&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;オプションで evalJS が設定されていること&lt;/li&gt;
-&lt;li&gt;Content-Type が JavaScript であること&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;をチェックしており、&lt;a href=&#34;http://en.wikipedia.org/wiki/Same_origin_policy&#34;&gt;同じドメイン（プロトコルやポートも）に属しているかどうかの制約&lt;/a&gt;はブラウザの実装に任されていた。&lt;/p&gt;
-
-&lt;p&gt;しかし、Opera のウィジェットのようなブラウザ以外の環境では、こうした制約を課していないため XSS 脆弱性の原因となる可能性があった。そのため、今回のバージョンから自前でチェックするようになったようだ（Ajax.Request#isSameOrigin）。&lt;/p&gt;
-
-&lt;p&gt;また、同様のセキュリティに関する修正が施された 1.5 系の最新版 &lt;a href=&#34;http://prototypejs.org/assets/2008/1/25/prototype-1.5.1.2.js&#34;&gt;Prototype 1.5.1.2&lt;/a&gt; も公開されている。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.prototypejs.org/2008/1/25/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security&#34;&gt;Prototype 1.6.0.2: Bug fixes, performance improvements, and security&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.prototypejs.org/2008/1/25/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security&#34;&gt;Prototype 1.6.0.2 CHANGELOG&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/01/30/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security/</guid>
+      <description>気づけば Prototype 1.6.0.2 がリリースされていた。
+ 28 のバグ修正と性能の向上 Safari 3 における Element#getElementsBySelector の性能向上 すべてのブラウザで以下のメソッドの性能向上 Element#up, Element#down Element#next, Element#previous Event#findElement
+ Opera 9.25 以降が公式にサポート対象となった
+ ブラウザ以外の環境での XSS 脆弱性の可能性を修正
+  Safari 3 における getElementsBySelector Safari では無効になっていた DOM 3 XPath が有効になったようだ（無効になっていたのは Safari のバグ絡み？）。ただし、Selector#shouldUseXPath が false を返した場合は、いままでどおり無効になる。
+ブラウザ以外の環境での XSS 脆弱性の修正 これまで Ajax.Request における JavaScript の実行（Automatic JavaScript response evaluation）では、
+ オプションで evalJS が設定されていること Content-Type が JavaScript であること  をチェックしており、同じドメイン（プロトコルやポートも）に属しているかどうかの制約はブラウザの実装に任されていた。
+しかし、Opera のウィジェットのようなブラウザ以外の環境では、こうした制約を課していないため XSS 脆弱性の原因となる可能性があった。そのため、今回のバージョンから自前でチェックするようになったようだ（Ajax.Request#isSameOrigin）。
+また、同様のセキュリティに関する修正が施された 1.</description>
     </item>
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API（目次）</title>
-      <link>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</link>
+      <link>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</link>
       <pubDate>Mon, 24 Sep 2007 12:10:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; の変更点、特にイベント周りの API の変更についてまとめた記事のインデックス。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/09/02/prototype-1-6-0-event-overhaul-release/&#34;&gt;Event.observe で登録したコールバックの this&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/&#34;&gt;イベントオブジェクトの拡張&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/&#34;&gt;Event.stopObserving で複数のイベント登録を解除できるようになった&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/&#34;&gt;カスタム・イベント&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/&#34;&gt;クロスブラウザな DOMContentLoaded イベント&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</guid>
+      <description>Prototype 1.6.0 RC の変更点、特にイベント周りの API の変更についてまとめた記事のインデックス。
+ Event.observe で登録したコールバックの this イベントオブジェクトの拡張 Event.stopObserving で複数のイベント登録を解除できるようになった カスタム・イベント クロスブラウザな DOMContentLoaded イベント  </description>
     </item>
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API (4)</title>
-      <link>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</link>
+      <link>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</link>
       <pubDate>Mon, 24 Sep 2007 12:02:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; のイベント API について紹介するシリーズも今回が最後。&lt;/p&gt;
-
-&lt;h3 id=&#34;カスタム-イベント&#34;&gt;カスタム・イベント&lt;/h3&gt;
-
-&lt;p&gt;あらかじめ定義された組み込みのイベント &lt;code&gt;click&lt;/code&gt; や &lt;code&gt;submit&lt;/code&gt; 以外にも、ユーザーが好きなイベントを発生させることができるようになった。&lt;/p&gt;
-
-&lt;p&gt;たとえば、こんな HTML があるとして、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;container&amp;quot;&amp;gt;
-  &amp;lt;h1&amp;gt;&amp;lt;span id=&amp;quot;title&amp;quot;&amp;gt;Release notes&amp;lt;/span&amp;gt;&amp;lt;/h1&amp;gt;
-  ...
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;Element#fire&lt;/code&gt;（実体は &lt;code&gt;Event.fire&lt;/code&gt;）メソッドを使って、タイトルが変更された、という通知を送る（イベントを発生させる）ことができる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$(&amp;quot;title&amp;quot;).fire(&amp;quot;titleChanged&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;当然、受け手も必要なわけで、組み込みのイベントと同様、&lt;code&gt;Element#observe&lt;/code&gt; でコールバック関数を登録できる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$(&amp;quot;container&amp;quot;).observe(&amp;quot;titleChanged&amp;quot;, function(event) {
-  this.highlight({ duration: 0.5 });
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ちなみに、&lt;code&gt;Event.fire&lt;/code&gt; メソッドは内部で次のどちらかの処理を行う。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;ブラウザが &lt;a href=&#34;http://www.w3.org/TR/DOM-Level-2-Events/events.html&#34;&gt;DOM Events&lt;/a&gt; をサポートしていれば、&lt;a href=&#34;http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-DocumentEvent-createEvent&#34;&gt;&lt;code&gt;document.createEvent&lt;/code&gt;&lt;/a&gt; でイベントを作成し、&lt;a href=&#34;http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-EventTarget-dispatchEvent&#34;&gt;&lt;code&gt;element.dispatchEvent&lt;/code&gt;&lt;/a&gt; でイベントを発生&lt;/li&gt;
-&lt;li&gt;そうでなければ、&lt;a href=&#34;http://msdn2.microsoft.com/en-us/library/ms536390.aspx&#34;&gt;&lt;code&gt;document.createEventObject&lt;/code&gt;&lt;/a&gt; でイベントを作成し、&lt;a href=&#34;http://msdn2.microsoft.com/en-us/library/ms536423.aspx&#34;&gt;&lt;code&gt;element.fireEvent&lt;/code&gt;&lt;/a&gt; でイベントを発生&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;クロスブラウザな-domcontentloaded-イベント&#34;&gt;クロスブラウザな DOMContentLoaded イベント&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/07/10/domready-js-cross-browser-ondomcontentloaded/&#34;&gt;window.onload 前でも DOM 処理が可能なら通知してくれる domready.js&lt;/a&gt; でも紹介した &lt;strong&gt;DOMContentLoaded がサポートされた。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... })
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;従来の &lt;code&gt;Element#observe&lt;/code&gt; メソッドを通して、透過的に扱うことができる。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</guid>
+      <description>Prototype 1.6.0 RC のイベント API について紹介するシリーズも今回が最後。
+カスタム・イベント あらかじめ定義された組み込みのイベント click や submit 以外にも、ユーザーが好きなイベントを発生させることができるようになった。
+たとえば、こんな HTML があるとして、
+&amp;lt;div id=&amp;quot;container&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;&amp;lt;span id=&amp;quot;title&amp;quot;&amp;gt;Release notes&amp;lt;/span&amp;gt;&amp;lt;/h1&amp;gt; ... &amp;lt;/div&amp;gt;  Element#fire（実体は Event.fire）メソッドを使って、タイトルが変更された、という通知を送る（イベントを発生させる）ことができる。
+$(&amp;quot;title&amp;quot;).fire(&amp;quot;titleChanged&amp;quot;);  当然、受け手も必要なわけで、組み込みのイベントと同様、Element#observe でコールバック関数を登録できる。
+$(&amp;quot;container&amp;quot;).observe(&amp;quot;titleChanged&amp;quot;, function(event) { this.highlight({ duration: 0.5 }); });  ちなみに、Event.fire メソッドは内部で次のどちらかの処理を行う。
+ ブラウザが DOM Events をサポートしていれば、document.createEvent でイベントを作成し、element.dispatchEvent でイベントを発生 そうでなければ、document.createEventObject でイベントを作成し、element.fireEvent でイベントを発生  クロスブラウザな DOMContentLoaded イベント window.onload 前でも DOM 処理が可能なら通知してくれる domready.js でも紹介した DOMContentLoaded がサポートされた。
+document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... })  従来の Element#observe メソッドを通して、透過的に扱うことができる。</description>
     </item>
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API (3)</title>
-      <link>http://www.metareal.org/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</link>
+      <link>http://ishikawa.github.io/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</link>
       <pubDate>Sat, 22 Sep 2007 09:28:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; イベント API の進化、更なるつづき。&lt;/p&gt;
-
-&lt;h3 id=&#34;event-stopobserving-で複数のイベント登録を解除できるようになった&#34;&gt;&lt;code&gt;Event.stopObserving&lt;/code&gt; で複数のイベント登録を解除できるようになった&lt;/h3&gt;
-
-&lt;p&gt;イベントのコールバック関数は &lt;a href=&#34;http://www.prototypejs.org/api/event/observe&#34;&gt;&lt;code&gt;Event.observe&lt;/code&gt;&lt;/a&gt; や &lt;a href=&#34;http://www.prototypejs.org/api/element#method-observe&#34;&gt;&lt;code&gt;Element#observe&lt;/code&gt;&lt;/a&gt; で登録し、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.prototypejs.org/api/event/stopObserving&#34;&gt;&lt;code&gt;Event.stopObserving&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.prototypejs.org/api/element/stopobserving&#34;&gt;&lt;code&gt;Element#stopObserving&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;で登録を解除できる。&lt;/p&gt;
-
-&lt;p&gt;これまで &lt;code&gt;stopObserving()&lt;/code&gt; で登録を解除するには &lt;code&gt;observe()&lt;/code&gt; に渡した引数と同じものを渡す必要があった。つまり、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Event.observe(&#39;signinForm&#39;, &#39;submit&#39;, checkForm);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;でコールバック関数 &lt;code&gt;checkForm&lt;/code&gt; を登録した場合は、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;としていたはず。&lt;/p&gt;
-
-&lt;p&gt;1.6.0 では引数を省略することで、対応するコールバック関数すべてを解除できるようになった。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;// checkForm を解除
-Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm);
-// signinForm の submit イベントに登録されたコールバック関数を解除
-Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;);
-// signinForm に登録されたコールバック関数を解除
-Event.stopObserving(&#39;signinForm&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これまで &lt;code&gt;removeEventListener&lt;/code&gt; や &lt;code&gt;detachEvent&lt;/code&gt; の単なるラッパーに近かった &lt;code&gt;stopObserving&lt;/code&gt; だが、これでだいぶ使いやすくなった。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</guid>
+      <description>Prototype 1.6.0 RC イベント API の進化、更なるつづき。
+Event.stopObserving で複数のイベント登録を解除できるようになった イベントのコールバック関数は Event.observe や Element#observe で登録し、
+ Event.stopObserving Element#stopObserving  で登録を解除できる。
+これまで stopObserving() で登録を解除するには observe() に渡した引数と同じものを渡す必要があった。つまり、
+Event.observe(&#39;signinForm&#39;, &#39;submit&#39;, checkForm);  でコールバック関数 checkForm を登録した場合は、
+Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm);  としていたはず。
+1.6.0 では引数を省略することで、対応するコールバック関数すべてを解除できるようになった。
+// checkForm を解除 Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm); // signinForm の submit イベントに登録されたコールバック関数を解除 Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;); // signinForm に登録されたコールバック関数を解除 Event.stopObserving(&#39;signinForm&#39;);  これまで removeEventListener や detachEvent の単なるラッパーに近かった stopObserving だが、これでだいぶ使いやすくなった。</description>
     </item>
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API (2)</title>
-      <link>http://www.metareal.org/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</link>
+      <link>http://ishikawa.github.io/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</link>
       <pubDate>Fri, 21 Sep 2007 05:41:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</guid>
-      <description>
-
-&lt;p&gt;随分と間が空いてしまった。前回の記事 &lt;a href=&#34;http://weblog.metareal.org/2007/09/02/prototype-1-6-0-event-overhaul-release/&#34;&gt;Prototype 1.6.0 で大きく進化したイベント API&lt;/a&gt; に引き続き、&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; で導入された、イベント API の変更点を見ていく。&lt;/p&gt;
-
-&lt;h3 id=&#34;イベントオブジェクトの拡張&#34;&gt;イベントオブジェクトの拡張&lt;/h3&gt;
-
-&lt;p&gt;これまでも、たとえば &lt;code&gt;$()&lt;/code&gt; から返された DOM 要素は &lt;a href=&#34;http://www.prototypejs.org/api/element/methods&#34;&gt;&lt;code&gt;Element.extend&lt;/code&gt;&lt;/a&gt; で色々と便利なメソッドが追加されていたが、1.6.0 からはイベントのコールバックに渡されるイベントオブジェクトでも &lt;code&gt;Event.extend&lt;/code&gt; されるようになった。&lt;/p&gt;
-
-&lt;p&gt;これからはコールバック関数でこんなふうに書ける。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function onClickListener(event) {
-  if (event.isLeftClick()) {
-    ...
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;また、IE の場合は他のモダンブラウザとの差異をなくすため、以下のプロパティも追加されている。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;target&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;relatedTarget&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pageX&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pageY&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;また、&lt;a href=&#34;http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html#Events-interface&#34;&gt;Document Object Model Events&lt;/a&gt; に準拠した、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;stopPropagation()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;preventDefault()&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;メソッドも追加されているようだ。（更につづく）&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</guid>
+      <description>随分と間が空いてしまった。前回の記事 Prototype 1.6.0 で大きく進化したイベント API に引き続き、Prototype 1.6.0 RC で導入された、イベント API の変更点を見ていく。
+イベントオブジェクトの拡張 これまでも、たとえば $() から返された DOM 要素は Element.extend で色々と便利なメソッドが追加されていたが、1.6.0 からはイベントのコールバックに渡されるイベントオブジェクトでも Event.extend されるようになった。
+これからはコールバック関数でこんなふうに書ける。
+function onClickListener(event) { if (event.isLeftClick()) { ... } }  また、IE の場合は他のモダンブラウザとの差異をなくすため、以下のプロパティも追加されている。
+ target relatedTarget pageX pageY  また、Document Object Model Events に準拠した、
+ stopPropagation() preventDefault()  メソッドも追加されているようだ。（更につづく）</description>
     </item>
     
     <item>
       <title>WebKit のブラウザ判定と iPhone、そして iPod touch</title>
-      <link>http://www.metareal.org/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</link>
+      <link>http://ishikawa.github.io/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</link>
       <pubDate>Sun, 09 Sep 2007 05:05:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/09/01/prototype-1-6-0-has-detection-for-iphone/&#34;&gt;Prototype 1.6.0 のブラウザ判定と iPhone&lt;/a&gt; では、&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;http://prototypejs.org/&#34;&gt;prototype.js&lt;/a&gt; には 1.5.1 から、各種ブラウザを判定するための &lt;code&gt;Prototype.Browser&lt;/code&gt; が定義されている。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;として prototype.js のブラウザ判定コードを紹介した。iPhone を含む WebKit ベースのブラウザも判別できる。&lt;/p&gt;
-
-&lt;h3 id=&#34;webkit-detect-script&#34;&gt;WebKit Detect script&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://webkit.org/blog/&#34;&gt;Surfin’ Safari&lt;/a&gt; の &lt;a href=&#34;http://webkit.org/blog/119/webkit-detect-script-updated-for-iphone-and-ipod-touch/&#34;&gt;WebKit Detect script updated for iPhone and iPod touch&lt;/a&gt; で知った。&lt;a href=&#34;http://trac.webkit.org/projects/webkit/wiki/DetectingWebKit&#34;&gt;WebKit detection script&lt;/a&gt; というものがあるらしい。&lt;/p&gt;
-
-&lt;p&gt;記事では &lt;a href=&#34;http://www.apple.com/iphone/&#34;&gt;iPhone&lt;/a&gt; と &lt;a href=&#34;http://www.apple.com/iphone/&#34;&gt;iPod touch&lt;/a&gt; もサポートしたよ、と書かれている。ソースコードではこんな感じ、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;WebKitDetect.isWebKit = function isWebKit()
-{
-    return RegExp(&amp;quot; AppleWebKit/&amp;quot;).test(navigator.userAgent);
-}
-...
-WebKitDetect.isMobile = function isMobile()
-{
-    return WebKitDetect.isWebKit() &amp;amp;amp;&amp;amp;amp; RegExp(&amp;quot; Mobile/&amp;quot;).test(navigator.userAgent);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;つまり、User-Agent に、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&amp;ldquo;AppleWebKit/&amp;rdquo; があれば WebKit&lt;/li&gt;
-&lt;li&gt;&amp;ldquo;Mobile/&amp;rdquo; があれば携帯端末&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;ということのようだ。&lt;/p&gt;
-
-&lt;p&gt;ここで、prototype.js のブラウザ判定コードを復習してみる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;MobileSafari: !!navigator.userAgent.match(/iPhone.*Mobile.*Safari/)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;User-Agent に &amp;ldquo;iPhone&amp;rdquo; という文字列を想定していることからも、おそらく iPod touch では動作しないだろう。まあ、すぐ直るだろうけど。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</guid>
+      <description>Prototype 1.6.0 のブラウザ判定と iPhone では、
+ prototype.js には 1.5.1 から、各種ブラウザを判定するための Prototype.Browser が定義されている。
+ として prototype.js のブラウザ判定コードを紹介した。iPhone を含む WebKit ベースのブラウザも判別できる。
+WebKit Detect script Surfin’ Safari の WebKit Detect script updated for iPhone and iPod touch で知った。WebKit detection script というものがあるらしい。
+記事では iPhone と iPod touch もサポートしたよ、と書かれている。ソースコードではこんな感じ、
+WebKitDetect.isWebKit = function isWebKit() { return RegExp(&amp;quot; AppleWebKit/&amp;quot;).test(navigator.userAgent); } ... WebKitDetect.isMobile = function isMobile() { return WebKitDetect.isWebKit() &amp;amp;amp;&amp;amp;amp; RegExp(&amp;quot; Mobile/&amp;quot;).test(navigator.userAgent); }  つまり、User-Agent に、
+ &amp;ldquo;AppleWebKit/&amp;rdquo; があれば WebKit &amp;ldquo;Mobile/&amp;rdquo; があれば携帯端末  ということのようだ。</description>
     </item>
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API</title>
-      <link>http://www.metareal.org/2007/09/02/prototype-1-6-0-event-overhaul-release/</link>
+      <link>http://ishikawa.github.io/2007/09/02/prototype-1-6-0-event-overhaul-release/</link>
       <pubDate>Sun, 02 Sep 2007 09:55:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/02/prototype-1-6-0-event-overhaul-release/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; にはいくつもの変更点がある。&lt;/p&gt;
-
-&lt;p&gt;特に イベント周りの API で顕著だ。&lt;code&gt;Event.observe&lt;/code&gt; メソッドなど、お馴染みの API が大幅に手を加えられている。&lt;/p&gt;
-
-&lt;h3 id=&#34;event-observe-で登録したコールバックの-this&#34;&gt;&lt;code&gt;Event.observe&lt;/code&gt; で登録したコールバックの &lt;code&gt;this&lt;/code&gt;&lt;/h3&gt;
-
-&lt;p&gt;いままで &lt;code&gt;Event.observe&lt;/code&gt; でコールバック関数を登録するときは、コールバックが呼ばれたときの &lt;code&gt;this&lt;/code&gt; を固定するため（と、引数に &lt;code&gt;event&lt;/code&gt; が確実に渡ってくるように）、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var element = $(&#39;mybutton&#39;);
-Event.observe(element, &#39;click&#39;, onClickEventListener.bindAsEventListener(element));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;Function#bindAsEventListener&lt;/code&gt; を使っていたと思う。&lt;/p&gt;
-
-&lt;p&gt;これが 1.6.0 では、&lt;code&gt;Event.observe&lt;/code&gt; や &lt;code&gt;Element.observe&lt;/code&gt; で登録したコールバック関数はすべてのブラウザで、&lt;code&gt;this&lt;/code&gt; がイベントの発生した DOM 要素となるように変更された。&lt;/p&gt;
-
-&lt;p&gt;そのため、上記のコードはシンプルに、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var element = $(&#39;mybutton&#39;);
-Event.observe(element, &#39;click&#39;, onClickEventListener);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;と書けるようになった。&lt;/p&gt;
-
-&lt;p&gt;もっとも、コールバック関数を登録するオブジェクト（コントローラー）自身を &lt;code&gt;this&lt;/code&gt; にすることの方が多いかもしれない。その場合は &lt;code&gt;bind&lt;/code&gt; する必要がある。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var element = $(&#39;mybutton&#39;);
-Event.observe(element, &#39;click&#39;, onClickEventListener.bind(this));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;コールバック関数の &lt;code&gt;this&lt;/code&gt; を固定する処理
-すでに &lt;code&gt;Function#bind&lt;/code&gt; や &lt;code&gt;Function#bindAsEventListener&lt;/code&gt; が紹介されつくしているご時世に今更な感もあるが、&lt;code&gt;Event.observe&lt;/code&gt; で登録したコールバック関数の &lt;code&gt;this&lt;/code&gt; を固定している処理を見てみよう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;observe: function(element, eventName, handler) {
-  element = $(element);
-  var id = getEventID(element), name = getDOMEventName(eventName);
-
-  var wrapper = createWrapper(id, eventName, handler);
-  if (!wrapper) return element;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;createWrapper&lt;/code&gt; が、渡されたコールバック関数 &lt;code&gt;handler&lt;/code&gt; から &lt;code&gt;this&lt;/code&gt; を固定したラッパー関数を返す。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function createWrapper(id, eventName, handler) {
-  var c = getWrappersForEventName(id, eventName);
-  if (c.pluck(&amp;quot;handler&amp;quot;).include(handler)) return false;
-
-  var wrapper = function(event) {
-    if (event.eventName &amp;amp;&amp;amp; event.eventName != eventName)
-      return false;
-
-    Event.extend(event);
-    handler.call(event.target, event);
-  };
-
-  wrapper.handler = handler;
-  c.push(wrapper);
-  return wrapper;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;強調部分に注目してほしい。&lt;code&gt;Event.extend&lt;/code&gt; でイベントオブジェクトを拡張したうえで、&lt;code&gt;event.target&lt;/code&gt; つまりイベントが発生した DOM 要素のメソッドとしてコールバック関数を呼んでいる。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;Object.extend&lt;/code&gt; と静的スコープの利用
-ところで、&lt;code&gt;Event&lt;/code&gt; オブジェクトに &lt;code&gt;observe&lt;/code&gt; メソッドを追加するときは &lt;code&gt;Object.extend&lt;/code&gt; によるコピーを利用しているのだが、その利用法が珍しい。&lt;/p&gt;
-
-&lt;p&gt;どのようになっているのか？　構造を示すために細かい部分を省略したコードを以下に載せる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Object.extend(Event, (function() {
-  function createWrapper(id, eventName, handler) {
-    ...
-  }
-
-  return {
-    observe: function(element, eventName, handler) {
-      ...
-    },
-    ...
-  };
-})());
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;かなり読みづらいが、無名関数の呼び出し結果を &lt;code&gt;Object.extend&lt;/code&gt; に渡している。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Object.extend(Event, (function() {...})());
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ここで、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;実際に &lt;code&gt;Object.extend&lt;/code&gt; に渡されるのは、無名関数内で &lt;code&gt;return&lt;/code&gt; されているオブジェクト&lt;/li&gt;
-&lt;li&gt;このオブジェクトのメソッドが公開される API として &lt;code&gt;Object.extend&lt;/code&gt; される&lt;/li&gt;
-&lt;li&gt;その他の関数はこれらのメソッドから利用されるだけのユーティリティ&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;というわけだ。&lt;/p&gt;
-
-&lt;p&gt;これは、&lt;strong&gt;名前空間を汚染しないために無名関数の静的スコープを利用する&lt;/strong&gt;、という JavaScript のイディオムと同じであることが分かると思う。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;(function() {
-  // この内部で定義した関数や変数は、この無名関数より外部の
-  // 名前空間を汚染しない。
-  function doSomething() {
-    ...
-  }
-})();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ただ、そこから &lt;code&gt;return&lt;/code&gt; されるオブジェクトを別の関数の引数に渡す、というやり方ははじめて見た。少なくとも &lt;a href=&#34;http://prototypejs.org/assets/2007/6/20/prototype.js&#34;&gt;Prototype 1.5.1.1&lt;/a&gt; までは見られなかった手法だ。&lt;/p&gt;
-
-&lt;p&gt;長くなってしまった&amp;hellip;。Prototype 1.6.0 のイベント API には他にも変更点がある。それらはまた次回。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/09/02/prototype-1-6-0-event-overhaul-release/</guid>
+      <description>Prototype 1.6.0 RC にはいくつもの変更点がある。
+特に イベント周りの API で顕著だ。Event.observe メソッドなど、お馴染みの API が大幅に手を加えられている。
+Event.observe で登録したコールバックの this いままで Event.observe でコールバック関数を登録するときは、コールバックが呼ばれたときの this を固定するため（と、引数に event が確実に渡ってくるように）、
+var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onClickEventListener.bindAsEventListener(element));  Function#bindAsEventListener を使っていたと思う。
+これが 1.6.0 では、Event.observe や Element.observe で登録したコールバック関数はすべてのブラウザで、this がイベントの発生した DOM 要素となるように変更された。
+そのため、上記のコードはシンプルに、
+var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onClickEventListener);  と書けるようになった。
+もっとも、コールバック関数を登録するオブジェクト（コントローラー）自身を this にすることの方が多いかもしれない。その場合は bind する必要がある。
+var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onClickEventListener.bind(this));  コールバック関数の this を固定する処理 すでに Function#bind や Function#bindAsEventListener が紹介されつくしているご時世に今更な感もあるが、Event.</description>
     </item>
     
     <item>
       <title>Prototype 1.6.0 のブラウザ判定と iPhone </title>
-      <link>http://www.metareal.org/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</link>
+      <link>http://ishikawa.github.io/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</link>
       <pubDate>Sat, 01 Sep 2007 08:30:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://prototypejs.org/&#34;&gt;prototype.js&lt;/a&gt; には 1.5.1 から、各種ブラウザを判定するための &lt;code&gt;Prototype.Browser&lt;/code&gt; が定義されている。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var Prototype = {
-  ...
-  Browser: {
-    IE:     !!(window.attachEvent &amp;amp;&amp;amp; !window.opera),
-    Opera:  !!window.opera,
-    WebKit: navigator.userAgent.indexOf(&#39;AppleWebKit/&#39;) &amp;gt; -1,
-    Gecko:  navigator.userAgent.indexOf(&#39;Gecko&#39;) &amp;gt; -1 &amp;amp;&amp;amp; navigator.userAgent.indexOf(&#39;KHTML&#39;) == -1,
-  ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;使い方は一目瞭然だろう。&lt;/p&gt;
-
-&lt;p&gt;たとえば Internet Explorer の場合は &lt;code&gt;Prototype.Browser.IE&lt;/code&gt; が、Safari など &lt;a href=&#34;http://webkit.org/&#34;&gt;WebKit&lt;/a&gt; を利用しているブラウザでは &lt;code&gt;Prototype.Browser.WebKit&lt;/code&gt; が &lt;code&gt;true&lt;/code&gt; になる。&lt;/p&gt;
-
-&lt;h3 id=&#34;prototype-1-6-0-rc-での-prototype-browser&#34;&gt;Prototype 1.6.0 RC での Prototype.Browser&lt;/h3&gt;
-
-&lt;p&gt;そして、&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype 1.6.0 RC&lt;/a&gt; では、ここに新しい定義が追加された。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.apple.com/iphone/internet/&#34;&gt;iPhone&lt;/a&gt; だ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var Prototype = {
-  Version: &#39;1.6.0_rc0&#39;,
-
-  Browser: {
-    IE:     !!(window.attachEvent &amp;amp;&amp;amp; !window.opera),
-    Opera:  !!window.opera,
-    WebKit: navigator.userAgent.indexOf(&#39;AppleWebKit/&#39;) &amp;gt; -1,
-    Gecko:  navigator.userAgent.indexOf(&#39;Gecko&#39;) &amp;gt; -1 &amp;amp;&amp;amp; navigator.userAgent.indexOf(&#39;KHTML&#39;) == -1,
-    MobileSafari: !!navigator.userAgent.match(/iPhone.*Mobile.*Safari/)
-  },
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;Prototype.Browser.MobileSafari&lt;/code&gt; が iPhone のブラウザを判定するために利用できるようになった。&lt;/p&gt;
-
-&lt;p&gt;なお、iPhone に搭載されている Safari の User-Agent は&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;となっている。&lt;/p&gt;
-
-&lt;h3 id=&#34;prototype-browser-の歴史&#34;&gt;&lt;code&gt;Prototype.Browser&lt;/code&gt; の歴史&lt;/h3&gt;
-
-&lt;p&gt;もともと &lt;code&gt;Prototype.Browser&lt;/code&gt; は、prototype.js のあちこちに散らばっていたブラウザ判定コードを一箇所にまとめるために導入された。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://dev.rubyonrails.org/ticket/6800&#34;&gt;#6800 PATCH: Unified browser detection&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;その後、iPhone では &lt;code&gt;Prototype.BrowserFeatures.SpecificElementExtensions&lt;/code&gt; が誤って &lt;code&gt;true&lt;/code&gt; になってしまうことが発覚。対策として iPhone 判定が必要になったようだ。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://dev.rubyonrails.org/changeset/7157&#34;&gt;Changeset 7157 - Temporary workaround for Prototype.BrowserFeatures.SpecificElementExtensions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://dev.rubyonrails.org/changeset/7241&#34;&gt;Changeset 7241 - prototype: Add Prototype.Browser.MobileSafari&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;ちなみに、&lt;code&gt;Prototype.BrowserFeatures.SpecificElementExtensions&lt;/code&gt; は DOM 要素のプロトタイプチェーンに関するものだが&amp;hellip;、ということは、iPhone に搭載されている Safari ではそのへんが変更されている？&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</guid>
+      <description>prototype.js には 1.5.1 から、各種ブラウザを判定するための Prototype.Browser が定義されている。
+var Prototype = { ... Browser: { IE: !!(window.attachEvent &amp;amp;&amp;amp; !window.opera), Opera: !!window.opera, WebKit: navigator.userAgent.indexOf(&#39;AppleWebKit/&#39;) &amp;gt; -1, Gecko: navigator.userAgent.indexOf(&#39;Gecko&#39;) &amp;gt; -1 &amp;amp;&amp;amp; navigator.userAgent.indexOf(&#39;KHTML&#39;) == -1, ...  使い方は一目瞭然だろう。
+たとえば Internet Explorer の場合は Prototype.Browser.IE が、Safari など WebKit を利用しているブラウザでは Prototype.Browser.WebKit が true になる。
+Prototype 1.6.0 RC での Prototype.Browser そして、Prototype 1.6.0 RC では、ここに新しい定義が追加された。
+iPhone だ。
+var Prototype = { Version: &#39;1.6.0_rc0&#39;, Browser: { IE: !!(window.attachEvent &amp;amp;&amp;amp; !</description>
     </item>
     
     <item>
       <title>Prototype 1.6.0 と DOMContentLoaded</title>
-      <link>http://www.metareal.org/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</link>
+      <link>http://ishikawa.github.io/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</link>
       <pubDate>Wed, 22 Aug 2007 05:32:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</guid>
-      <description>
-
-&lt;p&gt;Prototype 1.6.0 のリリース候補版が公開されたようだ。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate&#34;&gt;Prototype JavaScript framework: Prototype 1.6.0 release candidate&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://weblog.rubyonrails.com/2007/8/16/prototype-1-6-0-release-candidate&#34;&gt;Riding Rails: Prototype 1.6.0 release candidate&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;変更点が多い。目を引くものとしては、クラスの継承がサポートされた。新しい &lt;code&gt;Class.create&lt;/code&gt; では親クラスを指定できる。いままでは &lt;code&gt;Object.extend&lt;/code&gt; によるコピーで擬似的な継承をしていただけなので、これは嬉しいかもしれない。&lt;/p&gt;
-
-&lt;h3 id=&#34;クロスブラウザな-domcontentloaded-イベント&#34;&gt;クロスブラウザな DOMContentLoaded イベント&lt;/h3&gt;
-
-&lt;p&gt;また、「&lt;a href=&#34;http://weblog.metareal.org/2007/07/10/domready-js-cross-browser-ondomcontentloaded/&#34;&gt;window.onload 前でも DOM 処理が可能なら通知してくれる domready.js&lt;/a&gt;」という記事でも書いた、&lt;strong&gt;DOMContentLoaded がサポートされた&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... })
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;従来の &lt;code&gt;Element#observe&lt;/code&gt; メソッドを通して、透過的に扱うことができる。これで、先の記事にアップしていた domready.js は不要になるだろう。&lt;/p&gt;
-
-&lt;p&gt;1.6.0 には他にも色々面白そうな機能が追加されている。暇があるときに追々調べていくつもり。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</guid>
+      <description>Prototype 1.6.0 のリリース候補版が公開されたようだ。
+ Prototype JavaScript framework: Prototype 1.6.0 release candidate Riding Rails: Prototype 1.6.0 release candidate  変更点が多い。目を引くものとしては、クラスの継承がサポートされた。新しい Class.create では親クラスを指定できる。いままでは Object.extend によるコピーで擬似的な継承をしていただけなので、これは嬉しいかもしれない。
+クロスブラウザな DOMContentLoaded イベント また、「window.onload 前でも DOM 処理が可能なら通知してくれる domready.js」という記事でも書いた、DOMContentLoaded がサポートされた。
+document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... })  従来の Element#observe メソッドを通して、透過的に扱うことができる。これで、先の記事にアップしていた domready.js は不要になるだろう。
+1.6.0 には他にも色々面白そうな機能が追加されている。暇があるときに追々調べていくつもり。</description>
     </item>
     
     <item>
       <title>prototype.js の $$ 関数で CSS 風に DOM プログラミング</title>
-      <link>http://www.metareal.org/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</link>
+      <link>http://ishikawa.github.io/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</link>
       <pubDate>Sun, 15 Jul 2007 11:56:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://www.prototypejs.org/&#34;&gt;prototype.js&lt;/a&gt; の &lt;code&gt;$$&lt;/code&gt; 関数（実際の処理は &lt;code&gt;Selector.findChildElements&lt;/code&gt;）は CSS セレクタを受け取り、セレクタにマッチする要素を配列で返してくれる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var links = $$(&#39;#contents a&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;だが、単純にひとつのセレクタだけではなくて、複数のセレクタを引数に渡したり、CSS と同じく、カンマ区切りで複数指定することもできる（結果は重複要素のない配列となって返ってくる）。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var links = $$(&amp;quot;#contents a&amp;quot;, &amp;quot;#footer .items a&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;このコードは、こう書くこともできる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var links = $$(&amp;quot;#contents a, #footer .items a&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;そして、いまさらながら気づいたのは、これらの特徴を利用すれば、DOM の処理を CSS のように&lt;strong&gt;宣言的に&lt;/strong&gt;書くのが可能だ、ということ。&lt;/p&gt;
-
-&lt;h3 id=&#34;css-風に-dom-プログラミング&#34;&gt;CSS 風に DOM プログラミング&lt;/h3&gt;
-
-&lt;p&gt;たとえば、フォーム入力画面で最初のテキストフィールドまたはテキストエリアを取り出す場合は、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$$(
-  &amp;quot;form input[type=text]&amp;quot;,
-  &amp;quot;form textarea&amp;quot;
-).slice(0, 1)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;と書けるので、以前の &lt;a href=&#34;http://weblog.metareal.org/2007/07/10/domready-js-cross-browser-ondomcontentloaded/&#34;&gt;domready.js&lt;/a&gt; と組み合わせると、&lt;strong&gt;読み込み時に最初のテキストフィールドまたはテキストエリアを選択状態にする&lt;/strong&gt;コードは以下のように書ける。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Event.domReady.add(function() {
-
-  // Select initial first responder when the window is first placed onscreen.
-  $$(
-    &amp;quot;form input[type=text]&amp;quot;,
-    &amp;quot;form textarea&amp;quot;
-  ).slice(0, 1).each(function(element){
-    element.activate();
-  });
-
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;強調部分のみに注目してもらうと分かりやすいが、CSS に近い記述になっている。また、今回の例のように、&lt;code&gt;slice&lt;/code&gt; して特定の要素のみに限定したり、&lt;a href=&#34;http://www.prototypejs.org/api/utility/dollar-dollar&#34;&gt;Prototype.js 1.5.1 では CSS3 もサポートされている&lt;/a&gt;など、より柔軟な選択が可能なのも嬉しい。&lt;/p&gt;
-
-&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.prototypejs.org/&#34;&gt;Prototype.js&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.prototypejs.org/api/utility/dollar-dollar&#34;&gt;Prototype.js: Utility Methods.$$&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://bennolan.com/behaviour/&#34;&gt;Behaviour : Using CSS selectors to apply Javascript behaviours&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</guid>
+      <description>prototype.js の $$ 関数（実際の処理は Selector.findChildElements）は CSS セレクタを受け取り、セレクタにマッチする要素を配列で返してくれる。
+var links = $$(&#39;#contents a&#39;);  だが、単純にひとつのセレクタだけではなくて、複数のセレクタを引数に渡したり、CSS と同じく、カンマ区切りで複数指定することもできる（結果は重複要素のない配列となって返ってくる）。
+var links = $$(&amp;quot;#contents a&amp;quot;, &amp;quot;#footer .items a&amp;quot;);  このコードは、こう書くこともできる。
+var links = $$(&amp;quot;#contents a, #footer .items a&amp;quot;);  そして、いまさらながら気づいたのは、これらの特徴を利用すれば、DOM の処理を CSS のように宣言的に書くのが可能だ、ということ。
+CSS 風に DOM プログラミング たとえば、フォーム入力画面で最初のテキストフィールドまたはテキストエリアを取り出す場合は、
+$$( &amp;quot;form input[type=text]&amp;quot;, &amp;quot;form textarea&amp;quot; ).slice(0, 1)  と書けるので、以前の domready.js と組み合わせると、読み込み時に最初のテキストフィールドまたはテキストエリアを選択状態にするコードは以下のように書ける。
+Event.domReady.add(function() { // Select initial first responder when the window is first placed onscreen. $$( &amp;quot;form input[type=text]&amp;quot;, &amp;quot;form textarea&amp;quot; ).</description>
     </item>
     
   </channel>

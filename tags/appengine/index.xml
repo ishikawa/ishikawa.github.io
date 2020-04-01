@@ -1,412 +1,90 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Appengine on METAREAL</title>
-    <link>http://www.metareal.org/tags/appengine/index.xml</link>
-    <description>Recent content in Appengine on METAREAL</description>
+    <title>appengine on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/appengine/</link>
+    <description>Recent content in appengine on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/appengine/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 03 Dec 2009 12:42:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/appengine/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Google AppEngine で Django 1.1 を使う</title>
-      <link>http://www.metareal.org/2009/12/02/running-django-1-1-on-google-appengine/</link>
+      <link>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</link>
       <pubDate>Thu, 03 Dec 2009 12:42:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2009/12/02/running-django-1-1-on-google-appengine/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://code.google.com/appengine/&#34;&gt;Google AppEngine&lt;/a&gt; の SDK および実行環境には、Web アプリケーション・フレームワークの &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; がプリインストールされている。&lt;/p&gt;
-
-&lt;p&gt;しかし、デフォルトで有効になっているのは 0.96 という相当古いバージョンだ（もっとも、Google AppEngine リリース時点では、これが最新のバージョンであった）。すでにサポートも終了しており、バグや脆弱性の修正もされないため、できれば最新の 1.0/1.1系列を使いたい、という人が大半だろう。&lt;/p&gt;
-
-&lt;p&gt;しかし、これまで、バージョン 1.0 以降の Django を Google AppEngine で使うのは骨の折れる作業だった。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;使いたいバージョンの Django を丸ごとアップロードしなくてはいけなかった&lt;/li&gt;
-&lt;li&gt;Django はファイル数が多いため、アップロード可能なファイル数制限を超えやすい&lt;/li&gt;
-&lt;li&gt;デフォルトで有効になる古いバージョンの Django を無効化するために、&lt;a href=&#34;http://code.google.com/intl/en/appengine/articles/django.html&#34;&gt;呪文めいたコードが必要&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;だが、いまや状況は変わった。SDK &lt;a href=&#34;http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes#Version_1.2.3_-_June_18,_2009&#34;&gt;1.2.3 からは Django 1.0&lt;/a&gt; が、SDK &lt;a href=&#34;http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes#Version_1.2.5_-_September_3,_2009&#34;&gt;1.2.5 からは Django 1.1&lt;/a&gt; がサポートされ、Google AppEngine でも、簡単に Django 1.x を動かせるようになった。&lt;/p&gt;
-
-&lt;h3 id=&#34;google-appengine-dist-use-library&#34;&gt;google.appengine.dist.use_library&lt;/h3&gt;
-
-&lt;p&gt;SDK 1.2.&lt;sup&gt;3&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;.2.5 からは &lt;a href=&#34;http://code.google.com/p/googleappengine/source/browse/#svn/trunk/python/google/appengine/dist&#34;&gt;google.appengine.dist&lt;/a&gt; モジュールの &lt;code&gt;use_library&lt;/code&gt; 関数を使うことで Django 1.0/1.1 を選択できるようになった。&lt;/p&gt;
-
-&lt;p&gt;使い方は簡単で、&lt;code&gt;main.py&lt;/code&gt; に以下のような記述を追加するだけだ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import os
-os.environ[&#39;DJANGO_SETTINGS_MODULE&#39;] = &#39;settings&#39;
-
-from google.appengine.dist import use_library
-use_library(&#39;django&#39;, &#39;1.1&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これまで開発者が各自行っていた &lt;code&gt;sys.path&lt;/code&gt; の調整は &lt;code&gt;use_library&lt;/code&gt; 関数がやってくれる。&lt;/p&gt;
-
-&lt;p&gt;更に嬉しいことに、Django のコードをアップロードする必要もなくなった。Google AppEngine のサーバには Django 1.0/1.1 がインストールされている。ただし、SDK には Django 0.96 しか添付されていないので、1.0/1.1 を使う場合は、あらかじめローカルのマシンに Django 1.0/1.1 をインストールしておこう。&lt;/p&gt;
-
-&lt;h3 id=&#34;django-のバージョンと-dos-攻撃可能な脆弱性について&#34;&gt;Django のバージョンと DoS 攻撃可能な脆弱性について&lt;/h3&gt;
-
-&lt;p&gt;なお、実際に有効になる Django の詳細なバージョンは、本記事執筆時点の 2009 年 11 月で以下のようになっている（&lt;code&gt;django.VERSION&lt;/code&gt; で調べた）。&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;use_library&lt;/th&gt;
-&lt;th&gt;Django version&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;(None)&lt;/td&gt;
-&lt;td&gt;0.96.4&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;use_library(1.0)&lt;/td&gt;
-&lt;td&gt;1.0.2&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;use_library(1.1)&lt;/td&gt;
-&lt;td&gt;1.1.0&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;del&gt;残念ながら、1.0/1.1 は &lt;a href=&#34;http://www.djangoproject.com/weblog/2009/oct/09/security/&#34;&gt;DoS 攻撃可能な脆弱性が修正されたバージョン&lt;/a&gt; ではないようだ（修正バージョンは 1.0.&lt;sup&gt;4&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;.1.1）。&lt;/del&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;del&gt;この脆弱性は &lt;code&gt;EmailField&lt;/code&gt; か &lt;code&gt;URLField&lt;/code&gt; に関連したものなので、それらを使っているプログラムでは Google AppEngine にインストールされた Django のアップデートを待つか、これまでどおりの方法で、修正済みのバージョンをアップロードした方が安全だろう。&lt;/del&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Google AppEngine プロジェクトに&lt;a href=&#34;http://code.google.com/p/googleappengine/issues/detail?id=2447&#34;&gt;報告&lt;/a&gt;したところ、GAE で有効になるバージョンは修正済みのものである、とのこと。失礼しました。&lt;/p&gt;
-
-&lt;h3 id=&#34;main-py-のサンプル&#34;&gt;main.py のサンプル&lt;/h3&gt;
-
-&lt;p&gt;実際に &lt;code&gt;use_library&lt;/code&gt; を使ったサンプルを &lt;a href=&#34;http://gist.github.com/245523&#34;&gt;gist:245523&lt;/a&gt; で公開している。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</guid>
+      <description>Google AppEngine の SDK および実行環境には、Web アプリケーション・フレームワークの Django がプリインストールされている。
+しかし、デフォルトで有効になっているのは 0.96 という相当古いバージョンだ（もっとも、Google AppEngine リリース時点では、これが最新のバージョンであった）。すでにサポートも終了しており、バグや脆弱性の修正もされないため、できれば最新の 1.0/1.1系列を使いたい、という人が大半だろう。
+しかし、これまで、バージョン 1.0 以降の Django を Google AppEngine で使うのは骨の折れる作業だった。
+ 使いたいバージョンの Django を丸ごとアップロードしなくてはいけなかった Django はファイル数が多いため、アップロード可能なファイル数制限を超えやすい デフォルトで有効になる古いバージョンの Django を無効化するために、呪文めいたコードが必要  だが、いまや状況は変わった。SDK 1.2.3 からは Django 1.0 が、SDK 1.2.5 からは Django 1.1 がサポートされ、Google AppEngine でも、簡単に Django 1.x を動かせるようになった。
+google.appengine.dist.use_library SDK 1.2.3&amp;frasl;1.2.5 からは google.appengine.dist モジュールの use_library 関数を使うことで Django 1.0/1.1 を選択できるようになった。
+使い方は簡単で、main.py に以下のような記述を追加するだけだ。
+import os os.environ[&#39;DJANGO_SETTINGS_MODULE&#39;] = &#39;settings&#39; from google.appengine.dist import use_library use_library(&#39;django&#39;, &#39;1.</description>
     </item>
     
     <item>
       <title>Google App Engine 1.1.3 の zipserve で静的ファイルをまとめてアップロード</title>
-      <link>http://www.metareal.org/2008/10/03/google-app-engine-113-zipserve/</link>
+      <link>http://ishikawa.github.io/2008/10/03/google-app-engine-113-zipserve/</link>
       <pubDate>Fri, 03 Oct 2008 05:48:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/10/03/google-app-engine-113-zipserve/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://googleappengine.blogspot.com/2008/09/sdk-113-now-available-for-download.html&#34;&gt;Google App Engine SDK 1.1.3&lt;/a&gt; で追加された &lt;code&gt;zipserve&lt;/code&gt; を使うと、静的ファイルを zip にまとめてアップロードできるらしい。ただ、&lt;a href=&#34;http://code.google.com/appengine/docs/&#34;&gt;Developer&amp;rsquo;s Guide&lt;/a&gt; 内を検索してもドキュメントが見つからない。しかたがないので、&lt;a href=&#34;http://code.google.com/p/googleappengine/source/browse/trunk/python/google/appengine/ext/zipserve/__init__.py&#34;&gt;ソースコード&lt;/a&gt;のコメントを頼りに &lt;code&gt;zipserve&lt;/code&gt; を試してみる。&lt;/p&gt;
-
-&lt;h3 id=&#34;zipserve-するもの&#34;&gt;zipserve するもの&lt;/h3&gt;
-
-&lt;p&gt;今回は、このブログのレイアウトに使っている CSS フレームワークの &lt;a href=&#34;http://www.yaml.de/&#34;&gt;YAML&lt;/a&gt; を zipserve したいと思う。ファイル数もそれなりにあり、しかも、まず変更することはないので、zipserve するにはうってつけなのだ。&lt;/p&gt;
-
-&lt;h3 id=&#34;app-yaml&#34;&gt;app.yaml&lt;/h3&gt;
-
-&lt;p&gt;YAML の CSS ファイルは &lt;code&gt;/stylesheets/yaml/&lt;/code&gt; 以下に置いてあるので、まずは &lt;code&gt;app.yaml&lt;/code&gt; で以下のように設定する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;- url: /stylesheets/yaml/.*
-  script: $PYTHON_LIB/google/appengine/ext/zipserve
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;$PYTHON_LIB/google/appengine/ext/zipserve&lt;/code&gt; というのが、さきほど&lt;a href=&#34;http://code.google.com/p/googleappengine/source/browse/trunk/python/google/appengine/ext/zipserve/__init__.py&#34;&gt;ソースコード&lt;/a&gt;をみた &lt;code&gt;zipserve&lt;/code&gt; モジュールなのが分かるだろう。&lt;/p&gt;
-
-&lt;h3 id=&#34;zip-ファイルの作成と設置&#34;&gt;zip ファイルの作成と設置&lt;/h3&gt;
-
-&lt;p&gt;アプリケーション側の設定もすんだし、zip ファイルをつくるわけだが、そのまえに実際に配置されるファイルと zip ファイルの対応関係を確認しておこう。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;URL で指定されたパスの最初のディレクトリが zip ファイル名、それ以降が zip 内のファイルパスになる。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;つまり、今回の例でいうと、&lt;code&gt;/stylesheets/yaml/core/base.css&lt;/code&gt; というリクエストに対して、&lt;code&gt;stylesheets.zip&lt;/code&gt; から &lt;code&gt;yaml/core/base.css&lt;/code&gt; が返されるわけだ。また、zip ファイルはアプリケーションのルートディレクトリに置くようだ。&lt;/p&gt;
-
-&lt;p&gt;それでは早速、&lt;code&gt;zip&lt;/code&gt; コマンドで zip ファイルをつくってみよう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% zip -r -9 stylesheets.zip yaml
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;yaml&lt;/code&gt; ディレクトリを含む &lt;code&gt;stylesheets.zip&lt;/code&gt; を作成した。あとはこの zip ファイルをアプリケーションのルートディレクトリに置けばよい。&lt;/p&gt;
-
-&lt;h3 id=&#34;zipserve-zipimport&#34;&gt;zipserve, zipimport&lt;/h3&gt;
-
-&lt;p&gt;仕様に場当たり的な印象は受けるものの、現実にデプロイできるファイル数に限度がある以上、&lt;code&gt;zipserve&lt;/code&gt; が有用なことは間違いないだろう。また、同様に SDK 1.1.3 からサポートされた &lt;a href=&#34;http://www.python.org/doc/2.5.2/lib/module-zipimport.html&#34;&gt;zipimport&lt;/a&gt; も併用すると、デプロイ時のファイル数をかなり削減することが可能だ。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/10/03/google-app-engine-113-zipserve/</guid>
+      <description>Google App Engine SDK 1.1.3 で追加された zipserve を使うと、静的ファイルを zip にまとめてアップロードできるらしい。ただ、Developer&amp;rsquo;s Guide 内を検索してもドキュメントが見つからない。しかたがないので、ソースコードのコメントを頼りに zipserve を試してみる。
+zipserve するもの 今回は、このブログのレイアウトに使っている CSS フレームワークの YAML を zipserve したいと思う。ファイル数もそれなりにあり、しかも、まず変更することはないので、zipserve するにはうってつけなのだ。
+app.yaml YAML の CSS ファイルは /stylesheets/yaml/ 以下に置いてあるので、まずは app.yaml で以下のように設定する。
+- url: /stylesheets/yaml/.* script: $PYTHON_LIB/google/appengine/ext/zipserve  $PYTHON_LIB/google/appengine/ext/zipserve というのが、さきほどソースコードをみた zipserve モジュールなのが分かるだろう。
+zip ファイルの作成と設置 アプリケーション側の設定もすんだし、zip ファイルをつくるわけだが、そのまえに実際に配置されるファイルと zip ファイルの対応関係を確認しておこう。
+URL で指定されたパスの最初のディレクトリが zip ファイル名、それ以降が zip 内のファイルパスになる。
+つまり、今回の例でいうと、/stylesheets/yaml/core/base.css というリクエストに対して、stylesheets.zip から yaml/core/base.css が返されるわけだ。また、zip ファイルはアプリケーションのルートディレクトリに置くようだ。
+それでは早速、zip コマンドで zip ファイルをつくってみよう。
+% zip -r -9 stylesheets.</description>
     </item>
     
     <item>
       <title>Google App Engine で Django 1.0 を動かす</title>
-      <link>http://www.metareal.org/2008/10/02/running-django-1-0-on-google-app-engine/</link>
+      <link>http://ishikawa.github.io/2008/10/02/running-django-1-0-on-google-app-engine/</link>
       <pubDate>Thu, 02 Oct 2008 10:26:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/10/02/running-django-1-0-on-google-app-engine/</guid>
-      <description>
-
-&lt;p&gt;このブログは &lt;a href=&#34;http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;Google App Engine と Django で動かしている&lt;/a&gt;のだが、いままで &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; はすこし古い開発版を使っていた。&lt;/p&gt;
-
-&lt;p&gt;しかし、先頃めでたく &lt;a href=&#34;http://www.djangoproject.com/weblog/2008/sep/03/1/&#34;&gt;Django 1.0 もリリースされた&lt;/a&gt;ことだし、このブログも最新の開発版にアップデートすることにした。とりあえず、すこしソースコードを修正するだけで、動くだけは動いたので、変更点を残しておく。もっとも、このブログは機能がすくない分、Django に依存している箇所もすくないので、他のプログラムではこれ以上の修正が必要かもしれない。&lt;/p&gt;
-
-&lt;p&gt;また、Django を Google App Engine 上で動かす方法については、もともと、&lt;a href=&#34;http://code.google.com/appengine/articles/django.html&#34;&gt;Running Django on Google App Engine&lt;/a&gt; を参考にしている。そのため、他の手段、たとえば &lt;a href=&#34;http://code.google.com/p/google-app-engine-django/&#34;&gt;Google App Engine Helper for Django&lt;/a&gt; を使っている人にとっては、この記事は役に立たないだろう。&lt;/p&gt;
-
-&lt;h3 id=&#34;django-dispatch-dispatcher-connect&#34;&gt;django.dispatch.dispatcher.connect&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;django.dispatch.dispatcher.connect&lt;/code&gt;, &lt;code&gt;django.dispatch.dispatcher.disconnect&lt;/code&gt; は使えなくなっていた。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-diff&#34;&gt;--- ../metareal.django.0.9/main.py    2008-06-06 17:33:42.000000000 +0900
-+++ ./main.py 2008-10-02 21:14:00.000000000 +0900
-@@ -53,20 +53,17 @@
-
- import django.core.handlers.wsgi
- import django.core.signals
--import django.db
--import django.dispatch.dispatcher
-+from django.db import _rollback_on_exception
-+from django.core import signals
-
- def log_exception(*args, **kwds):
-     logging.exception(&#39;Exception in request:&#39;)
-
- # Log errors.
--django.dispatch.dispatcher.connect(
--    log_exception, django.core.signals.got_request_exception)
-+signals.got_request_exception.connect(log_exception)
-
- # Unregister the rollback event handler.
--django.dispatch.dispatcher.disconnect(
--    django.db._rollback_on_exception,
--    django.core.signals.got_request_exception)
-+signals.got_request_exception.disconnect(_rollback_on_exception)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;newforms&#34;&gt;newforms&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;django.newforms&lt;/code&gt; を &lt;code&gt;django.forms&lt;/code&gt; に置き換える。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-diff&#34;&gt;--- ../metareal.django.0.9/weblog/forms.py    2008-05-16 15:08:47.000000000 +0900
-+++ ./weblog/forms.py 2008-10-02 21:15:45.000000000 +0900
-@@ -1,4 +1,4 @@
--from django import newforms as forms
-+from django import forms
- from django.utils.translation import ugettext_lazy
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;使用している &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; および &lt;a href=&#34;http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes&#34;&gt;Google App Engine SDK&lt;/a&gt; それぞれのバージョンは以下の通り。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Django 1.0 (revision 9109)&lt;/li&gt;
-&lt;li&gt;Google App Engine SDK 1.1.4&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;そういえば、Google App Engine は SDK 1.1.3 から zipserve という新しいモジュールが追加されたり、と徐々に機能も増えてるので、このへんも使っていきたい。&lt;/p&gt;
-
-&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://djangoproject.jp/doc/ja/1.0/releases/1.0-porting-guide.html&#34;&gt;アプリケーションを Django 0.96 から 1.0 に移行する — Django v1.0 documentation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://googleappengine.blogspot.com/2008/09/sdk-113-now-available-for-download.html&#34;&gt;Google App Engine Blog: SDK 1.1.3 Now Available for download&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/10/02/running-django-1-0-on-google-app-engine/</guid>
+      <description>このブログは Google App Engine と Django で動かしているのだが、いままで Django はすこし古い開発版を使っていた。
+しかし、先頃めでたく Django 1.0 もリリースされたことだし、このブログも最新の開発版にアップデートすることにした。とりあえず、すこしソースコードを修正するだけで、動くだけは動いたので、変更点を残しておく。もっとも、このブログは機能がすくない分、Django に依存している箇所もすくないので、他のプログラムではこれ以上の修正が必要かもしれない。
+また、Django を Google App Engine 上で動かす方法については、もともと、Running Django on Google App Engine を参考にしている。そのため、他の手段、たとえば Google App Engine Helper for Django を使っている人にとっては、この記事は役に立たないだろう。
+django.dispatch.dispatcher.connect django.dispatch.dispatcher.connect, django.dispatch.dispatcher.disconnect は使えなくなっていた。
+--- ../metareal.django.0.9/main.py 2008-06-06 17:33:42.000000000 +0900 +++ ./main.py 2008-10-02 21:14:00.000000000 +0900 @@ -53,20 +53,17 @@ import django.core.handlers.wsgi import django.core.signals -import django.db -import django.dispatch.dispatcher +from django.db import _rollback_on_exception +from django.core import signals def log_exception(*args, **kwds): logging.</description>
     </item>
     
     <item>
       <title>Django のキャッシュで Google App Engine の Memcache API を使う</title>
-      <link>http://www.metareal.org/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</link>
+      <link>http://ishikawa.github.io/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</link>
       <pubDate>Thu, 29 May 2008 01:48:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://googleappengine.blogspot.com/&#34;&gt;Google App Engine ブログ&lt;/a&gt;で&lt;a href=&#34;http://googleappengine.blogspot.com/2008/05/announcing-open-signups-expected.html&#34;&gt;新しい動き&lt;/a&gt;があった。トピックは以下の通り。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;アカウント数の制限を撤廃&lt;/li&gt;
-&lt;li&gt;課金の料金体系について&lt;/li&gt;
-&lt;li&gt;画像操作のための API&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://code.google.com/appengine/docs/memcache/&#34;&gt;Memcache API&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;どれひとつとっても、重大な発表ばかりだ。プラットホームとしての Google App Engine に注目している方は 1. 2. が特に気になるだろうし、利用者からすれば、3. 4. は待ち焦がれていた機能だろう。&lt;/p&gt;
-
-&lt;h3 id=&#34;重いページをキャッシュする&#34;&gt;重いページをキャッシュする&lt;/h3&gt;
-
-&lt;p&gt;このブログを &lt;a href=&#34;http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/&#34;&gt;Google App Engine に移行&lt;/a&gt;して一週間が経った。しかし、Admin Console でログを確認してみると、ところどころで警告が出ている。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;
-&amp;quot;GET /index.xml HTTP/1.1&amp;quot; 200 117413 - -
-...
-This request used a high amount of CPU, and was roughly 5.5 times over the average request CPU limit. High CPU requests have a small quota, and if you exceed this quota, your app will be temporarily disabled.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;どうやら、フィードの生成が重いようである。&lt;/p&gt;
-
-&lt;p&gt;考えてみれば、フィードがリクエストされるたびに、この重い処理を繰り返す必要はない。どうせ、記事の更新があるまでは生成される内容は同じだし、記事の更新をリアルタイムに反映する必要もないだろう。キャッシュしてしまおう。&lt;/p&gt;
-
-&lt;h3 id=&#34;the-django-cache-framework&#34;&gt;The Django cache framework&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; には&lt;a href=&#34;http://www.djangoproject.com/documentation/cache/&#34;&gt;簡単に使えるキャッシュ・フレームワーク&lt;/a&gt;（&lt;a href=&#34;http://ymasuda.jp/python/django/docs/cache.html&#34;&gt;和訳&lt;/a&gt;）が組込まれており、&lt;a href=&#34;http://danga.com/memcached/&#34;&gt;memcached&lt;/a&gt; もサポートされている。&lt;/p&gt;
-
-&lt;p&gt;今回は &lt;strong&gt;Django のキャッシュ・フレームワークが memcached の代わりに GAE の Memcache API を使うようにする&lt;/strong&gt;ことで、コンテンツをキャッシュしてみよう。&lt;/p&gt;
-
-&lt;p&gt;Note&lt;/p&gt;
-
-&lt;p&gt;以下で紹介する方法は、&lt;a href=&#34;http://code.google.com/p/google-app-engine-django/&#34;&gt;Google App Engine Helper for Django&lt;/a&gt; に投稿された&lt;a href=&#34;http://code.google.com/p/google-app-engine-django/issues/detail?id=27&#34;&gt;パッチ&lt;/a&gt;に基づいている。この機能が Google App Engine Helper for Django に取り込まれる日も近いだろう。&lt;/p&gt;
-
-&lt;p&gt;この修正は簡単で、&lt;code&gt;main.py&lt;/code&gt; に以下の行を追加するだけである。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# Install App Engine memcache backend for cache framework
-from google.appengine.api import memcache
-sys.modules[&#39;memcache&#39;] = memcache
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;変更は一目瞭然。トップレベルの &lt;code&gt;memcache&lt;/code&gt; モジュールを GAE の &lt;code&gt;memcache&lt;/code&gt; モジュールにしてしまう。&lt;/p&gt;
-
-&lt;p&gt;あとは、Django のキャッシュ・フレームワークを設定するだけだ。&lt;code&gt;settings.py&lt;/code&gt; に &lt;code&gt;CACHE_BACKEND&lt;/code&gt; の指定を追加しよう。GAE の Memcache API では接続先や負荷分散を指定する必要はないので、ホストの部分は空にしておく。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;CACHE_BACKEND = &#39;memcached:///&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;とりあえず、フィードをキャッシュしたかったので &lt;code&gt;cache_page&lt;/code&gt; デコレータで、フィードを生成している View をキャッシュするようにした。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;from django.views.decorators.cache import cache_page, never_cache
-
-@cache_page
-def archive_tag(request, slug, page=1):
-  ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;たったこれだけで、初回リクエスト以降、重いフィード生成の処理をキャッシュしてくれるようになった。&lt;/p&gt;
-
-&lt;h3 id=&#34;keyerror&#34;&gt;KeyError&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;（2008.5.29 追記）&lt;/strong&gt;memcached.Client#get が &lt;code&gt;KeyError&lt;/code&gt; を返すことがあるようだ。&lt;a href=&#34;http://code.google.com/appengine/docs/memcache/clientclass.html#Client_get&#34;&gt;キーが存在しない場合は None を返すはず&lt;/a&gt;なので、バグかもしれない。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://groups.google.com/group/google-appengine/browse_thread/thread/48eea75a4b1e54cf/b59461ba28810c86?lnk=gst&amp;amp;q=memcache#b59461ba28810c86&#34;&gt;memcache module working? - Google App Engine | Google グループ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;ただ、公開直後の時点では &lt;code&gt;KeyError&lt;/code&gt; が頻発し、エラーページが表示されてしまう。以下のようなコードで、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def silent_missing_key_error(func):
-    def inner(*args, **kwargs):
-        try:
-            return func(*args, **kwargs)
-        except KeyError:
-            logging.exception(&amp;quot;KeyError in google.appengine.api.memcache&amp;quot;)
-            return None
-    return inner
-
-from django.core.cache.backends.memcached import CacheClass as MemcacheCache
-MemcacheCache.get = silent_missing_key_error(MemcacheCache.get)
-MemcacheCache.get_many = silent_missing_key_error(MemcacheCache.get_many)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;KeyError&lt;/code&gt; が起こった場合はログに残して、&lt;code&gt;None&lt;/code&gt; を返すようにしている。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</guid>
+      <description>Google App Engine ブログで新しい動きがあった。トピックは以下の通り。
+ アカウント数の制限を撤廃 課金の料金体系について 画像操作のための API Memcache API  どれひとつとっても、重大な発表ばかりだ。プラットホームとしての Google App Engine に注目している方は 1. 2. が特に気になるだろうし、利用者からすれば、3. 4. は待ち焦がれていた機能だろう。
+重いページをキャッシュする このブログを Google App Engine に移行して一週間が経った。しかし、Admin Console でログを確認してみると、ところどころで警告が出ている。
+ &amp;quot;GET /index.xml HTTP/1.1&amp;quot; 200 117413 - - ... This request used a high amount of CPU, and was roughly 5.5 times over the average request CPU limit. High CPU requests have a small quota, and if you exceed this quota, your app will be temporarily disabled.</description>
     </item>
     
     <item>
       <title>Google App Engine への移行</title>
-      <link>http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/</link>
+      <link>http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/</link>
       <pubDate>Tue, 20 May 2008 07:39:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/</guid>
-      <description>
-
-&lt;p&gt;ここ数日というもの、Mac の前に座ってやっていたことといえば、&lt;a href=&#34;http://twitter.com/takanori_is&#34;&gt;Twitter&lt;/a&gt; か RSS フィードの消化か、でなければブログの移行作業だ。&lt;/p&gt;
-
-&lt;p&gt;もともと、このブログは &lt;a href=&#34;http://wordpress.org/&#34;&gt;Wordpress&lt;/a&gt; で運営していたのだが、色々と不満もたまってきたので、いつの日かつくりなおしたい、と思っていた。おりしも &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; の勉強をはじめたばかりである。ちょうどよい。教材代わりに簡単なブログシステムを細々とつくっていた。&lt;/p&gt;
-
-&lt;p&gt;それを更に、&lt;a href=&#34;http://code.google.com/appengine/&#34;&gt;Google App Engine&lt;/a&gt; に移植しましたよ、というのが今回のお話。&lt;/p&gt;
-
-&lt;h3 id=&#34;google-app-engine-に移植した理由&#34;&gt;Google App Engine に移植した理由&lt;/h3&gt;
-
-&lt;p&gt;まずは、Google App Engine（以下、GAE）に移植した理由から説明させてほしい。いままで Wordpress を動かしていたサーバでそのまま新しいブログシステムを動かすこともできた。&lt;/p&gt;
-
-&lt;p&gt;それでも、わざわざ時間を割いてまで GAE に移植したのは、GAE が話題になってるとか、Django が使えるらしい、というのも重要だったが、&lt;strong&gt;自宅サーバの管理から解放されたい&lt;/strong&gt; 、という理由が実は一番大きい。&lt;/p&gt;
-
-&lt;p&gt;うん、自宅サーバの、しかも個人ブログの管理の手間なんて、たかがしれている（そりゃ、セキュリティとかは神経使うけどさ）。それよりは今後、もし、転居や契約している回線業者を変更する場合を考えると、そのあいだは自宅サーバは停めなきゃならないわけで、いまのうちに GAE に移植しておけば、あとあと困らないだろう、というわけである。&lt;/p&gt;
-
-&lt;p&gt;実際の移植作業には 4 日程度を要した。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://code.google.com/appengine/docs/&#34;&gt;GAE のオンラインドキュメント&lt;/a&gt; を参考に、ほとんど単純作業による変換だったが、細かい変更や思わぬ問題などもあったので、開発中にとったメモを片手につらつらと書いてみる。&lt;/p&gt;
-
-&lt;h3 id=&#34;django&#34;&gt;Django&lt;/h3&gt;
-
-&lt;p&gt;Django は &lt;a href=&#34;http://code.google.com/appengine/articles/django.html&#34;&gt;Running Django on Google App Engine&lt;/a&gt; を参考に、開発版のものを動かしている。&lt;/p&gt;
-
-&lt;p&gt;GAE では Django の &lt;a href=&#34;http://www.djangoproject.com/documentation/db-api/&#34;&gt;Database API&lt;/a&gt;（&lt;a href=&#34;http://ymasuda.jp/python/django/docs/db-api.html&#34;&gt;和訳&lt;/a&gt;）は動作せず、GAE の &lt;a href=&#34;http://code.google.com/appengine/docs/datastore/&#34;&gt;Datastore API&lt;/a&gt; を使う必要があるが、当然の帰結として、Database API に依存した機能やアドオンも使えない。Django の売りのひとつである &lt;a href=&#34;http://www.djangobook.com/en/1.0/chapter06/&#34;&gt;Admin Interface&lt;/a&gt; も、サイトマップを手軽に生成できる &lt;a href=&#34;http://www.djangoproject.com/documentation/sitemaps/&#34;&gt;Sitemap framework&lt;/a&gt; も、&lt;a href=&#34;http://www.djangoproject.com/documentation/generic_views/&#34;&gt;Generic View&lt;/a&gt; でさえ使えない。また、Sites も &lt;a href=&#34;http://www.djangoproject.com/documentation/sites/#requestsite-objects&#34;&gt;RequestSite オブジェクトで代替&lt;/a&gt;してやらなくてはいけない。&lt;/p&gt;
-
-&lt;p&gt;ただ、Generic View は簡単な変更で動きそうだ。実際、&lt;a href=&#34;http://www.djangoproject.com/documentation/pagination/&#34;&gt;Pagination&lt;/a&gt; の処理では &lt;code&gt;django.core.QuerySetPaginator&lt;/code&gt; に GAE の &lt;a href=&#34;http://code.google.com/appengine/docs/datastore/queryclass.html&#34;&gt;Query&lt;/a&gt; オブジェクトをそのまま渡して動作していた（GAE の Query オブジェクトも &lt;code&gt;[]&lt;/code&gt; アクセスを適切な &lt;code&gt;fetch()&lt;/code&gt; に変換してくれる）。&lt;/p&gt;
-
-&lt;h3 id=&#34;akismet&#34;&gt;Akismet&lt;/h3&gt;
-
-&lt;p&gt;スパムコメント対策として &lt;a href=&#34;http://www.hashcash.org/&#34;&gt;Hashcash&lt;/a&gt; と &lt;a href=&#34;http://akismet.com/&#34;&gt;Akismet&lt;/a&gt; を使っているのだが、外部リソースへのアクセスは GAE の &lt;a href=&#34;http://code.google.com/appengine/docs/urlfetch/&#34;&gt;URL Fetch API&lt;/a&gt; に変更が必要だ。Akismet への問い合わせ処理は、外部リソースへのアクセスなので URL Fetch API を使うように変更が必要だった。&lt;/p&gt;
-
-&lt;h3 id=&#34;docutils-pygments&#34;&gt;docutils, pygments&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://docutils.sourceforge.net/rst.html&#34;&gt;reStructuredText&lt;/a&gt; でブログを書くために &lt;a href=&#34;http://docutils.sourceforge.net/&#34;&gt;docutils&lt;/a&gt; を、そして、ソースコードのハイライトするために &lt;a href=&#34;http://pygments.org/&#34;&gt;pygments&lt;/a&gt; をソースコードに含めるようにした（トップレベルだと邪魔なので、&lt;code&gt;lib&lt;/code&gt; というディレクトリにパスを通して、そこに必要なライブラリを置くようにした）。&lt;/p&gt;
-
-&lt;p&gt;また、docutils はそのままだと、一部 GAE で禁止されているファイルシステム関連の API を使っている。&lt;code&gt;docutils/frontend.py&lt;/code&gt; の&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;if read_config_files and not self.defaults[&#39;_disable_config&#39;]:
-    try:
-        config_settings = self.get_standard_config_settings()
-    except ValueError, error:
-        self.error(error)
-    self.set_defaults(**config_settings.__dict__)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;この部分は潔くコメントアウトした。&lt;/p&gt;
-
-&lt;h3 id=&#34;検索機能&#34;&gt;検索機能&lt;/h3&gt;
-
-&lt;p&gt;モデルクラスで db.Model ではなく、そのサブクラスである google.appengine.ext.search.SearchableModel を継承することで、モデルの検索ができるようになるようだ（&lt;a href=&#34;http://groups.google.com/group/google-appengine/browse_thread/thread/ba4a4a4ccefb96c5/0e3f0ab63c4c8afd&#34;&gt;Indexing Large Chunks of Text for Search - Google App Engine | Google グループ&lt;/a&gt; を参照）。「検索機能を備えたクラスを継承する」というだけでもダサいのに、日本語での使用とか不安なので、検索機能はとりあえず見送った。&lt;/p&gt;
-
-&lt;h3 id=&#34;デプロイして直面した問題&#34;&gt;デプロイして直面した問題&lt;/h3&gt;
-
-&lt;p&gt;Web アプリケーションの宿命で、最大の問題はデプロイ後にやってくる。&lt;/p&gt;
-
-&lt;p&gt;デプロイ直後はすぐに CPU 制限にひっかかってしまう
-理由は分からないが、デプロイ直後は GAE の CPU 制限によるエラーが頻発した。これくらいの処理でもういっぱいなのか、と萎えかけたが、しばらくすると正常に動作するようになった。なので、これからもし、同じ現象に遭われた方は、静かな心で見守るのがよいと思う。&lt;/p&gt;
-
-&lt;p&gt;データベースの制限でデータ移行ができない
-以前のブログからのデータ移行は、dump したデータベースからデータを投入する Python スクリプトを生成する移行スクリプトを用意していた（&lt;a href=&#34;http://code.google.com/appengine/articles/bulkload.html&#34;&gt;CSV を使う手段&lt;/a&gt;もあるようだが、こっちの方がオブジェクト間の関連を再現するのも楽だ）。&lt;/p&gt;
-
-&lt;p&gt;しかし、&lt;strong&gt;これが動かない&lt;/strong&gt;。一度に保存するデータが多すぎると制限にひっかかってエラーになるらしい。&lt;/p&gt;
-
-&lt;p&gt;解決策としては、移行処理を機械的に関数に分割して、一度のリクエストでひとつの関数を呼ぶように変更、外部からスクリプトで順番にアクセスさせるようにした。現実の素晴らしき泥臭さ。&lt;/p&gt;
-
-&lt;p&gt;favicon.ico と robots.txt の設定
-些細なことかもしれないが、favicon.ico と robots.txt の設定をしていなかったせいで、404 エラーが大量に発生してしまった。&lt;a href=&#34;http://d.hatena.ne.jp/technohippy/20080412#1207983599&#34;&gt;Google App Engineでfaviconを設定する&lt;/a&gt;を参考に &lt;code&gt;app.yaml&lt;/code&gt; を設定した。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;- url: /favicon.ico
-  static_files: public/favicon.ico
-  upload: public/favicon\.ico
-- url: (.*?)/robots.txt
-  static_files: public/robots.txt
-  upload: public/robots\.txt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;gae-にしてよかったこと-不満&#34;&gt;GAE にしてよかったこと・不満&lt;/h3&gt;
-
-&lt;p&gt;最後に感想でも。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;デプロイも管理も楽&lt;/li&gt;
-&lt;li&gt;思ったよりも速い&lt;/li&gt;
-&lt;li&gt;独自ドメインの設定も簡単だった&lt;/li&gt;
-&lt;li&gt;ログの管理や分析とか見過ごしがちな点でもあるので地味に助かる&lt;/li&gt;
-&lt;li&gt;管理インターフェースはまだまだ（特に Django の管理インターフェースを期待していた身としてはつらい）&lt;/li&gt;
-&lt;li&gt;ひとつの閉じた世界をいじくってる楽しさがある&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;最後の点について補足。必要なライブラリはバンドルしなければならないが、それ以外の部分（サーバ管理とか、ミドルウェアとか、ログとか）は無視してアプリケーションの開発に集中できる、という意味で「ひとつの閉じた世界をいじくってる楽しさ」を感じた。そういうこと。&lt;/p&gt;
-
-&lt;p&gt;あと 2 つアプリケーション作れるらしいので、何かネタを思いついたら挑戦してみたいですね。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/</guid>
+      <description>ここ数日というもの、Mac の前に座ってやっていたことといえば、Twitter か RSS フィードの消化か、でなければブログの移行作業だ。
+もともと、このブログは Wordpress で運営していたのだが、色々と不満もたまってきたので、いつの日かつくりなおしたい、と思っていた。おりしも Django の勉強をはじめたばかりである。ちょうどよい。教材代わりに簡単なブログシステムを細々とつくっていた。
+それを更に、Google App Engine に移植しましたよ、というのが今回のお話。
+Google App Engine に移植した理由 まずは、Google App Engine（以下、GAE）に移植した理由から説明させてほしい。いままで Wordpress を動かしていたサーバでそのまま新しいブログシステムを動かすこともできた。
+それでも、わざわざ時間を割いてまで GAE に移植したのは、GAE が話題になってるとか、Django が使えるらしい、というのも重要だったが、自宅サーバの管理から解放されたい 、という理由が実は一番大きい。
+うん、自宅サーバの、しかも個人ブログの管理の手間なんて、たかがしれている（そりゃ、セキュリティとかは神経使うけどさ）。それよりは今後、もし、転居や契約している回線業者を変更する場合を考えると、そのあいだは自宅サーバは停めなきゃならないわけで、いまのうちに GAE に移植しておけば、あとあと困らないだろう、というわけである。
+実際の移植作業には 4 日程度を要した。
+GAE のオンラインドキュメント を参考に、ほとんど単純作業による変換だったが、細かい変更や思わぬ問題などもあったので、開発中にとったメモを片手につらつらと書いてみる。
+Django Django は Running Django on Google App Engine を参考に、開発版のものを動かしている。
+GAE では Django の Database API（和訳）は動作せず、GAE の Datastore API を使う必要があるが、当然の帰結として、Database API に依存した機能やアドオンも使えない。Django の売りのひとつである Admin Interface も、サイトマップを手軽に生成できる Sitemap framework も、Generic View でさえ使えない。また、Sites も RequestSite オブジェクトで代替してやらなくてはいけない。</description>
     </item>
     
   </channel>

@@ -1,306 +1,79 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Llvm on METAREAL</title>
-    <link>http://www.metareal.org/tags/llvm/index.xml</link>
-    <description>Recent content in Llvm on METAREAL</description>
+    <title>llvm on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/llvm/</link>
+    <description>Recent content in llvm on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/llvm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Dec 2010 09:23:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/llvm/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>LLVM 2.8 の C API 差分をチェックしてはじめて気づいたけど、2.8...</title>
-      <link>http://www.metareal.org/2010/12/05/1291551820/</link>
+      <link>http://ishikawa.github.io/2010/12/05/1291551820/</link>
       <pubDate>Sun, 05 Dec 2010 09:23:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2010/12/05/1291551820/</guid>
-      <description>&lt;p&gt;LLVM 2.8 の &lt;a href=&#34;https://gist.github.com/728757&#34;&gt;C API 差分&lt;/a&gt;をチェックしてはじめて気づいたけど、2.8 からは Union Type がなくなったみたい。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;The LLVM IR &amp;lsquo;Union&amp;rsquo; feature was removed. While this is a desirable feature for LLVM IR to support, the existing implementation was half baked and barely useful. We&amp;rsquo;d really like anyone interested to resurrect the work and finish it for a future release.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://llvm.org/docs/ReleaseNotes.html#changes&#34;&gt;LLVM 2.8 Release Notes | Major Changes and Removed Features&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-September/034448.html&#34;&gt;[LLVMdev] Union type, is it really used or necessary?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;現在の実装は不完全で、また、不足分を実装しメンテする開発者がおらず優先順位も低い、ということが理由のようだ。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;It&amp;rsquo;s just a matter of priorities, unfortunately&amp;hellip; :(&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-September/034451.html&#34;&gt;http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-September/034451.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Lots of people agree it would be a useful feature, we are lacking a useful implementation :-)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-September/034484.html&#34;&gt;http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-September/034484.html&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2010/12/05/1291551820/</guid>
+      <description>LLVM 2.8 の C API 差分をチェックしてはじめて気づいたけど、2.8 からは Union Type がなくなったみたい。
+ The LLVM IR &amp;lsquo;Union&amp;rsquo; feature was removed. While this is a desirable feature for LLVM IR to support, the existing implementation was half baked and barely useful. We&amp;rsquo;d really like anyone interested to resurrect the work and finish it for a future release.
+  LLVM 2.8 Release Notes | Major Changes and Removed Features [LLVMdev] Union type, is it really used or necessary?</description>
     </item>
     
     <item>
       <title>C/C&#43;&#43; のコードを ActionScript に変換する Adobe Alchemy を試す</title>
-      <link>http://www.metareal.org/2008/12/09/adobe-alchemy-first-impression/</link>
+      <link>http://ishikawa.github.io/2008/12/09/adobe-alchemy-first-impression/</link>
       <pubDate>Tue, 09 Dec 2008 08:34:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/12/09/adobe-alchemy-first-impression/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://labs.adobe.com/&#34;&gt;Adobe Labs&lt;/a&gt; の研究プロジェクト、コードネーム &lt;a href=&#34;http://labs.adobe.com/technologies/alchemy/&#34;&gt;Alchemy&lt;/a&gt; を試してみた。同プロジェクトについては、すでに多くの方が書かれており、今更な感もあるが、以前に&lt;a href=&#34;http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/&#34;&gt;紹介記事を書いている&lt;/a&gt;ことだし、備忘録も兼ねて残しておく。&lt;/p&gt;
-
-&lt;h3 id=&#34;alchemy-について&#34;&gt;Alchemy について&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://labs.adobe.com/technologies/alchemy/&#34;&gt;Alchemy&lt;/a&gt; プロジェクトで&lt;a href=&#34;http://labs.adobe.com/downloads/alchemy.html&#34;&gt;配布&lt;/a&gt;されているツールを使うと、C/C++ コードで記述されたプログラムを ActionScript Virtual Machine (AVM2) で動作するように変換できる（AVM2 については &lt;a href=&#34;http://www.adobe.com/devnet/actionscript/articles/avm2overview.pdf&#34;&gt;Adobe ActionScript Virtual Machine 2 (AVM2) Overview (PDF, 400K)&lt;/a&gt; を参照）。&lt;/p&gt;
-
-&lt;p&gt;これはつまり、既存の C/C++ プログラムが Flash Player や AIR 上で動作することを意味している。また、C/C++ プログラムのコンパイルには LLVM を利用しており、そこで生成された中間コードが ActionScript 3.0 のソースコードに変換される（&lt;strong&gt;そのままバイトコードには変換しない&lt;/strong&gt;）。その後、生成された ActionScript コードが Alchemy 独自の ActionScript コンパイラで ActionScript Byte Code (ABC) にコンパイルされるようだ。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;既存の C/C++ ライブラリの再利用に。特に OS 非依存なもの（例：オーディオ／ビデオ、XML パース、暗号処理、シミュレーション）&lt;/li&gt;
-&lt;li&gt;CPU バウンドなプログラムなら Alchemy でコンパイルすると 10 倍ほども速くなるかもしれない。これは、LLVM による最適化の恩恵と、&lt;code&gt;ByteArray&lt;/code&gt; に関する最適化された命令が理由（ActionScript コンパイラではまだ使われていない）&lt;/li&gt;
-&lt;li&gt;C/C++ コードは ActionScript 3.0 の SWF または SWC にコンパイルされる。SWF/SWC のセキュリティ制限やサンドボックスは通常の SWF/SWC と同様&lt;/li&gt;
-&lt;li&gt;C/C++ コードから &lt;code&gt;&amp;quot;AS3.h&amp;quot;&lt;/code&gt; で宣言された API を使うことで、Flash Player にアクセス可能&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;インストール&#34;&gt;インストール&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://labs.adobe.com/wiki/index.php/Alchemy:Documentation:Getting_Started&#34;&gt;Alchemy:Documentation:Getting Started&lt;/a&gt; を参考に、インストール作業を進めていく。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.adobe.com/support/flashplayer/downloads.html&#34;&gt;Flash Player 10&lt;/a&gt; が必要（開発用に &lt;code&gt;content debugger&lt;/code&gt; の方が便利）&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://labs.adobe.com/downloads/alchemy.html&#34;&gt;ダウンロードページ&lt;/a&gt;から Alchemy ツールキットを落とす（思ったより軽い）&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.adobe.com/products/flex/flexdownloads/#sdk&#34;&gt;Flex SDK 3.2&lt;/a&gt; をダウンロードする&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;code&gt;$FLEX_HOME/bin&lt;/code&gt; を &lt;code&gt;PATH&lt;/code&gt; に追加する&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% adt -version
-adt version &amp;quot;1.5.0.7220&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Alchemy のディレクトリに移動し、&lt;code&gt;config&lt;/code&gt; プログラムを実行する&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% cd Developer/System/Flash/alchemy-darwin-v0.4a/
-% ./config
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;config&lt;/code&gt; プログラムで生成された &lt;code&gt;alchemy-setup&lt;/code&gt; をシェルの起動時に読み込むようにする：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;source /Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/alchemy-setup
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;また、&lt;code&gt;alchemy-setup&lt;/code&gt; は &lt;strong&gt;PATH を変更する前&lt;/strong&gt;に読み込むらしい。そして、次に、&lt;code&gt;${ALCHEMY_HOME}/achacks&lt;/code&gt; を &lt;code&gt;PATH&lt;/code&gt; に追加する。最終的には以下のようになる：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# Flash, Flex, Alchemy ...
-source /Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/alchemy-setup
-PATH=${PATH}:/Users/ishikawa/Developer/System/Flash/flex_sdk_3/bin
-PATH=${PATH}:${ALCHEMY_HOME}/achacks
-...
-export PATH
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;サンプルを試す&#34;&gt;サンプルを試す&lt;/h3&gt;
-
-&lt;p&gt;では、同梱されているサンプルを試してみよう：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% cd $ALCHEMY_HOME/samples/stringecho
-% which gcc
-/usr/bin/gcc
-% alc-on; which gcc
-/Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/achacks/gcc
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;まず、&lt;code&gt;alc-on&lt;/code&gt; を実行すると、&lt;code&gt;gcc&lt;/code&gt; が Alchemy 独自のものに切り替わるのが分かると思う。そして、&lt;code&gt;samples/stringecho&lt;/code&gt; にあるファイルは以下の通り：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;as3/EchoTest.as&lt;/li&gt;
-&lt;li&gt;readme.txt&lt;/li&gt;
-&lt;li&gt;stringecho.c&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;ここで、Alchemy 独自の gcc で &lt;code&gt;stringecho.c&lt;/code&gt; をコンパイルする&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% gcc stringecho.c -O3 -Wall -swc -o stringecho.swc
-WARNING: While resolving call to function &#39;main&#39; arguments were dropped!
-...
-464.achacks.swf, 362566 bytes written
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;WARNING はとりあえず無視で。コンパイルの結果、&lt;code&gt;stringecho.swc&lt;/code&gt; が出来た。
-そして、as3 ディレクトリにある &lt;code&gt;EchoTest.as&lt;/code&gt; が &lt;code&gt;stringecho.swc&lt;/code&gt; を使う AS3 のプログラムである。EchoTest.as を覗いてみると、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import cmodule.stringecho.CLibInit;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;という &lt;code&gt;import&lt;/code&gt; 文があり、これがコンパイルされた C プログラムを参照しているのだと分かる。また、&lt;code&gt;trace()&lt;/code&gt; を使って文字列を出力している：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;trace(lib.echo(&amp;quot;foo&amp;quot;));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;では、この &lt;code&gt;EchoTest.as&lt;/code&gt; を &lt;code&gt;mxmlc&lt;/code&gt; でコンパイルしよう：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% mxmlc -library-path+=stringecho.swc --target-player=10.0.0 as3/EchoTest.as
-Loading configuration file /Users/ishikawa/Developer/System/Flash/flex_sdk_3/frameworks/flex-config.xml
-/Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/samples/stringecho/as3/EchoTest.swf (142882 bytes)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ここで思い出してほしい。このプログラムは &lt;code&gt;trace()&lt;/code&gt; で文字列を出力するだけのプログラムだった。なので、&lt;a href=&#34;http://www.adobe.com/support/flashplayer/downloads.html&#34;&gt;デバッグ版の Flash Player 10&lt;/a&gt; でログが出力されるように、&lt;a href=&#34;http://livedocs.adobe.com/flex/3/html/help.html?content=logging_04.html#179436&#34;&gt;mm.cfg でログを出力するように設定&lt;/a&gt;しておこう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% cat &amp;amp;gt; /Library/Application\ Support/Macromedia/mm.cfg
-ErrorReportingEnable=1
-TraceOutputFileEnable=1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Mac OS X の場合、&lt;code&gt;mm.cfg&lt;/code&gt; を置く場所は &lt;code&gt;~/mm.cfg&lt;/code&gt; でもいいようなことがコメントにはあるけど、出来れば、&lt;code&gt;~/Library/Application Support/Macromedia/mm.cfg&lt;/code&gt; も見てくれないだろうか。それはともかく、ログファイルは &lt;code&gt;~/Library/Preferences/Macromedia/Flash Player/Logs/&lt;/code&gt; に &lt;code&gt;flashlog.txt&lt;/code&gt; という名前で保存される。&lt;/p&gt;
-
-&lt;p&gt;Console.app からログを確認できるように、&lt;code&gt;~/Library/Logs&lt;/code&gt; にシンボリックリンクを作成しておこう：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% ln -s ~/Library/Preferences/Macromedia/Flash\ Player/Logs/flashlog.txt ~/Library/Logs/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;やっとデバッグの準備が整った。デバッグ用 Flash Player で &lt;code&gt;EchoTest.swf&lt;/code&gt; を開き、&lt;code&gt;flashlog.txt&lt;/code&gt; に &lt;strong&gt;foo&lt;/strong&gt; という文字列が書き込まれれば成功だ。Alchemy でコンパイルしたプログラムが無事、動作していることになる。&lt;/p&gt;
-
-&lt;h3 id=&#34;参考情報&#34;&gt;参考情報&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://labs.adobe.com/wiki/index.php/Alchemy:FAQ&#34;&gt;Alchemy:FAQ - Adobe Labs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://journal.mycom.co.jp/news/2008/11/21/005/index.html&#34;&gt;Adobe Alchemy登場、C/C++アプリをFlashで動作させる研究にLLVM技術採用 | エンタープライズ | マイコミジャーナル&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://slashdot.jp/developers/article.pl?sid=08/11/23/0717231&#34;&gt;スラッシュドット・ジャパン | C/C++でFlashアプリが開発できるAdobe Alchemy&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://d.hatena.ne.jp/amachang/20081118/1227005285&#34;&gt;C/C++ のコードを Flash Player で動かす！ Alchemy を速攻試してみる。 - IT戦記&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/12/09/adobe-alchemy-first-impression/</guid>
+      <description>Adobe Labs の研究プロジェクト、コードネーム Alchemy を試してみた。同プロジェクトについては、すでに多くの方が書かれており、今更な感もあるが、以前に紹介記事を書いていることだし、備忘録も兼ねて残しておく。
+Alchemy について Alchemy プロジェクトで配布されているツールを使うと、C/C++ コードで記述されたプログラムを ActionScript Virtual Machine (AVM2) で動作するように変換できる（AVM2 については Adobe ActionScript Virtual Machine 2 (AVM2) Overview (PDF, 400K) を参照）。
+これはつまり、既存の C/C++ プログラムが Flash Player や AIR 上で動作することを意味している。また、C/C++ プログラムのコンパイルには LLVM を利用しており、そこで生成された中間コードが ActionScript 3.0 のソースコードに変換される（そのままバイトコードには変換しない）。その後、生成された ActionScript コードが Alchemy 独自の ActionScript コンパイラで ActionScript Byte Code (ABC) にコンパイルされるようだ。
+ 既存の C/C++ ライブラリの再利用に。特に OS 非依存なもの（例：オーディオ／ビデオ、XML パース、暗号処理、シミュレーション） CPU バウンドなプログラムなら Alchemy でコンパイルすると 10 倍ほども速くなるかもしれない。これは、LLVM による最適化の恩恵と、ByteArray に関する最適化された命令が理由（ActionScript コンパイラではまだ使われていない） C/C++ コードは ActionScript 3.</description>
     </item>
     
     <item>
       <title>C 言語で書かれたソフトウェアが Flash で動くようになるかもしれない</title>
-      <link>http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/</link>
+      <link>http://ishikawa.github.io/2008/07/06/running-legacy-applications-on-flash-player/</link>
       <pubDate>Sun, 06 Jul 2008 09:35:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/07/06/running-legacy-applications-on-flash-player/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://lucille.atso-net.jp/blog/?p=555&#34;&gt;lucille development blog&lt;/a&gt; 経由。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.toolness.com/wp/?p=52&#34;&gt;Running C and Python Code on The Web&lt;/a&gt; によると、Adobe の Scott Petersen 氏が大変興味深いツールを開発中のようだ。このツールを使うと、C 言語で書かれたソフトウェアを Flash Player で実行できるようになる。また、このツールはオープンソースで公開されるとのこと。&lt;/p&gt;
-
-&lt;h3 id=&#34;llvm-tamarin&#34;&gt;LLVM, Tamarin&lt;/h3&gt;
-
-&lt;p&gt;ソフトウェアを Flash Player で実行可能な形式に変換するためには、ソフトウェアのソースコードが必要になる。変換の手順は以下のとおり。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;C 言語で書かれたソースコードを &lt;a href=&#34;http://llvm.org/cmds/llvmgcc.html&#34;&gt;llvm-gcc&lt;/a&gt; で &lt;a href=&#34;http://llvm.org/&#34;&gt;LLVM&lt;/a&gt; のアセンブリにコンパイルする&lt;/li&gt;
-&lt;li&gt;LLVM のアセンブリを &lt;a href=&#34;http://ja.wikipedia.org/wiki/ActionScript&#34;&gt;ActionScript&lt;/a&gt; で実装した独自 VM 向けの命令群に変換する&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;ActionScript で実装された独自 VM は、Flash Player の &lt;a href=&#34;http://www.mozilla-japan.org/projects/tamarin/&#34;&gt;Tamarin&lt;/a&gt; VM で実行される、というカラクリだ。&lt;/p&gt;
-
-&lt;p&gt;先進的な最適化を備えたバックエンドとして注目を集める LLVM プロジェクトだが、その成果物を、フロントエンドとして利用しているのが面白い（もちろん、LLVM アセンブリの段階でも、&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E5%AE%9A%E6%95%B0%E7%95%B3%E3%81%BF%E8%BE%BC%E3%81%BF&#34;&gt;定数畳み込み&lt;/a&gt;や&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%87%E3%83%83%E3%83%89%E3%82%B3%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4&#34;&gt;デッドコード削除&lt;/a&gt;といった従来の最適化は施されているはずなので、フロントエンドとしてのみ利点があるわけではない）。&lt;/p&gt;
-
-&lt;h3 id=&#34;quake-nintendo&#34;&gt;Quake, Nintendo&lt;/h3&gt;
-
-&lt;p&gt;もっとも、命令単位の変換はそれほど難しいものでもないし、実用的なアプリケーションが動作するのかどうか、気になるところだ。そこで、コンパイラだけではなく、インフラも整備されている。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;POSIX API&lt;/li&gt;
-&lt;li&gt;Flash のマルチメディア機能を操作するためのライブラリ&lt;/li&gt;
-&lt;li&gt;ネイティブのバイト配列など、Tamarin VM への機能追加&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;結果として、さまざまな種類のソフトウェアが、実用的な速度で動作するらしい。&lt;/p&gt;
-
-&lt;p&gt;Mozilla で行われたデモでは、&lt;a href=&#34;http://ja.wikipedia.org/wiki/Quake&#34;&gt;Quake&lt;/a&gt; や、C 言語で書かれたエミュレータでゼルダが動いていた、しかも、ゲームは操作でき BGM も再現されていた、というのでなかなかのインパクトだ（ただ、2. のライブラリを使うために、ソースコードを書き換える必要があるんじゃないの？　という疑問は湧くが&amp;hellip;）。&lt;/p&gt;
-
-&lt;p&gt;ゲームだけではない。デモでは同様に、&lt;a href=&#34;http://www.lua.org/&#34;&gt;Lua&lt;/a&gt;, &lt;a href=&#34;http://www.ruby-lang.org/ja/&#34;&gt;Ruby&lt;/a&gt;, &lt;a href=&#34;http://www.perl.org/&#34;&gt;Perl&lt;/a&gt;, そして &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; といった LL 言語の処理系が動作していた、という。改めて書くが、これらはすべて、&lt;strong&gt;Flash Player 上での出来事だ&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;h3 id=&#34;python-javascript-nestedvm&#34;&gt;Python, JavaScript, NestedVM&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.toolness.com/wp/?p=52&#34;&gt;元記事&lt;/a&gt;ではこのあと、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;この技術が Python に与える影響をセキュリティ的観点、&lt;a href=&#34;http://codespeak.net/pypy/dist/pypy/doc/home.html&#34;&gt;PyPy&lt;/a&gt; プロジェクトとの比較から考察&lt;/li&gt;
-&lt;li&gt;ActionScript でも動くのなら、ブラウザの JavaScript でも動くんじゃない？　という当然の飛躍&lt;/li&gt;
-&lt;li&gt;まだ、不完全だけど Firefox の JavaScript エンジンには Tamarin VM が搭載されるしね&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;といった話題に移っていく&lt;a href=&#34;#note&#34;&gt;[1]&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;Adobe も LLVM を採用することを検討くらいはしているはずなので、これは LLVM 採用に向けた過渡的な実験の成果なのではないか、と個人的には思っている。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;#id1&#34;&gt;[1]&lt;/a&gt;
-なお、C 言語で書かれたソフトウェアを別言語の処理系で動かす、というテーマには &lt;a href=&#34;http://nestedvm.ibex.org/&#34;&gt;NestedVM&lt;/a&gt; という先行事例がある。GCC の出力した MIPS コードを Java のバイトコードに変換することで、C や FORTRAN などで書かれたソフトウェアを Java VM で実行できるようにしている。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/07/06/running-legacy-applications-on-flash-player/</guid>
+      <description>lucille development blog 経由。
+Running C and Python Code on The Web によると、Adobe の Scott Petersen 氏が大変興味深いツールを開発中のようだ。このツールを使うと、C 言語で書かれたソフトウェアを Flash Player で実行できるようになる。また、このツールはオープンソースで公開されるとのこと。
+LLVM, Tamarin ソフトウェアを Flash Player で実行可能な形式に変換するためには、ソフトウェアのソースコードが必要になる。変換の手順は以下のとおり。
+ C 言語で書かれたソースコードを llvm-gcc で LLVM のアセンブリにコンパイルする LLVM のアセンブリを ActionScript で実装した独自 VM 向けの命令群に変換する  ActionScript で実装された独自 VM は、Flash Player の Tamarin VM で実行される、というカラクリだ。
+先進的な最適化を備えたバックエンドとして注目を集める LLVM プロジェクトだが、その成果物を、フロントエンドとして利用しているのが面白い（もちろん、LLVM アセンブリの段階でも、定数畳み込みやデッドコード削除といった従来の最適化は施されているはずなので、フロントエンドとしてのみ利点があるわけではない）。
+Quake, Nintendo もっとも、命令単位の変換はそれほど難しいものでもないし、実用的なアプリケーションが動作するのかどうか、気になるところだ。そこで、コンパイラだけではなく、インフラも整備されている。
+ POSIX API Flash のマルチメディア機能を操作するためのライブラリ ネイティブのバイト配列など、Tamarin VM への機能追加  結果として、さまざまな種類のソフトウェアが、実用的な速度で動作するらしい。
+Mozilla で行われたデモでは、Quake や、C 言語で書かれたエミュレータでゼルダが動いていた、しかも、ゲームは操作でき BGM も再現されていた、というのでなかなかのインパクトだ（ただ、2.</description>
     </item>
     
     <item>
       <title>LLVM で Hello, World</title>
-      <link>http://www.metareal.org/2007/07/22/hello-world-llvm/</link>
+      <link>http://ishikawa.github.io/2007/07/22/hello-world-llvm/</link>
       <pubDate>Sun, 22 Jul 2007 10:23:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/07/22/hello-world-llvm/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://llvm.org/&#34;&gt;LLVM&lt;/a&gt; で Hello, World プログラム。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;@.LC0 = internal constant [13 x i8] c&amp;quot;Hello world!\00&amp;quot;
-
-declare i32 @puts(i8 *)
-
-define i32 @main() {
-  %cast210 = getelementptr [13 x i8]* @.LC0, i64 0, i64 0
-  call i32 @puts(i8 * %cast210)
-  ret i32 0
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;バイトコードにコンパイルして実行。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% llvm-as -f hello.ll
-% lli hello.bc
-Hello world!
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;まあ、プログラム自体は &lt;a href=&#34;http://llvm.org/docs/LangRef.html&#34;&gt;LLVM Assembly Language Reference Manual&lt;/a&gt; からの抜粋なわけだが。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/07/22/hello-world-llvm/</guid>
+      <description>LLVM で Hello, World プログラム。
+@.LC0 = internal constant [13 x i8] c&amp;quot;Hello world!\00&amp;quot; declare i32 @puts(i8 *) define i32 @main() { %cast210 = getelementptr [13 x i8]* @.LC0, i64 0, i64 0 call i32 @puts(i8 * %cast210) ret i32 0 }  バイトコードにコンパイルして実行。
+% llvm-as -f hello.ll % lli hello.bc Hello world!  まあ、プログラム自体は LLVM Assembly Language Reference Manual からの抜粋なわけだが。</description>
     </item>
     
     <item>
       <title>LLVM で Hello, World の puts 関数</title>
-      <link>http://www.metareal.org/2007/07/22/hello-world-llvm-and-runtime-libraries/</link>
+      <link>http://ishikawa.github.io/2007/07/22/hello-world-llvm-and-runtime-libraries/</link>
       <pubDate>Sun, 22 Jul 2007 02:06:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/07/22/hello-world-llvm-and-runtime-libraries/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://weblog.metareal.org/2007/07/22/hello-world-llvm/&#34;&gt;前回のように簡単なプログラム&lt;/a&gt;でも、実際に書いてみると疑問が湧いてくる。&lt;/p&gt;
-
-&lt;p&gt;まず、文字列を出力している &lt;code&gt;puts&lt;/code&gt; 関数。こいつの実体はどこにあるんだろう？ C のプログラムなら、リンカが標準ライブラリをこっそりリンクしている、という結末になるのだが&amp;hellip;。検索してみると、やはり、&lt;a href=&#34;http://lists.cs.uiuc.edu/pipermail/llvmdev/2006-December/007656.html&#34;&gt;同じように疑問をもった人がいる&lt;/a&gt;ようで、&lt;code&gt;lli&lt;/code&gt; が実行時のライブラリとして標準 C ライブラリを利用しているらしい。&lt;/p&gt;
-
-&lt;p&gt;ということは &lt;code&gt;printf&lt;/code&gt; なんかも使えるはずだよね。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;@.LC0 = internal constant [14 x i8] c&amp;quot;Hello world!\0A\00&amp;quot;
-
-**declare i32 @printf(i8 *, ...)**
-
-define i32 @main() {
-  %cast210 = getelementptr [14 x i8]* @.LC0, i64 0, i64 0
-  **call i32 (i8 *, ...)* @printf(i8 * %cast210)**
-  ret i32 0
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;では、コンパイル、実行。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% llvm-as -f hello-printf.ll
-% lli hello-printf.bc
-Hello world!
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;うんうん。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.oversea-pub.com/books/gnudevjp/about.htm&#34;&gt;書籍「GNU開発ツール」&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://memo.wnishida.com/?date=20031008#p01&#34;&gt;CC プログラミング工房 書籍 Vol.1 第１章 - Wataru&amp;rsquo;s memo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/07/22/hello-world-llvm-and-runtime-libraries/</guid>
+      <description>前回のように簡単なプログラムでも、実際に書いてみると疑問が湧いてくる。
+まず、文字列を出力している puts 関数。こいつの実体はどこにあるんだろう？ C のプログラムなら、リンカが標準ライブラリをこっそりリンクしている、という結末になるのだが&amp;hellip;。検索してみると、やはり、同じように疑問をもった人がいるようで、lli が実行時のライブラリとして標準 C ライブラリを利用しているらしい。
+ということは printf なんかも使えるはずだよね。
+@.LC0 = internal constant [14 x i8] c&amp;quot;Hello world!\0A\00&amp;quot; **declare i32 @printf(i8 *, ...)** define i32 @main() { %cast210 = getelementptr [14 x i8]* @.LC0, i64 0, i64 0 **call i32 (i8 *, ...)* @printf(i8 * %cast210)** ret i32 0 }  では、コンパイル、実行。
+% llvm-as -f hello-printf.ll % lli hello-printf.bc Hello world!  うんうん。
+ 書籍「GNU開発ツール」 CC プログラミング工房 書籍 Vol.</description>
     </item>
     
   </channel>

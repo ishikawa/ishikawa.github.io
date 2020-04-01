@@ -1,113 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Evernote on METAREAL</title>
-    <link>http://www.metareal.org/tags/evernote/index.xml</link>
-    <description>Recent content in Evernote on METAREAL</description>
+    <title>evernote on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/evernote/</link>
+    <description>Recent content in evernote on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/evernote/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Dec 2008 03:37:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/evernote/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Safari で開いているページのリンクを Evernote クライアントに送る</title>
-      <link>http://www.metareal.org/2008/12/09/copy-link-to-evernote-client-applescript/</link>
+      <link>http://ishikawa.github.io/2008/12/09/copy-link-to-evernote-client-applescript/</link>
       <pubDate>Tue, 09 Dec 2008 03:37:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/12/09/copy-link-to-evernote-client-applescript/</guid>
-      <description>
-
-&lt;p&gt;最近、プログラミング関係のまとめやインストール手順の記録といったものには &lt;a href=&#34;http://evernote.com/&#34;&gt;Evernote&lt;/a&gt; を利用している。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://netafull.net/tech/024525.html&#34;&gt;画像中の手書き文字認識&lt;/a&gt;や「&lt;a href=&#34;http://jp.techcrunch.com/archives/extend-your-brain-with-evernote-private-beta-invites/&#34;&gt;脳を拡張する&lt;/a&gt;」といった誇大広告ばかりが取り沙汰されるサービスだが、単純にメモツールとして優れており、特に &lt;a href=&#34;http://www.evernote.com/about/download/&#34;&gt;Mac クライアント&lt;/a&gt;と &lt;a href=&#34;http://www.evernote.com/about/download/iphone/&#34;&gt;iPhone クライアント&lt;/a&gt;の出来がすばらしい。&lt;/p&gt;
-
-&lt;h3 id=&#34;evernote-mac-クライアント&#34;&gt;Evernote: Mac クライアント&lt;/h3&gt;
-
-&lt;p&gt;プログラミング関係の話題をノートにまとめていると、興味深いページへのリンクを多く埋め込むことになる。ノートの編集は Mac のクライアントで行うことが多いのだが、この作業がけっこう面倒だ：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Safari で開いているページのタイトルをコピーして、Evernote クライアントにペースト&lt;/li&gt;
-&lt;li&gt;コピーしたタイトルを選択&lt;/li&gt;
-&lt;li&gt;リンクを追加するためのシートを表示&lt;/li&gt;
-&lt;li&gt;Safari で開いているページの URL をコピーして、Evernote クライアントにペースト&lt;/li&gt;
-&lt;li&gt;OK ボタンをクリック&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;この手順を毎回、繰り返さなければならない。慣れれば無意識に出来るような単純作業ではあるが、単純作業なら自動化した方がいい。&lt;/p&gt;
-
-&lt;h3 id=&#34;applescript&#34;&gt;AppleScript&lt;/h3&gt;
-
-&lt;p&gt;Mac で自動化といえば &lt;a href=&#34;http://www.apple.com/applescript/&#34;&gt;AppleScript&lt;/a&gt; の出番なのだが、残念ながら Mac 向け Evernote クライアントの AppleScript 対応は今回の要件には不十分である。そのため、今回は System Events による GUI スクリプティングにより、上記手順のキー操作やボタンクリックをエミュレートすることにした。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-applescript&#34;&gt;-- EvernoteCopyLink.applescript
--- Copy title and URL in the front most window of Safari to Evernote with link
--- Author: Takanori Ishikawa
-
-on copyLinkToEvernote(theTitle, theURL)
-  tell application &amp;quot;System Events&amp;quot;
-    -- copy &amp;amp;amp; paste
-    set the clipboard to theTitle as text
-    keystroke &amp;quot;v&amp;quot; using command down
-
-    tell process &amp;quot;Evernote&amp;quot;
-      -- Select pasted text
-      -- Note 1: &#39;ASCII character 28&#39; means &#39;move left&#39;.
-      -- Note 2: &amp;quot;shift + option&amp;quot; selection might be more efficient,
-      --         but it does not work correctly with Japanese text.
-      (*
-      repeat (length of words of theTitle) times
-        keystroke (ASCII character 28) using {shift down, option down}
-      end repeat
-      *)
-      repeat length of theTitle times
-        keystroke (ASCII character 28) using shift down
-      end repeat
-
-      -- Link, Add...
-      keystroke &amp;quot;k&amp;quot; using command down
-      delay 0.1
-      set the clipboard to theURL as text
-      keystroke &amp;quot;v&amp;quot; using command down
-
-      -- click &amp;quot;OK&amp;quot;
-      delay 0.1
-      repeat with w in windows
-        if exists sheet 1 of w then
-          click button &amp;quot;OK&amp;quot; of sheet 1 of w
-        end if
-      end repeat
-
-    end tell
-  end tell
-end copyLinkToEvernote
-
-tell application &amp;quot;System Events&amp;quot;
-  if not (exists application process &amp;quot;Evernote&amp;quot;) or not (exists application process &amp;quot;Safari&amp;quot;) then
-    display alert &amp;quot;Evernote and Safari Required&amp;quot; message &amp;quot;You have to launch Evernote and Safari before executing script&amp;quot;
-  end if
-end tell
-
-tell first document of application &amp;quot;Safari&amp;quot;
-  set pageTitle to name
-  set pageURL to URL
-end tell
-
-tell application &amp;quot;Evernote&amp;quot; to activate
-set theClipboard to the clipboard
-copyLinkToEvernote(pageTitle, pageURL)
-set the clipboard to theClipboard
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;このスクリプトを実行すると、Safari で開いているページのリンクを、Evernote クライアントのノートに挿入することができる。スクリプト・メニューに登録して、しばらく使ってみるつもりだ。スクリプトは &lt;a href=&#34;http://gist.github.com/33786&#34;&gt;gist:33786&lt;/a&gt; でも公開している。&lt;/p&gt;
-
-&lt;p&gt;Note&lt;/p&gt;
-
-&lt;p&gt;System Events を使っているため、上記スクリプトを実行するには「システム環境設定」＞「ユニバーサル・アクセス」＞「補助装置にアクセスできるようにする」チェックボックスをオンにする必要がある。&lt;/p&gt;
-
-&lt;p&gt;なお、&lt;a href=&#34;http://pygments.org/&#34;&gt;Pygments&lt;/a&gt; による AppleScript ソースコードのハイライトには自作の &lt;a href=&#34;http://github.com/ishikawa/pygments-applescript-lexer/tree/master&#34;&gt;The Pygments lexer for AppleScript language&lt;/a&gt; を使用した。AppleScript 構文のサポートはまだ完全ではないが、何もないよりはマシだろう。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;（2008/12/13 追記）&lt;/strong&gt;&lt;a href=&#34;http://pygments.org/download/&#34;&gt;Pygments 1.0&lt;/a&gt; で AppleScript のサポートが&lt;a href=&#34;http://dev.pocoo.org/projects/pygments/browser/CHANGES?rev=710%3Aa5748745272a&#34;&gt;追加された&lt;/a&gt;。このブログも Pygments 1.0 にアップデートし、自作のモジュールは OBSOLETE 扱いとした。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/12/09/copy-link-to-evernote-client-applescript/</guid>
+      <description>最近、プログラミング関係のまとめやインストール手順の記録といったものには Evernote を利用している。
+画像中の手書き文字認識や「脳を拡張する」といった誇大広告ばかりが取り沙汰されるサービスだが、単純にメモツールとして優れており、特に Mac クライアントと iPhone クライアントの出来がすばらしい。
+Evernote: Mac クライアント プログラミング関係の話題をノートにまとめていると、興味深いページへのリンクを多く埋め込むことになる。ノートの編集は Mac のクライアントで行うことが多いのだが、この作業がけっこう面倒だ：
+ Safari で開いているページのタイトルをコピーして、Evernote クライアントにペースト コピーしたタイトルを選択 リンクを追加するためのシートを表示 Safari で開いているページの URL をコピーして、Evernote クライアントにペースト OK ボタンをクリック  この手順を毎回、繰り返さなければならない。慣れれば無意識に出来るような単純作業ではあるが、単純作業なら自動化した方がいい。
+AppleScript Mac で自動化といえば AppleScript の出番なのだが、残念ながら Mac 向け Evernote クライアントの AppleScript 対応は今回の要件には不十分である。そのため、今回は System Events による GUI スクリプティングにより、上記手順のキー操作やボタンクリックをエミュレートすることにした。
+-- EvernoteCopyLink.applescript -- Copy title and URL in the front most window of Safari to Evernote with link -- Author: Takanori Ishikawa on copyLinkToEvernote(theTitle, theURL) tell application &amp;quot;System Events&amp;quot; -- copy &amp;amp;amp; paste set the clipboard to theTitle as text keystroke &amp;quot;v&amp;quot; using command down tell process &amp;quot;Evernote&amp;quot; -- Select pasted text -- Note 1: &#39;ASCII character 28&#39; means &#39;move left&#39;.</description>
     </item>
     
   </channel>

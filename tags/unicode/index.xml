@@ -1,56 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Unicode on METAREAL</title>
-    <link>http://www.metareal.org/tags/unicode/index.xml</link>
-    <description>Recent content in Unicode on METAREAL</description>
+    <title>unicode on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/unicode/</link>
+    <description>Recent content in unicode on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/unicode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Nov 2007 02:31:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/unicode/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Ruby で平仮名にマッチする正規表現</title>
-      <link>http://www.metareal.org/2007/11/18/ruby-needs-unicode-regular-expressions/</link>
+      <link>http://ishikawa.github.io/2007/11/18/ruby-needs-unicode-regular-expressions/</link>
       <pubDate>Mon, 19 Nov 2007 02:31:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/11/18/ruby-needs-unicode-regular-expressions/</guid>
-      <description>
-
-&lt;p&gt;Ruby 1.8 系で平仮名にマッチする正規表現を書きたい。&lt;/p&gt;
-
-&lt;p&gt;正規表現で &lt;a href=&#34;http://www.unicode.org/Public/UNIDATA/Blocks.txt&#34;&gt;Unicode ブロック&lt;/a&gt;が使えれば楽なのだが、残念ながら Ruby 1.8 ではサポートされていない。&lt;/p&gt;
-
-&lt;h3 id=&#34;鬼車&#34;&gt;鬼車&lt;/h3&gt;
-
-&lt;p&gt;ちなみに 1.9 で搭載される予定の&lt;a href=&#34;http://www.geocities.jp/kosako3/oniguruma/index_ja.html&#34;&gt;鬼車&lt;/a&gt;では、以下のような形式で Unicode ブロックやカテゴリを指定できるようだ（参考：&lt;a href=&#34;http://www.geocities.jp/kosako3/oniguruma/doc/RE.ja.txt&#34;&gt;鬼車 正規表現 Version 5.6.0&lt;/a&gt;）。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;\p{property-name}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;\p{^property-name}&lt;/code&gt;（否定）&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;\P{property-name}&lt;/code&gt;（否定）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;もっとも、実際に試したわけではないので、現状の Ruby 1.9 で上記のような使い方ができるのかは分からない。&lt;/p&gt;
-
-&lt;h3 id=&#34;ruby-1-8&#34;&gt;Ruby 1.8&lt;/h3&gt;
-
-&lt;p&gt;結局、Ruby 1.8 では平仮名に相当するコードポイントの範囲を直接、正規表現で指定してやるのが簡単そうだ。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.unicode.org/Public/UNIDATA/Blocks.txt&#34;&gt;Unicode Character Database の Block.txt&lt;/a&gt; によると平仮名（&lt;code&gt;Hiragana&lt;/code&gt;）の範囲は &lt;code&gt;0x3040&lt;/code&gt; から &lt;code&gt;0x309f&lt;/code&gt; なので、&lt;a href=&#34;http://www.ruby-lang.org/ja/man/?cmd=view;name=FAQ%3A%3A%C6%FC%CB%DC%B8%EC%A4%CE%BC%E8%A4%EA%B0%B7%A4%A4#a10.2e7.20SJIS.a4.ce.b5.a1.bc.ef.b0.cd.c2.b8.a5.b3.a1.bc.a5.c984BF.20.a4.ab.a4.e9.20889F.a4.de.a4.c7.a4.f2.b6.f5.c7.f2.a4.cb.c3.d6.a4.ad.b4.b9.a4.a8.a4.bf.a4.a4.a4.ce.a4.c7.a4.b9.a4.ac&#34;&gt;Ruby リファレンスマニュアルの FAQ「10.7 SJISの機種依存コード84BF から 889Fまでを空白に置き換えたいのですが」&lt;/a&gt;を参考に正規表現を書いてみる（ただし、UTF-8 限定）。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;/#{&amp;quot;[#{[0x3040].pack(&#39;U&#39;)}-#{[0x309f].pack(&#39;U&#39;)}]&amp;quot;}/u
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;コードポイントから UTF-8 リテラル文字列への変換に &lt;a href=&#34;http://www.ruby-lang.org/ja/man/?cmd=view;name=Array#pack&#34;&gt;&lt;code&gt;Array#pack&lt;/code&gt;&lt;/a&gt; を利用しているため読みづらくなっている。もっといい方法があるのかもしれない。&lt;/p&gt;
-
-&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.unicode.org/reports/tr18/&#34;&gt;Unicode Regular Expressions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.geocities.jp/kosako3/oniguruma/index_ja.html&#34;&gt;鬼車&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/11/18/ruby-needs-unicode-regular-expressions/</guid>
+      <description> Ruby 1.8 系で平仮名にマッチする正規表現を書きたい。
+正規表現で Unicode ブロックが使えれば楽なのだが、残念ながら Ruby 1.8 ではサポートされていない。
+鬼車 ちなみに 1.9 で搭載される予定の鬼車では、以下のような形式で Unicode ブロックやカテゴリを指定できるようだ（参考：鬼車 正規表現 Version 5.6.0）。
+ \p{property-name} \p{^property-name}（否定） \P{property-name}（否定）  もっとも、実際に試したわけではないので、現状の Ruby 1.9 で上記のような使い方ができるのかは分からない。
+Ruby 1.8 結局、Ruby 1.8 では平仮名に相当するコードポイントの範囲を直接、正規表現で指定してやるのが簡単そうだ。
+Unicode Character Database の Block.txt によると平仮名（Hiragana）の範囲は 0x3040 から 0x309f なので、Ruby リファレンスマニュアルの FAQ「10.7 SJISの機種依存コード84BF から 889Fまでを空白に置き換えたいのですが」を参考に正規表現を書いてみる（ただし、UTF-8 限定）。
+/#{&amp;quot;[#{[0x3040].pack(&#39;U&#39;)}-#{[0x309f].pack(&#39;U&#39;)}]&amp;quot;}/u  コードポイントから UTF-8 リテラル文字列への変換に Array#pack を利用しているため読みづらくなっている。もっといい方法があるのかもしれない。
+参考  Unicode Regular Expressions 鬼車  </description>
     </item>
     
   </channel>

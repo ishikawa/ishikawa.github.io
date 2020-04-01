@@ -1,275 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Disassemble on METAREAL</title>
-    <link>http://www.metareal.org/tags/disassemble/index.xml</link>
-    <description>Recent content in Disassemble on METAREAL</description>
+    <title>disassemble on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/disassemble/</link>
+    <description>Recent content in disassemble on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/disassemble/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Sep 2008 17:39:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/disassemble/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Python の dis モジュールでさまざまな import 文を disassemble する (2)</title>
-      <link>http://www.metareal.org/2008/09/25/disassembling-python-import-statements-take2/</link>
+      <link>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements-take2/</link>
       <pubDate>Thu, 25 Sep 2008 17:39:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/09/25/disassembling-python-import-statements-take2/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://www.metareal.org/2008/09/25/disassembling-python-import-statements/&#34;&gt;前回の記事&lt;/a&gt;への追記が長くなりそうなので、新しい記事にまとめました。&lt;/p&gt;
-
-&lt;h3 id=&#34;import-module-と-import-module-as-name&#34;&gt;import &lt;module&gt; と import &lt;module&gt; as &lt;name&gt;&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;import &amp;lt;module&amp;gt;&lt;/code&gt; と &lt;code&gt;import &amp;lt;module&amp;gt; as &amp;lt;name&amp;gt;&lt;/code&gt; では、どのようなバイトコードにコンパイルされるか、つまり、実行時の振る舞いが&lt;strong&gt;微妙に異なる&lt;/strong&gt;ことに注意しよう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os.path&#39;, &#39;&#39;, &#39;exec&#39;))
-  1           0 LOAD_CONST               0 (-1)
-              3 LOAD_CONST               1 (None)
-              6 IMPORT_NAME              0 (os.path)
-              9 STORE_NAME               1 (os)
-             12 LOAD_CONST               1 (None)
-             15 RETURN_VALUE
-&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os.path as os_path&#39;, &#39;&#39;, &#39;exec&#39;))
-  1           0 LOAD_CONST               0 (-1)
-              3 LOAD_CONST               1 (None)
-              6 IMPORT_NAME              0 (os.path)
-              9 LOAD_ATTR                1 (path)
-             12 STORE_NAME               2 (os_path)
-             15 LOAD_CONST               1 (None)
-             18 RETURN_VALUE
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;前者では &lt;code&gt;IMPORT_NAME os.path&lt;/code&gt; でロードされたモジュールを &lt;code&gt;os&lt;/code&gt; という名前でシンボルテーブルに登録する。では、&lt;code&gt;IMPORT_NAME os.path&lt;/code&gt; でロードされるモジュールは何かといえば、これは &lt;a href=&#34;http://docs.python.org/lib/module-os.html&#34;&gt;os&lt;/a&gt; モジュールである。&lt;a href=&#34;http://docs.python.org/lib/module-os.path.html&#34;&gt;os.path&lt;/a&gt; ではない。&lt;/p&gt;
-
-&lt;p&gt;そして、&lt;em&gt;os&lt;/em&gt; モジュール内部では &lt;em&gt;os.path&lt;/em&gt; モジュールを &lt;code&gt;path&lt;/code&gt; という名前でインポートしている（実際には、プラットフォームごとに異なるモジュールをインポートする）。そのため、&lt;em&gt;os&lt;/em&gt; モジュールを &lt;code&gt;os&lt;/code&gt; という名前でシンボルテーブルに登録しておけば、&lt;code&gt;os.path&lt;/code&gt; で &lt;em&gt;os.path&lt;/em&gt; モジュールを参照できるわけだ（このへんは次節で更に掘り下げる）。&lt;/p&gt;
-
-&lt;p&gt;それにたいして、後者の &lt;code&gt;import os.path as os_path&lt;/code&gt; では &lt;code&gt;IMPORT_NAME os.path&lt;/code&gt; でロードされたモジュールから &lt;code&gt;LOAD_ATTR path&lt;/code&gt; で取り出した &lt;em&gt;os.path&lt;/em&gt; モジュールを &lt;code&gt;os_path&lt;/code&gt; という名前でシンボルテーブルに登録する。このように、&lt;code&gt;import &amp;lt;module&amp;gt;&lt;/code&gt; と &lt;code&gt;import &amp;lt;module&amp;gt; as &amp;lt;name&amp;gt;&lt;/code&gt; では、実行時の振る舞いが微妙に異なっている。&lt;/p&gt;
-
-&lt;h3 id=&#34;import-a-と-import-a-b&#34;&gt;import A と import A.B&lt;/h3&gt;
-
-&lt;p&gt;ここからはバイトコードを離れて、&lt;code&gt;import&lt;/code&gt; の動作をみていこう。まずは前節の&lt;code&gt;import os.path as os_path&lt;/code&gt; を振り返る。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;IMPORT_NAME os.path&lt;/code&gt; で &lt;em&gt;os&lt;/em&gt; モジュールがロードされる&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;LOAD_ATTR path&lt;/code&gt; で &lt;em&gt;os&lt;/em&gt; モジュールから &lt;em&gt;os.path&lt;/em&gt; モジュールを取り出す&lt;/li&gt;
-&lt;li&gt;取り出した &lt;em&gt;os.path&lt;/em&gt; モジュールを &lt;code&gt;os_path&lt;/code&gt; という名前でシンボルテーブルに登録する&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;前節でも書いたように、&lt;em&gt;os&lt;/em&gt; モジュール内部では &lt;em&gt;os.path&lt;/em&gt; モジュールを &lt;code&gt;path&lt;/code&gt; という名前でインポートしているので、2. の手順がうまくいくのは納得できる。しかし、それ以外のモジュール（パッケージ）ではどうだろうか？&lt;/p&gt;
-
-&lt;p&gt;たとえば、&lt;strong&gt;A.B.C&lt;/strong&gt; というパッケージ構造があるとする。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% python
-&amp;gt;&amp;gt;&amp;gt; import A
-&amp;gt;&amp;gt;&amp;gt; A
-&amp;lt;module &#39;A&#39; from &#39;A/__init__.pyc&#39;&amp;gt;
-&amp;gt;&amp;gt;&amp;gt; dir(A)
-[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__name__&#39;, &#39;__path__&#39;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;このように、&lt;code&gt;dir()&lt;/code&gt; で調べても、&lt;em&gt;A&lt;/em&gt; モジュールに &lt;code&gt;B&lt;/code&gt; という属性はない。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; A.B
-Traceback (most recent call last):
-  File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt;
-AttributeError: &#39;module&#39; object has no attribute &#39;B&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ということは、このパッケージでは &lt;code&gt;import A.B as A_B&lt;/code&gt; のようなインポートは失敗しそうだ。何故なら &lt;em&gt;A&lt;/em&gt; モジュールに &lt;code&gt;B&lt;/code&gt; という属性はないのだから、上の手順では 2. で失敗するはずである。&lt;/p&gt;
-
-&lt;p&gt;まずは念のため、バイトコードも確認しておこう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import A.B as A_B&#39;, &#39;&#39;, &#39;exec&#39;))
-  1           0 LOAD_CONST               0 (-1)
-              3 LOAD_CONST               1 (None)
-              6 IMPORT_NAME              0 (A.B)
-              9 LOAD_ATTR                1 (B)
-             12 STORE_NAME               2 (A_B)
-             15 LOAD_CONST               1 (None)
-             18 RETURN_VALUE
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;前節でみたものと同じだ。やはり、&lt;code&gt;LOAD_ATTR&lt;/code&gt; で &lt;code&gt;B&lt;/code&gt; を取り出そうとしている。では、実行してみる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; import A.B as A_B
-&amp;gt;&amp;gt;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;おかしい。成功してしまった。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; A_B
-&amp;lt;module &#39;A.B&#39; from &#39;A/B/__init__.pyc&#39;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ちゃんとインポートもできているようだ。どういうことだろうか？　一旦インタプリタを終了して、もう一度、今度は &lt;code&gt;import A.B&lt;/code&gt; を試してみよう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% python
-&amp;gt;&amp;gt;&amp;gt; import A.B
-&amp;gt;&amp;gt;&amp;gt; A.B
-&amp;lt;module &#39;A.B&#39; from &#39;A/B/__init__.pyc&#39;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;なんと、&lt;code&gt;A.B&lt;/code&gt; でモジュールにアクセスできている。更に &lt;code&gt;import A&lt;/code&gt; して &lt;em&gt;A&lt;/em&gt; モジュールを調べてみると、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; import A
-&amp;gt;&amp;gt;&amp;gt; A
-&amp;lt;module &#39;A&#39; from &#39;A/__init__.pyc&#39;&amp;gt;
-&amp;gt;&amp;gt;&amp;gt; dir(A)
-[&#39;B&#39;, &#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__name__&#39;, &#39;__path__&#39;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;A&lt;/em&gt; モジュールに &lt;code&gt;B&lt;/code&gt; が増えていることが分かる。&lt;/p&gt;
-
-&lt;p&gt;これで &lt;em&gt;os&lt;/em&gt; 以外のモジュールでも &lt;code&gt;import&lt;/code&gt; がうまく動作する理由が分かった。おそらくは &lt;code&gt;IMPORT_NAME&lt;/code&gt; が実行されるときに、内部的にこのような下準備が行われていたわけだ。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements-take2/</guid>
+      <description>前回の記事への追記が長くなりそうなので、新しい記事にまとめました。
+import  と import  as  import &amp;lt;module&amp;gt; と import &amp;lt;module&amp;gt; as &amp;lt;name&amp;gt; では、どのようなバイトコードにコンパイルされるか、つまり、実行時の振る舞いが微妙に異なることに注意しよう。
+&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os.path&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os.path) 9 STORE_NAME 1 (os) 12 LOAD_CONST 1 (None) 15 RETURN_VALUE &amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os.path as os_path&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os.path) 9 LOAD_ATTR 1 (path) 12 STORE_NAME 2 (os_path) 15 LOAD_CONST 1 (None) 18 RETURN_VALUE  前者では IMPORT_NAME os.</description>
     </item>
     
     <item>
       <title>Python の dis モジュールでさまざまな import 文を disassemble する</title>
-      <link>http://www.metareal.org/2008/09/25/disassembling-python-import-statements/</link>
+      <link>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements/</link>
       <pubDate>Thu, 25 Sep 2008 09:34:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2008/09/25/disassembling-python-import-statements/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://docs.python.org/ref/&#34;&gt;Python Reference Manual&lt;/a&gt; の &lt;a href=&#34;http://docs.python.org/ref/import.html&#34;&gt;6.12 The import statement&lt;/a&gt; を参考に、さまざまな形式の import 文を &lt;a href=&#34;http://docs.python.org/lib/module-dis.html&#34;&gt;dis&lt;/a&gt; モジュールで &lt;code&gt;disassemble&lt;/code&gt; してみた。&lt;/p&gt;
-
-&lt;h3 id=&#34;import&#34;&gt;import &amp;hellip;&lt;/h3&gt;
-
-&lt;p&gt;まずは、もっとも単純な &lt;code&gt;import ...&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os&#39;, &#39;&#39;, &#39;exec&#39;))
-  1           0 LOAD_CONST               0 (-1)
-              3 LOAD_CONST               1 (None)
-              6 IMPORT_NAME              0 (os)
-              9 STORE_NAME               0 (os)
-             12 LOAD_CONST               1 (None)
-             15 RETURN_VALUE
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;IMPORT_NAME&lt;/code&gt; で &lt;code&gt;import&lt;/code&gt; するモジュールが指定されていることが分かる。では、&lt;code&gt;as&lt;/code&gt; を使って別名をつけるとどうなるだろうか。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os as os2&#39;, &#39;&#39;, &#39;exec&#39;))
-  1           0 LOAD_CONST               0 (-1)
-              3 LOAD_CONST               1 (None)
-              6 IMPORT_NAME              0 (os)
-              9 STORE_NAME               1 (os2)
-             12 LOAD_CONST               1 (None)
-             15 RETURN_VALUE
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;STORE_NAME&lt;/code&gt; の引数が &lt;code&gt;os&lt;/code&gt; から &lt;code&gt;os2&lt;/code&gt; に変わった。つまり、登録するシンボル名は &lt;code&gt;STORE_NAME&lt;/code&gt; で指定されるということだろう。&lt;/p&gt;
-
-&lt;h3 id=&#34;import-1&#34;&gt;import &amp;hellip;, &amp;hellip;&lt;/h3&gt;
-
-&lt;p&gt;複数のモジュールを &lt;code&gt;import&lt;/code&gt; してみよう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os, sys&#39;, &#39;&#39;, &#39;exec&#39;))
-  1           0 LOAD_CONST               0 (-1)
-              3 LOAD_CONST               1 (None)
-              6 IMPORT_NAME              0 (os)
-              9 STORE_NAME               0 (os)
-             12 LOAD_CONST               0 (-1)
-             15 LOAD_CONST               1 (None)
-             18 IMPORT_NAME              1 (sys)
-             21 STORE_NAME               1 (sys)
-             24 LOAD_CONST               1 (None)
-             27 RETURN_VALUE
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;特別なバイトコードが用意されているわけではなく、引数だけが異なるバイトコードが繰り返されるようだ。&lt;/p&gt;
-
-&lt;h3 id=&#34;from-import&#34;&gt;from &amp;hellip; import &amp;hellip;&lt;/h3&gt;
-
-&lt;p&gt;モジュールから特定のシンボルだけを &lt;code&gt;import&lt;/code&gt; する &lt;code&gt;from ... import ...&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;from os.path import join&#39;, &#39;&#39;, &#39;exec&#39;))
-  1           0 LOAD_CONST               0 (-1)
-              3 LOAD_CONST               1 ((&#39;join&#39;,))
-              6 IMPORT_NAME              0 (os.path)
-              9 IMPORT_FROM              1 (join)
-             12 STORE_NAME               1 (join)
-             15 POP_TOP
-             16 LOAD_CONST               2 (None)
-             19 RETURN_VALUE
-
-&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;from os.path import join, dirname&#39;, &#39;&#39;, &#39;exec&#39;))
-  1           0 LOAD_CONST               0 (-1)
-              3 LOAD_CONST               1 ((&#39;join&#39;, &#39;dirname&#39;))
-              6 IMPORT_NAME              0 (os.path)
-              9 IMPORT_FROM              1 (join)
-             12 STORE_NAME               1 (join)
-             15 IMPORT_FROM              2 (dirname)
-             18 STORE_NAME               2 (dirname)
-             21 POP_TOP
-             22 LOAD_CONST               2 (None)
-             25 RETURN_VALUE
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;新しく &lt;code&gt;IMPORT_FROM&lt;/code&gt; が登場しているが、基本的な構造は変わらない。&lt;/p&gt;
-
-&lt;p&gt;すこし特殊なのが &lt;code&gt;from ... import *&lt;/code&gt; でモジュール内のすべてのシンボルを &lt;code&gt;import&lt;/code&gt; する場合だ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;from module import *&#39;, &#39;&#39;, &#39;exec&#39;))
-  1           0 LOAD_CONST               0 (-1)
-              3 LOAD_CONST               1 ((&#39;*&#39;,))
-              6 IMPORT_NAME              0 (module)
-              9 IMPORT_STAR
-             10 LOAD_CONST               2 (None)
-             13 RETURN_VALUE
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;STORE_NAME&lt;/code&gt; がなくなり、専用の &lt;code&gt;IMPORT_STAR&lt;/code&gt; が使われている。&lt;/p&gt;
-
-&lt;h3 id=&#34;relative-imports&#34;&gt;Relative Imports&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://docs.python.org/whatsnew/pep-328.html&#34;&gt;相対インポート&lt;/a&gt;はどのように実現されているのだろう？&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;from .. b import B&#39;, &#39;&#39;, &#39;exec&#39;))
-  1           0 LOAD_CONST               0 (2)
-              3 LOAD_CONST               1 ((&#39;B&#39;,))
-              6 IMPORT_NAME              0 (b)
-              9 IMPORT_FROM              1 (B)
-             12 STORE_NAME               1 (B)
-             15 POP_TOP
-             16 LOAD_CONST               2 (None)
-             19 RETURN_VALUE
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;一見すると、&lt;code&gt;from b import B&lt;/code&gt; から変わったところは見当たらない。しかし、最初の &lt;code&gt;LOAD_CONST&lt;/code&gt; に注目してほしい。いままで &lt;code&gt;-1&lt;/code&gt; だった引数が 2 になっている。ここで相対インポートの深さを指定しているわけだ。&lt;/p&gt;
-
-&lt;h3 id=&#34;from-future-import&#34;&gt;from &lt;strong&gt;future&lt;/strong&gt; import &amp;hellip;&lt;/h3&gt;
-
-&lt;p&gt;最後に &lt;code&gt;from __future__&lt;/code&gt; がどのようにコンパイルされるのか見ておこう。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;from __future__ import absolute_import&#39;, &#39;&#39;, &#39;exec&#39;))
-  1           0 LOAD_CONST               0 (0)
-              3 LOAD_CONST               1 ((&#39;absolute_import&#39;,))
-              6 IMPORT_NAME              0 (__future__)
-              9 IMPORT_FROM              1 (absolute_import)
-             12 STORE_NAME               1 (absolute_import)
-             15 POP_TOP
-             16 LOAD_CONST               2 (None)
-             19 RETURN_VALUE
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;バイトコードは普通の &lt;code&gt;import&lt;/code&gt; と変わらないように見える。&lt;/p&gt;
-
-&lt;p&gt;それもそのはずで、実行時の振る舞いは通常の &lt;code&gt;import&lt;/code&gt; と同じなのだ。もちろん、コンパイル時はコンパイラが &lt;code&gt;from __future__&lt;/code&gt; を特別扱いしてセマンティクスのチェックなどを行うわけだが、&lt;strong&gt;実行時は標準ライブラリの &lt;strong&gt;future&lt;/strong&gt;.py を import するようになっている&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.metareal.org/2008/09/25/disassembling-python-import-statements-take2/&#34;&gt;追記が長くなったので、つづきを別の記事として書きました&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://docs.python.org/ref/import.html&#34;&gt;6.12 The import statement&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://docs.python.org/ref/future.html&#34;&gt;6.12.1 Future statements&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://docs.python.org/lib/module-dis.html&#34;&gt;dis &amp;ndash; Disassembler for Python byte code&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://docs.python.org/lib/bytecodes.html&#34;&gt;Python Byte Code Instructions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.python.org/dev/peps/pep-0236/&#34;&gt;PEP 236 &amp;ndash; Back to the &lt;strong&gt;future&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements/</guid>
+      <description>Python Reference Manual の 6.12 The import statement を参考に、さまざまな形式の import 文を dis モジュールで disassemble してみた。
+import &amp;hellip; まずは、もっとも単純な import ...
+&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os) 9 STORE_NAME 0 (os) 12 LOAD_CONST 1 (None) 15 RETURN_VALUE  IMPORT_NAME で import するモジュールが指定されていることが分かる。では、as を使って別名をつけるとどうなるだろうか。
+&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os as os2&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os) 9 STORE_NAME 1 (os2) 12 LOAD_CONST 1 (None) 15 RETURN_VALUE  STORE_NAME の引数が os から os2 に変わった。つまり、登録するシンボル名は STORE_NAME で指定されるということだろう。</description>
     </item>
     
   </channel>

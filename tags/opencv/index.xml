@@ -1,74 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Opencv on METAREAL</title>
-    <link>http://www.metareal.org/tags/opencv/index.xml</link>
-    <description>Recent content in Opencv on METAREAL</description>
+    <title>opencv on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/opencv/</link>
+    <description>Recent content in opencv on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Mar 2007 01:18:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>OpenCV 1.0.0 を Mac OS X 10.4 にインストール</title>
-      <link>http://www.metareal.org/2007/03/27/opencv-on-mac-os-x-tiger/</link>
+      <link>http://ishikawa.github.io/2007/03/27/opencv-on-mac-os-x-tiger/</link>
       <pubDate>Wed, 28 Mar 2007 01:18:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/03/27/opencv-on-mac-os-x-tiger/</guid>
-      <description>
-
-&lt;p&gt;物体認識もできる画像処理ライブラリ &lt;a href=&#34;http://www.intel.com/technology/computing/opencv/&#34;&gt;OpenCV 1.0.0&lt;/a&gt; を Mac OS X 10.4 にてコンパイルしてみた。&lt;/p&gt;
-
-&lt;h3 id=&#34;opencv-のインストール&#34;&gt;OpenCV のインストール&lt;/h3&gt;
-
-&lt;p&gt;まずは、&lt;a href=&#34;http://sourceforge.net/projects/opencvlibrary/&#34;&gt;SourceForge&lt;/a&gt; から opencv-1.0.0.tar.gz をダウンロードして解凍。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% tar xvzf opencv-1.0.0.tar.gz
-% mkdir build
-% cd build/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;libjpeg&lt;/code&gt; や &lt;code&gt;libpng&lt;/code&gt; がないと JPEG, PNG 画像を扱えないので、&lt;a href=&#34;http://darwinports.opendarwin.org/&#34;&gt;DarwanPorts&lt;/a&gt; でいれたものを使うように &lt;code&gt;configure&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% ../configure CPPFLAGS=&amp;quot;-I/opt/local/include&amp;quot; LDFLAGS=&amp;quot;-L/opt/local/lib&amp;quot;
-% make
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;案の定、エラーがでる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;collect2: ld returned 1 exit status
-make[4]: *** [_cv.la] Error 1
-make[3]: *** [all-recursive] Error 1
-make[2]: *** [all-recursive] Error 1
-make[1]: *** [all-recursive] Error 1
-make: *** [all] Error 2
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;なんか、python のラッパー周辺が原因っぽいので外してコンパイル。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% ../configure --without-swig --without-python CPPFLAGS=&amp;quot;-I/opt/local/include&amp;quot; LDFLAGS=&amp;quot;-L/opt/local/lib&amp;quot;
-% make
-% sudo make install
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;無事成功。&lt;/p&gt;
-
-&lt;h3 id=&#34;サンプル-プログラムを試す&#34;&gt;サンプル・プログラムを試す&lt;/h3&gt;
-
-&lt;p&gt;サンプル・プログラムをコンパイルするために、&lt;code&gt;pkg-config&lt;/code&gt; の探索パスを追加しておく。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:/usr/local/lib/pkgconfig
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;あとは &lt;code&gt;samples/c&lt;/code&gt; ディレクトリで &lt;code&gt;build_all.sh&lt;/code&gt; を実行すれば、すべてのサンプル・プログラムをコンパイルしてくれる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% cd samples/c
-% chmod u+x ./build_all.sh
-% ./build_all.sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Mac OS X 向けに Carbon で作られているので、動作も良好。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/03/27/opencv-on-mac-os-x-tiger/</guid>
+      <description>物体認識もできる画像処理ライブラリ OpenCV 1.0.0 を Mac OS X 10.4 にてコンパイルしてみた。
+OpenCV のインストール まずは、SourceForge から opencv-1.0.0.tar.gz をダウンロードして解凍。
+% tar xvzf opencv-1.0.0.tar.gz % mkdir build % cd build/  libjpeg や libpng がないと JPEG, PNG 画像を扱えないので、DarwanPorts でいれたものを使うように configure
+% ../configure CPPFLAGS=&amp;quot;-I/opt/local/include&amp;quot; LDFLAGS=&amp;quot;-L/opt/local/lib&amp;quot; % make  案の定、エラーがでる。
+collect2: ld returned 1 exit status make[4]: *** [_cv.la] Error 1 make[3]: *** [all-recursive] Error 1 make[2]: *** [all-recursive] Error 1 make[1]: *** [all-recursive] Error 1 make: *** [all] Error 2  なんか、python のラッパー周辺が原因っぽいので外してコンパイル。</description>
     </item>
     
   </channel>

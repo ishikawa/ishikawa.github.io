@@ -1,76 +1,55 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Security on METAREAL</title>
-    <link>http://www.metareal.org/tags/security/index.xml</link>
-    <description>Recent content in Security on METAREAL</description>
+    <title>security on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/security/</link>
+    <description>Recent content in security on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 08 Mar 2007 09:33:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>JSON はみんなが思ってるほど安全ではない</title>
-      <link>http://www.metareal.org/2007/03/08/json-is-not-as-safe-as-people-think-it-is/</link>
+      <link>http://ishikawa.github.io/2007/03/08/json-is-not-as-safe-as-people-think-it-is/</link>
       <pubDate>Thu, 08 Mar 2007 09:33:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/03/08/json-is-not-as-safe-as-people-think-it-is/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://del.icio.us/ishikawa_takanori&#34;&gt;del.icio.us&lt;/a&gt; 経由で今日読んだ記事。&lt;/p&gt;
-
-&lt;p&gt;JSON is not as safe as people think it is - Joe Walker&amp;rsquo;s Blog
-&lt;a href=&#34;http://getahead.org/blog/joe/2007/03/05/json_is_not_as_safe_as_people_think_it_is.html&#34;&gt;http://getahead.org/blog/joe/2007/03/05/
-json_is_not_as_safe_as_people_think_it_is.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;script&lt;/code&gt; による &lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AD%E3%82%B9%E3%82%B5%E3%82%A4%E3%83%88%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%AA&#34;&gt;CSRF&lt;/a&gt; と
-JavaScript のハック的手法を組み合わせることで、たとえログイン必須にしている JSON データであっても盗まれるかもしれない、という話。&lt;/p&gt;
-
-&lt;p&gt;たとえば、&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&#39;text/javascript&#39; src=&#39;http://example.com/jsonservice&#39;&amp;gt;&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;という &lt;code&gt;script&lt;/code&gt; で JSON を読み込めたとする。&lt;/p&gt;
-
-&lt;p&gt;このままだと読み込んだ JSON のデータが評価されるだけで、どんなコードも実行されないのでそれほど問題にはならない
-（評価された JSON のデータはどんな変数にも代入されてないので参照できない）。&lt;/p&gt;
-
-&lt;p&gt;しかし、元記事に紹介されている方法で、たとえば &lt;code&gt;Array&lt;/code&gt; のコンストラクタを再定義してやると、JSON が評価されるときに
-任意のコード（どこかにデータを送信するなど）を実行できてしまう。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/03/08/json-is-not-as-safe-as-people-think-it-is/</guid>
+      <description>del.icio.us 経由で今日読んだ記事。
+JSON is not as safe as people think it is - Joe Walker&amp;rsquo;s Blog http://getahead.org/blog/joe/2007/03/05/ json_is_not_as_safe_as_people_think_it_is.html
+script による CSRF と JavaScript のハック的手法を組み合わせることで、たとえログイン必須にしている JSON データであっても盗まれるかもしれない、という話。
+たとえば、
+&amp;lt;script type=&#39;text/javascript&#39; src=&#39;http://example.com/jsonservice&#39;&amp;gt;&amp;lt;/script&amp;gt;  という script で JSON を読み込めたとする。
+このままだと読み込んだ JSON のデータが評価されるだけで、どんなコードも実行されないのでそれほど問題にはならない （評価された JSON のデータはどんな変数にも代入されてないので参照できない）。
+しかし、元記事に紹介されている方法で、たとえば Array のコンストラクタを再定義してやると、JSON が評価されるときに 任意のコード（どこかにデータを送信するなど）を実行できてしまう。</description>
     </item>
     
     <item>
       <title>Google のリダイレクタ</title>
-      <link>http://www.metareal.org/2007/02/07/google-redirector/</link>
+      <link>http://ishikawa.github.io/2007/02/07/google-redirector/</link>
       <pubDate>Thu, 08 Feb 2007 01:15:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/02/07/google-redirector/</guid>
-      <description>&lt;p&gt;社内の開発合宿行ったり、そこで風邪もらったりしているうちに、すっかりブログの更新から遠のいてしまった。ぼちぼち復活。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.2ch.net/&#34;&gt;2ちゃんねる&lt;/a&gt;ではリファラ隠しのために、いわゆる &lt;code&gt;ttp&lt;/code&gt; リンクや &lt;code&gt;http://ime.nu/&lt;/code&gt; などのリダイレクタが利用されている。リダイレクタという名前は勝手に使ってるだけで、正式なものか分からないけど、URL の末尾やパラメータに別の URL を指定すると、その URL にリダイレクトしてくれるページのこと。&lt;/p&gt;
-
-&lt;p&gt;もっとも、&lt;code&gt;http://ime.nu/&lt;/code&gt; のように、あいだに警告ページを挟んでリンクを表示する（実際にはリダイレクトしない）ページもリダイレクタと呼んでいる。&lt;/p&gt;
-
-&lt;p&gt;Google にも、このリダイレクタがあるのを、今日はじめて知った。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.google.com/url?sa=D&amp;amp;q=http://www.yahoo.co.jp/&#34;&gt;http://www.google.com/url?sa=D&amp;amp;q=http://www.yahoo.co.jp/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;上の例は &lt;a href=&#34;http://www.yahoo.co.jp/&#34;&gt;http://www.yahoo.co.jp/&lt;/a&gt; に飛ばすためのリンク。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/02/07/google-redirector/</guid>
+      <description>社内の開発合宿行ったり、そこで風邪もらったりしているうちに、すっかりブログの更新から遠のいてしまった。ぼちぼち復活。
+2ちゃんねるではリファラ隠しのために、いわゆる ttp リンクや http://ime.nu/ などのリダイレクタが利用されている。リダイレクタという名前は勝手に使ってるだけで、正式なものか分からないけど、URL の末尾やパラメータに別の URL を指定すると、その URL にリダイレクトしてくれるページのこと。
+もっとも、http://ime.nu/ のように、あいだに警告ページを挟んでリンクを表示する（実際にはリダイレクトしない）ページもリダイレクタと呼んでいる。
+Google にも、このリダイレクタがあるのを、今日はじめて知った。
+http://www.google.com/url?sa=D&amp;amp;q=http://www.yahoo.co.jp/
+上の例は http://www.yahoo.co.jp/ に飛ばすためのリンク。</description>
     </item>
     
     <item>
       <title>サイトに置いてある PDF が XSS に利用される？</title>
-      <link>http://www.metareal.org/2007/01/07/universal-xss-with-pdf-files/</link>
+      <link>http://ishikawa.github.io/2007/01/07/universal-xss-with-pdf-files/</link>
       <pubDate>Sun, 07 Jan 2007 09:45:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/01/07/universal-xss-with-pdf-files/</guid>
-      <description>&lt;p&gt;サイト上に PDF が置いてある場合、それを XSS に利用される可能性があるらしい。情報源は &lt;a href=&#34;http://www.devnull.jp/tdiary/20070104.html#p01&#34;&gt;Universal XSS with PDF files: highly dangerous&lt;/a&gt; というブログ記事（元となった ML への投稿は &lt;a href=&#34;http://www.webappsec.org/lists/websecurity/archive/2007-01/msg00005.html&#34;&gt;[WEB SECURITY] Universal XSS with PDF files: highly dangerous&lt;/a&gt;）。&lt;/p&gt;
-
-&lt;p&gt;これは PDF ファイルへのリンクの末尾に &lt;code&gt;JavaScript&lt;/code&gt; のコードを追加しておくことで、ユーザーがリンクをクリックしたときに、任意のコードを実行できる、というもの。Acrobat Reader のバージョン 7 以前と Firefox や IE の組み合わせで再現するようだ（念のため、Mac の Preview でも試してみたが、この問題は発生しなかった）。&lt;/p&gt;
-
-&lt;p&gt;Adobe は&lt;a href=&#34;http://www.adobe.com/support/security/advisories/apsa07-01.html&#34;&gt;修正版の ver. 7 をリリース予定&lt;/a&gt;。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/01/07/universal-xss-with-pdf-files/</guid>
+      <description>サイト上に PDF が置いてある場合、それを XSS に利用される可能性があるらしい。情報源は Universal XSS with PDF files: highly dangerous というブログ記事（元となった ML への投稿は [WEB SECURITY] Universal XSS with PDF files: highly dangerous）。
+これは PDF ファイルへのリンクの末尾に JavaScript のコードを追加しておくことで、ユーザーがリンクをクリックしたときに、任意のコードを実行できる、というもの。Acrobat Reader のバージョン 7 以前と Firefox や IE の組み合わせで再現するようだ（念のため、Mac の Preview でも試してみたが、この問題は発生しなかった）。
+Adobe は修正版の ver. 7 をリリース予定。</description>
     </item>
     
   </channel>

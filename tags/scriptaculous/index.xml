@@ -1,47 +1,39 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Scriptaculous on METAREAL</title>
-    <link>http://www.metareal.org/tags/scriptaculous/index.xml</link>
-    <description>Recent content in Scriptaculous on METAREAL</description>
+    <title>scriptaculous on METAREAL</title>
+    <link>http://ishikawa.github.io/tags/scriptaculous/</link>
+    <description>Recent content in scriptaculous on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <atom:link href="http://www.metareal.org/tags/scriptaculous/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Jul 2007 09:47:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/tags/scriptaculous/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>rake コマンドで環境変数を設定する</title>
-      <link>http://www.metareal.org/2007/07/08/setting-environment-variables-through-rake-command/</link>
+      <link>http://ishikawa.github.io/2007/07/08/setting-environment-variables-through-rake-command/</link>
       <pubDate>Sun, 08 Jul 2007 09:47:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/07/08/setting-environment-variables-through-rake-command/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://docs.rubyrake.org/read/chapter/5&#34;&gt;Rake のユーザーガイド&lt;/a&gt;には書かれているのに、&lt;code&gt;rake --help&lt;/code&gt; では出てこないようなのでメモ。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://script.aculo.us/&#34;&gt;Rake&lt;/a&gt; では &lt;code&gt;rake&lt;/code&gt; コマンドのオプションに &lt;code&gt;name=value&lt;/code&gt; と指定することで環境変数を指定できる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% rake [options ...]  [VAR=VALUE]  [targets ...]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;環境変数はタスクから &lt;code&gt;ENV&lt;/code&gt; 定数で参照できるので、コマンドオプションでてっとりばやく動作を切り替えたいときなんかは重宝するかもしれない。&lt;/p&gt;
-
-&lt;p&gt;というわけで、&lt;a href=&#34;http://script.aculo.us/&#34;&gt;script.aculo.us&lt;/a&gt; の &lt;code&gt;rake unittest&lt;/code&gt; で、対象ブラウザと対象ファイルを環境変数で指定できるようにした&lt;a href=&#34;http://dev.rubyonrails.org/ticket/8901&#34;&gt;パッチ&lt;/a&gt;を送ってみた。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/07/08/setting-environment-variables-through-rake-command/</guid>
+      <description>Rake のユーザーガイドには書かれているのに、rake --help では出てこないようなのでメモ。
+Rake では rake コマンドのオプションに name=value と指定することで環境変数を指定できる。
+% rake [options ...] [VAR=VALUE] [targets ...]  環境変数はタスクから ENV 定数で参照できるので、コマンドオプションでてっとりばやく動作を切り替えたいときなんかは重宝するかもしれない。
+というわけで、script.aculo.us の rake unittest で、対象ブラウザと対象ファイルを環境変数で指定できるようにしたパッチを送ってみた。</description>
     </item>
     
     <item>
       <title>script.aculo.us の InPlaceEditor で submitOnBlur だと Safari が落ちる</title>
-      <link>http://www.metareal.org/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</link>
+      <link>http://ishikawa.github.io/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</link>
       <pubDate>Fri, 06 Jul 2007 10:57:00 +0900</pubDate>
       
-      <guid>http://www.metareal.org/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://script.aculo.us/&#34;&gt;script.aculo.us&lt;/a&gt; の &lt;a href=&#34;http://wiki.script.aculo.us/scriptaculous/show/Ajax.InPlaceEditor&#34;&gt;InPlaceEditor&lt;/a&gt; を試している。&lt;/p&gt;
-
-&lt;p&gt;設定でカスタマイズできる部分がけっこうある割に、必要なものがなかったりして（特にコールバック系）微妙に使いづらいんだが、Safari だと不意にクラッシュする、という問題もあったり。&lt;/p&gt;
-
-&lt;p&gt;色々調べてみると、どうやら &lt;code&gt;submitOnBlur&lt;/code&gt; を設定して、フォーカスリング（テキストフィールドのフォーカス時に、フィールドの周囲に出る青い線）をクリックするとお亡くなりになるらしい。&lt;/p&gt;
-
-&lt;p&gt;まあ、普通に Safari のバグだと思うんだが、&lt;code&gt;onblur&lt;/code&gt; の処理を適当に遅延させると大丈夫なようなので、&lt;a href=&#34;http://dev.rubyonrails.org/ticket/3717&#34;&gt;ticket:3717&lt;/a&gt; に&lt;a href=&#34;http://dev.rubyonrails.org/attachment/ticket/3717/InPlaceEditorSubmitOnBlurCrashOnSafari.diff&#34;&gt;パッチ&lt;/a&gt;を送っておいた。&lt;/p&gt;
-</description>
+      <guid>http://ishikawa.github.io/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</guid>
+      <description>script.aculo.us の InPlaceEditor を試している。
+設定でカスタマイズできる部分がけっこうある割に、必要なものがなかったりして（特にコールバック系）微妙に使いづらいんだが、Safari だと不意にクラッシュする、という問題もあったり。
+色々調べてみると、どうやら submitOnBlur を設定して、フォーカスリング（テキストフィールドのフォーカス時に、フィールドの周囲に出る青い線）をクリックするとお亡くなりになるらしい。
+まあ、普通に Safari のバグだと思うんだが、onblur の処理を適当に遅延させると大丈夫なようなので、ticket:3717 にパッチを送っておいた。</description>
     </item>
     
   </channel>
