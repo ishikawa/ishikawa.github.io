@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>opencv on METAREAL</title>
@@ -20,9 +20,9 @@
       <guid>http://ishikawa.github.io/2007/03/27/opencv-on-mac-os-x-tiger/</guid>
       <description>物体認識もできる画像処理ライブラリ OpenCV 1.0.0 を Mac OS X 10.4 にてコンパイルしてみた。
 OpenCV のインストール まずは、SourceForge から opencv-1.0.0.tar.gz をダウンロードして解凍。
-% tar xvzf opencv-1.0.0.tar.gz % mkdir build % cd build/  libjpeg や libpng がないと JPEG, PNG 画像を扱えないので、DarwanPorts でいれたものを使うように configure
-% ../configure CPPFLAGS=&amp;quot;-I/opt/local/include&amp;quot; LDFLAGS=&amp;quot;-L/opt/local/lib&amp;quot; % make  案の定、エラーがでる。
-collect2: ld returned 1 exit status make[4]: *** [_cv.la] Error 1 make[3]: *** [all-recursive] Error 1 make[2]: *** [all-recursive] Error 1 make[1]: *** [all-recursive] Error 1 make: *** [all] Error 2  なんか、python のラッパー周辺が原因っぽいので外してコンパイル。</description>
+% tar xvzf opencv-1.0.0.tar.gz % mkdir build % cd build/ libjpeg や libpng がないと JPEG, PNG 画像を扱えないので、DarwanPorts でいれたものを使うように configure
+% ../configure CPPFLAGS=&amp;quot;-I/opt/local/include&amp;quot; LDFLAGS=&amp;quot;-L/opt/local/lib&amp;quot; % make 案の定、エラーがでる。
+collect2: ld returned 1 exit status make[4]: *** [_cv.la] Error 1 make[3]: *** [all-recursive] Error 1 make[2]: *** [all-recursive] Error 1 make[1]: *** [all-recursive] Error 1 make: *** [all] Error 2 なんか、python のラッパー周辺が原因っぽいので外してコンパイル。</description>
     </item>
     
   </channel>

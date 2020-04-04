@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>go on METAREAL</title>
@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Wed, 11 Nov 2009 10:29:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 23 Feb 2010 23:26:00 +0900</lastBuildDate>
     
 	<atom:link href="http://ishikawa.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,7 +19,7 @@
       
       <guid>http://ishikawa.github.io/2009/11/11/go-vim/</guid>
       <description>Io と並んで、自らの検索能力が試される名前の Go ですが、実用性と簡潔さを兼ねそなえた言語設計は好感がもてます。
-% cd $GOROOT % ls misc/vim/ go.vim % cp misc/vim/go.vim ~/.vim/syntax/ % cat &amp;amp;gt; ~/.vim/ftdetect/go.vim au BufRead,BufNewFile *.go set filetype=go  今日はここまで。</description>
+% cd $GOROOT % ls misc/vim/ go.vim % cp misc/vim/go.vim ~/.vim/syntax/ % cat &amp;amp;gt; ~/.vim/ftdetect/go.vim au BufRead,BufNewFile *.go set filetype=go 今日はここまで。</description>
     </item>
     
   </channel>

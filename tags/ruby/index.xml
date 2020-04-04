@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ruby on METAREAL</title>
@@ -19,7 +19,7 @@
       
       <guid>http://ishikawa.github.io/post/2016/09/fileutils-in-rakefile/</guid>
       <description>いつまでたっても Rakefile の書き方を覚える気になれないのだが、Rakefile では FileUtils が インクルードされており cp や mkdir_p といったメソッドが使える。
-mkdir_p &amp;quot;dir1/dir2&amp;quot;  また、いくつかの拡張がされており、コマンドの実行が失敗したときに例外が投げられたり、sh メソッドという Kernel.system にように外部コマンドを呼び出すメソッドが追加されている。
+mkdir_p &amp;#34;dir1/dir2&amp;#34; また、いくつかの拡張がされており、コマンドの実行が失敗したときに例外が投げられたり、sh メソッドという Kernel.system にように外部コマンドを呼び出すメソッドが追加されている。
  Rakeのshで外部コマンドを実行する - Qiita rake/file_utils.rb at master · ruby/rake  </description>
     </item>
     
@@ -30,8 +30,8 @@ mkdir_p &amp;quot;dir1/dir2&amp;quot;  また、いくつかの拡張がされ�
       
       <guid>http://ishikawa.github.io/2010/12/16/ffi-requires-ruby-version-1-9-2/</guid>
       <description>Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった。
-% sudo gem1.8 install ffi Password: ERROR: Error installing ffi: ffi requires Ruby version &amp;gt;= 1.9.2  そのため、Ruby 1.8 向けの gem をインストールするときはバージョン 0.6.3 を指定する。
-% sudo gem1.8 install ffi --version &amp;quot;= 0.6.3&amp;quot; Password: Building native extensions. This could take a while... Successfully installed ffi-0.6.3 1 gem installed Installing ri documentation for ffi-0.6.3... Installing RDoc documentation for ffi-0.6.3...  </description>
+% sudo gem1.8 install ffi Password: ERROR: Error installing ffi: ffi requires Ruby version &amp;gt;= 1.9.2 そのため、Ruby 1.8 向けの gem をインストールするときはバージョン 0.6.3 を指定する。
+% sudo gem1.8 install ffi --version &amp;#34;= 0.6.3&amp;#34; Password: Building native extensions. This could take a while... Successfully installed ffi-0.6.3 1 gem installed Installing ri documentation for ffi-0.6.3... Installing RDoc documentation for ffi-0.6.3... </description>
     </item>
     
     <item>
@@ -41,8 +41,8 @@ mkdir_p &amp;quot;dir1/dir2&amp;quot;  また、いくつかの拡張がされ�
       
       <guid>http://ishikawa.github.io/2010/12/11/1292077318/</guid>
       <description>Ruby FFI のメモリ管理についてメモ。FFI::MemoryPointer で確保したメモリを自分で破棄する場合は、autorelease を false にする。
-error = FFI::MemoryPointer.new(:pointer) ... C.LLVMDisposeMessage(error) error.autorelease=false  そうしないと、FFI::MemoryPointer は GC 時に確保したメモリを破棄しようとする (MemoryPointer.c#L138) ので、たとえば Mac OS X では以下のようなエラーが出る。
-ruby(891,0x7fff70874ca0) malloc: *** error for object 0x102e8fb10: pointer being freed was not allocated *** set a breakpoint in malloc_error_break to debug  エラー処理とかでは割と忘れがちかもしれない。</description>
+error = FFI::MemoryPointer.new(:pointer) ... C.LLVMDisposeMessage(error) error.autorelease=false そうしないと、FFI::MemoryPointer は GC 時に確保したメモリを破棄しようとする (MemoryPointer.c#L138) ので、たとえば Mac OS X では以下のようなエラーが出る。
+ruby(891,0x7fff70874ca0) malloc: *** error for object 0x102e8fb10: pointer being freed was not allocated *** set a breakpoint in malloc_error_break to debug エラー処理とかでは割と忘れがちかもしれない。</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@ ruby(891,0x7fff70874ca0) malloc: *** error for object 0x102e8fb10: pointer being
       <guid>http://ishikawa.github.io/2008/04/18/ruby-openid-util-logger/</guid>
       <description>ruby-openid は Ruby の OpenID ライブラリだが、そのままだとログの出力先が標準エラー出力に向けられている。これでは何かと困ることもあるだろう（たとえば、ユニットテストの結果に ruby-openid のデバッグ出力が混じって鬱陶しい、とか）。
 幸い OpenID::Util モジュールに、内部で使われているロガーを変更するためのメソッドが用意されている。以下のようにすれば、Rails 標準のロガーに置き換えることが可能だ。
-# ruby-openid の Logger を Rails 標準のもので置き換える OpenID::Util.logger = RAILS_DEFAULT_LOGGER  RAILS_DEFAULT_LOGGER 定数など、Rails のロガー周りについては Wiki のまとめが参考になる。</description>
+# ruby-openid の Logger を Rails 標準のもので置き換える OpenID::Util.logger = RAILS_DEFAULT_LOGGER RAILS_DEFAULT_LOGGER 定数など、Rails のロガー周りについては Wiki のまとめが参考になる。</description>
     </item>
     
     <item>
@@ -78,9 +78,9 @@ repeat, repeat_ は m 回以上、最大 n 回の繰り返しを指定できる�
 なお、メソッド名の最後にあるアンダースコアの有無については、「RParsec の many と many_ の違い」で解説したとおりで、アンダースコアのつかないメソッドはすべての結果を配列で返し、アンダースコアのつくメソッドは最後の結果のみを返す。
 選択 正規表現でいうところの選択も用意されている。このためのメソッドは | なので、見た目は正規表現と似通っている。
 たとえば、以下のコードは、
-number | word  数値、または一般的な識別子を解釈するためのパーサになる。
+number | word 数値、または一般的な識別子を解釈するためのパーサになる。
 また、文法要素のグループ化は簡単で、通常の Ruby プログラムと同じく括弧で囲めばよい。たとえば、空白区切りの数値、または識別子を解釈するためのパーサは以下のように書ける。
-parser = ((number | word) &amp;lt;&amp;lt; whitespace.many_).many parser.parse(&amp;quot;123 abc 56.7&amp;quot;) =&amp;gt; [&amp;quot;123&amp;quot;, &amp;quot;abc&amp;quot;, &amp;quot;56.</description>
+parser = ((number | word) &amp;lt;&amp;lt; whitespace.many_).many parser.parse(&amp;quot;123 abc 56.7&amp;quot;) =&amp;gt; [&amp;quot;123&amp;quot;, &amp;quot;abc&amp;quot;, &amp;quot;56.7&amp;quot;] Parser#delimited を使って、もっと直感的に書くこともできる。</description>
     </item>
     
     <item>
@@ -91,12 +91,12 @@ parser = ((number | word) &amp;lt;&amp;lt; whitespace.many_).many parser.parse(&
       <guid>http://ishikawa.github.io/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</guid>
       <description>rparsec の四則演算デモを試しているうちに、整数による演算しかできないことに気づくことと思う。
 四則演算デモが calculator.rb にあるとして、
-require &#39;calculator.rb&#39; parser = Calculator.new.parser parser.parse &#39;1+2*(3-1)&#39; =&amp;gt; 5 parser.parse &#39;4 * 2.5&#39; =&amp;gt; 8  小数を計算させてみると、エラーにはならないものの、計算結果がおかしなことになっている。
+require &#39;calculator.rb&#39; parser = Calculator.new.parser parser.parse &#39;1+2*(3-1)&#39; =&amp;gt; 5 parser.parse &#39;4 * 2.5&#39; =&amp;gt; 8 小数を計算させてみると、エラーにはならないものの、計算結果がおかしなことになっている。
 実は、この四則演算デモは数値として整数しか解釈しない。そのため、4 * 2.5 を計算させたときは、2.5 の &amp;quot;.&amp;quot; で解釈をやめてしまい、そこまでの 4 * 2 を計算して返した、という具合だ。
 ソースコードで数値をパースしている箇所は、
-term = integer.map(&amp;amp;To_i) | char(&#39;(&#39;) &amp;gt;&amp;gt; lazy{expr} &amp;lt;&amp;lt; char(&#39;)&#39;)  どうみても、この行の左半分なので、ここを API リファレンスを参考に、
-term = number.map(&amp;amp;To_f) | char(&#39;(&#39;) &amp;gt;&amp;gt; lazy{expr} &amp;lt;&amp;lt; char(&#39;)&#39;)  こう書き換えれば動く。
-parser.parse &#39;4 * 2.5&#39; =&amp;gt; 10.0  </description>
+term = integer.map(&amp;amp;To_i) | char(&#39;(&#39;) &amp;gt;&amp;gt; lazy{expr} &amp;lt;&amp;lt; char(&#39;)&#39;) どうみても、この行の左半分なので、ここを API リファレンスを参考に、
+term = number.map(&amp;amp;To_f) | char(&#39;(&#39;) &amp;gt;&amp;gt; lazy{expr} &amp;lt;&amp;lt; char(&#39;)&#39;) こう書き換えれば動く。
+parser.parse &#39;4 * 2.5&#39; =&amp;gt; 10.0 </description>
     </item>
     
     <item>
@@ -106,14 +106,14 @@ parser.parse &#39;4 * 2.5&#39; =&amp;gt; 10.0  </description>
       
       <guid>http://ishikawa.github.io/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</guid>
       <description>前回の四則演算デモで真っ先に目を引いたのは many_ という奇妙な名前のメソッドだった。
-delim = whitespace.many_  他にもっと注目すべきところがあるだろうと言われそうだが、非公開の関数か一時変数のようなメソッドが公開 API の一部というのに驚いた。
+delim = whitespace.many_ 他にもっと注目すべきところがあるだろうと言われそうだが、非公開の関数か一時変数のようなメソッドが公開 API の一部というのに驚いた。
 また、many_ は Parser クラスのメソッドだが、このクラスには他にも many というメソッドが用意されている。
 両者の違いは何だろう？
 many と many_ の違い 上記リンク先の API リファレンスによれば、
  many は複数回マッチしたそれぞれの結果を配列で返し、 many_ は最後にマッチした結果のみを返す  という違いだけのようだ。irb で実際に動作を確認してみよう。
-% irb irb(main):001:0&amp;gt; require &#39;rubygems&#39; irb(main):002:0&amp;gt; require &#39;rparsec&#39; irb(main):003:0&amp;gt; include Parsers  まずは必要な require や include を済ませておく。
-irb(main):004:0&amp;gt; whitespace.many.parse(&amp;quot;\t\r\n&amp;quot;) =&amp;gt; [9, 13, 10] irb(main):005:0&amp;gt; whitespace.many_.parse(&amp;quot;\t\r\n&amp;quot;) =&amp;gt; 10  many では引数で渡した文字列（タブと改行）の各文字が配列で返されるのにたいして、many_ では最後の改行文字のみが返されているのが確認できた。
-irb(main):007:0&amp;gt; whitespace.many.parse(&amp;quot;&amp;quot;) =&amp;gt; [] irb(main):006:0&amp;gt; whitespace.many_.parse(&amp;quot;&amp;quot;) =&amp;gt; nil  ちなみに、一度もマッチしなかった場合は many では空の配列、many_ では nil が返されるようだ。</description>
+% irb irb(main):001:0&amp;gt; require &#39;rubygems&#39; irb(main):002:0&amp;gt; require &#39;rparsec&#39; irb(main):003:0&amp;gt; include Parsers まずは必要な require や include を済ませておく。
+irb(main):004:0&amp;gt; whitespace.many.parse(&amp;quot;\t\r\n&amp;quot;) =&amp;gt; [9, 13, 10] irb(main):005:0&amp;gt; whitespace.many_.parse(&amp;quot;\t\r\n&amp;quot;) =&amp;gt; 10 many では引数で渡した文字列（タブと改行）の各文字が配列で返されるのにたいして、many_ では最後の改行文字のみが返されているのが確認できた。
+irb(main):007:0&amp;gt; whitespace.many.parse(&amp;quot;&amp;quot;) =&amp;gt; [] irb(main):006:0&amp;gt; whitespace.many_.parse(&amp;quot;&amp;quot;) =&amp;gt; nil ちなみに、一度もマッチしなかった場合は many では空の配列、many_ では nil が返されるようだ。</description>
     </item>
     
     <item>
@@ -127,8 +127,8 @@ irb(main):007:0&amp;gt; whitespace.many.parse(&amp;quot;&amp;quot;) =&amp;gt; []
 Yacc や Bison などのコンパイラ・コンパイラと比較したときのパーサ・コンビネータの強味としては、
  パーサを実装言語と同じ言語で書ける プログラムがそのまま文法定義のように読める パーサは普通の関数やオブジェクトなので、パーサをラップした別のパーサを生成する関数を定義したりするのも簡単にできる  などがあるようだ。
 rparsec のインストール 普通に RubyForge で gem がホスティングされているので、gem コマンド一発でインストールできる。
-% sudo gem install rparsec  四則演算デモ まずは公式ページにもデモとして紹介されている四則演算から。
-#!/usr/local/bin/ruby require &#39;rubygems&#39; require &#39;rparsec&#39; class Calculator include Parsers include Functors def parser ops = OperatorTable.new. infixl(char(?+) &amp;gt;&amp;gt; Plus, 20). infixl(char(?-) &amp;gt;&amp;gt; Minus, 20).</description>
+% sudo gem install rparsec 四則演算デモ まずは公式ページにもデモとして紹介されている四則演算から。
+#!/usr/local/bin/ruby require &#39;rubygems&#39; require &#39;rparsec&#39; class Calculator include Parsers include Functors def parser ops = OperatorTable.new. infixl(char(?+) &amp;gt;&amp;gt; Plus, 20). infixl(char(?-) &amp;gt;&amp;gt; Minus, 20). infixl(char(?</description>
     </item>
     
     <item>
@@ -138,9 +138,9 @@ rparsec のインストール 普通に RubyForge で gem がホスティング�
       
       <guid>http://ishikawa.github.io/2007/12/10/packing-integer-into-utf8-sequence-bytes/</guid>
       <description>前回の記事「PostgreSQL 7.4.13 以降、異なるエンコーディングでの変換エラー」でも書いたように、PostgreSQL で以下のようなエラーが出るようになった。
-ERROR: 22P05: character 0xe28094 of encoding &amp;quot;UNICODE&amp;quot; has no equivalent in &amp;quot;EUC_JP&amp;quot;  では、character 0xe28094 とは、どの文字なのか。
+ERROR: 22P05: character 0xe28094 of encoding &amp;quot;UNICODE&amp;quot; has no equivalent in &amp;quot;EUC_JP&amp;quot; では、character 0xe28094 とは、どの文字なのか。
 PostgreSQL では UNICODE という名前のエンコーディングは UTF-8 のことなので、Ruby の Array#pack を使えば、0xe28094 という16進数表記の整数を UTF-8 文字列に変換できる。
-ruby -e &#39;puts [ARGV[0]].pack(&amp;quot;H*&amp;quot;)&#39; &amp;quot;e28094&amp;quot;  </description>
+ruby -e &#39;puts [ARGV[0]].pack(&amp;quot;H*&amp;quot;)&#39; &amp;quot;e28094&amp;quot; </description>
     </item>
     
     <item>
@@ -161,13 +161,13 @@ Ruby CSS Parser 最近 RubyForge に登録されたばかりのプロジェク�
       <pubDate>Mon, 19 Nov 2007 02:31:00 +0900</pubDate>
       
       <guid>http://ishikawa.github.io/2007/11/18/ruby-needs-unicode-regular-expressions/</guid>
-      <description> Ruby 1.8 系で平仮名にマッチする正規表現を書きたい。
+      <description>Ruby 1.8 系で平仮名にマッチする正規表現を書きたい。
 正規表現で Unicode ブロックが使えれば楽なのだが、残念ながら Ruby 1.8 ではサポートされていない。
 鬼車 ちなみに 1.9 で搭載される予定の鬼車では、以下のような形式で Unicode ブロックやカテゴリを指定できるようだ（参考：鬼車 正規表現 Version 5.6.0）。
  \p{property-name} \p{^property-name}（否定） \P{property-name}（否定）  もっとも、実際に試したわけではないので、現状の Ruby 1.9 で上記のような使い方ができるのかは分からない。
 Ruby 1.8 結局、Ruby 1.8 では平仮名に相当するコードポイントの範囲を直接、正規表現で指定してやるのが簡単そうだ。
 Unicode Character Database の Block.txt によると平仮名（Hiragana）の範囲は 0x3040 から 0x309f なので、Ruby リファレンスマニュアルの FAQ「10.7 SJISの機種依存コード84BF から 889Fまでを空白に置き換えたいのですが」を参考に正規表現を書いてみる（ただし、UTF-8 限定）。
-/#{&amp;quot;[#{[0x3040].pack(&#39;U&#39;)}-#{[0x309f].pack(&#39;U&#39;)}]&amp;quot;}/u  コードポイントから UTF-8 リテラル文字列への変換に Array#pack を利用しているため読みづらくなっている。もっといい方法があるのかもしれない。
+/#{&amp;quot;[#{[0x3040].pack(&#39;U&#39;)}-#{[0x309f].pack(&#39;U&#39;)}]&amp;quot;}/u コードポイントから UTF-8 リテラル文字列への変換に Array#pack を利用しているため読みづらくなっている。もっといい方法があるのかもしれない。
 参考  Unicode Regular Expressions 鬼車  </description>
     </item>
     
@@ -178,11 +178,11 @@ Unicode Character Database の Block.txt によると平仮名（Hiragana）の�
       
       <guid>http://ishikawa.github.io/2007/10/09/capture-stderr-of-external-program-into-ruby-string/</guid>
       <description>Ruby で外部プログラムを実行するにはバッククォート文字列がもっとも簡単だ。
-s = `command`  こうすると command コマンドを実行し、標準出力の結果を返り値で受け取ることができる。
+s = `command` こうすると command コマンドを実行し、標準出力の結果を返り値で受け取ることができる。
 だが、標準エラーへの出力を得るには別の手段を用いなくてはいけない。
 open3 もちろん、あくまでバッククォート文字列にこだわって、標準エラーを標準出力にリダイレクトする、なんてのもあるわけだが、
-s = `command 2&amp;gt;&amp;amp;1`  これだと返り値には標準出力と標準エラーがまじってしまうので、添付ライブラリの open3 を使うのがいいだろう。
-require &#39;open3&#39; Open3.popen3(&amp;quot;command&amp;quot;) do |stdin, stdout, stderr| ... end  Open3.popen3 で外部プログラムを実行し、そのプロセスの標準入力・標準出力・ 標準エラー出力を IO オブジェクトとして取得できる。</description>
+s = `command 2&amp;gt;&amp;amp;1` これだと返り値には標準出力と標準エラーがまじってしまうので、添付ライブラリの open3 を使うのがいいだろう。
+require &#39;open3&#39; Open3.popen3(&amp;quot;command&amp;quot;) do |stdin, stdout, stderr| ... end Open3.popen3 で外部プログラムを実行し、そのプロセスの標準入力・標準出力・ 標準エラー出力を IO オブジェクトとして取得できる。</description>
     </item>
     
     <item>
@@ -195,13 +195,13 @@ require &#39;open3&#39; Open3.popen3(&amp;quot;command&amp;quot;) do |stdin, std
 Ruby リファレンスマニュアルには、
  整数とみなせない文字があればそこまでを変換対象とします。変換対象が 空文字列であれば 0 を返します。
  このように説明されているが、これをそのまま解釈すると、以下のような挙動が予想できる。
-irb(main):001:0&amp;gt; &amp;quot;10&amp;quot;.to_i =&amp;gt; 10 irb(main):002:0&amp;gt; &amp;quot;10fixnum&amp;quot;.to_i =&amp;gt; 10 irb(main):003:0&amp;gt; &amp;quot;&amp;quot;.to_i =&amp;gt; 0  ただ、次のような挙動は意外だった。
-irb(main):001:0&amp;gt; &amp;quot; 10&amp;quot;.to_i =&amp;gt; 10 irb(main):002:0&amp;gt; &amp;quot;fixnum&amp;quot;.to_i =&amp;gt; 0  最初の例は「文字列中の先頭の空白文字は無視される」と推測できるが、次の例はどうだろうか。明らかに数値ではない文字列の場合はエラーになりそうだが、この場合、
+irb(main):001:0&amp;gt; &amp;quot;10&amp;quot;.to_i =&amp;gt; 10 irb(main):002:0&amp;gt; &amp;quot;10fixnum&amp;quot;.to_i =&amp;gt; 10 irb(main):003:0&amp;gt; &amp;quot;&amp;quot;.to_i =&amp;gt; 0 ただ、次のような挙動は意外だった。
+irb(main):001:0&amp;gt; &amp;quot; 10&amp;quot;.to_i =&amp;gt; 10 irb(main):002:0&amp;gt; &amp;quot;fixnum&amp;quot;.to_i =&amp;gt; 0 最初の例は「文字列中の先頭の空白文字は無視される」と推測できるが、次の例はどうだろうか。明らかに数値ではない文字列の場合はエラーになりそうだが、この場合、
  先頭の文字 f が整数とみなせない よって空文字列が変換対象 変換対象が 空文字列であれば 0 を返す  という挙動らしい。
 変換できない場合はエラーにする 変換できないときに 0 を返すのはコードをシンプルにできるが、バグの原因にもなりやすい。
 変換できない場合はエラーにしたいところだが、Ruby の Time.parse で文字列を Time に変換するときのエラーチェックと同様、String.to_i にはエラーを検出する仕組みがない。
 どうするか、というと組み込み関数の Integer を使う。
-irb(main):001:0&amp;gt; Integer(&amp;quot;10fixnum&amp;quot;) ArgumentError: invalid value for Integer: &amp;quot;10fixnum&amp;quot; from (irb):7:in `Integer&#39; from (irb):7 from :0  リファレンスマニュアルにもあるように、変換できない場合は、例外 ArgumentError が発生する。</description>
+irb(main):001:0&amp;gt; Integer(&amp;quot;10fixnum&amp;quot;) ArgumentError: invalid value for Integer: &amp;quot;10fixnum&amp;quot; from (irb):7:in `Integer&#39; from (irb):7 from :0 リファレンスマニュアルにもあるように、変換できない場合は、例外 ArgumentError が発生する。</description>
     </item>
     
     <item>
@@ -211,11 +211,11 @@ irb(main):001:0&amp;gt; Integer(&amp;quot;10fixnum&amp;quot;) ArgumentError: inv
       
       <guid>http://ishikawa.github.io/2007/09/11/ruby-pitfall-today/</guid>
       <description>Ruby の落とし穴には載っていないようなので。
-def def foo # ... end  上記スクリプトは SyntaxError にならない（def がふたつあるのに注意）。
+def def foo # ... end 上記スクリプトは SyntaxError にならない（def がふたつあるのに注意）。
 しかし、実際にメソッド foo を呼び出そうとすると、
-def def foo # ... end foo  % ruby test.rb test.rb:5: undefined local variable or method `foo&#39; for main:Object (NameError)  未定義だと怒られる。
+def def foo # ... end foo % ruby test.rb test.rb:5: undefined local variable or method `foo&#39; for main:Object (NameError) 未定義だと怒られる。
 あと、
-p [1, 2, 3].map do |v| v + 1 end  このコードは意図通りに動作しないどころか、ブロックが実行されない、というのには驚いた。</description>
+p [1, 2, 3].map do |v| v + 1 end このコードは意図通りに動作しないどころか、ブロックが実行されない、というのには驚いた。</description>
     </item>
     
     <item>
@@ -226,7 +226,7 @@ p [1, 2, 3].map do |v| v + 1 end  このコードは意図通りに動作しな�
       <guid>http://ishikawa.github.io/2007/08/30/setup-simple-http-server-with-mongrel/</guid>
       <description>先日、やっつけスクリプトのサーバ部分に Mongrel を使ってみたんだけど、Rails で使う以外だとドキュメント少ないのね。
 とりあえず、Ruby の Webrick でお手軽 HTTP サーバの Mongrel 版はこんな感じ。
-#!/usr/local/bin/ruby require &#39;rubygems&#39; require &#39;mongrel&#39; def mongrel(config = {}) server = Mongrel::HttpServer.new(&#39;localhost&#39;, config[:Port]) server.register(&amp;quot;/&amp;quot;, Mongrel::DirHandler.new(config[:DocumentRoot])) server.run.join end mongrel :DocumentRoot =&amp;gt; &#39;/Users/ishikawa/Sites/spotwide&#39;, :Port =&amp;gt; 5001  まあ、これくらいなら API ドキュメント眺めたら書ける（というか載ってる）けど。</description>
+#!/usr/local/bin/ruby require &#39;rubygems&#39; require &#39;mongrel&#39; def mongrel(config = {}) server = Mongrel::HttpServer.new(&#39;localhost&#39;, config[:Port]) server.register(&amp;quot;/&amp;quot;, Mongrel::DirHandler.new(config[:DocumentRoot])) server.run.join end mongrel :DocumentRoot =&amp;gt; &#39;/Users/ishikawa/Sites/spotwide&#39;, :Port =&amp;gt; 5001 まあ、これくらいなら API ドキュメント眺めたら書ける（というか載ってる）けど。</description>
     </item>
     
     <item>
@@ -237,11 +237,12 @@ p [1, 2, 3].map do |v| v + 1 end  このコードは意図通りに動作しな�
       <guid>http://ishikawa.github.io/2007/08/25/setup-simple-http-server-with-webrick/</guid>
       <description>サイトの HTML や CSS を自分のパソコン上で編集するとき、不便に感じるのは画像や外部 CSS ファイルの指定方法の違いだ。
 サイト上の HTML や CSS では、たとえば、
-&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/stylesheets/application.css&amp;quot; type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot; charset=&amp;quot;utf-8&amp;quot; /&amp;gt;  とか、
-div#header div.logo h1 { width: 250px; height: 50px; background: url(/images/logo.png) no-repeat center center; }  になっているのに、自分のパソコン上で編集するときには、これらを
-&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;./stylesheets/application.css&amp;quot; type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot; charset=&amp;quot;utf-8&amp;quot; /&amp;gt; ... div#header div.logo h1 { width: 250px; height: 50px; background: url(./images/logo.png) no-repeat center center; }  いちいち、相対パスに変換しなくてはいけないのだ。面倒だし、誤って別の箇所を削ってしまったり、一部だけ変更し忘れるなんてことがないとも限らない。
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/stylesheets/application.css&amp;quot; type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot; charset=&amp;quot;utf-8&amp;quot; /&amp;gt; とか、
+div#header div.logo h1 { width: 250px; height: 50px; background: url(/images/logo.png) no-repeat center center; } になっているのに、自分のパソコン上で編集するときには、これらを
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;./stylesheets/application.css&amp;quot; type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot; charset=&amp;quot;utf-8&amp;quot; /&amp;gt; ... div#header div.logo h1 { width: 250px; height: 50px; background: url(./images/logo.png) no-repeat center center; } いちいち、相対パスに変換しなくてはいけないのだ。面倒だし、誤って別の箇所を削ってしまったり、一部だけ変更し忘れるなんてことがないとも限らない。
 変更しなくても済むように こういうときは、ローカルに HTTP サーバを用意すると便利だ。
-ローカルに HTTP サーバを用意して、そこで編集中のサイトを表示させるようにすれば、画像や外部 CSS ファイルのパスを実際のサイトのものから書き換えなくても、正常に表示できるようになる。</description>
+ローカルに HTTP サーバを用意して、そこで編集中のサイトを表示させるようにすれば、画像や外部 CSS ファイルのパスを実際のサイトのものから書き換えなくても、正常に表示できるようになる。
+そして、Mac には Ruby が標準添付されているので、簡単に HTTP サーバを用意することができる。</description>
     </item>
     
     <item>
@@ -252,7 +253,7 @@ div#header div.logo h1 { width: 250px; height: 50px; background: url(/images/log
       <guid>http://ishikawa.github.io/2007/07/08/setting-environment-variables-through-rake-command/</guid>
       <description>Rake のユーザーガイドには書かれているのに、rake --help では出てこないようなのでメモ。
 Rake では rake コマンドのオプションに name=value と指定することで環境変数を指定できる。
-% rake [options ...] [VAR=VALUE] [targets ...]  環境変数はタスクから ENV 定数で参照できるので、コマンドオプションでてっとりばやく動作を切り替えたいときなんかは重宝するかもしれない。
+% rake [options ...] [VAR=VALUE] [targets ...] 環境変数はタスクから ENV 定数で参照できるので、コマンドオプションでてっとりばやく動作を切り替えたいときなんかは重宝するかもしれない。
 というわけで、script.aculo.us の rake unittest で、対象ブラウザと対象ファイルを環境変数で指定できるようにしたパッチを送ってみた。</description>
     </item>
     
@@ -265,11 +266,11 @@ Rake では rake コマンドのオプションに name=value と指定するこ
       <description>Ruby on Rails のテンプレートでしょっちゅうお世話になる h メソッド。
 &amp;lt; や &amp;amp; といった、HTML にはそのまま書けない文字を実体参照に置き換えてくれるメソッドだが、これをコントローラーから使いたいときがある。たとえば、Ajax のレスポンスで ad-hoc に HTML 片を返してしまいたいときとか、けっこうあるんじゃないか。
 しかし、そのままではコントローラーから使うことはできない。
-def update render :text =&amp;gt; h(params[:value]) end  というか、そもそも API リファレンスにないんですけど&amp;hellip;。
+def update render :text =&amp;gt; h(params[:value]) end というか、そもそも API リファレンスにないんですけど&amp;hellip;。
 ソースコードを調べてみて、やっと分かった。
 どうやら、h メソッドは erb の ERB::Util モジュールで定義されているらしい。
 actionpack-1.13.3 - lib/action_view/helpers/tag_helper.rb
-module ActionView module Helpers #:nodoc: # Use these methods to generate HTML tags programmatically when you can&#39;t use # a Builder. By default, they output XHTML compliant tags. module TagHelper include ERB::Util .</description>
+module ActionView module Helpers #:nodoc: # Use these methods to generate HTML tags programmatically when you can&#39;t use # a Builder. By default, they output XHTML compliant tags. module TagHelper include ERB::Util ... 以下は ruby 1.</description>
     </item>
     
     <item>
@@ -279,12 +280,13 @@ module ActionView module Helpers #:nodoc: # Use these methods to generate HTML t
       
       <guid>http://ishikawa.github.io/2007/06/21/error-checking-in-ruby-time-parsing/</guid>
       <description>Ruby では、文字列から Time オブジェクト への変換には、time ライブラリ によって拡張される Time.parse を使う。
-require &amp;quot;time&amp;quot; Time.parse(&amp;quot;2007/6/21 19:23&amp;quot;) # =&amp;gt; Thu Jun 21 19:23:00 +0900 2007  Time.parse は内部的に ParseDate.parsedate を利用しているので、さまざまなフォーマットをサポートしており、それなりに便利だ。逆に、サポートされていないフォーマットの文字列を変換するときは、事前に正規表現で変換するなどの泥臭い作業になる。
-Time.parse(&amp;quot;Sat Aug 28 21:45:09 1999&amp;quot;) # =&amp;gt; Sat Aug 28 21:45:09 +0900 1999 Time.parse(&amp;quot;08/28/1999&amp;quot;) # =&amp;gt; Sat Aug 28 00:00:00 +0900 1999  他にも問題がある。
+require &amp;quot;time&amp;quot; Time.parse(&amp;quot;2007/6/21 19:23&amp;quot;) # =&amp;gt; Thu Jun 21 19:23:00 +0900 2007 Time.parse は内部的に ParseDate.parsedate を利用しているので、さまざまなフォーマットをサポートしており、それなりに便利だ。逆に、サポートされていないフォーマットの文字列を変換するときは、事前に正規表現で変換するなどの泥臭い作業になる。
+Time.parse(&amp;quot;Sat Aug 28 21:45:09 1999&amp;quot;) # =&amp;gt; Sat Aug 28 21:45:09 +0900 1999 Time.parse(&amp;quot;08/28/1999&amp;quot;) # =&amp;gt; Sat Aug 28 00:00:00 +0900 1999 他にも問題がある。
 変換対象の文字列が日付形式ではなかった場合は、当然 Time に変換できないわけだが、そういうときでもエラーを検知する仕組みがないのだ。
-Time.parse(&amp;quot;Happy Hacking!&amp;quot;) # =&amp;gt; Thu Jun 21 19:33:12 +0900 2007  このように、明らかに日付ではない文字列を渡しても、例外が発生するでもなく、Time オブジェクトが返ってくる。
+Time.parse(&amp;quot;Happy Hacking!&amp;quot;) # =&amp;gt; Thu Jun 21 19:33:12 +0900 2007 このように、明らかに日付ではない文字列を渡しても、例外が発生するでもなく、Time オブジェクトが返ってくる。
 Time.parse のマニュアルによると、
- Time.parse(date, now=Time.</description>
+ Time.parse(date, now=Time.now)
+与えられた時刻に上位の要素がなかったり壊れていた場合、now の該当要素が使われます。</description>
     </item>
     
     <item>
@@ -302,7 +304,7 @@ WordPress といえば、あれか &amp;hellip; PHP か。なので、Ruby の S
  syntaxhighlighter google-code-prettify  syntaxhighlighter は対応言語は申し分ないのだが、ちょっとオーバースペック気味だ。行番号表示やクリップボードへのコピーとかは、とりあえずいらないだろう。
 一方の google-code-prettify はシンプルでいい感じ。早速、試してみることにする。
 google-code-prettify 使い方は README を読めば問題ないと思う。このブログでは prototype.js を使って、こんなふうに組み込んだ。
-&amp;lt;script src=&amp;quot;http://metareal.org/javascripts/prototype.js&amp;quot; type=&amp;quot;text/javascript&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;http://metareal.org/javascripts/prettify.js&amp;quot; type=&amp;quot;text/javascript&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt; Event.observe(window, &#39;load&#39;, function() { prettyPrint(); }); &amp;lt;/script&amp;gt;  この通り、HTML も色づけしてくれる。HTML に埋め込んだ JavaScript も認識されてるのはすごいな。しかも、コード部分の指定は pre 要素か code 要素の class 属性に prettyprint を指定するだけ。シンプル。</description>
+&amp;lt;script src=&amp;quot;http://metareal.org/javascripts/prototype.js&amp;quot; type=&amp;quot;text/javascript&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;http://metareal.org/javascripts/prettify.js&amp;quot; type=&amp;quot;text/javascript&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt; Event.observe(window, &#39;load&#39;, function() { prettyPrint(); }); &amp;lt;/script&amp;gt; この通り、HTML も色づけしてくれる。HTML に埋め込んだ JavaScript も認識されてるのはすごいな。しかも、コード部分の指定は pre 要素か code 要素の class 属性に prettyprint を指定するだけ。シンプル。</description>
     </item>
     
     <item>
@@ -313,14 +315,14 @@ google-code-prettify 使い方は README を読めば問題ないと思う。こ
       <guid>http://ishikawa.github.io/2007/06/14/ruby-extension-struct-rstring-macros/</guid>
       <description>最近、Ruby の拡張ライブラリを書いている。
 Ruby 1.9 からは Array や String の短いものが struct RObject の構造体に埋め込まれるようになった。そのため、struct RString が変更されており、struct RString の C 文字列や文字（バイト）数にアクセスする従来の直接的な方法、
-char *p = RSTRING(s)-&amp;gt;ptr; long len = RSTRING(s)-&amp;gt;len;  は 1.9 の環境ではコンパイルできなくなっている。
+char *p = RSTRING(s)-&amp;gt;ptr; long len = RSTRING(s)-&amp;gt;len; は 1.9 の環境ではコンパイルできなくなっている。
 では、どうするか、というと、1.9 からは RSTRING_PTR, RSTRING_LEN というマクロをかましてアクセスする。
-char *p = RSTRING_PTR(s); long len = RSTRING_LEN(s);  実をいうと、1.9 向けの拡張ライブラリを書いてるわけではないので、ここからが本題。
+char *p = RSTRING_PTR(s); long len = RSTRING_LEN(s); 実をいうと、1.9 向けの拡張ライブラリを書いてるわけではないので、ここからが本題。
 この RSTRING_PTR, RSTRING_LEN、1.8.6 でも用意されていたりする。いまから、これらのマクロを使っておけば、1.9 への移行がすこしは楽になるかもしれない。
 ruby.h
-#define RSTRING_PTR(s) (RSTRING(s)-&amp;gt;ptr) #define RSTRING_LEN(s) (RSTRING(s)-&amp;gt;len)  しかし、このままだと問題が残る。
+#define RSTRING_PTR(s) (RSTRING(s)-&amp;gt;ptr) #define RSTRING_LEN(s) (RSTRING(s)-&amp;gt;len) しかし、このままだと問題が残る。
 というのも、1.8.5 以前のバージョンでは、依然、これらのマクロが利用できないからだ。なので、以下のように、#ifndef ディレクティブを使って対応するようにしている。
-#ifndef RSTRING_PTR # define RSTRING_PTR(s) (RSTRING(s)-&amp;gt;ptr) #endif #ifndef RSTRING_LEN # define RSTRING_LEN(s) (RSTRING(s)-&amp;gt;len) #endif  これで、1.</description>
+#ifndef RSTRING_PTR # define RSTRING_PTR(s) (RSTRING(s)-&amp;gt;ptr) #endif #ifndef RSTRING_LEN # define RSTRING_LEN(s) (RSTRING(s)-&amp;gt;len) #endif これで、1.</description>
     </item>
     
     <item>
@@ -330,7 +332,7 @@ ruby.h
       
       <guid>http://ishikawa.github.io/2007/03/28/ruby-1-8-6-and-fastthread/</guid>
       <description>新しい MacBook に Mongrel をインストールした。
-% sudo gem install mongrel  そうすると、依存関係にある fastthread という gem が気になってしかたない。
+% sudo gem install mongrel そうすると、依存関係にある fastthread という gem が気になってしかたない。
 検索してみると、「Mongrelと依存関係のあるfastthreadって？」というそのものズバリの記事があって、そういや前にも読んだぞ、この記事、てへ、とか思っていると、どうやら ruby 1.8.6 には取り込まれているらしい。
 知らなかったよ。というか、1.8.6 もまだ試してないよ。
 ちなみに、ruby-dev での議論もあった。</description>
@@ -361,7 +363,7 @@ Important warning: The default value is evaluated only once. This makes a differ
       <description>Ruby の open-uri って、SSL で自己証明書を使用している URL には使えないのね。あっさり、certificate verify failed (OpenSSL::SSL::SSLError) とか OpenSSL で弾かれる。
 「なんかオプションとかないのかね？」とリファレンスマニュアルを探してみるが、どうにもそれらしいものが見つからない。
 ソースコードを読んでみると、やはり、検証方法は OpenSSL::SSL::VERIFY_PEER 固定のようだ。 open-uri.rb の 228 行目。
-def OpenURI.open_http(buf, target, proxy, options) # :nodoc: ... http = klass.new(target_host, target_port) if target.class == URI::HTTPS require &#39;net/https&#39; http.use_ssl = true http.verify_mode = **OpenSSL::SSL::VERIFY_PEER** store = OpenSSL::X509::Store.new store.set_default_paths http.cert_store = store end ... end  そういえば、Java でも、Commons の HttpClient で同様の問題にぶち当たったことがある。あのときも、contrib の EasySSLProtocolSocketFactory を使う必要があったっけ。
+def OpenURI.open_http(buf, target, proxy, options) # :nodoc: ... http = klass.new(target_host, target_port) if target.class == URI::HTTPS require &#39;net/https&#39; http.use_ssl = true http.verify_mode = **OpenSSL::SSL::VERIFY_PEER** store = OpenSSL::X509::Store.new store.set_default_paths http.cert_store = store end ... end そういえば、Java でも、Commons の HttpClient で同様の問題にぶち当たったことがある。あのときも、contrib の EasySSLProtocolSocketFactory を使う必要があったっけ。
 もう、net/https を使うしかないのかな &amp;hellip;</description>
     </item>
     
@@ -373,10 +375,11 @@ def OpenURI.open_http(buf, target, proxy, options) # :nodoc: ... http = klass.ne
       <guid>http://ishikawa.github.io/2006/12/28/reason-of-mysql-ruby-test-failure/</guid>
       <description>前回書いた、MySQL/Ruby の test.rb が失敗する原因を調査する。
 まずは、実行結果の出力を調べてみよう。 すべてのテストが失敗しているため長いので、最初のテスト結果のみ抜粋する。
-% ruby ./test.rb localhost root newpass ... 1) Failure: test_connect(TC_Mysql) [./test.rb:39]: Exception raised: Class: &amp;lt;Mysql::Error&amp;gt; **Message: &amp;lt;&amp;quot;Access denied for user &#39;ishikawa&#39;@&#39;localhost&#39; (using password: NO)&amp;quot;&amp;gt;** ---Backtrace--- ./test.rb:39:in `connect&#39; ./test.rb:39:in `test_connect&#39; ./test.rb:39:in `test_connect&#39; ...  MySQL のエラーで &amp;ldquo;Access denied for user &amp;lsquo;ishikawa&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; (using password: NO)&amp;rdquo; と出力されているので、これは単なるアクセス制御の問題だ。
+% ruby ./test.rb localhost root newpass ... 1) Failure: test_connect(TC_Mysql) [./test.rb:39]: Exception raised: Class: &amp;lt;Mysql::Error&amp;gt; **Message: &amp;lt;&amp;quot;Access denied for user &#39;ishikawa&#39;@&#39;localhost&#39; (using password: NO)&amp;quot;&amp;gt;** ---Backtrace--- ./test.rb:39:in `connect&#39; ./test.rb:39:in `test_connect&#39; ./test.rb:39:in `test_connect&#39; ... MySQL のエラーで &amp;quot;Access denied for user &amp;lsquo;ishikawa&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; (using password: NO)&amp;ldquo;と出力されているので、これは単なるアクセス制御の問題だ。
 そして、test.rb のコマンドライン引数で root ユーザを指定しているにも関わらず、実際には ishikawa ユーザでアクセスしようとしている。
 うまくいくわけがない。 コマンドライン引数による指定が無視されているわけだ。
-何故、コマンドライン引数が無視されるのか コマンドライン引数が無視される原因を調べてみると、どうやら test.rb が使っている Test::Unit が悪さをしているらしい（Test::Unit は Ruby の標準添付ライブラリで、いわゆる xUnit ツールの Ruby 版である）。</description>
+何故、コマンドライン引数が無視されるのか コマンドライン引数が無視される原因を調べてみると、どうやら test.rb が使っている Test::Unit が悪さをしているらしい（Test::Unit は Ruby の標準添付ライブラリで、いわゆる xUnit ツールの Ruby 版である）。
+簡単な検証スクリプトを書いてみる。</description>
     </item>
     
     <item>
@@ -389,7 +392,7 @@ def OpenURI.open_http(buf, target, proxy, options) # :nodoc: ... http = klass.ne
 Ruby から MySQL につなぐためのバインディングである MySQL/Ruby をインストールすれば、Ruby on Rails の開発環境構築は一段落。
 なお、同様のバインディングである Ruby/MySQL もあり、こちらは Ruby で書かれているためコンパイルが不要。MySQL/Ruby とも、ほぼ互換性がある。ただ、今回はパフォーマンス優先でいきたいと思う。
 さて、ダウンロードページから最新版をダウンロード。現時点では mysql-ruby-2.7.3.tar.gz が最新版のようだ。
-% curl --location -O http://tmtm.org/downloads/mysql/ruby/mysql-ruby-2.7.3.tar.gz % tar xvzf mysql-ruby-2.7.3.tar.gz % cd mysql-ruby-2.7.3  さきほど「パフォーマンス優先」と書いたけど、RailsExpress.blog の人が MySQL/Ruby を 30% 高速にするパッチを公開している。記事を読んだときから試してみたかったので、これを機会に使ってみよう。
+% curl --location -O http://tmtm.org/downloads/mysql/ruby/mysql-ruby-2.7.3.tar.gz % tar xvzf mysql-ruby-2.7.3.tar.gz % cd mysql-ruby-2.7.3 さきほど「パフォーマンス優先」と書いたけど、RailsExpress.blog の人が MySQL/Ruby を 30% 高速にするパッチを公開している。記事を読んだときから試してみたかったので、これを機会に使ってみよう。
 パッチをダウンロードして、MySQL/Ruby の展開先に置いたら、patch コマンドでパッチを適用する。
 % curl -O http://railsexpress.de/downloads/mysql-ruby-2.7-less-string-copies-in-each-hash.diff % patch &amp;lt; mysql-ruby-2.7-less-string-copies-in-each-hash.diff patching file mysql.c.in Hunk #1 succeeded at 1009 (offset -1 lines). Hunk #2 succeeded at 1027 (offset -1 lines).</description>
     </item>
@@ -403,8 +406,8 @@ Ruby から MySQL につなぐためのバインディングである MySQL/Ruby
       <description>Mac OS X Tiger に標準にバンドルされている ruby は irb でヒストリー機能が利用できない、など使い勝手が悪い上、脆弱性も修正されていないバージョンなので、最新版をソースからインストールする。
 なお、古いバージョンの Ruby に存在する脆弱性については以下を参照（最新版では修正済み）。
  CGIライブラリのDoS脆弱性について もう一つのCGIライブラリのDoS脆弱性について  まずは、脆弱性を修正するパッチを適用した最新版のソースコードをダウンロードして展開。
-% curl --location -O ftp://ftp.ruby-lang.org/pub/ruby/ruby-1.8.5-p12.tar.gz % tar xvzf ruby-1.8.5-p12.tar.gz  あとは普通に configure, make。
-% cd ruby-1.8.5-p12 % ./configure % make % sudo make install  </description>
+% curl --location -O ftp://ftp.ruby-lang.org/pub/ruby/ruby-1.8.5-p12.tar.gz % tar xvzf ruby-1.8.5-p12.tar.gz あとは普通に configure, make。
+% cd ruby-1.8.5-p12 % ./configure % make % sudo make install </description>
     </item>
     
   </channel>

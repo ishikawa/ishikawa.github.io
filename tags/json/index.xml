@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>json on METAREAL</title>
@@ -27,7 +27,7 @@
 まずは、Flash 版だが、
  サムネイルがちいさい 一定時間ごとにアニメーションで拡大するのは面白いが、読者からすれば煩わしいものだ  という不満がある。
 一方、HTML 版はというと、サムネイルの大きさは選択可能、レイアウトも CSS で設定できるので自由度も高い。ただし、ブログパーツを挿入するための JavaScript が好みじゃない（以下、一部整形済み）。
-var b_txt = &#39;&#39;; b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_image&amp;quot; id=&amp;quot;flickr_badge_image1&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.flickr.com/photos/ishikawa_takanori/2555186680/&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;http://farm4.static.flickr.com/3006/2555186680_7c18b8cc1a_s.jpg&amp;quot; alt=&amp;quot;A photo on Flickr&amp;quot; title=&amp;quot;BUFFET STYLE&amp;quot; height=&amp;quot;75&amp;quot; width=&amp;quot;75&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&#39;; b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_image&amp;quot; id=&amp;quot;flickr_badge_image2&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.flickr.com/photos/ishikawa_takanori/2555186616/&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;http://farm4.static.flickr.com/3140/2555186616_823d69311e_s.jpg&amp;quot; alt=&amp;quot;A photo on Flickr&amp;quot; title=&amp;quot;spaghetti with Genova style basil sauce&amp;quot; height=&amp;quot;75&amp;quot; width=&amp;quot;75&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&#39;; b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_image&amp;quot; id=&amp;quot;flickr_badge_image3&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.</description>
+var b_txt = &amp;#39;&amp;#39;; b_txt+= &amp;#39;&amp;lt;div class=&amp;#34;flickr_badge_image&amp;#34; id=&amp;#34;flickr_badge_image1&amp;#34;&amp;gt;&amp;lt;a href=&amp;#34;http://www.flickr.com/photos/ishikawa_takanori/2555186680/&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;http://farm4.static.flickr.com/3006/2555186680_7c18b8cc1a_s.jpg&amp;#34; alt=&amp;#34;A photo on Flickr&amp;#34; title=&amp;#34;BUFFET STYLE&amp;#34; height=&amp;#34;75&amp;#34; width=&amp;#34;75&amp;#34;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&amp;#39;; b_txt+= &amp;#39;&amp;lt;div class=&amp;#34;flickr_badge_image&amp;#34; id=&amp;#34;flickr_badge_image2&amp;#34;&amp;gt;&amp;lt;a href=&amp;#34;http://www.flickr.com/photos/ishikawa_takanori/2555186616/&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;http://farm4.static.flickr.com/3140/2555186616_823d69311e_s.jpg&amp;#34; alt=&amp;#34;A photo on Flickr&amp;#34; title=&amp;#34;spaghetti with Genova style basil sauce&amp;#34; height=&amp;#34;75&amp;#34; width=&amp;#34;75&amp;#34;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&amp;#39;; b_txt+= &amp;#39;&amp;lt;div class=&amp;#34;flickr_badge_image&amp;#34; id=&amp;#34;flickr_badge_image3&amp;#34;&amp;gt;&amp;lt;a href=&amp;#34;http://www.</description>
     </item>
     
   </channel>

@@ -7,33 +7,39 @@
   <title>AppleScript で Web ページのタイトルをクリップボードにコピー</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/01/02/copy-page-title-with-applescript/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>AppleScript で Web ページのタイトルをクリップボードにコピー</h1>
   <div class="metadata">
-    <p class="date">2007/01/03 12:18pm</p>
+    <p class="date">
+      2007/01/03 12:18pm
+    </p>
   </div>
   <div class="content">
     <p>Web ページのタイトルをブログに書くときに、毎回ソースを開いてコピーするのが面倒だった。なので、これを自動化する <code>AppleScript</code> を書いた。</p>
-
 <pre><code>tell application &quot;Safari&quot;
   set the clipboard to the name of front document **as Unicode text**
 end tell
-</code></pre>
-
-<p>このスクリプトを実行すると、Safari で開いている Web ページのタイトルがクリップボードにコピーされる。</p>
-
+</code></pre><p>このスクリプトを実行すると、Safari で開いている Web ページのタイトルがクリップボードにコピーされる。</p>
 <p>強調部分がないとクリップボードにコピーされないし、ここが <em>as text</em> だと文字化けする。</p>
 
   </div>
@@ -56,7 +62,7 @@ end tell
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

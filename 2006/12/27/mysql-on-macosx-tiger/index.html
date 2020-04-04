@@ -7,51 +7,51 @@
   <title>Mac OS X  Tiger に MySQL 5.0.27 をインストール</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2006/12/27/mysql-on-macosx-tiger/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Mac OS X  Tiger に MySQL 5.0.27 をインストール</h1>
   <div class="metadata">
-    <p class="date">2006/12/28 12:54pm</p>
+    <p class="date">
+      2006/12/28 12:54pm
+    </p>
   </div>
   <div class="content">
     <p><a href="http://www.rubyonrails.org/">Ruby on Rails</a> で開発するアプリケーションのバックエンドだが、データベースには <a href="http://www.mysql.com/">MySQL</a> を使用するつもりなので、これもインストールしてやる。</p>
-
 <p><a href="http://dev.mysql.com/downloads/mysql/5.0.html">MySQL 5.0 のダウンロードページ</a>には、Mac OS X 向けのバイナリも配布されているので、通常はこちらを使うのがよさそうだ。</p>
-
 <p>まあ、コンパイルも楽しいので、今回は自前でソースコードからインストールしてみる。</p>
-
 <pre><code>% curl --location &quot;http://dev.mysql.com/get/Downloads/MySQL-5.0/mysql-5.0.27.tar.gz/from/http://mirror.mysql-partners-jp.biz/&quot; &gt; mysql-5.0.27.tar.gz
 % tar xvzf mysql-5.0.27.tar.gz
 % cd mysql-5.0.27
-</code></pre>
-
-<p><code>configure</code> のオプションは<a href="http://dev.mysql.com/doc/refman/5.0/en/mac-os-x.html">マニュアルに載っていた</a>ものを参考にした。</p>
-
+</code></pre><p><code>configure</code> のオプションは<a href="http://dev.mysql.com/doc/refman/5.0/en/mac-os-x.html">マニュアルに載っていた</a>ものを参考にした。</p>
 <pre><code>CC=gcc CFLAGS=&quot;-O3 -fno-omit-frame-pointer&quot; CXX=gcc \
 CXXFLAGS=&quot;-O3 -fno-omit-frame-pointer -felide-constructors \
     -fno-exceptions -fno-rtti&quot; \
     ./configure --prefix=/usr/local/mysql \
     --with-extra-charsets=complex --enable-thread-safe-client \
     --enable-local-infile --disable-shared
-</code></pre>
-
-<p>あとは、<code>make, make install</code></p>
-
+</code></pre><p>あとは、<code>make, make install</code></p>
 <pre><code>% make
 % sudo make install
 </code></pre>
-
   </div>
 </article>
 
@@ -72,7 +72,7 @@ CXXFLAGS=&quot;-O3 -fno-omit-frame-pointer -felide-constructors \
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

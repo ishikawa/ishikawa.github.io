@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>rust on METAREAL</title>
@@ -19,10 +19,11 @@
       
       <guid>http://ishikawa.github.io/post/2015/07/rust-trait-alias/</guid>
       <description>Rust の Traits による制約は Associated Types や複数の Traits を + で指定したりすると、どんどん長くなってしまう。
-struct A&amp;lt;T: Iterator&amp;lt;Item=char&amp;gt;&amp;gt; { ... }  通常の型には type キーワードによる別名づけの手段が用意されているが、これは Traits には使えない。
-type CharIterator = Iterator&amp;lt;Item=char&amp;gt;; // ERROR: note: `type` aliases cannot be used for traits struct A&amp;lt;T: CharIterator&amp;gt; { ... }  過去に提案はあったが却下されたようだ。
+struct A&amp;lt;T: Iterator&amp;lt;Item=char&amp;gt;&amp;gt; { ... } 通常の型には type キーワードによる別名づけの手段が用意されているが、これは Traits には使えない。
+type CharIterator = Iterator&amp;lt;Item=char&amp;gt;; // ERROR: note: `type` aliases cannot be used for traits struct A&amp;lt;T: CharIterator&amp;gt; { ... } 過去に提案はあったが却下されたようだ。
 Allow type to create an alias for several trait bounds · Issue #8634 · rust-lang/rust
- 別名を与えたい Trait を継承した空の Trait をつくればいい 言語に新しい機能をつけくわえるほどの価値はなさそう  たしかに、空の Trait をつくることで似たような効果を得ることはできる。</description>
+ 別名を与えたい Trait を継承した空の Trait をつくればいい 言語に新しい機能をつけくわえるほどの価値はなさそう  たしかに、空の Trait をつくることで似たような効果を得ることはできる。
+trait CharIterator: Iterator&amp;lt;Item=char&amp;gt; {} struct A&amp;lt;T: CharIterator&amp;gt; { .</description>
     </item>
     
   </channel>

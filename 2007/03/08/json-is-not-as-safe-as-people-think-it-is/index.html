@@ -7,43 +7,45 @@
   <title>JSON はみんなが思ってるほど安全ではない</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/03/08/json-is-not-as-safe-as-people-think-it-is/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>JSON はみんなが思ってるほど安全ではない</h1>
   <div class="metadata">
-    <p class="date">2007/03/08 9:33am</p>
+    <p class="date">
+      2007/03/08 9:33am
+    </p>
   </div>
   <div class="content">
     <p><a href="http://del.icio.us/ishikawa_takanori">del.icio.us</a> 経由で今日読んだ記事。</p>
-
 <p>JSON is not as safe as people think it is - Joe Walker&rsquo;s Blog
 <a href="http://getahead.org/blog/joe/2007/03/05/json_is_not_as_safe_as_people_think_it_is.html">http://getahead.org/blog/joe/2007/03/05/
 json_is_not_as_safe_as_people_think_it_is.html</a></p>
-
 <p><code>script</code> による <a href="http://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AD%E3%82%B9%E3%82%B5%E3%82%A4%E3%83%88%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%AA">CSRF</a> と
 JavaScript のハック的手法を組み合わせることで、たとえログイン必須にしている JSON データであっても盗まれるかもしれない、という話。</p>
-
 <p>たとえば、</p>
-
 <pre><code>&lt;script type='text/javascript' src='http://example.com/jsonservice'&gt;&lt;/script&gt;
-</code></pre>
-
-<p>という <code>script</code> で JSON を読み込めたとする。</p>
-
+</code></pre><p>という <code>script</code> で JSON を読み込めたとする。</p>
 <p>このままだと読み込んだ JSON のデータが評価されるだけで、どんなコードも実行されないのでそれほど問題にはならない
 （評価された JSON のデータはどんな変数にも代入されてないので参照できない）。</p>
-
 <p>しかし、元記事に紹介されている方法で、たとえば <code>Array</code> のコンストラクタを再定義してやると、JSON が評価されるときに
 任意のコード（どこかにデータを送信するなど）を実行できてしまう。</p>
 
@@ -67,7 +69,7 @@ JavaScript のハック的手法を組み合わせることで、たとえログ
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

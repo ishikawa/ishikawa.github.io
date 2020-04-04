@@ -7,55 +7,51 @@
   <title>理想の &lt;title&gt; をもとめて</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/01/08/looking-for-loving-title-element/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>理想の &lt;title&gt; をもとめて</h1>
   <div class="metadata">
-    <p class="date">2007/01/09 7:28am</p>
+    <p class="date">
+      2007/01/09 7:28am
+    </p>
   </div>
   <div class="content">
-    <p>WordPress のインストール直後は <title> タグを出力するテンプレートは以下のようになっていた。</p>
-
+    <p>WordPress のインストール直後は <!-- raw HTML omitted --> タグを出力するテンプレートは以下のようになっていた。</p>
 <pre><code>&lt;title&gt;&lt;?php bloginfo('name'); ?&gt; &lt;?php if ( is_single() ) { ?&gt; &amp;raquo; Blog Archive &lt;?php } ?&gt; &lt;?php wp_title(); ?&gt;&lt;/title&gt;
-</code></pre>
-
-<p>これだと記事のタイトルは「<strong>ブログ名 » Blog Archive » 記事タイトル</strong>」のようになる。これを「<strong>記事タイトル - ブログ名</strong>」にしたくて、</p>
-
+</code></pre><p>これだと記事のタイトルは「<strong>ブログ名 » Blog Archive » 記事タイトル</strong>」のようになる。これを「<strong>記事タイトル - ブログ名</strong>」にしたくて、</p>
 <pre><code>&lt;title&gt;&lt;?php
   wp_title(' ');
   if (wp_title(' ', false)) echo ' - ';
   bloginfo('name'); ?&gt;&lt;/title&gt;
-</code></pre>
-
-<p>というテンプレートをいままでは使っていた。</p>
-
-<p>しかし、今日はじめて気づいたのだが、これだと「<strong>  記事タイトル - ブログ名</strong>」というふうに、タイトルの直前に余分なスペースが残ってしまう。</p>
-
+</code></pre><p>というテンプレートをいままでは使っていた。</p>
+<p>しかし、今日はじめて気づいたのだが、これだと「<!-- raw HTML omitted -->  記事タイトル - ブログ名<!-- raw HTML omitted -->」というふうに、タイトルの直前に余分なスペースが残ってしまう。</p>
 <p>どうやら、<a href="http://codex.wordpress.org/Template_Tags/wp_title">wp_title()</a> は区切り文字が空文字のときでも、周囲のスペースを挿入してしまうらしい。</p>
-
 <p>しょうがないので、力技だが、出力前に <code>trim()</code> してみる。</p>
-
 <pre><code>&lt;title&gt;&lt;?php
   echo trim(wp_title('', false));
   if (wp_title('', false)) echo ' - ';
   bloginfo('name'); ?&gt;&lt;/title&gt;
-</code></pre>
-
-<p>これでやっと「<strong>記事タイトル - ブログ名</strong>」にできた。</p>
-
+</code></pre><p>これでやっと「<strong>記事タイトル - ブログ名</strong>」にできた。</p>
 <p>なお、<a href="http://elasticdog.com/2004/09/optimal-title/">Optimal Title</a> というプラグインもあるようだ。このプラグインをインストールすれば、区切り文字を末尾に追加してくれるバージョンの <code>wp_title()</code> として、<code>optimal_title()</code> が使えるようになる、とのこと。</p>
-
 <p>うーん、<code>wp_title()</code> がもうちょっと汎用的につくってあってもいいと思うんだけど&hellip;。</p>
 
   </div>
@@ -78,7 +74,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

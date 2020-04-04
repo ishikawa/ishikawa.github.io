@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>eclipse on METAREAL</title>
@@ -20,9 +20,9 @@
       <guid>http://ishikawa.github.io/2007/01/11/subversion-primer-for-eclipse-java-projects/</guid>
       <description>Eclipse の Java プロジェクトを Subversion 管理するときの手順を、メモも兼ねて残しておこう。ちなみに、Eclipse での Subversion サポートに使っているのは Subclipse プラグイン。
 以下の $REPO 変数はプロジェクトを作成する、Subversion レポジトリの URL とする（たとえば、svn+ssh://svn.metareal.org/path/to/repo/project/）。
-% mkdir tmp % cd tmp % mkdir trunk branches tags % svn import -m &amp;quot;initial import&amp;quot; . $REPO % cd ../ % rm -rf tmp  Eclipse で新規 Java プロジェクトを作成する。
+% mkdir tmp % cd tmp % mkdir trunk branches tags % svn import -m &amp;quot;initial import&amp;quot; . $REPO % cd ../ % rm -rf tmp Eclipse で新規 Java プロジェクトを作成する。
 そして、新規作成されたプロジェクトのディレクトリに、Subversion レポジトリからチェックアウト。
-% cd /path/to/workspace/project/ % svn co $REPO/trunk .  いつも使っているディレクトリレイアウトを作成して必要なものを svn add しておく。
+% cd /path/to/workspace/project/ % svn co $REPO/trunk . いつも使っているディレクトリレイアウトを作成して必要なものを svn add しておく。
 % mkdir -p build/classes build/test-classes build/reports % mkdir -p docs/api % mkdir -p src/java src/test % svn add .</description>
     </item>
     

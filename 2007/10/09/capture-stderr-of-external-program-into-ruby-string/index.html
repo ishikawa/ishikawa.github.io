@@ -7,52 +7,48 @@
   <title>Ruby で外部プログラムの標準エラー出力を得る方法</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/10/09/capture-stderr-of-external-program-into-ruby-string/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Ruby で外部プログラムの標準エラー出力を得る方法</h1>
   <div class="metadata">
-    <p class="date">2007/10/10 6:37am</p>
+    <p class="date">
+      2007/10/10 6:37am
+    </p>
   </div>
   <div class="content">
-    
-
-<p>Ruby で外部プログラムを実行するには<a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=%C1%C8%A4%DF%B9%FE%A4%DF%B4%D8%BF%F4#a.60.20str">バッククォート文字列</a>がもっとも簡単だ。</p>
-
+    <p>Ruby で外部プログラムを実行するには<a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=%C1%C8%A4%DF%B9%FE%A4%DF%B4%D8%BF%F4#a.60.20str">バッククォート文字列</a>がもっとも簡単だ。</p>
 <pre><code>s = `command`
-</code></pre>
-
-<p>こうすると <code>command</code> コマンドを実行し、標準出力の結果を返り値で受け取ることができる。</p>
-
+</code></pre><p>こうすると <code>command</code> コマンドを実行し、標準出力の結果を返り値で受け取ることができる。</p>
 <p>だが、標準エラーへの出力を得るには別の手段を用いなくてはいけない。</p>
-
 <h3 id="open3">open3</h3>
-
 <p>もちろん、あくまでバッククォート文字列にこだわって、標準エラーを標準出力にリダイレクトする、なんてのもあるわけだが、</p>
-
 <pre><code>s = `command 2&gt;&amp;1`
-</code></pre>
-
-<p>これだと返り値には標準出力と標準エラーがまじってしまうので、添付ライブラリの <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=open3"><code>open3</code></a> を使うのがいいだろう。</p>
-
+</code></pre><p>これだと返り値には標準出力と標準エラーがまじってしまうので、添付ライブラリの <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=open3"><code>open3</code></a> を使うのがいいだろう。</p>
 <pre><code>require 'open3'
 
 Open3.popen3(&quot;command&quot;) do |stdin, stdout, stderr|
   ...
 end
-</code></pre>
-
-<p><a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=open3#Open3.2epopen3"><code>Open3.popen3</code></a> で外部プログラムを実行し、そのプロセスの標準入力・標準出力・ 標準エラー出力を <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=IO"><code>IO</code></a> オブジェクトとして取得できる。</p>
+</code></pre><p><a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=open3#Open3.2epopen3"><code>Open3.popen3</code></a> で外部プログラムを実行し、そのプロセスの標準入力・標準出力・ 標準エラー出力を <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=IO"><code>IO</code></a> オブジェクトとして取得できる。</p>
 
   </div>
 </article>
@@ -74,7 +70,7 @@ end
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

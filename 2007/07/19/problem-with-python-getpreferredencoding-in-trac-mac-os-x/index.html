@@ -7,32 +7,37 @@
   <title>Python: Mac OS X での locale.getpreferredencoding() </title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Python: Mac OS X での locale.getpreferredencoding() </h1>
   <div class="metadata">
-    <p class="date">2007/07/19 10:30am</p>
+    <p class="date">
+      2007/07/19 10:30am
+    </p>
   </div>
   <div class="content">
-    
-
-<p>（追記）この記事に載せているパッチよりも <a href="http://weblog.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/">Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</a>のパッチを使った方がよさそうです。Mac OS X 標準の Python との互換性があります。</p>
-
+    <p>（追記）この記事に載せているパッチよりも <a href="http://weblog.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/">Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</a>のパッチを使った方がよさそうです。Mac OS X 標準の Python との互換性があります。</p>
 <p><a href="http://trac.edgewall.org/wiki/TracInstall">TracInstall</a> に従って、Mac OS X で <a href="http://trac.edgewall.org/">Trac</a> を動かそうとしている。<a href="http://weblog.metareal.org/category/subversion/">以前試したときは頓挫した</a>のだが、今回は Python を含む<strong>すべてのライブラリ</strong>を一からインストールして、じっくりやってみることにした。</p>
-
 <p>とりあえず、<code>tracd</code> を起動するところまでは問題なくいったのだけれど、URL にアクセスしてみると早速こんなエラーが。</p>
-
 <pre><code>Traceback (most recent call last):
   File &quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&quot;, line 406, in dispatch_request
     dispatcher.dispatch(req)
@@ -43,23 +48,15 @@
   File &quot;/path/to/trac/lib/python2.5/site-packages/trac/util/datefmt.py&quot;, line 65, in format_datetime
     return unicode(text, encoding, 'replace')
 LookupError: unknown encoding: X-MAC-JAPANESE
-</code></pre>
-
-<p>じっくりやってみる、と書いた矢先にくじけそうになりましたが、諦めずに原因を追ってみますね。</p>
-
+</code></pre><p>じっくりやってみる、と書いた矢先にくじけそうになりましたが、諦めずに原因を追ってみますね。</p>
 <p>その前に、今回試したバージョンは、</p>
-
 <ul>
 <li>Python 2.5.1</li>
 <li>Trac 0.10.4</li>
 </ul>
-
 <p>です。</p>
-
 <h3 id="ソースコードを読む">ソースコードを読む</h3>
-
 <p>スタックトレースから例外の発生箇所は簡単に分かるので、ソースコードを読んでみる (<code>/trac/util/datefmt.py</code>) 。</p>
-
 <pre><code>def format_datetime(t=None, format='%x %X', gmt=False):
     if t is None:
         t = time.time()
@@ -75,23 +72,15 @@ LookupError: unknown encoding: X-MAC-JAPANESE
         encoding = locale.getlocale(locale.LC_TIME)[1] or encoding
         # the above is broken on win32, e.g. we'd get '437' instead of 'cp437'
     return unicode(text, encoding, 'replace')
-</code></pre>
-
-<p>今回のエラーはビルトイン関数の <code>unicode</code> が <code>X-MAC-JAPANESE</code> エンコーディングをサポートしていないのが原因のようだ。<code>X-MAC-JAPANESE</code> は Mac ユーザにとってはお馴染みの MacJapanese（ほぼ Shift-JIS）のことだろう。たしかにリファレンスの <a href="http://docs.python.org/lib/standard-encodings.html">4.8.3 Standard Encodings</a> を読んでもそれらしきエンコーディングがない。</p>
-
+</code></pre><p>今回のエラーはビルトイン関数の <code>unicode</code> が <code>X-MAC-JAPANESE</code> エンコーディングをサポートしていないのが原因のようだ。<code>X-MAC-JAPANESE</code> は Mac ユーザにとってはお馴染みの MacJapanese（ほぼ Shift-JIS）のことだろう。たしかにリファレンスの <a href="http://docs.python.org/lib/standard-encodings.html">4.8.3 Standard Encodings</a> を読んでもそれらしきエンコーディングがない。</p>
 <p>となると、考えられる解決方法はふたつ</p>
-
 <ol>
 <li>MacJapanese をサポートするコーデックを追加</li>
 <li>そもそも、<code>locale.getpreferredencoding()</code> でサポートしていないエンコーディングを返さない。この場合は <code>shift_jis</code> を返してしまっていい気がする</li>
 </ol>
-
 <p>まあ、1. が真っ当なんだろうけど、2. でも問題ないというか、むしろ、<code>getpreferredencoding</code> という名前のメソッドがサポートされていないエンコーディングを返すよりいいんじゃないだろうか。</p>
-
-<h3 id="localmodule-c-を変更">_localmodule.c を変更</h3>
-
+<h3 id="_localmodulec-を変更">_localmodule.c を変更</h3>
 <p>とりあえず、Python 2.5.1 の <code>Modules/_localemodule.c</code> で、<code>X-MAC-JAPANESE</code> の場合は <code>shift_jis</code> を返すように変更してみた。</p>
-
 <pre><code>--- Modules/_localemodule.c.orig        2007-07-19 02:47:21.000000000 +0900
 +++ Modules/_localemodule.c     2007-07-19 03:17:28.000000000 +0900
 @@ -426,6 +426,7 @@
@@ -102,10 +91,7 @@ LookupError: unknown encoding: X-MAC-JAPANESE
      /* XXX which one is mac-latin2? */
      }
      if (!name) {
-</code></pre>
-
-<p>ちなみに、このへんのコードでは Mac OS X のフレームワークである <a href="http://developer.apple.com/corefoundation/">Core Foundation</a> が利用されている。</p>
-
+</code></pre><p>ちなみに、このへんのコードでは Mac OS X のフレームワークである <a href="http://developer.apple.com/corefoundation/">Core Foundation</a> が利用されている。</p>
 <ul>
 <li><a href="http://devworld.apple.com/documentation/CoreFoundation/Reference/CFStringRef/Reference/reference.html">CFString Reference</a></li>
 <li><a href="http://homepage.mac.com/mkino2/core/index.html">CoreFoundation の秘密</a></li>
@@ -131,7 +117,7 @@ LookupError: unknown encoding: X-MAC-JAPANESE
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

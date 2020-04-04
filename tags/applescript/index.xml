@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>applescript on METAREAL</title>
@@ -23,7 +23,7 @@
 Evernote: Mac クライアント プログラミング関係の話題をノートにまとめていると、興味深いページへのリンクを多く埋め込むことになる。ノートの編集は Mac のクライアントで行うことが多いのだが、この作業がけっこう面倒だ：
  Safari で開いているページのタイトルをコピーして、Evernote クライアントにペースト コピーしたタイトルを選択 リンクを追加するためのシートを表示 Safari で開いているページの URL をコピーして、Evernote クライアントにペースト OK ボタンをクリック  この手順を毎回、繰り返さなければならない。慣れれば無意識に出来るような単純作業ではあるが、単純作業なら自動化した方がいい。
 AppleScript Mac で自動化といえば AppleScript の出番なのだが、残念ながら Mac 向け Evernote クライアントの AppleScript 対応は今回の要件には不十分である。そのため、今回は System Events による GUI スクリプティングにより、上記手順のキー操作やボタンクリックをエミュレートすることにした。
--- EvernoteCopyLink.applescript -- Copy title and URL in the front most window of Safari to Evernote with link -- Author: Takanori Ishikawa on copyLinkToEvernote(theTitle, theURL) tell application &amp;quot;System Events&amp;quot; -- copy &amp;amp;amp; paste set the clipboard to theTitle as text keystroke &amp;quot;v&amp;quot; using command down tell process &amp;quot;Evernote&amp;quot; -- Select pasted text -- Note 1: &#39;ASCII character 28&#39; means &#39;move left&#39;.</description>
+-- EvernoteCopyLink.applescript -- Copy title and URL in the front most window of Safari to Evernote with link -- Author: Takanori Ishikawa on copyLinkToEvernote(theTitle, theURL) tell application &amp;#34;System Events&amp;#34; -- copy &amp;amp;amp; paste set the clipboard to theTitle as text keystroke &amp;#34;v&amp;#34; using command down tell process &amp;#34;Evernote&amp;#34; -- Select pasted text -- Note 1: &amp;#39;ASCII character 28&amp;#39; means &amp;#39;move left&amp;#39;.</description>
     </item>
     
     <item>
@@ -33,9 +33,9 @@ AppleScript Mac で自動化といえば AppleScript の出番なのだが、残
       
       <guid>http://ishikawa.github.io/2007/08/23/optimize-the-apple-mail-app-database/</guid>
       <description>SQLite の vacuum コマンドで Mail.app を高速化する。ターミナルで、
-% cd ~/Library/Mail/; sqlite3 Envelope\ Index &amp;quot;vacuum;&amp;quot;  Automator で自動化する Mail Vacuum なんてのもある。
+% cd ~/Library/Mail/; sqlite3 Envelope\ Index &amp;quot;vacuum;&amp;quot; Automator で自動化する Mail Vacuum なんてのもある。
 個人的には、以下のような AppleScript を、
-tell application &amp;quot;Terminal&amp;quot; activate do script &amp;quot;cd ~/Library/Mail/; sqlite3 Envelope\\ Index \&amp;quot;vacuum;\&amp;quot;&amp;quot; end tell  Optimize Mail.app.scpt として保存し、QuickSilver から実行できるようにしている。</description>
+tell application &amp;quot;Terminal&amp;quot; activate do script &amp;quot;cd ~/Library/Mail/; sqlite3 Envelope\\ Index \&amp;quot;vacuum;\&amp;quot;&amp;quot; end tell Optimize Mail.app.scpt として保存し、QuickSilver から実行できるようにしている。</description>
     </item>
     
     <item>
@@ -46,7 +46,7 @@ tell application &amp;quot;Terminal&amp;quot; activate do script &amp;quot;cd ~/
       <guid>http://ishikawa.github.io/2007/03/28/launch-screen-saver-from-quicksilver/</guid>
       <description>わたしは不器用なので、スクリーンセイバーをホットコーナーから起動しようとするたびに失敗する（スクリーンセイバーが起動したとたんに、微妙にマウスを動かしてしまって、起動が解除されてしまう）。
 QuickSilver から起動できたら便利だなと思って、スクリーンセイバーを起動する AppleScript を書いて、~/Library/Scripts/ に置いてある。
-tell application &amp;quot;Finder&amp;quot; open application file &amp;quot;/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app&amp;quot; as POSIX file end tell  ホットキーにも登録してみたが、いちいち QuickSilver を起動してタイプする方が性にあっているようだ。</description>
+tell application &amp;quot;Finder&amp;quot; open application file &amp;quot;/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app&amp;quot; as POSIX file end tell ホットキーにも登録してみたが、いちいち QuickSilver を起動してタイプする方が性にあっているようだ。</description>
     </item>
     
     <item>
@@ -56,7 +56,7 @@ tell application &amp;quot;Finder&amp;quot; open application file &amp;quot;/Sys
       
       <guid>http://ishikawa.github.io/2007/01/05/markdownized-autolink-with-applescript-2/</guid>
       <description>「AppleScript で Markdown 記法のリンクを自動挿入」のスクリプトを更に改良して、選択範囲がない場合は Web ページのタイトルをそのまま挿入するようにした。
-tell first document of application &amp;quot;Safari&amp;quot; set pageTitle to name set pageURL to URL end tell tell first document of application &amp;quot;mi&amp;quot; set newText to selection as Unicode text if (count of newText) = 0 then set newText to pageTitle end if set selection to &amp;quot;[&amp;quot; &amp;amp; newText &amp;amp; &amp;quot;](&amp;quot; &amp;amp; pageURL &amp;amp; &amp;quot; \&amp;quot;&amp;quot; &amp;amp; pageTitle &amp;amp; &amp;quot;\&amp;quot;)&amp;quot; end tell  これでだいぶ楽になったな。</description>
+tell first document of application &amp;quot;Safari&amp;quot; set pageTitle to name set pageURL to URL end tell tell first document of application &amp;quot;mi&amp;quot; set newText to selection as Unicode text if (count of newText) = 0 then set newText to pageTitle end if set selection to &amp;quot;[&amp;quot; &amp;amp; newText &amp;amp; &amp;quot;](&amp;quot; &amp;amp; pageURL &amp;amp; &amp;quot; \&amp;quot;&amp;quot; &amp;amp; pageTitle &amp;amp; &amp;quot;\&amp;quot;)&amp;quot; end tell これでだいぶ楽になったな。</description>
     </item>
     
     <item>
@@ -66,9 +66,9 @@ tell first document of application &amp;quot;Safari&amp;quot; set pageTitle to n
       
       <guid>http://ishikawa.github.io/2007/01/04/markdownized-autolink-with-applescript/</guid>
       <description>以前の記事「AppleScript で Web ページのタイトルをクリップボードにコピー」を改良して、Markdown 記法でのリンクを自動挿入するようにしてみた（エディタは mi に対応）。
-tell first document of application &amp;quot;Safari&amp;quot; set pageTitle to name set pageURL to URL end tell first document of application &amp;quot;mi&amp;quot; set selection to &amp;quot;[&amp;quot; &amp;amp; selection &amp;amp; &amp;quot;](&amp;quot; &amp;amp; pageURL &amp;amp; &amp;quot; \&amp;quot;&amp;quot; &amp;amp; pageTitle &amp;amp; &amp;quot;\&amp;quot;)&amp;quot; end  まずは、このスクリプトを mi のツールとして登録。 あとはリンクを貼りたい文字列を選択して、このスクリプトを実行すれば、Safari で開いているページへのリンクが自動的に挿入される、という寸法。
+tell first document of application &amp;quot;Safari&amp;quot; set pageTitle to name set pageURL to URL end tell first document of application &amp;quot;mi&amp;quot; set selection to &amp;quot;[&amp;quot; &amp;amp; selection &amp;amp; &amp;quot;](&amp;quot; &amp;amp; pageURL &amp;amp; &amp;quot; \&amp;quot;&amp;quot; &amp;amp; pageTitle &amp;amp; &amp;quot;\&amp;quot;)&amp;quot; end まずは、このスクリプトを mi のツールとして登録。 あとはリンクを貼りたい文字列を選択して、このスクリプトを実行すれば、Safari で開いているページへのリンクが自動的に挿入される、という寸法。
 たとえば「mi」という文字列を選択して、mi のページを Safari で開いている場合は、
-[mi](http://www.mimikaki.net/ &amp;quot;mi&amp;quot;)  というリンクが自動挿入される。</description>
+[mi](http://www.mimikaki.net/ &amp;quot;mi&amp;quot;) というリンクが自動挿入される。</description>
     </item>
     
     <item>
@@ -78,7 +78,7 @@ tell first document of application &amp;quot;Safari&amp;quot; set pageTitle to n
       
       <guid>http://ishikawa.github.io/2007/01/02/copy-page-title-with-applescript/</guid>
       <description>Web ページのタイトルをブログに書くときに、毎回ソースを開いてコピーするのが面倒だった。なので、これを自動化する AppleScript を書いた。
-tell application &amp;quot;Safari&amp;quot; set the clipboard to the name of front document **as Unicode text** end tell  このスクリプトを実行すると、Safari で開いている Web ページのタイトルがクリップボードにコピーされる。
+tell application &amp;quot;Safari&amp;quot; set the clipboard to the name of front document **as Unicode text** end tell このスクリプトを実行すると、Safari で開いている Web ページのタイトルがクリップボードにコピーされる。
 強調部分がないとクリップボードにコピーされないし、ここが as text だと文字化けする。</description>
     </item>
     

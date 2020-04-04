@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>flash on METAREAL</title>
@@ -48,9 +48,9 @@ Mozilla で行われたデモでは、Quake や、C 言語で書かれたエミ�
       <guid>http://ishikawa.github.io/2007/11/05/safari-external-interface-infinite-loop/</guid>
       <description>以下のサイトを参考に、JavaScript から ActionScript のコードを呼び出そうとしている。
  throw Life - JavaScriptからFlash ActionScriptを呼び出す最も簡単なサンプル Firefox &amp;amp; Safari  以前、haXe で遊んでたときは組み込みの JavaScript インターフェースを使っていたので、ExternalInterface を使うのは初めて。
-document[&amp;quot;as&amp;quot;].callFlash();  サンプルどおり、こんなふうに呼び出すのは問題ない。だが、もうすこし汎用的にしようと思って、以下のようなクラスを試しにつくってみた。
-var SWFInterface = Class.create(); SWFInterface.prototype = { initialize: function(name) { this.name = name; }, call: function(iname) { var embed = document[this.name]; if (embed) { var fn = embed[iname]; alert(fn()); } } };  だが、このクラス経由で呼び出すと Safari が反応しなくなってしまった。
-new SWFInterface(&amp;quot;as&amp;quot;).call(&amp;quot;callFlash&amp;quot;); // Safari が反応しなくなる  どうやら、呼び出す関数の this は embed 要素に束縛しないといけないようだ。
+document[&amp;quot;as&amp;quot;].callFlash(); サンプルどおり、こんなふうに呼び出すのは問題ない。だが、もうすこし汎用的にしようと思って、以下のようなクラスを試しにつくってみた。
+var SWFInterface = Class.create(); SWFInterface.prototype = { initialize: function(name) { this.name = name; }, call: function(iname) { var embed = document[this.name]; if (embed) { var fn = embed[iname]; alert(fn()); } } }; だが、このクラス経由で呼び出すと Safari が反応しなくなってしまった。
+new SWFInterface(&amp;quot;as&amp;quot;).call(&amp;quot;callFlash&amp;quot;); // Safari が反応しなくなる どうやら、呼び出す関数の this は embed 要素に束縛しないといけないようだ。
 call: function(iname) { var embed = document[this.</description>
     </item>
     

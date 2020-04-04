@@ -7,65 +7,62 @@
   <title>Xcode でプロジェクトの名前を変更したくなったら</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/08/21/rename-xcode-project/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Xcode でプロジェクトの名前を変更したくなったら</h1>
   <div class="metadata">
-    <p class="date">2007/08/21 5:24am</p>
+    <p class="date">
+      2007/08/21 5:24am
+    </p>
   </div>
   <div class="content">
-    
-
-<p>Xcode でプロジェクトの名前を変えたくなった。</p>
-
+    <p>Xcode でプロジェクトの名前を変えたくなった。</p>
 <p>だが、簡単にはいかない。変更箇所が散在している。面倒くさい。以下に手順をまとめてみる。</p>
-
-<h3 id="プロジェクト-ファイル名の変更">プロジェクト・ファイル名の変更</h3>
-
+<h3 id="プロジェクトファイル名の変更">プロジェクト・ファイル名の変更</h3>
 <ul>
 <li>Finder で Xcode のプロジェクト・ディレクトリの名前を変更する</li>
 <li>.xcodeproj ファイルの名前を変更する</li>
 </ul>
-
 <h3 id="ターゲットの変更">ターゲットの変更</h3>
-
 <ul>
 <li>Xcode でターゲット名を変更する</li>
 <li><a href="http://developer.apple.com/documentation/DeveloperTools/Conceptual/XcodeUserGuide/Contents/Resources/ja.lproj/05_04_bs_build_settings/chapter_32_section_5.html#//apple_ref/doc/uid/TP40002691-SW4">ターゲットエディタの「ビルド」パネルを表示</a>し、「PRODUCT」で検索して表示される「プロダクト名」を変更</li>
 <li>「PREFIX」で検索して表示されるプレフィックスヘッダのパスにアプリケーション名が含まれているなら変更。</li>
 <li>プレフィックスヘッダの名前も、この機会に <code>prefix.pch</code> とかアプリケーション名に依存しない名前にしてしまうのもアリ</li>
 </ul>
-
 <h3 id="ソースコードの変更">ソースコードの変更</h3>
-
 <ul>
 <li>クラス名の先頭にアプリケーション名の頭文字とか使ってたら悲惨</li>
 <li>Finder でソースファイル名を変更すると、Xocde 上でのリンクがなくなってしまう</li>
 <li>.nib ファイルから参照されている場合はそちらも変更する必要が</li>
 <li>これもアプリケーション名に依存しないようにしておけばいいんだけど、それはそれで。</li>
 </ul>
-
 <h3 id="プロパティ設定の変更">プロパティ設定の変更</h3>
-
 <ul>
 <li>ターゲットエディタの「プロパティ」パネルを表示</li>
 <li>識別子にアプリケーション名が含まれているなら変更する</li>
 <li>主要クラスとかも変える必要があれば変更する</li>
 </ul>
-
 <p>これくらいかな。他にあるかもしれんけど。あとはプロジェクトをクリーンして再ビルド。</p>
-
 <p>今回の記事を書くにあたってウェブを検索してみると、どうやら、<a href="http://www.macupdate.com/info.php/id/17683">Rename Xcode Project</a> なんて、そのまんまなソフトウェアもあるらしい（試していない）。</p>
 
   </div>
@@ -88,7 +85,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

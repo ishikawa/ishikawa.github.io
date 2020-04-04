@@ -7,44 +7,45 @@
   <title>XML-RPC で &#34;Premature end of file.&#34;</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2006/12/13/xml-rpc-premature-end-of-file/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>XML-RPC で &#34;Premature end of file.&#34;</h1>
   <div class="metadata">
-    <p class="date">2006/12/13 10:48am</p>
+    <p class="date">
+      2006/12/13 10:48am
+    </p>
   </div>
   <div class="content">
     <p>Java で XML-RPC の開発をしている。</p>
-
 <p>動作確認は UNIX コマンドの curl で手軽にすませているのだが、突然、すべての <code>curl</code> コマンドで
 <code>Premature end of file.</code> というエラーが出るようになった。</p>
-
 <pre><code>[Fatal Error] :-1:-1: Premature end of file.
-</code></pre>
-
-<p>このエラーには見覚えがある。たしか、XML の絡んだ通信で接続状態が悪くなり、<strong>通信が途絶えた場合などに
+</code></pre><p>このエラーには見覚えがある。たしか、XML の絡んだ通信で接続状態が悪くなり、<strong>通信が途絶えた場合などに
 ぼろぼろ出ていたやつ</strong>だ。つまり、XML が不完全なのだろう。</p>
-
 <p>しかし、curl の POST で送っているデータをいくら調べてもおかしい部分が見つからない。
 問題になりがちな改行を取り除いても、コンソールのエンコーディングを変更しても同じ。</p>
-
 <p>しかたがないので、デバッガでブレークポイントを設定し、動作を追ってみた。</p>
-
 <p>その結果、リクエストオブジェクトの入力ストリームから読み出す時点でデータが空なことが判明。つまり、<strong>curl で POST したデータを読みだせていない</strong>わけだ。</p>
-
 <p>では、何が原因でデータを読みだせていないんだろう？　curl の <code>-v</code> オプションの出力を眺めているうちに気がついた。</p>
-
 <pre><code>POST /api/xmlrpc HTTP/1.1
 User-Agent: curl/7.13.1 (powerpc-apple-darwin8.0) libcurl/7.13.1 OpenSSL/0.9.7l zlib/1.2.3
 Host: example.com
@@ -52,19 +53,11 @@ Pragma: no-cache
 Accept: */*
 Content-Length: 123
 Content-Type: **application/x-www-form-urlencoded**
-</code></pre>
-
-<p><code>application/x-www-form-urlencoded</code> で POST しているせいだ。</p>
-
+</code></pre><p><code>application/x-www-form-urlencoded</code> で POST しているせいだ。</p>
 <p><code>Content-Type</code> が <code>application/x-www-form-urlencoded</code> だと、<a href="http://sdc.sun.co.jp/java/docs/j2ee/sdk_1.3/ja/techdocs/api/javax/servlet/http/HttpServletRequest.html"><code>HttpServletRequest</code></a> がパラメータとして解析するために先に入力を読みだしてしまうので、<code>HttpServletRequest#getInputStream()</code> から読みだすときは空なわけだ。</p>
-
 <p>次のように POST すれば、正常に動作した（<code>--data-ascii</code> の XML は省略）。</p>
-
 <pre><code>% curl -v **-H &quot;Content-Type: text/xml&quot;** --data-ascii &quot;...&quot; &quot;http://example.com/api/xmlrpc&quot;
-</code></pre>
-
-<p>どうやら、昨日まではちゃんと <code>-H</code> オプションで <code>Content-Type</code> を指定していたのだが、<strong>一日寝ると忘れてしまったようだ</strong>。</p>
-
+</code></pre><p>どうやら、昨日まではちゃんと <code>-H</code> オプションで <code>Content-Type</code> を指定していたのだが、<strong>一日寝ると忘れてしまったようだ</strong>。</p>
 <p>だから、ブログに書いている。</p>
 
   </div>
@@ -87,7 +80,7 @@ Content-Type: **application/x-www-form-urlencoded**
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

@@ -7,38 +7,41 @@
   <title>Mac OS X Tiger に RubyGems をインストール</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2006/12/27/rubygems-on-macosx-tiger/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Mac OS X Tiger に RubyGems をインストール</h1>
   <div class="metadata">
-    <p class="date">2006/12/28 12:02pm</p>
+    <p class="date">
+      2006/12/28 12:02pm
+    </p>
   </div>
   <div class="content">
     <p>Mac OS X Tiger 上に <a href="http://www.rubyonrails.org/">Ruby on Rails</a> の開発環境を構築している。</p>
-
 <p>Ruby on Rails は <a href="http://www.ruby-lang.org/ja/">Ruby</a> のパッケージ管理システムである <a href="http://rubygems.org/">RubyGems</a> でインストールできるので、まずは RubyGems をインストールしてみよう。</p>
-
 <p>RubyGems のマニュアルから <a href="http://rubygems.org/read/chapter/3">&ldquo;3. Installing RubyGems&rdquo;</a> の手順通りに進めていく。</p>
-
 <p><a href="http://rubyforge.org/frs/?group_id=126">RubyForge</a> から最新版をダウンロード。現時点での最新版は <code>0.9.0</code> だったので、<a href="http://rubyforge.org/frs/download.php/11289/rubygems-0.9.0.tgz"><code>rubygems-0.9.0.tgz</code></a> をダウンロードして展開。</p>
-
 <pre><code>% curl --location -O http://rubyforge.org/frs/download.php/11289/rubygems-0.9.0.tgz
 % tar xvzf rubygems-0.9.0.tgz
-</code></pre>
-
-<p>展開先のディレクトリに移動し、<code>setup.rb</code> を実行。</p>
-
+</code></pre><p>展開先のディレクトリに移動し、<code>setup.rb</code> を実行。</p>
 <pre><code>% cd rubygems-0.9.0
 % sudo ruby setup.rb
 ...
@@ -46,9 +49,7 @@
   Name: sources
   Version: 0.0.1
   File: sources-0.0.1.gem
-</code></pre>
-
-<p>これでインストールは完了。思ったより簡単だったな。。</p>
+</code></pre><p>これでインストールは完了。思ったより簡単だったな。。</p>
 
   </div>
 </article>
@@ -70,7 +71,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

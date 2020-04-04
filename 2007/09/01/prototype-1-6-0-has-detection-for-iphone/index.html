@@ -7,28 +7,35 @@
   <title>Prototype 1.6.0 のブラウザ判定と iPhone </title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/09/01/prototype-1-6-0-has-detection-for-iphone/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Prototype 1.6.0 のブラウザ判定と iPhone </h1>
   <div class="metadata">
-    <p class="date">2007/09/01 8:30am</p>
+    <p class="date">
+      2007/09/01 8:30am
+    </p>
   </div>
   <div class="content">
-    
-
-<p><a href="http://prototypejs.org/">prototype.js</a> には 1.5.1 から、各種ブラウザを判定するための <code>Prototype.Browser</code> が定義されている。</p>
-
+    <p><a href="http://prototypejs.org/">prototype.js</a> には 1.5.1 から、各種ブラウザを判定するための <code>Prototype.Browser</code> が定義されている。</p>
 <pre><code>var Prototype = {
   ...
   Browser: {
@@ -37,18 +44,11 @@
     WebKit: navigator.userAgent.indexOf('AppleWebKit/') &gt; -1,
     Gecko:  navigator.userAgent.indexOf('Gecko') &gt; -1 &amp;&amp; navigator.userAgent.indexOf('KHTML') == -1,
   ...
-</code></pre>
-
-<p>使い方は一目瞭然だろう。</p>
-
+</code></pre><p>使い方は一目瞭然だろう。</p>
 <p>たとえば Internet Explorer の場合は <code>Prototype.Browser.IE</code> が、Safari など <a href="http://webkit.org/">WebKit</a> を利用しているブラウザでは <code>Prototype.Browser.WebKit</code> が <code>true</code> になる。</p>
-
-<h3 id="prototype-1-6-0-rc-での-prototype-browser">Prototype 1.6.0 RC での Prototype.Browser</h3>
-
+<h3 id="prototype-160-rc-での-prototypebrowser">Prototype 1.6.0 RC での Prototype.Browser</h3>
 <p>そして、<a href="http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate">Prototype 1.6.0 RC</a> では、ここに新しい定義が追加された。</p>
-
 <p><a href="http://www.apple.com/iphone/internet/">iPhone</a> だ。</p>
-
 <pre><code>var Prototype = {
   Version: '1.6.0_rc0',
 
@@ -59,32 +59,20 @@
     Gecko:  navigator.userAgent.indexOf('Gecko') &gt; -1 &amp;&amp; navigator.userAgent.indexOf('KHTML') == -1,
     MobileSafari: !!navigator.userAgent.match(/iPhone.*Mobile.*Safari/)
   },
-</code></pre>
-
-<p><code>Prototype.Browser.MobileSafari</code> が iPhone のブラウザを判定するために利用できるようになった。</p>
-
+</code></pre><p><code>Prototype.Browser.MobileSafari</code> が iPhone のブラウザを判定するために利用できるようになった。</p>
 <p>なお、iPhone に搭載されている Safari の User-Agent は</p>
-
 <pre><code>Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3
-</code></pre>
-
-<p>となっている。</p>
-
-<h3 id="prototype-browser-の歴史"><code>Prototype.Browser</code> の歴史</h3>
-
+</code></pre><p>となっている。</p>
+<h3 id="prototypebrowser-の歴史"><code>Prototype.Browser</code> の歴史</h3>
 <p>もともと <code>Prototype.Browser</code> は、prototype.js のあちこちに散らばっていたブラウザ判定コードを一箇所にまとめるために導入された。</p>
-
 <ul>
 <li><a href="http://dev.rubyonrails.org/ticket/6800">#6800 PATCH: Unified browser detection</a></li>
 </ul>
-
 <p>その後、iPhone では <code>Prototype.BrowserFeatures.SpecificElementExtensions</code> が誤って <code>true</code> になってしまうことが発覚。対策として iPhone 判定が必要になったようだ。</p>
-
 <ul>
 <li><a href="http://dev.rubyonrails.org/changeset/7157">Changeset 7157 - Temporary workaround for Prototype.BrowserFeatures.SpecificElementExtensions</a></li>
 <li><a href="http://dev.rubyonrails.org/changeset/7241">Changeset 7241 - prototype: Add Prototype.Browser.MobileSafari</a></li>
 </ul>
-
 <p>ちなみに、<code>Prototype.BrowserFeatures.SpecificElementExtensions</code> は DOM 要素のプロトタイプチェーンに関するものだが&hellip;、ということは、iPhone に搭載されている Safari ではそのへんが変更されている？</p>
 
   </div>
@@ -107,7 +95,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

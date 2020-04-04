@@ -7,61 +7,58 @@
   <title>docker build が固まる</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/post/2015/12/hanging-up-docker-build/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>docker build が固まる</h1>
   <div class="metadata">
-    <p class="date">2015/12/23 12:49pm</p>
+    <p class="date">
+      2015/12/23 12:49pm
+    </p>
   </div>
   <div class="content">
     <p><a href="https://www.docker.com/">Docker</a> 試してるんですが</p>
-
 <blockquote>
 <p>「<code>docker build</code> 遅すぎ！　コーヒー飲んでも終わってない！」</p>
 </blockquote>
-
 <p>さすがに遅すぎると思ったら、<code>Setting up ca-certificates-java (20130815ubuntu1) …</code> と呟いたまま固まっていました。</p>
-
 <p>環境は以下の通り:</p>
-
 <ul>
 <li>Mac OS X El Capitan (10.11.2)</li>
 <li>VirtualBox 5.0.10 r104061</li>
 <li>Ubuntu 64bit (trusty)</li>
 <li>Docker 1.9.1</li>
 </ul>
-
 <p><a href="https://github.com/docker/docker/issues/18180">Docker 1.9.1 hanging at build step &ldquo;Setting up ca-certificates-java&rdquo; · Issue #18180 · docker/docker</a></p>
-
 <p>AUFS のバグでデッドロックしているらしい。</p>
-
 <pre><code>$ docker info
 …
 Storage Driver: aufs
-</code></pre>
-
-<p>Issue のコメントを読む限り、Docker のバージョンを 1.9.0 以前に戻すのが確実そう。</p>
-
+</code></pre><p>Issue のコメントを読む限り、Docker のバージョンを 1.9.0 以前に戻すのが確実そう。</p>
 <p>ただ、Docker のインストールは Vagrant の <a href="https://docs.vagrantup.com/v2/provisioning/docker.html">Docker Provisioner</a> を利用していて、こいつでバージョン指定する方法が分からなかった（<a href="https://github.com/mitchellh/vagrant/blob/1b08cfcd0945d1f7c2273d9c56d90a1e456d26aa/plugins/provisioners/docker/cap/debian/docker_install.rb">ソースコード</a>を眺めた感じ、常に最新版がインストールされているみたい）。</p>
-
 <p><strong>CPU が複数ある場合は再現率がかなり低くなる</strong>ようなので、仮想 CPU 数を <code>2</code> にすることで、とりあえずの対策とした。</p>
-
-<pre><code class="language-ruby">config.vm.provider &quot;virtualbox&quot; do |vm|
-  vm.cpus = 2
-end
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>provider <span style="color:#e6db74">&#34;virtualbox&#34;</span> <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>vm<span style="color:#f92672">|</span>
+  vm<span style="color:#f92672">.</span>cpus <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div>
   </div>
 </article>
 
@@ -82,7 +79,7 @@ end
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

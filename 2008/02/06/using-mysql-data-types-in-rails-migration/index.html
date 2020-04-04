@@ -7,28 +7,35 @@
   <title>Rails の Migration で MySQL の型を指定する</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2008/02/06/using-mysql-data-types-in-rails-migration/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Rails の Migration で MySQL の型を指定する</h1>
   <div class="metadata">
-    <p class="date">2008/02/07 8:37am</p>
+    <p class="date">
+      2008/02/07 8:37am
+    </p>
   </div>
   <div class="content">
-    
-
-<p>たとえば、こんな感じの <a href="http://api.rubyonrails.org/classes/ActiveRecord/Migration.html">Migration</a> を考えてみる。</p>
-
+    <p>たとえば、こんな感じの <a href="http://api.rubyonrails.org/classes/ActiveRecord/Migration.html">Migration</a> を考えてみる。</p>
 <pre><code>class CreatePepsi &lt; ActiveRecord::Migration
   def self.up
     create_table :pepsies do |t|
@@ -43,10 +50,7 @@
     drop_table :addresses
   end
 end
-</code></pre>
-
-<p>Rails 2.0 の <a href="http://ryandaigle.com/articles/2007/5/6/what-s-new-in-edge-rails-bringin-sexy-back">sexy migration</a> ではこんなふうにも書けるんだけど、個人的に馴染まないので今回はスルー。</p>
-
+</code></pre><p>Rails 2.0 の <a href="http://ryandaigle.com/articles/2007/5/6/what-s-new-in-edge-rails-bringin-sexy-back">sexy migration</a> ではこんなふうにも書けるんだけど、個人的に馴染まないので今回はスルー。</p>
 <pre><code>class CreatePepsi &lt; ActiveRecord::Migration
   def self.up
     create_table :pepsies do |t|
@@ -60,10 +64,7 @@ end
     drop_table :addresses
   end
 end
-</code></pre>
-
-<p><code>rake db:migrate</code> したときの <code>CREATE TABLE</code> はこうなる。</p>
-
+</code></pre><p><code>rake db:migrate</code> したときの <code>CREATE TABLE</code> はこうなる。</p>
 <pre><code>CREATE TABLE `pepsies` (
   `id` int(11) NOT NULL auto_increment,
   `coke` varchar(64) default NULL,
@@ -72,14 +73,9 @@ end
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-</code></pre>
-
-<p>string は MySQL の VARCHAR に、integer は int になる。これを CHAR とか SMALLINT とかにできないか、というのが今回の話題。</p>
-
+</code></pre><p>string は MySQL の VARCHAR に、integer は int になる。これを CHAR とか SMALLINT とかにできないか、というのが今回の話題。</p>
 <h3 id="char-とか-smallint-とかにしてみる">CHAR とか SMALLINT とかにしてみる</h3>
-
 <p>結論からいえば、これでよい。</p>
-
 <pre><code>class CreatePepsi &lt; ActiveRecord::Migration
   def self.up
     create_table :pepsies do |t|
@@ -94,12 +90,8 @@ end
     drop_table :addresses
   end
 end
-</code></pre>
-
-<p>本当に CHAR とか SMALLINT とかにしてみただけである（といっても Symbol になってるけど）。</p>
-
+</code></pre><p>本当に CHAR とか SMALLINT とかにしてみただけである（といっても Symbol になってるけど）。</p>
 <p><code>CREATE TABLE</code> はこうなる。</p>
-
 <pre><code>CREATE TABLE `pepsies` (
   `id` int(11) NOT NULL auto_increment,
   `coke` char(1) default NULL,
@@ -108,34 +100,23 @@ end
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-</code></pre>
-
-<h3 id="limit-が効かない">:limit が効かない</h3>
-
+</code></pre><h3 id="limit-が効かない">:limit が効かない</h3>
 <p>SQL を見ると分かるように <code>coke</code> が <code>char(1)</code> となってしまい、Migration で指定した <code>:limit =&gt; 64</code> が効いていないようだ。</p>
-
 <p>とりあえず素直に対応してみよう。</p>
-
 <pre><code>class CreatePepsi &lt; ActiveRecord::Migration
   def self.up
     create_table :pepsies do |t|
       t.column :coke,       :&quot;CHAR(64)&quot;
       t.column :jolt,       :SMALLINT
 ...
-</code></pre>
-
-<p><code>:CHAR</code> という指定を <code>:&quot;CHAR(64)&quot;</code> にしたわけだ（<a href="http://www.ruby-lang.org/ja/man/html/_A5EAA5C6A5E9A5EB.html#a.a5.b7.a5.f3.a5.dc.a5.eb">Ruby の Symbol リテラルでは :&ldquo;&hellip;&rdquo; や :&lsquo;&hellip;&rsquo; の形式で、任意のシンボルを定義することができる</a>）。</p>
-
+</code></pre><p><code>:CHAR</code> という指定を <code>:&quot;CHAR(64)&quot;</code> にしたわけだ（<a href="http://www.ruby-lang.org/ja/man/html/_A5EAA5C6A5E9A5EB.html#a.a5.b7.a5.f3.a5.dc.a5.eb">Ruby の Symbol リテラルでは :&quot;&hellip;&rdquo; や :'&hellip;&rsquo; の形式で、任意のシンボルを定義することができる</a>）。</p>
 <p>再度、<code>CREATE TABLE</code> を確認。</p>
-
 <pre><code>CREATE TABLE `pepsies` (
   `id` int(11) NOT NULL auto_increment,
   `coke` char(64) default NULL,
   `jolt` smallint(6) default NULL,
 ...
-</code></pre>
-
-<p>うまくいったらしい。</p>
+</code></pre><p>うまくいったらしい。</p>
 
   </div>
 </article>
@@ -157,7 +138,7 @@ end
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

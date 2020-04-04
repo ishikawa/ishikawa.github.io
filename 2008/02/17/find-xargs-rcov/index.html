@@ -7,37 +7,40 @@
   <title>find | xargs rcov</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2008/02/17/find-xargs-rcov/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>find | xargs rcov</h1>
   <div class="metadata">
-    <p class="date">2008/02/17 9:55am</p>
+    <p class="date">
+      2008/02/17 9:55am
+    </p>
   </div>
   <div class="content">
     <p>Rails アプリのコードカヴァレッジに <a href="http://eigenclass.org/hiki.rb?rcov">rcov</a> を使ってみた。面倒な設定も必要なく、そこそこの速度でカヴァレッジを測定できるので便利だ。異常系のテスト洩れ確認に重宝している。</p>
-
 <p>Rails アプリなので、test ディレクトリ以下のテストコードを実行したいわけだが、</p>
-
 <pre><code>rcov test/*/*_test.rb
-</code></pre>
-
-<p>このように、シェルのワイルドカード指定では再帰的に深いディレクトリを扱うことができない（zsh なら <code>**</code> でいいね）。こういう場合は find, xargs を組み合わせればいい。</p>
-
+</code></pre><p>このように、シェルのワイルドカード指定では再帰的に深いディレクトリを扱うことができない（zsh なら <code>**</code> でいいね）。こういう場合は find, xargs を組み合わせればいい。</p>
 <pre><code>find test -name '*_test.rb' -print | xargs rcov --aggregate log/coverage/aggregate.info
-</code></pre>
-
-<p>rcov は <code>--aggregate</code> オプションで指定されたファイルに実行結果を保存し、次回実行時に利用することができる。ファイル数が多いと xargs はコマンドを複数回実行するので、結果が上書きされないように <code>--aggregate</code> オプションを指定するようにしよう。</p>
+</code></pre><p>rcov は <code>--aggregate</code> オプションで指定されたファイルに実行結果を保存し、次回実行時に利用することができる。ファイル数が多いと xargs はコマンドを複数回実行するので、結果が上書きされないように <code>--aggregate</code> オプションを指定するようにしよう。</p>
 
   </div>
 </article>
@@ -59,7 +62,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

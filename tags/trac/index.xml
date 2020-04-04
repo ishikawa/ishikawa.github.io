@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>trac on METAREAL</title>
@@ -40,8 +40,9 @@ Mac OS X に標準でパッケージングされている Python Apple Developer
       <description>（追記）この記事に載せているパッチよりも Apple によるロケール周りの変更点を Python 2.5.1 にも適用するのパッチを使った方がよさそうです。Mac OS X 標準の Python との互換性があります。
 TracInstall に従って、Mac OS X で Trac を動かそうとしている。以前試したときは頓挫したのだが、今回は Python を含むすべてのライブラリを一からインストールして、じっくりやってみることにした。
 とりあえず、tracd を起動するところまでは問題なくいったのだけれど、URL にアクセスしてみると早速こんなエラーが。
-Traceback (most recent call last): File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 406, in dispatch_request dispatcher.dispatch(req) File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 207, in dispatch populate_hdf(req.hdf, self.env, req) File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 77, in populate_hdf &#39;time&#39;: format_datetime(), File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/util/datefmt.py&amp;quot;, line 65, in format_datetime return unicode(text, encoding, &#39;replace&#39;) LookupError: unknown encoding: X-MAC-JAPANESE  じっくりやってみる、と書いた矢先にくじけそうになりましたが、諦めずに原因を追ってみますね。
-その前に、今回試したバージョンは、</description>
+Traceback (most recent call last): File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 406, in dispatch_request dispatcher.dispatch(req) File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 207, in dispatch populate_hdf(req.hdf, self.env, req) File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 77, in populate_hdf &#39;time&#39;: format_datetime(), File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/util/datefmt.py&amp;quot;, line 65, in format_datetime return unicode(text, encoding, &#39;replace&#39;) LookupError: unknown encoding: X-MAC-JAPANESE じっくりやってみる、と書いた矢先にくじけそうになりましたが、諦めずに原因を追ってみますね。
+その前に、今回試したバージョンは、
+ Python 2.</description>
     </item>
     
   </channel>

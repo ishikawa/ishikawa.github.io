@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>bookmark on METAREAL</title>
@@ -21,7 +21,7 @@
       <description>Google Bookmark を使いはじめた。シンプルながら快適な使い心地で気に入っている。
  とにかく、ブックマーク編集画面が開くまでが速い ブックマーク先のページも含めて全文検索が可能  ソーシャル要素は考えず、純粋に「ブックマーク」という行為を突き詰めていくと、上記二点が非常に重要であることが分かると思う。
 ちなみに、ブックマークレットにはGoogleブックマークに追加するブックマークレット（メモ欄対応版）で配布されているものを別窓で開くようにして使わせてもらっている。感謝。
-javascript:var%20u=encodeURIComponent(location.href);var%20ti=encodeURIComponent(document.title);var%20te=encodeURIComponent((window.getSelection&amp;amp;&amp;amp;window.getSelection())||(document.getSelection&amp;amp;&amp;amp;document.getSelection())||(document.selection&amp;amp;&amp;amp;document.selection.createRange&amp;amp;&amp;amp;document.selection.createRange().text));window.open((te!=&#39;&#39;)?&#39;http://www.google.com/bookmarks/mark?op=add&amp;amp;bkmk=&#39;+u+&#39;&amp;amp;title=&#39;+ti+&#39;&amp;amp;annotation=&#39;+te:&#39;http://www.google.com/bookmarks/mark?op=add&amp;amp;bkmk=&#39;+u+&#39;&amp;amp;title=&#39;+ti);  </description>
+javascript:var%20u=encodeURIComponent(location.href);var%20ti=encodeURIComponent(document.title);var%20te=encodeURIComponent((window.getSelection&amp;amp;&amp;amp;window.getSelection())||(document.getSelection&amp;amp;&amp;amp;document.getSelection())||(document.selection&amp;amp;&amp;amp;document.selection.createRange&amp;amp;&amp;amp;document.selection.createRange().text));window.open((te!=&#39;&#39;)?&#39;http://www.google.com/bookmarks/mark?op=add&amp;amp;bkmk=&#39;+u+&#39;&amp;amp;title=&#39;+ti+&#39;&amp;amp;annotation=&#39;+te:&#39;http://www.google.com/bookmarks/mark?op=add&amp;amp;bkmk=&#39;+u+&#39;&amp;amp;title=&#39;+ti); </description>
     </item>
     
   </channel>

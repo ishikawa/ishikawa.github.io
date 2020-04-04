@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>rubyonrails on METAREAL</title>
@@ -20,7 +20,7 @@
       <guid>http://ishikawa.github.io/2008/04/18/ruby-openid-util-logger/</guid>
       <description>ruby-openid は Ruby の OpenID ライブラリだが、そのままだとログの出力先が標準エラー出力に向けられている。これでは何かと困ることもあるだろう（たとえば、ユニットテストの結果に ruby-openid のデバッグ出力が混じって鬱陶しい、とか）。
 幸い OpenID::Util モジュールに、内部で使われているロガーを変更するためのメソッドが用意されている。以下のようにすれば、Rails 標準のロガーに置き換えることが可能だ。
-# ruby-openid の Logger を Rails 標準のもので置き換える OpenID::Util.logger = RAILS_DEFAULT_LOGGER  RAILS_DEFAULT_LOGGER 定数など、Rails のロガー周りについては Wiki のまとめが参考になる。</description>
+# ruby-openid の Logger を Rails 標準のもので置き換える OpenID::Util.logger = RAILS_DEFAULT_LOGGER RAILS_DEFAULT_LOGGER 定数など、Rails のロガー周りについては Wiki のまとめが参考になる。</description>
     </item>
     
     <item>
@@ -31,8 +31,8 @@
       <guid>http://ishikawa.github.io/2008/02/17/find-xargs-rcov/</guid>
       <description>Rails アプリのコードカヴァレッジに rcov を使ってみた。面倒な設定も必要なく、そこそこの速度でカヴァレッジを測定できるので便利だ。異常系のテスト洩れ確認に重宝している。
 Rails アプリなので、test ディレクトリ以下のテストコードを実行したいわけだが、
-rcov test/*/*_test.rb  このように、シェルのワイルドカード指定では再帰的に深いディレクトリを扱うことができない（zsh なら ** でいいね）。こういう場合は find, xargs を組み合わせればいい。
-find test -name &#39;*_test.rb&#39; -print | xargs rcov --aggregate log/coverage/aggregate.info  rcov は --aggregate オプションで指定されたファイルに実行結果を保存し、次回実行時に利用することができる。ファイル数が多いと xargs はコマンドを複数回実行するので、結果が上書きされないように --aggregate オプションを指定するようにしよう。</description>
+rcov test/*/*_test.rb このように、シェルのワイルドカード指定では再帰的に深いディレクトリを扱うことができない（zsh なら ** でいいね）。こういう場合は find, xargs を組み合わせればいい。
+find test -name &#39;*_test.rb&#39; -print | xargs rcov --aggregate log/coverage/aggregate.info rcov は --aggregate オプションで指定されたファイルに実行結果を保存し、次回実行時に利用することができる。ファイル数が多いと xargs はコマンドを複数回実行するので、結果が上書きされないように --aggregate オプションを指定するようにしよう。</description>
     </item>
     
     <item>
@@ -42,10 +42,10 @@ find test -name &#39;*_test.rb&#39; -print | xargs rcov --aggregate log/coverage
       
       <guid>http://ishikawa.github.io/2008/02/15/rails-mime-type-register/</guid>
       <description>Mime::Type.register は、登録された Mime::Type ではなく拡張子の配列を返す、という謎の挙動になっている。
-Mime::Type.register &amp;quot;image/jpeg&amp;quot;, :jpeg, [], [&amp;quot;jpg&amp;quot;, &amp;quot;pjpeg&amp;quot;] # =&amp;gt; [&amp;quot;jpeg&amp;quot;, &amp;quot;jpg&amp;quot;, &amp;quot;pjpeg&amp;quot;]  そのため、登録された Mime::Type を参照するには、改めて Mime::Type.lookup する。
-Mime::Type.lookup(&amp;quot;image/jpeg&amp;quot;) # =&amp;gt; #&amp;lt;Mime::Type:0x30601dc @string=&amp;quot;image/jpeg&amp;quot;, @synonyms=[], @symbol=:jpeg&amp;gt;  しかし、この方法は &amp;quot;image/jpeg&amp;quot; を二ヶ所にハードコードしてしまう。
+Mime::Type.register &amp;quot;image/jpeg&amp;quot;, :jpeg, [], [&amp;quot;jpg&amp;quot;, &amp;quot;pjpeg&amp;quot;] # =&amp;gt; [&amp;quot;jpeg&amp;quot;, &amp;quot;jpg&amp;quot;, &amp;quot;pjpeg&amp;quot;] そのため、登録された Mime::Type を参照するには、改めて Mime::Type.lookup する。
+Mime::Type.lookup(&amp;quot;image/jpeg&amp;quot;) # =&amp;gt; #&amp;lt;Mime::Type:0x30601dc @string=&amp;quot;image/jpeg&amp;quot;, @synonyms=[], @symbol=:jpeg&amp;gt; しかし、この方法は &amp;quot;image/jpeg&amp;quot; を二ヶ所にハードコードしてしまう。
 代わりに、Mime::Type#register で Mime モジュールに定義される定数を使うことができる。
-Mime::JPEG # =&amp;gt; #&amp;lt;Mime::Type:0x30601dc @string=&amp;quot;image/jpeg&amp;quot;, @synonyms=[], @symbol=:jpeg&amp;gt;  Mime::Type#register の第二引数に指定したシンボルを大文字にした定数が定義されているようだ。</description>
+Mime::JPEG # =&amp;gt; #&amp;lt;Mime::Type:0x30601dc @string=&amp;quot;image/jpeg&amp;quot;, @synonyms=[], @symbol=:jpeg&amp;gt; Mime::Type#register の第二引数に指定したシンボルを大文字にした定数が定義されているようだ。</description>
     </item>
     
     <item>
@@ -55,7 +55,7 @@ Mime::JPEG # =&amp;gt; #&amp;lt;Mime::Type:0x30601dc @string=&amp;quot;image/jpe
       
       <guid>http://ishikawa.github.io/2008/02/13/activerecord-base-with-failsave-take2/</guid>
       <description>実際に ActiveRecord::Base.with_failsave でテストを書いているうちに、いくつか使い勝手の悪い部分が見つかった。というわけで、すこし改良。
-class ActiveRecord::Base def create_or_update_with_fail; false end alias_method :create_or_update_without_fail, :create_or_update # ブロックが与えられた場合はブロックを実行し、そのあいだは save! や save が必ず失敗する # # ActiveRecord::Base.with_failsave do # ... # end # # また、サブクラスのみに適用することもできる。 # # SomethingModel.with_failsave do # ... # end def self.with_failsave # ActiveRecord::Base のサブクラスで呼び出された場合は alias_method によって、 # サブクラス側にも create_or_update が定義されてしまうためか、再度の alias_method による # 定義の差し替えだけでは元の挙動に戻らない。そのため、ensure 節で remove_method している。 subclass = !private_instance_methods(false).include?(&amp;quot;create_or_update&amp;quot;) alias_method :create_or_update, :create_or_update_with_fail yield ensure alias_method :create_or_update, :create_or_update_without_fail remove_method :create_or_update if subclass end end  変更点はふたつ。</description>
+class ActiveRecord::Base def create_or_update_with_fail; false end alias_method :create_or_update_without_fail, :create_or_update # ブロックが与えられた場合はブロックを実行し、そのあいだは save! や save が必ず失敗する # # ActiveRecord::Base.with_failsave do # ... # end # # また、サブクラスのみに適用することもできる。 # # SomethingModel.with_failsave do # ... # end def self.with_failsave # ActiveRecord::Base のサブクラスで呼び出された場合は alias_method によって、 # サブクラス側にも create_or_update が定義されてしまうためか、再度の alias_method による # 定義の差し替えだけでは元の挙動に戻らない。そのため、ensure 節で remove_method している。 subclass = !private_instance_methods(false).include?(&amp;quot;create_or_update&amp;quot;) alias_method :create_or_update, :create_or_update_with_fail yield ensure alias_method :create_or_update, :create_or_update_without_fail remove_method :create_or_update if subclass end end 変更点はふたつ。</description>
     </item>
     
     <item>
@@ -65,8 +65,8 @@ class ActiveRecord::Base def create_or_update_with_fail; false end alias_method 
       
       <guid>http://ishikawa.github.io/2008/02/12/activerecord-base-with_failsave/</guid>
       <description>failmalloc の精神で、必ず失敗する ActiveRecord::Base#save を書いてみた。
-class ActiveRecord::Base def create_or_update_with_fail; false end alias_method :create_or_update_without_fail, :create_or_update # ブロックが与えられた場合はブロックを実行し、そのあいだは save! や save が必ず失敗する # # ActiveRecord::Base.with_failsave do # ... # end # def self.with_failsave alias_method :create_or_update, :create_or_update_with_fail yield alias_method :create_or_update, :create_or_update_without_fail end end  テストコードで以下のように使うのが目的
-assert_nothing_raised{ model.save! } ActiveRecord::Base.with_failsave do assert_raise(ActiveRecord::RecordNotSaved){ model.save! } end  これで例外処理コードのカバレッジも稼げるよ！</description>
+class ActiveRecord::Base def create_or_update_with_fail; false end alias_method :create_or_update_without_fail, :create_or_update # ブロックが与えられた場合はブロックを実行し、そのあいだは save! や save が必ず失敗する # # ActiveRecord::Base.with_failsave do # ... # end # def self.with_failsave alias_method :create_or_update, :create_or_update_with_fail yield alias_method :create_or_update, :create_or_update_without_fail end end テストコードで以下のように使うのが目的
+assert_nothing_raised{ model.save! } ActiveRecord::Base.with_failsave do assert_raise(ActiveRecord::RecordNotSaved){ model.save! } end これで例外処理コードのカバレッジも稼げるよ！</description>
     </item>
     
     <item>
@@ -76,8 +76,8 @@ assert_nothing_raised{ model.save! } ActiveRecord::Base.with_failsave do assert_
       
       <guid>http://ishikawa.github.io/2008/02/06/using-mysql-data-types-in-rails-migration/</guid>
       <description>たとえば、こんな感じの Migration を考えてみる。
-class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pepsies do |t| t.column :coke, :string, :limit =&amp;gt; 64 t.column :jolt, :integer t.column :created_at, :datetime t.column :updated_at, :datetime end end def self.down drop_table :addresses end end  Rails 2.0 の sexy migration ではこんなふうにも書けるんだけど、個人的に馴染まないので今回はスルー。
-class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pepsies do |t| t.string :coke, :limit =&amp;gt; 64 t.integer :jolt t.timestamps end end def self.down drop_table :addresses end end  rake db:migrate したときの CREATE TABLE はこうなる。</description>
+class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pepsies do |t| t.column :coke, :string, :limit =&amp;gt; 64 t.column :jolt, :integer t.column :created_at, :datetime t.column :updated_at, :datetime end end def self.down drop_table :addresses end end Rails 2.0 の sexy migration ではこんなふうにも書けるんだけど、個人的に馴染まないので今回はスルー。
+class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pepsies do |t| t.string :coke, :limit =&amp;gt; 64 t.integer :jolt t.timestamps end end def self.down drop_table :addresses end end rake db:migrate したときの CREATE TABLE はこうなる。</description>
     </item>
     
     <item>
@@ -86,7 +86,7 @@ class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pep
       <pubDate>Fri, 01 Feb 2008 03:08:00 +0900</pubDate>
       
       <guid>http://ishikawa.github.io/2008/01/31/rails-2-0-migration-related-rake-tasks/</guid>
-      <description> db:migrate:reset   DROP DATABASE して db:migrate 毎回、VERSION=0 とか指定していたので、こういうのが欲しかった 問答無用で DEFAULT CHARACTER SET &#39;utf8&#39; な気もするが&amp;hellip;   db:migrate:redo [STEP=n]   STEP で指定した数だけ遡って db:migrate をやりなおす STEP のデフォルトは 1   </description>
+      <description>db:migrate:reset   DROP DATABASE して db:migrate 毎回、VERSION=0 とか指定していたので、こういうのが欲しかった 問答無用で DEFAULT CHARACTER SET &#39;utf8&#39; な気もするが&amp;hellip;   db:migrate:redo [STEP=n]   STEP で指定した数だけ遡って db:migrate をやりなおす STEP のデフォルトは 1   </description>
     </item>
     
     <item>
@@ -95,13 +95,13 @@ class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pep
       <pubDate>Tue, 24 Jul 2007 09:29:00 +0900</pubDate>
       
       <guid>http://ishikawa.github.io/2007/07/24/notes-on-rubyonrails-with-mysql/</guid>
-      <description>Rails のブログでも取り上げられていた、&amp;rdquo;Rubyisms - MySQL-dump&amp;rdquo; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。
+      <description>Rails のブログでも取り上げられていた、&amp;quot;Rubyisms - MySQL-dump&amp;rdquo; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。
 Rubyisms - MySQL-dump http://mysqldump.azundris.com/archives/72-Rubyisms.html
 &amp;ldquo;select *&amp;rdquo; が多すぎる ActiveRecord は、特に何も指定しないと select * で、すべてのカラムを取ってくる。SQL は動的に生成されて、どのカラムが存在するかチェックしているので、スキームが変更されても大丈夫。
-でも、必要のないデータまで取ってきてしまう、という問題はあるよね。そして、何が無駄かっていうと、必要のないデータのために一時的なテーブルが使われるかもしれない、ってことなんだ（SQL を EXPLAIN してみて、&amp;rdquo;using temporary&amp;rdquo; となっていれば、そういう事態が発生しているサインだ）。
+でも、必要のないデータまで取ってきてしまう、という問題はあるよね。そして、何が無駄かっていうと、必要のないデータのために一時的なテーブルが使われるかもしれない、ってことなんだ（SQL を EXPLAIN してみて、&amp;ldquo;using temporary&amp;rdquo; となっていれば、そういう事態が発生しているサインだ）。
  TEXT や BLOB をもつテーブルではもっと悪くて、一時テーブルはディスク上に作られる これには tmp_table_size や max_heap_table_size の設定は関係ない  そういう場合は、SQL を二段階に分けるといい
  まず、最初の SQL でレコードの ID だけを SELECT する（int だけなので、このときの一時テーブルはメモリ上に作られる） 次に、その ID で必要な TEXT や BLOB を SELECT するんだ（これは ID による単純な検索なので一時テーブルは使われない） ActiveRecord では find([id1, id2, ...])  では、ActiveRecord で select * を避けるにはどうするか？
- find(.</description>
+ find(...) の最後の引数に指定するハッシュに :select =&amp;gt; [ fieldlist ] として指定する ActiveRecord::Base をサブクラス化して、:select が指定されていなければ、警告を出すようにするのがいいんじゃない？  文字列型がかなり無駄かも たとえ TEXT 型（Migration だと :text 型）を使っていなくても、Migration で :string 型を使っているなら、気をつけた方がいい。</description>
     </item>
     
     <item>
@@ -125,11 +125,11 @@ Rubyisms - MySQL-dump http://mysqldump.azundris.com/archives/72-Rubyisms.html
       <description>Ruby on Rails のテンプレートでしょっちゅうお世話になる h メソッド。
 &amp;lt; や &amp;amp; といった、HTML にはそのまま書けない文字を実体参照に置き換えてくれるメソッドだが、これをコントローラーから使いたいときがある。たとえば、Ajax のレスポンスで ad-hoc に HTML 片を返してしまいたいときとか、けっこうあるんじゃないか。
 しかし、そのままではコントローラーから使うことはできない。
-def update render :text =&amp;gt; h(params[:value]) end  というか、そもそも API リファレンスにないんですけど&amp;hellip;。
+def update render :text =&amp;gt; h(params[:value]) end というか、そもそも API リファレンスにないんですけど&amp;hellip;。
 ソースコードを調べてみて、やっと分かった。
 どうやら、h メソッドは erb の ERB::Util モジュールで定義されているらしい。
 actionpack-1.13.3 - lib/action_view/helpers/tag_helper.rb
-module ActionView module Helpers #:nodoc: # Use these methods to generate HTML tags programmatically when you can&#39;t use # a Builder. By default, they output XHTML compliant tags. module TagHelper include ERB::Util .</description>
+module ActionView module Helpers #:nodoc: # Use these methods to generate HTML tags programmatically when you can&#39;t use # a Builder. By default, they output XHTML compliant tags. module TagHelper include ERB::Util ... 以下は ruby 1.</description>
     </item>
     
     <item>
@@ -140,7 +140,7 @@ module ActionView module Helpers #:nodoc: # Use these methods to generate HTML t
       <guid>http://ishikawa.github.io/2006/12/27/rubyonrails-on-macosx-tiger/</guid>
       <description>さて、次は Ruby on Rails のインストールだ。
 RubyGems がインストール済みなら、これはもう簡単。
-% sudo gem install rails --include-dependencies Bulk updating Gem source index for: http://gems.rubyforge.org Successfully installed rails-1.1.6 Successfully installed rake-0.7.1 ...  こんだけ。</description>
+% sudo gem install rails --include-dependencies Bulk updating Gem source index for: http://gems.rubyforge.org Successfully installed rails-1.1.6 Successfully installed rake-0.7.1 ... こんだけ。</description>
     </item>
     
     <item>
@@ -153,8 +153,8 @@ RubyGems がインストール済みなら、これはもう簡単。
 Ruby on Rails は Ruby のパッケージ管理システムである RubyGems でインストールできるので、まずは RubyGems をインストールしてみよう。
 RubyGems のマニュアルから &amp;ldquo;3. Installing RubyGems&amp;rdquo; の手順通りに進めていく。
 RubyForge から最新版をダウンロード。現時点での最新版は 0.9.0 だったので、rubygems-0.9.0.tgz をダウンロードして展開。
-% curl --location -O http://rubyforge.org/frs/download.php/11289/rubygems-0.9.0.tgz % tar xvzf rubygems-0.9.0.tgz  展開先のディレクトリに移動し、setup.rb を実行。
-% cd rubygems-0.9.0 % sudo ruby setup.rb ... Successfully built RubyGem Name: sources Version: 0.0.1 File: sources-0.0.1.gem  これでインストールは完了。思ったより簡単だったな。。</description>
+% curl --location -O http://rubyforge.org/frs/download.php/11289/rubygems-0.9.0.tgz % tar xvzf rubygems-0.9.0.tgz 展開先のディレクトリに移動し、setup.rb を実行。
+% cd rubygems-0.9.0 % sudo ruby setup.rb ... Successfully built RubyGem Name: sources Version: 0.0.1 File: sources-0.0.1.gem これでインストールは完了。思ったより簡単だったな。。</description>
     </item>
     
     <item>

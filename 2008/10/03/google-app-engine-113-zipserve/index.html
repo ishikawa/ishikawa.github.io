@@ -7,59 +7,50 @@
   <title>Google App Engine 1.1.3 の zipserve で静的ファイルをまとめてアップロード</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2008/10/03/google-app-engine-113-zipserve/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Google App Engine 1.1.3 の zipserve で静的ファイルをまとめてアップロード</h1>
   <div class="metadata">
-    <p class="date">2008/10/03 5:48am</p>
+    <p class="date">
+      2008/10/03 5:48am
+    </p>
   </div>
   <div class="content">
-    
-
-<p><a href="http://googleappengine.blogspot.com/2008/09/sdk-113-now-available-for-download.html">Google App Engine SDK 1.1.3</a> で追加された <code>zipserve</code> を使うと、静的ファイルを zip にまとめてアップロードできるらしい。ただ、<a href="http://code.google.com/appengine/docs/">Developer&rsquo;s Guide</a> 内を検索してもドキュメントが見つからない。しかたがないので、<a href="http://code.google.com/p/googleappengine/source/browse/trunk/python/google/appengine/ext/zipserve/__init__.py">ソースコード</a>のコメントを頼りに <code>zipserve</code> を試してみる。</p>
-
+    <p><a href="http://googleappengine.blogspot.com/2008/09/sdk-113-now-available-for-download.html">Google App Engine SDK 1.1.3</a> で追加された <code>zipserve</code> を使うと、静的ファイルを zip にまとめてアップロードできるらしい。ただ、<a href="http://code.google.com/appengine/docs/">Developer&rsquo;s Guide</a> 内を検索してもドキュメントが見つからない。しかたがないので、<a href="http://code.google.com/p/googleappengine/source/browse/trunk/python/google/appengine/ext/zipserve/__init__.py">ソースコード</a>のコメントを頼りに <code>zipserve</code> を試してみる。</p>
 <h3 id="zipserve-するもの">zipserve するもの</h3>
-
 <p>今回は、このブログのレイアウトに使っている CSS フレームワークの <a href="http://www.yaml.de/">YAML</a> を zipserve したいと思う。ファイル数もそれなりにあり、しかも、まず変更することはないので、zipserve するにはうってつけなのだ。</p>
-
-<h3 id="app-yaml">app.yaml</h3>
-
+<h3 id="appyaml">app.yaml</h3>
 <p>YAML の CSS ファイルは <code>/stylesheets/yaml/</code> 以下に置いてあるので、まずは <code>app.yaml</code> で以下のように設定する。</p>
-
-<pre><code class="language-yaml">- url: /stylesheets/yaml/.*
-  script: $PYTHON_LIB/google/appengine/ext/zipserve
-</code></pre>
-
-<p><code>$PYTHON_LIB/google/appengine/ext/zipserve</code> というのが、さきほど<a href="http://code.google.com/p/googleappengine/source/browse/trunk/python/google/appengine/ext/zipserve/__init__.py">ソースコード</a>をみた <code>zipserve</code> モジュールなのが分かるだろう。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#66d9ef">url</span>: /stylesheets/yaml/.*
+  <span style="color:#66d9ef">script</span>: $PYTHON_LIB/google/appengine/ext/zipserve
+</code></pre></div><p><code>$PYTHON_LIB/google/appengine/ext/zipserve</code> というのが、さきほど<a href="http://code.google.com/p/googleappengine/source/browse/trunk/python/google/appengine/ext/zipserve/__init__.py">ソースコード</a>をみた <code>zipserve</code> モジュールなのが分かるだろう。</p>
 <h3 id="zip-ファイルの作成と設置">zip ファイルの作成と設置</h3>
-
 <p>アプリケーション側の設定もすんだし、zip ファイルをつくるわけだが、そのまえに実際に配置されるファイルと zip ファイルの対応関係を確認しておこう。</p>
-
 <p><strong>URL で指定されたパスの最初のディレクトリが zip ファイル名、それ以降が zip 内のファイルパスになる。</strong></p>
-
 <p>つまり、今回の例でいうと、<code>/stylesheets/yaml/core/base.css</code> というリクエストに対して、<code>stylesheets.zip</code> から <code>yaml/core/base.css</code> が返されるわけだ。また、zip ファイルはアプリケーションのルートディレクトリに置くようだ。</p>
-
 <p>それでは早速、<code>zip</code> コマンドで zip ファイルをつくってみよう。</p>
-
 <pre><code>% zip -r -9 stylesheets.zip yaml
-</code></pre>
-
-<p><code>yaml</code> ディレクトリを含む <code>stylesheets.zip</code> を作成した。あとはこの zip ファイルをアプリケーションのルートディレクトリに置けばよい。</p>
-
+</code></pre><p><code>yaml</code> ディレクトリを含む <code>stylesheets.zip</code> を作成した。あとはこの zip ファイルをアプリケーションのルートディレクトリに置けばよい。</p>
 <h3 id="zipserve-zipimport">zipserve, zipimport</h3>
-
 <p>仕様に場当たり的な印象は受けるものの、現実にデプロイできるファイル数に限度がある以上、<code>zipserve</code> が有用なことは間違いないだろう。また、同様に SDK 1.1.3 からサポートされた <a href="http://www.python.org/doc/2.5.2/lib/module-zipimport.html">zipimport</a> も併用すると、デプロイ時のファイル数をかなり削減することが可能だ。</p>
 
   </div>
@@ -82,7 +73,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

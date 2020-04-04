@@ -7,79 +7,67 @@
   <title>XViewMiddleware の謎</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2008/05/24/django-xview-middleware-tour/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>XViewMiddleware の謎</h1>
   <div class="metadata">
-    <p class="date">2008/05/24 9:12am</p>
+    <p class="date">
+      2008/05/24 9:12am
+    </p>
   </div>
   <div class="content">
-    
-
-<p>疑問に思ったことはないだろうか。</p>
-
+    <p>疑問に思ったことはないだろうか。</p>
 <p><a href="http://www.djangoproject.com/">Django</a> の <a href="http://www.djangoproject.com/documentation/middleware/">Middleware</a>（<a href="http://michilu.com/django/doc-ja/middleware/">和訳</a>）である。まずは、<code>settings.py</code> を見てほしい。</p>
-
 <pre><code>MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
 )
-</code></pre>
-
-<p>デフォルトではこのような設定になっている。上から三つは問題ないだろう。名前からだいたいの機能は想像できるはずだし、おそらくあなたは間違っていない。</p>
-
+</code></pre><p>デフォルトではこのような設定になっている。上から三つは問題ないだろう。名前からだいたいの機能は想像できるはずだし、おそらくあなたは間違っていない。</p>
 <pre><code>MIDDLEWARE_CLASSES = (
     ...
     'django.middleware.doc.XViewMiddleware',
 )
-</code></pre>
-
-<p>問題はこれだ。<code>XViewMiddleware</code> ——名前だけでは、どんな働きをするのか見当もつかない。</p>
-
+</code></pre><p>問題はこれだ。<code>XViewMiddleware</code> ——名前だけでは、どんな働きをするのか見当もつかない。</p>
 <h3 id="xviewmiddleware-を試す">XViewMiddleware を試す</h3>
-
 <p>まずはドキュメントを読んでみようか。<a href="http://www.djangoproject.com/documentation/middleware/#django-middleware-doc-xviewmiddleware">XViewMiddleware のドキュメント</a>（<a href="http://michilu.com/django/doc-ja/middleware/#django-middleware-doc-xviewmiddleware">和訳</a>）によると、</p>
-
 <blockquote>
-<p>Sends custom X-View HTTP headers to HEAD requests that come from IP addresses defined in the INTERNAL_IPS setting. This is used by Django’s automatic documentation system.</p>
 </blockquote>
-
+<p>Sends custom X-View HTTP headers to HEAD requests that come from IP addresses defined in the INTERNAL_IPS setting. This is used by Django’s automatic documentation system.</p>
 <p>INTERNAL_IPS 設定に定義されている IP アドレスから来た HEAD リクエストに 対してカスタムの X-View HTTP ヘッダを送信します。このミドルウェアは Django の自動ドキュメントシステムで使われています。</p>
-
 <p>まとめると、<code>XViewMiddleware</code> は、</p>
-
 <ul>
 <li><code>settings.INTERNAL_IPS</code> に許可する IP アドレスを設定する</li>
 <li>その IP からの HEAD リクエストに対して、</li>
 <li>Django 独自の <code>X-View</code> レスポンスヘッダを返す</li>
 </ul>
-
 <p>という働きをするようだ。</p>
-
 <p>では、実際に試してみよう。<code>settings.py</code> を開き、<code>INTERNAL_IPS</code> にループバック・アドレスを追加する。</p>
-
 <pre><code>INTERNAL_IPS = (
     '127.0.0.1',
 )
-</code></pre>
-
-<p>HEAD リクエストは <code>curl</code> コマンドなどで送信することができる。<a href="/2008/05/20/porting-weblog-to-google-app-engine/">このブログも Django で書かれている</a>ので試してみた（ローカルの開発環境で、だが）。</p>
-
+</code></pre><p>HEAD リクエストは <code>curl</code> コマンドなどで送信することができる。<a href="/2008/05/20/porting-weblog-to-google-app-engine/">このブログも Django で書かれている</a>ので試してみた（ローカルの開発環境で、だが）。</p>
 <p>結果は以下のようになる。</p>
-
 <pre><code>% curl --head http://127.0.0.1:8000/
 HTTP/1.0 200 OK
 Server: Development/1.0 Python/2.5.2
@@ -90,57 +78,35 @@ Content-Type: text/html; charset=utf-8
 Content-Language: ja-jp
 Cache-Control: no-cache
 content-length: 0
-</code></pre>
-
-<p><strong>X-View: weblog.views.archive</strong> という行に注目してほしい。これが <code>XViewMiddleware</code> のすべて、 <code>X-View</code> ヘッダである。</p>
-
+</code></pre><p><strong>X-View: weblog.views.archive</strong> という行に注目してほしい。これが <code>XViewMiddleware</code> のすべて、 <code>X-View</code> ヘッダである。</p>
 <h3 id="x-view-ヘッダの利用">X-View ヘッダの利用</h3>
-
 <p>もう一度、<code>X-View</code> ヘッダを見てみよう。</p>
-
 <pre><code>X-View: weblog.views.archive
-</code></pre>
-
-<p>お気づきだろうか。そう。これは View のパスである。</p>
-
+</code></pre><p>お気づきだろうか。そう。これは View のパスである。</p>
 <p>つまり、さきほどの例でいえば、</p>
-
 <ul>
 <li><code>http://127.0.0.1:8000/</code> に HEAD リクエストを送信し、</li>
 <li>返された <code>X-View</code> ヘッダを調べることで、</li>
 <li>このページの内容を生成している View が <code>weblog.views.archive</code> であることが分かる</li>
 </ul>
-
 <p>というわけだ。</p>
-
 <p>実際に、Django の管理インターフェースでも、<code>X-View</code> ヘッダは利用されている。</p>
-
 <p>これについては、Django のリリース・マネージャーであり、<a href="http://www.amazon.co.jp/gp/product/1590599969?ie=UTF8&amp;tag=webloandlogic-22&amp;linkCode=as2&amp;camp=247&amp;creative=1211&amp;creativeASIN=1590599969">Practical Django Projects</a> の著者でもある James Bennett 氏のブログに詳しい。</p>
-
 <ul>
 <li><a href="http://www.b-list.org/weblog/2007/nov/07/bookmarklets/">The B-List: Documentation bookmarklets</a></li>
 </ul>
-
 <p>この記事は Django の管理インターフェースにある機能のうち、自動ドキュメンテーション機能について書かれたものだ。自動ドキュメンテーション機能については、スクリーンショットを見てもらうのがいい。</p>
-
-<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2518433072/"><img src="http://farm3.static.flickr.com/2380/2518433072_b631bce90c_m.jpg" alt="Django Admin: Automatic Documentation" /></a></p>
-
+<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2518433072/"><img src="http://farm3.static.flickr.com/2380/2518433072_b631bce90c_m.jpg" alt="Django Admin: Automatic Documentation"></a></p>
 <p>このように、View と URL の対応関係（とソースコードのドキュメント）の一覧を生成してくれる。一風変わっているのは、<strong>ブックマークレットが用意されている</strong>ことだろう。</p>
-
-<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2518433076/"><img src="http://farm4.static.flickr.com/3206/2518433076_00967f124f_m.jpg" alt="Django Admin: Documentation Bookmarklet" /></a></p>
-
+<p><a href="http://www.flickr.com/photos/ishikawa_takanori/2518433076/"><img src="http://farm4.static.flickr.com/3206/2518433076_00967f124f_m.jpg" alt="Django Admin: Documentation Bookmarklet"></a></p>
 <p>URL との対応関係を知りたいページで、ブックマークレットをクリックすれば、該当する管理インターフェースのページにリダイレクトされる、というわけ。気が利いている。</p>
-
 <p>そして、このブックマークレットは表示中の URL に HEAD リクエストを送信し、<code>X-View</code> ヘッダを見ることでリダイレクト先の URL を決定している。</p>
-
 <h3 id="まとめ">まとめ</h3>
-
 <ul>
 <li><code>XViewMiddleware</code> は HEAD リクエストに対して <code>X-View</code> レスポンスヘッダを返す</li>
 <li><code>X-View</code> ヘッダの中身は、リクエストされた URL の内容を生成している View のパスである</li>
 <li>Django の管理インターフェースでも利用されている</li>
 </ul>
-
 <p>これでもう何も怖いものはない。この機能を活用するもよし、デバッグ目的だと割り切るなら無効にするもよし。それは自由だ。</p>
 
   </div>
@@ -163,7 +129,7 @@ content-length: 0
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

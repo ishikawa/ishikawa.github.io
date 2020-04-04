@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>rake on METAREAL</title>
@@ -19,7 +19,7 @@
       
       <guid>http://ishikawa.github.io/post/2016/09/fileutils-in-rakefile/</guid>
       <description>いつまでたっても Rakefile の書き方を覚える気になれないのだが、Rakefile では FileUtils が インクルードされており cp や mkdir_p といったメソッドが使える。
-mkdir_p &amp;quot;dir1/dir2&amp;quot;  また、いくつかの拡張がされており、コマンドの実行が失敗したときに例外が投げられたり、sh メソッドという Kernel.system にように外部コマンドを呼び出すメソッドが追加されている。
+mkdir_p &amp;#34;dir1/dir2&amp;#34; また、いくつかの拡張がされており、コマンドの実行が失敗したときに例外が投げられたり、sh メソッドという Kernel.system にように外部コマンドを呼び出すメソッドが追加されている。
  Rakeのshで外部コマンドを実行する - Qiita rake/file_utils.rb at master · ruby/rake  </description>
     </item>
     

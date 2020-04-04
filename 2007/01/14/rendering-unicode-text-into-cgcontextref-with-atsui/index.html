@@ -7,37 +7,42 @@
   <title>NSView の CGContextRef に ATSUI でテキストを描画する方法</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/01/14/rendering-unicode-text-into-cgcontextref-with-atsui/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>NSView の CGContextRef に ATSUI でテキストを描画する方法</h1>
   <div class="metadata">
-    <p class="date">2007/01/15 2:00am</p>
+    <p class="date">
+      2007/01/15 2:00am
+    </p>
   </div>
   <div class="content">
     <p>Cocoa の <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSView_Class/index.html?http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSView_Class/Reference/Reference.html"><code>NSView</code></a> に <a href="http://developer.apple.com/documentation/Carbon/Reference/ATSUI_Reference/index.html">Apple Type Services for Unicode Imaging (ATSUI)</a> でテキストを描画する方法を紹介する。</p>
-
 <p>ATSUI では描画に Quartz の <a href="http://developer.apple.com/documentation/GraphicsImaging/Reference/CGContext/Reference/reference.html#//apple_ref/doc/uid/TP30000950-CH2g-C016175"><code>CGContextRef</code></a> を設定することができる。<code>CGContextRef</code> は <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSGraphicsContext_Class/index.html?http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSGraphicsContext_Class/Reference/Reference.html"><code>NSGraphicsContext</code></a> の <code>graphicsPort</code> で取得できるので、以下のようなコードで設定できる。</p>
-
 <pre><code>**CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];**
 ATSUAttributeTag tags[] = { kATSUCGContextTag };
 ByteCount sizes[] = { sizeof(CGContextRef) };
 ATSUAttributeValuePtr values[] = { **&amp;context** };
 ATSUSetLayoutControls(layout, 1, tags, sizes, values);
-</code></pre>
-
-<p>以下のコードでは、<code>NSView</code> の <code>drawRect:</code> で Hello, World を描画している。</p>
-
+</code></pre><p>以下のコードでは、<code>NSView</code> の <code>drawRect:</code> で Hello, World を描画している。</p>
 <pre><code>- (void) drawRect : (NSRect) rect
 {
   NSString *s = @&quot;Hello, World!&quot;;
@@ -87,7 +92,6 @@ ATSUSetLayoutControls(layout, 1, tags, sizes, values);
   ATSUDisposeTextLayout(layout);
 }
 </code></pre>
-
   </div>
 </article>
 
@@ -108,7 +112,7 @@ ATSUSetLayoutControls(layout, 1, tags, sizes, values);
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>apache on METAREAL</title>
@@ -20,9 +20,9 @@
       <guid>http://ishikawa.github.io/2007/01/02/apache-rotatelogs-time-offset/</guid>
       <description>アクセスログのローテーションに使っているのは、Apache に付属している rotatelogs だ。わたしも多くの初心者と同じく、こいつにまつわる時差の問題に直面した。
 これは、Apache のマニュアルに書かれている rotatelogs の設定例。
-CustomLog &amp;quot;|/usr/local/apache/bin/rotatelogs /var/log/access_log 86400&amp;quot; common  しかし、このままだとログファイルに残されるアクセス時間が 9 時間ずれてしまう（日本の標準時間と比べて）。rotatelogs の第一引数に指定するローテーション秒数は UTC を基準にしているためだ。
+CustomLog &amp;quot;|/usr/local/apache/bin/rotatelogs /var/log/access_log 86400&amp;quot; common しかし、このままだとログファイルに残されるアクセス時間が 9 時間ずれてしまう（日本の標準時間と比べて）。rotatelogs の第一引数に指定するローテーション秒数は UTC を基準にしているためだ。
 UTC とのズレは第二引数に分で指定する。日本標準時間は UTC より 9 時間ずれているので、ここに 540 を指定すればよい。
-CustomLog &amp;quot;|/usr/local/apache/bin/rotatelogs /var/log/access_log 86400 540 &amp;quot; common  </description>
+CustomLog &amp;quot;|/usr/local/apache/bin/rotatelogs /var/log/access_log 86400 540 &amp;quot; common </description>
     </item>
     
   </channel>

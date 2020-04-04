@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>unicode on METAREAL</title>
@@ -18,13 +18,13 @@
       <pubDate>Mon, 19 Nov 2007 02:31:00 +0900</pubDate>
       
       <guid>http://ishikawa.github.io/2007/11/18/ruby-needs-unicode-regular-expressions/</guid>
-      <description> Ruby 1.8 系で平仮名にマッチする正規表現を書きたい。
+      <description>Ruby 1.8 系で平仮名にマッチする正規表現を書きたい。
 正規表現で Unicode ブロックが使えれば楽なのだが、残念ながら Ruby 1.8 ではサポートされていない。
 鬼車 ちなみに 1.9 で搭載される予定の鬼車では、以下のような形式で Unicode ブロックやカテゴリを指定できるようだ（参考：鬼車 正規表現 Version 5.6.0）。
  \p{property-name} \p{^property-name}（否定） \P{property-name}（否定）  もっとも、実際に試したわけではないので、現状の Ruby 1.9 で上記のような使い方ができるのかは分からない。
 Ruby 1.8 結局、Ruby 1.8 では平仮名に相当するコードポイントの範囲を直接、正規表現で指定してやるのが簡単そうだ。
 Unicode Character Database の Block.txt によると平仮名（Hiragana）の範囲は 0x3040 から 0x309f なので、Ruby リファレンスマニュアルの FAQ「10.7 SJISの機種依存コード84BF から 889Fまでを空白に置き換えたいのですが」を参考に正規表現を書いてみる（ただし、UTF-8 限定）。
-/#{&amp;quot;[#{[0x3040].pack(&#39;U&#39;)}-#{[0x309f].pack(&#39;U&#39;)}]&amp;quot;}/u  コードポイントから UTF-8 リテラル文字列への変換に Array#pack を利用しているため読みづらくなっている。もっといい方法があるのかもしれない。
+/#{&amp;quot;[#{[0x3040].pack(&#39;U&#39;)}-#{[0x309f].pack(&#39;U&#39;)}]&amp;quot;}/u コードポイントから UTF-8 リテラル文字列への変換に Array#pack を利用しているため読みづらくなっている。もっといい方法があるのかもしれない。
 参考  Unicode Regular Expressions 鬼車  </description>
     </item>
     

@@ -7,43 +7,44 @@
   <title>Rails の便利メソッド h, html_escape は ERB:Util にあった</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/06/30/htmlescape-in-erb-util/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Rails の便利メソッド h, html_escape は ERB:Util にあった</h1>
   <div class="metadata">
-    <p class="date">2007/07/01 7:03am</p>
+    <p class="date">
+      2007/07/01 7:03am
+    </p>
   </div>
   <div class="content">
     <p>Ruby on Rails のテンプレートでしょっちゅうお世話になる <code>h</code> メソッド。</p>
-
 <p><code>&lt;</code> や <code>&amp;</code> といった、HTML にはそのまま書けない文字を実体参照に置き換えてくれるメソッドだが、これをコントローラーから使いたいときがある。たとえば、Ajax のレスポンスで ad-hoc に HTML 片を返してしまいたいときとか、けっこうあるんじゃないか。</p>
-
 <p>しかし、そのままではコントローラーから使うことはできない。</p>
-
 <pre><code>def update
   render :text =&gt; h(params[:value])
 end
-</code></pre>
-
-<p>というか、そもそも <a href="http://api.rubyonrails.org/">API リファレンス</a>にないんですけど&hellip;。</p>
-
+</code></pre><p>というか、そもそも <a href="http://api.rubyonrails.org/">API リファレンス</a>にないんですけど&hellip;。</p>
 <p>ソースコードを調べてみて、やっと分かった。</p>
-
 <p>どうやら、<code>h</code> メソッドは  <a href="http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB/Util.html">erb の ERB::Util モジュール</a>で定義されているらしい。</p>
-
 <p><code>actionpack-1.13.3 - lib/action_view/helpers/tag_helper.rb</code></p>
-
 <pre><code>module ActionView
   module Helpers #:nodoc:
     # Use these methods to generate HTML tags programmatically when you can't use
@@ -51,10 +52,7 @@ end
     module TagHelper
       include ERB::Util
       ...
-</code></pre>
-
-<p>以下は ruby 1.8.6 の <code>erb.rb</code> から</p>
-
+</code></pre><p>以下は ruby 1.8.6 の <code>erb.rb</code> から</p>
 <pre><code>class ERB
   module Util
     public
@@ -65,15 +63,11 @@ end
     module_function :h
     module_function :html_escape
     ...
-</code></pre>
-
-<p>というわけで、Rails のコントローラーで <code>h</code> メソッドを使うには以下のようにすればいい。</p>
-
+</code></pre><p>というわけで、Rails のコントローラーで <code>h</code> メソッドを使うには以下のようにすればいい。</p>
 <pre><code>def update
   render :text =&gt; ERB::Util.html_escape(params[:value])
 end
 </code></pre>
-
   </div>
 </article>
 
@@ -94,7 +88,7 @@ end
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

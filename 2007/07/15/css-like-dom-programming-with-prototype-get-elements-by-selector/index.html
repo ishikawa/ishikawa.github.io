@@ -7,55 +7,48 @@
   <title>prototype.js の $$ 関数で CSS 風に DOM プログラミング</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>prototype.js の $$ 関数で CSS 風に DOM プログラミング</h1>
   <div class="metadata">
-    <p class="date">2007/07/15 11:56am</p>
+    <p class="date">
+      2007/07/15 11:56am
+    </p>
   </div>
   <div class="content">
-    
-
-<p><a href="http://www.prototypejs.org/">prototype.js</a> の <code>$$</code> 関数（実際の処理は <code>Selector.findChildElements</code>）は CSS セレクタを受け取り、セレクタにマッチする要素を配列で返してくれる。</p>
-
+    <p><a href="http://www.prototypejs.org/">prototype.js</a> の <code>$$</code> 関数（実際の処理は <code>Selector.findChildElements</code>）は CSS セレクタを受け取り、セレクタにマッチする要素を配列で返してくれる。</p>
 <pre><code>var links = $$('#contents a');
-</code></pre>
-
-<p>だが、単純にひとつのセレクタだけではなくて、複数のセレクタを引数に渡したり、CSS と同じく、カンマ区切りで複数指定することもできる（結果は重複要素のない配列となって返ってくる）。</p>
-
+</code></pre><p>だが、単純にひとつのセレクタだけではなくて、複数のセレクタを引数に渡したり、CSS と同じく、カンマ区切りで複数指定することもできる（結果は重複要素のない配列となって返ってくる）。</p>
 <pre><code>var links = $$(&quot;#contents a&quot;, &quot;#footer .items a&quot;);
-</code></pre>
-
-<p>このコードは、こう書くこともできる。</p>
-
+</code></pre><p>このコードは、こう書くこともできる。</p>
 <pre><code>var links = $$(&quot;#contents a, #footer .items a&quot;);
-</code></pre>
-
-<p>そして、いまさらながら気づいたのは、これらの特徴を利用すれば、DOM の処理を CSS のように<strong>宣言的に</strong>書くのが可能だ、ということ。</p>
-
+</code></pre><p>そして、いまさらながら気づいたのは、これらの特徴を利用すれば、DOM の処理を CSS のように<strong>宣言的に</strong>書くのが可能だ、ということ。</p>
 <h3 id="css-風に-dom-プログラミング">CSS 風に DOM プログラミング</h3>
-
 <p>たとえば、フォーム入力画面で最初のテキストフィールドまたはテキストエリアを取り出す場合は、</p>
-
 <pre><code>$$(
   &quot;form input[type=text]&quot;,
   &quot;form textarea&quot;
 ).slice(0, 1)
-</code></pre>
-
-<p>と書けるので、以前の <a href="http://weblog.metareal.org/2007/07/10/domready-js-cross-browser-ondomcontentloaded/">domready.js</a> と組み合わせると、<strong>読み込み時に最初のテキストフィールドまたはテキストエリアを選択状態にする</strong>コードは以下のように書ける。</p>
-
+</code></pre><p>と書けるので、以前の <a href="http://weblog.metareal.org/2007/07/10/domready-js-cross-browser-ondomcontentloaded/">domready.js</a> と組み合わせると、<strong>読み込み時に最初のテキストフィールドまたはテキストエリアを選択状態にする</strong>コードは以下のように書ける。</p>
 <pre><code>Event.domReady.add(function() {
 
   // Select initial first responder when the window is first placed onscreen.
@@ -67,12 +60,8 @@
   });
 
 });
-</code></pre>
-
-<p>強調部分のみに注目してもらうと分かりやすいが、CSS に近い記述になっている。また、今回の例のように、<code>slice</code> して特定の要素のみに限定したり、<a href="http://www.prototypejs.org/api/utility/dollar-dollar">Prototype.js 1.5.1 では CSS3 もサポートされている</a>など、より柔軟な選択が可能なのも嬉しい。</p>
-
+</code></pre><p>強調部分のみに注目してもらうと分かりやすいが、CSS に近い記述になっている。また、今回の例のように、<code>slice</code> して特定の要素のみに限定したり、<a href="http://www.prototypejs.org/api/utility/dollar-dollar">Prototype.js 1.5.1 では CSS3 もサポートされている</a>など、より柔軟な選択が可能なのも嬉しい。</p>
 <h3 id="参考">参考</h3>
-
 <ul>
 <li><a href="http://www.prototypejs.org/">Prototype.js</a></li>
 <li><a href="http://www.prototypejs.org/api/utility/dollar-dollar">Prototype.js: Utility Methods.$$</a></li>
@@ -99,7 +88,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

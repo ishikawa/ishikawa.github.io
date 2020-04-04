@@ -7,26 +7,35 @@
   <title>LLVM で Hello, World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/07/22/hello-world-llvm/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>LLVM で Hello, World</h1>
   <div class="metadata">
-    <p class="date">2007/07/22 10:23am</p>
+    <p class="date">
+      2007/07/22 10:23am
+    </p>
   </div>
   <div class="content">
     <p><a href="http://llvm.org/">LLVM</a> で Hello, World プログラム。</p>
-
 <pre><code>@.LC0 = internal constant [13 x i8] c&quot;Hello world!\00&quot;
 
 declare i32 @puts(i8 *)
@@ -36,16 +45,11 @@ define i32 @main() {
   call i32 @puts(i8 * %cast210)
   ret i32 0
 }
-</code></pre>
-
-<p>バイトコードにコンパイルして実行。</p>
-
+</code></pre><p>バイトコードにコンパイルして実行。</p>
 <pre><code>% llvm-as -f hello.ll
 % lli hello.bc
 Hello world!
-</code></pre>
-
-<p>まあ、プログラム自体は <a href="http://llvm.org/docs/LangRef.html">LLVM Assembly Language Reference Manual</a> からの抜粋なわけだが。</p>
+</code></pre><p>まあ、プログラム自体は <a href="http://llvm.org/docs/LangRef.html">LLVM Assembly Language Reference Manual</a> からの抜粋なわけだが。</p>
 
   </div>
 </article>
@@ -67,7 +71,7 @@ Hello world!
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

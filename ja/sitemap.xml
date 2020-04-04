@@ -1,0 +1,1524 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/elixir/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/tags/elixir/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/tags/elixir/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/post/2016/09/gzip-compression-in-cowboy/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/post/2016/09/gzip-compression-in-cowboy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/post/2016/09/gzip-compression-in-cowboy/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/phoenix-framework/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/tags/phoenix-framework/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/tags/phoenix-framework/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/post/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/post/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/post/2016/09/fileutils-in-rakefile/</loc>
+    <lastmod>2016-09-22T19:26:18+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/rake/</loc>
+    <lastmod>2016-09-22T19:26:18+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/ruby/</loc>
+    <lastmod>2016-09-22T19:26:18+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/docker/</loc>
+    <lastmod>2015-12-23T12:49:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/post/2015/12/hanging-up-docker-build/</loc>
+    <lastmod>2015-12-23T12:49:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/vagrant/</loc>
+    <lastmod>2015-12-23T12:49:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/ctags/</loc>
+    <lastmod>2015-09-25T11:09:31+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/post/2015/09/elixir-ctags/</loc>
+    <lastmod>2015-09-25T11:09:31+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/post/2015/07/rust-trait-alias/</loc>
+    <lastmod>2015-07-26T10:10:37+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/rust/</loc>
+    <lastmod>2015-07-26T10:10:37+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/hugo/</loc>
+    <lastmod>2015-06-21T14:43:15+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/post/migrate-to-hugo/</loc>
+    <lastmod>2015-06-21T14:43:15+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/movie/</loc>
+    <lastmod>2013-01-18T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2013/01/18/looper/</loc>
+    <lastmod>2013-01-18T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</loc>
+    <lastmod>2013-01-14T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2010/12/16/ffi-requires-ruby-version-1-9-2/</loc>
+    <lastmod>2010-12-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2010/12/11/1292077318/</loc>
+    <lastmod>2010-12-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/llvm/</loc>
+    <lastmod>2010-12-05T09:23:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2010/12/05/1291551820/</loc>
+    <lastmod>2010-12-05T09:23:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/bookmark/</loc>
+    <lastmod>2010-02-23T23:26:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/go/</loc>
+    <lastmod>2010-02-23T23:26:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/google/</loc>
+    <lastmod>2010-02-23T23:26:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2010/02/23/google-bookmark-makes-me-feel-so-good/</loc>
+    <lastmod>2010-02-23T23:26:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/python/</loc>
+    <lastmod>2010-01-31T18:26:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2010/01/31/python-shared-instance-closure/</loc>
+    <lastmod>2010-01-31T18:26:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/appengine/</loc>
+    <lastmod>2009-12-03T12:42:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/django/</loc>
+    <lastmod>2009-12-03T12:42:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</loc>
+    <lastmod>2009-12-03T12:42:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2009/11/11/go-vim/</loc>
+    <lastmod>2009-11-11T10:29:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/books/</loc>
+    <lastmod>2009-11-11T01:28:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/mystery/</loc>
+    <lastmod>2009-11-11T01:28:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/%E4%BC%8A%E5%9D%82%E5%B9%B8%E5%A4%AA%E9%83%8E/</loc>
+    <lastmod>2009-11-11T01:28:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2009/11/10/8/%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E3%83%A9%E3%82%A4%E3%83%95-%E4%BC%8A%E5%9D%82%E5%B9%B8%E5%A4%AA%E9%83%8E/</loc>
+    <lastmod>2009-11-11T01:28:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/sphinx/</loc>
+    <lastmod>2009-07-27T10:45:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2009/07/27/upgrading-sphinx-0-6-2/</loc>
+    <lastmod>2009-07-27T10:45:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/java/</loc>
+    <lastmod>2008-12-24T01:06:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/javascript/</loc>
+    <lastmod>2008-12-24T01:06:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/magazine/</loc>
+    <lastmod>2008-12-24T01:06:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/review/</loc>
+    <lastmod>2008-12-24T01:06:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/v8/</loc>
+    <lastmod>2008-12-24T01:06:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/12/24/web-db-press-vol48/</loc>
+    <lastmod>2008-12-24T01:06:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/webkit/</loc>
+    <lastmod>2008-12-24T01:06:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/%E9%81%93%E5%B0%BE%E7%A7%80%E4%BB%8B/</loc>
+    <lastmod>2008-12-14T08:29:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/12/14/%E8%83%8C%E3%81%AE%E7%9C%BC/</loc>
+    <lastmod>2008-12-14T08:29:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/12/13/%E5%90%91%E6%97%A5%E8%91%B5%E3%81%AE%E5%92%B2%E3%81%8B%E3%81%AA%E3%81%84%E5%A4%8F/</loc>
+    <lastmod>2008-12-13T12:06:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/compiler/</loc>
+    <lastmod>2008-12-12T06:23:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/gcc/</loc>
+    <lastmod>2008-12-12T06:23:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/12/12/gcc-options-request-or-suppress-warnings-and-errors/</loc>
+    <lastmod>2008-12-12T06:23:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/alchemy/</loc>
+    <lastmod>2008-12-09T08:34:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/12/09/adobe-alchemy-first-impression/</loc>
+    <lastmod>2008-12-09T08:34:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/flash/</loc>
+    <lastmod>2008-12-09T08:34:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/applescript/</loc>
+    <lastmod>2008-12-09T03:37:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/evernote/</loc>
+    <lastmod>2008-12-09T03:37:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/mac/</loc>
+    <lastmod>2008-12-09T03:37:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/12/09/copy-link-to-evernote-client-applescript/</loc>
+    <lastmod>2008-12-09T03:37:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/cocoa/</loc>
+    <lastmod>2008-11-08T03:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/11/08/cocoa-custom-text-view/</loc>
+    <lastmod>2008-11-08T03:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/typography/</loc>
+    <lastmod>2008-11-08T03:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/10/03/google-app-engine-113-zipserve/</loc>
+    <lastmod>2008-10-03T05:48:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/10/02/running-django-1-0-on-google-app-engine/</loc>
+    <lastmod>2008-10-02T10:26:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/disassemble/</loc>
+    <lastmod>2008-09-25T17:39:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements-take2/</loc>
+    <lastmod>2008-09-25T17:39:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements/</loc>
+    <lastmod>2008-09-25T09:34:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/algorithm/</loc>
+    <lastmod>2008-09-08T02:25:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/09/07/logarithm-and-big-o-notation/</loc>
+    <lastmod>2008-09-08T02:25:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</loc>
+    <lastmod>2008-09-03T09:28:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/08/04/propertylist-parser-for-python/</loc>
+    <lastmod>2008-08-05T12:21:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/07/06/running-legacy-applications-on-flash-player/</loc>
+    <lastmod>2008-07-06T09:35:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/tamarin/</loc>
+    <lastmod>2008-07-06T09:35:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/concurrent/</loc>
+    <lastmod>2008-06-27T03:41:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/kilim/</loc>
+    <lastmod>2008-06-27T03:41:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/06/26/java-generater-by-using-kilim/</loc>
+    <lastmod>2008-06-27T03:41:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/flickr/</loc>
+    <lastmod>2008-06-15T10:09:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</loc>
+    <lastmod>2008-06-15T10:09:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/json/</loc>
+    <lastmod>2008-06-15T10:09:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/06/06/280slides-in-objective-j/</loc>
+    <lastmod>2008-06-06T12:42:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/objective-c/</loc>
+    <lastmod>2008-06-06T12:42:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/cache/</loc>
+    <lastmod>2008-05-29T01:48:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</loc>
+    <lastmod>2008-05-29T01:48:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/05/24/django-xview-middleware-tour/</loc>
+    <lastmod>2008-05-24T09:12:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/</loc>
+    <lastmod>2008-05-20T07:39:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/05/12/checking-whether-field-has-a-hidden-widget-in-django-template/</loc>
+    <lastmod>2008-05-12T10:37:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/04/22/django-code-reading-core-urlresolvers/</loc>
+    <lastmod>2008-04-22T10:38:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/04/18/ruby-openid-util-logger/</loc>
+    <lastmod>2008-04-18T07:41:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/rubyonrails/</loc>
+    <lastmod>2008-04-18T07:41:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/04/14/python-markdown-1-7-with-django/</loc>
+    <lastmod>2008-04-15T08:57:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/04/11/django-unicode-encode-error/</loc>
+    <lastmod>2008-04-12T07:16:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/04/11/building-readline-enabled-python-on-mac/</loc>
+    <lastmod>2008-04-11T10:05:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</loc>
+    <lastmod>2008-04-02T10:23:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/estraier/</loc>
+    <lastmod>2008-03-04T12:12:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/03/03/how-to-install-hyper-estraier-with-the-source-package-on-mac-os-x/</loc>
+    <lastmod>2008-03-04T12:12:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/02/17/find-xargs-rcov/</loc>
+    <lastmod>2008-02-17T09:55:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/02/16/array-product-for-ruby-1-8/</loc>
+    <lastmod>2008-02-17T07:07:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/02/15/rails-mime-type-register/</loc>
+    <lastmod>2008-02-15T08:10:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/02/13/activerecord-base-with-failsave-take2/</loc>
+    <lastmod>2008-02-14T08:12:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/02/12/activerecord-base-with_failsave/</loc>
+    <lastmod>2008-02-13T04:28:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/mysql/</loc>
+    <lastmod>2008-02-07T08:37:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/02/06/using-mysql-data-types-in-rails-migration/</loc>
+    <lastmod>2008-02-07T08:37:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/01/31/rails-2-0-migration-related-rake-tasks/</loc>
+    <lastmod>2008-02-01T03:08:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2008/01/30/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security/</loc>
+    <lastmod>2008-01-31T12:40:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/prototypejs/</loc>
+    <lastmod>2008-01-31T12:40:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/12/19/new-javascript-benchmark-sunspider/</loc>
+    <lastmod>2007-12-20T08:28:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/postgres/</loc>
+    <lastmod>2007-12-19T07:18:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/12/18/postgresql-looking-for-unused-indexes/</loc>
+    <lastmod>2007-12-19T07:18:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/rparsec/</loc>
+    <lastmod>2007-12-16T11:10:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/12/16/rparsec-quantifier-and-alternation/</loc>
+    <lastmod>2007-12-16T11:10:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</loc>
+    <lastmod>2007-12-14T10:05:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</loc>
+    <lastmod>2007-12-13T09:09:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/12/12/building-postgresql-7-4-jdbc-driver/</loc>
+    <lastmod>2007-12-12T03:59:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/12/11/studying-rparsec-introduction/</loc>
+    <lastmod>2007-12-11T10:52:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/12/10/packing-integer-into-utf8-sequence-bytes/</loc>
+    <lastmod>2007-12-10T10:16:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</loc>
+    <lastmod>2007-12-10T09:54:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/12/09/install-ffmpeg-using-macports/</loc>
+    <lastmod>2007-12-09T09:57:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/12/08/vacuum-analyze-sqlite-automatically-by-cron/</loc>
+    <lastmod>2007-12-08T10:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/tips/</loc>
+    <lastmod>2007-12-08T10:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/gtd/</loc>
+    <lastmod>2007-12-06T08:08:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/12/05/optimize-the-igtd-database/</loc>
+    <lastmod>2007-12-06T08:08:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/css/</loc>
+    <lastmod>2007-11-24T02:58:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/11/23/looking-for-ruby-css-parser/</loc>
+    <lastmod>2007-11-24T02:58:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/11/18/ruby-needs-unicode-regular-expressions/</loc>
+    <lastmod>2007-11-19T02:31:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/unicode/</loc>
+    <lastmod>2007-11-19T02:31:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/11/05/safari-external-interface-infinite-loop/</loc>
+    <lastmod>2007-11-06T03:23:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/10/20/%E7%8A%AF%E4%BA%BA%E3%81%AB%E5%91%8A%E3%81%90/</loc>
+    <lastmod>2007-10-20T08:29:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/10/10/setting-flash-camera-with-macbook-isight/</loc>
+    <lastmod>2007-10-11T05:20:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/10/09/capture-stderr-of-external-program-into-ruby-string/</loc>
+    <lastmod>2007-10-10T06:37:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/10/08/scalability-issue-with-innodb-auto-increment-column/</loc>
+    <lastmod>2007-10-09T12:29:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/10/07/java-singleton-collection/</loc>
+    <lastmod>2007-10-07T11:11:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/10/06/ruby-to-i-and-integer-function/</loc>
+    <lastmod>2007-10-06T10:37:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</loc>
+    <lastmod>2007-09-24T12:10:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</loc>
+    <lastmod>2007-09-24T12:02:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</loc>
+    <lastmod>2007-09-22T09:28:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</loc>
+    <lastmod>2007-09-21T05:41:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/09/18/longest-java-class-name/</loc>
+    <lastmod>2007-09-19T07:38:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/movies/</loc>
+    <lastmod>2007-09-13T08:33:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/09/12/%E6%99%82%E3%82%92%E3%81%8B%E3%81%91%E3%82%8B%E5%B0%91%E5%A5%B3/</loc>
+    <lastmod>2007-09-13T08:33:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/fantasy/</loc>
+    <lastmod>2007-09-13T06:59:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/09/12/%E5%A5%87%E8%A1%93%E5%B8%AB/</loc>
+    <lastmod>2007-09-13T06:59:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/09/11/ruby-pitfall-today/</loc>
+    <lastmod>2007-09-12T06:31:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</loc>
+    <lastmod>2007-09-09T11:49:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/trac/</loc>
+    <lastmod>2007-09-09T11:49:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</loc>
+    <lastmod>2007-09-09T05:05:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/09/02/prototype-1-6-0-event-overhaul-release/</loc>
+    <lastmod>2007-09-02T09:55:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</loc>
+    <lastmod>2007-09-01T08:30:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/08/30/setup-simple-http-server-with-mongrel/</loc>
+    <lastmod>2007-08-30T10:25:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/08/26/java-util-arrays-1-5/</loc>
+    <lastmod>2007-08-26T09:55:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/08/25/setup-simple-http-server-with-webrick/</loc>
+    <lastmod>2007-08-26T02:12:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/08/23/optimize-the-apple-mail-app-database/</loc>
+    <lastmod>2007-08-24T05:38:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</loc>
+    <lastmod>2007-08-22T05:32:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/xcode/</loc>
+    <lastmod>2007-08-21T05:24:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/08/21/rename-xcode-project/</loc>
+    <lastmod>2007-08-21T05:24:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/08/20/how-does-rsync-specify-ssh-port-in-command-line/</loc>
+    <lastmod>2007-08-20T11:18:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/game/</loc>
+    <lastmod>2007-08-20T02:29:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/08/19/%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%92%E6%96%AC%E3%82%8B/</loc>
+    <lastmod>2007-08-20T02:29:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/lifehacks/</loc>
+    <lastmod>2007-08-19T01:23:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/08/18/tabletalking-and-brainstorming/</loc>
+    <lastmod>2007-08-19T01:23:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/08/15/about-igtd-quicksilver-plugin/</loc>
+    <lastmod>2007-08-15T05:18:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/quicksilver/</loc>
+    <lastmod>2007-08-15T05:18:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/08/11/review-my-igtd-experience/</loc>
+    <lastmod>2007-08-11T08:59:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/08/10/igtd-first-impression/</loc>
+    <lastmod>2007-08-10T05:29:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/08/08/hit-a-link-and-font-away/</loc>
+    <lastmod>2007-08-08T10:15:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/sf/</loc>
+    <lastmod>2007-08-07T10:44:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/08/07/%E5%AE%87%E5%AE%99%E6%B6%88%E5%A4%B1/</loc>
+    <lastmod>2007-08-07T10:44:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</loc>
+    <lastmod>2007-08-03T05:41:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/07/31/%E4%B8%87%E7%89%A9%E7%90%86%E8%AB%96/</loc>
+    <lastmod>2007-07-31T10:55:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</loc>
+    <lastmod>2007-07-25T04:24:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/07/24/notes-on-rubyonrails-with-mysql/</loc>
+    <lastmod>2007-07-24T09:29:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/07/22/hello-world-llvm/</loc>
+    <lastmod>2007-07-22T10:23:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/07/22/hello-world-llvm-and-runtime-libraries/</loc>
+    <lastmod>2007-07-22T02:06:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</loc>
+    <lastmod>2007-07-19T10:30:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/metareal/</loc>
+    <lastmod>2007-07-17T10:31:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/07/17/yui-fonts-css-bigger-pre-code/</loc>
+    <lastmod>2007-07-17T10:31:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</loc>
+    <lastmod>2007-07-15T11:56:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/nonfiction/</loc>
+    <lastmod>2007-07-14T08:14:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/07/13/%E7%89%A9%E7%90%86%E5%AD%A6%E8%80%85%E3%81%AF%E3%83%9E%E3%83%AB%E3%81%8C%E3%81%8A%E5%A5%BD%E3%81%8D/</loc>
+    <lastmod>2007-07-14T08:14:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/07/12/problem-with-tomcat-5-5-2x-and-jndi-javamail/</loc>
+    <lastmod>2007-07-13T08:45:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/07/10/%E3%83%90%E3%83%93%E3%83%AD%E3%83%8B%E3%82%A2%E3%82%A6%E3%82%A7%E3%83%BC%E3%83%96/</loc>
+    <lastmod>2007-07-11T08:51:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/07/10/domready-js-cross-browser-ondomcontentloaded/</loc>
+    <lastmod>2007-07-10T12:42:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/07/08/setting-environment-variables-through-rake-command/</loc>
+    <lastmod>2007-07-08T09:47:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/scriptaculous/</loc>
+    <lastmod>2007-07-08T09:47:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</loc>
+    <lastmod>2007-07-06T10:57:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/06/30/htmlescape-in-erb-util/</loc>
+    <lastmod>2007-07-01T07:03:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/06/26/safari-spotlighting-web-history/</loc>
+    <lastmod>2007-06-27T08:06:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/06/21/error-checking-in-ruby-time-parsing/</loc>
+    <lastmod>2007-06-22T04:52:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/subversion/</loc>
+    <lastmod>2007-06-19T09:44:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/06/19/xcode-subversion-troubleshooting/</loc>
+    <lastmod>2007-06-19T09:44:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/06/17/subversion-primer-for-xcode-projects/</loc>
+    <lastmod>2007-06-18T03:35:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/06/16/sync-different-mac-with-dotmac/</loc>
+    <lastmod>2007-06-17T08:02:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/06/15/google-code-prettify-syntax-highlighter-written-in-javascript/</loc>
+    <lastmod>2007-06-15T09:08:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/06/14/ruby-extension-struct-rstring-macros/</loc>
+    <lastmod>2007-06-14T10:33:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/science/</loc>
+    <lastmod>2007-06-12T09:25:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/06/12/%E7%9B%B8%E5%AF%BE%E8%AB%96%E3%81%8C%E3%82%82%E3%81%9F%E3%82%89%E3%81%97%E3%81%9F%E6%99%82%E7%A9%BA%E3%81%AE%E5%A5%87%E5%A6%99%E3%81%AA%E5%B9%BE%E4%BD%95%E5%AD%A6/</loc>
+    <lastmod>2007-06-12T09:25:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/06/09/summer-of-2007/</loc>
+    <lastmod>2007-06-10T03:58:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/daylife/</loc>
+    <lastmod>2007-06-10T03:58:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/05/31/open-current-directory-in-finder/</loc>
+    <lastmod>2007-05-31T09:02:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/05/27/meet-the-airmac-extreme/</loc>
+    <lastmod>2007-05-27T10:22:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/05/22/%E8%91%89%E6%A1%9C%E3%81%AE%E5%AD%A3%E7%AF%80%E3%81%AB%E5%90%9B%E3%82%92%E6%83%B3%E3%81%86%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8/</loc>
+    <lastmod>2007-05-22T09:36:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/05/17/final-fantasy-tactics/</loc>
+    <lastmod>2007-05-18T08:51:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/04/18/es-werde-light/</loc>
+    <lastmod>2007-04-18T09:54:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</loc>
+    <lastmod>2007-04-09T02:52:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/moinmoin/</loc>
+    <lastmod>2007-04-09T02:52:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/imaging/</loc>
+    <lastmod>2007-04-03T12:18:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/04/02/convert-awt-image-to-buffered-image-or-byte-array/</loc>
+    <lastmod>2007-04-03T12:18:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/04/02/hello-my-friend/</loc>
+    <lastmod>2007-04-02T09:04:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/03/31/reading-google-search-history-javascript/</loc>
+    <lastmod>2007-04-01T04:59:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/03/28/ruby-1-8-6-and-fastthread/</loc>
+    <lastmod>2007-03-29T08:42:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/03/28/launch-screen-saver-from-quicksilver/</loc>
+    <lastmod>2007-03-29T01:21:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/opencv/</loc>
+    <lastmod>2007-03-28T01:18:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/03/27/opencv-on-mac-os-x-tiger/</loc>
+    <lastmod>2007-03-28T01:18:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/programming/</loc>
+    <lastmod>2007-03-27T01:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/03/26/the-world-is-parallel-we-are-are-parallel/</loc>
+    <lastmod>2007-03-27T01:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/flashlite/</loc>
+    <lastmod>2007-03-24T06:40:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/haxe/</loc>
+    <lastmod>2007-03-24T06:40:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/03/23/haxe-1-12-with-flash-lite-support/</loc>
+    <lastmod>2007-03-24T06:40:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/03/19/hibernate-inner-join-using-criteria-api/</loc>
+    <lastmod>2007-03-20T08:36:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/hibernate/</loc>
+    <lastmod>2007-03-20T08:36:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/03/08/json-is-not-as-safe-as-people-think-it-is/</loc>
+    <lastmod>2007-03-08T09:33:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/security/</loc>
+    <lastmod>2007-03-08T09:33:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/02/19/query-with-empty-string-cause-full-table-scan/</loc>
+    <lastmod>2007-02-20T03:53:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/</loc>
+    <lastmod>2007-02-11T08:38:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/comic/</loc>
+    <lastmod>2007-02-11T04:33:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/02/10/hyakkiyakosyo/</loc>
+    <lastmod>2007-02-11T04:33:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/02/07/google-redirector/</loc>
+    <lastmod>2007-02-08T01:15:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/25/writing-underscores-named-variable-with-markdown/</loc>
+    <lastmod>2007-01-26T07:32:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/wordpress/</loc>
+    <lastmod>2007-01-26T07:32:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/25/movable-type-xml-rpc-api-memo/</loc>
+    <lastmod>2007-01-26T07:04:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/xmlrpc/</loc>
+    <lastmod>2007-01-26T07:04:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/17/shell-game-1/</loc>
+    <lastmod>2007-01-17T10:41:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/14/rendering-unicode-text-into-cgcontextref-with-atsui/</loc>
+    <lastmod>2007-01-15T02:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/14/how-to-replace-layout-manager/</loc>
+    <lastmod>2007-01-14T10:01:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/13/redstone-xml-rpc-library-no-thanks/</loc>
+    <lastmod>2007-01-13T11:26:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/eclipse/</loc>
+    <lastmod>2007-01-11T09:40:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/11/subversion-primer-for-eclipse-java-projects/</loc>
+    <lastmod>2007-01-11T09:40:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/idea/</loc>
+    <lastmod>2007-01-10T03:20:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/lighttpd/</loc>
+    <lastmod>2007-01-10T03:20:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/09/mod-flv-streaming-and-deep-tagging/</loc>
+    <lastmod>2007-01-10T03:20:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/streaming/</loc>
+    <lastmod>2007-01-10T03:20:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/drama/</loc>
+    <lastmod>2007-01-09T11:11:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/09/lost-on-tv-launched/</loc>
+    <lastmod>2007-01-09T11:11:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/09/flash-video-streaming-with-lighttpd-take-2/</loc>
+    <lastmod>2007-01-09T09:18:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/08/looking-for-loving-title-element/</loc>
+    <lastmod>2007-01-09T07:28:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/08/flash-video-streaming/</loc>
+    <lastmod>2007-01-09T03:03:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/09/flash-video-streaming-with-lighttpd/</loc>
+    <lastmod>2007-01-09T02:38:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/07/universal-xss-with-pdf-files/</loc>
+    <lastmod>2007-01-07T09:45:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/06/learning-cocoa-text-system/</loc>
+    <lastmod>2007-01-07T04:13:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/05/markdownized-autolink-with-applescript-2/</loc>
+    <lastmod>2007-01-06T04:10:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/04/python-and-ruby-evaluation-of-default-arguments/</loc>
+    <lastmod>2007-01-05T03:52:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/04/markdownized-autolink-with-applescript/</loc>
+    <lastmod>2007-01-05T01:33:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/02/fix-weighted-categories-url-problem/</loc>
+    <lastmod>2007-01-03T12:48:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/02/copy-page-title-with-applescript/</loc>
+    <lastmod>2007-01-03T12:18:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/02/tag-cloud-url-problem/</loc>
+    <lastmod>2007-01-03T12:14:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/01/notebook/</loc>
+    <lastmod>2007-01-02T12:08:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/apache/</loc>
+    <lastmod>2007-01-02T11:35:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/02/apache-rotatelogs-time-offset/</loc>
+    <lastmod>2007-01-02T11:35:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/01/install-python-25/</loc>
+    <lastmod>2007-01-02T04:38:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/01/a-happy-new-year-2007/</loc>
+    <lastmod>2007-01-01T10:19:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2007/01/01/metareal-org-is-coming/</loc>
+    <lastmod>2007-01-01T01:58:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/30/singleton-and-other-stories/</loc>
+    <lastmod>2006-12-31T03:29:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/29/open-uri-with-self-signed-certificate/</loc>
+    <lastmod>2006-12-29T11:38:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/27/mysql-on-macosx-tiger/</loc>
+    <lastmod>2006-12-28T12:54:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/27/rubyonrails-on-macosx-tiger/</loc>
+    <lastmod>2006-12-28T12:26:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/27/rubygems-on-macosx-tiger/</loc>
+    <lastmod>2006-12-28T12:02:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/28/reason-of-mysql-ruby-test-failure/</loc>
+    <lastmod>2006-12-28T10:07:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/27/mysql-bindings-on-macosx-tiger/</loc>
+    <lastmod>2006-12-28T03:14:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/27/mysql-post-installation/</loc>
+    <lastmod>2006-12-28T02:49:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/27/ruby-p12-on-macosx-tiger/</loc>
+    <lastmod>2006-12-28T01:43:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/27/rubyonrails-on-macosx-tiger-links/</loc>
+    <lastmod>2006-12-28T01:32:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/25/development-flashlite-contents-with-haxe/</loc>
+    <lastmod>2006-12-26T06:14:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/tags/megazone23/</loc>
+    <lastmod>2006-12-26T06:04:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/25/transformable-full-action-model-garland/</loc>
+    <lastmod>2006-12-26T06:04:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/24/install-subversion-with-swig-bindings/</loc>
+    <lastmod>2006-12-24T12:29:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/22/relaxing-bear-family/</loc>
+    <lastmod>2006-12-23T12:06:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/22/firefox-canvas-bug/</loc>
+    <lastmod>2006-12-23T02:47:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/21/some-things-that-i-realized/</loc>
+    <lastmod>2006-12-21T10:12:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/18/install-viewvc/</loc>
+    <lastmod>2006-12-19T05:17:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/18/svn-metareal-org/</loc>
+    <lastmod>2006-12-18T09:58:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/13/xml-rpc-premature-end-of-file/</loc>
+    <lastmod>2006-12-13T10:48:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/13/java-lightweight-xml-parser/</loc>
+    <lastmod>2006-12-13T09:56:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/12/apache-xml-rpc-no-thanks/</loc>
+    <lastmod>2006-12-13T03:06:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/11/weblog-xmlrpc-support/</loc>
+    <lastmod>2006-12-11T08:21:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/09/relaxing-bear-knight/</loc>
+    <lastmod>2006-12-10T06:22:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/09/apache-xmlrpc-filename/</loc>
+    <lastmod>2006-12-10T01:04:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/12/08/wordpress-archives-date-format/</loc>
+    <lastmod>2006-12-08T09:30:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/2006/11/21/hello-world/</loc>
+    <lastmod>2006-11-21T12:45:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/categories/"
+                />
+  </url>
+  
+</urlset>

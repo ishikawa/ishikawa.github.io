@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>java on METAREAL</title>
@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Fri, 27 Jun 2008 03:41:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 24 Dec 2008 01:06:00 +0900</lastBuildDate>
     
 	<atom:link href="http://ishikawa.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
@@ -21,7 +21,7 @@
       <description>Twitter と Erlang をきっかけに注目を集めるようになった軽量プロセス（とかマイクロスレッドとか）を Java で実現するためのライブラリに kilim があります。
  Isolation-typed actors for Java (PDF) InfoQ: Kilim - actors and message passing in Java  夜中に突然 Java が書きたくなって、まだ、Examples を動かしてみた程度ですが、とりあえず Python のジェネレーターっぽいことができるのは分かったので記事にしておきます。暇と知識が増えたら、もうすこし突っ込んだ記事もあげる予定です（自信がないので今回、ですます調）。
 ジェネレーターの例 では、本当につまらない例です。フィボナッチ数を求めるプログラムをどうぞ。
-import kilim.Generator; import kilim.pausable; public class Fib extends Generator&amp;lt;Integer&amp;gt; { public @pausable void execute() { // (1) int fib1 = 0; int fib2 = 1; while (true) { yield(fib1); // (2) fib2 = fib1 + fib2; fib1 = fib2 - fib1; } } public static void main(String[] args) { final Fib fib = new Fib(); for (int i = 0; i &amp;lt;= 10; i++) { System.</description>
+import kilim.Generator; import kilim.pausable; public class Fib extends Generator&amp;lt;Integer&amp;gt; { public @pausable void execute() { // (1)  int fib1 = 0; int fib2 = 1; while (true) { yield(fib1); // (2)  fib2 = fib1 + fib2; fib1 = fib2 - fib1; } } public static void main(String[] args) { final Fib fib = new Fib(); for (int i = 0; i &amp;lt;= 10; i++) { System.</description>
     </item>
     
     <item>
@@ -34,8 +34,8 @@ import kilim.Generator; import kilim.pausable; public class Fib extends Generato
 悩んだ末、JDBC ドライバのソースコードを読むだけではなく、実際にビルドして動作を確認してみた方がいいだろう、ということになった。JDBC ドライバにパッチを当てて問題を回避することも視野に入れている。できれば、やりたくないけれど&amp;hellip;。
 PostgreSQL 7.4 の JDBC ドライバをビルドするために必要な手順は、おおまかに分けると以下のようになる。
  CVS からソースコードを取得 build.properties を用意 ビルド  CVS からソースコードを取得 PostgreSQL JDBC ドライバの CVS リポジトリからバージョン 7.4 リリース時のタグを指定してソースコードを取得する。
-cvs -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc login cvs -z3 -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc co **-r REL7_4_STABLE** -P pgjdbc  build.properties を用意 バージョン番号情報などを指定するための build.properties がないとビルドが失敗してしまう。 トップディレクトリに build.properties を作成し、以下のように書いておこう。
-major=7 minor=4 fullversion=7.4.5 edition=JDBC3 def_pgport=5432 enable_debug=no connectclass=org.postgresql.jdbc3.Jdbc3Connection  major, minor, fullversion, edition は org.postgresql.Driver.getVersion() で使われる。
+cvs -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc login cvs -z3 -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc co **-r REL7_4_STABLE** -P pgjdbc build.properties を用意 バージョン番号情報などを指定するための build.properties がないとビルドが失敗してしまう。 トップディレクトリに build.properties を作成し、以下のように書いておこう。
+major=7 minor=4 fullversion=7.4.5 edition=JDBC3 def_pgport=5432 enable_debug=no connectclass=org.postgresql.jdbc3.Jdbc3Connection major, minor, fullversion, edition は org.postgresql.Driver.getVersion() で使われる。
 それ以外の変数には以下のような意味があるようだ。
  def_pgport デフォルトの接続ポート番号 enable_debug デバッグ情報つきでコンパイルする場合は yes connectclass java.</description>
     </item>
@@ -47,9 +47,10 @@ major=7 minor=4 fullversion=7.4.5 edition=JDBC3 def_pgport=5432 enable_debug=no 
       
       <guid>http://ishikawa.github.io/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</guid>
       <description>PostgreSQL 7.4.18 で以下のようなエラーが出力されるようになった。
-ERROR: 22P05: character 0xe28094 of encoding &amp;quot;UNICODE&amp;quot; has no equivalent in &amp;quot;EUC_JP&amp;quot;  PostgreSQL の JDBC ドライバはバックエンド (PostgreSQL) のバージョンが 7.3 以降の場合、接続時に必ず set client_encoding = &amp;quot;UNICODE&amp;quot; を発行する。
+ERROR: 22P05: character 0xe28094 of encoding &amp;quot;UNICODE&amp;quot; has no equivalent in &amp;quot;EUC_JP&amp;quot; PostgreSQL の JDBC ドライバはバックエンド (PostgreSQL) のバージョンが 7.3 以降の場合、接続時に必ず set client_encoding = &amp;quot;UNICODE&amp;quot; を発行する。
 以下は org/postgresql/jdbc1/Attic/AbstractJdbc1Connection.java の 509 行目から抜粋。
-if (haveMinimumServerVersion(&amp;quot;7.3&amp;quot;)) { BaseResultSet acRset = //TODO: if protocol V3 we can set the client encoding in startup execSQL(&amp;quot;set client_encoding = &#39;UNICODE&#39;&amp;quot;); //set encoding to be unicode encoding = Encoding.getEncoding(&amp;quot;UNICODE&amp;quot;, null); }  また、PostgreSQL 7.4.13 からは変換できないバイト列をすべてエラー扱いするようになった。</description>
+if (haveMinimumServerVersion(&amp;quot;7.3&amp;quot;)) { BaseResultSet acRset = //TODO: if protocol V3 we can set the client encoding in startup execSQL(&amp;quot;set client_encoding = &#39;UNICODE&#39;&amp;quot;); //set encoding to be unicode encoding = Encoding.getEncoding(&amp;quot;UNICODE&amp;quot;, null); } また、PostgreSQL 7.4.13 からは変換できないバイト列をすべてエラー扱いするようになった。
+そのため、データベース側のエンコーディングに UNICODE (UTF-8) 以外を使用している場合（ここではエラーからも分かるように、EUC-JP にしていた）、往々にしてこのエラーが起こるようだ。</description>
     </item>
     
     <item>
@@ -60,13 +61,13 @@ if (haveMinimumServerVersion(&amp;quot;7.3&amp;quot;)) { BaseResultSet acRset = 
       <guid>http://ishikawa.github.io/2007/10/07/java-singleton-collection/</guid>
       <description>Java でときどき、要素がひとつだけのコレクションがほしくなるときがある。たとえば、利用しているライブラリのメソッドが引数としてコレクションを要求しているが、渡したいオブジェクトがひとつしかないとか。
 こういう場合、コレクションの型が List だとすると、まず思いつくのは、新しく生成した ArrayList に要素をひとつだけ追加する方法だ。
-List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;String&amp;gt;(); list.add(&amp;quot;element&amp;quot;); doSomething(list);  だが、この方法は変換に一時変数が必要になり不格好だ。
+List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;String&amp;gt;(); list.add(&amp;quot;element&amp;quot;); doSomething(list); だが、この方法は変換に一時変数が必要になり不格好だ。
 Arrays.asList を使う方法 この変換は Arrays.asList を使うことで簡単にできる。
-doSomething(Arrays.asList(new String[]{&amp;quot;element&amp;quot;}));  要素がひとつだけの配列をリストに変換する、と捉え直すわけだ。そして、Java 1.5 から Arrays.asList は配列ではなく可変長引数をとるようになったので、更に簡単に書ける。
-doSomething(Arrays.asList(&amp;quot;element&amp;quot;));  Collectios.singleton 系メソッド Arrays.asList ではリスト以外のコレクションには変換できない上、要素がひとつだけのコレクションのために配列を用意しているため、まだまだメモリ的に非効率だ。
+doSomething(Arrays.asList(new String[]{&amp;quot;element&amp;quot;})); 要素がひとつだけの配列をリストに変換する、と捉え直すわけだ。そして、Java 1.5 から Arrays.asList は配列ではなく可変長引数をとるようになったので、更に簡単に書ける。
+doSomething(Arrays.asList(&amp;quot;element&amp;quot;)); Collectios.singleton 系メソッド Arrays.asList ではリスト以外のコレクションには変換できない上、要素がひとつだけのコレクションのために配列を用意しているため、まだまだメモリ的に非効率だ。
 実は java.util.Collections にはこうした用途に使えるメソッドがすでに用意されている。
  singleton singletonList singletonMap  上記のメソッドはそれぞれ、渡されたオブジェクトを要素がひとつだけのコレクションに変換するメソッドだ。
-Set&amp;lt;String&amp;gt; set = Collections.singleton(&amp;quot;element&amp;quot;); List&amp;lt;String&amp;gt; list = Collections.singletonList(&amp;quot;element&amp;quot;); Map&amp;lt;String, String&amp;gt; map = Collections.singletonMap(&amp;quot;key&amp;quot;, &amp;quot;value&amp;quot;)  また、変換後のコレクションには、要素をインスタンス変数として直接もつ独自のコレクション・クラスを利用しているため、メモリ効率も一番良い。</description>
+Set&amp;lt;String&amp;gt; set = Collections.singleton(&amp;quot;element&amp;quot;); List&amp;lt;String&amp;gt; list = Collections.singletonList(&amp;quot;element&amp;quot;); Map&amp;lt;String, String&amp;gt; map = Collections.singletonMap(&amp;quot;key&amp;quot;, &amp;quot;value&amp;quot;) また、変換後のコレクションには、要素をインスタンス変数として直接もつ独自のコレクション・クラスを利用しているため、メモリ効率も一番良い。</description>
     </item>
     
     <item>
@@ -77,8 +78,8 @@ Set&amp;lt;String&amp;gt; set = Collections.singleton(&amp;quot;element&amp;quot
       <guid>http://ishikawa.github.io/2007/09/18/longest-java-class-name/</guid>
       <description>ふと気になって書いてみた。
 カレントディレクトリ以下の .java ファイルを、ファイル名の長さでソートするスクリプト。
-% find . -name &amp;quot;*.java&amp;quot; -exec basename -s .java {} \; | ruby -ne &#39;$_.chomp!; puts &amp;quot;#{$_.size} #{$_}&amp;quot;&#39; | sort -n  JRuby だとこんな感じ。
-3 Dir 3 Pwd 4 Glob 4 Iter 4 Java ... 30 DumpingInvocationMethodFactory 32 DumpingInvocationCallbackFactory 32 MultipleAssignmentReWriteVisitor 32 OSEnvironmentReaderFromApacheAnt 34 OSEnvironmentReaderFromRuntimeExec 40 OSEnvironmentReaderFromJava5SystemGetenv  左側の数字がファイル名の文字数だ。つまり、一番長いファイル名（クラス名）は OSEnvironmentReaderFromJava5SystemGetenv で 40 文字。
+% find . -name &amp;quot;*.java&amp;quot; -exec basename -s .java {} \; | ruby -ne &#39;$_.chomp!; puts &amp;quot;#{$_.size} #{$_}&amp;quot;&#39; | sort -n JRuby だとこんな感じ。
+3 Dir 3 Pwd 4 Glob 4 Iter 4 Java ... 30 DumpingInvocationMethodFactory 32 DumpingInvocationCallbackFactory 32 MultipleAssignmentReWriteVisitor 32 OSEnvironmentReaderFromApacheAnt 34 OSEnvironmentReaderFromRuntimeExec 40 OSEnvironmentReaderFromJava5SystemGetenv 左側の数字がファイル名の文字数だ。つまり、一番長いファイル名（クラス名）は OSEnvironmentReaderFromJava5SystemGetenv で 40 文字。
 ちなみに、いま仕事で関わっているプロジェクトでは 37 文字が最長だった。負けた。</description>
     </item>
     
@@ -121,13 +122,13 @@ PostgreSQL 側で、実際に発行されている SQL をログに記録して�
       
       <guid>http://ishikawa.github.io/2007/07/12/problem-with-tomcat-5-5-2x-and-jndi-javamail/</guid>
       <description>Tomcat のバージョンを 5.5.17 から 5.5.23 にあげたところ、次のような例外が発生するようになった。
-javax.naming.NamingException: Could not create resource factory instance [Root exception is java.lang.ClassNotFoundException: org.apache.naming.factory.MailSessionFactory] at org.apache.naming.factory.ResourceFactory.getObjectInstance(ResourceFactory.java:132)  JNDI から JavaMail の javax.mail.Session を取り出すときに失敗しているようだ。
+javax.naming.NamingException: Could not create resource factory instance [Root exception is java.lang.ClassNotFoundException: org.apache.naming.factory.MailSessionFactory] at org.apache.naming.factory.ResourceFactory.getObjectInstance(ResourceFactory.java:132) JNDI から JavaMail の javax.mail.Session を取り出すときに失敗しているようだ。
 「MailSessionFactory が見つからないってことはまたクラスパス周りの問題かな、面倒くさいな&amp;hellip;」と思いきや、検索してみると、次のようなバグ報告が。
 Bug 40668 - MailSessionFactory is missing in Tomcat 5.5.23 http://issues.apache.org/bugzilla/show_bug.cgi?id=40668
 Tomcat 5.5.20 から現時点での最新バージョンである 5.5.23 では Tomcat 自体のビルドプロセスに問題があって（クラスパスに JavaMail が含まれていない？）、naming-factory.jar に JavaMail 関連のクラスがなくなっているらしい。
 いまだに直ってない、ってのがすごいな。
 この際、SMTP でメールを送信するくらいの用途なら、JNDI やめちゃうってのも手だと思う。JNDI のルックアップって非結合になっているようで、結局、新しい依存性を持ち込んでるだけ、というか、テストを考えると余計面倒だし。
-Context context = new InitialContext(); Session session = (Session) context.lookup(&amp;quot;java:comp/env/mail/Session&amp;quot;);  これを
+Context context = new InitialContext(); Session session = (Session) context.lookup(&amp;quot;java:comp/env/mail/Session&amp;quot;); これを
 Properties props = new Properties(); props.</description>
     </item>
     
@@ -142,7 +143,7 @@ Properties props = new Properties(); props.</description>
  と書いたにも関わらず、そのまま放置になっていた（コメントで指摘されているのに気づいたのも今日だ。すまん）。
 概要 まずは java.awt.image.BufferedImage を byte 配列に変換する方法を紹介する。
 そのあと、java.awt.Image を java.awt.image.BufferedImage に変換する方法を紹介するので、このふたつを組み合わせれば、
-Image --&amp;gt; BufferedImage --&amp;gt; byte[]  が実現できるわけだ。
+Image --&amp;gt; BufferedImage --&amp;gt; byte[] が実現できるわけだ。
 BufferedImage を byte[] に変換する BufferedImage から byte 配列の変換は、javax.imageio.ImageWriter でわりかし素直に実装できる。
 BufferedImage image = ...; ByteArrayOutputStream bytesOut = new ByteArrayOutputStream(); ImageWriter writer = ImageIOKit.getImageWritersByFormatName(formatName); ImageOutputStream stream = ImageIO.createImageOutputStream(bytesOut); try { writer.setOutput(stream); writer.write(image); stream.flush(); } finally { writer.dispose(); if (stream != null) try { stream.</description>
     </item>
@@ -157,8 +158,8 @@ BufferedImage image = ...; ByteArrayOutputStream bytesOut = new ByteArrayOutputS
 Hibernate Querying 102 : The Criteria API
 Hibernate の Criteria API について網羅的に解説した記事。 実は、inner join も Criteria API で記述できることを知って驚いた。
 いままで、
-from Foo as foo inner join fetch foo.bar where foo.a = :a and foo.b between :x and :y order by foo.b desc  こんなふうに HQL で書いていた inner join も、
-getSession() .createCriteria(Foo.class) .add(Expression.eq(&amp;quot;a&amp;quot;, a)) .add(Expression.between(&amp;quot;b&amp;quot;, x, y)) .addOrder(Order.desc(&amp;quot;b&amp;quot;)) .createCriteria(&amp;quot;bar&amp;quot;) .list();  Criteria API で書ける。
+from Foo as foo inner join fetch foo.bar where foo.a = :a and foo.b between :x and :y order by foo.b desc こんなふうに HQL で書いていた inner join も、
+getSession() .createCriteria(Foo.class) .add(Expression.eq(&amp;quot;a&amp;quot;, a)) .add(Expression.between(&amp;quot;b&amp;quot;, x, y)) .addOrder(Order.desc(&amp;quot;b&amp;quot;)) .createCriteria(&amp;quot;bar&amp;quot;) .list(); Criteria API で書ける。
 Criteria の便利さと保守のしやすさを知るたびに、独自 SQL 文法で書く気が失せるな。</description>
     </item>
     
@@ -170,13 +171,13 @@ Criteria の便利さと保守のしやすさを知るたびに、独自 SQL 文
       <guid>http://ishikawa.github.io/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/</guid>
       <description>まあ、記事のタイトルがアレですけど&amp;hellip;
 Java の Image I/O で画像の縮小を行う方法として、AffineTransformOp を利用する方法がある。
-final double scale = 0.5; AffineTransformOp transformOp = new AffineTransformOp(AffineTransform.getScaleInstance(scale, scale), null); BufferedImage dest1 = new BufferedImage( (int)(originalImage.getWidth() * scale), (int)(originalImage.getHeight() * scale), originalImage.getType()); transformOp.filter(originalImage, dest1);  しかし、この方法だとジャギーが目立ってしまい、Flickr ほどキレイなサムネイルにはならない。
+final double scale = 0.5; AffineTransformOp transformOp = new AffineTransformOp(AffineTransform.getScaleInstance(scale, scale), null); BufferedImage dest1 = new BufferedImage( (int)(originalImage.getWidth() * scale), (int)(originalImage.getHeight() * scale), originalImage.getType()); transformOp.filter(originalImage, dest1); しかし、この方法だとジャギーが目立ってしまい、Flickr ほどキレイなサムネイルにはならない。
 たとえば、Flickr で見つけたこの写真。Flickr のサムネイルはこんな感じだが、
 AffineTransformOp を用いた方法だと、こうなってしまう。
 で、どうするかというと、AWT の AreaAveragingScaleFilter を使うのがいいようだ。以下、API リファレンスより抜粋：
  最近接点アルゴリズムよりもなめらかな結果が得られる、簡単な領域平均化アルゴリズムを使用してイメージをスケーリングする ImageFilter クラスです。
  では、試してみる。
-ImageFilter filter = new AreaAveragingScaleFilter(w, h); ImageProducer im = new FilteredImageSource(image.getSource(), filter); Image newImage = Toolkit.getDefaultToolkit().createImage(im);  フィルタした結果の java.</description>
+ImageFilter filter = new AreaAveragingScaleFilter(w, h); ImageProducer im = new FilteredImageSource(image.getSource(), filter); Image newImage = Toolkit.getDefaultToolkit().createImage(im); フィルタした結果の java.awt.Image を BufferedImage や byte 配列に変換する方法は次回。</description>
     </item>
     
     <item>
@@ -190,7 +191,7 @@ Apache XML-RPC ライブラリの複雑さとドキュメントのすくなさ�
 Redstone の前身である Marquee というライブラリは developerWorks に紹介記事だって載っている由緒正しい（？）XML-RPC ライブラリだ。
 最初は何も問題ないかのように思えた。すべてが順調で平和だった。API はシンプルで、ホームページの簡潔なチュートリアルも必要十分に思えた。
 だが、決して小さくはない欠陥がいくつもあることがわかってきた（バージョンは 1.0.1）。
- contentType の指定が無視される。 エラー処理がいいかげん     の faultCode がハードコーディングされている。 そのエンコーディングも ISO-8859-1 でハードコーディング。日本語書けない。せめて UTF-8 にしてよ&amp;hellip;    Base64 のコードがバグっていて、複数行にエンコードされていると対応できない。 カスタマイズが困難。    API がシンプルで一見、拡張しやすく見えるが、実際には重要なポイントが private だったりしてサブクラス化しづらい。 たとえば、XmlRpcDispatcher を拡張しても、それを使っている XmlRpcServer に独自の XmlRpcDispatcher を設定する API がない（ので、結局、こいつもサブクラス化して、さらに、サブクラス化した XmlRpcServer を使う XmlRpcServlet を書いて &amp;hellip;）。 XmlRpcParser は XML-RPC の xml を解析できるが、肝心の結果は private になっているため、これ単体で使えない。   実は 3.</description>
+ contentType の指定が無視される。 エラー処理がいいかげん    の faultCode がハードコーディングされている。 そのエンコーディングも ISO-8859-1 でハードコーディング。日本語書けない。せめて UTF-8 にしてよ&amp;hellip;    Base64 のコードがバグっていて、複数行にエンコードされていると対応できない。 カスタマイズが困難。    API がシンプルで一見、拡張しやすく見えるが、実際には重要なポイントが private だったりしてサブクラス化しづらい。 たとえば、XmlRpcDispatcher を拡張しても、それを使っている XmlRpcServer に独自の XmlRpcDispatcher を設定する API がない（ので、結局、こいつもサブクラス化して、さらに、サブクラス化した XmlRpcServer を使う XmlRpcServlet を書いて &amp;hellip;）。 XmlRpcParser は XML-RPC の xml を解析できるが、肝心の結果は private になっているため、これ単体で使えない。   実は 3.</description>
     </item>
     
     <item>
@@ -201,9 +202,9 @@ Redstone の前身である Marquee というライブラリは developerWorks �
       <guid>http://ishikawa.github.io/2007/01/11/subversion-primer-for-eclipse-java-projects/</guid>
       <description>Eclipse の Java プロジェクトを Subversion 管理するときの手順を、メモも兼ねて残しておこう。ちなみに、Eclipse での Subversion サポートに使っているのは Subclipse プラグイン。
 以下の $REPO 変数はプロジェクトを作成する、Subversion レポジトリの URL とする（たとえば、svn+ssh://svn.metareal.org/path/to/repo/project/）。
-% mkdir tmp % cd tmp % mkdir trunk branches tags % svn import -m &amp;quot;initial import&amp;quot; . $REPO % cd ../ % rm -rf tmp  Eclipse で新規 Java プロジェクトを作成する。
+% mkdir tmp % cd tmp % mkdir trunk branches tags % svn import -m &amp;quot;initial import&amp;quot; . $REPO % cd ../ % rm -rf tmp Eclipse で新規 Java プロジェクトを作成する。
 そして、新規作成されたプロジェクトのディレクトリに、Subversion レポジトリからチェックアウト。
-% cd /path/to/workspace/project/ % svn co $REPO/trunk .  いつも使っているディレクトリレイアウトを作成して必要なものを svn add しておく。
+% cd /path/to/workspace/project/ % svn co $REPO/trunk . いつも使っているディレクトリレイアウトを作成して必要なものを svn add しておく。
 % mkdir -p build/classes build/test-classes build/reports % mkdir -p docs/api % mkdir -p src/java src/test % svn add .</description>
     </item>
     
@@ -215,12 +216,12 @@ Redstone の前身である Marquee というライブラリは developerWorks �
       <guid>http://ishikawa.github.io/2006/12/13/xml-rpc-premature-end-of-file/</guid>
       <description>Java で XML-RPC の開発をしている。
 動作確認は UNIX コマンドの curl で手軽にすませているのだが、突然、すべての curl コマンドで Premature end of file. というエラーが出るようになった。
-[Fatal Error] :-1:-1: Premature end of file.  このエラーには見覚えがある。たしか、XML の絡んだ通信で接続状態が悪くなり、通信が途絶えた場合などに ぼろぼろ出ていたやつだ。つまり、XML が不完全なのだろう。
+[Fatal Error] :-1:-1: Premature end of file. このエラーには見覚えがある。たしか、XML の絡んだ通信で接続状態が悪くなり、通信が途絶えた場合などに ぼろぼろ出ていたやつだ。つまり、XML が不完全なのだろう。
 しかし、curl の POST で送っているデータをいくら調べてもおかしい部分が見つからない。 問題になりがちな改行を取り除いても、コンソールのエンコーディングを変更しても同じ。
 しかたがないので、デバッガでブレークポイントを設定し、動作を追ってみた。
 その結果、リクエストオブジェクトの入力ストリームから読み出す時点でデータが空なことが判明。つまり、curl で POST したデータを読みだせていないわけだ。
 では、何が原因でデータを読みだせていないんだろう？　curl の -v オプションの出力を眺めているうちに気がついた。
-POST /api/xmlrpc HTTP/1.1 User-Agent: curl/7.13.1 (powerpc-apple-darwin8.0) libcurl/7.13.1 OpenSSL/0.9.7l zlib/1.2.3 Host: example.com Pragma: no-cache Accept: */* Content-Length: 123 Content-Type: **application/x-www-form-urlencoded**  application/x-www-form-urlencoded で POST しているせいだ。
+POST /api/xmlrpc HTTP/1.1 User-Agent: curl/7.13.1 (powerpc-apple-darwin8.0) libcurl/7.13.1 OpenSSL/0.9.7l zlib/1.2.3 Host: example.com Pragma: no-cache Accept: */* Content-Length: 123 Content-Type: **application/x-www-form-urlencoded** application/x-www-form-urlencoded で POST しているせいだ。
 Content-Type が application/x-www-form-urlencoded だと、HttpServletRequest がパラメータとして解析するために先に入力を読みだしてしまうので、HttpServletRequest#getInputStream() から読みだすときは空なわけだ。</description>
     </item>
     
@@ -238,7 +239,7 @@ org.xml.sax.helpers.XMLReaderFactory.createXMLReader() を使っているので�
 SAX サポートを追加するための nanoxml-sax-2.2.3.jar を含めても、40KB に満たないコンパクトさだ（なお、NanoXML Lite というバージョンもあり、こちらは 6KB 以下）。ただ、残念なことに SAX 2 が実装されていないようだった。
 他方、Piccolo では SAX2 が実装されているようなので、こちらを使うことにする。ドキュメントをよると、 開発に構文解析器 (JFlex)とコンパイラ・コンパイラ (BYACC/J) を用いているのがユニークな点らしい。
 SAX パーサは java コマンドに -D オプションで指定するのが一般的だが、今回は System.setProperty で指定した。Piccolo の SAX2 パーサは com.bluecast.xml.Piccolo になる。
-System.setProperty(&amp;quot;org.xml.sax.driver&amp;quot;, &amp;quot;com.bluecast.xml.Piccolo&amp;quot;); ...  これで無事、ユニットテストが動作した。</description>
+System.setProperty(&amp;quot;org.xml.sax.driver&amp;quot;, &amp;quot;com.bluecast.xml.Piccolo&amp;quot;); ... これで無事、ユニットテストが動作した。</description>
     </item>
     
     <item>
@@ -266,7 +267,7 @@ RPC の結果として不正な XML が返ってきた場合のエラー処理�
       <guid>http://ishikawa.github.io/2006/12/09/apache-xmlrpc-filename/</guid>
       <description>Apache XML-RPC で 配布されている .jar は依存ライブラリを除くと 3 つあるのですが、
  xmlrpc-client-3.0.jar xmlrpc-common-3.0.jar xmlrpc-server-3.0.jar  ファイル名を Mac の Finder からエディタにコピペして気づいた。
-xmlrpc-client-3.0.jar xmlrpc-common-3.0.jar xmlrpc-server-3.0.jar  すべて文字数が一緒なんです。</description>
+xmlrpc-client-3.0.jar xmlrpc-common-3.0.jar xmlrpc-server-3.0.jar すべて文字数が一緒なんです。</description>
     </item>
     
   </channel>

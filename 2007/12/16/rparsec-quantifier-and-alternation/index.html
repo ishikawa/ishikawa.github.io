@@ -7,59 +7,51 @@
   <title>rparsec での繰り返しと選択</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/12/16/rparsec-quantifier-and-alternation/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>rparsec での繰り返しと選択</h1>
   <div class="metadata">
-    <p class="date">2007/12/16 11:10am</p>
+    <p class="date">
+      2007/12/16 11:10am
+    </p>
   </div>
   <div class="content">
-    
-
-<p><a href="http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec">rparsec</a> では文法要素の繰り返しを指定する方法が複数用意されている。</p>
-
+    <p><a href="http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec">rparsec</a> では文法要素の繰り返しを指定する方法が複数用意されている。</p>
 <h3 id="繰り返し">繰り返し</h3>
-
 <p>まずは「<a href="http://weblog.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/">RParsec の many と many_ の違い</a>」でも解説した <a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000016"><code>many</code></a> と <a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000015"><code>many_</code></a> があり、これで m 回以上の繰り返しを指定できる（正規表現でいう <code>*</code>, <code>+</code>, <code>{n,}</code>）。</p>
-
 <p><a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000014"><code>repeat</code></a>, <a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000013"><code>repeat_</code></a> は m 回以上、最大 n 回の繰り返しを指定できる（正規表現でいえば <code>{m,n}</code>）。また、<a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000018"><code>some</code></a>, <a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000017"><code>some_</code></a> では最大 n 回の繰り返しを指定できる（正規表現でいえば <code>{0,n}</code>。実際のところ、some は <code>min</code> 引数に <code>0</code> を指定して、repeat を呼び出しているにすぎない）。</p>
-
 <p>なお、メソッド名の最後にあるアンダースコアの有無については、「<a href="http://weblog.metareal.org/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/">RParsec の many と many_ の違い</a>」で解説したとおりで、アンダースコアのつかないメソッドはすべての結果を配列で返し、アンダースコアのつくメソッドは最後の結果のみを返す。</p>
-
 <h3 id="選択">選択</h3>
-
 <p>正規表現でいうところの選択も用意されている。このためのメソッドは <code>|</code> なので、見た目は正規表現と似通っている。</p>
-
 <p>たとえば、以下のコードは、</p>
-
 <pre><code>number | word
-</code></pre>
-
-<p>数値、または一般的な識別子を解釈するためのパーサになる。</p>
-
+</code></pre><p>数値、または一般的な識別子を解釈するためのパーサになる。</p>
 <p>また、文法要素のグループ化は簡単で、通常の Ruby プログラムと同じく括弧で囲めばよい。たとえば、空白区切りの数値、または識別子を解釈するためのパーサは以下のように書ける。</p>
-
 <pre><code>parser = ((number | word) &lt;&lt; whitespace.many_).many
 parser.parse(&quot;123 abc 56.7&quot;) =&gt; [&quot;123&quot;, &quot;abc&quot;, &quot;56.7&quot;]
-</code></pre>
-
-<p><a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000022"><code>Parser#delimited</code></a> を使って、もっと直感的に書くこともできる。</p>
-
+</code></pre><p><a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000022"><code>Parser#delimited</code></a> を使って、もっと直感的に書くこともできる。</p>
 <pre><code>parser = (number | word).delimited(whitespaces)
 parser.parse(&quot;123 abc 56.7&quot;) =&gt; [&quot;123&quot;, &quot;abc&quot;, &quot;56.7&quot;]
 </code></pre>
-
   </div>
 </article>
 
@@ -80,7 +72,7 @@ parser.parse(&quot;123 abc 56.7&quot;) =&gt; [&quot;123&quot;, &quot;abc&quot;, 
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

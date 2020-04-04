@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://ishikawa.github.io/en/tags/elixir/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/tags/elixir/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/tags/elixir/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/en/post/2016/09/gzip-compression-in-cowboy/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/post/2016/09/gzip-compression-in-cowboy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/post/2016/09/gzip-compression-in-cowboy/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/en/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/en/tags/phoenix-framework/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/tags/phoenix-framework/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/tags/phoenix-framework/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/en/post/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/post/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/en/tags/</loc>
+    <lastmod>2016-09-25T14:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/en/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/categories/"
+                />
+  </url>
+  
+</urlset>

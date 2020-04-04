@@ -7,56 +7,52 @@
   <title>YUI の fonts.css だと pre &gt; code がでっかくなっちゃうね</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/07/17/yui-fonts-css-bigger-pre-code/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>YUI の fonts.css だと pre &gt; code がでっかくなっちゃうね</h1>
   <div class="metadata">
-    <p class="date">2007/07/17 10:31am</p>
+    <p class="date">
+      2007/07/17 10:31am
+    </p>
   </div>
   <div class="content">
     <p><a href="http://developer.yahoo.com/yui/">Yahoo! UI Library (YUI)</a> の <a href="http://developer.yahoo.com/yui/fonts/">fonts.css</a> では <code>pre</code> と <code>code</code> を次のようにスタイルづけしている。</p>
-
 <pre><code>/**
  * Bump up !IE to get to 13px equivalent
  */
 pre, code {font:115% monospace;*font-size:100%;}
-</code></pre>
-
-<p>要するに、</p>
-
+</code></pre><p>要するに、</p>
 <ul>
 <li>等幅フォント</li>
 <li>IE では <code>font-size:100%</code></li>
 <li>それ以外は <code>font-size:115%</code></li>
 </ul>
-
 <p>ってことなんだが、このブログみたいにサンプルコードとかを pre 要素と code 要素でマークアップしている場合は IE 以外でフォントが大きくなってしまう（<code>font-size:115%</code> が二回適用される）。</p>
-
 <p>なので、別のスタイルシートにでも</p>
-
 <pre><code>pre &gt; code { font-size: 100%; }
-</code></pre>
-
-<p>こういうのを追加しておくといい、と思った。ただ、実際にはインラインのコード片には code 要素を使っていて、これも <code>font-size:115%</code> とかされると行間がガタガタになってしまうので、単純に、</p>
-
+</code></pre><p>こういうのを追加しておくといい、と思った。ただ、実際にはインラインのコード片には code 要素を使っていて、これも <code>font-size:115%</code> とかされると行間がガタガタになってしまうので、単純に、</p>
 <pre><code>code { font-size: 100%; }
-</code></pre>
-
-<p>とかしてしまった方がいいかも（このへん、いつか整理しないと駄目だな&hellip;）。</p>
-
+</code></pre><p>とかしてしまった方がいいかも（このへん、いつか整理しないと駄目だな&hellip;）。</p>
 <p>ちなみに、プロパティ名の先頭にアスタリスクをつける CSS ハックが、fonts.css の随所で使われているが、これについては以下のブログ記事を参照。</p>
-
 <blockquote>
 <ul>
 <li><a href="http://hail2u.net/blog/webdesign/asterisk-hack.html">アスタリスクをプロパティ名の頭につけるというCSSハック</a></li>
@@ -83,7 +79,7 @@ pre, code {font:115% monospace;*font-size:100%;}
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

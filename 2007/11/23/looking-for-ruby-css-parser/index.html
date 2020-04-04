@@ -7,32 +7,37 @@
   <title>Ruby の CSS パーサはどこですか？</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/11/23/looking-for-ruby-css-parser/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Ruby の CSS パーサはどこですか？</h1>
   <div class="metadata">
-    <p class="date">2007/11/24 2:58am</p>
+    <p class="date">
+      2007/11/24 2:58am
+    </p>
   </div>
   <div class="content">
-    
-
-<p>「Ruby で書かれた CSS パーサを探しています」メモ。</p>
-
-<h3 id="ruby-css-parser-http-rubyforge-org-projects-cssparser"><a href="http://rubyforge.org/projects/cssparser/">Ruby CSS Parser</a></h3>
-
+    <p>「Ruby で書かれた CSS パーサを探しています」メモ。</p>
+<h3 id="ruby-css-parserhttprubyforgeorgprojectscssparser"><a href="http://rubyforge.org/projects/cssparser/">Ruby CSS Parser</a></h3>
 <p>最近 RubyForge に登録されたばかりのプロジェクト</p>
-
 <ul>
 <li><code>gem install css_parser</code> で試してみる</li>
 <li>いきなり、<a href="http://code.dunae.ca/css_parser/">ドキュメント</a>と実際の挙動が違う。</li>
@@ -41,11 +46,8 @@
 <li><a href="http://www.w3.org/StyleSheets/home.css">W3C のスタイルシート</a>で試してみたがエラー</li>
 <li>まだ実用ではない、ということだろう</li>
 </ul>
-
-<h3 id="csspool-http-rubyforge-org-projects-csspool"><a href="http://rubyforge.org/projects/csspool/">csspool</a></h3>
-
+<h3 id="csspoolhttprubyforgeorgprojectscsspool"><a href="http://rubyforge.org/projects/csspool/">csspool</a></h3>
 <p>W3C で公開されている CSS パーサのための共通 API <a href="http://www.w3.org/TR/SAC/">SAC</a>（<a href="http://www2.airnet.ne.jp/sardine/docs/NOTE-SAC-20000728.ja.html">和訳</a>）の Ruby による実装。</p>
-
 <ul>
 <li>なので、委員会っぽい API</li>
 <li>あらかじめ <a href="http://i.loveruby.net/ja/projects/racc/">racc</a>, <a href="http://onestepback.org/software/flexmock/">flexmock</a> のインストールが必要</li>
@@ -53,7 +55,6 @@
 <li>パースできるファイルとできないファイルがある</li>
 <li><code>@charset</code> 規則があるものは駄目</li>
 </ul>
-
 <p>うーん、単に特定のプロパティをもつセレクタを抜き出したいだけなんだが、どちらのライブラリでも出来ないという罠。自分で書き捨てのスクリプトでも書いて、急場を凌ぐしかないのか。</p>
 
   </div>
@@ -76,7 +77,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

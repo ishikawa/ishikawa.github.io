@@ -7,32 +7,38 @@
   <title>サイドバーの Archives で日付表記を変更する</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2006/12/08/wordpress-archives-date-format/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>サイドバーの Archives で日付表記を変更する</h1>
   <div class="metadata">
-    <p class="date">2006/12/08 9:30am</p>
+    <p class="date">
+      2006/12/08 9:30am
+    </p>
   </div>
   <div class="content">
     <p>WordPress のサイドバーに表示されている「Archives」だが、日付の表記が「November 2006」のようになっている。<strong>私の推測では</strong> November が何月なのか、すぐにわかる人はすくないはずだ。できれば、ここはなんとかしたい。</p>
-
 <p>管理画面の「Options」にあった「Date and Time」の設定を変更してみた。しかし、<strong>どこにも反映されている気配がない</strong>ので（わざわざ <a href="http://php.net/date">PHP のドキュメント</a>を読んだっていうのに&hellip;）、ソースコードを調べることにする。</p>
-
 <p>テンプレートを眺めてみると、<code>wp_get_archives</code> という PHP の関数を呼び出している。で、こいつは引数の解析だけやって、実際の処理は <code>get_archives</code> 関数が行う。</p>
-
 <p>ファイルは <code>wp-includes/template-functions-general.php</code> の 300 行目あたり。</p>
-
 <pre><code>function get_archives($type='', $limit='', $format='html', $before = '', $after = '', $show_post_count = false) {
   ...
   if ( 'monthly' == $type ) {
@@ -48,10 +54,7 @@
     }
   } elseif ( 'daily' == $type ) {
   ...
-</code></pre>
-
-<p>どうやら月別表示のフォーマットは <code>sprintf</code> で決め打ちらしいので、アドホックなコードにはアドホックな修正で対応する。PHP でプログラミングをしたことはないが、まあ<strong>適当に書いたら動くだろう</strong>、という魂胆。</p>
-
+</code></pre><p>どうやら月別表示のフォーマットは <code>sprintf</code> で決め打ちらしいので、アドホックなコードにはアドホックな修正で対応する。PHP でプログラミングをしたことはないが、まあ<strong>適当に書いたら動くだろう</strong>、という魂胆。</p>
 <pre><code>function get_archives($type='', $limit='', $format='html', $before = '', $after = '', $show_post_count = false) {
   ...
   if ( 'monthly' == $type ) {
@@ -60,9 +63,7 @@
       if ( $show_post_count ) {
         $after = ' ('.$arcresult-&gt;posts.')' . $afterafter;
       }
-</code></pre>
-
-<p>これで「November 2006」が「2006/11」と表示されるようになった。</p>
+</code></pre><p>これで「November 2006」が「2006/11」と表示されるようになった。</p>
 
   </div>
 </article>
@@ -84,7 +85,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

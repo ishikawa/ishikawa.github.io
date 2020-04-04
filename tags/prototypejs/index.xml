@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>prototypejs on METAREAL</title>
@@ -19,14 +19,14 @@
       
       <guid>http://ishikawa.github.io/2008/01/30/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security/</guid>
       <description>気づけば Prototype 1.6.0.2 がリリースされていた。
- 28 のバグ修正と性能の向上 Safari 3 における Element#getElementsBySelector の性能向上 すべてのブラウザで以下のメソッドの性能向上 Element#up, Element#down Element#next, Element#previous Event#findElement
- Opera 9.25 以降が公式にサポート対象となった
- ブラウザ以外の環境での XSS 脆弱性の可能性を修正
+  28 のバグ修正と性能の向上
+  Safari 3 における Element#getElementsBySelector の性能向上
+  すべてのブラウザで以下のメソッドの性能向上 Element#up, Element#down Element#next, Element#previous Event#findElement
+  Opera 9.25 以降が公式にサポート対象となった
+  ブラウザ以外の環境での XSS 脆弱性の可能性を修正
   Safari 3 における getElementsBySelector Safari では無効になっていた DOM 3 XPath が有効になったようだ（無効になっていたのは Safari のバグ絡み？）。ただし、Selector#shouldUseXPath が false を返した場合は、いままでどおり無効になる。
 ブラウザ以外の環境での XSS 脆弱性の修正 これまで Ajax.Request における JavaScript の実行（Automatic JavaScript response evaluation）では、
- オプションで evalJS が設定されていること Content-Type が JavaScript であること  をチェックしており、同じドメイン（プロトコルやポートも）に属しているかどうかの制約はブラウザの実装に任されていた。
-しかし、Opera のウィジェットのようなブラウザ以外の環境では、こうした制約を課していないため XSS 脆弱性の原因となる可能性があった。そのため、今回のバージョンから自前でチェックするようになったようだ（Ajax.Request#isSameOrigin）。
-また、同様のセキュリティに関する修正が施された 1.</description>
+ オプションで evalJS が設定されていること Content-Type が JavaScript であること  をチェックしており、同じドメイン（プロトコルやポートも）に属しているかどうかの制約はブラウザの実装に任されていた。</description>
     </item>
     
     <item>
@@ -48,11 +48,11 @@
       <description>Prototype 1.6.0 RC のイベント API について紹介するシリーズも今回が最後。
 カスタム・イベント あらかじめ定義された組み込みのイベント click や submit 以外にも、ユーザーが好きなイベントを発生させることができるようになった。
 たとえば、こんな HTML があるとして、
-&amp;lt;div id=&amp;quot;container&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;&amp;lt;span id=&amp;quot;title&amp;quot;&amp;gt;Release notes&amp;lt;/span&amp;gt;&amp;lt;/h1&amp;gt; ... &amp;lt;/div&amp;gt;  Element#fire（実体は Event.fire）メソッドを使って、タイトルが変更された、という通知を送る（イベントを発生させる）ことができる。
-$(&amp;quot;title&amp;quot;).fire(&amp;quot;titleChanged&amp;quot;);  当然、受け手も必要なわけで、組み込みのイベントと同様、Element#observe でコールバック関数を登録できる。
-$(&amp;quot;container&amp;quot;).observe(&amp;quot;titleChanged&amp;quot;, function(event) { this.highlight({ duration: 0.5 }); });  ちなみに、Event.fire メソッドは内部で次のどちらかの処理を行う。
+&amp;lt;div id=&amp;quot;container&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;&amp;lt;span id=&amp;quot;title&amp;quot;&amp;gt;Release notes&amp;lt;/span&amp;gt;&amp;lt;/h1&amp;gt; ... &amp;lt;/div&amp;gt; Element#fire（実体は Event.fire）メソッドを使って、タイトルが変更された、という通知を送る（イベントを発生させる）ことができる。
+$(&amp;quot;title&amp;quot;).fire(&amp;quot;titleChanged&amp;quot;); 当然、受け手も必要なわけで、組み込みのイベントと同様、Element#observe でコールバック関数を登録できる。
+$(&amp;quot;container&amp;quot;).observe(&amp;quot;titleChanged&amp;quot;, function(event) { this.highlight({ duration: 0.5 }); }); ちなみに、Event.fire メソッドは内部で次のどちらかの処理を行う。
  ブラウザが DOM Events をサポートしていれば、document.createEvent でイベントを作成し、element.dispatchEvent でイベントを発生 そうでなければ、document.createEventObject でイベントを作成し、element.fireEvent でイベントを発生  クロスブラウザな DOMContentLoaded イベント window.onload 前でも DOM 処理が可能なら通知してくれる domready.js でも紹介した DOMContentLoaded がサポートされた。
-document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... })  従来の Element#observe メソッドを通して、透過的に扱うことができる。</description>
+document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... }) 従来の Element#observe メソッドを通して、透過的に扱うことができる。</description>
     </item>
     
     <item>
@@ -65,10 +65,10 @@ document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... })  従来�
 Event.stopObserving で複数のイベント登録を解除できるようになった イベントのコールバック関数は Event.observe や Element#observe で登録し、
  Event.stopObserving Element#stopObserving  で登録を解除できる。
 これまで stopObserving() で登録を解除するには observe() に渡した引数と同じものを渡す必要があった。つまり、
-Event.observe(&#39;signinForm&#39;, &#39;submit&#39;, checkForm);  でコールバック関数 checkForm を登録した場合は、
-Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm);  としていたはず。
+Event.observe(&#39;signinForm&#39;, &#39;submit&#39;, checkForm); でコールバック関数 checkForm を登録した場合は、
+Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm); としていたはず。
 1.6.0 では引数を省略することで、対応するコールバック関数すべてを解除できるようになった。
-// checkForm を解除 Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm); // signinForm の submit イベントに登録されたコールバック関数を解除 Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;); // signinForm に登録されたコールバック関数を解除 Event.stopObserving(&#39;signinForm&#39;);  これまで removeEventListener や detachEvent の単なるラッパーに近かった stopObserving だが、これでだいぶ使いやすくなった。</description>
+// checkForm を解除 Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm); // signinForm の submit イベントに登録されたコールバック関数を解除 Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;); // signinForm に登録されたコールバック関数を解除 Event.stopObserving(&#39;signinForm&#39;); これまで removeEventListener や detachEvent の単なるラッパーに近かった stopObserving だが、これでだいぶ使いやすくなった。</description>
     </item>
     
     <item>
@@ -80,7 +80,7 @@ Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm);  とし�
       <description>随分と間が空いてしまった。前回の記事 Prototype 1.6.0 で大きく進化したイベント API に引き続き、Prototype 1.6.0 RC で導入された、イベント API の変更点を見ていく。
 イベントオブジェクトの拡張 これまでも、たとえば $() から返された DOM 要素は Element.extend で色々と便利なメソッドが追加されていたが、1.6.0 からはイベントのコールバックに渡されるイベントオブジェクトでも Event.extend されるようになった。
 これからはコールバック関数でこんなふうに書ける。
-function onClickListener(event) { if (event.isLeftClick()) { ... } }  また、IE の場合は他のモダンブラウザとの差異をなくすため、以下のプロパティも追加されている。
+function onClickListener(event) { if (event.isLeftClick()) { ... } } また、IE の場合は他のモダンブラウザとの差異をなくすため、以下のプロパティも追加されている。
  target relatedTarget pageX pageY  また、Document Object Model Events に準拠した、
  stopPropagation() preventDefault()  メソッドも追加されているようだ。（更につづく）</description>
     </item>
@@ -96,7 +96,7 @@ function onClickListener(event) { if (event.isLeftClick()) { ... } }  また、I
  として prototype.js のブラウザ判定コードを紹介した。iPhone を含む WebKit ベースのブラウザも判別できる。
 WebKit Detect script Surfin’ Safari の WebKit Detect script updated for iPhone and iPod touch で知った。WebKit detection script というものがあるらしい。
 記事では iPhone と iPod touch もサポートしたよ、と書かれている。ソースコードではこんな感じ、
-WebKitDetect.isWebKit = function isWebKit() { return RegExp(&amp;quot; AppleWebKit/&amp;quot;).test(navigator.userAgent); } ... WebKitDetect.isMobile = function isMobile() { return WebKitDetect.isWebKit() &amp;amp;amp;&amp;amp;amp; RegExp(&amp;quot; Mobile/&amp;quot;).test(navigator.userAgent); }  つまり、User-Agent に、
+WebKitDetect.isWebKit = function isWebKit() { return RegExp(&amp;quot; AppleWebKit/&amp;quot;).test(navigator.userAgent); } ... WebKitDetect.isMobile = function isMobile() { return WebKitDetect.isWebKit() &amp;amp;amp;&amp;amp;amp; RegExp(&amp;quot; Mobile/&amp;quot;).test(navigator.userAgent); } つまり、User-Agent に、
  &amp;ldquo;AppleWebKit/&amp;rdquo; があれば WebKit &amp;ldquo;Mobile/&amp;rdquo; があれば携帯端末  ということのようだ。</description>
     </item>
     
@@ -109,12 +109,12 @@ WebKitDetect.isWebKit = function isWebKit() { return RegExp(&amp;quot; AppleWebK
       <description>Prototype 1.6.0 RC にはいくつもの変更点がある。
 特に イベント周りの API で顕著だ。Event.observe メソッドなど、お馴染みの API が大幅に手を加えられている。
 Event.observe で登録したコールバックの this いままで Event.observe でコールバック関数を登録するときは、コールバックが呼ばれたときの this を固定するため（と、引数に event が確実に渡ってくるように）、
-var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onClickEventListener.bindAsEventListener(element));  Function#bindAsEventListener を使っていたと思う。
+var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onClickEventListener.bindAsEventListener(element)); Function#bindAsEventListener を使っていたと思う。
 これが 1.6.0 では、Event.observe や Element.observe で登録したコールバック関数はすべてのブラウザで、this がイベントの発生した DOM 要素となるように変更された。
 そのため、上記のコードはシンプルに、
-var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onClickEventListener);  と書けるようになった。
+var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onClickEventListener); と書けるようになった。
 もっとも、コールバック関数を登録するオブジェクト（コントローラー）自身を this にすることの方が多いかもしれない。その場合は bind する必要がある。
-var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onClickEventListener.bind(this));  コールバック関数の this を固定する処理 すでに Function#bind や Function#bindAsEventListener が紹介されつくしているご時世に今更な感もあるが、Event.</description>
+var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onClickEventListener.bind(this)); コールバック関数の this を固定する処理 すでに Function#bind や Function#bindAsEventListener が紹介されつくしているご時世に今更な感もあるが、Event.observe で登録したコールバック関数の this を固定している処理を見てみよう。</description>
     </item>
     
     <item>
@@ -124,11 +124,11 @@ var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onC
       
       <guid>http://ishikawa.github.io/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</guid>
       <description>prototype.js には 1.5.1 から、各種ブラウザを判定するための Prototype.Browser が定義されている。
-var Prototype = { ... Browser: { IE: !!(window.attachEvent &amp;amp;&amp;amp; !window.opera), Opera: !!window.opera, WebKit: navigator.userAgent.indexOf(&#39;AppleWebKit/&#39;) &amp;gt; -1, Gecko: navigator.userAgent.indexOf(&#39;Gecko&#39;) &amp;gt; -1 &amp;amp;&amp;amp; navigator.userAgent.indexOf(&#39;KHTML&#39;) == -1, ...  使い方は一目瞭然だろう。
+var Prototype = { ... Browser: { IE: !!(window.attachEvent &amp;amp;&amp;amp; !window.opera), Opera: !!window.opera, WebKit: navigator.userAgent.indexOf(&#39;AppleWebKit/&#39;) &amp;gt; -1, Gecko: navigator.userAgent.indexOf(&#39;Gecko&#39;) &amp;gt; -1 &amp;amp;&amp;amp; navigator.userAgent.indexOf(&#39;KHTML&#39;) == -1, ... 使い方は一目瞭然だろう。
 たとえば Internet Explorer の場合は Prototype.Browser.IE が、Safari など WebKit を利用しているブラウザでは Prototype.Browser.WebKit が true になる。
 Prototype 1.6.0 RC での Prototype.Browser そして、Prototype 1.6.0 RC では、ここに新しい定義が追加された。
 iPhone だ。
-var Prototype = { Version: &#39;1.6.0_rc0&#39;, Browser: { IE: !!(window.attachEvent &amp;amp;&amp;amp; !</description>
+var Prototype = { Version: &#39;1.6.0_rc0&#39;, Browser: { IE: !!(window.attachEvent &amp;amp;&amp;amp; !window.opera), Opera: !</description>
     </item>
     
     <item>
@@ -140,7 +140,7 @@ var Prototype = { Version: &#39;1.6.0_rc0&#39;, Browser: { IE: !!(window.attachE
       <description>Prototype 1.6.0 のリリース候補版が公開されたようだ。
  Prototype JavaScript framework: Prototype 1.6.0 release candidate Riding Rails: Prototype 1.6.0 release candidate  変更点が多い。目を引くものとしては、クラスの継承がサポートされた。新しい Class.create では親クラスを指定できる。いままでは Object.extend によるコピーで擬似的な継承をしていただけなので、これは嬉しいかもしれない。
 クロスブラウザな DOMContentLoaded イベント また、「window.onload 前でも DOM 処理が可能なら通知してくれる domready.js」という記事でも書いた、DOMContentLoaded がサポートされた。
-document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... })  従来の Element#observe メソッドを通して、透過的に扱うことができる。これで、先の記事にアップしていた domready.js は不要になるだろう。
+document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... }) 従来の Element#observe メソッドを通して、透過的に扱うことができる。これで、先の記事にアップしていた domready.js は不要になるだろう。
 1.6.0 には他にも色々面白そうな機能が追加されている。暇があるときに追々調べていくつもり。</description>
     </item>
     
@@ -151,12 +151,12 @@ document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... })  従来�
       
       <guid>http://ishikawa.github.io/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</guid>
       <description>prototype.js の $$ 関数（実際の処理は Selector.findChildElements）は CSS セレクタを受け取り、セレクタにマッチする要素を配列で返してくれる。
-var links = $$(&#39;#contents a&#39;);  だが、単純にひとつのセレクタだけではなくて、複数のセレクタを引数に渡したり、CSS と同じく、カンマ区切りで複数指定することもできる（結果は重複要素のない配列となって返ってくる）。
-var links = $$(&amp;quot;#contents a&amp;quot;, &amp;quot;#footer .items a&amp;quot;);  このコードは、こう書くこともできる。
-var links = $$(&amp;quot;#contents a, #footer .items a&amp;quot;);  そして、いまさらながら気づいたのは、これらの特徴を利用すれば、DOM の処理を CSS のように宣言的に書くのが可能だ、ということ。
+var links = $$(&#39;#contents a&#39;); だが、単純にひとつのセレクタだけではなくて、複数のセレクタを引数に渡したり、CSS と同じく、カンマ区切りで複数指定することもできる（結果は重複要素のない配列となって返ってくる）。
+var links = $$(&amp;quot;#contents a&amp;quot;, &amp;quot;#footer .items a&amp;quot;); このコードは、こう書くこともできる。
+var links = $$(&amp;quot;#contents a, #footer .items a&amp;quot;); そして、いまさらながら気づいたのは、これらの特徴を利用すれば、DOM の処理を CSS のように宣言的に書くのが可能だ、ということ。
 CSS 風に DOM プログラミング たとえば、フォーム入力画面で最初のテキストフィールドまたはテキストエリアを取り出す場合は、
-$$( &amp;quot;form input[type=text]&amp;quot;, &amp;quot;form textarea&amp;quot; ).slice(0, 1)  と書けるので、以前の domready.js と組み合わせると、読み込み時に最初のテキストフィールドまたはテキストエリアを選択状態にするコードは以下のように書ける。
-Event.domReady.add(function() { // Select initial first responder when the window is first placed onscreen. $$( &amp;quot;form input[type=text]&amp;quot;, &amp;quot;form textarea&amp;quot; ).</description>
+$$( &amp;quot;form input[type=text]&amp;quot;, &amp;quot;form textarea&amp;quot; ).slice(0, 1) と書けるので、以前の domready.js と組み合わせると、読み込み時に最初のテキストフィールドまたはテキストエリアを選択状態にするコードは以下のように書ける。
+Event.domReady.add(function() { // Select initial first responder when the window is first placed onscreen. $$( &amp;quot;form input[type=text]&amp;quot;, &amp;quot;form textarea&amp;quot; ).slice(0, 1).</description>
     </item>
     
   </channel>

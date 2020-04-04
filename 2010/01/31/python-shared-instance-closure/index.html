@@ -7,42 +7,47 @@
   <title>Python のクロージャとレキシカル変数を使ったシングルトンっぽいもの</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2010/01/31/python-shared-instance-closure/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Python のクロージャとレキシカル変数を使ったシングルトンっぽいもの</h1>
   <div class="metadata">
-    <p class="date">2010/01/31 6:26pm</p>
+    <p class="date">
+      2010/01/31 6:26pm
+    </p>
   </div>
   <div class="content">
     <p>実際にはシングルトンではなくて、共有インスタンスを返すメソッドを実装する、ってだけなんだけど。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>(object):
 
-<pre><code class="language-python">class A(object):
-
-    @staticmethod
-    def shared():
-        instance = A()
-        A.shared = staticmethod(lambda: instance)
-        return instance
-</code></pre>
-
-<ol>
+    <span style="color:#a6e22e">@staticmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">shared</span>():
+        instance <span style="color:#f92672">=</span> A()
+        A<span style="color:#f92672">.</span>shared <span style="color:#f92672">=</span> staticmethod(<span style="color:#66d9ef">lambda</span>: instance)
+        <span style="color:#66d9ef">return</span> instance
+</code></pre></div><ol>
 <li>共有インスタンスとなるオブジェクトを生成し、レキシカル変数にバインドする</li>
 <li>このオブジェクトを返す無名関数で、元の関数 shared を置き換える</li>
 </ol>
-
 <p>何が嬉しいかというと、共有インスタンスを参照するための変数（今回の場合は <code>instance</code>）を関数外から不可視にできること。変数のスコープが必要以上に広いと不安になります。実行時に遅延インスタンス化されるのが嫌なら、クラス定義の直後に一度呼び出すなりすればいいと思う。</p>
-
 <p><a href="http://gist.github.com/290628">gist:290628</a> に doctest とか追加したものを置いてあります。</p>
 
   </div>
@@ -65,7 +70,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

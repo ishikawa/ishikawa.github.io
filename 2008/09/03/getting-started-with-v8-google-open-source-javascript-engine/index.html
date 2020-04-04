@@ -7,80 +7,65 @@
   <title>Google Chrome に搭載されたオープンソースの JavaScript エンジン &#34;v8&#34; を試す</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Google Chrome に搭載されたオープンソースの JavaScript エンジン &#34;v8&#34; を試す</h1>
   <div class="metadata">
-    <p class="date">2008/09/03 9:28am</p>
+    <p class="date">
+      2008/09/03 9:28am
+    </p>
   </div>
   <div class="content">
-    
-
-<p><a href="http://googlejapan.blogspot.com/2008/09/blog-post.html">その発表</a>から世間を騒がせた、Google の Web ブラウザ <strong>Chrome</strong> が遂に<a href="http://www.google.com/chrome">公開された</a>。</p>
-
+    <p><a href="http://googlejapan.blogspot.com/2008/09/blog-post.html">その発表</a>から世間を騒がせた、Google の Web ブラウザ <strong>Chrome</strong> が遂に<a href="http://www.google.com/chrome">公開された</a>。</p>
 <p>Mac ユーザなうえに、日々の Web ブラウジングは Safari と iPhone で満足していることもあり、Chrome 自体への興味は薄い。しかし、オープンソースの JavaScript エンジンも独自開発している、となると話は別だ。しかも、<a href="http://www.strongtalk.org/">Strongtalk</a> や <a href="http://java.sun.com/javase/technologies/hotspot/">HotSpot Java VM</a> の開発者が関わっている、というのだから俄然興味が湧いてくる（<a href="http://www.avibryant.com/2008/09/chrome-v8-and-s.html">参考記事</a>）。</p>
-
 <p>Google が開発、公開している JavaScript 処理系は、その名も <a href="http://code.google.com/p/v8/">v8</a>。</p>
-
 <h3 id="v8-の特徴">v8 の特徴</h3>
-
 <p>では、v8 には既存の処理系に比べて、どのような利点があるのだろうか。Google がわざわざ独自に開発し、Chrome という重要なプロダクトに搭載して公開するくらいだから、そこには他の処理系では達成できないアドバンテージがあるはずである。</p>
-
 <p>Google Code で公開されている文書 <a href="http://code.google.com/apis/v8/design.html">Design Elements</a> から概観をつかんでみよう。</p>
-
 <p><a href="http://code.google.com/apis/v8/design.html#prop_access">オブジェクトのプロパティへのアクセスが高速</a>
 JavaScript ではオブジェクトのプロパティを自由に追加・削除できる。</p>
-
 <p>これを実現するためには、ハッシュ表や二分木といった<a href="http://ja.wikipedia.org/wiki/%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97">辞書</a>による実装が一般的だが、そうするとプロパティにアクセスするたびに辞書を検索しなくてはいけない。</p>
-
 <p>v8 では <strong>hidden class</strong> という実装テクニックを用いることにより、オブジェクトのプロパティへのアクセス方法が、オブジェクトの格納されているメモリのオフセットへのアクセスとなる。そのため、無駄な検索を省くことができ、高速なアクセスを実現している。</p>
-
 <p><a href="http://code.google.com/apis/v8/design.html#mach_code">動的なマシンコード生成</a>
 JavaScript のコードは最初に実行されるときにマシンコードに変換される。<strong>バイトコードやインタプリタはない</strong>。また、プロパティへのアクセスは特別扱いされ、インライン・キャッシュという Smalltalk 実装系由来の技法が使われているらしい（参考：<a href="http://www.cs.ucla.edu/~palsberg/course/cs232/papers/DeutschSchiffman-popl84.pdf">Efficient Implementation of the Smalltalk-80 System</a>）</p>
-
 <p><a href="http://code.google.com/apis/v8/design.html#garb_coll">効率的なガベージコレクション</a>
 v8 のガベージコレクションの特徴は以下のとおりである：</p>
-
 <ul>
 <li><strong>stop-the-world</strong> ガベージコレクション中はプログラムが停止する</li>
 <li><strong>世代別ガベージコレクション</strong> 一度のガベージコレクションではオブジェクトの一部のみを検査することにより、プログラム停止時間を短縮</li>
-<li><strong>&ldquo;保守的&rdquo;ではない</strong> このため、未使用のオブジェクトをポインタと判定してしまい、メモリリークすることがない</li>
+<li><strong>&ldquo;保守的&quot;ではない</strong> このため、未使用のオブジェクトをポインタと判定してしまい、メモリリークすることがない</li>
 <li><strong>メモリ・コンパクションができる</strong> メモリのフラグメンテーションを防ぐ</li>
 </ul>
-
 <p>総じて、バランスの良い実装を選びながら、特にメモリ効率に気をつかっている印象を受ける。</p>
-
 <h3 id="試す">試す</h3>
-
 <p>どうだろう？ v8 に興味が湧いてきたんじゃないだろうか。</p>
-
 <p>では、能書きはこれくらいにして、実際に v8 を使ってみよう。なお、環境は Mac OS X Leopard、Xcode はインストール済みで GCC, Python, Subversion などがインストールされているものとする。</p>
-
 <p>まずは適当なディレクトリに、ソースコードをチェックアウトする。</p>
-
 <pre><code>% cd Developer/Workspace/JavaScript/
 % svn checkout http://v8.googlecode.com/svn/trunk/ v8
 % cd v8/
-</code></pre>
-
-<p>ビルドには <a href="http://www.scons.org/">SCons</a> というビルドツールが必要だ。<a href="http://www.macports.org/">MacPorts</a> でインストールしておこう。</p>
-
+</code></pre><p>ビルドには <a href="http://www.scons.org/">SCons</a> というビルドツールが必要だ。<a href="http://www.macports.org/">MacPorts</a> でインストールしておこう。</p>
 <pre><code>% sudo port install scons
-</code></pre>
-
-<p>ビルドオプションは、<code>scons --help</code> で確認できる。</p>
-
+</code></pre><p>ビルドオプションは、<code>scons --help</code> で確認できる。</p>
 <pre><code>% scons --help
 scons: Reading SConscript files ...
 scons: done reading SConscript files.
@@ -91,25 +76,16 @@ mode: compilation mode (debug, release)
 
 sample: build sample (shell, process)
 ...
-</code></pre>
-
-<p>とりあえず試したいだけなので、デフォルトの設定でビルドしてみようか。</p>
-
+</code></pre><p>とりあえず試したいだけなので、デフォルトの設定でビルドしてみようか。</p>
 <pre><code>% scons
 scons: Reading SConscript files ...
 scons: done reading SConscript files.
 scons: Building targets ...
 ...
-</code></pre>
-
-<p>同じディレクトリに <code>libv8.a</code> というライブラリができたはずだ。</p>
-
+</code></pre><p>同じディレクトリに <code>libv8.a</code> というライブラリができたはずだ。</p>
 <h3 id="簡単な-c-プログラムで使ってみよう">簡単な C++ プログラムで使ってみよう</h3>
-
 <p>他の C++ プログラムに組み込んで使うことを念頭に開発されているのも、v8 の特徴だ。プロジェクト・サイトにある <a href="http://code.google.com/apis/v8/get_started.html">Hello World プログラム</a>よりは実用的なプログラムで感触をつかんでみよう。</p>
-
 <p>以下は、標準入力から受け取ったプログラムを構文解析して実行、結果を標準出力に書き出すプログラムだ（Gist にもアップしておいた。<a href="http://gist.github.com/8559">gist:8559</a>）。</p>
-
 <pre><code>#include &lt;iostream&gt;
 #include &lt;sstream&gt;
 #include &lt;v8.h&gt;
@@ -154,15 +130,9 @@ int main(int argc, const char **argv) {
   std::cout &lt;&lt; *ascii &lt;&lt; std::endl;
   return 0;
 }
-</code></pre>
-
-<p>このプログラムは gcc で次のようにコンパイルする。<code>V8_HOME</code> 環境変数には v8 をチェックアウトしたディレクトリを設定してほしい。</p>
-
+</code></pre><p>このプログラムは gcc で次のようにコンパイルする。<code>V8_HOME</code> 環境変数には v8 をチェックアウトしたディレクトリを設定してほしい。</p>
 <pre><code>% g++ -I${V8_HOME}/include -L${V8_HOME} -lv8 -o simple_v8_shell simple_v8_shell.cc
-</code></pre>
-
-<p>実行例：</p>
-
+</code></pre><p>実行例：</p>
 <pre><code>% ./simple_v8_shell
 'Hello, ' + 'World!'
 Hello, World!
@@ -175,14 +145,9 @@ var fib = function(n) {
 }
 fib(10)
 55
-</code></pre>
-
-<h3 id="最後に">最後に</h3>
-
+</code></pre><h3 id="最後に">最後に</h3>
 <p>現時点では、v8 が実際のところどれだけのものなのか、確証をもって言えることは多くない。しかし、v8 の登場で強く感じたことがふたつある。</p>
-
 <p>まず、JavaScript エンジンの実装は <a href="http://www.mozilla-japan.org/projects/tamarin/">Tamarin</a> (Adobe/Mozilla)、<a href="http://webkit.org/blog/189/announcing-squirrelfish/">SquirrelFish</a> (Apple)、そして、今回の <a href="http://code.google.com/p/v8/">v8</a> (Google) &hellip; 強豪たちとホットな技術がひしめく戦場になりつつある。手の出尽くした感があるブラウザ競争とは異なり、この戦場はまさに「未開のフロンティア」だろう。</p>
-
 <p>また、ここ数年で多くのプログラマに浸透した動的言語だが、これから数年のうちに、今度は<strong>動的言語の効率的な実装</strong>もプログラマ一般に浸透していくのではないか、という思いを強くした。</p>
 
   </div>
@@ -205,7 +170,7 @@ fib(10)
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

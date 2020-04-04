@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>imaging on METAREAL</title>
@@ -23,7 +23,7 @@
  と書いたにも関わらず、そのまま放置になっていた（コメントで指摘されているのに気づいたのも今日だ。すまん）。
 概要 まずは java.awt.image.BufferedImage を byte 配列に変換する方法を紹介する。
 そのあと、java.awt.Image を java.awt.image.BufferedImage に変換する方法を紹介するので、このふたつを組み合わせれば、
-Image --&amp;gt; BufferedImage --&amp;gt; byte[]  が実現できるわけだ。
+Image --&amp;gt; BufferedImage --&amp;gt; byte[] が実現できるわけだ。
 BufferedImage を byte[] に変換する BufferedImage から byte 配列の変換は、javax.imageio.ImageWriter でわりかし素直に実装できる。
 BufferedImage image = ...; ByteArrayOutputStream bytesOut = new ByteArrayOutputStream(); ImageWriter writer = ImageIOKit.getImageWritersByFormatName(formatName); ImageOutputStream stream = ImageIO.createImageOutputStream(bytesOut); try { writer.setOutput(stream); writer.write(image); stream.flush(); } finally { writer.dispose(); if (stream != null) try { stream.</description>
     </item>
@@ -36,9 +36,9 @@ BufferedImage image = ...; ByteArrayOutputStream bytesOut = new ByteArrayOutputS
       <guid>http://ishikawa.github.io/2007/03/27/opencv-on-mac-os-x-tiger/</guid>
       <description>物体認識もできる画像処理ライブラリ OpenCV 1.0.0 を Mac OS X 10.4 にてコンパイルしてみた。
 OpenCV のインストール まずは、SourceForge から opencv-1.0.0.tar.gz をダウンロードして解凍。
-% tar xvzf opencv-1.0.0.tar.gz % mkdir build % cd build/  libjpeg や libpng がないと JPEG, PNG 画像を扱えないので、DarwanPorts でいれたものを使うように configure
-% ../configure CPPFLAGS=&amp;quot;-I/opt/local/include&amp;quot; LDFLAGS=&amp;quot;-L/opt/local/lib&amp;quot; % make  案の定、エラーがでる。
-collect2: ld returned 1 exit status make[4]: *** [_cv.la] Error 1 make[3]: *** [all-recursive] Error 1 make[2]: *** [all-recursive] Error 1 make[1]: *** [all-recursive] Error 1 make: *** [all] Error 2  なんか、python のラッパー周辺が原因っぽいので外してコンパイル。</description>
+% tar xvzf opencv-1.0.0.tar.gz % mkdir build % cd build/ libjpeg や libpng がないと JPEG, PNG 画像を扱えないので、DarwanPorts でいれたものを使うように configure
+% ../configure CPPFLAGS=&amp;quot;-I/opt/local/include&amp;quot; LDFLAGS=&amp;quot;-L/opt/local/lib&amp;quot; % make 案の定、エラーがでる。
+collect2: ld returned 1 exit status make[4]: *** [_cv.la] Error 1 make[3]: *** [all-recursive] Error 1 make[2]: *** [all-recursive] Error 1 make[1]: *** [all-recursive] Error 1 make: *** [all] Error 2 なんか、python のラッパー周辺が原因っぽいので外してコンパイル。</description>
     </item>
     
     <item>
@@ -49,13 +49,13 @@ collect2: ld returned 1 exit status make[4]: *** [_cv.la] Error 1 make[3]: *** [
       <guid>http://ishikawa.github.io/2007/02/10/create-flickr-quality-thumbnail-with-java-imageio/</guid>
       <description>まあ、記事のタイトルがアレですけど&amp;hellip;
 Java の Image I/O で画像の縮小を行う方法として、AffineTransformOp を利用する方法がある。
-final double scale = 0.5; AffineTransformOp transformOp = new AffineTransformOp(AffineTransform.getScaleInstance(scale, scale), null); BufferedImage dest1 = new BufferedImage( (int)(originalImage.getWidth() * scale), (int)(originalImage.getHeight() * scale), originalImage.getType()); transformOp.filter(originalImage, dest1);  しかし、この方法だとジャギーが目立ってしまい、Flickr ほどキレイなサムネイルにはならない。
+final double scale = 0.5; AffineTransformOp transformOp = new AffineTransformOp(AffineTransform.getScaleInstance(scale, scale), null); BufferedImage dest1 = new BufferedImage( (int)(originalImage.getWidth() * scale), (int)(originalImage.getHeight() * scale), originalImage.getType()); transformOp.filter(originalImage, dest1); しかし、この方法だとジャギーが目立ってしまい、Flickr ほどキレイなサムネイルにはならない。
 たとえば、Flickr で見つけたこの写真。Flickr のサムネイルはこんな感じだが、
 AffineTransformOp を用いた方法だと、こうなってしまう。
 で、どうするかというと、AWT の AreaAveragingScaleFilter を使うのがいいようだ。以下、API リファレンスより抜粋：
  最近接点アルゴリズムよりもなめらかな結果が得られる、簡単な領域平均化アルゴリズムを使用してイメージをスケーリングする ImageFilter クラスです。
  では、試してみる。
-ImageFilter filter = new AreaAveragingScaleFilter(w, h); ImageProducer im = new FilteredImageSource(image.getSource(), filter); Image newImage = Toolkit.getDefaultToolkit().createImage(im);  フィルタした結果の java.</description>
+ImageFilter filter = new AreaAveragingScaleFilter(w, h); ImageProducer im = new FilteredImageSource(image.getSource(), filter); Image newImage = Toolkit.getDefaultToolkit().createImage(im); フィルタした結果の java.awt.Image を BufferedImage や byte 配列に変換する方法は次回。</description>
     </item>
     
   </channel>

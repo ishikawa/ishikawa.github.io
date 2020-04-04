@@ -7,34 +7,40 @@
   <title>QuickSilver でスクリーンセイバーを起動</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/03/28/launch-screen-saver-from-quicksilver/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>QuickSilver でスクリーンセイバーを起動</h1>
   <div class="metadata">
-    <p class="date">2007/03/29 1:21am</p>
+    <p class="date">
+      2007/03/29 1:21am
+    </p>
   </div>
   <div class="content">
     <p>わたしは不器用なので、スクリーンセイバーをホットコーナーから起動しようとするたびに失敗する（スクリーンセイバーが起動したとたんに、微妙にマウスを動かしてしまって、起動が解除されてしまう）。</p>
-
 <p><a href="http://quicksilver.blacktree.com/">QuickSilver</a> から起動できたら便利だなと思って、スクリーンセイバーを起動する <code>AppleScript</code> を書いて、<code>~/Library/Scripts/</code> に置いてある。</p>
-
 <pre><code>tell application &quot;Finder&quot;
   open application file &quot;/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app&quot; as POSIX file
 end tell
-</code></pre>
-
-<p>ホットキーにも登録してみたが、いちいち QuickSilver を起動してタイプする方が性にあっているようだ。</p>
+</code></pre><p>ホットキーにも登録してみたが、いちいち QuickSilver を起動してタイプする方が性にあっているようだ。</p>
 
   </div>
 </article>
@@ -56,7 +62,7 @@ end tell
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

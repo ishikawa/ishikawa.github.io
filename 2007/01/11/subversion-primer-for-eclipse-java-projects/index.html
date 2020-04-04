@@ -7,66 +7,59 @@
   <title>Eclipse の Java プロジェクトを Subversion 管理するときの手順</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/01/11/subversion-primer-for-eclipse-java-projects/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Eclipse の Java プロジェクトを Subversion 管理するときの手順</h1>
   <div class="metadata">
-    <p class="date">2007/01/11 9:40am</p>
+    <p class="date">
+      2007/01/11 9:40am
+    </p>
   </div>
   <div class="content">
     <p><a href="http://www.eclipse.org/">Eclipse</a> の Java プロジェクトを Subversion 管理するときの手順を、メモも兼ねて残しておこう。ちなみに、Eclipse での Subversion サポートに使っているのは <a href="http://subclipse.tigris.org/">Subclipse</a> プラグイン。</p>
-
 <p>以下の <code>$REPO</code> 変数はプロジェクトを作成する、Subversion レポジトリの URL とする（たとえば、<code>svn+ssh://svn.metareal.org/path/to/repo/project/</code>）。</p>
-
 <pre><code>% mkdir tmp
 % cd tmp
 % mkdir trunk branches tags
 % svn import -m &quot;initial import&quot; . $REPO
 % cd ../
 % rm -rf tmp
-</code></pre>
-
-<p>Eclipse で新規 Java プロジェクトを作成する。</p>
-
+</code></pre><p>Eclipse で新規 Java プロジェクトを作成する。</p>
 <p>そして、新規作成されたプロジェクトのディレクトリに、Subversion レポジトリからチェックアウト。</p>
-
 <pre><code>% cd /path/to/workspace/project/
 % svn co $REPO/trunk .
-</code></pre>
-
-<p>いつも使っているディレクトリレイアウトを作成して必要なものを <code>svn add</code> しておく。</p>
-
+</code></pre><p>いつも使っているディレクトリレイアウトを作成して必要なものを <code>svn add</code> しておく。</p>
 <pre><code>% mkdir -p build/classes build/test-classes build/reports
 % mkdir -p docs/api
 % mkdir -p src/java src/test
 % svn add . --force
-</code></pre>
-
-<p>不要なものは <code>revert</code> して、<code>svn:ignore</code> を設定。</p>
-
+</code></pre><p>不要なものは <code>revert</code> して、<code>svn:ignore</code> を設定。</p>
 <pre><code>% svn revert build/*
 % svn revert docs/api -R
 % svn propset svn:ignore &quot;*&quot; build
 % svn propset svn:ignore &quot;api&quot; docs
-</code></pre>
-
-<p>Eclipse でビルドディレクトリや諸々の設定をすませたらコミット。</p>
-
+</code></pre><p>Eclipse でビルドディレクトリや諸々の設定をすませたらコミット。</p>
 <pre><code>% svn commit -m &quot;New project&quot;
-</code></pre>
-
-<p>Eclipse 側でプロジェクトが Subversion 管理されていないようなら、プロジェクトのアイコンを右クリック、「Team」＞「Share Project&hellip;」で設定できる（すでにある <code>.svn</code> を認識してくれるので、設定は簡単）。</p>
+</code></pre><p>Eclipse 側でプロジェクトが Subversion 管理されていないようなら、プロジェクトのアイコンを右クリック、「Team」＞「Share Project&hellip;」で設定できる（すでにある <code>.svn</code> を認識してくれるので、設定は簡単）。</p>
 
   </div>
 </article>
@@ -88,7 +81,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

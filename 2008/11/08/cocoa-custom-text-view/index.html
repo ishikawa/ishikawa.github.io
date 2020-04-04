@@ -7,109 +7,90 @@
   <title>Cocoa で独自の Text View を実装する</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2008/11/08/cocoa-custom-text-view/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Cocoa で独自の Text View を実装する</h1>
   <div class="metadata">
-    <p class="date">2008/11/08 3:00am</p>
+    <p class="date">
+      2008/11/08 3:00am
+    </p>
   </div>
   <div class="content">
-    
-
-<p><a href="http://developer.apple.com/iphone/program/">iPhone</a> も盛り上がっていることだし、ひさしぶりに <a href="http://developer.apple.com/referencelibrary/Cocoa/">Cocoa</a> プログラミングを始めてみる。</p>
-
+    <p><a href="http://developer.apple.com/iphone/program/">iPhone</a> も盛り上がっていることだし、ひさしぶりに <a href="http://developer.apple.com/referencelibrary/Cocoa/">Cocoa</a> プログラミングを始めてみる。</p>
 <p><a href="http://developer.apple.com/mac/">Mac Dev Center</a> をつらつらと眺めてみると、<a href="http://developer.apple.com/mac/articles/cocoa/managingconcurrency.html">Managing Concurrency with NSOperation</a> という記事に興味が湧く。<a href="http://developer.apple.com/documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html">NSOperation</a> と <a href="http://developer.apple.com/documentation/Cocoa/Reference/NSOperationQueue_class/Reference/Reference.html">NSOperationQueue</a>（優先順位付きキュー）を使うことで、タスクのスケジューリングと並行処理が手軽に行えるようになったようだ。Java の <a href="http://java.sun.com/javase/6/docs/api/java/util/concurrent/package-summary.html">concurrency パッケージ</a>に感銘を受けた身としては、こういう拡張は嬉しい。今後、マルチスレッドが必要になったときに、改めて詳しく調べてみよう。</p>
-
 <p><a href="http://developer.apple.com/referencelibrary/Cocoa/idxTextFonts-date.html">テキストシステム周り</a>も、ひところに比べると充実してきている。Mac OS X 10.3 では <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSATSTypesetter_Class/Reference/Reference.html">NSATSTypesetter</a> が公開された。更に Mac OS X 10.5 では <a href="http://developer.apple.com/documentation/Cocoa/Reference/NSTextInputClient_Protocol/Reference/Reference.html">NSTextInputClient</a> プロトコルと <a href="http://developer.apple.com/releasenotes/Cocoa/RN-InputMethodKit/index.html">Input Method Kit</a> が追加されている（他にもあるかも）。</p>
-
 <p>さて、Cocoa プログラミングのリハビリとして、今回は独自の Text View を実装してみようと思う。</p>
-
 <p>ここでいう Text View とは <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSTextView_Class/Reference/Reference.html">NSTextView</a> のように、IM からの入力を受け取り、テキストを表示、編集できるクラスのことだ。エディタやワープロといったアプリケーションを開発するときには必要になってくるだろう。</p>
-
 <h3 id="nsview-のサブクラス">NSView のサブクラス</h3>
-
 <p><a href="http://developer.apple.com/documentation/Cocoa/Conceptual/InputManager/Tasks/TextViewTask.html#//apple_ref/doc/uid/20001040">ドキュメント</a>によると、独自の Text View を実装する場合は <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSTextView_Class/Reference/Reference.html">NSTextView</a> のサブクラスか、<a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSView_Class/Reference/NSView.html">NSView</a> のサブクラスを作るようなので、今回は NSView のサブクラスとして作成することにする。</p>
-
 <p><code>NSView</code> のサブクラスを作るとして、名前は単純に <code>MyTextView</code> としよう。まずは <code>MyTextView.h</code> で、クラスの <code>@interface</code> を書く。</p>
-
-<pre><code class="language-objc">#import &amp;lt;Cocoa/Cocoa.h&amp;gt;
-
-@interface MyTextView : NSView {
-  NSMutableAttributedString *_text;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#75715e">#import &amp;lt;Cocoa/Cocoa.h&amp;gt;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">@interface</span> <span style="color:#a6e22e">MyTextView</span> : <span style="color:#a6e22e">NSView</span> {
+  NSMutableAttributedString <span style="color:#f92672">*</span>_text;
 }
-@end
-</code></pre>
-
-<p>インスタンス変数として <a href="http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSMutableAttributedString_Class/Reference/Reference.html">NSMutableAttributedString</a> をひとつ持つ。ここに表示、編集するテキストの内容を保持するわけだ（MVC も糞もない設計だが、今回のはあくまで例なので単純さを優先する）。</p>
-
+<span style="color:#66d9ef">@end</span>
+</code></pre></div><p>インスタンス変数として <a href="http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSMutableAttributedString_Class/Reference/Reference.html">NSMutableAttributedString</a> をひとつ持つ。ここに表示、編集するテキストの内容を保持するわけだ（MVC も糞もない設計だが、今回のはあくまで例なので単純さを優先する）。</p>
 <h3 id="first-responder">First Responder</h3>
-
 <p>最初にすることは、このクラスがキー入力を受け取れるようにすることだ。そのためには、キー入力やマウスクリックなどのイベントを受け取るれるように、<a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSResponder_Class/Reference/Reference.html#//apple_ref/occ/instm/NSResponder/acceptsFirstResponder">acceptsFirstResponder</a> をオーバーライドする必要がある。</p>
-
-<pre><code class="language-objc">- (BOOL) acceptsFirstResponder {
-  return YES;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">BOOL</span>) <span style="color:#a6e22e">acceptsFirstResponder</span> {
+  <span style="color:#66d9ef">return</span> YES;
 }
-</code></pre>
-
-<p>さて、これでキー入力イベントを受け取れるようになったので、今度は <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSResponder_Class/Reference/Reference.html#//apple_ref/occ/instm/NSResponder/keyDown:">keyDown:</a> を実装しよう。</p>
-
-<pre><code class="language-objc">- (void) keyDown: (NSEvent *) theEvent {
+</code></pre></div><p>さて、これでキー入力イベントを受け取れるようになったので、今度は <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSResponder_Class/Reference/Reference.html#//apple_ref/occ/instm/NSResponder/keyDown:">keyDown:</a> を実装しよう。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">void</span>) <span style="color:#a6e22e">keyDown:</span> (NSEvent <span style="color:#f92672">*</span>) theEvent {
   [self interpretKeyEvents: [NSArray arrayWithObject: theEvent]];
 }
-</code></pre>
-
-<p>これだけ。そのまま <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSResponder_Class/Reference/Reference.html#//apple_ref/occ/instm/NSResponder/interpretKeyEvents:">interpretKeyEvents:</a> に投げている。</p>
-
+</code></pre></div><p>これだけ。そのまま <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSResponder_Class/Reference/Reference.html#//apple_ref/occ/instm/NSResponder/interpretKeyEvents:">interpretKeyEvents:</a> に投げている。</p>
 <h3 id="interpretkeyevents">interpretKeyEvents:</h3>
-
 <p><code>interpretKeyEvents:</code> は <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSInputManager_Class/Reference/Reference.html#//apple_ref/occ/cl/NSInputManager">NSInputManager</a> を通して、最終的に、ビューの <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSResponder_Class/Reference/Reference.html#//apple_ref/occ/instm/NSResponder/insertText:">insertText:</a> や <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSResponder_Class/Reference/Reference.html#//apple_ref/occ/instm/NSResponder/insertNewline:">insertNewline:</a> などを呼び出すので、あとはこれらのメソッドを実装すればいい。</p>
-
 <p>今回は改行、タブ、削除、通常のテキスト入力など、最低限必要なメソッドだけを実装している。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">void</span>) <span style="color:#a6e22e">deleteBackward:</span> (<span style="color:#66d9ef">id</span>) sender {
+  <span style="color:#66d9ef">const</span> NSUInteger length <span style="color:#f92672">=</span> [_text length];
 
-<pre><code class="language-objc">- (void) deleteBackward: (id) sender {
-  const NSUInteger length = [_text length];
-
-  if (length &amp;gt; 0) {
-    [_text deleteCharactersInRange: NSMakeRange(length - 1, 1)];
+  <span style="color:#66d9ef">if</span> (length <span style="color:#f92672">&amp;</span>gt; <span style="color:#ae81ff">0</span>) {
+    [_text deleteCharactersInRange: NSMakeRange(length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)];
     [self setNeedsDisplay: YES];
   }
 }
 
-- (void) insertNewline: (id) sender {
-  [self insertText: @&quot;\n&quot;];
+- (<span style="color:#66d9ef">void</span>) <span style="color:#a6e22e">insertNewline:</span> (<span style="color:#66d9ef">id</span>) sender {
+  [self insertText: <span style="color:#e6db74">@&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>];
 }
 
-- (void) insertTab: (id) sender {
-  [self insertText: @&quot;\t&quot;];
+- (<span style="color:#66d9ef">void</span>) <span style="color:#a6e22e">insertTab:</span> (<span style="color:#66d9ef">id</span>) sender {
+  [self insertText: <span style="color:#e6db74">@&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>];
 }
 
-- (void) insertText: (id) aString {
+- (<span style="color:#66d9ef">void</span>) <span style="color:#a6e22e">insertText:</span> (<span style="color:#66d9ef">id</span>) aString {
   [[_text mutableString] appendString: aString];
   [_text addAttribute: NSFontAttributeName
-                value: [NSFont userFontOfSize: 18.0f]
-                range: NSMakeRange(0, [_text length])];
+                value: [NSFont userFontOfSize: <span style="color:#ae81ff">18.0f</span>]
+                range: NSMakeRange(<span style="color:#ae81ff">0</span>, [_text length])];
   [self setNeedsDisplay: YES];
 }
-</code></pre>
-
-<p>なお、<code>insertText:</code> に渡される <code>aString</code> は <code>NSString</code> とは限らず、<code>NSAttributedString</code> の可能性もあるので、本来はそれも考慮したコードにするべきだ。</p>
-
+</code></pre></div><p>なお、<code>insertText:</code> に渡される <code>aString</code> は <code>NSString</code> とは限らず、<code>NSAttributedString</code> の可能性もあるので、本来はそれも考慮したコードにするべきだ。</p>
 <h3 id="テキストの表示">テキストの表示</h3>
-
 <p>最後に、描画部分を実装しよう。テキストのレイアウトと描画は <code>NSAttributedString</code> の <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSAttributedString_AppKitAdditions/Reference/Reference.html#//apple_ref/occ/instm/NSAttributedString/drawInRect:">drawInRect:</a> に任せてしまう。</p>
-
-<pre><code class="language-objc">- (void) drawRect: (NSRect) theRect {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">void</span>) <span style="color:#a6e22e">drawRect:</span> (NSRect) theRect {
   [[NSColor whiteColor] set];
   NSFrameRect(theRect);
 
@@ -118,19 +99,13 @@
   NSFrameRect(theRect);
 
   [_text drawInRect: NSMakeRect(
-      theRect.origin.x + 5.0f, theRect.origin.y,
+      theRect.origin.x <span style="color:#f92672">+</span> <span style="color:#ae81ff">5.0f</span>, theRect.origin.y,
       theRect.size.width, theRect.size.height)];
 }
-</code></pre>
-
-<p>以上で、簡単ではあるが、テキストの入力と削除が可能な Text View が出来た。</p>
-
+</code></pre></div><p>以上で、簡単ではあるが、テキストの入力と削除が可能な Text View が出来た。</p>
 <p>日本語変換、入力など、更に複雑な操作をサポートするためには、<a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Protocols/NSTextInput_Protocol/Reference/Reference.html">NSTextInput</a> や、それを拡張した <a href="http://developer.apple.com/documentation/Cocoa/Reference/NSTextInputClient_Protocol/Reference/Reference.html">NSTextInputClient</a> を実装する必要がある。更に、独自のレイアウトも実装することになるだろう。実用的な Text View を開発するのはかなりの労力がいりそうだ。</p>
-
 <p>なお、今回のソースコードは <a href="http://gist.github.com/23017">gist:23017</a> に置いてある。</p>
-
 <h3 id="参考">参考</h3>
-
 <ul>
 <li><a href="http://developer.apple.com/documentation/Cocoa/Conceptual/EventOverview/Introduction/chapter_1_section_1.html#//apple_ref/doc/uid/10000060i-CH1-DontLinkElementID_45">Cocoa Event-Handling Guide</a></li>
 <li><a href="http://developer.apple.com/documentation/Cocoa/Conceptual/InputManager/InputManager.html#//apple_ref/doc/uid/10000065">Introduction to Text Input Management</a></li>
@@ -156,7 +131,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

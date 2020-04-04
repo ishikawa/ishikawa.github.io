@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>llvm on METAREAL</title>
@@ -58,8 +58,8 @@ Mozilla で行われたデモでは、Quake や、C 言語で書かれたエミ�
       
       <guid>http://ishikawa.github.io/2007/07/22/hello-world-llvm/</guid>
       <description>LLVM で Hello, World プログラム。
-@.LC0 = internal constant [13 x i8] c&amp;quot;Hello world!\00&amp;quot; declare i32 @puts(i8 *) define i32 @main() { %cast210 = getelementptr [13 x i8]* @.LC0, i64 0, i64 0 call i32 @puts(i8 * %cast210) ret i32 0 }  バイトコードにコンパイルして実行。
-% llvm-as -f hello.ll % lli hello.bc Hello world!  まあ、プログラム自体は LLVM Assembly Language Reference Manual からの抜粋なわけだが。</description>
+@.LC0 = internal constant [13 x i8] c&amp;quot;Hello world!\00&amp;quot; declare i32 @puts(i8 *) define i32 @main() { %cast210 = getelementptr [13 x i8]* @.LC0, i64 0, i64 0 call i32 @puts(i8 * %cast210) ret i32 0 } バイトコードにコンパイルして実行。
+% llvm-as -f hello.ll % lli hello.bc Hello world! まあ、プログラム自体は LLVM Assembly Language Reference Manual からの抜粋なわけだが。</description>
     </item>
     
     <item>
@@ -71,9 +71,9 @@ Mozilla で行われたデモでは、Quake や、C 言語で書かれたエミ�
       <description>前回のように簡単なプログラムでも、実際に書いてみると疑問が湧いてくる。
 まず、文字列を出力している puts 関数。こいつの実体はどこにあるんだろう？ C のプログラムなら、リンカが標準ライブラリをこっそりリンクしている、という結末になるのだが&amp;hellip;。検索してみると、やはり、同じように疑問をもった人がいるようで、lli が実行時のライブラリとして標準 C ライブラリを利用しているらしい。
 ということは printf なんかも使えるはずだよね。
-@.LC0 = internal constant [14 x i8] c&amp;quot;Hello world!\0A\00&amp;quot; **declare i32 @printf(i8 *, ...)** define i32 @main() { %cast210 = getelementptr [14 x i8]* @.LC0, i64 0, i64 0 **call i32 (i8 *, ...)* @printf(i8 * %cast210)** ret i32 0 }  では、コンパイル、実行。
-% llvm-as -f hello-printf.ll % lli hello-printf.bc Hello world!  うんうん。
- 書籍「GNU開発ツール」 CC プログラミング工房 書籍 Vol.</description>
+@.LC0 = internal constant [14 x i8] c&amp;quot;Hello world!\0A\00&amp;quot; **declare i32 @printf(i8 *, ...)** define i32 @main() { %cast210 = getelementptr [14 x i8]* @.LC0, i64 0, i64 0 **call i32 (i8 *, ...)* @printf(i8 * %cast210)** ret i32 0 } では、コンパイル、実行。
+% llvm-as -f hello-printf.ll % lli hello-printf.bc Hello world! うんうん。
+ 書籍「GNU開発ツール」 CC プログラミング工房 書籍 Vol.1 第１章 - Wataru&amp;rsquo;s memo  </description>
     </item>
     
   </channel>

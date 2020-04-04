@@ -7,51 +7,53 @@
   <title>Redstone XML-RPC Library への不満</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/01/13/redstone-xml-rpc-library-no-thanks/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Redstone XML-RPC Library への不満</h1>
   <div class="metadata">
-    <p class="date">2007/01/13 11:26am</p>
+    <p class="date">
+      2007/01/13 11:26am
+    </p>
   </div>
   <div class="content">
     <p>どうやら Java の XML-RPC ライブラリとは、あまり縁がないらしい。またもや、<a href="http://weblog.metareal.org/2006/12/12/apache-xml-rpc-no-thanks/">XML-RPC ライブラリへの愚痴エントリである</a>。</p>
-
 <p><a href="http://ws.apache.org/xmlrpc/">Apache XML-RPC</a> ライブラリの複雑さとドキュメントのすくなさ（いつまでホームページのロゴ画像がリンク切れなのだろう？）に辟易して、今度は <a href="http://xmlrpc.sourceforge.net/">Redstone</a> というライブラリを試してみた。</p>
-
 <p>Redstone の前身である Marquee というライブラリは <a href="http://www-06.ibm.com/jp/developerworks/java/040227/j_j-xmlrpc.html">developerWorks に紹介記事だって載っている</a>由緒正しい（？）XML-RPC ライブラリだ。</p>
-
 <p>最初は何も問題ないかのように思えた。すべてが順調で平和だった。API は<a href="http://xmlrpc.sourceforge.net/javadoc/index.html">シンプル</a>で、ホームページの簡潔なチュートリアルも必要十分に思えた。</p>
-
 <p>だが、決して小さくはない欠陥が<strong>いくつも</strong>あることがわかってきた（バージョンは <code>1.0.1</code>）。</p>
-
 <ol>
 <li><code>contentType</code> の指定が<strong>無視される</strong>。</li>
 <li>エラー処理がいいかげん</li>
 </ol>
-
 <blockquote>
 <ul>
-<li><methodResponse> の <code>faultCode</code> がハードコーディングされている。</li>
+<li><!-- raw HTML omitted --> の <code>faultCode</code> がハードコーディングされている。</li>
 <li>そのエンコーディングも <code>ISO-8859-1</code> でハードコーディング。日本語書けない。せめて <code>UTF-8</code> にしてよ&hellip;</li>
 </ul>
 </blockquote>
-
 <ol>
 <li>Base64 のコードがバグっていて、<strong>複数行にエンコードされていると対応できない。</strong></li>
 <li>カスタマイズが困難。</li>
 </ol>
-
 <blockquote>
 <ul>
 <li>API がシンプルで一見、拡張しやすく見えるが、実際には重要なポイントが <code>private</code> だったりしてサブクラス化しづらい。</li>
@@ -59,9 +61,7 @@
 <li><a href="http://xmlrpc.sourceforge.net/javadoc/index.html"><code>XmlRpcParser</code></a> は XML-RPC の xml を解析できるが、肝心の結果は <code>private</code> になっているため、これ単体で使えない。</li>
 </ul>
 </blockquote>
-
 <p>実は 3. までの問題を修正するためのラッパーライブラリを、テストコード含めて 800 行ほど書いていた。しかし、それも 4. の理由により挫折しかけている。まあ、<code>ad-hoc</code> な修正の塊なので、コード自体はもったいなくないのだが。</p>
-
 <p>誰も XML-RPC なんて使ってないのかな&hellip;。</p>
 
   </div>
@@ -84,7 +84,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

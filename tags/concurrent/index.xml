@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>concurrent on METAREAL</title>
@@ -21,7 +21,7 @@
       <description>Twitter と Erlang をきっかけに注目を集めるようになった軽量プロセス（とかマイクロスレッドとか）を Java で実現するためのライブラリに kilim があります。
  Isolation-typed actors for Java (PDF) InfoQ: Kilim - actors and message passing in Java  夜中に突然 Java が書きたくなって、まだ、Examples を動かしてみた程度ですが、とりあえず Python のジェネレーターっぽいことができるのは分かったので記事にしておきます。暇と知識が増えたら、もうすこし突っ込んだ記事もあげる予定です（自信がないので今回、ですます調）。
 ジェネレーターの例 では、本当につまらない例です。フィボナッチ数を求めるプログラムをどうぞ。
-import kilim.Generator; import kilim.pausable; public class Fib extends Generator&amp;lt;Integer&amp;gt; { public @pausable void execute() { // (1) int fib1 = 0; int fib2 = 1; while (true) { yield(fib1); // (2) fib2 = fib1 + fib2; fib1 = fib2 - fib1; } } public static void main(String[] args) { final Fib fib = new Fib(); for (int i = 0; i &amp;lt;= 10; i++) { System.</description>
+import kilim.Generator; import kilim.pausable; public class Fib extends Generator&amp;lt;Integer&amp;gt; { public @pausable void execute() { // (1)  int fib1 = 0; int fib2 = 1; while (true) { yield(fib1); // (2)  fib2 = fib1 + fib2; fib1 = fib2 - fib1; } } public static void main(String[] args) { final Fib fib = new Fib(); for (int i = 0; i &amp;lt;= 10; i++) { System.</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@ import kilim.Generator; import kilim.pausable; public class Fib extends Generato
       
       <guid>http://ishikawa.github.io/2007/03/28/ruby-1-8-6-and-fastthread/</guid>
       <description>新しい MacBook に Mongrel をインストールした。
-% sudo gem install mongrel  そうすると、依存関係にある fastthread という gem が気になってしかたない。
+% sudo gem install mongrel そうすると、依存関係にある fastthread という gem が気になってしかたない。
 検索してみると、「Mongrelと依存関係のあるfastthreadって？」というそのものズバリの記事があって、そういや前にも読んだぞ、この記事、てへ、とか思っていると、どうやら ruby 1.8.6 には取り込まれているらしい。
 知らなかったよ。というか、1.8.6 もまだ試してないよ。
 ちなみに、ruby-dev での議論もあった。</description>

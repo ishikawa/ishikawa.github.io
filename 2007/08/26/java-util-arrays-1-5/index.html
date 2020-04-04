@@ -7,52 +7,51 @@
   <title>Java 1.5 で追加された配列の便利メソッド</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/08/26/java-util-arrays-1-5/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Java 1.5 で追加された配列の便利メソッド</h1>
   <div class="metadata">
-    <p class="date">2007/08/26 9:55am</p>
+    <p class="date">
+      2007/08/26 9:55am
+    </p>
   </div>
   <div class="content">
-    
-
-<p>Java 1.5 (J2SE 5.0) では <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html"><code>java.util.Arrays</code></a> に、いくつかのメソッドが追加されている。地味ながらも、自前で書くのは面倒くさいものばかりだ。</p>
-
+    <p>Java 1.5 (J2SE 5.0) では <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html"><code>java.util.Arrays</code></a> に、いくつかのメソッドが追加されている。地味ながらも、自前で書くのは面倒くさいものばかりだ。</p>
 <h3 id="hashcode-tostring">hashCode, toString</h3>
-
-<p>配列そのものではなく、配列の各要素を比較する <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#equals%28java.lang.Object[],%20java.lang.Object[]%29"><code>Arrays.equals</code></a> は 1.5 以前からあったが、Java 1.5 では、同様に配列の各要素を使う</p>
-
+<p>配列そのものではなく、配列の各要素を比較する <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#equals%28java.lang.Object%5B%5D,%20java.lang.Object%5B%5D%29"><code>Arrays.equals</code></a> は 1.5 以前からあったが、Java 1.5 では、同様に配列の各要素を使う</p>
 <ul>
-<li><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#hashCode%28java.lang.Object[]%29"><code>Arrays.hashCode</code></a></li>
-<li><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#toString%28java.lang.Object[]%29"><code>Arrays.toString</code></a></li>
+<li><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#hashCode%28java.lang.Object%5B%5D%29"><code>Arrays.hashCode</code></a></li>
+<li><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#toString%28java.lang.Object%5B%5D%29"><code>Arrays.toString</code></a></li>
 </ul>
-
 <p>が用意された。</p>
-
 <h3 id="deepequals-deephashcode-deeptostring">deepEquals, deepHashCode, deepToString</h3>
-
 <p><code>Arrays.equals</code>, <code>Arrays.hashCode</code>, <code>Arrays.toString</code> はどれも「浅い」処理しか行わないため、入れ子になった配列では期待通りに動作しない。Java 1.5 では、入れ子になった配列にも対応したバージョンが用意されている。</p>
-
 <ul>
-<li><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#deepEquals%28java.lang.Object[],%20java.lang.Object[]%29"><code>Arrays.deepEquals</code></a></li>
-<li><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#deepHashCode%28java.lang.Object[]%29"><code>Arrays.deepHashCode</code></a></li>
-<li><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#deepToString%28java.lang.Object[]%29"><code>Arrays.deepToString</code></a></li>
+<li><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#deepEquals%28java.lang.Object%5B%5D,%20java.lang.Object%5B%5D%29"><code>Arrays.deepEquals</code></a></li>
+<li><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#deepHashCode%28java.lang.Object%5B%5D%29"><code>Arrays.deepHashCode</code></a></li>
+<li><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#deepToString%28java.lang.Object%5B%5D%29"><code>Arrays.deepToString</code></a></li>
 </ul>
-
-<h3 id="j2se-6-0">J2SE 6.0</h3>
-
-<p>更に Java 1.6 (J2SE 6.0) では<a href="http://java.sun.com/javase/6/docs/api/java/util/Arrays.html#binarySearch%28T[],%20int,%20int,%20T,%20java.util.Comparator%29">範囲を指定できる二分探索</a>や<a href="http://java.sun.com/javase/6/docs/api/java/util/Arrays.html#copyOf%28T[],%20int%29">配列のコピー操作</a>が追加されているようだ。</p>
+<h3 id="j2se-60">J2SE 6.0</h3>
+<p>更に Java 1.6 (J2SE 6.0) では<a href="http://java.sun.com/javase/6/docs/api/java/util/Arrays.html#binarySearch%28T%5B%5D,%20int,%20int,%20T,%20java.util.Comparator%29">範囲を指定できる二分探索</a>や<a href="http://java.sun.com/javase/6/docs/api/java/util/Arrays.html#copyOf%28T%5B%5D,%20int%29">配列のコピー操作</a>が追加されているようだ。</p>
 
   </div>
 </article>
@@ -74,7 +73,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

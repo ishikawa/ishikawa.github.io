@@ -7,77 +7,63 @@
   <title>OpenCV 1.0.0 を Mac OS X 10.4 にインストール</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/03/27/opencv-on-mac-os-x-tiger/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>OpenCV 1.0.0 を Mac OS X 10.4 にインストール</h1>
   <div class="metadata">
-    <p class="date">2007/03/28 1:18am</p>
+    <p class="date">
+      2007/03/28 1:18am
+    </p>
   </div>
   <div class="content">
-    
-
-<p>物体認識もできる画像処理ライブラリ <a href="http://www.intel.com/technology/computing/opencv/">OpenCV 1.0.0</a> を Mac OS X 10.4 にてコンパイルしてみた。</p>
-
+    <p>物体認識もできる画像処理ライブラリ <a href="http://www.intel.com/technology/computing/opencv/">OpenCV 1.0.0</a> を Mac OS X 10.4 にてコンパイルしてみた。</p>
 <h3 id="opencv-のインストール">OpenCV のインストール</h3>
-
 <p>まずは、<a href="http://sourceforge.net/projects/opencvlibrary/">SourceForge</a> から opencv-1.0.0.tar.gz をダウンロードして解凍。</p>
-
 <pre><code>% tar xvzf opencv-1.0.0.tar.gz
 % mkdir build
 % cd build/
-</code></pre>
-
-<p><code>libjpeg</code> や <code>libpng</code> がないと JPEG, PNG 画像を扱えないので、<a href="http://darwinports.opendarwin.org/">DarwanPorts</a> でいれたものを使うように <code>configure</code></p>
-
+</code></pre><p><code>libjpeg</code> や <code>libpng</code> がないと JPEG, PNG 画像を扱えないので、<a href="http://darwinports.opendarwin.org/">DarwanPorts</a> でいれたものを使うように <code>configure</code></p>
 <pre><code>% ../configure CPPFLAGS=&quot;-I/opt/local/include&quot; LDFLAGS=&quot;-L/opt/local/lib&quot;
 % make
-</code></pre>
-
-<p>案の定、エラーがでる。</p>
-
+</code></pre><p>案の定、エラーがでる。</p>
 <pre><code>collect2: ld returned 1 exit status
 make[4]: *** [_cv.la] Error 1
 make[3]: *** [all-recursive] Error 1
 make[2]: *** [all-recursive] Error 1
 make[1]: *** [all-recursive] Error 1
 make: *** [all] Error 2
-</code></pre>
-
-<p>なんか、python のラッパー周辺が原因っぽいので外してコンパイル。</p>
-
+</code></pre><p>なんか、python のラッパー周辺が原因っぽいので外してコンパイル。</p>
 <pre><code>% ../configure --without-swig --without-python CPPFLAGS=&quot;-I/opt/local/include&quot; LDFLAGS=&quot;-L/opt/local/lib&quot;
 % make
 % sudo make install
-</code></pre>
-
-<p>無事成功。</p>
-
-<h3 id="サンプル-プログラムを試す">サンプル・プログラムを試す</h3>
-
+</code></pre><p>無事成功。</p>
+<h3 id="サンプルプログラムを試す">サンプル・プログラムを試す</h3>
 <p>サンプル・プログラムをコンパイルするために、<code>pkg-config</code> の探索パスを追加しておく。</p>
-
 <pre><code>export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:/usr/local/lib/pkgconfig
-</code></pre>
-
-<p>あとは <code>samples/c</code> ディレクトリで <code>build_all.sh</code> を実行すれば、すべてのサンプル・プログラムをコンパイルしてくれる。</p>
-
+</code></pre><p>あとは <code>samples/c</code> ディレクトリで <code>build_all.sh</code> を実行すれば、すべてのサンプル・プログラムをコンパイルしてくれる。</p>
 <pre><code>% cd samples/c
 % chmod u+x ./build_all.sh
 % ./build_all.sh
-</code></pre>
-
-<p>Mac OS X 向けに Carbon で作られているので、動作も良好。</p>
+</code></pre><p>Mac OS X 向けに Carbon で作られているので、動作も良好。</p>
 
   </div>
 </article>
@@ -99,7 +85,7 @@ make: *** [all] Error 2
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

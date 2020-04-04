@@ -7,48 +7,44 @@
   <title>Xcode で Subversion を利用するときのトラブルシューティング</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/06/19/xcode-subversion-troubleshooting/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Xcode で Subversion を利用するときのトラブルシューティング</h1>
   <div class="metadata">
-    <p class="date">2007/06/19 9:44am</p>
+    <p class="date">
+      2007/06/19 9:44am
+    </p>
   </div>
   <div class="content">
-    
-
-<p><a href="http://www.flickr.com/photos/ishikawa_takanori/564796906/"><img src="http://farm2.static.flickr.com/1293/564796906_6c386b03b5.jpg" alt="Xcode SCM Preference" /></a></p>
-
+    <p><a href="http://www.flickr.com/photos/ishikawa_takanori/564796906/"><img src="http://farm2.static.flickr.com/1293/564796906_6c386b03b5.jpg" alt="Xcode SCM Preference"></a></p>
 <p>Xcode の <a href="http://developer.apple.com/DOCUMENTATION/DeveloperTools/Conceptual/XcodeUserGuide/Contents/Resources/ja.lproj/04_scm/chapter_25_section_1.html#//apple_ref/doc/uid/TP40002684-BABCCJCJ">SCM 連携機能</a>は、すくなくとも <a href="http://www.eclipse.org/">Eclipse</a> なんかに比べると貧弱で、実作業ではコマンドラインで <code>svn</code> を使っている。</p>
-
 <p>それでも一度は試しておきたい、と試してみたときの、あまり一般的ではないトラブルシューティングを覚え書き。</p>
-
-<h3 id="svn-ssh-で-22-番以外のポートを使いたいとき">svn+ssh で 22 番以外のポートを使いたいとき</h3>
-
+<h3 id="svnssh-で-22-番以外のポートを使いたいとき">svn+ssh で 22 番以外のポートを使いたいとき</h3>
 <p>これは別に Xcode に限った話じゃないけど、<code>svn+ssh</code> プロトコルで 22 番以外のポートを使う場合は、環境変数 <code>SVN_SSH</code> で <code>ssh</code> プログラムの引数に指定します。</p>
-
 <pre><code>export SVN_SSH=&quot;ssh -p 12345&quot;
-</code></pre>
-
-<p>環境変数を <code>export</code> したターミナルで、そのまま <code>.xcodeproj</code> を開けばいいです。</p>
-
+</code></pre><p>環境変数を <code>export</code> したターミナルで、そのまま <code>.xcodeproj</code> を開けばいいです。</p>
 <pre><code>open ./Example.xcodeproj
-</code></pre>
-
-<h3 id="それでも-パスフレーズ入力できないとき">それでも、パスフレーズ入力できないとき</h3>
-
+</code></pre><h3 id="それでもパスフレーズ入力できないとき">それでも、パスフレーズ入力できないとき</h3>
 <p>上の方法で Xcode 起動して、SCM を有効にしても、パスフレーズの入力画面などがでず、<code>Permission denied</code> で怒られてしまうことがある &hellip; というか、僕がまさにそれ。</p>
-
 <p>このときは、<a href="http://www.sshkeychain.org/">SSHKeychain</a> を使って、パスフレーズ入力を横取りすることで動くようになった。</p>
 
   </div>
@@ -71,7 +67,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

@@ -7,82 +7,72 @@
   <title>Subversion を SWIG サポートつきでインストールする</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2006/12/24/install-subversion-with-swig-bindings/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Subversion を SWIG サポートつきでインストールする</h1>
   <div class="metadata">
-    <p class="date">2006/12/24 12:29pm</p>
+    <p class="date">
+      2006/12/24 12:29pm
+    </p>
   </div>
   <div class="content">
     <p><a href="http://www.swig.org/">SWIG</a> によるスクリプト言語サポートつきで <a href="http://subversion.tigris.org/">Subversion</a> をインストールしたときのメモ。</p>
-
 <p>必要なファイルは以下の通り。</p>
-
 <ul>
 <li><code>swig-1.3.31.tar.gz</code></li>
 <li><code>subversion-1.4.2.tar.bz2</code></li>
 <li><code>subversion-deps-1.4.2.tar.bz2</code></li>
 </ul>
-
 <p>まずは SWIG をインストールする。Ruby はシステム標準のものとは別に 1.8.5-p2 をインストールしていたので、<code>configure</code> でパスを指定してある。</p>
-
 <pre><code>% curl --location -O http://prdownloads.sourceforge.net/swig/swig-1.3.31.tar.gz
 % tar xvzf swig-1.3.31.tar.gz
 % cd swig-1.3.31
 % ./configure --with-ruby=/usr/local/bin/ruby
 % make
 % sudo make install
-</code></pre>
-
-<p>Subversion は <code>subversion-1.4.2.tar.bz2</code> と <code>subversion-deps-1.4.2.tar.bz2</code> 解凍すると、どちらも <code>subversion-1.4.2</code> というディレクトリに展開されるので便利だ。</p>
-
+</code></pre><p>Subversion は <code>subversion-1.4.2.tar.bz2</code> と <code>subversion-deps-1.4.2.tar.bz2</code> 解凍すると、どちらも <code>subversion-1.4.2</code> というディレクトリに展開されるので便利だ。</p>
 <pre><code>% curl -O http://subversion.tigris.org/downloads/subversion-1.4.2.tar.bz2
 % curl -O http://subversion.tigris.org/downloads/subversion-deps-1.4.2.tar.bz2
 % tar xvjf subversion-1.4.2.tar.bz2
 % tar xvjf subversion-deps-1.4.2.tar.bz2
-</code></pre>
-
-<p><code>configure</code> で、SWIG バインディングを有効にする言語と SWIG のパスを指定する。<code>--enable-swig-bindings</code> には <code>perl</code> や <code>python</code> のように個別指定も可能。</p>
-
+</code></pre><p><code>configure</code> で、SWIG バインディングを有効にする言語と SWIG のパスを指定する。<code>--enable-swig-bindings</code> には <code>perl</code> や <code>python</code> のように個別指定も可能。</p>
 <p>また、Subversion で BerkeleyDB を使う場合は、別にオプションが必要かもしれない。今回に限って言えば、BerkeleyDB は必要ないので指定していない。</p>
-
 <pre><code>% cd subversion-1.4.2
 % ./configure --enable-swig-bindings=all --with-swig=/usr/local/bin/swig
 % make
 % sudo make install
-</code></pre>
-
-<p>次に、バインディングをインストール</p>
-
+</code></pre><p>次に、バインディングをインストール</p>
 <pre><code>% make swig-rb
 % sudo make install-swig-rb
 % make check-swig-rb
-</code></pre>
-
-<p>BerkeleyDB 周りでエラーが出てるが無視（BerkeleyDB サポートは入れてないので）。
+</code></pre><p>BerkeleyDB 周りでエラーが出てるが無視（BerkeleyDB サポートは入れてないので）。
 pl, py も同様に。</p>
-
 <pre><code>% make swig-pl
 % sudo make install-swig-pl
 % make check-swig-pl
-</code></pre>
-
-<pre><code>% make swig-py
+</code></pre><pre><code>% make swig-py
 % sudo make install-swig-py
 % make check-swig-py
 </code></pre>
-
   </div>
 </article>
 
@@ -103,7 +93,7 @@ pl, py も同様に。</p>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

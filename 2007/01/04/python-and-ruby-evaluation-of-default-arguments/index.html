@@ -7,45 +7,47 @@
   <title>Python と Ruby、デフォルト引数の評価の違い</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/01/04/python-and-ruby-evaluation-of-default-arguments/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Python と Ruby、デフォルト引数の評価の違い</h1>
   <div class="metadata">
-    <p class="date">2007/01/05 3:52am</p>
+    <p class="date">
+      2007/01/05 3:52am
+    </p>
   </div>
   <div class="content">
     <p>Python の<a href="http://docs.python.org/tut/">チュートリアル</a>で勉強している。</p>
-
 <p>その中の <a href="http://docs.python.org/tut/node6.html#SECTION006710000000000000000">4.7.1 Default Argument Values</a> に、気になる記述があった。</p>
-
 <blockquote>
 <p>The default values are evaluated at the point of function definition in the <em>defining</em> scope</p>
-
 <p>Important warning: The default value is evaluated only once. This makes a difference when the default is a mutable object such as a list, dictionary, or instances of most classes.</p>
 </blockquote>
-
 <p>つまり、Python における、関数のデフォルト引数は：</p>
-
 <ul>
 <li>関数が定義された時点で</li>
 <li>最初の１回のみ評価される</li>
 </ul>
-
 <p>というわけだ。</p>
-
 <p>早速、チュートリアルにあるサンプルを <code>python</code> で実行してみる。</p>
-
 <pre><code>% python
 &gt;&gt;&gt; def f(a, l=[]):
 ...   l.append(a)
@@ -58,12 +60,8 @@
 &gt;&gt;&gt; print f(3)
 [1, 2, 3]
 **
-</code></pre>
-
-<p>たしかに、関数 <code>f</code> のデフォルト引数 <code>l</code> には定義した時点での <code>[]</code> が、そのまま保持されているようだ。</p>
-
+</code></pre><p>たしかに、関数 <code>f</code> のデフォルト引数 <code>l</code> には定義した時点での <code>[]</code> が、そのまま保持されているようだ。</p>
 <p>では、同様のサンプルを今度は Ruby で試してみる。</p>
-
 <pre><code>% irb
 irb(main):001:0&gt; def f(a, l=[])
 irb(main):002:1&gt;   l &lt;&lt; a
@@ -76,9 +74,7 @@ irb(main):005:0&gt; f(2)
 irb(main):006:0&gt; f(3)
 =&gt; [3]
 **
-</code></pre>
-
-<p>実行結果のとおり、Ruby のデフォルト引数は Python とは異なり、関数を実行するたびに評価される。</p>
+</code></pre><p>実行結果のとおり、Ruby のデフォルト引数は Python とは異なり、関数を実行するたびに評価される。</p>
 
   </div>
 </article>
@@ -100,7 +96,7 @@ irb(main):006:0&gt; f(3)
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

@@ -7,85 +7,78 @@
   <title>Google App Engine で Django 1.0 を動かす</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2008/10/02/running-django-1-0-on-google-app-engine/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Google App Engine で Django 1.0 を動かす</h1>
   <div class="metadata">
-    <p class="date">2008/10/02 10:26am</p>
+    <p class="date">
+      2008/10/02 10:26am
+    </p>
   </div>
   <div class="content">
-    
-
-<p>このブログは <a href="http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/">Google App Engine と Django で動かしている</a>のだが、いままで <a href="http://www.djangoproject.com/">Django</a> はすこし古い開発版を使っていた。</p>
-
+    <p>このブログは <a href="http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/">Google App Engine と Django で動かしている</a>のだが、いままで <a href="http://www.djangoproject.com/">Django</a> はすこし古い開発版を使っていた。</p>
 <p>しかし、先頃めでたく <a href="http://www.djangoproject.com/weblog/2008/sep/03/1/">Django 1.0 もリリースされた</a>ことだし、このブログも最新の開発版にアップデートすることにした。とりあえず、すこしソースコードを修正するだけで、動くだけは動いたので、変更点を残しておく。もっとも、このブログは機能がすくない分、Django に依存している箇所もすくないので、他のプログラムではこれ以上の修正が必要かもしれない。</p>
-
 <p>また、Django を Google App Engine 上で動かす方法については、もともと、<a href="http://code.google.com/appengine/articles/django.html">Running Django on Google App Engine</a> を参考にしている。そのため、他の手段、たとえば <a href="http://code.google.com/p/google-app-engine-django/">Google App Engine Helper for Django</a> を使っている人にとっては、この記事は役に立たないだろう。</p>
-
-<h3 id="django-dispatch-dispatcher-connect">django.dispatch.dispatcher.connect</h3>
-
+<h3 id="djangodispatchdispatcherconnect">django.dispatch.dispatcher.connect</h3>
 <p><code>django.dispatch.dispatcher.connect</code>, <code>django.dispatch.dispatcher.disconnect</code> は使えなくなっていた。</p>
-
-<pre><code class="language-diff">--- ../metareal.django.0.9/main.py    2008-06-06 17:33:42.000000000 +0900
-+++ ./main.py 2008-10-02 21:14:00.000000000 +0900
-@@ -53,20 +53,17 @@
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">--- ../metareal.django.0.9/main.py    2008-06-06 17:33:42.000000000 +0900
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ ./main.py 2008-10-02 21:14:00.000000000 +0900
+</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -53,20 +53,17 @@
+</span><span style="color:#75715e"></span>
  import django.core.handlers.wsgi
  import django.core.signals
--import django.db
--import django.dispatch.dispatcher
-+from django.db import _rollback_on_exception
-+from django.core import signals
-
+<span style="color:#f92672">-import django.db
+</span><span style="color:#f92672">-import django.dispatch.dispatcher
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+from django.db import _rollback_on_exception
+</span><span style="color:#a6e22e">+from django.core import signals
+</span><span style="color:#a6e22e"></span>
  def log_exception(*args, **kwds):
-     logging.exception('Exception in request:')
+     logging.exception(&#39;Exception in request:&#39;)
 
  # Log errors.
--django.dispatch.dispatcher.connect(
--    log_exception, django.core.signals.got_request_exception)
-+signals.got_request_exception.connect(log_exception)
-
+<span style="color:#f92672">-django.dispatch.dispatcher.connect(
+</span><span style="color:#f92672">-    log_exception, django.core.signals.got_request_exception)
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+signals.got_request_exception.connect(log_exception)
+</span><span style="color:#a6e22e"></span>
  # Unregister the rollback event handler.
--django.dispatch.dispatcher.disconnect(
--    django.db._rollback_on_exception,
--    django.core.signals.got_request_exception)
-+signals.got_request_exception.disconnect(_rollback_on_exception)
-</code></pre>
-
-<h3 id="newforms">newforms</h3>
-
+<span style="color:#f92672">-django.dispatch.dispatcher.disconnect(
+</span><span style="color:#f92672">-    django.db._rollback_on_exception,
+</span><span style="color:#f92672">-    django.core.signals.got_request_exception)
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+signals.got_request_exception.disconnect(_rollback_on_exception)
+</span></code></pre></div><h3 id="newforms">newforms</h3>
 <p><code>django.newforms</code> を <code>django.forms</code> に置き換える。</p>
-
-<pre><code class="language-diff">--- ../metareal.django.0.9/weblog/forms.py    2008-05-16 15:08:47.000000000 +0900
-+++ ./weblog/forms.py 2008-10-02 21:15:45.000000000 +0900
-@@ -1,4 +1,4 @@
--from django import newforms as forms
-+from django import forms
- from django.utils.translation import ugettext_lazy
-</code></pre>
-
-<p>使用している <a href="http://www.djangoproject.com/">Django</a> および <a href="http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes">Google App Engine SDK</a> それぞれのバージョンは以下の通り。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">--- ../metareal.django.0.9/weblog/forms.py    2008-05-16 15:08:47.000000000 +0900
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ ./weblog/forms.py 2008-10-02 21:15:45.000000000 +0900
+</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -1,4 +1,4 @@
+</span><span style="color:#75715e"></span><span style="color:#f92672">-from django import newforms as forms
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+from django import forms
+</span><span style="color:#a6e22e"></span> from django.utils.translation import ugettext_lazy
+</code></pre></div><p>使用している <a href="http://www.djangoproject.com/">Django</a> および <a href="http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes">Google App Engine SDK</a> それぞれのバージョンは以下の通り。</p>
 <ul>
 <li>Django 1.0 (revision 9109)</li>
 <li>Google App Engine SDK 1.1.4</li>
 </ul>
-
 <p>そういえば、Google App Engine は SDK 1.1.3 から zipserve という新しいモジュールが追加されたり、と徐々に機能も増えてるので、このへんも使っていきたい。</p>
-
 <h3 id="参考">参考</h3>
-
 <ul>
 <li><a href="http://djangoproject.jp/doc/ja/1.0/releases/1.0-porting-guide.html">アプリケーションを Django 0.96 から 1.0 に移行する — Django v1.0 documentation</a></li>
 <li><a href="http://googleappengine.blogspot.com/2008/09/sdk-113-now-available-for-download.html">Google App Engine Blog: SDK 1.1.3 Now Available for download</a></li>
@@ -111,7 +104,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

@@ -7,43 +7,48 @@
   <title>Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2010/12/16/ffi-requires-ruby-version-1-9-2/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった</h1>
   <div class="metadata">
-    <p class="date">2010/12/16 12:00am</p>
+    <p class="date">
+      2010/12/16 12:00am
+    </p>
   </div>
   <div class="content">
     <p><a href="https://github.com/ffi/ffi">Ruby-FFI 1.0.0</a> からは <a href="http://groups.google.com/group/ruby-ffi/browse_thread/thread/c40766b574a15962">Ruby 1.9.2 以降が必要になった</a>。</p>
-
-<pre><code class="language-bash">% sudo gem1.8 install ffi
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">% sudo gem1.8 install ffi
 Password:
 ERROR:  Error installing ffi:
-        ffi requires Ruby version &gt;= 1.9.2
-</code></pre>
-
-<p>そのため、Ruby 1.8 向けの gem をインストールするときはバージョン 0.6.3 を指定する。</p>
-
-<pre><code class="language-bash">% sudo gem1.8 install ffi --version &quot;= 0.6.3&quot;
+        ffi requires Ruby version &gt;<span style="color:#f92672">=</span> 1.9.2
+</code></pre></div><p>そのため、Ruby 1.8 向けの gem をインストールするときはバージョン 0.6.3 を指定する。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">% sudo gem1.8 install ffi --version <span style="color:#e6db74">&#34;= 0.6.3&#34;</span>
 Password:
-Building native extensions.  This could take a while...
+Building native extensions.  This could take a <span style="color:#66d9ef">while</span>...
 Successfully installed ffi-0.6.3
-1 gem installed
-Installing ri documentation for ffi-0.6.3...
-Installing RDoc documentation for ffi-0.6.3...
-</code></pre>
-
+<span style="color:#ae81ff">1</span> gem installed
+Installing ri documentation <span style="color:#66d9ef">for</span> ffi-0.6.3...
+Installing RDoc documentation <span style="color:#66d9ef">for</span> ffi-0.6.3...
+</code></pre></div>
   </div>
 </article>
 
@@ -64,7 +69,7 @@ Installing RDoc documentation for ffi-0.6.3...
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

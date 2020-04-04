@@ -7,120 +7,110 @@
   <title>iGTD と QuickSilver の連携</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/08/15/about-igtd-quicksilver-plugin/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>iGTD と QuickSilver の連携</h1>
   <div class="metadata">
-    <p class="date">2007/08/15 5:18am</p>
+    <p class="date">
+      2007/08/15 5:18am
+    </p>
   </div>
   <div class="content">
     <p><a href="http://igtd.pl/iGTD/">iGTD</a> のインストール用ディスクイメージには <a href="http://docs.blacktree.com/quicksilver/what_is_quicksilver">QuickSilver</a> と連携するためのプラグインが同梱されている（参考：<a href="http://bargiel.home.pl/iGTD/help/quicksilver/index.html">iGTD &amp; Quicksilver</a>）。</p>
-
 <p>このプラグインで追加される <strong>Put into iGTD inbox</strong> を使えば、QuickSilver で選択したものは何でも（テキスト、ファイル、ブックマーク、あるいはアプリケーションも）iGTD の inbox に放り込むことが可能だ。QuickSilver でテキストを入力すれば、それがそのままタスクの名前になるし、ファイルやブックマークはタスクにリンクが付随したかたちで登録される。</p>
-
 <p>また、タスクを登録するときは、あらかじめ決められたフォーマットに従うことで、たとえば、登録先のコンテキストやプロジェクトを指定することができる。</p>
-
 <p>以下に、使用できるフォーマットをまとめた。</p>
-
 <ol>
 <li><strong>コンテキストを指定する</strong></li>
 </ol>
-
 <blockquote>
 <ul>
 <li><strong>@development</strong> Remove a bug with link field</li>
 <li><strong>@dev</strong> Remove a bug with link field</li>
 </ul>
 </blockquote>
-
 <ol>
 <li><strong>プロジェクトを指定する</strong></li>
 </ol>
-
 <blockquote>
 <ul>
 <li>A nice new feature <strong>[igtd]</strong></li>
 <li>A nice new feature <strong>[ig]</strong></li>
 </ul>
 </blockquote>
-
 <ol>
 <li><strong>ノートを指定する</strong></li>
 </ol>
-
 <blockquote>
 <ul>
 <li>@dev A nice new feature [igtd]<strong>: quicksilver integration</strong></li>
-<li>@dev A nice new feature<strong>: quicksilver integration</strong> [igtd]</li>
+<li>@dev A nice new feature**: quicksilver integration** [igtd]</li>
 </ul>
 </blockquote>
-
 <ol>
 <li><strong>優先度を指定する</strong></li>
 </ol>
-
 <blockquote>
 <ul>
-<li>@dev A nice new feature<strong>!!</strong></li>
-<li>@dev A nice new feature<strong>!</strong></li>
+<li>@dev A nice new feature**!!**</li>
+<li>@dev A nice new feature**!**</li>
 <li>@dev A nice new feature</li>
-<li>@dev A nice new feature<strong>?</strong></li>
-<li>@dev A nice new feature<strong>??</strong></li>
+<li>@dev A nice new feature**?**</li>
+<li>@dev A nice new feature**??**</li>
 </ul>
 </blockquote>
-
 <ol>
 <li><strong>開始日時を指定する</strong></li>
 </ol>
-
 <blockquote>
 <ul>
 <li>@dev do it!! [igtd]: new release <strong>#friday,</strong></li>
 </ul>
 </blockquote>
-
 <ol>
 <li><strong>終了日時を指定する</strong></li>
 </ol>
-
 <blockquote>
 <ul>
 <li>@dev do it!! [igtd]: new release <strong>#today</strong></li>
 <li>@dev do it! [igtd]: new release <strong>#next week</strong></li>
 </ul>
 </blockquote>
-
 <ol>
 <li><strong>開始／終了日時を指定する</strong></li>
 </ol>
-
 <blockquote>
 <ul>
 <li>@dev do it!! [igtd]: new release <strong>#friday,sunday</strong></li>
 </ul>
 </blockquote>
-
 <ol>
 <li><strong>タグを指定する</strong></li>
 </ol>
-
 <blockquote>
 <ul>
 <li>@dev a task! [igtd]: new release <strong>{concept,1.5}</strong></li>
 </ul>
 </blockquote>
-
 <p>インストール用ディスクイメージには同様の機能をもつ Dashboard ウィジェットも同梱されているので、好きな方を使えばいいだろう。</p>
 
   </div>
@@ -143,7 +133,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on METAREAL</title>
@@ -13,20 +13,20 @@
     
     
     <item>
-      <title>cowbody</title>
-      <link>http://ishikawa.github.io/tags/cowbody/</link>
+      <title>elixir</title>
+      <link>http://ishikawa.github.io/tags/elixir/</link>
       <pubDate>Sun, 25 Sep 2016 14:47:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/tags/cowbody/</guid>
+      <guid>http://ishikawa.github.io/tags/elixir/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>erlang</title>
-      <link>http://ishikawa.github.io/tags/erlang/</link>
+      <title>phoenix framework</title>
+      <link>http://ishikawa.github.io/tags/phoenix-framework/</link>
       <pubDate>Sun, 25 Sep 2016 14:47:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/tags/erlang/</guid>
+      <guid>http://ishikawa.github.io/tags/phoenix-framework/</guid>
       <description></description>
     </item>
     
@@ -76,15 +76,6 @@
     </item>
     
     <item>
-      <title>elixir</title>
-      <link>http://ishikawa.github.io/tags/elixir/</link>
-      <pubDate>Fri, 25 Sep 2015 11:09:31 +0900</pubDate>
-      
-      <guid>http://ishikawa.github.io/tags/elixir/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>rust</title>
       <link>http://ishikawa.github.io/tags/rust/</link>
       <pubDate>Sun, 26 Jul 2015 10:10:37 +0900</pubDate>
@@ -130,6 +121,15 @@
     </item>
     
     <item>
+      <title>go</title>
+      <link>http://ishikawa.github.io/tags/go/</link>
+      <pubDate>Tue, 23 Feb 2010 23:26:00 +0900</pubDate>
+      
+      <guid>http://ishikawa.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>google</title>
       <link>http://ishikawa.github.io/tags/google/</link>
       <pubDate>Tue, 23 Feb 2010 23:26:00 +0900</pubDate>
@@ -166,15 +166,6 @@
     </item>
     
     <item>
-      <title>go</title>
-      <link>http://ishikawa.github.io/tags/go/</link>
-      <pubDate>Wed, 11 Nov 2009 10:29:00 +0900</pubDate>
-      
-      <guid>http://ishikawa.github.io/tags/go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>books</title>
       <link>http://ishikawa.github.io/tags/books/</link>
       <pubDate>Wed, 11 Nov 2009 01:28:00 +0900</pubDate>
@@ -207,6 +198,15 @@
       <pubDate>Mon, 27 Jul 2009 10:45:00 +0900</pubDate>
       
       <guid>http://ishikawa.github.io/tags/sphinx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>http://ishikawa.github.io/tags/java/</link>
+      <pubDate>Wed, 24 Dec 2008 01:06:00 +0900</pubDate>
+      
+      <guid>http://ishikawa.github.io/tags/java/</guid>
       <description></description>
     </item>
     
@@ -378,15 +378,6 @@
       <pubDate>Fri, 27 Jun 2008 03:41:00 +0900</pubDate>
       
       <guid>http://ishikawa.github.io/tags/concurrent/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>java</title>
-      <link>http://ishikawa.github.io/tags/java/</link>
-      <pubDate>Fri, 27 Jun 2008 03:41:00 +0900</pubDate>
-      
-      <guid>http://ishikawa.github.io/tags/java/</guid>
       <description></description>
     </item>
     

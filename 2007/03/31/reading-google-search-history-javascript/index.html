@@ -7,56 +7,49 @@
   <title>Google の検索履歴を記録する JavaScript を読んでみた</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/03/31/reading-google-search-history-javascript/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Google の検索履歴を記録する JavaScript を読んでみた</h1>
   <div class="metadata">
-    <p class="date">2007/04/01 4:59am</p>
+    <p class="date">
+      2007/04/01 4:59am
+    </p>
   </div>
   <div class="content">
-    
-
-<p><a href="http://www.google.com/searchhistory/">Google 検索履歴</a>では、検索クエリーの履歴だけではなく、検索結果で実際にどのページをクリックしたか、も記録している。</p>
-
+    <p><a href="http://www.google.com/searchhistory/">Google 検索履歴</a>では、検索クエリーの履歴だけではなく、検索結果で実際にどのページをクリックしたか、も記録している。</p>
 <p>検索結果ページのソースコードを読んでみると、履歴の保存は JavaScript で行われているようだ。</p>
-
 <p>改行やインデントを加えて読みやすくしたソースコードを基に、履歴を保存する処理や興味深い部分を紹介する。</p>
-
 <h3 id="検索クエリーの保存">検索クエリーの保存</h3>
-
 <pre><code>if (document.images) {
   new Image().src=&quot;/url?sa=Q&amp;client=safari&amp;rls=ja-jp&amp;q=...&quot;;
 }
-</code></pre>
-
-<p>まずは冒頭。新しい <code>Image</code> を生成することで <code>http://www.google.com/url/</code> にアクセスさせている。</p>
-
+</code></pre><p>まずは冒頭。新しい <code>Image</code> を生成することで <code>http://www.google.com/url/</code> にアクセスさせている。</p>
 <p>URL から推測するに検索クエリーを保存しているのだろう。</p>
-
 <h3 id="クリックされたページの-url-を保存">クリックされたページの URL を保存</h3>
-
 <p>クリックされたページの URL を保存する処理は、各リンクの <code>onmousedown</code> に JavaScript を仕込むことで実現している。</p>
-
 <pre><code>&lt;a href=&quot;...&quot; class=l onmousedown=&quot;return asq(event,this,'','','res','1','&amp;amp;sig2=...')&quot;&gt;
-</code></pre>
-
-<p>リンクをクリックすると <code>asq</code> 関数が実行されたのち、ページに遷移する、というわけだ。</p>
-
+</code></pre><p>リンクをクリックすると <code>asq</code> 関数が実行されたのち、ページに遷移する、というわけだ。</p>
 <h3 id="asq-関数の実装">asq 関数の実装</h3>
-
 <p>では、<code>asq</code> 関数はどのような実装になっているのだろう。それなりに長いので些末な部分は削除したソースは以下の通り。</p>
-
 <pre><code>window.asq = function(d,a,f,g,k,l,m) {
   if (window.XMLHttpRequest) {
     var c = window.encodeURIComponent ? encodeURIComponent : escape;
@@ -88,16 +81,10 @@
   }
   return true
 };
-</code></pre>
-
-<p><code>XMLHttpRequest</code> を使って、クリックされたページの URL を非同期送信している。強調した部分では、<code>setTimeout</code> でタイムアウト処理をしているようだ。</p>
-
+</code></pre><p><code>XMLHttpRequest</code> を使って、クリックされたページの URL を非同期送信している。強調した部分では、<code>setTimeout</code> でタイムアウト処理をしているようだ。</p>
 <h3 id="ie-6-以下の場合は">IE 6 以下の場合は？</h3>
-
 <p>見ての通り、<code>asq</code> 関数の実装は <code>XMLHttpRequest</code> オブジェクトがあるかどうかに依存している。</p>
-
 <p>では、<code>XMLHttpRequest</code> オブジェクトではなく、<code>ActiveXObject</code> 経由で非同期通信を行う IE 6 などではどうするのだろう？</p>
-
 <p>実は IE 6 などでアクセスすると、<code>asq</code> 関数ではなく、<code>clk</code> 関数というものが定義されるようになっている。この関数では検索クエリーの保存と同じように、<code>Image</code> オブジェクトによるアクセスが行われている。</p>
 
   </div>
@@ -120,7 +107,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

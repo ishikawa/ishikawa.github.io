@@ -7,33 +7,39 @@
   <title>ruby-openid でログの出力先を変更する</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2008/04/18/ruby-openid-util-logger/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>ruby-openid でログの出力先を変更する</h1>
   <div class="metadata">
-    <p class="date">2008/04/18 7:41am</p>
+    <p class="date">
+      2008/04/18 7:41am
+    </p>
   </div>
   <div class="content">
     <p><a href="http://rubyforge.org/projects/ruby-openid/">ruby-openid</a> は Ruby の OpenID ライブラリだが、そのままだとログの出力先が標準エラー出力に向けられている。これでは何かと困ることもあるだろう（たとえば、ユニットテストの結果に ruby-openid のデバッグ出力が混じって鬱陶しい、とか）。</p>
-
 <p>幸い OpenID::Util モジュールに、内部で使われているロガーを変更するためのメソッドが用意されている。以下のようにすれば、Rails 標準のロガーに置き換えることが可能だ。</p>
-
 <pre><code># ruby-openid の Logger を Rails 標準のもので置き換える
 OpenID::Util.logger = RAILS_DEFAULT_LOGGER
-</code></pre>
-
-<p><code>RAILS_DEFAULT_LOGGER</code> 定数など、Rails のロガー周りについては <a href="http://wiki.rubyonrails.org/rails/pages/HowtoConfigureLogging">Wiki のまとめ</a>が参考になる。</p>
+</code></pre><p><code>RAILS_DEFAULT_LOGGER</code> 定数など、Rails のロガー周りについては <a href="http://wiki.rubyonrails.org/rails/pages/HowtoConfigureLogging">Wiki のまとめ</a>が参考になる。</p>
 
   </div>
 </article>
@@ -55,7 +61,7 @@ OpenID::Util.logger = RAILS_DEFAULT_LOGGER
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

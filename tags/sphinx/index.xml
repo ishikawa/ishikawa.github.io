@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>sphinx on METAREAL</title>
@@ -21,8 +21,8 @@
       <description>約一年ぶりに Sphinx を最新版に&amp;hellip;しようとしたら色々苦労したので、変更点や手順をメモとして残しておく。
 Sphinx 0.6.2 &amp;amp; Jinja2 2.1.1 easy_install でインストールしようとしたが、Jinja2 のセットアップ・スクリプトがうまく動いていないらしく、Jinja2 に依存している Sphinx もインストールできない。原因を調べる気力はないので、ソースコードからビルドしてインストールすることにした。
 まずは Jinja2 2.1.1 をビルドしてインストール。
-% curl -LO http://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.1.1.tar.gz % tar xvzf Jinja2-2.1.1.tar.gz % cd Jinja2-2.1.1 % sudo python setup.py install  つづいて Sphinx 0.6.2
-% curl -LO http://pypi.python.org/packages/source/S/Sphinx/Sphinx-0.6.2.tar.gz % tar xvzf Sphinx-0.6.2.tar.gz % cd Sphinx-0.6.2 % sudo python setup.py install  sphinx.builder Sphinx 0.6.2 では sphinx.builder が非推奨扱いになっていた (changeset:254e0ff435e8)。
+% curl -LO http://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.1.1.tar.gz % tar xvzf Jinja2-2.1.1.tar.gz % cd Jinja2-2.1.1 % sudo python setup.py install つづいて Sphinx 0.6.2
+% curl -LO http://pypi.python.org/packages/source/S/Sphinx/Sphinx-0.6.2.tar.gz % tar xvzf Sphinx-0.6.2.tar.gz % cd Sphinx-0.6.2 % sudo python setup.py install sphinx.builder Sphinx 0.6.2 では sphinx.builder が非推奨扱いになっていた (changeset:254e0ff435e8)。
 Running Sphinx v0.6.2 docs/ja/source/../../sphinxext/__init__.py:1: DeprecationWarning: The sphinx.builder module is deprecated; please import builders from the respective sphinx.</description>
     </item>
     

@@ -7,108 +7,90 @@
   <title>Rails で MySQL を使うときの注意点</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/07/24/notes-on-rubyonrails-with-mysql/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Rails で MySQL を使うときの注意点</h1>
   <div class="metadata">
-    <p class="date">2007/07/24 9:29am</p>
+    <p class="date">
+      2007/07/24 9:29am
+    </p>
   </div>
   <div class="content">
-    
-
-<p><a href="http://weblog.rubyonrails.com/2007/7/20/rails-and-mysql">Rails のブログでも取り上げられていた</a>、&rdquo;<a href="http://mysqldump.azundris.com/archives/72-Rubyisms.html">Rubyisms - MySQL-dump</a>&rdquo; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。</p>
-
+    <p><a href="http://weblog.rubyonrails.com/2007/7/20/rails-and-mysql">Rails のブログでも取り上げられていた</a>、&quot;<a href="http://mysqldump.azundris.com/archives/72-Rubyisms.html">Rubyisms - MySQL-dump</a>&rdquo; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。</p>
 <p>Rubyisms - MySQL-dump
-  <a href="http://mysqldump.azundris.com/archives/72-Rubyisms.html">http://mysqldump.azundris.com/archives/72-Rubyisms.html</a></p>
-
-<h3 id="select-が多すぎる">&ldquo;select *&rdquo; が多すぎる</h3>
-
+<a href="http://mysqldump.azundris.com/archives/72-Rubyisms.html">http://mysqldump.azundris.com/archives/72-Rubyisms.html</a></p>
+<h3 id="select--が多すぎる">&ldquo;select *&rdquo; が多すぎる</h3>
 <p>ActiveRecord は、特に何も指定しないと <code>select *</code> で、すべてのカラムを取ってくる。SQL は動的に生成されて、どのカラムが存在するかチェックしているので、スキームが変更されても大丈夫。</p>
-
-<p>でも、必要のないデータまで取ってきてしまう、という問題はあるよね。そして、何が無駄かっていうと、必要のないデータのために一時的なテーブルが使われるかもしれない、ってことなんだ（SQL を <code>EXPLAIN</code> してみて、&rdquo;using temporary&rdquo; となっていれば、そういう事態が発生しているサインだ）。</p>
-
+<p>でも、必要のないデータまで取ってきてしまう、という問題はあるよね。そして、何が無駄かっていうと、必要のないデータのために一時的なテーブルが使われるかもしれない、ってことなんだ（SQL を <code>EXPLAIN</code> してみて、&ldquo;using temporary&rdquo; となっていれば、そういう事態が発生しているサインだ）。</p>
 <ul>
 <li>TEXT や BLOB をもつテーブルではもっと悪くて、一時テーブルは<strong>ディスク上に</strong>作られる</li>
 <li>これには <code>tmp_table_size</code> や <code>max_heap_table_size</code> の設定は<strong>関係ない</strong></li>
 </ul>
-
 <p>そういう場合は、SQL を二段階に分けるといい</p>
-
 <ul>
 <li>まず、最初の SQL でレコードの ID だけを SELECT する（<code>int</code> だけなので、このときの一時テーブルはメモリ上に作られる）</li>
 <li>次に、その ID で必要な TEXT や BLOB を SELECT するんだ（これは ID による単純な検索なので一時テーブルは使われない）</li>
 <li>ActiveRecord では <code>find([id1, id2, ...])</code></li>
 </ul>
-
 <p>では、ActiveRecord で <code>select *</code> を避けるにはどうするか？</p>
-
 <ul>
 <li><code>find(...)</code> の最後の引数に指定するハッシュに <code>:select =&gt; [ fieldlist ]</code> として指定する</li>
 <li><code>ActiveRecord::Base</code> をサブクラス化して、<code>:select</code> が指定されていなければ、警告を出すようにするのがいいんじゃない？</li>
 </ul>
-
 <h3 id="文字列型がかなり無駄かも">文字列型がかなり無駄かも</h3>
-
 <p>たとえ TEXT 型（Migration だと <code>:text</code> 型）を使っていなくても、Migration で <code>:string</code> 型を使っているなら、気をつけた方がいい。</p>
-
 <ul>
 <li>普通、これは VARCHAR(255)</li>
 <li>エンコーディングは <code>utf8</code> になっているだろう</li>
 </ul>
-
 <p>さて、MySQL では<strong>メモリ上の一時テーブルには</strong> VARCHAR 型がない（「補足：メモリ上の一時テーブルには VARCHAR 型がない」参照）</p>
-
 <ul>
 <li>代わりに VARCHAR は CHAR に変換される</li>
 <li>つまり、VARCHAR(255) は CHAR(255) ってこと</li>
 <li>そして、<code>utf8</code> では 1 文字 3 バイトとして換算されるから &hellip;</li>
 <li><code>:string</code> 型のカラムひとつごとに 765 バイトを占有する &hellip; なんてこった。</li>
 </ul>
-
 <p>だから、デフォルトの <code>utf8</code> ではなく、<code>latin1</code> などの多バイトではないエンコーディングを使うことも考慮した方がよい。そして、<code>:string</code> 型には必ず <code>:limit</code> を指定しよう。</p>
-
 <p>以上、MySQL の一時テーブルの特性とか、知らないとどうにもならん部分が多い。他にも、</p>
-
 <ul>
 <li>なんでテーブル名とかをバッククォートで囲んでないの？　とか、</li>
 <li>トランザクション内部ではクエリーキャッシュが使われない、とか</li>
 </ul>
-
 <p>興味深い話題があります。あと、この要約が間違ってる可能性もあるので、是非<a href="http://mysqldump.azundris.com/archives/72-Rubyisms.html">原文</a>も読むことをおすすめします。</p>
-
-<h3 id="補足-メモリ上の一時テーブルには-varchar-型がない">補足：メモリ上の一時テーブルには VARCHAR 型がない</h3>
-
+<h3 id="補足メモリ上の一時テーブルには-varchar-型がない">補足：メモリ上の一時テーブルには VARCHAR 型がない</h3>
 <p>「メモリ上の一時テーブルには VARCHAR 型がない」という記述について、気になったので調べてみた。</p>
-
 <p><a href="http://www.jpipes.com/index.php?/archives/177-Common-Questions-and-Answers-from-Performance-Tuning-Webinars.html">Common Questions and Answers from Performance Tuning Webinars - Jay Pipes</a> という記事にて、</p>
-
 <blockquote>
 <ul>
 <li>A temporary table is implicitly created to handle a GROUP BY or ORDER BY clause and a VARCHAR column is in the SELECT statement</li>
 <li>A temporary table is created explicitly which contains a VARCHAR column</li>
 </ul>
-
 <p>In these cases, the length of the VARCHAR columns does come into play. Why? Because <strong>temporary tables in memory are actually just tables of the MEMORY storage engine.</strong> The MEMORY storage engine, for some reason, treats all VARCHAR(X) columns as CHAR(X) columns.</p>
 </blockquote>
-
 <p>つまり、</p>
-
 <ul>
 <li>メモリ上の一時テーブルは <a href="http://dev.mysql.com/doc/refman/5.0/en/memory-storage-engine.html">MEMORY ストレージエンジン</a>である</li>
 <li>そして、MEMORY ストレージエンジンは <code>VARCHAR(X)</code> を <code>CHAR(X)</code> として扱う</li>
 </ul>
-
 <p>ということのようだ。</p>
 
   </div>
@@ -131,7 +113,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

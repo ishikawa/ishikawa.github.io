@@ -7,28 +7,35 @@
   <title>Rails 2.0 で追加された Migration 関連の Rake タスク</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2008/01/31/rails-2-0-migration-related-rake-tasks/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Rails 2.0 で追加された Migration 関連の Rake タスク</h1>
   <div class="metadata">
-    <p class="date">2008/02/01 3:08am</p>
+    <p class="date">
+      2008/02/01 3:08am
+    </p>
   </div>
   <div class="content">
-    
-
-<h3 id="db-migrate-reset">db:migrate:reset</h3>
-
+    <h3 id="dbmigratereset">db:migrate:reset</h3>
 <blockquote>
 <ul>
 <li><code>DROP DATABASE</code> して <code>db:migrate</code></li>
@@ -36,9 +43,7 @@
 <li>問答無用で <code>DEFAULT CHARACTER SET 'utf8'</code> な気もするが&hellip;</li>
 </ul>
 </blockquote>
-
-<h3 id="db-migrate-redo-step-n">db:migrate:redo [STEP=n]</h3>
-
+<h3 id="dbmigrateredo-stepn">db:migrate:redo [STEP=n]</h3>
 <blockquote>
 <ul>
 <li><code>STEP</code> で指定した数だけ遡って db:migrate をやりなおす</li>
@@ -66,7 +71,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

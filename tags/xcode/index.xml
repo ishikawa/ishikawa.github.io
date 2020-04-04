@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>xcode on METAREAL</title>
@@ -33,8 +33,8 @@
       <description>Xcode の SCM 連携機能は、すくなくとも Eclipse なんかに比べると貧弱で、実作業ではコマンドラインで svn を使っている。
 それでも一度は試しておきたい、と試してみたときの、あまり一般的ではないトラブルシューティングを覚え書き。
 svn+ssh で 22 番以外のポートを使いたいとき これは別に Xcode に限った話じゃないけど、svn+ssh プロトコルで 22 番以外のポートを使う場合は、環境変数 SVN_SSH で ssh プログラムの引数に指定します。
-export SVN_SSH=&amp;quot;ssh -p 12345&amp;quot;  環境変数を export したターミナルで、そのまま .xcodeproj を開けばいいです。
-open ./Example.xcodeproj  それでも、パスフレーズ入力できないとき 上の方法で Xcode 起動して、SCM を有効にしても、パスフレーズの入力画面などがでず、Permission denied で怒られてしまうことがある &amp;hellip; というか、僕がまさにそれ。
+export SVN_SSH=&amp;quot;ssh -p 12345&amp;quot; 環境変数を export したターミナルで、そのまま .xcodeproj を開けばいいです。
+open ./Example.xcodeproj それでも、パスフレーズ入力できないとき 上の方法で Xcode 起動して、SCM を有効にしても、パスフレーズの入力画面などがでず、Permission denied で怒られてしまうことがある &amp;hellip; というか、僕がまさにそれ。
 このときは、SSHKeychain を使って、パスフレーズ入力を横取りすることで動くようになった。</description>
     </item>
     
@@ -46,11 +46,11 @@ open ./Example.xcodeproj  それでも、パスフレーズ入力できないと
       <guid>http://ishikawa.github.io/2007/06/17/subversion-primer-for-xcode-projects/</guid>
       <description>Apple の提供する開発環境 Xcode で作成したプロジェクトを Subversion 管理する手順。基本的に「Rails のプロジェクトを Subversion で管理する」の Xcode 版。
 リポジトリの場所を決める まずは、リポジトリのルート URL を決めて、これを環境変数に設定しよう。以降はこの変数を使うことで、長々とした URL をタイプする手間が省ける。
-% SVN_REPO=svn+ssh://svn.example.com/projects/Example  もちろん、実際の URL は自分で使うものに置き換えてほしい。
+% SVN_REPO=svn+ssh://svn.example.com/projects/Example もちろん、実際の URL は自分で使うものに置き換えてほしい。
 空のプロジェクトをコミットする ここで、いきなり Xcode を起動して新規プロジェクトをつくるのではなく、まずは、プロジェクトのディレクトリ・レイアウトを構成した、空のプロジェクトをコミットする。
 Subversion 管理するプロジェクトのディレクトリ・レイアウトといえば、trunk branches tags が王道なので、これに合わせておくのがいいだろう。たとえ、開発者があなたひとりで、職場の数人しか使わないようなアプリケーションを開発しており、ブランチなんか作る予定がないのだとしても。
-% mkdir tmp % cd tmp % mkdir trunk tags branches % svn import ./ ${SVN_REPO} -m &amp;quot;initial import&amp;quot; Adding trunk Adding branches Adding tags Committed revision 20.  コミットしたら、このディレクトリは必要ないので削除しても大丈夫だ。
-% cd .. % rm -rf tmp  Xcode のプロジェクトにチェックアウト そうして、コミットした空のプロジェクトを Xocde のプロジェクト・ディレクトリにチェックアウトすれば、Subversion 管理された Xcode プロジェクトが出来上がる。この方法なら、すでに開発中のプロジェクトにも適用しやすい。</description>
+% mkdir tmp % cd tmp % mkdir trunk tags branches % svn import ./ ${SVN_REPO} -m &amp;quot;initial import&amp;quot; Adding trunk Adding branches Adding tags Committed revision 20. コミットしたら、このディレクトリは必要ないので削除しても大丈夫だ。
+% cd .. % rm -rf tmp Xcode のプロジェクトにチェックアウト そうして、コミットした空のプロジェクトを Xocde のプロジェクト・ディレクトリにチェックアウトすれば、Subversion 管理された Xcode プロジェクトが出来上がる。この方法なら、すでに開発中のプロジェクトにも適用しやすい。</description>
     </item>
     
   </channel>

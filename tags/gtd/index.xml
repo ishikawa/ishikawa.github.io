@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gtd on METAREAL</title>
@@ -18,10 +18,10 @@
       <pubDate>Thu, 06 Dec 2007 08:08:00 +0900</pubDate>
       
       <guid>http://ishikawa.github.io/2007/12/05/optimize-the-igtd-database/</guid>
-      <description> 日々の ToDo 管理には iGTD を愛用している。だが、最近、目に見えて動作が重くなってしまった。
+      <description>日々の ToDo 管理には iGTD を愛用している。だが、最近、目に見えて動作が重くなってしまった。
 おそらく、完了したタスクも削除されることはなく、ずっと溜まっているのが原因だろう。iGTD は内部のデータベースとして SQLite を使っているので、Mail.app を vacuum して高速化と同じ方法で高速化できる。
 VACUUM ANALYZE 手順は簡単で、ターミナルから以下のコマンドを実行するだけだ（iGTD が起動中なら終了する必要があるかもしれない）。
-% sqlite3 ~/Library/Application\ Support/iGTD/iGTD.sql &amp;quot;vacuum analyze&amp;quot;  このコマンドはデータベースから不要な領域を回収し、統計情報を更新することで実行速度を向上させる。これだけで体感的にはかなり速くなった。
+% sqlite3 ~/Library/Application\ Support/iGTD/iGTD.sql &amp;quot;vacuum analyze&amp;quot; このコマンドはデータベースから不要な領域を回収し、統計情報を更新することで実行速度を向上させる。これだけで体感的にはかなり速くなった。
 参考  SQLite Query Language: ANALYZE SQLite Query Language: VACUUM  </description>
     </item>
     
@@ -35,7 +35,7 @@ VACUUM ANALYZE 手順は簡単で、ターミナルから以下のコマンド�
 このプラグインで追加される Put into iGTD inbox を使えば、QuickSilver で選択したものは何でも（テキスト、ファイル、ブックマーク、あるいはアプリケーションも）iGTD の inbox に放り込むことが可能だ。QuickSilver でテキストを入力すれば、それがそのままタスクの名前になるし、ファイルやブックマークはタスクにリンクが付随したかたちで登録される。
 また、タスクを登録するときは、あらかじめ決められたフォーマットに従うことで、たとえば、登録先のコンテキストやプロジェクトを指定することができる。
 以下に、使用できるフォーマットをまとめた。
- コンテキストを指定する    @development Remove a bug with link field @dev Remove a bug with link field    プロジェクトを指定する    A nice new feature [igtd] A nice new feature [ig]    ノートを指定する    @dev A nice new feature [igtd]: quicksilver integration @dev A nice new feature: quicksilver integration [igtd]    優先度を指定する    @dev A nice new feature!</description>
+ コンテキストを指定する    @development Remove a bug with link field @dev Remove a bug with link field    プロジェクトを指定する    A nice new feature [igtd] A nice new feature [ig]    ノートを指定する    @dev A nice new feature [igtd]: quicksilver integration @dev A nice new feature**: quicksilver integration** [igtd]    優先度を指定する    @dev A nice new feature**!</description>
     </item>
     
     <item>

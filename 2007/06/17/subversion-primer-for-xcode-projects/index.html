@@ -7,43 +7,42 @@
   <title>Xcode プロジェクトを Subversion 管理する</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/06/17/subversion-primer-for-xcode-projects/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Xcode プロジェクトを Subversion 管理する</h1>
   <div class="metadata">
-    <p class="date">2007/06/18 3:35am</p>
+    <p class="date">
+      2007/06/18 3:35am
+    </p>
   </div>
   <div class="content">
-    
-
-<p>Apple の提供する開発環境 <a href="http://www.apple.com/jp/macosx/features/xcode/">Xcode</a> で作成したプロジェクトを Subversion 管理する手順。基本的に「<a href="http://rails.office.drecom.jp/ishikawa/archive/26">Rails のプロジェクトを Subversion で管理する</a>」の Xcode 版。</p>
-
+    <p>Apple の提供する開発環境 <a href="http://www.apple.com/jp/macosx/features/xcode/">Xcode</a> で作成したプロジェクトを Subversion 管理する手順。基本的に「<a href="http://rails.office.drecom.jp/ishikawa/archive/26">Rails のプロジェクトを Subversion で管理する</a>」の Xcode 版。</p>
 <h3 id="リポジトリの場所を決める">リポジトリの場所を決める</h3>
-
 <p>まずは、リポジトリのルート URL を決めて、これを環境変数に設定しよう。以降はこの変数を使うことで、長々とした URL をタイプする手間が省ける。</p>
-
 <pre><code>% SVN_REPO=svn+ssh://svn.example.com/projects/Example
-</code></pre>
-
-<p>もちろん、実際の URL は自分で使うものに置き換えてほしい。</p>
-
+</code></pre><p>もちろん、実際の URL は自分で使うものに置き換えてほしい。</p>
 <h3 id="空のプロジェクトをコミットする">空のプロジェクトをコミットする</h3>
-
 <p>ここで、いきなり Xcode を起動して新規プロジェクトをつくるのではなく、まずは、プロジェクトのディレクトリ・レイアウトを構成した、空のプロジェクトをコミットする。</p>
-
 <p>Subversion 管理するプロジェクトのディレクトリ・レイアウトといえば、<code>trunk branches tags</code> が王道なので、これに合わせておくのがいいだろう。たとえ、開発者があなたひとりで、職場の数人しか使わないようなアプリケーションを開発しており、ブランチなんか作る予定がないのだとしても。</p>
-
 <pre><code>% mkdir tmp
 % cd tmp
 % mkdir trunk tags branches
@@ -53,40 +52,24 @@ Adding         branches
 Adding         tags
 
 Committed revision 20.
-</code></pre>
-
-<p>コミットしたら、このディレクトリは必要ないので削除しても大丈夫だ。</p>
-
+</code></pre><p>コミットしたら、このディレクトリは必要ないので削除しても大丈夫だ。</p>
 <pre><code>% cd ..
 % rm -rf tmp
-</code></pre>
-
-<h3 id="xcode-のプロジェクトにチェックアウト">Xcode のプロジェクトにチェックアウト</h3>
-
+</code></pre><h3 id="xcode-のプロジェクトにチェックアウト">Xcode のプロジェクトにチェックアウト</h3>
 <p>そうして、コミットした空のプロジェクトを Xocde のプロジェクト・ディレクトリにチェックアウトすれば、Subversion 管理された Xcode プロジェクトが出来上がる。この方法なら、すでに開発中のプロジェクトにも適用しやすい。</p>
-
 <p>ここでは、<code>~/Developer/Workspace/Example/</code> に Xcode のプロジェクトを作成しているものとする。そのディレクトリに移動し、さきほどコミットしたプロジェクトの <code>trunk</code> をチェックアウトしよう。</p>
-
 <pre><code>% cd ~/Developer/Workspace/Example/
 % svn checkout ${SVN_REPO}/trunk .
-</code></pre>
-
-<h3 id="バージョン管理するファイルの選択">バージョン管理するファイルの選択</h3>
-
+</code></pre><h3 id="バージョン管理するファイルの選択">バージョン管理するファイルの選択</h3>
 <p>ここまでで、</p>
-
 <ol>
 <li>プロジェクトのディレクトリ・レイアウトを決める</li>
 <li>空のプロジェクトをコミットする</li>
 <li>Xcode プロジェクトにチェックアウト</li>
 </ol>
-
 <p>が出来た。</p>
-
 <p>もちろん、いまは空のディレクトリをチェックアウトしただけなので、Xcode プロジェクト内のファイルはいずれもバージョン管理されていない。</p>
-
 <p>ひとつひとつ、必要なファイルを <code>svn add</code> してもかまわないが、最初にすべてを <code>svn add</code> してしまって、不要なものを取り除くのが簡単だ。</p>
-
 <pre><code>% svn add --force .
 A         Example.xcodeproj
 A         Example.xcodeproj/ishikawa.mode1
@@ -94,27 +77,17 @@ A         Example.xcodeproj/ishikawa.pbxuser
 A         Example.xcodeproj/project.pbxproj
 A         Example_Prefix.pch
 A         build
-</code></pre>
-
-<p>ビルド結果が保存される <code>build</code> ディレクトリはバージョン管理しなくてもよいだろう。まずは、このディレクトリを管理対象から外す。</p>
-
+</code></pre><p>ビルド結果が保存される <code>build</code> ディレクトリはバージョン管理しなくてもよいだろう。まずは、このディレクトリを管理対象から外す。</p>
 <pre><code>% svn revert build --recursive
 % svn propset svn:ignore &quot;build&quot; .
-</code></pre>
-
-<p>Xcode の<a href="http://developer.apple.com/DOCUMENTATION/DeveloperTools/Conceptual/XcodeUserGuide/Contents/Resources/ja.lproj/04_02_SCMManagingProjects/chapter_27_section_2.html#//apple_ref/doc/uid/TP40002686-BAJFCAII">プロジェクトパッケージ</a> <code>.xcodeproj</code> にはユーザー特有のファイルが含まれているので、複数人で開発する場合は、これらも管理対象から外しておいた方がいいだろう。</p>
-
+</code></pre><p>Xcode の<a href="http://developer.apple.com/DOCUMENTATION/DeveloperTools/Conceptual/XcodeUserGuide/Contents/Resources/ja.lproj/04_02_SCMManagingProjects/chapter_27_section_2.html#//apple_ref/doc/uid/TP40002686-BAJFCAII">プロジェクトパッケージ</a> <code>.xcodeproj</code> にはユーザー特有のファイルが含まれているので、複数人で開発する場合は、これらも管理対象から外しておいた方がいいだろう。</p>
 <pre><code>% svn revert Example.xcodeproj/ishikawa.*
 % svn propedit svn:ignore Example.xcodeproj/
 *.mode1
 *.pbxuser
-</code></pre>
-
-<p>最後に変更をコミットして終わり。</p>
-
+</code></pre><p>最後に変更をコミットして終わり。</p>
 <pre><code>% svn commit -m &quot;New Xcode project&quot;
 </code></pre>
-
   </div>
 </article>
 
@@ -135,7 +108,7 @@ A         build
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

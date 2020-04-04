@@ -7,26 +7,35 @@
   <title>PostgreSQL 7.4 を Intel Mac にインストールする方法</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>PostgreSQL 7.4 を Intel Mac にインストールする方法</h1>
   <div class="metadata">
-    <p class="date">2007/07/25 4:24am</p>
+    <p class="date">
+      2007/07/25 4:24am
+    </p>
   </div>
   <div class="content">
     <p>理由あって <a href="http://www.postgresql.org/">PostgreSQL</a> 7.4 を Mac OS X にインストールすることになった。早速、ダウンロードページから手に入る中で最新の 7.4.17 をダウンロードしてインストールしようとするも、エラーが出てコンパイルできない。</p>
-
 <pre><code>% ./configure
 % make
 ...
@@ -43,24 +52,17 @@ make[3]: *** [transam-recursive] Error 2
 make[2]: *** [access-recursive] Error 2
 make[1]: *** [all] Error 2
 make: *** [all] Error 2
-</code></pre>
-
-<p>ちなみに環境は以下の通り。</p>
-
+</code></pre><p>ちなみに環境は以下の通り。</p>
 <ul>
 <li>PostgreSQL 7.4.17 (download)</li>
 <li>Mac OS X 10.4.10</li>
 <li>MacBook Intel Core 2 Duo</li>
 </ul>
-
 <p>エラーメッセージには、</p>
-
 <blockquote>
-<p>PostgreSQL does not have native spinlock support on this platform. To continue the compilation, rerun configure using &ndash;disable-spinlocks. However, performance will be poor. Please report this to pgsql-bugs@postgresql.org.</p>
+<p>PostgreSQL does not have native spinlock support on this platform. To continue the compilation, rerun configure using &ndash;disable-spinlocks. However, performance will be poor. Please report this to <a href="mailto:pgsql-bugs@postgresql.org">pgsql-bugs@postgresql.org</a>.</p>
 </blockquote>
-
 <p>とあるので、言われたとおり <code>--disable-spinlocks</code> オプションつきでコンパイルを試みる。</p>
-
 <pre><code>% make clean
 % ./configure --disable-spinlocks
 ...
@@ -73,21 +75,14 @@ make[3]: *** [transam-recursive] Error 2
 make[2]: *** [access-recursive] Error 2
 make[1]: *** [all] Error 2
 make: *** [all] Error 2
-</code></pre>
-
-<p>やはり駄目だ。該当のエラーはなくなったけど、そのあとのエラーが直らない。</p>
-
+</code></pre><p>やはり駄目だ。該当のエラーはなくなったけど、そのあとのエラーが直らない。</p>
 <p>Google で検索してみると、同様に困っている人も何人かいるようだ。</p>
-
 <ul>
 <li><a href="http://archives.postgresql.org/pgsql-bugs/2006-08/msg00083.php">no native spinlock support on os x 10.4.7</a></li>
 <li><a href="http://archives.postgresql.org/pgsql-ports/2006-01/msg00000.php">Postgresql7.4.11 compilation failing on Mac Intels</a></li>
 </ul>
-
 <p>しかし、解決策は書かれていない（最新版使えよ、ってのはあるけど&hellip;）。</p>
-
 <p>しょうがないので、無理矢理コンパイルを通すことにした。</p>
-
 <pre><code>--- src/include/port/darwin.h.org       2007-07-24 17:15:54.000000000 +0900
 +++ src/include/port/darwin.h   2007-07-24 17:15:58.000000000 +0900
 @@ -1,8 +1,6 @@
@@ -99,18 +94,13 @@ make: *** [all] Error 2
 
  #if defined(__ppc__)
  typedef unsigned int slock_t;
-</code></pre>
-
-<p>ざっとソースコードを眺めた感じ、Intel Mac のチェックが抜けているだけのように思えた（というか、読む気が失せて、そう思い込むことにした）ので、こんな適当な変更でコンパイルしてみる。</p>
-
+</code></pre><p>ざっとソースコードを眺めた感じ、Intel Mac のチェックが抜けているだけのように思えた（というか、読む気が失せて、そう思い込むことにした）ので、こんな適当な変更でコンパイルしてみる。</p>
 <pre><code>% make clean
 % ./configure
 % make
 ...
 All of PostgreSQL successfully made. Ready to install.
-</code></pre>
-
-<p><code>psql</code> が動作することと、<code>make check</code> がパスすることは確認ずみ。</p>
+</code></pre><p><code>psql</code> が動作することと、<code>make check</code> がパスすることは確認ずみ。</p>
 
   </div>
 </article>
@@ -132,7 +122,7 @@ All of PostgreSQL successfully made. Ready to install.
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

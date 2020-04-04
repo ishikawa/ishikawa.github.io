@@ -7,35 +7,39 @@
   <title>Django と Python-Markdown 1.7 で UnicodeDecodeError</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2008/04/14/python-markdown-1-7-with-django/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Django と Python-Markdown 1.7 で UnicodeDecodeError</h1>
   <div class="metadata">
-    <p class="date">2008/04/15 8:57am</p>
+    <p class="date">
+      2008/04/15 8:57am
+    </p>
   </div>
   <div class="content">
     <p><a href="http://www.freewisdom.org/projects/python-markdown/">Python Markdown</a> の最新版である 1.7 を <a href="http://www.djangoproject.com/">Django</a> で使うと、日本語など ASCII 以外の文字で UnicodeDecodeError が発生する。</p>
-
 <pre><code>MARKDOWN-CRITICAL: &quot;UnicodeDecodeError: Markdown only accepts unicode or ascii  input.&quot;
-</code></pre>
-
-<p>すでに<a href="http://code.djangoproject.com/ticket/6387">チケットも登録されている</a>が、とりあえず古いバージョンに戻すのがよさそう。<a href="http://code.djangoproject.com/ticket/5663#comment:1">1.6b はバグで同様のエラーが出る</a>ようなので、1.6a にしよう。</p>
-
+</code></pre><p>すでに<a href="http://code.djangoproject.com/ticket/6387">チケットも登録されている</a>が、とりあえず古いバージョンに戻すのがよさそう。<a href="http://code.djangoproject.com/ticket/5663#comment:1">1.6b はバグで同様のエラーが出る</a>ようなので、1.6a にしよう。</p>
 <pre><code>% sudo easy_install markdown==1.6a
-</code></pre>
-
-<p>蛇足だが、この問題を調べている途中で見つけた。<a href="http://code.google.com/p/python-markdown2/">python-markdown2</a> という、別の Markdown ライブラリも存在するようだ。</p>
+</code></pre><p>蛇足だが、この問題を調べている途中で見つけた。<a href="http://code.google.com/p/python-markdown2/">python-markdown2</a> という、別の Markdown ライブラリも存在するようだ。</p>
 
   </div>
 </article>
@@ -57,7 +61,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

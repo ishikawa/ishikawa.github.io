@@ -7,61 +7,66 @@
   <title>Prototype 1.6.0.2 公開</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2008/01/30/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Prototype 1.6.0.2 公開</h1>
   <div class="metadata">
-    <p class="date">2008/01/31 12:40pm</p>
+    <p class="date">
+      2008/01/31 12:40pm
+    </p>
   </div>
   <div class="content">
-    
-
-<p>気づけば <a href="http://www.prototypejs.org/2008/1/25/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security">Prototype 1.6.0.2</a> がリリースされていた。</p>
-
+    <p>気づけば <a href="http://www.prototypejs.org/2008/1/25/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security">Prototype 1.6.0.2</a> がリリースされていた。</p>
 <ul>
-<li>28 のバグ修正と性能の向上</li>
-<li>Safari 3 における <a href="http://www.prototypejs.org/api/element/getelementsbyselector"><code>Element#getElementsBySelector</code></a> の性能向上</li>
-
-<li><p>すべてのブラウザで以下のメソッドの性能向上
+<li>
+<p>28 のバグ修正と性能の向上</p>
+</li>
+<li>
+<p>Safari 3 における <a href="http://www.prototypejs.org/api/element/getelementsbyselector"><code>Element#getElementsBySelector</code></a> の性能向上</p>
+</li>
+<li>
+<p>すべてのブラウザで以下のメソッドの性能向上
 <a href="http://www.prototypejs.org/api/element/up"><code>Element#up</code></a>, <a href="http://www.prototypejs.org/api/element/down"><code>Element#down</code></a>
 <a href="http://www.prototypejs.org/api/element/next"><code>Element#next</code></a>, <a href="http://www.prototypejs.org/api/element/previous"><code>Element#previous</code></a>
-<a href="http://www.prototypejs.org/api/event/findElement"><code>Event#findElement</code></a></p></li>
-
-<li><p><a href="http://jp.opera.com/">Opera</a> 9.25 以降が公式にサポート対象となった</p></li>
-
-<li><p>ブラウザ以外の環境での XSS 脆弱性の可能性を修正</p></li>
+<a href="http://www.prototypejs.org/api/event/findElement"><code>Event#findElement</code></a></p>
+</li>
+<li>
+<p><a href="http://jp.opera.com/">Opera</a> 9.25 以降が公式にサポート対象となった</p>
+</li>
+<li>
+<p>ブラウザ以外の環境での XSS 脆弱性の可能性を修正</p>
+</li>
 </ul>
-
 <h3 id="safari-3-における-getelementsbyselector">Safari 3 における getElementsBySelector</h3>
-
 <p>Safari では無効になっていた <a href="http://www.w3.org/TR/2004/NOTE-DOM-Level-3-XPath-20040226/">DOM 3 XPath</a> が有効になったようだ（無効になっていたのは Safari のバグ絡み？）。ただし、<code>Selector#shouldUseXPath</code> が false を返した場合は、いままでどおり無効になる。</p>
-
 <h3 id="ブラウザ以外の環境での-xss-脆弱性の修正">ブラウザ以外の環境での XSS 脆弱性の修正</h3>
-
 <p>これまで <a href="http://www.prototypejs.org/api/ajax/request">Ajax.Request</a> における JavaScript の実行（Automatic JavaScript response evaluation）では、</p>
-
 <ol>
 <li>オプションで evalJS が設定されていること</li>
 <li>Content-Type が JavaScript であること</li>
 </ol>
-
 <p>をチェックしており、<a href="http://en.wikipedia.org/wiki/Same_origin_policy">同じドメイン（プロトコルやポートも）に属しているかどうかの制約</a>はブラウザの実装に任されていた。</p>
-
 <p>しかし、Opera のウィジェットのようなブラウザ以外の環境では、こうした制約を課していないため XSS 脆弱性の原因となる可能性があった。そのため、今回のバージョンから自前でチェックするようになったようだ（Ajax.Request#isSameOrigin）。</p>
-
 <p>また、同様のセキュリティに関する修正が施された 1.5 系の最新版 <a href="http://prototypejs.org/assets/2008/1/25/prototype-1.5.1.2.js">Prototype 1.5.1.2</a> も公開されている。</p>
-
 <ul>
 <li><a href="http://www.prototypejs.org/2008/1/25/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security">Prototype 1.6.0.2: Bug fixes, performance improvements, and security</a></li>
 <li><a href="http://www.prototypejs.org/2008/1/25/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security">Prototype 1.6.0.2 CHANGELOG</a></li>
@@ -87,7 +92,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

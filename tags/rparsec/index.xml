@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>rparsec on METAREAL</title>
@@ -24,9 +24,9 @@ repeat, repeat_ は m 回以上、最大 n 回の繰り返しを指定できる�
 なお、メソッド名の最後にあるアンダースコアの有無については、「RParsec の many と many_ の違い」で解説したとおりで、アンダースコアのつかないメソッドはすべての結果を配列で返し、アンダースコアのつくメソッドは最後の結果のみを返す。
 選択 正規表現でいうところの選択も用意されている。このためのメソッドは | なので、見た目は正規表現と似通っている。
 たとえば、以下のコードは、
-number | word  数値、または一般的な識別子を解釈するためのパーサになる。
+number | word 数値、または一般的な識別子を解釈するためのパーサになる。
 また、文法要素のグループ化は簡単で、通常の Ruby プログラムと同じく括弧で囲めばよい。たとえば、空白区切りの数値、または識別子を解釈するためのパーサは以下のように書ける。
-parser = ((number | word) &amp;lt;&amp;lt; whitespace.many_).many parser.parse(&amp;quot;123 abc 56.7&amp;quot;) =&amp;gt; [&amp;quot;123&amp;quot;, &amp;quot;abc&amp;quot;, &amp;quot;56.</description>
+parser = ((number | word) &amp;lt;&amp;lt; whitespace.many_).many parser.parse(&amp;quot;123 abc 56.7&amp;quot;) =&amp;gt; [&amp;quot;123&amp;quot;, &amp;quot;abc&amp;quot;, &amp;quot;56.7&amp;quot;] Parser#delimited を使って、もっと直感的に書くこともできる。</description>
     </item>
     
     <item>
@@ -37,12 +37,12 @@ parser = ((number | word) &amp;lt;&amp;lt; whitespace.many_).many parser.parse(&
       <guid>http://ishikawa.github.io/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</guid>
       <description>rparsec の四則演算デモを試しているうちに、整数による演算しかできないことに気づくことと思う。
 四則演算デモが calculator.rb にあるとして、
-require &#39;calculator.rb&#39; parser = Calculator.new.parser parser.parse &#39;1+2*(3-1)&#39; =&amp;gt; 5 parser.parse &#39;4 * 2.5&#39; =&amp;gt; 8  小数を計算させてみると、エラーにはならないものの、計算結果がおかしなことになっている。
+require &#39;calculator.rb&#39; parser = Calculator.new.parser parser.parse &#39;1+2*(3-1)&#39; =&amp;gt; 5 parser.parse &#39;4 * 2.5&#39; =&amp;gt; 8 小数を計算させてみると、エラーにはならないものの、計算結果がおかしなことになっている。
 実は、この四則演算デモは数値として整数しか解釈しない。そのため、4 * 2.5 を計算させたときは、2.5 の &amp;quot;.&amp;quot; で解釈をやめてしまい、そこまでの 4 * 2 を計算して返した、という具合だ。
 ソースコードで数値をパースしている箇所は、
-term = integer.map(&amp;amp;To_i) | char(&#39;(&#39;) &amp;gt;&amp;gt; lazy{expr} &amp;lt;&amp;lt; char(&#39;)&#39;)  どうみても、この行の左半分なので、ここを API リファレンスを参考に、
-term = number.map(&amp;amp;To_f) | char(&#39;(&#39;) &amp;gt;&amp;gt; lazy{expr} &amp;lt;&amp;lt; char(&#39;)&#39;)  こう書き換えれば動く。
-parser.parse &#39;4 * 2.5&#39; =&amp;gt; 10.0  </description>
+term = integer.map(&amp;amp;To_i) | char(&#39;(&#39;) &amp;gt;&amp;gt; lazy{expr} &amp;lt;&amp;lt; char(&#39;)&#39;) どうみても、この行の左半分なので、ここを API リファレンスを参考に、
+term = number.map(&amp;amp;To_f) | char(&#39;(&#39;) &amp;gt;&amp;gt; lazy{expr} &amp;lt;&amp;lt; char(&#39;)&#39;) こう書き換えれば動く。
+parser.parse &#39;4 * 2.5&#39; =&amp;gt; 10.0 </description>
     </item>
     
     <item>
@@ -52,14 +52,14 @@ parser.parse &#39;4 * 2.5&#39; =&amp;gt; 10.0  </description>
       
       <guid>http://ishikawa.github.io/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</guid>
       <description>前回の四則演算デモで真っ先に目を引いたのは many_ という奇妙な名前のメソッドだった。
-delim = whitespace.many_  他にもっと注目すべきところがあるだろうと言われそうだが、非公開の関数か一時変数のようなメソッドが公開 API の一部というのに驚いた。
+delim = whitespace.many_ 他にもっと注目すべきところがあるだろうと言われそうだが、非公開の関数か一時変数のようなメソッドが公開 API の一部というのに驚いた。
 また、many_ は Parser クラスのメソッドだが、このクラスには他にも many というメソッドが用意されている。
 両者の違いは何だろう？
 many と many_ の違い 上記リンク先の API リファレンスによれば、
  many は複数回マッチしたそれぞれの結果を配列で返し、 many_ は最後にマッチした結果のみを返す  という違いだけのようだ。irb で実際に動作を確認してみよう。
-% irb irb(main):001:0&amp;gt; require &#39;rubygems&#39; irb(main):002:0&amp;gt; require &#39;rparsec&#39; irb(main):003:0&amp;gt; include Parsers  まずは必要な require や include を済ませておく。
-irb(main):004:0&amp;gt; whitespace.many.parse(&amp;quot;\t\r\n&amp;quot;) =&amp;gt; [9, 13, 10] irb(main):005:0&amp;gt; whitespace.many_.parse(&amp;quot;\t\r\n&amp;quot;) =&amp;gt; 10  many では引数で渡した文字列（タブと改行）の各文字が配列で返されるのにたいして、many_ では最後の改行文字のみが返されているのが確認できた。
-irb(main):007:0&amp;gt; whitespace.many.parse(&amp;quot;&amp;quot;) =&amp;gt; [] irb(main):006:0&amp;gt; whitespace.many_.parse(&amp;quot;&amp;quot;) =&amp;gt; nil  ちなみに、一度もマッチしなかった場合は many では空の配列、many_ では nil が返されるようだ。</description>
+% irb irb(main):001:0&amp;gt; require &#39;rubygems&#39; irb(main):002:0&amp;gt; require &#39;rparsec&#39; irb(main):003:0&amp;gt; include Parsers まずは必要な require や include を済ませておく。
+irb(main):004:0&amp;gt; whitespace.many.parse(&amp;quot;\t\r\n&amp;quot;) =&amp;gt; [9, 13, 10] irb(main):005:0&amp;gt; whitespace.many_.parse(&amp;quot;\t\r\n&amp;quot;) =&amp;gt; 10 many では引数で渡した文字列（タブと改行）の各文字が配列で返されるのにたいして、many_ では最後の改行文字のみが返されているのが確認できた。
+irb(main):007:0&amp;gt; whitespace.many.parse(&amp;quot;&amp;quot;) =&amp;gt; [] irb(main):006:0&amp;gt; whitespace.many_.parse(&amp;quot;&amp;quot;) =&amp;gt; nil ちなみに、一度もマッチしなかった場合は many では空の配列、many_ では nil が返されるようだ。</description>
     </item>
     
     <item>
@@ -73,8 +73,8 @@ irb(main):007:0&amp;gt; whitespace.many.parse(&amp;quot;&amp;quot;) =&amp;gt; []
 Yacc や Bison などのコンパイラ・コンパイラと比較したときのパーサ・コンビネータの強味としては、
  パーサを実装言語と同じ言語で書ける プログラムがそのまま文法定義のように読める パーサは普通の関数やオブジェクトなので、パーサをラップした別のパーサを生成する関数を定義したりするのも簡単にできる  などがあるようだ。
 rparsec のインストール 普通に RubyForge で gem がホスティングされているので、gem コマンド一発でインストールできる。
-% sudo gem install rparsec  四則演算デモ まずは公式ページにもデモとして紹介されている四則演算から。
-#!/usr/local/bin/ruby require &#39;rubygems&#39; require &#39;rparsec&#39; class Calculator include Parsers include Functors def parser ops = OperatorTable.new. infixl(char(?+) &amp;gt;&amp;gt; Plus, 20). infixl(char(?-) &amp;gt;&amp;gt; Minus, 20).</description>
+% sudo gem install rparsec 四則演算デモ まずは公式ページにもデモとして紹介されている四則演算から。
+#!/usr/local/bin/ruby require &#39;rubygems&#39; require &#39;rparsec&#39; class Calculator include Parsers include Functors def parser ops = OperatorTable.new. infixl(char(?+) &amp;gt;&amp;gt; Plus, 20). infixl(char(?-) &amp;gt;&amp;gt; Minus, 20). infixl(char(?</description>
     </item>
     
   </channel>

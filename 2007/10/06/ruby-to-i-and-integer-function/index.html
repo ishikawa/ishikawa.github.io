@@ -7,73 +7,63 @@
   <title>Ruby の String#to_i と組み込み関数の Integer() は違う</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/10/06/ruby-to-i-and-integer-function/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Ruby の String#to_i と組み込み関数の Integer() は違う</h1>
   <div class="metadata">
-    <p class="date">2007/10/06 10:37am</p>
+    <p class="date">
+      2007/10/06 10:37am
+    </p>
   </div>
   <div class="content">
-    
-
-<p>文字列から数値への変換に <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=String#to_i"><code>String.to_i</code></a> を使っていると、思わぬ問題に出くわすことがある。</p>
-
+    <p>文字列から数値への変換に <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=String#to_i"><code>String.to_i</code></a> を使っていると、思わぬ問題に出くわすことがある。</p>
 <p><a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=String#to_i">Ruby リファレンスマニュアル</a>には、</p>
-
 <blockquote>
 <p>整数とみなせない文字があればそこまでを変換対象とします。変換対象が 空文字列であれば 0 を返します。</p>
 </blockquote>
-
 <p>このように説明されているが、これをそのまま解釈すると、以下のような挙動が予想できる。</p>
-
 <pre><code>irb(main):001:0&gt; &quot;10&quot;.to_i       =&gt; 10
 irb(main):002:0&gt; &quot;10fixnum&quot;.to_i =&gt; 10
 irb(main):003:0&gt; &quot;&quot;.to_i         =&gt; 0
-</code></pre>
-
-<p>ただ、次のような挙動は意外だった。</p>
-
+</code></pre><p>ただ、次のような挙動は意外だった。</p>
 <pre><code>irb(main):001:0&gt; &quot;  10&quot;.to_i   =&gt; 10
 irb(main):002:0&gt; &quot;fixnum&quot;.to_i =&gt; 0
-</code></pre>
-
-<p>最初の例は「文字列中の先頭の空白文字は無視される」と推測できるが、次の例はどうだろうか。明らかに数値ではない文字列の場合はエラーになりそうだが、この場合、</p>
-
+</code></pre><p>最初の例は「文字列中の先頭の空白文字は無視される」と推測できるが、次の例はどうだろうか。明らかに数値ではない文字列の場合はエラーになりそうだが、この場合、</p>
 <ul>
 <li>先頭の文字 <code>f</code> が整数とみなせない</li>
 <li>よって空文字列が変換対象</li>
 <li>変換対象が 空文字列であれば 0 を返す</li>
 </ul>
-
 <p>という挙動らしい。</p>
-
 <h3 id="変換できない場合はエラーにする">変換できない場合はエラーにする</h3>
-
 <p>変換できないときに <code>0</code> を返すのはコードをシンプルにできるが、バグの原因にもなりやすい。</p>
-
 <p>変換できない場合はエラーにしたいところだが、<a href="http://weblog.metareal.org/2007/06/21/error-checking-in-ruby-time-parsing/">Ruby の Time.parse で文字列を Time に変換するときのエラーチェック</a>と同様、<code>String.to_i</code> にはエラーを検出する仕組みがない。</p>
-
 <p>どうするか、というと組み込み関数の <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=%C1%C8%A4%DF%B9%FE%A4%DF%B4%D8%BF%F4#Integer"><code>Integer</code></a> を使う。</p>
-
 <pre><code>irb(main):001:0&gt; Integer(&quot;10fixnum&quot;)
 ArgumentError: invalid value for Integer: &quot;10fixnum&quot;
         from (irb):7:in `Integer'
         from (irb):7
         from :0
-</code></pre>
-
-<p><a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=%C1%C8%A4%DF%B9%FE%A4%DF%B4%D8%BF%F4#Integer">リファレンスマニュアル</a>にもあるように、変換できない場合は、例外 ArgumentError が発生する。</p>
+</code></pre><p><a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=%C1%C8%A4%DF%B9%FE%A4%DF%B4%D8%BF%F4#Integer">リファレンスマニュアル</a>にもあるように、変換できない場合は、例外 ArgumentError が発生する。</p>
 
   </div>
 </article>
@@ -95,7 +85,7 @@ ArgumentError: invalid value for Integer: &quot;10fixnum&quot;
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

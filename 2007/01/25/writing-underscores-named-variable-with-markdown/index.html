@@ -7,52 +7,47 @@
   <title>Markdown 記法でアンダースコアを複数含む変数名を書く方法</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/01/25/writing-underscores-named-variable-with-markdown/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Markdown 記法でアンダースコアを複数含む変数名を書く方法</h1>
   <div class="metadata">
-    <p class="date">2007/01/26 7:32am</p>
+    <p class="date">
+      2007/01/26 7:32am
+    </p>
   </div>
   <div class="content">
     <p><a href="http://daringfireball.net/projects/markdown/basics">Markdown</a> ではアンダースコアで囲むと強調になるので、アンダースコアでつなげるスタイルの変数がものすごく書きづらい。</p>
-
 <pre><code>mt&amp;#x5f;convert&amp;#x5f;breaks
-</code></pre>
-
-<p>数値参照を使って、こんなふうに書くしかないのかね。</p>
-
+</code></pre><p>数値参照を使って、こんなふうに書くしかないのかね。</p>
 <p>更に、等幅フォントで強調にするには、HTML タグを使わないと駄目っぽい。</p>
-
 <pre><code>&lt;code&gt;&lt;strong&gt;mt&amp;#x5f;convert&amp;#x5f;breaks&lt;/strong&gt;&lt;/code&gt;
-</code></pre>
-
-<p>まあ、すでに Markdown じゃないわけだが。</p>
-
+</code></pre><p>まあ、すでに Markdown じゃないわけだが。</p>
 <p><strong>（追記）</strong> yuin さんのコメントで気づいた。バッククォートで囲めば等幅フォントでそのまま出せるね。Markdown による記述と変換後の HTML で書くと、</p>
-
 <pre><code>`mt_convert_breaks\ ` --&gt; &lt;code&gt;mt_convert_breaks&lt;/code&gt;
-</code></pre>
-
-<p>こうなるので大丈夫。</p>
-
+</code></pre><p>こうなるので大丈夫。</p>
 <p>ただ、等幅フォントで強調もしようとすると大変になるみたい。</p>
-
 <pre><code>(1) `__\ mt_convert_breaks__` --&gt; &lt;code&gt;__mt_convert_breaks__&lt;/code&gt;
 (2) __\ `mt_convert_breaks`__\  --&gt; &lt;strong&gt;&lt;code&gt;hoge_foo_bar&lt;/code&gt;&lt;/strong&gt;
-</code></pre>
-
-<ol>
+</code></pre><ol>
 <li>は上手くいってそうなんだが、このブログでは <a href="http://developer.yahoo.com/yui/">YUI</a> の <code>reset.css</code> で <code>oode{font-style:normal;font-weight:normal;}</code> となっているため効果なし。</li>
 </ol>
 
@@ -76,7 +71,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

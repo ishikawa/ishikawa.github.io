@@ -7,105 +7,79 @@
   <title>Google App Engine への移行</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Google App Engine への移行</h1>
   <div class="metadata">
-    <p class="date">2008/05/20 7:39am</p>
+    <p class="date">
+      2008/05/20 7:39am
+    </p>
   </div>
   <div class="content">
-    
-
-<p>ここ数日というもの、Mac の前に座ってやっていたことといえば、<a href="http://twitter.com/takanori_is">Twitter</a> か RSS フィードの消化か、でなければブログの移行作業だ。</p>
-
+    <p>ここ数日というもの、Mac の前に座ってやっていたことといえば、<a href="http://twitter.com/takanori_is">Twitter</a> か RSS フィードの消化か、でなければブログの移行作業だ。</p>
 <p>もともと、このブログは <a href="http://wordpress.org/">Wordpress</a> で運営していたのだが、色々と不満もたまってきたので、いつの日かつくりなおしたい、と思っていた。おりしも <a href="http://www.djangoproject.com/">Django</a> の勉強をはじめたばかりである。ちょうどよい。教材代わりに簡単なブログシステムを細々とつくっていた。</p>
-
 <p>それを更に、<a href="http://code.google.com/appengine/">Google App Engine</a> に移植しましたよ、というのが今回のお話。</p>
-
 <h3 id="google-app-engine-に移植した理由">Google App Engine に移植した理由</h3>
-
 <p>まずは、Google App Engine（以下、GAE）に移植した理由から説明させてほしい。いままで Wordpress を動かしていたサーバでそのまま新しいブログシステムを動かすこともできた。</p>
-
 <p>それでも、わざわざ時間を割いてまで GAE に移植したのは、GAE が話題になってるとか、Django が使えるらしい、というのも重要だったが、<strong>自宅サーバの管理から解放されたい</strong> 、という理由が実は一番大きい。</p>
-
 <p>うん、自宅サーバの、しかも個人ブログの管理の手間なんて、たかがしれている（そりゃ、セキュリティとかは神経使うけどさ）。それよりは今後、もし、転居や契約している回線業者を変更する場合を考えると、そのあいだは自宅サーバは停めなきゃならないわけで、いまのうちに GAE に移植しておけば、あとあと困らないだろう、というわけである。</p>
-
 <p>実際の移植作業には 4 日程度を要した。</p>
-
 <p><a href="http://code.google.com/appengine/docs/">GAE のオンラインドキュメント</a> を参考に、ほとんど単純作業による変換だったが、細かい変更や思わぬ問題などもあったので、開発中にとったメモを片手につらつらと書いてみる。</p>
-
 <h3 id="django">Django</h3>
-
 <p>Django は <a href="http://code.google.com/appengine/articles/django.html">Running Django on Google App Engine</a> を参考に、開発版のものを動かしている。</p>
-
 <p>GAE では Django の <a href="http://www.djangoproject.com/documentation/db-api/">Database API</a>（<a href="http://ymasuda.jp/python/django/docs/db-api.html">和訳</a>）は動作せず、GAE の <a href="http://code.google.com/appengine/docs/datastore/">Datastore API</a> を使う必要があるが、当然の帰結として、Database API に依存した機能やアドオンも使えない。Django の売りのひとつである <a href="http://www.djangobook.com/en/1.0/chapter06/">Admin Interface</a> も、サイトマップを手軽に生成できる <a href="http://www.djangoproject.com/documentation/sitemaps/">Sitemap framework</a> も、<a href="http://www.djangoproject.com/documentation/generic_views/">Generic View</a> でさえ使えない。また、Sites も <a href="http://www.djangoproject.com/documentation/sites/#requestsite-objects">RequestSite オブジェクトで代替</a>してやらなくてはいけない。</p>
-
 <p>ただ、Generic View は簡単な変更で動きそうだ。実際、<a href="http://www.djangoproject.com/documentation/pagination/">Pagination</a> の処理では <code>django.core.QuerySetPaginator</code> に GAE の <a href="http://code.google.com/appengine/docs/datastore/queryclass.html">Query</a> オブジェクトをそのまま渡して動作していた（GAE の Query オブジェクトも <code>[]</code> アクセスを適切な <code>fetch()</code> に変換してくれる）。</p>
-
 <h3 id="akismet">Akismet</h3>
-
 <p>スパムコメント対策として <a href="http://www.hashcash.org/">Hashcash</a> と <a href="http://akismet.com/">Akismet</a> を使っているのだが、外部リソースへのアクセスは GAE の <a href="http://code.google.com/appengine/docs/urlfetch/">URL Fetch API</a> に変更が必要だ。Akismet への問い合わせ処理は、外部リソースへのアクセスなので URL Fetch API を使うように変更が必要だった。</p>
-
 <h3 id="docutils-pygments">docutils, pygments</h3>
-
 <p><a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> でブログを書くために <a href="http://docutils.sourceforge.net/">docutils</a> を、そして、ソースコードのハイライトするために <a href="http://pygments.org/">pygments</a> をソースコードに含めるようにした（トップレベルだと邪魔なので、<code>lib</code> というディレクトリにパスを通して、そこに必要なライブラリを置くようにした）。</p>
-
 <p>また、docutils はそのままだと、一部 GAE で禁止されているファイルシステム関連の API を使っている。<code>docutils/frontend.py</code> の</p>
-
 <pre><code>if read_config_files and not self.defaults['_disable_config']:
     try:
         config_settings = self.get_standard_config_settings()
     except ValueError, error:
         self.error(error)
     self.set_defaults(**config_settings.__dict__)
-</code></pre>
-
-<p>この部分は潔くコメントアウトした。</p>
-
+</code></pre><p>この部分は潔くコメントアウトした。</p>
 <h3 id="検索機能">検索機能</h3>
-
 <p>モデルクラスで db.Model ではなく、そのサブクラスである google.appengine.ext.search.SearchableModel を継承することで、モデルの検索ができるようになるようだ（<a href="http://groups.google.com/group/google-appengine/browse_thread/thread/ba4a4a4ccefb96c5/0e3f0ab63c4c8afd">Indexing Large Chunks of Text for Search - Google App Engine | Google グループ</a> を参照）。「検索機能を備えたクラスを継承する」というだけでもダサいのに、日本語での使用とか不安なので、検索機能はとりあえず見送った。</p>
-
 <h3 id="デプロイして直面した問題">デプロイして直面した問題</h3>
-
 <p>Web アプリケーションの宿命で、最大の問題はデプロイ後にやってくる。</p>
-
 <p>デプロイ直後はすぐに CPU 制限にひっかかってしまう
 理由は分からないが、デプロイ直後は GAE の CPU 制限によるエラーが頻発した。これくらいの処理でもういっぱいなのか、と萎えかけたが、しばらくすると正常に動作するようになった。なので、これからもし、同じ現象に遭われた方は、静かな心で見守るのがよいと思う。</p>
-
 <p>データベースの制限でデータ移行ができない
 以前のブログからのデータ移行は、dump したデータベースからデータを投入する Python スクリプトを生成する移行スクリプトを用意していた（<a href="http://code.google.com/appengine/articles/bulkload.html">CSV を使う手段</a>もあるようだが、こっちの方がオブジェクト間の関連を再現するのも楽だ）。</p>
-
 <p>しかし、<strong>これが動かない</strong>。一度に保存するデータが多すぎると制限にひっかかってエラーになるらしい。</p>
-
 <p>解決策としては、移行処理を機械的に関数に分割して、一度のリクエストでひとつの関数を呼ぶように変更、外部からスクリプトで順番にアクセスさせるようにした。現実の素晴らしき泥臭さ。</p>
-
 <p>favicon.ico と robots.txt の設定
 些細なことかもしれないが、favicon.ico と robots.txt の設定をしていなかったせいで、404 エラーが大量に発生してしまった。<a href="http://d.hatena.ne.jp/technohippy/20080412#1207983599">Google App Engineでfaviconを設定する</a>を参考に <code>app.yaml</code> を設定した。</p>
-
 <pre><code>- url: /favicon.ico
   static_files: public/favicon.ico
   upload: public/favicon\.ico
 - url: (.*?)/robots.txt
   static_files: public/robots.txt
   upload: public/robots\.txt
-</code></pre>
-
-<h3 id="gae-にしてよかったこと-不満">GAE にしてよかったこと・不満</h3>
-
+</code></pre><h3 id="gae-にしてよかったこと不満">GAE にしてよかったこと・不満</h3>
 <p>最後に感想でも。</p>
-
 <ul>
 <li>デプロイも管理も楽</li>
 <li>思ったよりも速い</li>
@@ -114,9 +88,7 @@
 <li>管理インターフェースはまだまだ（特に Django の管理インターフェースを期待していた身としてはつらい）</li>
 <li>ひとつの閉じた世界をいじくってる楽しさがある</li>
 </ul>
-
 <p>最後の点について補足。必要なライブラリはバンドルしなければならないが、それ以外の部分（サーバ管理とか、ミドルウェアとか、ログとか）は無視してアプリケーションの開発に集中できる、という意味で「ひとつの閉じた世界をいじくってる楽しさ」を感じた。そういうこと。</p>
-
 <p>あと 2 つアプリケーション作れるらしいので、何かネタを思いついたら挑戦してみたいですね。</p>
 
   </div>
@@ -139,7 +111,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

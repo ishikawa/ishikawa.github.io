@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vagrant on METAREAL</title>
@@ -24,7 +24,7 @@
 環境は以下の通り:
  Mac OS X El Capitan (10.11.2) VirtualBox 5.0.10 r104061 Ubuntu 64bit (trusty) Docker 1.9.1  Docker 1.9.1 hanging at build step &amp;ldquo;Setting up ca-certificates-java&amp;rdquo; · Issue #18180 · docker/docker
 AUFS のバグでデッドロックしているらしい。
-$ docker info … Storage Driver: aufs  Issue のコメントを読む限り、Docker のバージョンを 1.9.0 以前に戻すのが確実そう。
+$ docker info … Storage Driver: aufs Issue のコメントを読む限り、Docker のバージョンを 1.9.0 以前に戻すのが確実そう。
 ただ、Docker のインストールは Vagrant の Docker Provisioner を利用していて、こいつでバージョン指定する方法が分からなかった（ソースコードを眺めた感じ、常に最新版がインストールされているみたい）。
 CPU が複数ある場合は再現率がかなり低くなるようなので、仮想 CPU 数を 2 にすることで、とりあえずの対策とした。</description>
     </item>

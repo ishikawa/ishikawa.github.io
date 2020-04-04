@@ -7,41 +7,41 @@
   <title>iGTD も vacuum すると速くなる</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/12/05/optimize-the-igtd-database/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>iGTD も vacuum すると速くなる</h1>
   <div class="metadata">
-    <p class="date">2007/12/06 8:08am</p>
+    <p class="date">
+      2007/12/06 8:08am
+    </p>
   </div>
   <div class="content">
-    
-
-<p>日々の ToDo 管理には <a href="http://bargiel.home.pl/iGTD/index.html">iGTD</a> を愛用している。だが、最近、目に見えて動作が重くなってしまった。</p>
-
+    <p>日々の ToDo 管理には <a href="http://bargiel.home.pl/iGTD/index.html">iGTD</a> を愛用している。だが、最近、目に見えて動作が重くなってしまった。</p>
 <p>おそらく、完了したタスクも削除されることはなく、ずっと溜まっているのが原因だろう。iGTD は内部のデータベースとして SQLite を使っているので、<a href="http://weblog.metareal.org/2007/08/23/optimize-the-apple-mail-app-database/">Mail.app を vacuum して高速化</a>と同じ方法で高速化できる。</p>
-
 <h3 id="vacuum-analyze">VACUUM ANALYZE</h3>
-
 <p>手順は簡単で、ターミナルから以下のコマンドを実行するだけだ（iGTD が起動中なら終了する必要があるかもしれない）。</p>
-
 <pre><code>% sqlite3 ~/Library/Application\ Support/iGTD/iGTD.sql &quot;vacuum analyze&quot;
-</code></pre>
-
-<p>このコマンドはデータベースから不要な領域を回収し、統計情報を更新することで実行速度を向上させる。これだけで体感的にはかなり速くなった。</p>
-
+</code></pre><p>このコマンドはデータベースから不要な領域を回収し、統計情報を更新することで実行速度を向上させる。これだけで体感的にはかなり速くなった。</p>
 <h3 id="参考">参考</h3>
-
 <ul>
 <li><a href="http://www.sqlite.org/lang_analyze.html">SQLite Query Language: ANALYZE</a></li>
 <li><a href="http://www.sqlite.org/lang_vacuum.html">SQLite Query Language: VACUUM</a></li>
@@ -67,7 +67,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

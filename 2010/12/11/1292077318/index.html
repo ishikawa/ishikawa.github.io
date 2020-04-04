@@ -7,39 +7,43 @@
   <title>Ruby FFI のメモリ管理についてメモ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2010/12/11/1292077318/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>Ruby FFI のメモリ管理についてメモ</h1>
   <div class="metadata">
-    <p class="date">2010/12/11 12:00am</p>
+    <p class="date">
+      2010/12/11 12:00am
+    </p>
   </div>
   <div class="content">
     <p>Ruby FFI のメモリ管理についてメモ。FFI::MemoryPointer で確保したメモリを自分で破棄する場合は、autorelease を false にする。</p>
-
-<pre><code class="language-ruby">error   = FFI::MemoryPointer.new(:pointer)
-...
-C.LLVMDisposeMessage(error)
-error.autorelease=false
-</code></pre>
-
-<p>そうしないと、FFI::MemoryPointer は GC 時に確保したメモリを破棄しようとする (<a href="https://github.com/ffi/ffi/blob/1.0.1/ext/ffi_c/MemoryPointer.c#L138">MemoryPointer.c#L138</a>) ので、たとえば Mac OS X では以下のようなエラーが出る。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">error   <span style="color:#f92672">=</span> <span style="color:#66d9ef">FFI</span><span style="color:#f92672">::</span><span style="color:#66d9ef">MemoryPointer</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">:pointer</span>)
+<span style="color:#f92672">...</span>
+C<span style="color:#f92672">.</span>LLVMDisposeMessage(error)
+error<span style="color:#f92672">.</span>autorelease<span style="color:#f92672">=</span><span style="color:#66d9ef">false</span>
+</code></pre></div><p>そうしないと、FFI::MemoryPointer は GC 時に確保したメモリを破棄しようとする (<a href="https://github.com/ffi/ffi/blob/1.0.1/ext/ffi_c/MemoryPointer.c#L138">MemoryPointer.c#L138</a>) ので、たとえば Mac OS X では以下のようなエラーが出る。</p>
 <pre><code>ruby(891,0x7fff70874ca0) malloc: *** error for object 0x102e8fb10: pointer being freed was not allocated
 *** set a breakpoint in malloc_error_break to debug
-</code></pre>
-
-<p>エラー処理とかでは割と忘れがちかもしれない。</p>
+</code></pre><p>エラー処理とかでは割と忘れがちかもしれない。</p>
 
   </div>
 </article>
@@ -61,7 +65,7 @@ error.autorelease=false
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

@@ -7,31 +7,37 @@
   <title>MySQL/Ruby の test.rb が失敗する理由と対策</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2006/12/28/reason-of-mysql-ruby-test-failure/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>MySQL/Ruby の test.rb が失敗する理由と対策</h1>
   <div class="metadata">
-    <p class="date">2006/12/28 10:07am</p>
+    <p class="date">
+      2006/12/28 10:07am
+    </p>
   </div>
   <div class="content">
-    
-
-<p>前回書いた、<a href="http://weblog.metareal.org/2006/12/27/mysql-bindings-on-macosx-tiger/">MySQL/Ruby の test.rb が失敗する</a>原因を調査する。</p>
-
+    <p>前回書いた、<a href="http://weblog.metareal.org/2006/12/27/mysql-bindings-on-macosx-tiger/">MySQL/Ruby の test.rb が失敗する</a>原因を調査する。</p>
 <p>まずは、実行結果の出力を調べてみよう。
 <strong>すべてのテストが失敗しているため</strong>長いので、最初のテスト結果のみ抜粋する。</p>
-
 <pre><code>% ruby ./test.rb localhost root newpass
 ...
 1) Failure:
@@ -44,21 +50,13 @@ Class: &lt;Mysql::Error&gt;
 ./test.rb:39:in `test_connect'
 ./test.rb:39:in `test_connect'
 ...
-</code></pre>
-
-<p>MySQL のエラーで <tt>&ldquo;Access denied for user &lsquo;ishikawa&rsquo;@&lsquo;localhost&rsquo; (using password: NO)&rdquo;</tt> と出力されているので、これは単なるアクセス制御の問題だ。</p>
-
+</code></pre><p>MySQL のエラーで <!-- raw HTML omitted -->&quot;Access denied for user &lsquo;ishikawa&rsquo;@&lsquo;localhost&rsquo; (using password: NO)&ldquo;<!-- raw HTML omitted --> と出力されているので、これは単なるアクセス制御の問題だ。</p>
 <p>そして、<code>test.rb</code> のコマンドライン引数で <code>root</code> ユーザを指定しているにも関わらず、実際には <code>ishikawa</code> ユーザでアクセスしようとしている。</p>
-
 <p>うまくいくわけがない。
 <strong>コマンドライン引数による指定が無視されている</strong>わけだ。</p>
-
-<h3 id="何故-コマンドライン引数が無視されるのか">何故、コマンドライン引数が無視されるのか</h3>
-
+<h3 id="何故コマンドライン引数が無視されるのか">何故、コマンドライン引数が無視されるのか</h3>
 <p>コマンドライン引数が無視される原因を調べてみると、どうやら <code>test.rb</code> が使っている <a href="http://www.ruby-lang.org/ja/man/index.cgi?cmd=view;name=Test%3A%3AUnit"><code>Test::Unit</code></a> が悪さをしているらしい（<code>Test::Unit</code> は Ruby の標準添付ライブラリで、いわゆる xUnit ツールの Ruby 版である）。</p>
-
 <p>簡単な検証スクリプトを書いてみる。</p>
-
 <pre><code>require &quot;test/unit&quot;
 
 puts &quot;before test: ARGV = #{ARGV.inspect}&quot;
@@ -67,10 +65,7 @@ class SimpleTestCase &lt; Test::Unit::TestCase
     puts &quot;in test: ARGV = #{ARGV.inspect}&quot;
   end
 end
-</code></pre>
-
-<p>ユニットテストが実行される前と、実行されるときに ARGV（コマンドライン引数の配列）をダンプするだけのスクリプトだ。これを適当な引数つきで実行して、その結果を確認する。</p>
-
+</code></pre><p>ユニットテストが実行される前と、実行されるときに ARGV（コマンドライン引数の配列）をダンプするだけのスクリプトだ。これを適当な引数つきで実行して、その結果を確認する。</p>
 <pre><code>% ruby ./simple_test.rb 1 2 3
 **before test: ARGV = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;]**
 Loaded suite ./simple_test
@@ -80,23 +75,15 @@ Started
 Finished in 0.000316 seconds.
 
 1 tests, 0 assertions, 0 failures, 0 errors
-</code></pre>
-
-<p>ユニットテストを実行する前では ARGV に引数の <code>1, 2, 3</code> が格納されているが、テストの内部では <strong>ARGV が空になっている</strong>。となると、<code>Test::Unit</code> が渡ってきた引数を食べてしまっているのに違いない。</p>
-
-<h3 id="test-unit-のソースを調べる">Test::Unit のソースを調べる</h3>
-
+</code></pre><p>ユニットテストを実行する前では ARGV に引数の <code>1, 2, 3</code> が格納されているが、テストの内部では <strong>ARGV が空になっている</strong>。となると、<code>Test::Unit</code> が渡ってきた引数を食べてしまっているのに違いない。</p>
+<h3 id="testunit-のソースを調べる">Test::Unit のソースを調べる</h3>
 <p>実際のとこ、どうなっているのか。ソースコードに聞いてみよう。場所は <code>/usr/local/lib/ruby/1.8/test/</code>。まずは動作を確認するために、<code>unit.rb</code> の 276 行目だ。</p>
-
 <pre><code>at_exit do
   unless $! || Test::Unit.run?
     exit **Test::Unit::AutoRunner.run**
   end
 end
-</code></pre>
-
-<p>このコードは <code>require</code> されたときに実行され、<code>at_exit</code> で <code>Test::Unit::AutoRunner</code> の <code>run</code> メソッドが呼び出される。この定義は <code>autorunner.rb</code> だ。</p>
-
+</code></pre><p>このコードは <code>require</code> されたときに実行され、<code>at_exit</code> で <code>Test::Unit::AutoRunner</code> の <code>run</code> メソッドが呼び出される。この定義は <code>autorunner.rb</code> だ。</p>
 <pre><code>module Test
   module Unit
     class AutoRunner
@@ -107,11 +94,8 @@ end
         end
         r.run
       end
-</code></pre>
-
-<p>怪しげなコードを発見できた。
+</code></pre><p>怪しげなコードを発見できた。
 インスタンスの <code>process_args</code> メソッドに ARGV をそのまま渡している。</p>
-
 <pre><code>def process_args(args = ARGV)
   begin
     **options.order!(args)** {|arg| @to_run &lt;&lt; arg}
@@ -125,24 +109,15 @@ end
   end
   not @to_run.empty?
 end
-</code></pre>
-
-<p>肝になるのは <code>options.order!(args)</code> の部分だ。<code>options</code> では、<a href="http://www.ruby-lang.org/ja/man/index.cgi?cmd=view;name=OptionParser"><code>OptionParser</code></a> インスタンスが返り、そして、<code>OptionParser#order!</code> はマニュアルによると、</p>
-
+</code></pre><p>肝になるのは <code>options.order!(args)</code> の部分だ。<code>options</code> では、<a href="http://www.ruby-lang.org/ja/man/index.cgi?cmd=view;name=OptionParser"><code>OptionParser</code></a> インスタンスが返り、そして、<code>OptionParser#order!</code> はマニュアルによると、</p>
 <blockquote>
 <p>与えられた argv を順番にパースします。 オプションではないコマンドの引数(下の例で言うと somefile)に出会うと、パースを中断します。 ブロックが与えられている場合は、パースを中断せずに 引数をブロックに渡してブロックを評価し、パースを継続します。argv を返します。</p>
-
-<p><strong>order! は与えられた argv を破壊的にパースします。 argv からオプションがすべて取り除かれます。</strong></p>
+<p><!-- raw HTML omitted -->order! は与えられた argv を破壊的にパースします。 argv からオプションがすべて取り除かれます。<!-- raw HTML omitted --></p>
 </blockquote>
-
 <p>とのことなので、<strong>ここで ARGV の中身が破壊されている</strong>のは明白だ。</p>
-
-<h3 id="test-rb-を変更して対策">test.rb を変更して対策</h3>
-
+<h3 id="testrb-を変更して対策">test.rb を変更して対策</h3>
 <p>では、どうするか？</p>
-
 <p>結局、<code>Test::Unit::AutoRunner.run</code> で直接 ARGV を渡してしまうのが不味いわけで、自前で <code>Test::Unit::AutoRunner.run</code> を呼び出し、そのさいに ARGV のコピーを渡すようにしてみた。</p>
-
 <pre><code>--- test.rb.orig        2006-12-28 01:20:19.000000000 +0900
 +++ test.rb     2006-12-28 01:21:04.000000000 +0900
 @@ -1429,3 +1429,4 @@
@@ -150,19 +125,13 @@ end
 
  end if Mysql.client_version &gt;= 40100
 +Test::Unit::AutoRunner.run(false, nil, ARGV.dup)
-</code></pre>
-
-<p>これでテストも実行できるはず &hellip;</p>
-
+</code></pre><p>これでテストも実行できるはず &hellip;</p>
 <pre><code>% ruby ./test.rb localhost root
 Loaded suite ./test
 Started
 ....................................................................FF...........................................
 Finished in 0.32177 seconds.
-</code></pre>
-
-<p>通った！&hellip;</p>
-
+</code></pre><p>通った！&hellip;</p>
 <pre><code>1) Failure:
 test_fetch_double(TC_MysqlStmt2) [./test.rb:920]:
 &lt;-1.79769313486232e+308&gt; and
@@ -174,10 +143,7 @@ test_fetch_double_unsigned(TC_MysqlStmt2) [./test.rb:937]:
 &lt;1.79769313486232e+308&gt; and
 &lt;1.79769313486232e+308&gt; expected to be within
 &lt;2.22044604925031e-16&gt; of each other.
-</code></pre>
-
-<p>&hellip; と思ったら駄目でした。</p>
-
+</code></pre><p>&hellip; と思ったら駄目でした。</p>
 <p>うーん、高速化パッチを適用せずにテストしても同じ結果なので、これはまた別の原因だな。
 まあ、浮動小数点関係っぽいので環境依存かもしれん、、てことでスルーしとこう。</p>
 
@@ -201,7 +167,7 @@ test_fetch_double_unsigned(TC_MysqlStmt2) [./test.rb:937]:
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

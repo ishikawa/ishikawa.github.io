@@ -7,40 +7,42 @@
   <title>WebKit のブラウザ判定と iPhone、そして iPod touch</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="http://ishikawa.github.io/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/">
+  
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/application.css">
-  <link rel="stylesheet" href="css/highlight/tomorrow.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
 
+
+
 <article>
   <h1>WebKit のブラウザ判定と iPhone、そして iPod touch</h1>
   <div class="metadata">
-    <p class="date">2007/09/09 5:05am</p>
+    <p class="date">
+      2007/09/09 5:05am
+    </p>
   </div>
   <div class="content">
-    
-
-<p><a href="http://weblog.metareal.org/2007/09/01/prototype-1-6-0-has-detection-for-iphone/">Prototype 1.6.0 のブラウザ判定と iPhone</a> では、</p>
-
+    <p><a href="http://weblog.metareal.org/2007/09/01/prototype-1-6-0-has-detection-for-iphone/">Prototype 1.6.0 のブラウザ判定と iPhone</a> では、</p>
 <blockquote>
 <p><a href="http://prototypejs.org/">prototype.js</a> には 1.5.1 から、各種ブラウザを判定するための <code>Prototype.Browser</code> が定義されている。</p>
 </blockquote>
-
 <p>として prototype.js のブラウザ判定コードを紹介した。iPhone を含む WebKit ベースのブラウザも判別できる。</p>
-
 <h3 id="webkit-detect-script">WebKit Detect script</h3>
-
 <p><a href="http://webkit.org/blog/">Surfin’ Safari</a> の <a href="http://webkit.org/blog/119/webkit-detect-script-updated-for-iphone-and-ipod-touch/">WebKit Detect script updated for iPhone and iPod touch</a> で知った。<a href="http://trac.webkit.org/projects/webkit/wiki/DetectingWebKit">WebKit detection script</a> というものがあるらしい。</p>
-
 <p>記事では <a href="http://www.apple.com/iphone/">iPhone</a> と <a href="http://www.apple.com/iphone/">iPod touch</a> もサポートしたよ、と書かれている。ソースコードではこんな感じ、</p>
-
 <pre><code>WebKitDetect.isWebKit = function isWebKit()
 {
     return RegExp(&quot; AppleWebKit/&quot;).test(navigator.userAgent);
@@ -50,23 +52,15 @@ WebKitDetect.isMobile = function isMobile()
 {
     return WebKitDetect.isWebKit() &amp;amp;&amp;amp; RegExp(&quot; Mobile/&quot;).test(navigator.userAgent);
 }
-</code></pre>
-
-<p>つまり、User-Agent に、</p>
-
+</code></pre><p>つまり、User-Agent に、</p>
 <ul>
 <li>&ldquo;AppleWebKit/&rdquo; があれば WebKit</li>
 <li>&ldquo;Mobile/&rdquo; があれば携帯端末</li>
 </ul>
-
 <p>ということのようだ。</p>
-
 <p>ここで、prototype.js のブラウザ判定コードを復習してみる。</p>
-
 <pre><code>MobileSafari: !!navigator.userAgent.match(/iPhone.*Mobile.*Safari/)
-</code></pre>
-
-<p>User-Agent に &ldquo;iPhone&rdquo; という文字列を想定していることからも、おそらく iPod touch では動作しないだろう。まあ、すぐ直るだろうけど。</p>
+</code></pre><p>User-Agent に &ldquo;iPhone&rdquo; という文字列を想定していることからも、おそらく iPod touch では動作しないだろう。まあ、すぐ直るだろうけど。</p>
 
   </div>
 </article>
@@ -88,7 +82,7 @@ WebKitDetect.isMobile = function isMobile()
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/">METAREAL</a></h2>
+  <h2><a href="/ja">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

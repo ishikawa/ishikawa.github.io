@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>compiler on METAREAL</title>
@@ -22,7 +22,7 @@
  -Wall 一般的な警告を有効にする -Wextra (-W) -W が gcc 4 から分かりやすい名前に変更された（-W も有効） -Werror 警告をエラー扱いにする  -Wunused-parameter ところで、警告オプションのひとつ、-Wunused は -Wextra (-W) が有効な場合、-Wunused-parameter も有効にする。-Wunused-parameter は関数で使われていない引数があった場合に警告を出力するオプションだ。なお、-Wunused は -Wall によっても暗黙的に指定されるため、-Wextra (-W) と -Wall を両方指定したときも、-Wunused-parameter が有効になる。
 このとき、もし、-Werror も有効になっていると、未使用の関数引数があった場合にコンパイルエラーになってしまう。意図した通りの動作ではあるものの、これでは都合が悪いときもある。たとえば、テスト駆動開発では関数の実装を空にしておくことがあるが、上記の場合は、これがエラーとなってしまう。
 -Wno-unused-parameter Mac OS X Leopard (Xcode 3.1) に付属する gcc は Apple gcc 4.0 と 4.2 だが、デフォルトは gcc 4.0 が使われる。
-% gcc --version i686-apple-darwin9-gcc-4.0.1 (GCC) 4.0.1 (Apple Inc. build 5490) Copyright (C) 2005 Free Software Foundation, Inc.</description>
+% gcc --version i686-apple-darwin9-gcc-4.0.1 (GCC) 4.0.1 (Apple Inc. build 5490) Copyright (C) 2005 Free Software Foundation, Inc. This is free software; see the source for copying conditions.</description>
     </item>
     
   </channel>
