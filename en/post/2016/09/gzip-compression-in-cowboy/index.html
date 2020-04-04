@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="css/main.css">
 
   
-  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.d3275a0b5b0befe7455e0f56537873ffa7a9ef0c8b56e71e8518bd18f28c1f4d.css">
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.32b5c9dd76f66e3fb16d1d2d9fb2dc1abf73acbd97c8192d1e573f3bc5ddeeb4.css">
   
   
   <link rel="stylesheet" href="http://ishikawa.github.io/css/application.en.min.00a7ef5fec4c6990b3496a28253cf8cc810e4f2fac13c528703eb672bf1529e3.css">
@@ -43,6 +43,13 @@
     <p class="date">
       2016/09/25 2:47pm
     </p>
+    <ul class="tags">
+      
+      <li>elixir</li>
+      
+      <li>phoenix framework</li>
+      
+    </ul>
   </div>
   <div class="content">
     <p>To <strong>compress HTTP response body</strong> from a web application powered by <a href="http://www.phoenixframework.org">Phoenix framework</a>,
@@ -56,10 +63,7 @@ you have to make <a href="https://hexdocs.pm/phoenix/Phoenix.Endpoint.html">Phoe
   <span style="color:#e6db74">watchers</span>: []
 </code></pre></div><p>When you send a HTTP request, include <code>Accept-Encoding</code> header. if you use the <code>curl</code> command, it has the option <code>--compressed</code>.</p>
 <pre><code>Accept-Encoding: gzip, deflate
-</code></pre><p>It seems that <a href="https://github.com/ninenines/cowboy">Cowboy</a>, which is the HTTP server used in Phoenix framework, doesn&rsquo;t compress response body if its size is smaller than 300 bytes.</p>
-<ul>
-<li><a href="https://github.com/ninenines/cowboy/commit/01f57ad65d7c75fb455f48e354bb3a328c472ce4#diff-2db000a0dd01503e2f022387f23413cbR942">https://github.com/ninenines/cowboy/commit/01f57ad65d7c75fb455f48e354bb3a328c472ce4#diff-2db000a0dd01503e2f022387f23413cbR942</a></li>
-</ul>
+</code></pre><p>However it seems that <a href="https://github.com/ninenines/cowboy">Cowboy</a>, which is the HTTP server used in Phoenix framework, <a href="https://github.com/ninenines/cowboy/commit/01f57ad65d7c75fb455f48e354bb3a328c472ce4#diff-2db000a0dd01503e2f022387f23413cbR942">doesn&rsquo;t compress response body if its size is smaller than 300 bytes</a>.</p>
 
   </div>
 </article>
