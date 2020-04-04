@@ -6,10 +6,10 @@
   <base href="http://ishikawa.github.io">
   <title>Aliasing Traits</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="http://ishikawa.github.io/post/2015/07/rust-trait-alias/">
+  <link rel="canonical" href="http://ishikawa.github.io/en/post/2015/07/rust-trait-alias/">
   
 	  
-	  <link rel="alternate" hreflang="en" href="http://ishikawa.github.io/en/post/2015/07/rust-trait-alias/" title="English">
+	  <link rel="alternate" hreflang="ja" href="http://ishikawa.github.io/post/2015/07/rust-trait-alias/" title="日本語">
 	  
   
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.32b5c9dd76f66e3fb16d1d2d9fb2dc1abf73acbd97c8192d1e573f3bc5ddeeb4.css">
   
   
-  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.en.min.00a7ef5fec4c6990b3496a28253cf8cc810e4f2fac13c528703eb672bf1529e3.css">
   <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
@@ -32,7 +32,7 @@
 
 	<nav class="languages">
 	
-		<a href="http://ishikawa.github.io/en/post/2015/07/rust-trait-alias/">English</a>
+		<a href="http://ishikawa.github.io/post/2015/07/rust-trait-alias/">日本語</a>
 	
 	</nav>
 
@@ -50,32 +50,31 @@
     </ul>
   </div>
   <div class="content">
-    <p><em>(2020-04-04) Trait alias は <a href="https://github.com/rust-lang/rfcs/blob/master/text/1733-trait-alias.md">RFC 1733</a> で導入された。</em></p>
-<p><a href="http://www.rust-lang.org">Rust</a> の <a href="https://doc.rust-lang.org/book/traits.html">Traits</a> による制約は <a href="https://doc.rust-lang.org/stable/book/associated-types.html">Associated Types</a> や複数の Traits を <code>+</code> で指定したりすると、どんどん長くなってしまう。</p>
+    <p><em>(2020-04-04) Trait alias was finally introduced in the <a href="https://github.com/rust-lang/rfcs/blob/master/text/1733-trait-alias.md">RFC 1733</a>.</em></p>
+<p><a href="http://www.rust-lang.org">Rust</a>&lsquo;s <a href="https://doc.rust-lang.org/book/traits.html">traits</a> and its bound syntax gets longer and longer as you add <a href="https://doc.rust-lang.org/stable/book/associated-types.html">associated types</a> or specify multiple trait bounds with the <code>+</code> syntax.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">A</span><span style="color:#f92672">&lt;</span>T: Iterator<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">=</span>char<span style="color:#f92672">&gt;&gt;</span> {
     ...
 }
-</code></pre></div><p>通常の型には <a href="https://doc.rust-lang.org/book/type-aliases.html"><code>type</code> キーワード</a>による別名づけの手段が用意されているが、これは Traits には使えない。</p>
+</code></pre></div><p>On the other hand, ordinaly types can be aliased with <a href="https://doc.rust-lang.org/book/type-aliases.html"><code>type</code> keyword</a>, however it can not be used for traits.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">CharIterator</span> <span style="color:#f92672">=</span> Iterator<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">=</span>char<span style="color:#f92672">&gt;</span>;
 
 <span style="color:#75715e">// ERROR: note: `type` aliases cannot be used for traits
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">A</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">CharIterator</span><span style="color:#f92672">&gt;</span> {
     ...
 }
-</code></pre></div><p>過去に提案はあったが却下されたようだ。</p>
+</code></pre></div><p>In the past, there was the proposal and discussion about trait alias:</p>
 <p><a href="https://github.com/rust-lang/rust/issues/8634">Allow <code>type</code> to create an alias for several trait bounds · Issue #8634 · rust-lang/rust</a></p>
-<ol>
-<li>別名を与えたい Trait を継承した空の Trait をつくればいい</li>
-<li>言語に新しい機能をつけくわえるほどの価値はなさそう</li>
-</ol>
-<p>たしかに、空の Trait をつくることで似たような効果を得ることはできる。</p>
+<blockquote>
+<p>I don&rsquo;t see a compelling need for this, since you can just declare another empty trait that inherits from both. I realize it&rsquo;s somewhat more concise if you have the additional syntax, but it just doesn&rsquo;t seem to add enough value to justify adding a new feature. Closing.</p>
+</blockquote>
+<p>It is true, I can get similar effect by declaring an empty trait which inherits another trait:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">trait</span> CharIterator: Iterator<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">=</span>char<span style="color:#f92672">&gt;</span> {}
 
 <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">A</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">CharIterator</span><span style="color:#f92672">&gt;</span> {
     ...
 }
-</code></pre></div><p>ただし、既存の <code>Iterator&lt;Item=char&gt;</code> を実装している型 (<a href="https://doc.rust-lang.org/std/str/struct.Chars.html"><code>std::str::Chars</code></a> など) は、今回追加した <code>CharIterator</code> を実装しているわけではないので、このままだと <code>T</code> の実体として使うことができない。</p>
-<p>「<code>Iterator&lt;Item=char&gt;</code> を実装した型が <code>CharIterator</code> も実装している」という <code>impl</code> を書いておこう。</p>
+</code></pre></div><p>However, the type that implements the existing <code>Iterator&lt;Item=char&gt;</code> (such as (<a href="https://doc.rust-lang.org/std/str/struct.Chars.html"><code>std::str::Chars</code></a>) can not be used for an implementation for <code>T</code> because it does not implement the <code>CharIterator</code>.</p>
+<p>Let&rsquo;s write <code>impl</code> which states &ldquo;A type that implements <code>Iterator&lt;Item=char&gt;</code> also implements <code>CharIterator</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">trait</span> CharIterator: Iterator<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">=</span>char<span style="color:#f92672">&gt;</span> {}
 <span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T: Iterator<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">=</span>char<span style="color:#f92672">&gt;&gt;</span> CharIterator <span style="color:#66d9ef">for</span> T {}
 
@@ -86,7 +85,7 @@
 ...
 
 <span style="color:#66d9ef">let</span> a <span style="color:#f92672">=</span> A { it: <span style="color:#e6db74">&#34;test&#34;</span>.chars() };
-</code></pre></div><p>参考にした記事</p>
+</code></pre></div><p>References:</p>
 <ul>
 <li><a href="https://github.com/rust-lang/rust/issues/8634">Allow <code>type</code> to create an alias for several trait bounds · Issue #8634 · rust-lang/rust</a></li>
 <li><a href="http://stackoverflow.com/questions/26070559/alias-on-compound-type-in-rust">Alias on compound type in Rust - Stack Overflow</a></li>
@@ -99,10 +98,8 @@
 <nav class="pagination">
   <ul>
     
-    <li class="next"><i class="fa fa-angle-left"></i><a href="http://ishikawa.github.io/post/2015/09/elixir-ctags/">ctags に Elixir を追加する</a></li>
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://ishikawa.github.io/en/post/2016/09/gzip-compression-in-cowboy/">Gzip compression in Phoenix framework</a></li>
     
-    
-    <li class="prev"><a href="http://ishikawa.github.io/post/migrate-to-hugo/">ブログを Hugo に移行した</a><i class="fa fa-angle-right"></i></li>
     
   </ul>
 </nav>
@@ -113,7 +110,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/ja">METAREAL</a></h2>
+  <h2><a href="/en">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

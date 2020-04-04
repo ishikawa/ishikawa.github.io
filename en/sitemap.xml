@@ -93,6 +93,36 @@
   </url>
   
   <url>
+    <loc>http://ishikawa.github.io/en/post/2015/07/rust-trait-alias/</loc>
+    <lastmod>2015-07-26T10:10:37+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/post/2015/07/rust-trait-alias/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/post/2015/07/rust-trait-alias/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/en/tags/rust/</loc>
+    <lastmod>2015-07-26T10:10:37+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/tags/rust/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/tags/rust/"
+                />
+  </url>
+  
+  <url>
     <loc>http://ishikawa.github.io/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
