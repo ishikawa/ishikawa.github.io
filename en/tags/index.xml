@@ -39,5 +39,23 @@
       <description></description>
     </item>
     
+    <item>
+      <title>code reading</title>
+      <link>http://ishikawa.github.io/en/tags/code-reading/</link>
+      <pubDate>Mon, 14 Jan 2013 00:00:00 +0900</pubDate>
+      
+      <guid>http://ishikawa.github.io/en/tags/code-reading/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>llvm</title>
+      <link>http://ishikawa.github.io/en/tags/llvm/</link>
+      <pubDate>Mon, 14 Jan 2013 00:00:00 +0900</pubDate>
+      
+      <guid>http://ishikawa.github.io/en/tags/llvm/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

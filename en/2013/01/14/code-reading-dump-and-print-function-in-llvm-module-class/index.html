@@ -6,10 +6,10 @@
   <base href="http://ishikawa.github.io">
   <title>Code Reading: Dump and Print Function in llvm::Module Class</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="http://ishikawa.github.io/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/">
+  <link rel="canonical" href="http://ishikawa.github.io/en/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/">
   
 	  
-	  <link rel="alternate" hreflang="en" href="http://ishikawa.github.io/en/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/" title="English">
+	  <link rel="alternate" hreflang="ja" href="http://ishikawa.github.io/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/" title="日本語">
 	  
   
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.4b1aba09e500238be64d7b9ff0b5f120307d5c4319aa4415abc43c78ca632f06.css">
   
   
-  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.en.min.9e475e4454b3d8b3f7f94d5cfe5183ed69176da3c4b5efb9ac15a9e52530020f.css">
   <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
@@ -30,9 +30,9 @@
 
 
 	<nav class="languages">
-  他の言語で読む » 
+  Read this article in » 
 	
-		<a href="http://ishikawa.github.io/en/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/">English</a>
+		<a href="http://ishikawa.github.io/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/">日本語</a>
 	
 	</nav>
 
@@ -54,14 +54,14 @@
     </ul>
   </div>
   <div class="content">
-    <p><a href="http://llvm.org/releases/download.html#3.1">LLVM 3.1</a> のソースコードから、<a href="http://llvm.org/doxygen/classllvm_1_1Module.html">llvm::Module</a> の IR 出力用関数のソースコードを読んだ。</p>
+    <p>It&rsquo;s time for code reading. Today, I read the functions <code>dump()</code> and <code>print()</code> which dump IR code and are implemented in <a href="http://llvm.org/doxygen/classllvm_1_1Module.html">llvm::Module</a> which I had been curious about it for a while. Notice, the referenced code base is <a href="http://llvm.org/releases/download.html#3.1">LLVM 3.1</a>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">/// Print the module to an output stream with an optional
 </span><span style="color:#75715e">/// AssemblyAnnotationWriter.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print</span>(raw_ostream <span style="color:#f92672">&amp;</span>OS, AssemblyAnnotationWriter <span style="color:#f92672">*</span>AAW) <span style="color:#66d9ef">const</span>;
 
 <span style="color:#75715e">/// Dump the module to stderr (for debugging).
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dump</span>() <span style="color:#66d9ef">const</span>;
-</code></pre></div><p>実装は <code>lib/VMCore/Module.cpp</code> ではなく、他の IR 出力用関数とともに <code>lib/VMCore/AsmWriter.cpp</code> にまとめられている。まずは <code>llvm::Module::print</code> を見てみよう。</p>
+</code></pre></div><p>Both functions are instance methods of <code>llvm::Module</code>, but the implementation code is in <code>lib/VMCore/AsmWriter.cpp</code> which also contains other debug functions, not in <code>lib/VMCore/Module.cpp</code>. First of all, I should set about reading the function  <code>llvm::Module::print</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> Module<span style="color:#f92672">::</span>print(raw_ostream <span style="color:#f92672">&amp;</span>ROS, AssemblyAnnotationWriter <span style="color:#f92672">*</span>AAW) <span style="color:#66d9ef">const</span> {
   SlotTracker <span style="color:#a6e22e">SlotTable</span>(<span style="color:#66d9ef">this</span>);
   formatted_raw_ostream <span style="color:#a6e22e">OS</span>(ROS);
@@ -69,7 +69,7 @@
   W.printModule(<span style="color:#66d9ef">this</span>);
 }
 </code></pre></div><h2 id="llvmmoduleprint">llvm::Module::print</h2>
-<p><code>AssemblyWriter</code> は <code>lib/VMCore/AsmWriter.cpp</code> の無名ネームスペースに定義されているクラスであり、llvm 内のさまざまな型をストリームに出力する関数を提供している。<code>AssemblyWriter::printModule</code> のコードをざっと眺めてみれば、やっていることの想像はつくだろう。</p>
+<p>The class <code>AssemblyWriter</code> is defined in unnamed namespace in <code>lib/VMCore/AsmWriter.cpp</code>. It can print various LLVM types in a stream. Take a quick look at the function, then you can get the overall gist.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> AssemblyWriter<span style="color:#f92672">::</span>printModule(<span style="color:#66d9ef">const</span> Module <span style="color:#f92672">*</span>M) {
   <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>M<span style="color:#f92672">-&gt;</span>getModuleIdentifier().empty() <span style="color:#f92672">&amp;&amp;</span>
       <span style="color:#75715e">// Don&#39;t print the ID if it will start a new line (which would
@@ -79,22 +79,22 @@
 ...
 }
 </code></pre></div><h2 id="llvmmoduledump">llvm::Module::dump</h2>
-<p>同じく <code>lib/VMCore/AsmWriter.cpp</code> の最後の方に定義されている <code>llvm::Module::dump</code> はどうなっているだろうか。</p>
+<p>Next, let&rsquo;s look at the function <code>llvm::Module::dump</code> also defined in <code>lib/VMCore/AsmWriter.cpp</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// Module::dump() - Allow printing of Modules from the debugger.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> Module<span style="color:#f92672">::</span>dump() <span style="color:#66d9ef">const</span> { print(dbgs(), <span style="color:#ae81ff">0</span>); }
-</code></pre></div><p><code>llvm::Module::print</code> を呼んでいるだけだ。</p>
+</code></pre></div><p>Easy enough. It just call the <code>llvm::Module::print</code> with arguments:</p>
 <ul>
-<li>第一引数の raw_ostream には dbgs()</li>
-<li>第二引数の AssemblyAnnotationWriter* には 0 (null pointer)</li>
+<li><em>#1</em> a return value of <code>dbgs()</code> as <code>raw_ostream</code></li>
+<li><em>#2</em> <code>0</code> will be interpreted as a null pointer <code>AssemblyAnnotationWriter*</code></li>
 </ul>
-<p>では、第一引数に渡している dbgs 関数の戻り値はなんだろうか？</p>
+<p>So, what about a return value of <code>dbgs()</code>?</p>
 <h2 id="llvmdbgs">llvm::dbgs</h2>
-<p><code>llvm::dbgs</code> の宣言は <code>include/llvm/Support/Debug.h</code> にある。デバッグ用の出力ストリーム (raw_ostream) を返す関数だ。</p>
+<p>The declaration of <code>llvm::dbgs</code> is in the file <code>include/llvm/Support/Debug.h</code>. It&rsquo;s a function which returns an output stream for debugging.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">/// dbgs() - This returns a reference to a raw_ostream for debugging
 </span><span style="color:#75715e">/// messages.  If debugging is disabled it returns errs().  Use it
 </span><span style="color:#75715e">/// like: dbgs() &lt;&lt; &#34;foo&#34; &lt;&lt; &#34;bar&#34;;
 </span><span style="color:#75715e"></span>raw_ostream <span style="color:#f92672">&amp;</span>dbgs();
-</code></pre></div><p>実装は <code>lib/Support/Debug.cpp</code> で定義されており、<code>NDEBUG</code> が宣言されているか (非デバッグ・モード) 宣言されていないか (デバッグ・モード) で実装が切り替わるようになっている。</p>
+</code></pre></div><p>The function implementation is in the file <code>lib/Support/Debug.cpp</code>. It switches its implementation whether <code>NDEBUG</code> is <em>undefined</em> or not.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// All Debug.h functionality is a no-op in NDEBUG mode.
 </span><span style="color:#75715e"></span><span style="color:#75715e">#ifndef NDEBUG
 </span><span style="color:#75715e"></span><span style="color:#75715e">/// dbgs - Return a circular-buffered debug stream.
@@ -112,7 +112,8 @@
 }
 
 <span style="color:#75715e">#endif
-</span></code></pre></div><p>非デバッグ・モードのとき <code>dbgs()</code> は単に標準エラー出力への raw_ostream を返す。</p>
+</span></code></pre></div><p>When <code>NDEBUG</code> is defined (no debug mode), <code>dbgs()</code> function just returns a raw_ostream
+instance which points to standard error.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#ifndef STDERR_FILENO
 </span><span style="color:#75715e"># define STDERR_FILENO 2
 </span><span style="color:#75715e">#endif
@@ -124,7 +125,7 @@
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">static</span> raw_fd_ostream <span style="color:#a6e22e">S</span>(STDERR_FILENO, false, true);
   <span style="color:#66d9ef">return</span> S;
 }
-</code></pre></div><p>デバッグ・モードの場合の実装も見てみよう。</p>
+</code></pre></div><p>But the opposite has a more complicated implementation.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">/// dbgs - Return a circular-buffered debug stream.
 </span><span style="color:#75715e"></span>raw_ostream <span style="color:#f92672">&amp;</span>llvm<span style="color:#f92672">::</span>dbgs() {
   <span style="color:#75715e">// Do one-time initialization in a thread-safe way.
@@ -145,7 +146,10 @@
 
   <span style="color:#66d9ef">return</span> thestrm.strm;
 }
-</code></pre></div><p>デバッグ・モードの場合は、標準エラー出力をラップした circular_raw_ostream を返している。static な構造体のコンストラクタで初期化することで、 シグナル・ハンドラなども設定しているのが興味深い。</p>
+</code></pre></div><p>It returns a <code>circular_raw_ostream</code> which internally uses standard error stream. The stream is
+initialized in the constructor of a <code>struct dbgstream</code>. The struct is declared with <code>static</code>, so
+it is statically allocated and its constructor is invoked exactly once. The constructor does not
+initialize a stream but also set a signal handler.</p>
 
   </div>
 </article>
@@ -153,10 +157,8 @@
 <nav class="pagination">
   <ul>
     
-    <li class="next"><i class="fa fa-angle-left"></i><a href="http://ishikawa.github.io/2013/01/18/looper/">映画「LOOPER」</a></li>
+    <li class="next"><i class="fa fa-angle-left"></i><a href="http://ishikawa.github.io/en/post/2015/07/rust-trait-alias/">Aliasing Traits</a></li>
     
-    
-    <li class="prev"><a href="http://ishikawa.github.io/2010/12/16/ffi-requires-ruby-version-1-9-2/">Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった</a><i class="fa fa-angle-right"></i></li>
     
   </ul>
 </nav>
@@ -167,7 +169,7 @@
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/ja">METAREAL</a></h2>
+  <h2><a href="/en">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

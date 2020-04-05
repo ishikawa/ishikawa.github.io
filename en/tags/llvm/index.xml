@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>llvm on METAREAL</title>
+    <link>http://ishikawa.github.io/en/tags/llvm/</link>
+    <description>Recent content in llvm on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Mon, 14 Jan 2013 00:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://ishikawa.github.io/en/tags/llvm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Code Reading: Dump and Print Function in llvm::Module Class</title>
+      <link>http://ishikawa.github.io/en/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</link>
+      <pubDate>Mon, 14 Jan 2013 00:00:00 +0900</pubDate>
+      
+      <guid>http://ishikawa.github.io/en/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</guid>
+      <description>It&amp;rsquo;s time for code reading. Today, I read the functions dump() and print() which dump IR code and are implemented in llvm::Module which I had been curious about it for a while. Notice, the referenced code base is LLVM 3.1.
+/// Print the module to an output stream with an optional /// AssemblyAnnotationWriter. void print(raw_ostream &amp;amp;OS, AssemblyAnnotationWriter *AAW) const; /// Dump the module to stderr (for debugging). void dump() const; Both functions are instance methods of llvm::Module, but the implementation code is in lib/VMCore/AsmWriter.</description>
+    </item>
+    
+  </channel>
+</rss>

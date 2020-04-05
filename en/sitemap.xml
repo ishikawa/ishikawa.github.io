@@ -123,6 +123,51 @@
   </url>
   
   <url>
+    <loc>http://ishikawa.github.io/en/tags/code-reading/</loc>
+    <lastmod>2013-01-14T00:00:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/tags/code-reading/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/tags/code-reading/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/en/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</loc>
+    <lastmod>2013-01-14T00:00:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ishikawa.github.io/en/tags/llvm/</loc>
+    <lastmod>2013-01-14T00:00:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/tags/llvm/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/tags/llvm/"
+                />
+  </url>
+  
+  <url>
     <loc>http://ishikawa.github.io/en/categories/</loc>
     <xhtml:link
                 rel="alternate"

@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 05 Dec 2010 09:23:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 14 Jan 2013 00:00:00 +0900</lastBuildDate>
     
 	<atom:link href="http://ishikawa.github.io/tags/llvm/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Code Reading: Dump and Print Function in llvm::Module Class</title>
+      <link>http://ishikawa.github.io/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</link>
+      <pubDate>Mon, 14 Jan 2013 00:00:00 +0900</pubDate>
+      
+      <guid>http://ishikawa.github.io/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</guid>
+      <description>LLVM 3.1 のソースコードから、llvm::Module の IR 出力用関数のソースコードを読んだ。
+/// Print the module to an output stream with an optional /// AssemblyAnnotationWriter. void print(raw_ostream &amp;amp;OS, AssemblyAnnotationWriter *AAW) const; /// Dump the module to stderr (for debugging). void dump() const; 実装は lib/VMCore/Module.cpp ではなく、他の IR 出力用関数とともに lib/VMCore/AsmWriter.cpp にまとめられている。まずは llvm::Module::print を見てみよう。
+void Module::print(raw_ostream &amp;amp;ROS, AssemblyAnnotationWriter *AAW) const { SlotTracker SlotTable(this); formatted_raw_ostream OS(ROS); AssemblyWriter W(OS, SlotTable, this, AAW); W.printModule(this); } llvm::Module::print AssemblyWriter は lib/VMCore/AsmWriter.cpp の無名ネームスペースに定義されているクラスであり、llvm 内のさまざまな型をストリームに出力する関数を提供している。AssemblyWriter::printModule のコードをざっと眺めてみれば、やっていることの想像はつくだろう。</description>
+    </item>
     
     <item>
       <title>LLVM 2.8 の C API 差分をチェックしてはじめて気づいたけど、2.8...</title>
