@@ -7,10 +7,23 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 25 Sep 2016 14:47:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 26 Mar 2020 00:00:00 +0900</lastBuildDate>
     
 	<atom:link href="http://ishikawa.github.io/tags/elixir/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Elixir の import/2 は最後のものが優先される</title>
+      <link>http://ishikawa.github.io/post/2020/03/26/elixir-import-overrides-previous-import/</link>
+      <pubDate>Thu, 26 Mar 2020 00:00:00 +0900</pubDate>
+      
+      <guid>http://ishikawa.github.io/post/2020/03/26/elixir-import-overrides-previous-import/</guid>
+      <description>この記事は以前に Qiita で公開した記事です。
+Elixir の import/2 を同じモジュールにたいして複数回実行すると、最後に実行したものが優先される。
+iex(1)&amp;gt; import List List iex(2)&amp;gt; first([1]) 1 iex(3)&amp;gt; import List, only: [flatten: 1] List iex(4)&amp;gt; first([1]) ** (CompileError) iex:4: undefined function first/1 上記の例では、iex(1) で import List したときには参照できていた List.first/1 が、iex(4) の import List, only: [flatten: 1] のあとでは参照できなくなっている。
+この挙動を知らずに失敗した話 Phoenix のコントローラーで「認証済みのユーザーが conn にあれば処理を続行、そうでなければエラー」という処理が頻発するので、次のようなモジュールを書いた。
+defmodule AuthUserAction do defmacro __using__(_opts) do quote do import Plug.Conn import Phoenix.Controller, only: [json: 2, action_name: 1] def action(conn, _) do with {:ok, user_id} &amp;lt;- Map.</description>
+    </item>
     
     <item>
       <title>Phoenix (Cowboy) の Gzip 圧縮サポート</title>

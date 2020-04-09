@@ -1,0 +1,203 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <base href="http://ishikawa.github.io">
+  <title>Elixir の import/2 は最後のものが優先される</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://ishikawa.github.io/post/2020/03/26/elixir-import-overrides-previous-import/">
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.min.4b1aba09e500238be64d7b9ff0b5f120307d5c4319aa4415abc43c78ca632f06.css">
+  
+  
+  <link rel="stylesheet" href="http://ishikawa.github.io/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="css/highlight/solarized_light.css">
+  <script src="js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+
+
+
+<article>
+  <h1>Elixir の import/2 は最後のものが優先される</h1>
+  <div class="metadata">
+    <p class="date">
+      2020/03/26 12:00am
+    </p>
+    <ul class="tags">
+      
+      <li>elixir</li>
+      
+    </ul>
+  </div>
+  <div class="content">
+    <p><em>この記事は以前に <a href="https://qiita.com/ishikawa@github/items/6eaba8c05726365fdf43">Qiita で公開した記事</a>です。</em></p>
+<p>Elixir の <a href="https://hexdocs.pm/elixir/Kernel.SpecialForms.html#import/2"><code>import/2</code></a> を同じモジュールにたいして複数回実行すると、最後に実行したものが優先される。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">iex(<span style="color:#ae81ff">1</span>)<span style="color:#f92672">&gt;</span> import <span style="color:#a6e22e">List</span>
+<span style="color:#a6e22e">List</span>
+iex(<span style="color:#ae81ff">2</span>)<span style="color:#f92672">&gt;</span> first([<span style="color:#ae81ff">1</span>])
+<span style="color:#ae81ff">1</span>
+iex(<span style="color:#ae81ff">3</span>)<span style="color:#f92672">&gt;</span> import <span style="color:#a6e22e">List</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">flatten</span>: <span style="color:#ae81ff">1</span>]
+<span style="color:#a6e22e">List</span>
+iex(<span style="color:#ae81ff">4</span>)<span style="color:#f92672">&gt;</span> first([<span style="color:#ae81ff">1</span>])                     
+<span style="color:#f92672">**</span> (<span style="color:#a6e22e">CompileError</span>) iex:<span style="color:#ae81ff">4</span>: undefined function first<span style="color:#f92672">/</span><span style="color:#ae81ff">1</span>
+</code></pre></div><p>上記の例では、<code>iex(1)</code> で <code>import List</code> したときには参照できていた <code>List.first/1</code>  が、<code>iex(4)</code> の <code>import List, only: [flatten: 1]</code> のあとでは参照できなくなっている。</p>
+<h2 id="この挙動を知らずに失敗した話">この挙動を知らずに失敗した話</h2>
+<p>Phoenix のコントローラーで「認証済みのユーザーが conn にあれば処理を続行、そうでなければエラー」という処理が頻発するので、次のようなモジュールを書いた。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">defmodule <span style="color:#a6e22e">AuthUserAction</span> do
+  defmacro __using__(_opts) do
+    quote do
+      import <span style="color:#a6e22e">Plug.Conn</span>
+      import <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
+
+      def action(conn, _) do
+        with {<span style="color:#e6db74">:ok</span>, user_id} <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">.</span>fetch(conn<span style="color:#f92672">.</span>private, <span style="color:#e6db74">:user_id</span>),
+             %<span style="color:#a6e22e">User</span>{} <span style="color:#f92672">=</span> user <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Repo</span><span style="color:#f92672">.</span>get(<span style="color:#a6e22e">User</span>, user_id) do
+          apply(__MODULE__, action_name(conn), [conn, conn<span style="color:#f92672">.</span>params, user])
+        else
+          _ <span style="color:#f92672">-&gt;</span>
+            conn
+            <span style="color:#f92672">|&gt;</span> put_status(<span style="color:#e6db74">:forbidden</span>)
+            <span style="color:#f92672">|&gt;</span> json(%{
+              <span style="color:#e6db74">error</span>: <span style="color:#e6db74">&#34;forbidden&#34;</span>
+            })
+        end
+      end
+    end
+  end
+end
+</code></pre></div><p>これを使うコントローラーでは、毎回、</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">use <span style="color:#a6e22e">Phoenix.Controller</span>
+
+def my_action(conn, params) do
+  with {<span style="color:#e6db74">:ok</span>, user_id} <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">.</span>fetch(conn<span style="color:#f92672">.</span>private, <span style="color:#e6db74">:user_id</span>),
+       %<span style="color:#a6e22e">User</span>{} <span style="color:#f92672">=</span> user <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Repo</span><span style="color:#f92672">.</span>get(<span style="color:#a6e22e">User</span>, user_id) do
+    ...
+  end
+end
+</code></pre></div><p>のように書いていた処理を、<code>use AuthUserAction</code> を追加するだけで、</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">use <span style="color:#a6e22e">Phoenix.Controller</span>
+use <span style="color:#a6e22e">AuthUserAction</span>
+
+def my_action(conn, params, user) do
+  ...
+end
+</code></pre></div><p>このように簡略化できる&hellip;はずだった。</p>
+<h3 id="コンパイルエラー">コンパイル・エラー</h3>
+<p>しかし、実装してコンパイルしてみると、以下のようなエラーが出るようになってしまった。</p>
+<pre><code>== Compilation error in file lib/my_app/controllers/my_controller.ex ==
+** (CompileError) lib/my_app/controllers/my_controller.ex:1: undefined function put_new_layout/2
+    (elixir 1.10.1) src/elixir_locals.erl:114: anonymous fn/3 in :elixir_locals.ensure_no_undefined_local/3
+    (stdlib 3.11.2) erl_eval.erl:680: :erl_eval.do_apply/6
+    (elixir 1.10.1) lib/kernel/parallel_compiler.ex:233: anonymous fn/4 in Kernel.ParallelCompiler.spawn_workers/7
+</code></pre><p>何故こうなるか、というと、最初に説明した通り、マクロ中の</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">import <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
+</code></pre></div><p>が、コントローラー側の <code>use Phoenix.Controller</code> で <code>import</code> されてる <code>put_new_layout/2</code> を上書きしてしまうからだ。</p>
+<h3 id="解決">解決</h3>
+<p>Elixir の <code>import/2</code> はレキシカル・スコープなので、import を関数内に移動するだけで解決できる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">defmodule <span style="color:#a6e22e">AuthUserAction</span> do
+  defmacro __using__(_opts) do
+    quote do
+      def action(conn, _) do
+        import <span style="color:#a6e22e">Plug.Conn</span>
+        import <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
+
+        ...
+      end
+    end
+  end
+end
+</code></pre></div><p>実際には、コードサイズを減らすためにも、action/2 の実装をマクロの外に出した。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">defmodule <span style="color:#a6e22e">AuthUserAction</span> do
+  import <span style="color:#a6e22e">Plug.Conn</span>
+  import <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
+
+  defmacro __using__(_opts) do
+    quote do
+      def action(conn, _) do
+        <span style="color:#a6e22e">AuthUserAction</span><span style="color:#f92672">.</span>action(conn, __MODULE__)
+      end
+    end
+  end
+
+  def action(conn, module) do
+    with {<span style="color:#e6db74">:ok</span>, user_id} <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">.</span>fetch(conn<span style="color:#f92672">.</span>private, <span style="color:#e6db74">:user_id</span>),
+         %<span style="color:#a6e22e">User</span>{} <span style="color:#f92672">=</span> user <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Repo</span><span style="color:#f92672">.</span>get(<span style="color:#a6e22e">User</span>, user_id) do
+      apply(module, action_name(conn), [conn, conn<span style="color:#f92672">.</span>params, user])
+    else
+      _ <span style="color:#f92672">-&gt;</span>
+        conn
+        <span style="color:#f92672">|&gt;</span> put_status(<span style="color:#e6db74">:forbidden</span>)
+        <span style="color:#f92672">|&gt;</span> json(%{
+          <span style="color:#e6db74">error</span>: <span style="color:#e6db74">&#34;forbidden&#34;</span>
+        })
+    end
+  end
+end
+</code></pre></div>
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    
+    <li class="prev"><a href="http://ishikawa.github.io/post/2016/09/gzip-compression-in-cowboy/">Phoenix (Cowboy) の Gzip 圧縮サポート</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
+    <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
+  </ul>
+  <h2><a href="/ja">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  var all = MathJax.Hub.getAllJax(), i;
+  for(i = 0; i &lt; all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+</html>
