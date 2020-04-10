@@ -20,6 +20,16 @@
   <url>
     <loc>http://ishikawa.github.io/post/2020/03/26/elixir-import-overrides-previous-import/</loc>
     <lastmod>2020-03-26T00:00:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ishikawa.github.io/en/post/2020/03/26/elixir-import-overrides-previous-import/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://ishikawa.github.io/post/2020/03/26/elixir-import-overrides-previous-import/"
+                />
   </url>
   
   <url>
