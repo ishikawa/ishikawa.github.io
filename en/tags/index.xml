@@ -2,58 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on METAREAL</title>
-    <link>http://ishikawa.github.io/en/tags/</link>
+    <link>https://metareal.blog/en/tags/</link>
     <description>Recent content in Tags on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Thu, 26 Mar 2020 00:00:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/en/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>elixir</title>
-      <link>http://ishikawa.github.io/en/tags/elixir/</link>
+      <link>https://metareal.blog/en/tags/elixir/</link>
       <pubDate>Thu, 26 Mar 2020 00:00:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/en/tags/elixir/</guid>
+      <guid>https://metareal.blog/en/tags/elixir/</guid>
       <description></description>
     </item>
     
     <item>
       <title>phoenix framework</title>
-      <link>http://ishikawa.github.io/en/tags/phoenix-framework/</link>
+      <link>https://metareal.blog/en/tags/phoenix-framework/</link>
       <pubDate>Sun, 25 Sep 2016 14:47:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/en/tags/phoenix-framework/</guid>
+      <guid>https://metareal.blog/en/tags/phoenix-framework/</guid>
       <description></description>
     </item>
     
     <item>
       <title>rust</title>
-      <link>http://ishikawa.github.io/en/tags/rust/</link>
+      <link>https://metareal.blog/en/tags/rust/</link>
       <pubDate>Sun, 26 Jul 2015 10:10:37 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/en/tags/rust/</guid>
+      <guid>https://metareal.blog/en/tags/rust/</guid>
       <description></description>
     </item>
     
     <item>
       <title>code reading</title>
-      <link>http://ishikawa.github.io/en/tags/code-reading/</link>
+      <link>https://metareal.blog/en/tags/code-reading/</link>
       <pubDate>Mon, 14 Jan 2013 00:00:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/en/tags/code-reading/</guid>
+      <guid>https://metareal.blog/en/tags/code-reading/</guid>
       <description></description>
     </item>
     
     <item>
       <title>llvm</title>
-      <link>http://ishikawa.github.io/en/tags/llvm/</link>
+      <link>https://metareal.blog/en/tags/llvm/</link>
       <pubDate>Mon, 14 Jan 2013 00:00:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/en/tags/llvm/</guid>
+      <guid>https://metareal.blog/en/tags/llvm/</guid>
       <description></description>
     </item>
     

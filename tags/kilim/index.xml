@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kilim on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/kilim/</link>
+    <link>https://metareal.blog/tags/kilim/</link>
     <description>Recent content in kilim on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Fri, 27 Jun 2008 03:41:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/kilim/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/kilim/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>kilim で Java でもジェネレーター</title>
-      <link>http://ishikawa.github.io/2008/06/26/java-generater-by-using-kilim/</link>
+      <link>https://metareal.blog/2008/06/26/java-generater-by-using-kilim/</link>
       <pubDate>Fri, 27 Jun 2008 03:41:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/06/26/java-generater-by-using-kilim/</guid>
+      <guid>https://metareal.blog/2008/06/26/java-generater-by-using-kilim/</guid>
       <description>Twitter と Erlang をきっかけに注目を集めるようになった軽量プロセス（とかマイクロスレッドとか）を Java で実現するためのライブラリに kilim があります。
  Isolation-typed actors for Java (PDF) InfoQ: Kilim - actors and message passing in Java  夜中に突然 Java が書きたくなって、まだ、Examples を動かしてみた程度ですが、とりあえず Python のジェネレーターっぽいことができるのは分かったので記事にしておきます。暇と知識が増えたら、もうすこし突っ込んだ記事もあげる予定です（自信がないので今回、ですます調）。
 ジェネレーターの例 では、本当につまらない例です。フィボナッチ数を求めるプログラムをどうぞ。

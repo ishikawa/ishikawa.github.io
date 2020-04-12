@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>algorithm on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/algorithm/</link>
+    <link>https://metareal.blog/tags/algorithm/</link>
     <description>Recent content in algorithm on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Mon, 08 Sep 2008 02:25:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>O記法で対数の底が省略される理由</title>
-      <link>http://ishikawa.github.io/2008/09/07/logarithm-and-big-o-notation/</link>
+      <link>https://metareal.blog/2008/09/07/logarithm-and-big-o-notation/</link>
       <pubDate>Mon, 08 Sep 2008 02:25:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/09/07/logarithm-and-big-o-notation/</guid>
+      <guid>https://metareal.blog/2008/09/07/logarithm-and-big-o-notation/</guid>
       <description>プログラムにスピードを求めるなら多項式時間アルゴリズム、特に対数時間で解けるアルゴリズムが重要になる。なにしろ、Steven S. Skiena 氏がその著書 &amp;ldquo;The Algorithm Design Manual&amp;rdquo; で述べているように、Logarithm is an anagram of algorithm なのだ。
 ところで、アルゴリズムの性能評価でお世話になる O 記法では、対数の底がしばしば省略される。たとえば、n 個のデータから二分探索で検索する場合、時間計算量は O(log2n) だが、これを O(log n) と表記することがある。
 では、どうして、対数の底を省略するのだろうか？

@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>apache on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/apache/</link>
+    <link>https://metareal.blog/tags/apache/</link>
     <description>Recent content in apache on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 02 Jan 2007 11:35:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/apache/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/apache/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>rotatelogs と時差</title>
-      <link>http://ishikawa.github.io/2007/01/02/apache-rotatelogs-time-offset/</link>
+      <link>https://metareal.blog/2007/01/02/apache-rotatelogs-time-offset/</link>
       <pubDate>Tue, 02 Jan 2007 11:35:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/02/apache-rotatelogs-time-offset/</guid>
+      <guid>https://metareal.blog/2007/01/02/apache-rotatelogs-time-offset/</guid>
       <description>アクセスログのローテーションに使っているのは、Apache に付属している rotatelogs だ。わたしも多くの初心者と同じく、こいつにまつわる時差の問題に直面した。
 これは、Apache のマニュアルに書かれている rotatelogs の設定例。
 CustomLog &amp;quot;|/usr/local/apache/bin/rotatelogs /var/log/access_log 86400&amp;quot; common しかし、このままだとログファイルに残されるアクセス時間が 9 時間ずれてしまう（日本の標準時間と比べて）。rotatelogs の第一引数に指定するローテーション秒数は UTC を基準にしているためだ。

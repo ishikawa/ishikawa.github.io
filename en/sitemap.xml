@@ -3,196 +3,196 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://ishikawa.github.io/en/tags/elixir/</loc>
+    <loc>https://metareal.blog/en/tags/elixir/</loc>
     <lastmod>2020-03-26T00:00:00+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://ishikawa.github.io/tags/elixir/"
+                href="https://metareal.blog/tags/elixir/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ishikawa.github.io/en/tags/elixir/"
+                href="https://metareal.blog/en/tags/elixir/"
                 />
   </url>
   
   <url>
-    <loc>http://ishikawa.github.io/en/post/2020/03/26/elixir-import-overrides-previous-import/</loc>
+    <loc>https://metareal.blog/en/post/2020/03/26/elixir-import-overrides-previous-import/</loc>
     <lastmod>2020-03-26T00:00:00+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://ishikawa.github.io/post/2020/03/26/elixir-import-overrides-previous-import/"
+                href="https://metareal.blog/post/2020/03/26/elixir-import-overrides-previous-import/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ishikawa.github.io/en/post/2020/03/26/elixir-import-overrides-previous-import/"
+                href="https://metareal.blog/en/post/2020/03/26/elixir-import-overrides-previous-import/"
                 />
   </url>
   
   <url>
-    <loc>http://ishikawa.github.io/en/</loc>
+    <loc>https://metareal.blog/en/</loc>
     <lastmod>2020-03-26T00:00:00+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://ishikawa.github.io/"
+                href="https://metareal.blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ishikawa.github.io/en/"
+                href="https://metareal.blog/en/"
                 />
   </url>
   
   <url>
-    <loc>http://ishikawa.github.io/en/post/</loc>
+    <loc>https://metareal.blog/en/post/</loc>
     <lastmod>2020-03-26T00:00:00+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://ishikawa.github.io/post/"
+                href="https://metareal.blog/post/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ishikawa.github.io/en/post/"
+                href="https://metareal.blog/en/post/"
                 />
   </url>
   
   <url>
-    <loc>http://ishikawa.github.io/en/tags/</loc>
+    <loc>https://metareal.blog/en/tags/</loc>
     <lastmod>2020-03-26T00:00:00+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://ishikawa.github.io/tags/"
+                href="https://metareal.blog/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ishikawa.github.io/en/tags/"
+                href="https://metareal.blog/en/tags/"
                 />
   </url>
   
   <url>
-    <loc>http://ishikawa.github.io/en/post/2016/09/gzip-compression-in-cowboy/</loc>
+    <loc>https://metareal.blog/en/post/2016/09/gzip-compression-in-cowboy/</loc>
     <lastmod>2016-09-25T14:47:00+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://ishikawa.github.io/post/2016/09/gzip-compression-in-cowboy/"
+                href="https://metareal.blog/post/2016/09/gzip-compression-in-cowboy/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ishikawa.github.io/en/post/2016/09/gzip-compression-in-cowboy/"
+                href="https://metareal.blog/en/post/2016/09/gzip-compression-in-cowboy/"
                 />
   </url>
   
   <url>
-    <loc>http://ishikawa.github.io/en/tags/phoenix-framework/</loc>
+    <loc>https://metareal.blog/en/tags/phoenix-framework/</loc>
     <lastmod>2016-09-25T14:47:00+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://ishikawa.github.io/tags/phoenix-framework/"
+                href="https://metareal.blog/tags/phoenix-framework/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ishikawa.github.io/en/tags/phoenix-framework/"
+                href="https://metareal.blog/en/tags/phoenix-framework/"
                 />
   </url>
   
   <url>
-    <loc>http://ishikawa.github.io/en/post/2015/07/rust-trait-alias/</loc>
+    <loc>https://metareal.blog/en/post/2015/07/rust-trait-alias/</loc>
     <lastmod>2015-07-26T10:10:37+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://ishikawa.github.io/post/2015/07/rust-trait-alias/"
+                href="https://metareal.blog/post/2015/07/rust-trait-alias/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ishikawa.github.io/en/post/2015/07/rust-trait-alias/"
+                href="https://metareal.blog/en/post/2015/07/rust-trait-alias/"
                 />
   </url>
   
   <url>
-    <loc>http://ishikawa.github.io/en/tags/rust/</loc>
+    <loc>https://metareal.blog/en/tags/rust/</loc>
     <lastmod>2015-07-26T10:10:37+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://ishikawa.github.io/tags/rust/"
+                href="https://metareal.blog/tags/rust/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ishikawa.github.io/en/tags/rust/"
+                href="https://metareal.blog/en/tags/rust/"
                 />
   </url>
   
   <url>
-    <loc>http://ishikawa.github.io/en/tags/code-reading/</loc>
+    <loc>https://metareal.blog/en/tags/code-reading/</loc>
     <lastmod>2013-01-14T00:00:00+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://ishikawa.github.io/tags/code-reading/"
+                href="https://metareal.blog/tags/code-reading/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ishikawa.github.io/en/tags/code-reading/"
+                href="https://metareal.blog/en/tags/code-reading/"
                 />
   </url>
   
   <url>
-    <loc>http://ishikawa.github.io/en/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</loc>
+    <loc>https://metareal.blog/en/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</loc>
     <lastmod>2013-01-14T00:00:00+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://ishikawa.github.io/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/"
+                href="https://metareal.blog/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ishikawa.github.io/en/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/"
+                href="https://metareal.blog/en/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/"
                 />
   </url>
   
   <url>
-    <loc>http://ishikawa.github.io/en/tags/llvm/</loc>
+    <loc>https://metareal.blog/en/tags/llvm/</loc>
     <lastmod>2013-01-14T00:00:00+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://ishikawa.github.io/tags/llvm/"
+                href="https://metareal.blog/tags/llvm/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ishikawa.github.io/en/tags/llvm/"
+                href="https://metareal.blog/en/tags/llvm/"
                 />
   </url>
   
   <url>
-    <loc>http://ishikawa.github.io/en/categories/</loc>
+    <loc>https://metareal.blog/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="http://ishikawa.github.io/categories/"
+                href="https://metareal.blog/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ishikawa.github.io/en/categories/"
+                href="https://metareal.blog/en/categories/"
                 />
   </url>
   

@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>objective-c on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/objective-c/</link>
+    <link>https://metareal.blog/tags/objective-c/</link>
     <description>Recent content in objective-c on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Fri, 06 Jun 2008 12:42:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/objective-c/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/objective-c/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>280Slides in Objective-J</title>
-      <link>http://ishikawa.github.io/2008/06/06/280slides-in-objective-j/</link>
+      <link>https://metareal.blog/2008/06/06/280slides-in-objective-j/</link>
       <pubDate>Fri, 06 Jun 2008 12:42:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/06/06/280slides-in-objective-j/</guid>
+      <guid>https://metareal.blog/2008/06/06/280slides-in-objective-j/</guid>
       <description>280Slides という Web サービスがすごい。
  Dru’s Blog » New Web Site in Objective-C via Javascript New 280 Slides Web Site translates Objective-C to Javascript | reddit  Keynote 風のプレゼンテーションツールとしての UI も素晴らしいが、圧巻なのは、その実装技術。
 「どんな JavaScript や Flash を使ってるんだ？」と思うだろう。さあ、FireBug なり Safari の Web インスペクタなりで、ページに読み込まれているスクリプトを確認してみよう。その大半が馴染みのない拡張子 .j であることに驚くに違いない。

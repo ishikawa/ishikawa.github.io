@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gcc on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/gcc/</link>
+    <link>https://metareal.blog/tags/gcc/</link>
     <description>Recent content in gcc on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Fri, 12 Dec 2008 06:23:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/gcc/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/gcc/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>GCC の警告オプションで一部の警告のみをエラー扱いにしたい</title>
-      <link>http://ishikawa.github.io/2008/12/12/gcc-options-request-or-suppress-warnings-and-errors/</link>
+      <link>https://metareal.blog/2008/12/12/gcc-options-request-or-suppress-warnings-and-errors/</link>
       <pubDate>Fri, 12 Dec 2008 06:23:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/12/12/gcc-options-request-or-suppress-warnings-and-errors/</guid>
+      <guid>https://metareal.blog/2008/12/12/gcc-options-request-or-suppress-warnings-and-errors/</guid>
       <description>GCC の警告オプションでよく使うものといえば、以下のようなものがある：
  -Wall 一般的な警告を有効にする -Wextra (-W) -W が gcc 4 から分かりやすい名前に変更された（-W も有効） -Werror 警告をエラー扱いにする  -Wunused-parameter ところで、警告オプションのひとつ、-Wunused は -Wextra (-W) が有効な場合、-Wunused-parameter も有効にする。-Wunused-parameter は関数で使われていない引数があった場合に警告を出力するオプションだ。なお、-Wunused は -Wall によっても暗黙的に指定されるため、-Wextra (-W) と -Wall を両方指定したときも、-Wunused-parameter が有効になる。
 このとき、もし、-Werror も有効になっていると、未使用の関数引数があった場合にコンパイルエラーになってしまう。意図した通りの動作ではあるものの、これでは都合が悪いときもある。たとえば、テスト駆動開発では関数の実装を空にしておくことがあるが、上記の場合は、これがエラーとなってしまう。

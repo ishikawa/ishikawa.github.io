@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>python on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/python/</link>
+    <link>https://metareal.blog/tags/python/</link>
     <description>Recent content in python on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sun, 31 Jan 2010 18:26:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Python のクロージャとレキシカル変数を使ったシングルトンっぽいもの</title>
-      <link>http://ishikawa.github.io/2010/01/31/python-shared-instance-closure/</link>
+      <link>https://metareal.blog/2010/01/31/python-shared-instance-closure/</link>
       <pubDate>Sun, 31 Jan 2010 18:26:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2010/01/31/python-shared-instance-closure/</guid>
+      <guid>https://metareal.blog/2010/01/31/python-shared-instance-closure/</guid>
       <description>実際にはシングルトンではなくて、共有インスタンスを返すメソッドを実装する、ってだけなんだけど。
 class A(object): @staticmethod def shared(): instance = A() A.shared = staticmethod(lambda: instance) return instance  共有インスタンスとなるオブジェクトを生成し、レキシカル変数にバインドする このオブジェクトを返す無名関数で、元の関数 shared を置き換える  何が嬉しいかというと、共有インスタンスを参照するための変数（今回の場合は instance）を関数外から不可視にできること。変数のスコープが必要以上に広いと不安になります。実行時に遅延インスタンス化されるのが嫌なら、クラス定義の直後に一度呼び出すなりすればいいと思う。
 gist:290628 に doctest とか追加したものを置いてあります。</description>
@@ -25,10 +25,10 @@ gist:290628 に doctest とか追加したものを置いてあります。</des
     
     <item>
       <title>Google AppEngine で Django 1.1 を使う</title>
-      <link>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</link>
+      <link>https://metareal.blog/2009/12/02/running-django-1-1-on-google-appengine/</link>
       <pubDate>Thu, 03 Dec 2009 12:42:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</guid>
+      <guid>https://metareal.blog/2009/12/02/running-django-1-1-on-google-appengine/</guid>
       <description>Google AppEngine の SDK および実行環境には、Web アプリケーション・フレームワークの Django がプリインストールされている。
 しかし、デフォルトで有効になっているのは 0.96 という相当古いバージョンだ（もっとも、Google AppEngine リリース時点では、これが最新のバージョンであった）。すでにサポートも終了しており、バグや脆弱性の修正もされないため、できれば最新の 1.0/1.1系列を使いたい、という人が大半だろう。
 しかし、これまで、バージョン 1.0 以降の Django を Google AppEngine で使うのは骨の折れる作業だった。
@@ -40,10 +40,10 @@ import os os.environ[&#39;DJANGO_SETTINGS_MODULE&#39;] = &#39;settings&#39; from
     
     <item>
       <title>Sphinx 0.6.2 にアップグレードしたときのメモ</title>
-      <link>http://ishikawa.github.io/2009/07/27/upgrading-sphinx-0-6-2/</link>
+      <link>https://metareal.blog/2009/07/27/upgrading-sphinx-0-6-2/</link>
       <pubDate>Mon, 27 Jul 2009 10:45:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2009/07/27/upgrading-sphinx-0-6-2/</guid>
+      <guid>https://metareal.blog/2009/07/27/upgrading-sphinx-0-6-2/</guid>
       <description>約一年ぶりに Sphinx を最新版に&amp;hellip;しようとしたら色々苦労したので、変更点や手順をメモとして残しておく。
 Sphinx 0.6.2 &amp;amp; Jinja2 2.1.1 easy_install でインストールしようとしたが、Jinja2 のセットアップ・スクリプトがうまく動いていないらしく、Jinja2 に依存している Sphinx もインストールできない。原因を調べる気力はないので、ソースコードからビルドしてインストールすることにした。
 まずは Jinja2 2.1.1 をビルドしてインストール。
@@ -54,10 +54,10 @@ Running Sphinx v0.6.2 docs/ja/source/../../sphinxext/__init__.py:1: DeprecationW
     
     <item>
       <title>Python の dis モジュールでさまざまな import 文を disassemble する (2)</title>
-      <link>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements-take2/</link>
+      <link>https://metareal.blog/2008/09/25/disassembling-python-import-statements-take2/</link>
       <pubDate>Thu, 25 Sep 2008 17:39:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements-take2/</guid>
+      <guid>https://metareal.blog/2008/09/25/disassembling-python-import-statements-take2/</guid>
       <description>前回の記事への追記が長くなりそうなので、新しい記事にまとめました。
 import と import as  import &amp;lt;module&amp;gt; と import &amp;lt;module&amp;gt; as &amp;lt;name&amp;gt; では、どのようなバイトコードにコンパイルされるか、つまり、実行時の振る舞いが微妙に異なることに注意しよう。
 &amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os.path&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os.path) 9 STORE_NAME 1 (os) 12 LOAD_CONST 1 (None) 15 RETURN_VALUE &amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os.path as os_path&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os.path) 9 LOAD_ATTR 1 (path) 12 STORE_NAME 2 (os_path) 15 LOAD_CONST 1 (None) 18 RETURN_VALUE 前者では IMPORT_NAME os.</description>
@@ -65,10 +65,10 @@ import と import as  import &amp;lt;module&amp;gt; と import &amp;lt;module&am
     
     <item>
       <title>Python の dis モジュールでさまざまな import 文を disassemble する</title>
-      <link>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements/</link>
+      <link>https://metareal.blog/2008/09/25/disassembling-python-import-statements/</link>
       <pubDate>Thu, 25 Sep 2008 09:34:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements/</guid>
+      <guid>https://metareal.blog/2008/09/25/disassembling-python-import-statements/</guid>
       <description>Python Reference Manual の 6.12 The import statement を参考に、さまざまな形式の import 文を dis モジュールで disassemble してみた。
 import &amp;hellip; まずは、もっとも単純な import ...
 &amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os) 9 STORE_NAME 0 (os) 12 LOAD_CONST 1 (None) 15 RETURN_VALUE IMPORT_NAME で import するモジュールが指定されていることが分かる。では、as を使って別名をつけるとどうなるだろうか。
@@ -77,10 +77,10 @@ import &amp;hellip; まずは、もっとも単純な import ...
     
     <item>
       <title>Python でプロパティリストを読み込む</title>
-      <link>http://ishikawa.github.io/2008/08/04/propertylist-parser-for-python/</link>
+      <link>https://metareal.blog/2008/08/04/propertylist-parser-for-python/</link>
       <pubDate>Tue, 05 Aug 2008 12:21:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/08/04/propertylist-parser-for-python/</guid>
+      <guid>https://metareal.blog/2008/08/04/propertylist-parser-for-python/</guid>
       <description>Python でプロパティリストを読み込み、オブジェクトに変換するライブラリ plist_parser を書いた。GitHub で公開している。Python 2.4 以降で動作確認済み。ただし、対応するフォーマットは XML のみで、書き込みにも対応していない。
 使い方は至って単純だ。たとえば、以下のプロパティリストは iTunes Music Library.xml から一部抜粋したものだが、
 &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.0//EN&amp;quot; &amp;quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;quot;&amp;gt; &amp;lt;plist version=&amp;quot;1.0&amp;quot;&amp;gt; &amp;lt;dict&amp;gt; &amp;lt;key&amp;gt;Track ID&amp;lt;/key&amp;gt; &amp;lt;integer&amp;gt;4154&amp;lt;/integer&amp;gt; &amp;lt;key&amp;gt;Artist&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;Megadeth&amp;lt;/string&amp;gt; &amp;lt;key&amp;gt;Name&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;Architecture Of Aggression&amp;lt;/string&amp;gt; &amp;lt;key&amp;gt;Date Added&amp;lt;/key&amp;gt; &amp;lt;date&amp;gt;2008-06-23T12:20:17Z&amp;lt;/date&amp;gt; &amp;lt;/dict&amp;gt; &amp;lt;/plist&amp;gt; このプロパティリストが music.xml という名前で保存されているとして、このファイルを読み込んでオブジェクトに変換するコードは以下のとおり。
@@ -89,10 +89,10 @@ from plist_parser import XmlPropertyListParser, \ PropertyListParseError f = ope
     
     <item>
       <title>Google App Engine への移行</title>
-      <link>http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/</link>
+      <link>https://metareal.blog/2008/05/20/porting-weblog-to-google-app-engine/</link>
       <pubDate>Tue, 20 May 2008 07:39:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/</guid>
+      <guid>https://metareal.blog/2008/05/20/porting-weblog-to-google-app-engine/</guid>
       <description>ここ数日というもの、Mac の前に座ってやっていたことといえば、Twitter か RSS フィードの消化か、でなければブログの移行作業だ。
 もともと、このブログは Wordpress で運営していたのだが、色々と不満もたまってきたので、いつの日かつくりなおしたい、と思っていた。おりしも Django の勉強をはじめたばかりである。ちょうどよい。教材代わりに簡単なブログシステムを細々とつくっていた。
 それを更に、Google App Engine に移植しましたよ、というのが今回のお話。
@@ -107,10 +107,10 @@ GAE では Django の Database API（和訳）は動作せず、GAE の Datastor
     
     <item>
       <title>Django の urlresolvers.py を読む</title>
-      <link>http://ishikawa.github.io/2008/04/22/django-code-reading-core-urlresolvers/</link>
+      <link>https://metareal.blog/2008/04/22/django-code-reading-core-urlresolvers/</link>
       <pubDate>Tue, 22 Apr 2008 10:38:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/04/22/django-code-reading-core-urlresolvers/</guid>
+      <guid>https://metareal.blog/2008/04/22/django-code-reading-core-urlresolvers/</guid>
       <description>一身上の都合により Django の URL dispatcher について調べている。ドキュメントでだいたいの動作は把握したので、今回は urls.py に定義した URL のマッピングが実際にはどのように解決されているのか、ソースコードを読むことで理解を深めたい、と思う。
 なお、参照したソースコードは SVN の Revision 7438 である。公開リリースの 0.96.1 とは内容が大きく異なる可能性があること、 Trac での議論やドキュメントを読むかぎり、このへんの実装については今後大きく変更されるかもしれないことを、あらかじめお断りしておく。
 urlresolvers.py まずは、調べるソースコードを特定しよう。URL の逆マッピングをしてくれる reverse() 関数が用意されていることは分かっているので、これを手がかりにソースコードを探すのがよさそうだ。
@@ -123,10 +123,10 @@ def resolve(path, urlconf=None): return get_resolver(urlconf).resolve(path) def 
     
     <item>
       <title>Django と Python-Markdown 1.7 で UnicodeDecodeError</title>
-      <link>http://ishikawa.github.io/2008/04/14/python-markdown-1-7-with-django/</link>
+      <link>https://metareal.blog/2008/04/14/python-markdown-1-7-with-django/</link>
       <pubDate>Tue, 15 Apr 2008 08:57:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/04/14/python-markdown-1-7-with-django/</guid>
+      <guid>https://metareal.blog/2008/04/14/python-markdown-1-7-with-django/</guid>
       <description>Python Markdown の最新版である 1.7 を Django で使うと、日本語など ASCII 以外の文字で UnicodeDecodeError が発生する。
 MARKDOWN-CRITICAL: &amp;quot;UnicodeDecodeError: Markdown only accepts unicode or ascii input.&amp;quot; すでにチケットも登録されているが、とりあえず古いバージョンに戻すのがよさそう。1.6b はバグで同様のエラーが出るようなので、1.6a にしよう。
 % sudo easy_install markdown==1.6a 蛇足だが、この問題を調べている途中で見つけた。python-markdown2 という、別の Markdown ライブラリも存在するようだ。</description>
@@ -134,10 +134,10 @@ MARKDOWN-CRITICAL: &amp;quot;UnicodeDecodeError: Markdown only accepts unicode o
     
     <item>
       <title>Django のモデルで日本語を使うと UnicodeEncodeError が発生する</title>
-      <link>http://ishikawa.github.io/2008/04/11/django-unicode-encode-error/</link>
+      <link>https://metareal.blog/2008/04/11/django-unicode-encode-error/</link>
       <pubDate>Sat, 12 Apr 2008 07:16:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/04/11/django-unicode-encode-error/</guid>
+      <guid>https://metareal.blog/2008/04/11/django-unicode-encode-error/</guid>
       <description>ちょっと前から Django で遊んでいる。教則本代わりの Django Book も含めて、完成度の高さに驚くことしきり。
 ただ、実際に管理インターフェースでモデルの詳細を表示しようとすると、UnicodeEncodeError とかいう嫌らしいエラーが出て、萎える。
 しかたなく python UnicodeEncodeError django で検索したら sitecustomize.py でデフォルトのエンコーディングを変更するとか、いや、str 関数に渡したい場合はそりゃそうなんだろうけど、せっかくフレームワーク使ってるんだし、この解決法じゃないんだろうな、っていうのしか見つけられなくてますます萎えてたわけだけど、やっと納得できる解決法が見つかったので残しておく。
@@ -153,10 +153,10 @@ def force_unicode(s, encoding=&#39;utf-8&#39;, strings_only=False, errors=&#39;s
     
     <item>
       <title>Mac の Python をビルドするときに GNU Readline ライブラリを有効にする</title>
-      <link>http://ishikawa.github.io/2008/04/11/building-readline-enabled-python-on-mac/</link>
+      <link>https://metareal.blog/2008/04/11/building-readline-enabled-python-on-mac/</link>
       <pubDate>Fri, 11 Apr 2008 10:05:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/04/11/building-readline-enabled-python-on-mac/</guid>
+      <guid>https://metareal.blog/2008/04/11/building-readline-enabled-python-on-mac/</guid>
       <description>Mac OS X では GNU の Readline ライブラリがインストールには含まれておらず、Readline 互換の Libedit というライブラリへのシンボリックリンクとなっている（こうなっている理由はライセンス上の問題からだと思われる。GNU の Readline ライブラリは GPL で、Libedit は BSD ライセンスだ）。
 しかし、これが原因で Readline 対応のプログラムがコンパイルできない、コンパイルできてもヒストリ機能などが使えない、といった問題がしばしば起こる。
 Python は後者の例で、configure スクリプトはちゃんと readline ライブラリを認識し make も問題なく通るのだが、実際には Readline ライブラリが無効になったバイナリがインストールされてしまう。
@@ -165,10 +165,10 @@ Python は後者の例で、configure スクリプトはちゃんと readline �
     
     <item>
       <title>Apple によるロケール周りの変更点を Python 2.5.2 にも適用する</title>
-      <link>http://ishikawa.github.io/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</link>
+      <link>https://metareal.blog/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</link>
       <pubDate>Wed, 02 Apr 2008 10:23:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</guid>
+      <guid>https://metareal.blog/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</guid>
       <description>最近 Python を 2.5.2 にアップデートして同じ作業を繰り返したことと、Apple によるロケール周りの変更点を Python 2.5.1 にも適用するのときはパッチの適用方法について言及がなかったこともあり、そのへんも含めて手順をまとめておく。
 まずは Python 2.5.2 をダウンロードし展開。
  % curl -LO http://www.python.org/ftp/python/2.5.2/Python-2.5.2.tar.bz2 % tar xjf Python-2.5.2.tar.bz2 Apple によるロケール周りの変更点を Python 2.5.1 にも適用するで公開したパッチをあてる。
@@ -179,10 +179,10 @@ Python は後者の例で、configure スクリプトはちゃんと readline �
     
     <item>
       <title>Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</title>
-      <link>http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</link>
+      <link>https://metareal.blog/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</link>
       <pubDate>Sun, 09 Sep 2007 11:49:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</guid>
+      <guid>https://metareal.blog/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</guid>
       <description>Python: Mac OS X での locale.getpreferredencoding() では、Mac OS X に Python 2.5.1 をソースコードからインストールした場合に発生する、ロケール周りの問題点について書いた。
 要約すると、
  locale.getpreferredencoding() の返すエンコーディングが X-MAC-JAPANESE になってしまう Python では X-MAC-JAPANESE がデフォルトではサポートされていないため、locale.getpreferredencoding() を利用したエンコード、デコードができない _localmodule.c を変更して、X-MAC-JAPANESE の代わりに shift_jis を返すようにして解決  という内容だった。
@@ -198,10 +198,10 @@ Mac OS X に標準でパッケージングされている Python Apple Developer
     
     <item>
       <title>Python: Mac OS X での locale.getpreferredencoding() </title>
-      <link>http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</link>
+      <link>https://metareal.blog/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</link>
       <pubDate>Thu, 19 Jul 2007 10:30:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</guid>
+      <guid>https://metareal.blog/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</guid>
       <description>（追記）この記事に載せているパッチよりも Apple によるロケール周りの変更点を Python 2.5.1 にも適用するのパッチを使った方がよさそうです。Mac OS X 標準の Python との互換性があります。
 TracInstall に従って、Mac OS X で Trac を動かそうとしている。以前試したときは頓挫したのだが、今回は Python を含むすべてのライブラリを一からインストールして、じっくりやってみることにした。
 とりあえず、tracd を起動するところまでは問題なくいったのだけれど、URL にアクセスしてみると早速こんなエラーが。
@@ -212,10 +212,10 @@ Traceback (most recent call last): File &amp;quot;/path/to/trac/lib/python2.5/si
     
     <item>
       <title>Mac OS X では MoinMoin が UnboundLocalError で動かない</title>
-      <link>http://ishikawa.github.io/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</link>
+      <link>https://metareal.blog/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</link>
       <pubDate>Mon, 09 Apr 2007 02:52:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</guid>
+      <guid>https://metareal.blog/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</guid>
       <description>作業メモや備忘録を残しておくためのシステムがほしくて、MoinMoin を自宅サーバの Mac OS X にインストールした。
 ブログだとやっぱり時系列で流れちゃうし、書き殴りのメモとかは公開しづらいしね。MoinMoin はページごとのパーミッションを制御できるなど、今回の用途にはぴったり。
 ただし、バージョン 1.5.7 はそのままだと Mac OS X では動かなかった。
@@ -225,10 +225,10 @@ UnboundLocalError: local variable &#39;File&#39; referenced before assignment �
     
     <item>
       <title>Python と Ruby、デフォルト引数の評価の違い</title>
-      <link>http://ishikawa.github.io/2007/01/04/python-and-ruby-evaluation-of-default-arguments/</link>
+      <link>https://metareal.blog/2007/01/04/python-and-ruby-evaluation-of-default-arguments/</link>
       <pubDate>Fri, 05 Jan 2007 03:52:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/04/python-and-ruby-evaluation-of-default-arguments/</guid>
+      <guid>https://metareal.blog/2007/01/04/python-and-ruby-evaluation-of-default-arguments/</guid>
       <description>Python のチュートリアルで勉強している。
 その中の 4.7.1 Default Argument Values に、気になる記述があった。
  The default values are evaluated at the point of function definition in the defining scope
@@ -241,10 +241,10 @@ Important warning: The default value is evaluated only once. This makes a differ
     
     <item>
       <title>Python 2.5 をインストール</title>
-      <link>http://ishikawa.github.io/2007/01/01/install-python-25/</link>
+      <link>https://metareal.blog/2007/01/01/install-python-25/</link>
       <pubDate>Tue, 02 Jan 2007 04:38:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/01/install-python-25/</guid>
+      <guid>https://metareal.blog/2007/01/01/install-python-25/</guid>
       <description>冬休み。お勉強の一環として Python を考えている。
 現時点の最新版は 2.5、一方、Mac OS X Tiger に標準インストールされているのは 2.3.2。 というわけでダウンロードページから Python 2.5 のソースコードをダウンロードして、インストール。
 % curl -O http://www.python.org/ftp/python/2.5/Python-2.5.tgz % tar xvzf Python-2.5.tgz % cd Python-2.5 % ./configure % make % sudo make install 特に問題なくインストールできた。

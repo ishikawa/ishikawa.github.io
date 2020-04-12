@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ctags on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/ctags/</link>
+    <link>https://metareal.blog/tags/ctags/</link>
     <description>Recent content in ctags on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Fri, 25 Sep 2015 11:09:31 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/ctags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/ctags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ctags に Elixir を追加する</title>
-      <link>http://ishikawa.github.io/post/2015/09/elixir-ctags/</link>
+      <link>https://metareal.blog/post/2015/09/elixir-ctags/</link>
       <pubDate>Fri, 25 Sep 2015 11:09:31 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/post/2015/09/elixir-ctags/</guid>
+      <guid>https://metareal.blog/post/2015/09/elixir-ctags/</guid>
       <description>最近、Atom エディタを使っているが、シンボルの定義場所に移動するための Go to Declaration コマンドを動作させるためには ctags でインデックスしておく必要がある。
  atom/symbols-view  ただ、2015年9月の現時点では Elixir がサポートされていないようなので、自分で追加してやる必要がある。
 % ctags --version Exuberant Ctags 5.8, Copyright (C) 1996-2009 Darren Hiebert Compiled: Mar 16 2015, 23:48:18 ... Optional compiled features: +wildcards, +regex ctags はコマンドラインオプションで新しい言語を定義できる。毎回指定するのが面倒な場合は、 $HOME/.ctags からオプションを読み込んでくれるようだ。

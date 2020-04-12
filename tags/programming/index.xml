@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>programming on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/programming/</link>
+    <link>https://metareal.blog/tags/programming/</link>
     <description>Recent content in programming on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 27 Mar 2007 01:00:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>The world *is* parallel - we are parallel.</title>
-      <link>http://ishikawa.github.io/2007/03/26/the-world-is-parallel-we-are-are-parallel/</link>
+      <link>https://metareal.blog/2007/03/26/the-world-is-parallel-we-are-are-parallel/</link>
       <pubDate>Tue, 27 Mar 2007 01:00:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/03/26/the-world-is-parallel-we-are-are-parallel/</guid>
+      <guid>https://metareal.blog/2007/03/26/the-world-is-parallel-we-are-are-parallel/</guid>
       <description>本日の名言。
 TenQuestionsWithJoeArmstrong - 並列プログラマに 10 の質問 - Joe Armstrong さんの場合の日本語訳から知ったのですが &amp;hellip;
 まずは原文
@@ -27,10 +27,10 @@ Joe: It’s not harder - it’s hard because the dominant model is locks, thread
     
     <item>
       <title>最近分かったこと</title>
-      <link>http://ishikawa.github.io/2006/12/21/some-things-that-i-realized/</link>
+      <link>https://metareal.blog/2006/12/21/some-things-that-i-realized/</link>
       <pubDate>Thu, 21 Dec 2006 10:12:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2006/12/21/some-things-that-i-realized/</guid>
+      <guid>https://metareal.blog/2006/12/21/some-things-that-i-realized/</guid>
       <description>今日やっと、Struts で、
  検証、適切なエラーメッセージ フォームビーンの生成スコープ トークン処理 キャンセル処理  が自信をもって書けるようになりました。
 また、Action クラスでは finally を使って、トークンの保存と解除をすると、スッキリまとまるようです。

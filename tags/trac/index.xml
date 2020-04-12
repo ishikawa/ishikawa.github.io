@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>trac on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/trac/</link>
+    <link>https://metareal.blog/tags/trac/</link>
     <description>Recent content in trac on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sun, 09 Sep 2007 11:49:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/trac/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/trac/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</title>
-      <link>http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</link>
+      <link>https://metareal.blog/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</link>
       <pubDate>Sun, 09 Sep 2007 11:49:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</guid>
+      <guid>https://metareal.blog/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</guid>
       <description>Python: Mac OS X での locale.getpreferredencoding() では、Mac OS X に Python 2.5.1 をソースコードからインストールした場合に発生する、ロケール周りの問題点について書いた。
 要約すると、
  locale.getpreferredencoding() の返すエンコーディングが X-MAC-JAPANESE になってしまう Python では X-MAC-JAPANESE がデフォルトではサポートされていないため、locale.getpreferredencoding() を利用したエンコード、デコードができない _localmodule.c を変更して、X-MAC-JAPANESE の代わりに shift_jis を返すようにして解決  という内容だった。
@@ -33,10 +33,10 @@ Mac OS X に標準でパッケージングされている Python Apple Developer
     
     <item>
       <title>Python: Mac OS X での locale.getpreferredencoding() </title>
-      <link>http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</link>
+      <link>https://metareal.blog/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</link>
       <pubDate>Thu, 19 Jul 2007 10:30:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</guid>
+      <guid>https://metareal.blog/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</guid>
       <description>（追記）この記事に載せているパッチよりも Apple によるロケール周りの変更点を Python 2.5.1 にも適用するのパッチを使った方がよさそうです。Mac OS X 標準の Python との互換性があります。
 TracInstall に従って、Mac OS X で Trac を動かそうとしている。以前試したときは頓挫したのだが、今回は Python を含むすべてのライブラリを一からインストールして、じっくりやってみることにした。
 とりあえず、tracd を起動するところまでは問題なくいったのだけれど、URL にアクセスしてみると早速こんなエラーが。

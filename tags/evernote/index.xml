@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>evernote on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/evernote/</link>
+    <link>https://metareal.blog/tags/evernote/</link>
     <description>Recent content in evernote on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 09 Dec 2008 03:37:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/evernote/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/evernote/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Safari で開いているページのリンクを Evernote クライアントに送る</title>
-      <link>http://ishikawa.github.io/2008/12/09/copy-link-to-evernote-client-applescript/</link>
+      <link>https://metareal.blog/2008/12/09/copy-link-to-evernote-client-applescript/</link>
       <pubDate>Tue, 09 Dec 2008 03:37:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/12/09/copy-link-to-evernote-client-applescript/</guid>
+      <guid>https://metareal.blog/2008/12/09/copy-link-to-evernote-client-applescript/</guid>
       <description>最近、プログラミング関係のまとめやインストール手順の記録といったものには Evernote を利用している。
 画像中の手書き文字認識や「脳を拡張する」といった誇大広告ばかりが取り沙汰されるサービスだが、単純にメモツールとして優れており、特に Mac クライアントと iPhone クライアントの出来がすばらしい。
 Evernote: Mac クライアント プログラミング関係の話題をノートにまとめていると、興味深いページへのリンクを多く埋め込むことになる。ノートの編集は Mac のクライアントで行うことが多いのだが、この作業がけっこう面倒だ：

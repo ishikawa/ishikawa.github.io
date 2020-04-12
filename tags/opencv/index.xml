@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>opencv on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/opencv/</link>
+    <link>https://metareal.blog/tags/opencv/</link>
     <description>Recent content in opencv on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Wed, 28 Mar 2007 01:18:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>OpenCV 1.0.0 を Mac OS X 10.4 にインストール</title>
-      <link>http://ishikawa.github.io/2007/03/27/opencv-on-mac-os-x-tiger/</link>
+      <link>https://metareal.blog/2007/03/27/opencv-on-mac-os-x-tiger/</link>
       <pubDate>Wed, 28 Mar 2007 01:18:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/03/27/opencv-on-mac-os-x-tiger/</guid>
+      <guid>https://metareal.blog/2007/03/27/opencv-on-mac-os-x-tiger/</guid>
       <description>物体認識もできる画像処理ライブラリ OpenCV 1.0.0 を Mac OS X 10.4 にてコンパイルしてみた。
 OpenCV のインストール まずは、SourceForge から opencv-1.0.0.tar.gz をダウンロードして解凍。
 % tar xvzf opencv-1.0.0.tar.gz % mkdir build % cd build/ libjpeg や libpng がないと JPEG, PNG 画像を扱えないので、DarwanPorts でいれたものを使うように configure

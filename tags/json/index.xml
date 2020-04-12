@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>json on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/json/</link>
+    <link>https://metareal.blog/tags/json/</link>
     <description>Recent content in json on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sun, 15 Jun 2008 10:09:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/json/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/json/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Flickr の JSON フィードで自作ブログパーツ</title>
-      <link>http://ishikawa.github.io/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</link>
+      <link>https://metareal.blog/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</link>
       <pubDate>Sun, 15 Jun 2008 10:09:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</guid>
+      <guid>https://metareal.blog/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</guid>
       <description>写真を撮るのが好きじゃない。
 カメラは荷物になるし、壊れやすいから気をつかう。いざ撮影になると、バッグから取り出して、電源ボタンを押す、レンズを向ける、ピントを合わせて、と面倒だ。衆人環視の中、うんうん唸りながらシャッターを切るのも粋じゃない。
 では、何が楽しくて写真を撮るのかといえば、補正が楽しい。Photoshop Elements の自動補正がよく出来ていて、何も考えずにボタンを押していくだけで、それなりの見栄えになってくれる。これは楽しい（ただし、たまに自力で補正に挑戦しても、自動補正の方がキレイで気分が悪い）。

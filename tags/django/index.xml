@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>django on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/django/</link>
+    <link>https://metareal.blog/tags/django/</link>
     <description>Recent content in django on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Thu, 03 Dec 2009 12:42:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/django/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/django/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Google AppEngine で Django 1.1 を使う</title>
-      <link>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</link>
+      <link>https://metareal.blog/2009/12/02/running-django-1-1-on-google-appengine/</link>
       <pubDate>Thu, 03 Dec 2009 12:42:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</guid>
+      <guid>https://metareal.blog/2009/12/02/running-django-1-1-on-google-appengine/</guid>
       <description>Google AppEngine の SDK および実行環境には、Web アプリケーション・フレームワークの Django がプリインストールされている。
 しかし、デフォルトで有効になっているのは 0.96 という相当古いバージョンだ（もっとも、Google AppEngine リリース時点では、これが最新のバージョンであった）。すでにサポートも終了しており、バグや脆弱性の修正もされないため、できれば最新の 1.0/1.1系列を使いたい、という人が大半だろう。
 しかし、これまで、バージョン 1.0 以降の Django を Google AppEngine で使うのは骨の折れる作業だった。
@@ -29,10 +29,10 @@ import os os.environ[&#39;DJANGO_SETTINGS_MODULE&#39;] = &#39;settings&#39; from
     
     <item>
       <title>Google App Engine で Django 1.0 を動かす</title>
-      <link>http://ishikawa.github.io/2008/10/02/running-django-1-0-on-google-app-engine/</link>
+      <link>https://metareal.blog/2008/10/02/running-django-1-0-on-google-app-engine/</link>
       <pubDate>Thu, 02 Oct 2008 10:26:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/10/02/running-django-1-0-on-google-app-engine/</guid>
+      <guid>https://metareal.blog/2008/10/02/running-django-1-0-on-google-app-engine/</guid>
       <description>このブログは Google App Engine と Django で動かしているのだが、いままで Django はすこし古い開発版を使っていた。
 しかし、先頃めでたく Django 1.0 もリリースされたことだし、このブログも最新の開発版にアップデートすることにした。とりあえず、すこしソースコードを修正するだけで、動くだけは動いたので、変更点を残しておく。もっとも、このブログは機能がすくない分、Django に依存している箇所もすくないので、他のプログラムではこれ以上の修正が必要かもしれない。
 また、Django を Google App Engine 上で動かす方法については、もともと、Running Django on Google App Engine を参考にしている。そのため、他の手段、たとえば Google App Engine Helper for Django を使っている人にとっては、この記事は役に立たないだろう。
@@ -42,10 +42,10 @@ django.dispatch.dispatcher.connect django.dispatch.dispatcher.connect, django.di
     
     <item>
       <title>Django のキャッシュで Google App Engine の Memcache API を使う</title>
-      <link>http://ishikawa.github.io/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</link>
+      <link>https://metareal.blog/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</link>
       <pubDate>Thu, 29 May 2008 01:48:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</guid>
+      <guid>https://metareal.blog/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</guid>
       <description>Google App Engine ブログで新しい動きがあった。トピックは以下の通り。
  アカウント数の制限を撤廃 課金の料金体系について 画像操作のための API Memcache API  どれひとつとっても、重大な発表ばかりだ。プラットホームとしての Google App Engine に注目している方は 1. 2. が特に気になるだろうし、利用者からすれば、3. 4. は待ち焦がれていた機能だろう。
 重いページをキャッシュする このブログを Google App Engine に移行して一週間が経った。しかし、Admin Console でログを確認してみると、ところどころで警告が出ている。
@@ -54,10 +54,10 @@ django.dispatch.dispatcher.connect django.dispatch.dispatcher.connect, django.di
     
     <item>
       <title>XViewMiddleware の謎</title>
-      <link>http://ishikawa.github.io/2008/05/24/django-xview-middleware-tour/</link>
+      <link>https://metareal.blog/2008/05/24/django-xview-middleware-tour/</link>
       <pubDate>Sat, 24 May 2008 09:12:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/05/24/django-xview-middleware-tour/</guid>
+      <guid>https://metareal.blog/2008/05/24/django-xview-middleware-tour/</guid>
       <description>疑問に思ったことはないだろうか。
 Django の Middleware（和訳）である。まずは、settings.py を見てほしい。
 MIDDLEWARE_CLASSES = ( &#39;django.middleware.common.CommonMiddleware&#39;, &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;, &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;, &#39;django.middleware.doc.XViewMiddleware&#39;, ) デフォルトではこのような設定になっている。上から三つは問題ないだろう。名前からだいたいの機能は想像できるはずだし、おそらくあなたは間違っていない。
@@ -71,10 +71,10 @@ INTERNAL_IPS 設定に定義されている IP アドレスから来た HEAD リ
     
     <item>
       <title>Google App Engine への移行</title>
-      <link>http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/</link>
+      <link>https://metareal.blog/2008/05/20/porting-weblog-to-google-app-engine/</link>
       <pubDate>Tue, 20 May 2008 07:39:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/</guid>
+      <guid>https://metareal.blog/2008/05/20/porting-weblog-to-google-app-engine/</guid>
       <description>ここ数日というもの、Mac の前に座ってやっていたことといえば、Twitter か RSS フィードの消化か、でなければブログの移行作業だ。
 もともと、このブログは Wordpress で運営していたのだが、色々と不満もたまってきたので、いつの日かつくりなおしたい、と思っていた。おりしも Django の勉強をはじめたばかりである。ちょうどよい。教材代わりに簡単なブログシステムを細々とつくっていた。
 それを更に、Google App Engine に移植しましたよ、というのが今回のお話。
@@ -89,10 +89,10 @@ GAE では Django の Database API（和訳）は動作せず、GAE の Datastor
     
     <item>
       <title>Django のテンプレートでフォームの要素が hidden かどうかを調べる</title>
-      <link>http://ishikawa.github.io/2008/05/12/checking-whether-field-has-a-hidden-widget-in-django-template/</link>
+      <link>https://metareal.blog/2008/05/12/checking-whether-field-has-a-hidden-widget-in-django-template/</link>
       <pubDate>Mon, 12 May 2008 10:37:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/05/12/checking-whether-field-has-a-hidden-widget-in-django-template/</guid>
+      <guid>https://metareal.blog/2008/05/12/checking-whether-field-has-a-hidden-widget-in-django-template/</guid>
       <description>Django の newforms library は、それだけでちいさな MVC の世界だ。テキストフィールドやラジオボタンといった View は django.newforms.widgets の Widget クラスとそのサブクラスが担当している。
 フォーム要素の HTML をテンプレートで出力する簡単な例は以下のとおり。
 &amp;lt;form method=&amp;quot;post&amp;quot; action=&amp;quot;&amp;quot;&amp;gt; {% for field in form %} {{ field.label_tag }} {{ field }}&amp;lt;br /&amp;gt; {% endfor %} &amp;lt;input type=&amp;quot;submit&amp;quot; /&amp;gt; &amp;lt;/form&amp;gt; しかし、このままだと hidden 要素でも が出力されて具合が悪い。
@@ -102,10 +102,10 @@ GAE では Django の Database API（和訳）は動作せず、GAE の Datastor
     
     <item>
       <title>Django の urlresolvers.py を読む</title>
-      <link>http://ishikawa.github.io/2008/04/22/django-code-reading-core-urlresolvers/</link>
+      <link>https://metareal.blog/2008/04/22/django-code-reading-core-urlresolvers/</link>
       <pubDate>Tue, 22 Apr 2008 10:38:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/04/22/django-code-reading-core-urlresolvers/</guid>
+      <guid>https://metareal.blog/2008/04/22/django-code-reading-core-urlresolvers/</guid>
       <description>一身上の都合により Django の URL dispatcher について調べている。ドキュメントでだいたいの動作は把握したので、今回は urls.py に定義した URL のマッピングが実際にはどのように解決されているのか、ソースコードを読むことで理解を深めたい、と思う。
 なお、参照したソースコードは SVN の Revision 7438 である。公開リリースの 0.96.1 とは内容が大きく異なる可能性があること、 Trac での議論やドキュメントを読むかぎり、このへんの実装については今後大きく変更されるかもしれないことを、あらかじめお断りしておく。
 urlresolvers.py まずは、調べるソースコードを特定しよう。URL の逆マッピングをしてくれる reverse() 関数が用意されていることは分かっているので、これを手がかりにソースコードを探すのがよさそうだ。
@@ -118,10 +118,10 @@ def resolve(path, urlconf=None): return get_resolver(urlconf).resolve(path) def 
     
     <item>
       <title>Django と Python-Markdown 1.7 で UnicodeDecodeError</title>
-      <link>http://ishikawa.github.io/2008/04/14/python-markdown-1-7-with-django/</link>
+      <link>https://metareal.blog/2008/04/14/python-markdown-1-7-with-django/</link>
       <pubDate>Tue, 15 Apr 2008 08:57:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/04/14/python-markdown-1-7-with-django/</guid>
+      <guid>https://metareal.blog/2008/04/14/python-markdown-1-7-with-django/</guid>
       <description>Python Markdown の最新版である 1.7 を Django で使うと、日本語など ASCII 以外の文字で UnicodeDecodeError が発生する。
 MARKDOWN-CRITICAL: &amp;quot;UnicodeDecodeError: Markdown only accepts unicode or ascii input.&amp;quot; すでにチケットも登録されているが、とりあえず古いバージョンに戻すのがよさそう。1.6b はバグで同様のエラーが出るようなので、1.6a にしよう。
 % sudo easy_install markdown==1.6a 蛇足だが、この問題を調べている途中で見つけた。python-markdown2 という、別の Markdown ライブラリも存在するようだ。</description>
@@ -129,10 +129,10 @@ MARKDOWN-CRITICAL: &amp;quot;UnicodeDecodeError: Markdown only accepts unicode o
     
     <item>
       <title>Django のモデルで日本語を使うと UnicodeEncodeError が発生する</title>
-      <link>http://ishikawa.github.io/2008/04/11/django-unicode-encode-error/</link>
+      <link>https://metareal.blog/2008/04/11/django-unicode-encode-error/</link>
       <pubDate>Sat, 12 Apr 2008 07:16:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/04/11/django-unicode-encode-error/</guid>
+      <guid>https://metareal.blog/2008/04/11/django-unicode-encode-error/</guid>
       <description>ちょっと前から Django で遊んでいる。教則本代わりの Django Book も含めて、完成度の高さに驚くことしきり。
 ただ、実際に管理インターフェースでモデルの詳細を表示しようとすると、UnicodeEncodeError とかいう嫌らしいエラーが出て、萎える。
 しかたなく python UnicodeEncodeError django で検索したら sitecustomize.py でデフォルトのエンコーディングを変更するとか、いや、str 関数に渡したい場合はそりゃそうなんだろうけど、せっかくフレームワーク使ってるんだし、この解決法じゃないんだろうな、っていうのしか見つけられなくてますます萎えてたわけだけど、やっと納得できる解決法が見つかったので残しておく。

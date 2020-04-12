@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>eclipse on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/eclipse/</link>
+    <link>https://metareal.blog/tags/eclipse/</link>
     <description>Recent content in eclipse on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Thu, 11 Jan 2007 09:40:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/eclipse/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/eclipse/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Eclipse の Java プロジェクトを Subversion 管理するときの手順</title>
-      <link>http://ishikawa.github.io/2007/01/11/subversion-primer-for-eclipse-java-projects/</link>
+      <link>https://metareal.blog/2007/01/11/subversion-primer-for-eclipse-java-projects/</link>
       <pubDate>Thu, 11 Jan 2007 09:40:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/11/subversion-primer-for-eclipse-java-projects/</guid>
+      <guid>https://metareal.blog/2007/01/11/subversion-primer-for-eclipse-java-projects/</guid>
       <description>Eclipse の Java プロジェクトを Subversion 管理するときの手順を、メモも兼ねて残しておこう。ちなみに、Eclipse での Subversion サポートに使っているのは Subclipse プラグイン。
 以下の $REPO 変数はプロジェクトを作成する、Subversion レポジトリの URL とする（たとえば、svn+ssh://svn.metareal.org/path/to/repo/project/）。
 % mkdir tmp % cd tmp % mkdir trunk branches tags % svn import -m &amp;quot;initial import&amp;quot; . $REPO % cd ../ % rm -rf tmp Eclipse で新規 Java プロジェクトを作成する。

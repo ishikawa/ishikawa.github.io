@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>appengine on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/appengine/</link>
+    <link>https://metareal.blog/tags/appengine/</link>
     <description>Recent content in appengine on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Thu, 03 Dec 2009 12:42:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/appengine/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/appengine/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Google AppEngine で Django 1.1 を使う</title>
-      <link>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</link>
+      <link>https://metareal.blog/2009/12/02/running-django-1-1-on-google-appengine/</link>
       <pubDate>Thu, 03 Dec 2009 12:42:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2009/12/02/running-django-1-1-on-google-appengine/</guid>
+      <guid>https://metareal.blog/2009/12/02/running-django-1-1-on-google-appengine/</guid>
       <description>Google AppEngine の SDK および実行環境には、Web アプリケーション・フレームワークの Django がプリインストールされている。
 しかし、デフォルトで有効になっているのは 0.96 という相当古いバージョンだ（もっとも、Google AppEngine リリース時点では、これが最新のバージョンであった）。すでにサポートも終了しており、バグや脆弱性の修正もされないため、できれば最新の 1.0/1.1系列を使いたい、という人が大半だろう。
 しかし、これまで、バージョン 1.0 以降の Django を Google AppEngine で使うのは骨の折れる作業だった。
@@ -29,10 +29,10 @@ import os os.environ[&#39;DJANGO_SETTINGS_MODULE&#39;] = &#39;settings&#39; from
     
     <item>
       <title>Google App Engine 1.1.3 の zipserve で静的ファイルをまとめてアップロード</title>
-      <link>http://ishikawa.github.io/2008/10/03/google-app-engine-113-zipserve/</link>
+      <link>https://metareal.blog/2008/10/03/google-app-engine-113-zipserve/</link>
       <pubDate>Fri, 03 Oct 2008 05:48:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/10/03/google-app-engine-113-zipserve/</guid>
+      <guid>https://metareal.blog/2008/10/03/google-app-engine-113-zipserve/</guid>
       <description>Google App Engine SDK 1.1.3 で追加された zipserve を使うと、静的ファイルを zip にまとめてアップロードできるらしい。ただ、Developer&amp;rsquo;s Guide 内を検索してもドキュメントが見つからない。しかたがないので、ソースコードのコメントを頼りに zipserve を試してみる。
 zipserve するもの 今回は、このブログのレイアウトに使っている CSS フレームワークの YAML を zipserve したいと思う。ファイル数もそれなりにあり、しかも、まず変更することはないので、zipserve するにはうってつけなのだ。
 app.yaml YAML の CSS ファイルは /stylesheets/yaml/ 以下に置いてあるので、まずは app.yaml で以下のように設定する。
@@ -46,10 +46,10 @@ URL で指定されたパスの最初のディレクトリが zip ファイル�
     
     <item>
       <title>Google App Engine で Django 1.0 を動かす</title>
-      <link>http://ishikawa.github.io/2008/10/02/running-django-1-0-on-google-app-engine/</link>
+      <link>https://metareal.blog/2008/10/02/running-django-1-0-on-google-app-engine/</link>
       <pubDate>Thu, 02 Oct 2008 10:26:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/10/02/running-django-1-0-on-google-app-engine/</guid>
+      <guid>https://metareal.blog/2008/10/02/running-django-1-0-on-google-app-engine/</guid>
       <description>このブログは Google App Engine と Django で動かしているのだが、いままで Django はすこし古い開発版を使っていた。
 しかし、先頃めでたく Django 1.0 もリリースされたことだし、このブログも最新の開発版にアップデートすることにした。とりあえず、すこしソースコードを修正するだけで、動くだけは動いたので、変更点を残しておく。もっとも、このブログは機能がすくない分、Django に依存している箇所もすくないので、他のプログラムではこれ以上の修正が必要かもしれない。
 また、Django を Google App Engine 上で動かす方法については、もともと、Running Django on Google App Engine を参考にしている。そのため、他の手段、たとえば Google App Engine Helper for Django を使っている人にとっては、この記事は役に立たないだろう。
@@ -59,10 +59,10 @@ django.dispatch.dispatcher.connect django.dispatch.dispatcher.connect, django.di
     
     <item>
       <title>Django のキャッシュで Google App Engine の Memcache API を使う</title>
-      <link>http://ishikawa.github.io/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</link>
+      <link>https://metareal.blog/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</link>
       <pubDate>Thu, 29 May 2008 01:48:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</guid>
+      <guid>https://metareal.blog/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</guid>
       <description>Google App Engine ブログで新しい動きがあった。トピックは以下の通り。
  アカウント数の制限を撤廃 課金の料金体系について 画像操作のための API Memcache API  どれひとつとっても、重大な発表ばかりだ。プラットホームとしての Google App Engine に注目している方は 1. 2. が特に気になるだろうし、利用者からすれば、3. 4. は待ち焦がれていた機能だろう。
 重いページをキャッシュする このブログを Google App Engine に移行して一週間が経った。しかし、Admin Console でログを確認してみると、ところどころで警告が出ている。
@@ -71,10 +71,10 @@ django.dispatch.dispatcher.connect django.dispatch.dispatcher.connect, django.di
     
     <item>
       <title>Google App Engine への移行</title>
-      <link>http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/</link>
+      <link>https://metareal.blog/2008/05/20/porting-weblog-to-google-app-engine/</link>
       <pubDate>Tue, 20 May 2008 07:39:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/05/20/porting-weblog-to-google-app-engine/</guid>
+      <guid>https://metareal.blog/2008/05/20/porting-weblog-to-google-app-engine/</guid>
       <description>ここ数日というもの、Mac の前に座ってやっていたことといえば、Twitter か RSS フィードの消化か、でなければブログの移行作業だ。
 もともと、このブログは Wordpress で運営していたのだが、色々と不満もたまってきたので、いつの日かつくりなおしたい、と思っていた。おりしも Django の勉強をはじめたばかりである。ちょうどよい。教材代わりに簡単なブログシステムを細々とつくっていた。
 それを更に、Google App Engine に移植しましたよ、というのが今回のお話。

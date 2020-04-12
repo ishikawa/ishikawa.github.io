@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>alchemy on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/alchemy/</link>
+    <link>https://metareal.blog/tags/alchemy/</link>
     <description>Recent content in alchemy on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 09 Dec 2008 08:34:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/alchemy/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/alchemy/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>C/C&#43;&#43; のコードを ActionScript に変換する Adobe Alchemy を試す</title>
-      <link>http://ishikawa.github.io/2008/12/09/adobe-alchemy-first-impression/</link>
+      <link>https://metareal.blog/2008/12/09/adobe-alchemy-first-impression/</link>
       <pubDate>Tue, 09 Dec 2008 08:34:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/12/09/adobe-alchemy-first-impression/</guid>
+      <guid>https://metareal.blog/2008/12/09/adobe-alchemy-first-impression/</guid>
       <description>Adobe Labs の研究プロジェクト、コードネーム Alchemy を試してみた。同プロジェクトについては、すでに多くの方が書かれており、今更な感もあるが、以前に紹介記事を書いていることだし、備忘録も兼ねて残しておく。
 Alchemy について Alchemy プロジェクトで配布されているツールを使うと、C/C++ コードで記述されたプログラムを ActionScript Virtual Machine (AVM2) で動作するように変換できる（AVM2 については Adobe ActionScript Virtual Machine 2 (AVM2) Overview (PDF, 400K) を参照）。
 これはつまり、既存の C/C++ プログラムが Flash Player や AIR 上で動作することを意味している。また、C/C++ プログラムのコンパイルには LLVM を利用しており、そこで生成された中間コードが ActionScript 3.0 のソースコードに変換される（そのままバイトコードには変換しない）。その後、生成された ActionScript コードが Alchemy 独自の ActionScript コンパイラで ActionScript Byte Code (ABC) にコンパイルされるようだ。

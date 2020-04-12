@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>prototypejs on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/prototypejs/</link>
+    <link>https://metareal.blog/tags/prototypejs/</link>
     <description>Recent content in prototypejs on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Thu, 31 Jan 2008 12:40:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/prototypejs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/prototypejs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Prototype 1.6.0.2 公開</title>
-      <link>http://ishikawa.github.io/2008/01/30/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security/</link>
+      <link>https://metareal.blog/2008/01/30/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security/</link>
       <pubDate>Thu, 31 Jan 2008 12:40:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/01/30/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security/</guid>
+      <guid>https://metareal.blog/2008/01/30/prototype-1-6-0-2-bug-fixes-performance-improvements-and-security/</guid>
       <description>気づけば Prototype 1.6.0.2 がリリースされていた。
   28 のバグ修正と性能の向上
   Safari 3 における Element#getElementsBySelector の性能向上
@@ -31,20 +31,20 @@
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API（目次）</title>
-      <link>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</link>
+      <link>https://metareal.blog/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</link>
       <pubDate>Mon, 24 Sep 2007 12:10:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</guid>
+      <guid>https://metareal.blog/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</guid>
       <description>Prototype 1.6.0 RC の変更点、特にイベント周りの API の変更についてまとめた記事のインデックス。
  Event.observe で登録したコールバックの this イベントオブジェクトの拡張 Event.stopObserving で複数のイベント登録を解除できるようになった カスタム・イベント クロスブラウザな DOMContentLoaded イベント  </description>
     </item>
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API (4)</title>
-      <link>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</link>
+      <link>https://metareal.blog/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</link>
       <pubDate>Mon, 24 Sep 2007 12:02:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</guid>
+      <guid>https://metareal.blog/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</guid>
       <description>Prototype 1.6.0 RC のイベント API について紹介するシリーズも今回が最後。
 カスタム・イベント あらかじめ定義された組み込みのイベント click や submit 以外にも、ユーザーが好きなイベントを発生させることができるようになった。
 たとえば、こんな HTML があるとして、
@@ -57,10 +57,10 @@ document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... }) 従来�
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API (3)</title>
-      <link>http://ishikawa.github.io/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</link>
+      <link>https://metareal.blog/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</link>
       <pubDate>Sat, 22 Sep 2007 09:28:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</guid>
+      <guid>https://metareal.blog/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</guid>
       <description>Prototype 1.6.0 RC イベント API の進化、更なるつづき。
 Event.stopObserving で複数のイベント登録を解除できるようになった イベントのコールバック関数は Event.observe や Element#observe で登録し、
  Event.stopObserving Element#stopObserving  で登録を解除できる。
@@ -73,10 +73,10 @@ Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm); とし�
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API (2)</title>
-      <link>http://ishikawa.github.io/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</link>
+      <link>https://metareal.blog/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</link>
       <pubDate>Fri, 21 Sep 2007 05:41:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</guid>
+      <guid>https://metareal.blog/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</guid>
       <description>随分と間が空いてしまった。前回の記事 Prototype 1.6.0 で大きく進化したイベント API に引き続き、Prototype 1.6.0 RC で導入された、イベント API の変更点を見ていく。
 イベントオブジェクトの拡張 これまでも、たとえば $() から返された DOM 要素は Element.extend で色々と便利なメソッドが追加されていたが、1.6.0 からはイベントのコールバックに渡されるイベントオブジェクトでも Event.extend されるようになった。
 これからはコールバック関数でこんなふうに書ける。
@@ -87,10 +87,10 @@ function onClickListener(event) { if (event.isLeftClick()) { ... } } また、IE
     
     <item>
       <title>WebKit のブラウザ判定と iPhone、そして iPod touch</title>
-      <link>http://ishikawa.github.io/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</link>
+      <link>https://metareal.blog/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</link>
       <pubDate>Sun, 09 Sep 2007 05:05:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</guid>
+      <guid>https://metareal.blog/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</guid>
       <description>Prototype 1.6.0 のブラウザ判定と iPhone では、
  prototype.js には 1.5.1 から、各種ブラウザを判定するための Prototype.Browser が定義されている。
  として prototype.js のブラウザ判定コードを紹介した。iPhone を含む WebKit ベースのブラウザも判別できる。
@@ -102,10 +102,10 @@ WebKitDetect.isWebKit = function isWebKit() { return RegExp(&amp;quot; AppleWebK
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API</title>
-      <link>http://ishikawa.github.io/2007/09/02/prototype-1-6-0-event-overhaul-release/</link>
+      <link>https://metareal.blog/2007/09/02/prototype-1-6-0-event-overhaul-release/</link>
       <pubDate>Sun, 02 Sep 2007 09:55:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/02/prototype-1-6-0-event-overhaul-release/</guid>
+      <guid>https://metareal.blog/2007/09/02/prototype-1-6-0-event-overhaul-release/</guid>
       <description>Prototype 1.6.0 RC にはいくつもの変更点がある。
 特に イベント周りの API で顕著だ。Event.observe メソッドなど、お馴染みの API が大幅に手を加えられている。
 Event.observe で登録したコールバックの this いままで Event.observe でコールバック関数を登録するときは、コールバックが呼ばれたときの this を固定するため（と、引数に event が確実に渡ってくるように）、
@@ -119,10 +119,10 @@ var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onC
     
     <item>
       <title>Prototype 1.6.0 のブラウザ判定と iPhone </title>
-      <link>http://ishikawa.github.io/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</link>
+      <link>https://metareal.blog/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</link>
       <pubDate>Sat, 01 Sep 2007 08:30:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</guid>
+      <guid>https://metareal.blog/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</guid>
       <description>prototype.js には 1.5.1 から、各種ブラウザを判定するための Prototype.Browser が定義されている。
 var Prototype = { ... Browser: { IE: !!(window.attachEvent &amp;amp;&amp;amp; !window.opera), Opera: !!window.opera, WebKit: navigator.userAgent.indexOf(&#39;AppleWebKit/&#39;) &amp;gt; -1, Gecko: navigator.userAgent.indexOf(&#39;Gecko&#39;) &amp;gt; -1 &amp;amp;&amp;amp; navigator.userAgent.indexOf(&#39;KHTML&#39;) == -1, ... 使い方は一目瞭然だろう。
 たとえば Internet Explorer の場合は Prototype.Browser.IE が、Safari など WebKit を利用しているブラウザでは Prototype.Browser.WebKit が true になる。
@@ -133,10 +133,10 @@ var Prototype = { Version: &#39;1.6.0_rc0&#39;, Browser: { IE: !!(window.attachE
     
     <item>
       <title>Prototype 1.6.0 と DOMContentLoaded</title>
-      <link>http://ishikawa.github.io/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</link>
+      <link>https://metareal.blog/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</link>
       <pubDate>Wed, 22 Aug 2007 05:32:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</guid>
+      <guid>https://metareal.blog/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</guid>
       <description>Prototype 1.6.0 のリリース候補版が公開されたようだ。
  Prototype JavaScript framework: Prototype 1.6.0 release candidate Riding Rails: Prototype 1.6.0 release candidate  変更点が多い。目を引くものとしては、クラスの継承がサポートされた。新しい Class.create では親クラスを指定できる。いままでは Object.extend によるコピーで擬似的な継承をしていただけなので、これは嬉しいかもしれない。
 クロスブラウザな DOMContentLoaded イベント また、「window.onload 前でも DOM 処理が可能なら通知してくれる domready.js」という記事でも書いた、DOMContentLoaded がサポートされた。
@@ -146,10 +146,10 @@ document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... }) 従来�
     
     <item>
       <title>prototype.js の $$ 関数で CSS 風に DOM プログラミング</title>
-      <link>http://ishikawa.github.io/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</link>
+      <link>https://metareal.blog/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</link>
       <pubDate>Sun, 15 Jul 2007 11:56:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</guid>
+      <guid>https://metareal.blog/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</guid>
       <description>prototype.js の $$ 関数（実際の処理は Selector.findChildElements）は CSS セレクタを受け取り、セレクタにマッチする要素を配列で返してくれる。
 var links = $$(&#39;#contents a&#39;); だが、単純にひとつのセレクタだけではなくて、複数のセレクタを引数に渡したり、CSS と同じく、カンマ区切りで複数指定することもできる（結果は重複要素のない配列となって返ってくる）。
 var links = $$(&amp;quot;#contents a&amp;quot;, &amp;quot;#footer .items a&amp;quot;); このコードは、こう書くこともできる。

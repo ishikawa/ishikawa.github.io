@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>hibernate on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/hibernate/</link>
+    <link>https://metareal.blog/tags/hibernate/</link>
     <description>Recent content in hibernate on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 20 Mar 2007 08:36:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/hibernate/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/hibernate/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Criteria API で inner join する</title>
-      <link>http://ishikawa.github.io/2007/03/19/hibernate-inner-join-using-criteria-api/</link>
+      <link>https://metareal.blog/2007/03/19/hibernate-inner-join-using-criteria-api/</link>
       <pubDate>Tue, 20 Mar 2007 08:36:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/03/19/hibernate-inner-join-using-criteria-api/</guid>
+      <guid>https://metareal.blog/2007/03/19/hibernate-inner-join-using-criteria-api/</guid>
       <description>毎回、Hibernate の使い方を Google で検索する羽目になるのだが、今日はその検索の過程で、偶々こんな記事を見つけた。
 Hibernate Querying 102 : The Criteria API
 Hibernate の Criteria API について網羅的に解説した記事。 実は、inner join も Criteria API で記述できることを知って驚いた。

@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mac on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/mac/</link>
+    <link>https://metareal.blog/tags/mac/</link>
     <description>Recent content in mac on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 09 Dec 2008 03:37:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Safari で開いているページのリンクを Evernote クライアントに送る</title>
-      <link>http://ishikawa.github.io/2008/12/09/copy-link-to-evernote-client-applescript/</link>
+      <link>https://metareal.blog/2008/12/09/copy-link-to-evernote-client-applescript/</link>
       <pubDate>Tue, 09 Dec 2008 03:37:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/12/09/copy-link-to-evernote-client-applescript/</guid>
+      <guid>https://metareal.blog/2008/12/09/copy-link-to-evernote-client-applescript/</guid>
       <description>最近、プログラミング関係のまとめやインストール手順の記録といったものには Evernote を利用している。
 画像中の手書き文字認識や「脳を拡張する」といった誇大広告ばかりが取り沙汰されるサービスだが、単純にメモツールとして優れており、特に Mac クライアントと iPhone クライアントの出来がすばらしい。
 Evernote: Mac クライアント プログラミング関係の話題をノートにまとめていると、興味深いページへのリンクを多く埋め込むことになる。ノートの編集は Mac のクライアントで行うことが多いのだが、この作業がけっこう面倒だ：
@@ -28,10 +28,10 @@ AppleScript Mac で自動化といえば AppleScript の出番なのだが、残
     
     <item>
       <title>Python でプロパティリストを読み込む</title>
-      <link>http://ishikawa.github.io/2008/08/04/propertylist-parser-for-python/</link>
+      <link>https://metareal.blog/2008/08/04/propertylist-parser-for-python/</link>
       <pubDate>Tue, 05 Aug 2008 12:21:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/08/04/propertylist-parser-for-python/</guid>
+      <guid>https://metareal.blog/2008/08/04/propertylist-parser-for-python/</guid>
       <description>Python でプロパティリストを読み込み、オブジェクトに変換するライブラリ plist_parser を書いた。GitHub で公開している。Python 2.4 以降で動作確認済み。ただし、対応するフォーマットは XML のみで、書き込みにも対応していない。
 使い方は至って単純だ。たとえば、以下のプロパティリストは iTunes Music Library.xml から一部抜粋したものだが、
 &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.0//EN&amp;quot; &amp;quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;quot;&amp;gt; &amp;lt;plist version=&amp;quot;1.0&amp;quot;&amp;gt; &amp;lt;dict&amp;gt; &amp;lt;key&amp;gt;Track ID&amp;lt;/key&amp;gt; &amp;lt;integer&amp;gt;4154&amp;lt;/integer&amp;gt; &amp;lt;key&amp;gt;Artist&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;Megadeth&amp;lt;/string&amp;gt; &amp;lt;key&amp;gt;Name&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;Architecture Of Aggression&amp;lt;/string&amp;gt; &amp;lt;key&amp;gt;Date Added&amp;lt;/key&amp;gt; &amp;lt;date&amp;gt;2008-06-23T12:20:17Z&amp;lt;/date&amp;gt; &amp;lt;/dict&amp;gt; &amp;lt;/plist&amp;gt; このプロパティリストが music.xml という名前で保存されているとして、このファイルを読み込んでオブジェクトに変換するコードは以下のとおり。
@@ -40,10 +40,10 @@ from plist_parser import XmlPropertyListParser, \ PropertyListParseError f = ope
     
     <item>
       <title>Mac の Python をビルドするときに GNU Readline ライブラリを有効にする</title>
-      <link>http://ishikawa.github.io/2008/04/11/building-readline-enabled-python-on-mac/</link>
+      <link>https://metareal.blog/2008/04/11/building-readline-enabled-python-on-mac/</link>
       <pubDate>Fri, 11 Apr 2008 10:05:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/04/11/building-readline-enabled-python-on-mac/</guid>
+      <guid>https://metareal.blog/2008/04/11/building-readline-enabled-python-on-mac/</guid>
       <description>Mac OS X では GNU の Readline ライブラリがインストールには含まれておらず、Readline 互換の Libedit というライブラリへのシンボリックリンクとなっている（こうなっている理由はライセンス上の問題からだと思われる。GNU の Readline ライブラリは GPL で、Libedit は BSD ライセンスだ）。
 しかし、これが原因で Readline 対応のプログラムがコンパイルできない、コンパイルできてもヒストリ機能などが使えない、といった問題がしばしば起こる。
 Python は後者の例で、configure スクリプトはちゃんと readline ライブラリを認識し make も問題なく通るのだが、実際には Readline ライブラリが無効になったバイナリがインストールされてしまう。
@@ -52,10 +52,10 @@ Python は後者の例で、configure スクリプトはちゃんと readline �
     
     <item>
       <title>Apple によるロケール周りの変更点を Python 2.5.2 にも適用する</title>
-      <link>http://ishikawa.github.io/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</link>
+      <link>https://metareal.blog/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</link>
       <pubDate>Wed, 02 Apr 2008 10:23:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</guid>
+      <guid>https://metareal.blog/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</guid>
       <description>最近 Python を 2.5.2 にアップデートして同じ作業を繰り返したことと、Apple によるロケール周りの変更点を Python 2.5.1 にも適用するのときはパッチの適用方法について言及がなかったこともあり、そのへんも含めて手順をまとめておく。
 まずは Python 2.5.2 をダウンロードし展開。
  % curl -LO http://www.python.org/ftp/python/2.5.2/Python-2.5.2.tar.bz2 % tar xjf Python-2.5.2.tar.bz2 Apple によるロケール周りの変更点を Python 2.5.1 にも適用するで公開したパッチをあてる。
@@ -66,10 +66,10 @@ Python は後者の例で、configure スクリプトはちゃんと readline �
     
     <item>
       <title>ffmpeg を MacPorts でインストール</title>
-      <link>http://ishikawa.github.io/2007/12/09/install-ffmpeg-using-macports/</link>
+      <link>https://metareal.blog/2007/12/09/install-ffmpeg-using-macports/</link>
       <pubDate>Sun, 09 Dec 2007 09:57:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/09/install-ffmpeg-using-macports/</guid>
+      <guid>https://metareal.blog/2007/12/09/install-ffmpeg-using-macports/</guid>
       <description>動画の変換がやりたくて Mac に ffmpeg をインストールした。そのときのメモ。
 MacPorts でインストールするのがよさげ。variants のおかげで、H.264 や AAC を有効にするのも簡単だ。
 % sudo port install x264 % sudo port install faac % sudo port install faad2 % sudo port install a52dec % sudo port install ffmpeg +faac +faad +a52 +x264 関連するライブラリを先にインストールして、+faac のように指定してやるだけ。</description>
@@ -77,10 +77,10 @@ MacPorts でインストールするのがよさげ。variants のおかげで�
     
     <item>
       <title>Mail.app や iGTD の vacuum を cron で自動化する</title>
-      <link>http://ishikawa.github.io/2007/12/08/vacuum-analyze-sqlite-automatically-by-cron/</link>
+      <link>https://metareal.blog/2007/12/08/vacuum-analyze-sqlite-automatically-by-cron/</link>
       <pubDate>Sat, 08 Dec 2007 10:00:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/08/vacuum-analyze-sqlite-automatically-by-cron/</guid>
+      <guid>https://metareal.blog/2007/12/08/vacuum-analyze-sqlite-automatically-by-cron/</guid>
       <description>Warning
 この方法でデータベースを VACUUM すると、Mail.app で問題が起こるようだ。Mail.app を起動中に cron が実行されるとメールを送信できない、下書き保存できない、などの問題があった。というわけで、この方法は使わないか、問題が起こらないように改良する必要がある。
 「Mail.app を vacuum して高速化」や「iGTD も vacuum すると速くなる」でも書いたように、Mac のアプリケーションのいくつかは、ターミナルから VACUUM ANALYZE という SQL を実行することで高速に動作するようになる。
@@ -90,10 +90,10 @@ MacPorts でインストールするのがよさげ。variants のおかげで�
     
     <item>
       <title>iGTD も vacuum すると速くなる</title>
-      <link>http://ishikawa.github.io/2007/12/05/optimize-the-igtd-database/</link>
+      <link>https://metareal.blog/2007/12/05/optimize-the-igtd-database/</link>
       <pubDate>Thu, 06 Dec 2007 08:08:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/12/05/optimize-the-igtd-database/</guid>
+      <guid>https://metareal.blog/2007/12/05/optimize-the-igtd-database/</guid>
       <description>日々の ToDo 管理には iGTD を愛用している。だが、最近、目に見えて動作が重くなってしまった。
 おそらく、完了したタスクも削除されることはなく、ずっと溜まっているのが原因だろう。iGTD は内部のデータベースとして SQLite を使っているので、Mail.app を vacuum して高速化と同じ方法で高速化できる。
 VACUUM ANALYZE 手順は簡単で、ターミナルから以下のコマンドを実行するだけだ（iGTD が起動中なら終了する必要があるかもしれない）。
@@ -103,10 +103,10 @@ VACUUM ANALYZE 手順は簡単で、ターミナルから以下のコマンド�
     
     <item>
       <title>MacBook に内蔵された iSight を Flash から利用できるようにする</title>
-      <link>http://ishikawa.github.io/2007/10/10/setting-flash-camera-with-macbook-isight/</link>
+      <link>https://metareal.blog/2007/10/10/setting-flash-camera-with-macbook-isight/</link>
       <pubDate>Thu, 11 Oct 2007 05:20:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/10/10/setting-flash-camera-with-macbook-isight/</guid>
+      <guid>https://metareal.blog/2007/10/10/setting-flash-camera-with-macbook-isight/</guid>
       <description>Flash の flash.media.Camera オブジェクトを使うと、Webcam からの入力をキャプチャすることができる。
 しかし、そのままだと MacBook に内蔵された iSight では映像をとることができない。どうやら、設定を変更する必要があるようだ。
  ページに表示された Flash を右クリックして「Adobe Flash Player 設定」を開く。 左下のアイコンから、一番右のカメラをクリック カメラの種類を選択するプルダウンメニューが表示されるので「USB Video Class Video」を選択  これで iSight からの入力を受け取れるようになる。
@@ -115,10 +115,10 @@ VACUUM ANALYZE 手順は簡単で、ターミナルから以下のコマンド�
     
     <item>
       <title>Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</title>
-      <link>http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</link>
+      <link>https://metareal.blog/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</link>
       <pubDate>Sun, 09 Sep 2007 11:49:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</guid>
+      <guid>https://metareal.blog/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</guid>
       <description>Python: Mac OS X での locale.getpreferredencoding() では、Mac OS X に Python 2.5.1 をソースコードからインストールした場合に発生する、ロケール周りの問題点について書いた。
 要約すると、
  locale.getpreferredencoding() の返すエンコーディングが X-MAC-JAPANESE になってしまう Python では X-MAC-JAPANESE がデフォルトではサポートされていないため、locale.getpreferredencoding() を利用したエンコード、デコードができない _localmodule.c を変更して、X-MAC-JAPANESE の代わりに shift_jis を返すようにして解決  という内容だった。
@@ -134,10 +134,10 @@ Mac OS X に標準でパッケージングされている Python Apple Developer
     
     <item>
       <title>Mail.app を vacuum して高速化</title>
-      <link>http://ishikawa.github.io/2007/08/23/optimize-the-apple-mail-app-database/</link>
+      <link>https://metareal.blog/2007/08/23/optimize-the-apple-mail-app-database/</link>
       <pubDate>Fri, 24 Aug 2007 05:38:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/23/optimize-the-apple-mail-app-database/</guid>
+      <guid>https://metareal.blog/2007/08/23/optimize-the-apple-mail-app-database/</guid>
       <description>SQLite の vacuum コマンドで Mail.app を高速化する。ターミナルで、
 % cd ~/Library/Mail/; sqlite3 Envelope\ Index &amp;quot;vacuum;&amp;quot; Automator で自動化する Mail Vacuum なんてのもある。
 個人的には、以下のような AppleScript を、
@@ -146,10 +146,10 @@ tell application &amp;quot;Terminal&amp;quot; activate do script &amp;quot;cd ~/
     
     <item>
       <title>iGTD と QuickSilver の連携</title>
-      <link>http://ishikawa.github.io/2007/08/15/about-igtd-quicksilver-plugin/</link>
+      <link>https://metareal.blog/2007/08/15/about-igtd-quicksilver-plugin/</link>
       <pubDate>Wed, 15 Aug 2007 05:18:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/15/about-igtd-quicksilver-plugin/</guid>
+      <guid>https://metareal.blog/2007/08/15/about-igtd-quicksilver-plugin/</guid>
       <description>iGTD のインストール用ディスクイメージには QuickSilver と連携するためのプラグインが同梱されている（参考：iGTD &amp;amp; Quicksilver）。
 このプラグインで追加される Put into iGTD inbox を使えば、QuickSilver で選択したものは何でも（テキスト、ファイル、ブックマーク、あるいはアプリケーションも）iGTD の inbox に放り込むことが可能だ。QuickSilver でテキストを入力すれば、それがそのままタスクの名前になるし、ファイルやブックマークはタスクにリンクが付随したかたちで登録される。
 また、タスクを登録するときは、あらかじめ決められたフォーマットに従うことで、たとえば、登録先のコンテキストやプロジェクトを指定することができる。
@@ -159,10 +159,10 @@ tell application &amp;quot;Terminal&amp;quot; activate do script &amp;quot;cd ~/
     
     <item>
       <title>Mac の GTD アプリ、iGTD を試してみた (2)</title>
-      <link>http://ishikawa.github.io/2007/08/11/review-my-igtd-experience/</link>
+      <link>https://metareal.blog/2007/08/11/review-my-igtd-experience/</link>
       <pubDate>Sat, 11 Aug 2007 08:59:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/11/review-my-igtd-experience/</guid>
+      <guid>https://metareal.blog/2007/08/11/review-my-igtd-experience/</guid>
       <description>© Takanori Ishikawa, Some rights reserved
 前回書いたように、Remember The Milk から iGTD に乗り換えた。
 数日使ってみて、コンテキスト（背景）には「仕事」「プライベート」の二種類、そして、三つのプロジェクトを登録してある（シンプルな人生だ）。段々と日常的なワークフローに組み込まれつつある感じ。いまのところ全般的な使い勝手はいい。
@@ -175,10 +175,10 @@ tell application &amp;quot;Terminal&amp;quot; activate do script &amp;quot;cd ~/
     
     <item>
       <title>Mac の GTD アプリ、iGTD を試してみた</title>
-      <link>http://ishikawa.github.io/2007/08/10/igtd-first-impression/</link>
+      <link>https://metareal.blog/2007/08/10/igtd-first-impression/</link>
       <pubDate>Fri, 10 Aug 2007 05:29:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/10/igtd-first-impression/</guid>
+      <guid>https://metareal.blog/2007/08/10/igtd-first-impression/</guid>
       <description>© Takanori Ishikawa, Some rights reserved
 これまで TODO 管理には Remember The Milk を愛用していた。
 ユーザーインターフェースはシンプルかつ高機能だし、タスクに期限を設定するとメールやメッセンジャーで通知してくれる。
@@ -194,20 +194,20 @@ Web アプリケーションにも利点はある。たとえば、Remember The 
     
     <item>
       <title>PostgreSQL 7.4 を Intel Mac にインストールする方法</title>
-      <link>http://ishikawa.github.io/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</link>
+      <link>https://metareal.blog/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</link>
       <pubDate>Wed, 25 Jul 2007 04:24:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</guid>
+      <guid>https://metareal.blog/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</guid>
       <description>理由あって PostgreSQL 7.4 を Mac OS X にインストールすることになった。早速、ダウンロードページから手に入る中で最新の 7.4.17 をダウンロードしてインストールしようとするも、エラーが出てコンパイルできない。
 % ./configure % make ... gcc -no-cpp-precomp -O2 -fno-strict-aliasing -Wall -Wmissing-prototypes -Wmissing-declarations -I../../../../src/include -c -o xlog.o xlog.c In file included from ../../../../src/include/storage/spin.h:50, from xlog.c:35: ../../../../src/include/storage/s_lock.h:543:2: error: #error **PostgreSQL does not have native spinlock support on this platform. To continue the compilation, rerun configure using --disable-spinlocks. However, performance will be poor. Please report this to pgsql-bugs@postgresql.org.** In file included from ../../../../src/include/storage/spin.h:50, from xlog.</description>
     </item>
     
     <item>
       <title>Python: Mac OS X での locale.getpreferredencoding() </title>
-      <link>http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</link>
+      <link>https://metareal.blog/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</link>
       <pubDate>Thu, 19 Jul 2007 10:30:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</guid>
+      <guid>https://metareal.blog/2007/07/19/problem-with-python-getpreferredencoding-in-trac-mac-os-x/</guid>
       <description>（追記）この記事に載せているパッチよりも Apple によるロケール周りの変更点を Python 2.5.1 にも適用するのパッチを使った方がよさそうです。Mac OS X 標準の Python との互換性があります。
 TracInstall に従って、Mac OS X で Trac を動かそうとしている。以前試したときは頓挫したのだが、今回は Python を含むすべてのライブラリを一からインストールして、じっくりやってみることにした。
 とりあえず、tracd を起動するところまでは問題なくいったのだけれど、URL にアクセスしてみると早速こんなエラーが。
@@ -218,10 +218,10 @@ Traceback (most recent call last): File &amp;quot;/path/to/trac/lib/python2.5/si
     
     <item>
       <title>Safari の履歴検索がすごく便利です</title>
-      <link>http://ishikawa.github.io/2007/06/26/safari-spotlighting-web-history/</link>
+      <link>https://metareal.blog/2007/06/26/safari-spotlighting-web-history/</link>
       <pubDate>Wed, 27 Jun 2007 08:06:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/06/26/safari-spotlighting-web-history/</guid>
+      <guid>https://metareal.blog/2007/06/26/safari-spotlighting-web-history/</guid>
       <description>上のスクリーンショット（クリックすると拡大した画像に飛びます）を見れば、一目瞭然。Safari は履歴も検索できる。
 これで、「あー、あの Web ページ、はてブか何かで見たんだけど、どこだっけなー」なんて悩みともおさらばできます。て、普通にみんな使ってるんだろうか、この履歴検索。
 検索窓が、普段意識しない場所（ブックマークウインドウの下側）にあるものだから、いまのいままで気づかなかったよ。</description>
@@ -229,10 +229,10 @@ Traceback (most recent call last): File &amp;quot;/path/to/trac/lib/python2.5/si
     
     <item>
       <title>.Mac の同期機能がすごく便利です</title>
-      <link>http://ishikawa.github.io/2007/06/16/sync-different-mac-with-dotmac/</link>
+      <link>https://metareal.blog/2007/06/16/sync-different-mac-with-dotmac/</link>
       <pubDate>Sun, 17 Jun 2007 08:02:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/06/16/sync-different-mac-with-dotmac/</guid>
+      <guid>https://metareal.blog/2007/06/16/sync-different-mac-with-dotmac/</guid>
       <description>MacBook の電源を会社に置いて帰ってしまった。
 電源は机の下に隠れているため、急いでいたり、考えごとをしていたりすると、すぐに忘れてしまうのだ。
 自宅サーバの iBook G4 とは電源の種類が異なる（MacBook の電源は MagSafe コネクタ）ため、その電源を流用することはできない。しかたがないので、テレビ台の下の暗がりで働いていた自宅サーバの iBook G4 をひっぱりだして、作業用ノートパソコンになってもらった。
@@ -250,20 +250,20 @@ Traceback (most recent call last): File &amp;quot;/path/to/trac/lib/python2.5/si
     
     <item>
       <title>Terminal で作業中のディレクトリを Finder で開く</title>
-      <link>http://ishikawa.github.io/2007/05/31/open-current-directory-in-finder/</link>
+      <link>https://metareal.blog/2007/05/31/open-current-directory-in-finder/</link>
       <pubDate>Thu, 31 May 2007 09:02:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/05/31/open-current-directory-in-finder/</guid>
+      <guid>https://metareal.blog/2007/05/31/open-current-directory-in-finder/</guid>
       <description>Terminal で作業中のディレクトリを Finder で表示させたいときがある。そういうときは、
 % open . </description>
     </item>
     
     <item>
       <title>AirMac Extreme</title>
-      <link>http://ishikawa.github.io/2007/05/27/meet-the-airmac-extreme/</link>
+      <link>https://metareal.blog/2007/05/27/meet-the-airmac-extreme/</link>
       <pubDate>Sun, 27 May 2007 10:22:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/05/27/meet-the-airmac-extreme/</guid>
+      <guid>https://metareal.blog/2007/05/27/meet-the-airmac-extreme/</guid>
       <description>家の無線 LAN を AirMac Express から AirMac Extreme に変えてみた。特にこれといった動機はなくて、単に新しいモノを試してみたかっただけなんだけど、AirTunes 機能がないのは参ったなあ。おかげで iPod Hi-Fi が宝の持ち腐れ。どうするかは考え中。
 これのブログを動かしているサーバも無線でつないでいるので（LAN ケーブルだと邪魔）、しばらくのあいだ、サーバが停まったままだった。AirMac Extreme で無線 LAN をはじめるのは簡単なのだけど、NAT やらを設定するのが面倒臭かった次第。
 しかし、通信範囲広いね。Skype で会話しながら実験してみたけど、家から出て 2 ブロック先くらいまでは行けた。</description>
@@ -271,10 +271,10 @@ Traceback (most recent call last): File &amp;quot;/path/to/trac/lib/python2.5/si
     
     <item>
       <title>QuickSilver でスクリーンセイバーを起動</title>
-      <link>http://ishikawa.github.io/2007/03/28/launch-screen-saver-from-quicksilver/</link>
+      <link>https://metareal.blog/2007/03/28/launch-screen-saver-from-quicksilver/</link>
       <pubDate>Thu, 29 Mar 2007 01:21:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/03/28/launch-screen-saver-from-quicksilver/</guid>
+      <guid>https://metareal.blog/2007/03/28/launch-screen-saver-from-quicksilver/</guid>
       <description>わたしは不器用なので、スクリーンセイバーをホットコーナーから起動しようとするたびに失敗する（スクリーンセイバーが起動したとたんに、微妙にマウスを動かしてしまって、起動が解除されてしまう）。
 QuickSilver から起動できたら便利だなと思って、スクリーンセイバーを起動する AppleScript を書いて、~/Library/Scripts/ に置いてある。
 tell application &amp;quot;Finder&amp;quot; open application file &amp;quot;/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app&amp;quot; as POSIX file end tell ホットキーにも登録してみたが、いちいち QuickSilver を起動してタイプする方が性にあっているようだ。</description>
@@ -282,10 +282,10 @@ tell application &amp;quot;Finder&amp;quot; open application file &amp;quot;/Sys
     
     <item>
       <title>OpenCV 1.0.0 を Mac OS X 10.4 にインストール</title>
-      <link>http://ishikawa.github.io/2007/03/27/opencv-on-mac-os-x-tiger/</link>
+      <link>https://metareal.blog/2007/03/27/opencv-on-mac-os-x-tiger/</link>
       <pubDate>Wed, 28 Mar 2007 01:18:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/03/27/opencv-on-mac-os-x-tiger/</guid>
+      <guid>https://metareal.blog/2007/03/27/opencv-on-mac-os-x-tiger/</guid>
       <description>物体認識もできる画像処理ライブラリ OpenCV 1.0.0 を Mac OS X 10.4 にてコンパイルしてみた。
 OpenCV のインストール まずは、SourceForge から opencv-1.0.0.tar.gz をダウンロードして解凍。
 % tar xvzf opencv-1.0.0.tar.gz % mkdir build % cd build/ libjpeg や libpng がないと JPEG, PNG 画像を扱えないので、DarwanPorts でいれたものを使うように configure

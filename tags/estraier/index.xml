@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>estraier on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/estraier/</link>
+    <link>https://metareal.blog/tags/estraier/</link>
     <description>Recent content in estraier on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Tue, 04 Mar 2008 12:12:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/estraier/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/estraier/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Mac OS X に Hyper Estraier をインストールする</title>
-      <link>http://ishikawa.github.io/2008/03/03/how-to-install-hyper-estraier-with-the-source-package-on-mac-os-x/</link>
+      <link>https://metareal.blog/2008/03/03/how-to-install-hyper-estraier-with-the-source-package-on-mac-os-x/</link>
       <pubDate>Tue, 04 Mar 2008 12:12:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/03/03/how-to-install-hyper-estraier-with-the-source-package-on-mac-os-x/</guid>
+      <guid>https://metareal.blog/2008/03/03/how-to-install-hyper-estraier-with-the-source-package-on-mac-os-x/</guid>
       <description>Mac OS X に Hyper Estraier をソースパッケージからインストールしたときのメモ。
  Mac OS X 10.4.11 libiconv と libz はインストール済み /usr/lib/libiconv.2.2.0.dylib /usr/lib/libz.1.2.3.dylib  QDBM まずは QDBM をインストールする。バージョンは最新の 1.8.77 を選択した。
  % curl -LO http://qdbm.sourceforge.net/qdbm-1.8.77.tar.gz % tar xvzf qdbm-1.8.77.tar.gz % cd qdbm-1.8.77 Hyper Estraier のインストールガイドによると、zlib を有効化すると Hyper Estraier の作るインデックスが小さくなるそうなので有効にしておく。

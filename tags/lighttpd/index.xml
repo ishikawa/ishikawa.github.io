@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>lighttpd on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/lighttpd/</link>
+    <link>https://metareal.blog/tags/lighttpd/</link>
     <description>Recent content in lighttpd on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Wed, 10 Jan 2007 03:20:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/lighttpd/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/lighttpd/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>mod_flv_streaming と Deep Tagging</title>
-      <link>http://ishikawa.github.io/2007/01/09/mod-flv-streaming-and-deep-tagging/</link>
+      <link>https://metareal.blog/2007/01/09/mod-flv-streaming-and-deep-tagging/</link>
       <pubDate>Wed, 10 Jan 2007 03:20:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/09/mod-flv-streaming-and-deep-tagging/</guid>
+      <guid>https://metareal.blog/2007/01/09/mod-flv-streaming-and-deep-tagging/</guid>
       <description>lighttpd で Flash Video (.flv) をストリーミング配信 (2)の mod_flv_streaming って、開始フレームを指定するのに、URL のクエリー部分を使うわけだけど、これを mod_rewrite で Pretty URL にしてやれば、いわゆる Deep Tagging もいけそうね。
  Tagging 2.0: Deep Taggingというコンセプト 映像のある場面にコメントやタグをつけられる『Viddler』  </description>
     </item>
     
     <item>
       <title>lighttpd で Flash Video (.flv) をストリーミング配信 (2)</title>
-      <link>http://ishikawa.github.io/2007/01/09/flash-video-streaming-with-lighttpd-take-2/</link>
+      <link>https://metareal.blog/2007/01/09/flash-video-streaming-with-lighttpd-take-2/</link>
       <pubDate>Tue, 09 Jan 2007 09:18:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/09/flash-video-streaming-with-lighttpd-take-2/</guid>
+      <guid>https://metareal.blog/2007/01/09/flash-video-streaming-with-lighttpd-take-2/</guid>
       <description>前回の記事「lighttpd で Flash Video (.flv) をストリーミング配信」で、とりあえずストリーミング配信できることは書いた。今回は Flash の動画配信について調査したまとめ。
 How much? 一番気になっていたのは、あの馬鹿高い「フラッシュなんちゃらサーバ」を購入しないとあかんの？　というところでしたが、yuin さんがコメントしてくれた情報で解決しました。
 結論からいえば、みんなの大好きな lighttpd でストリーミング配信ができる。
@@ -40,10 +40,10 @@ var nc:NetConnection = new NetConnection(); nc.connect(null); // initialize var 
     
     <item>
       <title>lighttpd で Flash Video (.flv) をストリーミング配信</title>
-      <link>http://ishikawa.github.io/2007/01/09/flash-video-streaming-with-lighttpd/</link>
+      <link>https://metareal.blog/2007/01/09/flash-video-streaming-with-lighttpd/</link>
       <pubDate>Tue, 09 Jan 2007 02:38:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/09/flash-video-streaming-with-lighttpd/</guid>
+      <guid>https://metareal.blog/2007/01/09/flash-video-streaming-with-lighttpd/</guid>
       <description>以前の記事「Flash で動画をストリーミング再生」で yuin さんにコメントで教えてもらった情報：
  あと配信に関しては http://blog.kovyrin.net/2006/10/08/lighttpd-memcoder-flvtool-for-streaming/ http://blog.lighttpd.net/articles/2006/03/09/flv-streaming-with-lighttpd あたりはどうでしょう。
   Using Lighttpd, Mplayer/Mencoder and Flvtool2 to Implement Flash Video Streaming flv streaming with lighttpd The Flash Video Resource: &amp;lsquo;Streaming&amp;rsquo; flv video via PHP, take two  で、とりあえず、lighttpd で .flv のストリーミング配信に成功（yuin さん、ありがとう！）。プレイヤーやら .flv やらはこちらのをそのまま使っているです。

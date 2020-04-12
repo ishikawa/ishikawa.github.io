@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>v8 on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/v8/</link>
+    <link>https://metareal.blog/tags/v8/</link>
     <description>Recent content in v8 on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Wed, 24 Dec 2008 01:06:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/v8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/v8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>WEB&#43;DB PRESS Vol.48</title>
-      <link>http://ishikawa.github.io/2008/12/24/web-db-press-vol48/</link>
+      <link>https://metareal.blog/2008/12/24/web-db-press-vol48/</link>
       <pubDate>Wed, 24 Dec 2008 01:06:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/12/24/web-db-press-vol48/</guid>
+      <guid>https://metareal.blog/2008/12/24/web-db-press-vol48/</guid>
       <description>古谷楽人氏より WEB+DB PRESS Vol.48 (amazon.co.jp) を献本いただきました。ありがとうございます。わたしは当雑誌、というか雑誌全般の熱心な読者ではないのですが（ごめんなさい）、ひさしぶりの技術系雑誌を楽しく読ませてもらいました。
 WEB+DB PRESS Vol.48 で氏は「[最速]JavaScript エンジン徹底比較」と題して、最近のブラウザ事情に聡いプログラマなら気になるであろう、最新 JavaScript エンジンの比較と検証記事を執筆されています。以下では、記事内容の簡単な紹介と一読した感想などを書いていきます。
 [最速]JavaScript エンジン徹底比較 （ここから文体をいつもどおりに戻して&amp;hellip;）記事は三章から構成されており、それぞれの章題は：
@@ -29,10 +29,10 @@ WEB+DB PRESS Vol.48 で氏は「[最速]JavaScript エンジン徹底比較」�
     
     <item>
       <title>Google Chrome に搭載されたオープンソースの JavaScript エンジン &#34;v8&#34; を試す</title>
-      <link>http://ishikawa.github.io/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</link>
+      <link>https://metareal.blog/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</link>
       <pubDate>Wed, 03 Sep 2008 09:28:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</guid>
+      <guid>https://metareal.blog/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</guid>
       <description>その発表から世間を騒がせた、Google の Web ブラウザ Chrome が遂に公開された。
 Mac ユーザなうえに、日々の Web ブラウジングは Safari と iPhone で満足していることもあり、Chrome 自体への興味は薄い。しかし、オープンソースの JavaScript エンジンも独自開発している、となると話は別だ。しかも、Strongtalk や HotSpot Java VM の開発者が関わっている、というのだから俄然興味が湧いてくる（参考記事）。
 Google が開発、公開している JavaScript 処理系は、その名も v8。

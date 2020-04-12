@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>cocoa on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/cocoa/</link>
+    <link>https://metareal.blog/tags/cocoa/</link>
     <description>Recent content in cocoa on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sat, 08 Nov 2008 03:00:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/cocoa/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/cocoa/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Cocoa で独自の Text View を実装する</title>
-      <link>http://ishikawa.github.io/2008/11/08/cocoa-custom-text-view/</link>
+      <link>https://metareal.blog/2008/11/08/cocoa-custom-text-view/</link>
       <pubDate>Sat, 08 Nov 2008 03:00:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/11/08/cocoa-custom-text-view/</guid>
+      <guid>https://metareal.blog/2008/11/08/cocoa-custom-text-view/</guid>
       <description>iPhone も盛り上がっていることだし、ひさしぶりに Cocoa プログラミングを始めてみる。
 Mac Dev Center をつらつらと眺めてみると、Managing Concurrency with NSOperation という記事に興味が湧く。NSOperation と NSOperationQueue（優先順位付きキュー）を使うことで、タスクのスケジューリングと並行処理が手軽に行えるようになったようだ。Java の concurrency パッケージに感銘を受けた身としては、こういう拡張は嬉しい。今後、マルチスレッドが必要になったときに、改めて詳しく調べてみよう。
 テキストシステム周りも、ひところに比べると充実してきている。Mac OS X 10.3 では NSATSTypesetter が公開された。更に Mac OS X 10.5 では NSTextInputClient プロトコルと Input Method Kit が追加されている（他にもあるかも）。
@@ -30,10 +30,10 @@ NSView のサブクラスを作るとして、名前は単純に MyTextView と�
     
     <item>
       <title>280Slides in Objective-J</title>
-      <link>http://ishikawa.github.io/2008/06/06/280slides-in-objective-j/</link>
+      <link>https://metareal.blog/2008/06/06/280slides-in-objective-j/</link>
       <pubDate>Fri, 06 Jun 2008 12:42:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/06/06/280slides-in-objective-j/</guid>
+      <guid>https://metareal.blog/2008/06/06/280slides-in-objective-j/</guid>
       <description>280Slides という Web サービスがすごい。
  Dru’s Blog » New Web Site in Objective-C via Javascript New 280 Slides Web Site translates Objective-C to Javascript | reddit  Keynote 風のプレゼンテーションツールとしての UI も素晴らしいが、圧巻なのは、その実装技術。
 「どんな JavaScript や Flash を使ってるんだ？」と思うだろう。さあ、FireBug なり Safari の Web インスペクタなりで、ページに読み込まれているスクリプトを確認してみよう。その大半が馴染みのない拡張子 .j であることに驚くに違いない。
@@ -44,10 +44,10 @@ Objective-J 試しに DocumentController.j を覗いてみようか。
     
     <item>
       <title>Xcode でプロジェクトの名前を変更したくなったら</title>
-      <link>http://ishikawa.github.io/2007/08/21/rename-xcode-project/</link>
+      <link>https://metareal.blog/2007/08/21/rename-xcode-project/</link>
       <pubDate>Tue, 21 Aug 2007 05:24:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/21/rename-xcode-project/</guid>
+      <guid>https://metareal.blog/2007/08/21/rename-xcode-project/</guid>
       <description>Xcode でプロジェクトの名前を変えたくなった。
 だが、簡単にはいかない。変更箇所が散在している。面倒くさい。以下に手順をまとめてみる。
 プロジェクト・ファイル名の変更  Finder で Xcode のプロジェクト・ディレクトリの名前を変更する .xcodeproj ファイルの名前を変更する  ターゲットの変更  Xcode でターゲット名を変更する ターゲットエディタの「ビルド」パネルを表示し、「PRODUCT」で検索して表示される「プロダクト名」を変更 「PREFIX」で検索して表示されるプレフィックスヘッダのパスにアプリケーション名が含まれているなら変更。 プレフィックスヘッダの名前も、この機会に prefix.pch とかアプリケーション名に依存しない名前にしてしまうのもアリ  ソースコードの変更  クラス名の先頭にアプリケーション名の頭文字とか使ってたら悲惨 Finder でソースファイル名を変更すると、Xocde 上でのリンクがなくなってしまう .nib ファイルから参照されている場合はそちらも変更する必要が これもアプリケーション名に依存しないようにしておけばいいんだけど、それはそれで。  プロパティ設定の変更  ターゲットエディタの「プロパティ」パネルを表示 識別子にアプリケーション名が含まれているなら変更する 主要クラスとかも変える必要があれば変更する  これくらいかな。他にあるかもしれんけど。あとはプロジェクトをクリーンして再ビルド。
@@ -56,10 +56,10 @@ Objective-J 試しに DocumentController.j を覗いてみようか。
     
     <item>
       <title>NSView の CGContextRef に ATSUI でテキストを描画する方法</title>
-      <link>http://ishikawa.github.io/2007/01/14/rendering-unicode-text-into-cgcontextref-with-atsui/</link>
+      <link>https://metareal.blog/2007/01/14/rendering-unicode-text-into-cgcontextref-with-atsui/</link>
       <pubDate>Mon, 15 Jan 2007 02:00:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/14/rendering-unicode-text-into-cgcontextref-with-atsui/</guid>
+      <guid>https://metareal.blog/2007/01/14/rendering-unicode-text-into-cgcontextref-with-atsui/</guid>
       <description>Cocoa の NSView に Apple Type Services for Unicode Imaging (ATSUI) でテキストを描画する方法を紹介する。
 ATSUI では描画に Quartz の CGContextRef を設定することができる。CGContextRef は NSGraphicsContext の graphicsPort で取得できるので、以下のようなコードで設定できる。
 **CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];** ATSUAttributeTag tags[] = { kATSUCGContextTag }; ByteCount sizes[] = { sizeof(CGContextRef) }; ATSUAttributeValuePtr values[] = { **&amp;amp;context** }; ATSUSetLayoutControls(layout, 1, tags, sizes, values); 以下のコードでは、NSView の drawRect: で Hello, World を描画している。
@@ -68,10 +68,10 @@ ATSUI では描画に Quartz の CGContextRef を設定することができる�
     
     <item>
       <title>Interface Builder の NSTextView で NSLayoutManager を置き換える</title>
-      <link>http://ishikawa.github.io/2007/01/14/how-to-replace-layout-manager/</link>
+      <link>https://metareal.blog/2007/01/14/how-to-replace-layout-manager/</link>
       <pubDate>Sun, 14 Jan 2007 10:01:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/14/how-to-replace-layout-manager/</guid>
+      <guid>https://metareal.blog/2007/01/14/how-to-replace-layout-manager/</guid>
       <description>Cocoa の NSLayoutManager や NSTypesetter をサブクラス化したい場合、Apple のドキュメント &amp;ldquo;Assembling the Text System by Hand&amp;rdquo; にあるように、マニュアルで NSTextView を構築してもいいが面倒だ。それに、このままではスクロールビューでデコレートもされてないのでノーグッド。
 どうせなら、Interface Builder で配置した NSTextView の NSLayoutManager を置き換えるのが手っ取り早いだろう。コードは以下のようになる。
 - (void) awakeFromNib { _textStorage = [[NSTextStorage alloc] initWithString:@&amp;quot;Cocoa Programming Topics&amp;quot;]; NSLayoutManager *layoutManager = [[MyLayoutManager alloc] init]; [_textStorage addLayoutManager:layoutManager]; [layoutManager release]; ** NSTextContainer *textContainer = [_textView textContainer]; [layoutManager addTextContainer:textContainer]; [textContainer replaceLayoutManager:layoutManager]; **} 肝になるのは NSLayoutManager の addTextContainer: で元々の NSTextContainer を追加したあとに、NSTextContainer の replaceLayoutManager: を呼ぶこと。これで NSLayoutManager を置き換えられる。</description>
@@ -79,10 +79,10 @@ ATSUI では描画に Quartz の CGContextRef を設定することができる�
     
     <item>
       <title>Cocoa の Text System を勉強中</title>
-      <link>http://ishikawa.github.io/2007/01/06/learning-cocoa-text-system/</link>
+      <link>https://metareal.blog/2007/01/06/learning-cocoa-text-system/</link>
       <pubDate>Sun, 07 Jan 2007 04:13:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/06/learning-cocoa-text-system/</guid>
+      <guid>https://metareal.blog/2007/01/06/learning-cocoa-text-system/</guid>
       <description>Mac OS X のフレームワークである Cocoa の Text System を調べるため、ドキュメントを漁り中。
 そのなかで、Text System Overview: Typographical Features of the Cocoa Text System の画像 Figure 4 は、
 Rendering Unicode Text With ATSUI: Text Measurements の Figure 1-4 を使うのが適切な気がする。前者だと、垂直方向の例がないので。

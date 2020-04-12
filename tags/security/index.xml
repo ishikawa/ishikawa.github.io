@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>security on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/security/</link>
+    <link>https://metareal.blog/tags/security/</link>
     <description>Recent content in security on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Thu, 08 Mar 2007 09:33:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/security/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JSON はみんなが思ってるほど安全ではない</title>
-      <link>http://ishikawa.github.io/2007/03/08/json-is-not-as-safe-as-people-think-it-is/</link>
+      <link>https://metareal.blog/2007/03/08/json-is-not-as-safe-as-people-think-it-is/</link>
       <pubDate>Thu, 08 Mar 2007 09:33:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/03/08/json-is-not-as-safe-as-people-think-it-is/</guid>
+      <guid>https://metareal.blog/2007/03/08/json-is-not-as-safe-as-people-think-it-is/</guid>
       <description>del.icio.us 経由で今日読んだ記事。
 JSON is not as safe as people think it is - Joe Walker&amp;rsquo;s Blog http://getahead.org/blog/joe/2007/03/05/ json_is_not_as_safe_as_people_think_it_is.html
 script による CSRF と JavaScript のハック的手法を組み合わせることで、たとえログイン必須にしている JSON データであっても盗まれるかもしれない、という話。
@@ -29,10 +29,10 @@ script による CSRF と JavaScript のハック的手法を組み合わせる�
     
     <item>
       <title>Google のリダイレクタ</title>
-      <link>http://ishikawa.github.io/2007/02/07/google-redirector/</link>
+      <link>https://metareal.blog/2007/02/07/google-redirector/</link>
       <pubDate>Thu, 08 Feb 2007 01:15:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/02/07/google-redirector/</guid>
+      <guid>https://metareal.blog/2007/02/07/google-redirector/</guid>
       <description>社内の開発合宿行ったり、そこで風邪もらったりしているうちに、すっかりブログの更新から遠のいてしまった。ぼちぼち復活。
 2ちゃんねるではリファラ隠しのために、いわゆる ttp リンクや http://ime.nu/ などのリダイレクタが利用されている。リダイレクタという名前は勝手に使ってるだけで、正式なものか分からないけど、URL の末尾やパラメータに別の URL を指定すると、その URL にリダイレクトしてくれるページのこと。
 もっとも、http://ime.nu/ のように、あいだに警告ページを挟んでリンクを表示する（実際にはリダイレクトしない）ページもリダイレクタと呼んでいる。
@@ -43,10 +43,10 @@ http://www.google.com/url?sa=D&amp;amp;q=http://www.yahoo.co.jp/
     
     <item>
       <title>サイトに置いてある PDF が XSS に利用される？</title>
-      <link>http://ishikawa.github.io/2007/01/07/universal-xss-with-pdf-files/</link>
+      <link>https://metareal.blog/2007/01/07/universal-xss-with-pdf-files/</link>
       <pubDate>Sun, 07 Jan 2007 09:45:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/01/07/universal-xss-with-pdf-files/</guid>
+      <guid>https://metareal.blog/2007/01/07/universal-xss-with-pdf-files/</guid>
       <description>サイト上に PDF が置いてある場合、それを XSS に利用される可能性があるらしい。情報源は Universal XSS with PDF files: highly dangerous というブログ記事（元となった ML への投稿は [WEB SECURITY] Universal XSS with PDF files: highly dangerous）。
 これは PDF ファイルへのリンクの末尾に JavaScript のコードを追加しておくことで、ユーザーがリンクをクリックしたときに、任意のコードを実行できる、というもの。Acrobat Reader のバージョン 7 以前と Firefox や IE の組み合わせで再現するようだ（念のため、Mac の Preview でも試してみたが、この問題は発生しなかった）。
 Adobe は修正版の ver. 7 をリリース予定。</description>

@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>elixir on METAREAL</title>
-    <link>http://ishikawa.github.io/en/tags/elixir/</link>
+    <link>https://metareal.blog/en/tags/elixir/</link>
     <description>Recent content in elixir on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Thu, 26 Mar 2020 00:00:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/en/tags/elixir/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/en/tags/elixir/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Elixir import/2 overrides a previously declared import/2</title>
-      <link>http://ishikawa.github.io/en/post/2020/03/26/elixir-import-overrides-previous-import/</link>
+      <link>https://metareal.blog/en/post/2020/03/26/elixir-import-overrides-previous-import/</link>
       <pubDate>Thu, 26 Mar 2020 00:00:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/en/post/2020/03/26/elixir-import-overrides-previous-import/</guid>
+      <guid>https://metareal.blog/en/post/2020/03/26/elixir-import-overrides-previous-import/</guid>
       <description>Elixir has import/2 form that imports some symbols in the current scope from other modules. It overrides previously declared import/2. Let me show an example:
 iex(1)&amp;gt; import List List iex(2)&amp;gt; first([1]) 1 iex(3)&amp;gt; import List, only: [flatten: 1] List iex(4)&amp;gt; first([1]) ** (CompileError) iex:4: undefined function first/1 In the above exmaple, you can see List.first/1 which was available at iex(3) is undefined after import List, only: [flatten: 1] at iex(4).</description>
     </item>
     
     <item>
       <title>Gzip compression in Phoenix framework</title>
-      <link>http://ishikawa.github.io/en/post/2016/09/gzip-compression-in-cowboy/</link>
+      <link>https://metareal.blog/en/post/2016/09/gzip-compression-in-cowboy/</link>
       <pubDate>Sun, 25 Sep 2016 14:47:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/en/post/2016/09/gzip-compression-in-cowboy/</guid>
+      <guid>https://metareal.blog/en/post/2016/09/gzip-compression-in-cowboy/</guid>
       <description>To compress HTTP response body from a web application powered by Phoenix framework, you have to make Phoenix.Endpoint pass compress: true property to Cowboy. In your config.exs:
 config :example_app, ExampleApp.Endpoint, http: [port: 4040, compress: true], debug_errors: true, code_reloader: true, check_origin: false, watchers: [] When you send a HTTP request, include Accept-Encoding header. if you use the curl command, it has the option --compressed.
 Accept-Encoding: gzip, deflate However it seems that Cowboy, which is the HTTP server used in Phoenix framework, doesn&amp;rsquo;t compress response body if its size is smaller than 300 bytes.</description>

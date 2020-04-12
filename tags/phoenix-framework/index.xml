@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>phoenix framework on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/phoenix-framework/</link>
+    <link>https://metareal.blog/tags/phoenix-framework/</link>
     <description>Recent content in phoenix framework on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sun, 25 Sep 2016 14:47:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/phoenix-framework/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/phoenix-framework/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Phoenix (Cowboy) の Gzip 圧縮サポート</title>
-      <link>http://ishikawa.github.io/post/2016/09/gzip-compression-in-cowboy/</link>
+      <link>https://metareal.blog/post/2016/09/gzip-compression-in-cowboy/</link>
       <pubDate>Sun, 25 Sep 2016 14:47:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/post/2016/09/gzip-compression-in-cowboy/</guid>
+      <guid>https://metareal.blog/post/2016/09/gzip-compression-in-cowboy/</guid>
       <description>Phoenix framework でレスポンスの GZip 圧縮を有効にするには Cowboy に compress: true を渡すように、 Phoenix.Endpoint を設定する。
 config :example_app, ExampleApp.Endpoint, http: [port: 4040, compress: true], debug_errors: true, code_reloader: true, check_origin: false, watchers: [] HTTP リクエストを送るときに Accept-Encoding ヘッダーを設定する (curl コマンドなら --compressed オプション)
 Accept-Encoding: gzip, deflate また、レスポンス・ボディのサイズが 300 バイトを超えていない場合も GZip 圧縮されないようだ。

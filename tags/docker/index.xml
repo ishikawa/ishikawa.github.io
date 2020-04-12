@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>docker on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/docker/</link>
+    <link>https://metareal.blog/tags/docker/</link>
     <description>Recent content in docker on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Wed, 23 Dec 2015 12:49:25 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>docker build が固まる</title>
-      <link>http://ishikawa.github.io/post/2015/12/hanging-up-docker-build/</link>
+      <link>https://metareal.blog/post/2015/12/hanging-up-docker-build/</link>
       <pubDate>Wed, 23 Dec 2015 12:49:25 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/post/2015/12/hanging-up-docker-build/</guid>
+      <guid>https://metareal.blog/post/2015/12/hanging-up-docker-build/</guid>
       <description>Docker 試してるんですが
  「docker build 遅すぎ！　コーヒー飲んでも終わってない！」
  さすがに遅すぎると思ったら、Setting up ca-certificates-java (20130815ubuntu1) … と呟いたまま固まっていました。

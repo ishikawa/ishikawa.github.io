@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>disassemble on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/disassemble/</link>
+    <link>https://metareal.blog/tags/disassemble/</link>
     <description>Recent content in disassemble on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Thu, 25 Sep 2008 17:39:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/disassemble/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/disassemble/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Python の dis モジュールでさまざまな import 文を disassemble する (2)</title>
-      <link>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements-take2/</link>
+      <link>https://metareal.blog/2008/09/25/disassembling-python-import-statements-take2/</link>
       <pubDate>Thu, 25 Sep 2008 17:39:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements-take2/</guid>
+      <guid>https://metareal.blog/2008/09/25/disassembling-python-import-statements-take2/</guid>
       <description>前回の記事への追記が長くなりそうなので、新しい記事にまとめました。
 import と import as  import &amp;lt;module&amp;gt; と import &amp;lt;module&amp;gt; as &amp;lt;name&amp;gt; では、どのようなバイトコードにコンパイルされるか、つまり、実行時の振る舞いが微妙に異なることに注意しよう。
 &amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os.path&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os.path) 9 STORE_NAME 1 (os) 12 LOAD_CONST 1 (None) 15 RETURN_VALUE &amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os.path as os_path&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os.path) 9 LOAD_ATTR 1 (path) 12 STORE_NAME 2 (os_path) 15 LOAD_CONST 1 (None) 18 RETURN_VALUE 前者では IMPORT_NAME os.</description>
@@ -25,10 +25,10 @@ import と import as  import &amp;lt;module&amp;gt; と import &amp;lt;module&am
     
     <item>
       <title>Python の dis モジュールでさまざまな import 文を disassemble する</title>
-      <link>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements/</link>
+      <link>https://metareal.blog/2008/09/25/disassembling-python-import-statements/</link>
       <pubDate>Thu, 25 Sep 2008 09:34:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2008/09/25/disassembling-python-import-statements/</guid>
+      <guid>https://metareal.blog/2008/09/25/disassembling-python-import-statements/</guid>
       <description>Python Reference Manual の 6.12 The import statement を参考に、さまざまな形式の import 文を dis モジュールで disassemble してみた。
 import &amp;hellip; まずは、もっとも単純な import ...
 &amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os) 9 STORE_NAME 0 (os) 12 LOAD_CONST 1 (None) 15 RETURN_VALUE IMPORT_NAME で import するモジュールが指定されていることが分かる。では、as を使って別名をつけるとどうなるだろうか。

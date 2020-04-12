@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>lifehacks on METAREAL</title>
-    <link>http://ishikawa.github.io/tags/lifehacks/</link>
+    <link>https://metareal.blog/tags/lifehacks/</link>
     <description>Recent content in lifehacks on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
     <lastBuildDate>Sun, 19 Aug 2007 01:23:00 +0900</lastBuildDate>
     
-	<atom:link href="http://ishikawa.github.io/tags/lifehacks/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://metareal.blog/tags/lifehacks/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>テーブルトークとブレインストーミング</title>
-      <link>http://ishikawa.github.io/2007/08/18/tabletalking-and-brainstorming/</link>
+      <link>https://metareal.blog/2007/08/18/tabletalking-and-brainstorming/</link>
       <pubDate>Sun, 19 Aug 2007 01:23:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/18/tabletalking-and-brainstorming/</guid>
+      <guid>https://metareal.blog/2007/08/18/tabletalking-and-brainstorming/</guid>
       <description>そういえば、テーブルトーク RPG って、まさにブレインストーミングだ。
 Lifehacking.jp の記事「ブレインストーミングは死んだ！ ブレインストーミング万歳！」より（強調は引用者）。
  セッションのまとめ役の経験不足： 意見の交通整理をしたり、理解しにくいアイディアをかみくだいて全員に提示したり、時間管理や、問題から議論の流れが外れたときの対応など、D&amp;amp;D のダンジョンマスターのような経験をもっている公平なまとめ役がいない。   この記事で触れられている D&amp;amp;D（ダンジョンズ＆ドラゴンズ）こそ、テーブルトーク RPG の元祖。コンピュータゲームや映画、小説にもなっているため知っている人もすくなくないだろう（そもそも、テーブルトーク RPG がどんなものか、については Wikipedia の解説なりをどうぞ）。
@@ -28,10 +28,10 @@ Lifehacking.jp の記事「ブレインストーミングは死んだ！ ブレ�
     
     <item>
       <title>iGTD と QuickSilver の連携</title>
-      <link>http://ishikawa.github.io/2007/08/15/about-igtd-quicksilver-plugin/</link>
+      <link>https://metareal.blog/2007/08/15/about-igtd-quicksilver-plugin/</link>
       <pubDate>Wed, 15 Aug 2007 05:18:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/15/about-igtd-quicksilver-plugin/</guid>
+      <guid>https://metareal.blog/2007/08/15/about-igtd-quicksilver-plugin/</guid>
       <description>iGTD のインストール用ディスクイメージには QuickSilver と連携するためのプラグインが同梱されている（参考：iGTD &amp;amp; Quicksilver）。
 このプラグインで追加される Put into iGTD inbox を使えば、QuickSilver で選択したものは何でも（テキスト、ファイル、ブックマーク、あるいはアプリケーションも）iGTD の inbox に放り込むことが可能だ。QuickSilver でテキストを入力すれば、それがそのままタスクの名前になるし、ファイルやブックマークはタスクにリンクが付随したかたちで登録される。
 また、タスクを登録するときは、あらかじめ決められたフォーマットに従うことで、たとえば、登録先のコンテキストやプロジェクトを指定することができる。
@@ -41,10 +41,10 @@ Lifehacking.jp の記事「ブレインストーミングは死んだ！ ブレ�
     
     <item>
       <title>Mac の GTD アプリ、iGTD を試してみた (2)</title>
-      <link>http://ishikawa.github.io/2007/08/11/review-my-igtd-experience/</link>
+      <link>https://metareal.blog/2007/08/11/review-my-igtd-experience/</link>
       <pubDate>Sat, 11 Aug 2007 08:59:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/11/review-my-igtd-experience/</guid>
+      <guid>https://metareal.blog/2007/08/11/review-my-igtd-experience/</guid>
       <description>© Takanori Ishikawa, Some rights reserved
 前回書いたように、Remember The Milk から iGTD に乗り換えた。
 数日使ってみて、コンテキスト（背景）には「仕事」「プライベート」の二種類、そして、三つのプロジェクトを登録してある（シンプルな人生だ）。段々と日常的なワークフローに組み込まれつつある感じ。いまのところ全般的な使い勝手はいい。
@@ -57,10 +57,10 @@ Lifehacking.jp の記事「ブレインストーミングは死んだ！ ブレ�
     
     <item>
       <title>Mac の GTD アプリ、iGTD を試してみた</title>
-      <link>http://ishikawa.github.io/2007/08/10/igtd-first-impression/</link>
+      <link>https://metareal.blog/2007/08/10/igtd-first-impression/</link>
       <pubDate>Fri, 10 Aug 2007 05:29:00 +0900</pubDate>
       
-      <guid>http://ishikawa.github.io/2007/08/10/igtd-first-impression/</guid>
+      <guid>https://metareal.blog/2007/08/10/igtd-first-impression/</guid>
       <description>© Takanori Ishikawa, Some rights reserved
 これまで TODO 管理には Remember The Milk を愛用していた。
 ユーザーインターフェースはシンプルかつ高機能だし、タスクに期限を設定するとメールやメッセンジャーで通知してくれる。
