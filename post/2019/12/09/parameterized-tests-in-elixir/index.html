@@ -45,7 +45,7 @@
 <p>ユニットテストの現場では、一部のパラメータだけが異なるコピペが見過ごされがちで、コードを保守する立場にとってはテスト対象のコードよりも頭が痛い存在だ。こういうテストは異なるパラメータのパターンのみを記述して、他のコードは使いまわしたい。いわゆる Parameterized test というやつである。</p>
 <h2 id="既存の手法">既存の手法</h2>
 <p>Elixir の ExUnit は標準の Unit Testing ライブラリとして非常によく出来ているが、残念ながら Parameterized test の仕組みは用意されていない。</p>
-<p><a href="https://github.com/KazuCocoa/ex_parameterized">KazuCocoa/ex_parameterized</a> を試してみたこともあるのだが、記法が変則的（こうなる理由も分かる）なのと、<a href="https://github.com/KazuCocoa/ex_parameterized/issues">パラメータを評価する部分で動かないコードがある</a>ので採用を見送っている。</p>
+<p><a href="https://github.com/KazuCocoa/ex_parameterized">KazuCocoa/ex_parameterized</a> を試してみたこともあるのだが、記法が変則的（こうなる理由も分かる）なのと、<a href="https://github.com/KazuCocoa/ex_parameterized/issues/19">パラメータを評価する部分で動かないコードがある</a>ので採用を見送っている。</p>
 <h2 id="いま採用している手法">いま採用している手法</h2>
 <p>結局、いろいろ試した末、いまは<a href="https://gist.github.com/ishikawa/2ad8c415c2a5b6a619e99c18870d6392">このようなコード</a>に落ち着いている。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#75715e"># 1. The helper functions for the test module. To make it possible to import</span>

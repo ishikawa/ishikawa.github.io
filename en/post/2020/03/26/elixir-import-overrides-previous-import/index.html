@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="https://metareal.blog/css/application.min.4b1aba09e500238be64d7b9ff0b5f120307d5c4319aa4415abc43c78ca632f06.css">
   
   
-  <link rel="stylesheet" href="https://metareal.blog/css/application.en.min.9e475e4454b3d8b3f7f94d5cfe5183ed69176da3c4b5efb9ac15a9e52530020f.css">
+  <link rel="stylesheet" href="https://metareal.blog/css/application.en.min.d60e5da2ec36bb660c4d067f6640ac2b1dd2e9c8dd01ade9a7d0be3d6283b3fd.css">
   <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
@@ -61,7 +61,7 @@ iex(<span style="color:#ae81ff">3</span>)<span style="color:#f92672">&gt;</span>
 <span style="color:#a6e22e">List</span>
 iex(<span style="color:#ae81ff">4</span>)<span style="color:#f92672">&gt;</span> first([<span style="color:#ae81ff">1</span>])                     
 <span style="color:#f92672">**</span> (<span style="color:#a6e22e">CompileError</span>) iex:<span style="color:#ae81ff">4</span>: undefined function first<span style="color:#f92672">/</span><span style="color:#ae81ff">1</span>
-</code></pre></div><p>In the above exmaple, you can see <code>List.first/1</code> which was available at <code>iex(3)</code> is undefined after <code>import List, only: [flatten: 1]</code> at <code>iex(4)</code>.</p>
+</code></pre></div><p>In the above example, you can see <code>List.first/1</code> which was available at <code>iex(3)</code> is undefined after <code>import List, only: [flatten: 1]</code> at <code>iex(4)</code>.</p>
 <h2 id="postmortem">Postmortem</h2>
 <p>It&rsquo;s a real story in my company&rsquo;s production code. When I was writing a new Phoenix controller, I noticed that there were similar patterns in some controllers:</p>
 <ol>
@@ -69,7 +69,7 @@ iex(<span style="color:#ae81ff">4</span>)<span style="color:#f92672">&gt;</span>
 <li>Proceed with the requested action if the user exists in the DB.</li>
 <li>Otherwise, return an error response.</li>
 </ol>
-<p>I happend to feel like being a good programmer, I began to write a macro to reduce duplicate code.</p>
+<p>I happened to feel like being a good programmer, I began to write a macro to reduce duplicate code.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">defmodule <span style="color:#a6e22e">AuthUserAction</span> do
   defmacro __using__(_opts) do
     quote do
@@ -118,9 +118,9 @@ end
     (elixir 1.10.1) lib/kernel/parallel_compiler.ex:233: anonymous fn/4 in Kernel.ParallelCompiler.spawn_workers/7
 </code></pre><p>The reason why the compiler couldn&rsquo;t find the function <code>put_new_layout/2</code> was <code>import/2</code> behavior I already described. The line below:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">import <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
-</code></pre></div><p>This <code>import/2</code> overrided the function <code>put_new_layout/2</code> imported in <code>use Phoenix.Controller</code>.</p>
+</code></pre></div><p>This <code>import/2</code> overrode the function <code>put_new_layout/2</code> imported in <code>use Phoenix.Controller</code>.</p>
 <h3 id="how-to-solved-it">How to solved it?</h3>
-<p>Because <code>import/2</code> is lexical, so we mmoved it into the <code>action/2</code> function.</p>
+<p>Because <code>import/2</code> is lexical, so we moved it into the <code>action/2</code> function.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">defmodule <span style="color:#a6e22e">AuthUserAction</span> do
   defmacro __using__(_opts) do
     quote do
