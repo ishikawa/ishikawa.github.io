@@ -78,6 +78,21 @@
   </url>
   
   <url>
+    <loc>https://metareal.blog/en/post/2019/12/09/parameterized-tests-in-elixir/</loc>
+    <lastmod>2019-12-09T00:00:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://metareal.blog/post/2019/12/09/parameterized-tests-in-elixir/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://metareal.blog/en/post/2019/12/09/parameterized-tests-in-elixir/"
+                />
+  </url>
+  
+  <url>
     <loc>https://metareal.blog/en/post/2016/09/gzip-compression-in-cowboy/</loc>
     <lastmod>2016-09-25T14:47:00+09:00</lastmod>
     <xhtml:link

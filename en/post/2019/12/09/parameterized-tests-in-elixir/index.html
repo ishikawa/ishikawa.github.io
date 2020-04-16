@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <base href="https://metareal.blog">
-  <title>Elixir で Parameterized test</title>
+  <title>Parameterized tests in Elixir</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="https://metareal.blog/post/2019/12/09/parameterized-tests-in-elixir/">
+  <link rel="canonical" href="https://metareal.blog/en/post/2019/12/09/parameterized-tests-in-elixir/">
   
 	  
-	  <link rel="alternate" hreflang="en" href="https://metareal.blog/en/post/2019/12/09/parameterized-tests-in-elixir/" title="English">
+	  <link rel="alternate" hreflang="ja" href="https://metareal.blog/post/2019/12/09/parameterized-tests-in-elixir/" title="日本語">
 	  
   
   <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="https://metareal.blog/css/application.min.4b1aba09e500238be64d7b9ff0b5f120307d5c4319aa4415abc43c78ca632f06.css">
   
   
-  <link rel="stylesheet" href="https://metareal.blog/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="https://metareal.blog/css/application.en.min.d60e5da2ec36bb660c4d067f6640ac2b1dd2e9c8dd01ade9a7d0be3d6283b3fd.css">
   <link rel="stylesheet" href="css/highlight/solarized_light.css">
   <script src="js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
@@ -30,9 +30,9 @@
 
 
 	<nav class="languages">
-  他の言語で読む » 
+  Read this article in » 
 	
-		<a href="https://metareal.blog/en/post/2019/12/09/parameterized-tests-in-elixir/">English</a>
+		<a href="https://metareal.blog/post/2019/12/09/parameterized-tests-in-elixir/">日本語</a>
 	
 	</nav>
 
@@ -40,7 +40,7 @@
 
 
 <article>
-  <h1>Elixir で Parameterized test</h1>
+  <h1>Parameterized tests in Elixir</h1>
   <div class="metadata">
     <p class="date">
       2019/12/09 12:00am
@@ -52,17 +52,26 @@
     </ul>
   </div>
   <div class="content">
-    <p><em>この記事は以前に <a href="https://qiita.com/ishikawa@github/items/c211fc2a48a24b425dee">Qiita で公開した記事</a>です。</em></p>
-<p>ユニットテストの現場では、一部のパラメータだけが異なるコピペが見過ごされがちで、コードを保守する立場にとってはテスト対象のコードよりも頭が痛い存在だ。こういうテストは異なるパラメータのパターンのみを記述して、他のコードは使いまわしたい。いわゆる Parameterized test というやつである。</p>
-<h2 id="既存の手法">既存の手法</h2>
-<p>Elixir の ExUnit は標準の Unit Testing ライブラリとして非常によく出来ているが、残念ながら Parameterized test の仕組みは用意されていない。</p>
-<p><a href="https://github.com/KazuCocoa/ex_parameterized">KazuCocoa/ex_parameterized</a> を試してみたこともあるのだが、記法が変則的（こうなる理由も分かる）なのと、<a href="https://github.com/KazuCocoa/ex_parameterized/issues/19">パラメータを評価する部分で動かないコードがある</a>ので採用を見送っている。</p>
-<h2 id="いま採用している手法">いま採用している手法</h2>
-<p>結局、いろいろ試した末、いまは<a href="https://gist.github.com/ishikawa/2ad8c415c2a5b6a619e99c18870d6392">このようなコード</a>に落ち着いている。</p>
+    <p><strong>It&rsquo;s a note about my idiomatic way to write parameterized tests in Elixir.</strong></p>
+<p>These days, most developers know the <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY principle</a>, they heard it over and over again in their professional life. So they carefully craft and refactor their production code to make it follows the principle.</p>
+<p>Furthermore, if you are one of 21-century software developers, you may realize the value of <a href="https://en.wikipedia.org/wiki/Unit_testing">Unit testing</a> and it should be your daily life friend. In many cases, unit testing is lightweight and running tests don&rsquo;t take much time, but it can catch (<em>surprisingly many</em>) mistakes by developers. Regardless of whether you are a <a href="https://en.wikipedia.org/wiki/Test-driven_development">TDD</a> follower or not, many developers including I <strong>love it</strong>.</p>
+<p>For instance, my typical development workflow when implementing a new feature or fixing a bug is:</p>
+<ol>
+<li>Write tests satisfying feature specification or reproducing a bug.</li>
+<li>Write code until the tests pass.</li>
+<li>commit, push and submit a pull request.</li>
+</ol>
+<p>It&rsquo;s a very clear and safe way I think. +1 bonus, as a result, most of the code paths have a corresponding unit test, so we can safely refactor existing code. But in reality, <strong>we often forget to refactor tests itself</strong>. We&rsquo;re tempted to copy-and-paste a similar test that differs only in some parameters. We&rsquo;re satisfied too quickly just by refactoring production code other than tests.</p>
+<p>My experience says that <strong>duplication in tests is also a cause of trouble</strong>. It happens a lot that corresponding tests must be modified when you add a new feature to production code. If you have similar tests, you have to modify all of them. It&rsquo;s annoying. We should remove duplications from our tests by refactor out parameters. It&rsquo;s so-called <strong>Parameterized tests</strong> in many testing frameworks.</p>
+<h2 id="existing-solutions">Existing Solutions</h2>
+<p>Elixir&rsquo;s built-in <a href="https://hexdocs.pm/ex_unit/ExUnit.html">ExUnit</a> is a very good standard unit testing framework, but unfortunately it lacks parameterized testing.</p>
+<p>I&rsquo;ve tried <a href="https://github.com/KazuCocoa/ex_parameterized">KazuCocoa/ex_parameterized</a>, but I don&rsquo;t chose it because the syntax is a bit weird (I understand why) and some cases in parameters can&rsquo;t be evaluated.</p>
+<h2 id="my-preferred-approach">My preferred approach</h2>
+<p>Currently, I settled on the code like below after trying a few times:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#75715e"># 1. The helper functions for the test module. To make it possible to import</span>
 <span style="color:#75715e"># this helper module in the test module, define this module outside the context that uses it.</span>
 defmodule <span style="color:#a6e22e">MyTest.Helpers</span> do
-  <span style="color:#a6e22e">@spec</span> fake_params(<span style="color:#a6e22e">Enumrable</span><span style="color:#f92672">.</span>t()) <span style="color:#f92672">::</span> map
+  <span style="color:#a6e22e">@spec</span> fake_params(<span style="color:#a6e22e">Enumerable</span><span style="color:#f92672">.</span>t()) <span style="color:#f92672">::</span> map
   def fake_params(override \\ %{}) do
     %{
       <span style="color:#e6db74">country</span>: <span style="color:#e6db74">&#34;jp&#34;</span>,
@@ -104,13 +113,13 @@ defmodule <span style="color:#a6e22e">MyTest</span> do
     end
   end
 end
-</code></pre></div><p>なんでこうなってるかはコメントの通りで紆余曲折あるのだが、</p>
+</code></pre></div><p>As for why it&rsquo;s like the code above, there are twists and turns (as I wrote in the comment):</p>
 <ol>
-<li>ヘルパー関数を定義するモジュールはテストのモジュールの外側で定義する。なぜなら、そうしないと <code>import</code> できないから。もちろん、<code>import</code> しなくてもいいのだが、テストコードからノイズはできるだけ減らしたい</li>
-<li>そもそも、なんでヘルパー関数をプライベートな関数ではなく、わざわざ別のモジュールに定義しているか、というと、パラメータのパターンを生成するときに使いたいから。この時点ではテストのモジュールは定義されていない</li>
-<li>少々トリッキーなのは <code>test</code> を記述する部分。<code>test do ... end</code> の内部では、外部の変数が見えないことに注意</li>
+<li>The module that defines helper functions is defined outside the test module. Because otherwise, you can&rsquo;t <code>import</code> it. Of course, you can write the absolute path to reference it, but you may want to reduce the noise from the test code as much as possible.</li>
+<li>In the first place, the reason why we define helper functions in a separate module instead of private functions is because we want to use them to generate parameters. When you write parameters inside the test module, <strong>private functions are not defined yet</strong>.</li>
+<li>The part that is a little tricky is the part that describes test. Inside <code>test do ... end</code> block, you can&rsquo;t see any outer variables.</li>
 </ol>
-<p>すこし冗長な書き方にはなるが、はじめて見る人でも「ループで異なるパターンのテストを書いてる」感が伝わるのは重要だと思う。</p>
+<p>It&rsquo;s a bit redundant, but there are only well known constructs. I think it&rsquo;s important to anyone who learned Elixir but not be a familiar with the existing tests can easily understand what are happening in the tests.</p>
 
   </div>
 </article>
@@ -118,10 +127,10 @@ end
 <nav class="pagination">
   <ul>
     
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/post/2020/03/26/elixir-import-overrides-previous-import/">Elixir の import/2 は最後のものが優先される</a></li>
+    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/en/post/2020/03/26/elixir-import-overrides-previous-import/">Elixir import/2 overrides a previously declared import/2</a></li>
     
     
-    <li class="prev"><a href="https://metareal.blog/post/2016/09/gzip-compression-in-cowboy/">Phoenix (Cowboy) の Gzip 圧縮サポート</a><i class="fa fa-angle-right"></i></li>
+    <li class="prev"><a href="https://metareal.blog/en/post/2016/09/gzip-compression-in-cowboy/">Gzip compression in Phoenix framework</a><i class="fa fa-angle-right"></i></li>
     
   </ul>
 </nav>
@@ -132,7 +141,7 @@ end
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
     <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
   </ul>
-  <h2><a href="/ja">METAREAL</a></h2>
+  <h2><a href="/en">METAREAL</a></h2>
   <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
 </footer>
 

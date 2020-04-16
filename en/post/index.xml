@@ -23,6 +23,17 @@ iex(1)&amp;gt; import List List iex(2)&amp;gt; first([1]) 1 iex(3)&amp;gt; impor
     </item>
     
     <item>
+      <title>Parameterized tests in Elixir</title>
+      <link>https://metareal.blog/en/post/2019/12/09/parameterized-tests-in-elixir/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://metareal.blog/en/post/2019/12/09/parameterized-tests-in-elixir/</guid>
+      <description>It&amp;rsquo;s a note about my idiomatic way to write parameterized tests in Elixir.
+These days, most developers know the DRY principle, they heard it over and over again in their professional life. So they carefully craft and refactor their production code to make it follows the principle.
+Furthermore, if you are one of 21-century software developers, you may realize the value of Unit testing and it should be your daily life friend.</description>
+    </item>
+    
+    <item>
       <title>Gzip compression in Phoenix framework</title>
       <link>https://metareal.blog/en/post/2016/09/gzip-compression-in-cowboy/</link>
       <pubDate>Sun, 25 Sep 2016 14:47:00 +0900</pubDate>
