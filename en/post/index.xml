@@ -34,6 +34,17 @@ Furthermore, if you are one of 21-century software developers, you may realize t
     </item>
     
     <item>
+      <title>How to show progress bar while unzipping tons of files</title>
+      <link>https://metareal.blog/en/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://metareal.blog/en/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</guid>
+      <description>The original article is here.
+  In the machine learning field, there is plenty of public dataset for model training. Usually, such a dataset is provided as a zip archive file, so we can just download it, unarchive it with our good old friend unzip:
+$ unzip /home/data/large_dataset.zip But if you are working in Jupyter notebook, simple unzip command might hurt your screen with too much output and you’ll soon notice the performance of frontend UI is decreasing as the output increasing.</description>
+    </item>
+    
+    <item>
       <title>Gzip compression in Phoenix framework</title>
       <link>https://metareal.blog/en/post/2016/09/gzip-compression-in-cowboy/</link>
       <pubDate>Sun, 25 Sep 2016 14:47:00 +0900</pubDate>

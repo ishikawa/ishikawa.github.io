@@ -93,6 +93,36 @@
   </url>
   
   <url>
+    <loc>https://metareal.blog/tags/jupyter/</loc>
+    <lastmod>2019-04-14T00:00:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://metareal.blog/en/tags/jupyter/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://metareal.blog/tags/jupyter/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://metareal.blog/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</loc>
+    <lastmod>2019-04-14T00:00:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://metareal.blog/en/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://metareal.blog/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/"
+                />
+  </url>
+  
+  <url>
     <loc>https://metareal.blog/post/2016/09/gzip-compression-in-cowboy/</loc>
     <lastmod>2016-09-25T14:47:00+09:00</lastmod>
     <xhtml:link

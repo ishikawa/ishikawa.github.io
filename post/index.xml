@@ -40,6 +40,19 @@ KazuCocoa/ex_parameterized を試してみたこともあるのだが、記法�
     </item>
     
     <item>
+      <title>Jupyter で unzip の進捗状況を表示</title>
+      <link>https://metareal.blog/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</guid>
+      <description>この記事は以前、Qiita に投稿したものです。
+  公開データセットとか、やたらとファイル数が多い zip ファイルをノートブックで unzip すると、出力が多すぎて UI のパフォーマンスが急激に劣化する。
+!unzip /home/data/large_dataset.zip -d /home/data/ Archive: /home/data/large_dataset.zip inflating: /home/data/large_dataset/1/1900_753325_0060.png inflating: /home/data/large_dataset/1/1900_754949_0023.png inflating: /home/data/large_dataset/1/1900_758495_0075.png inflating: /home/data/large_dataset/1/1900_761460_0029.png inflating: /home/data/large_dataset/1/1900_766994_0030.png inflating: /home/data/large_dataset/1/1900_776319_0015.png ... (More 80K lines) かといって、/dev/null にリダイレクトしたり、-q オプションを指定して出力そのものをなくしてしまうと、本当に解凍処理が進んでいるのか分からなくて不安になる。
+!unzip /home/data/large_dataset.zip -d /home/data/ &amp;gt; /dev/null !unzip -q /home/data/large_dataset.zip -d /home/data/ それ、pv コマンドで出来るよ ググってみると pv コマンドで出来る、とのことだったが、全体のファイル数を指定してちゃんとプログレス・バーが機能するようにしている例が見当たらなかったので、この記事を書いた。
+n_files = !unzip -l /home/data/large_dataset.zip | grep .png | wc -l !unzip -o /home/data/large_dataset.zip -d /home/data/ | pv -l -s {n_files[0]} &amp;gt; /dev/null  まず、unzip -l で全体のファイル数を取得する。unzip -l が報告する内容にはディレクトリも含まれているので、grep でフィルタが必要だ。残念ながら 次に再度 unzip コマンドを実行して、今度は実際に解凍処理を実行する。処理したファイル名が出力されるので、これを pv コマンドにつなぎ、-s (size) オプションでファイル数を指定する  これで、こんな感じのプログレス・バーが表示されるようになる。</description>
+    </item>
+    
+    <item>
       <title>Phoenix (Cowboy) の Gzip 圧縮サポート</title>
       <link>https://metareal.blog/post/2016/09/gzip-compression-in-cowboy/</link>
       <pubDate>Sun, 25 Sep 2016 14:47:00 +0900</pubDate>

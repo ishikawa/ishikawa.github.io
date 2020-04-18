@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jupyter on METAREAL</title>
+    <link>https://metareal.blog/en/tags/jupyter/</link>
+    <description>Recent content in jupyter on METAREAL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
+    <lastBuildDate>Sun, 14 Apr 2019 00:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://metareal.blog/en/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to show progress bar while unzipping tons of files</title>
+      <link>https://metareal.blog/en/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://metareal.blog/en/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</guid>
+      <description>The original article is here.
+  In the machine learning field, there is plenty of public dataset for model training. Usually, such a dataset is provided as a zip archive file, so we can just download it, unarchive it with our good old friend unzip:
+$ unzip /home/data/large_dataset.zip But if you are working in Jupyter notebook, simple unzip command might hurt your screen with too much output and you’ll soon notice the performance of frontend UI is decreasing as the output increasing.</description>
+    </item>
+    
+  </channel>
+</rss>
