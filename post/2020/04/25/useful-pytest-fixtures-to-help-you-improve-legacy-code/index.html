@@ -1,0 +1,234 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <title>レガシコードの改善に役立つ pytest の便利なフィクスチャ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://metareal.blog/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/">
+  
+	  
+	  <link rel="alternate" hreflang="en" href="https://metareal.blog/en/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/" title="English">
+	  
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/main.css">
+
+  
+  <link rel="stylesheet" href="https://metareal.blog/css/application.min.056dc003036eeb885f8c40348a02ac0502b9377900fd40a17df2a0d04510fb5c.css">
+  
+  
+  <link rel="stylesheet" href="https://metareal.blog/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="/css/highlight/solarized_light.css">
+  <script src="/js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+	<nav class="languages">
+		<a href="/">Home</a><span class="separator"> | </span>
+  他の言語で読む » 
+	
+		<a href="https://metareal.blog/en/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/">English</a>
+	
+	</nav>
+
+
+
+
+<article>
+  <h1>レガシコードの改善に役立つ pytest の便利なフィクスチャ</h1>
+  <div class="metadata">
+    <p class="date">
+      2020/04/25 7:47pm
+    </p>
+    <ul class="tags">
+      
+      <li>python</li>
+      
+      <li>test</li>
+      
+    </ul>
+  </div>
+  <div class="content">
+    <p>最近、業務でレガシーコード（要するにテストが一切ないコード<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>）の改善を担当する機会があった。だいたいのステップとして以下のような改善を行なった。</p>
+<ol>
+<li>パッケージ管理として <a href="https://python-poetry.org/">Poetry</a> の導入</li>
+<li><a href="https://docs.pytest.org/en/latest/">pytest</a> によるテストの追加</li>
+<li>CI によるテストの自動化</li>
+<li>必要なコードの改修とリファクタリング</li>
+</ol>
+<p>特に、2 のステップでは <a href="https://docs.pytest.org/en/latest/fixture.html">pytest のフィクスチャ機能</a>が非常に便利で、ダミーデータの生成から外部リソースアクセスのモックまで幅広く利用させてもらった。たとえば、Web API アクセスのモックには <a href="https://requests-mock.readthedocs.io/en/latest/">requests-mock</a> を利用したのだが、</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pytest
+<span style="color:#f92672">import</span> requests_mock <span style="color:#f92672">as</span> requests_mock_module
+
+<span style="color:#a6e22e">@pytest.fixture</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">requests_mock</span>():
+    <span style="color:#66d9ef">with</span> requests_mock_module<span style="color:#f92672">.</span>Mocker() <span style="color:#66d9ef">as</span> m:
+        <span style="color:#66d9ef">yield</span> m
+
+<span style="color:#a6e22e">@pytest.fixture</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_api_response</span>():
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">response</span>(user_id):
+      <span style="color:#66d9ef">return</span> {
+          <span style="color:#e6db74">&#34;id&#34;</span>: user_id,
+          <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;dummy&#34;</span>,
+          <span style="color:#e6db74">&#34;updated_at&#34;</span>: fake_iso8601(),
+          <span style="color:#e6db74">&#34;created_at&#34;</span>: fake_iso8601()
+      }
+    <span style="color:#66d9ef">return</span> response
+</code></pre></div><p>このような Python コードを <code>conftest.py</code> として保存しておけば、任意のユニットテストで以下のように Web API アクセスをモックできる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_web_api</span>(requests_mock, user_api_response):
+    <span style="color:#75715e"># Web API アクセスのモック</span>
+    requests_mock<span style="color:#f92672">.</span>get(
+        f<span style="color:#e6db74">&#39;https://api.example.com/users/{user_id}&#39;</span>,
+        json<span style="color:#f92672">=</span>user_api_response(user_id))
+    
+    <span style="color:#75715e"># テスト対象の関数を呼び出す</span>
+    get_user()
+</code></pre></div><p>また、pytest ではユーザー独自のフィクスチャを定義できるだけでなく、組み込みのフィクスチャも提供されている、ということをはじめて知った。いままで、あまり真面目にドキュメントを読んでいなかったので&hellip;。</p>
+<p>この記事では、その中でも利用頻度の高かったふたつの組み込みフィクスチャについて紹介したい。</p>
+<h2 id="monkeypatch">monkeypatch</h2>
+<p>まずは <a href="https://docs.pytest.org/en/latest/reference.html#std:fixture-monkeypatch">monkeypatch</a> だ。名前のとおり、メソッドや属性を差し替えることができるフィクスチャを提供する。</p>
+<p>今回のプロジェクトでは、テスト対象のモジュールが多くの環境変数に依存していたり、<code>subprocess.run()</code> や <code>os.system()</code> で外部コマンドを実行していたので、このフィクスチャが非常に役立った。</p>
+<p>たとえば、環境変数を差し替えるためには <a href="https://docs.python.org/3.8/library/unittest.mock.html#patch-dict"><code>unittest.mock</code></a> だと以下のようになる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> unittest.mock <span style="color:#f92672">import</span> patch
+
+<span style="color:#a6e22e">@patch.dict</span>(<span style="color:#e6db74">&#39;os.environ&#39;</span>, {<span style="color:#e6db74">&#39;FOO&#39;</span>: <span style="color:#e6db74">&#39;value&#39;</span>})
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_sample</span>():
+  <span style="color:#f92672">...</span>
+</code></pre></div><p>個人的に <code>unittest.mock</code> は複雑であまり好きではないということもあるが、<code>monkeypatch.setenv()</code> の方が分かりやすいと感じる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_sample</span>(monkeypatch):
+  monkeypatch<span style="color:#f92672">.</span>setenv(<span style="color:#e6db74">&#39;FOO&#39;</span>, <span style="color:#e6db74">&#39;value&#39;</span>)
+  <span style="color:#f92672">...</span>
+</code></pre></div><p>更に、<code>subprocess.run()</code> による外部コマンド実行を、一部コマンド以外を除いてモックするのも簡単だった。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> subprocess
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_sample</span>(monkeypatch, subprocess_completion_process_factory):
+    <span style="color:#75715e"># Mock: subprocess.run</span>
+    subprocess_run <span style="color:#f92672">=</span> subprocess<span style="color:#f92672">.</span>run
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mock_subprocess_run</span>(command):
+        <span style="color:#75715e"># pass through invocation of some commands to the original function.</span>
+        <span style="color:#66d9ef">if</span> command[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">in</span> [<span style="color:#e6db74">&#39;gunzip&#39;</span>, <span style="color:#e6db74">&#39;unzip&#39;</span>]:
+            <span style="color:#66d9ef">return</span> subprocess_run(command)
+
+        <span style="color:#66d9ef">return</span> subprocess_completion_process_factory(returncode<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+
+    monkeypatch<span style="color:#f92672">.</span>setattr(subprocess, <span style="color:#e6db74">&#39;run&#39;</span>, mock_subprocess_run)
+</code></pre></div><p><code>subprocess_completion_process_factory</code> はユーザー定義のフィクスチャで、<a href="https://docs.python.org/3.8/library/subprocess.html#subprocess.CompletedProcess"><code>subprocess.CompletedProcess</code></a> がもつプロパティのうち、必要なものだけを実装した <a href="https://docs.python.org/3.8/library/collections.html#collections.namedtuple"><code>namedtuple</code></a> を返す。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> namedtuple
+
+FakeCompletionProcess <span style="color:#f92672">=</span> namedtuple(<span style="color:#e6db74">&#39;FakeCompletionProcess&#39;</span>, [<span style="color:#e6db74">&#39;returncode&#39;</span>])
+
+<span style="color:#a6e22e">@pytest.fixture</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">subprocess_completion_process_factory</span>():
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">factory</span>(returncode):
+        <span style="color:#66d9ef">return</span> FakeCompletionProcess(returncode<span style="color:#f92672">=</span>returncode)
+
+    <span style="color:#66d9ef">return</span> factory
+</code></pre></div><p>もちろん、この「特定のコマンド以外をモックする」フィクスチャを独自に定義することも可能だ。<strong>pytest のフィクスチャは他のフィクスチャを引数で受け取れる</strong>ので、「引数で与えられたコマンドの配列にマッチしたコマンド以外をモックする関数を返す」フィクスチャは以下のように書けるだろう。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> subprocess
+<span style="color:#f92672">import</span> pytest
+<span style="color:#f92672">import</span> re
+
+<span style="color:#a6e22e">@pytest.fixture</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">monkeypatch_subprocess_run</span>(monkeypatch, subprocess_completion_process_factory):
+    subprocess_run <span style="color:#f92672">=</span> subprocess<span style="color:#f92672">.</span>run
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">patch</span>(allowed_commands):
+        <span style="color:#66d9ef">if</span> command[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">in</span> allowed_commands:
+            <span style="color:#66d9ef">return</span> subprocess_run(command)
+
+        <span style="color:#66d9ef">return</span> subprocess_completion_process_factory(returncode<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">return</span> patch
+
+<span style="color:#f92672">...</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_sample</span>(monkeypatch_subprocess_run):
+    monkeypatch_subprocess_run([<span style="color:#e6db74">&#39;gunzip&#39;</span>, <span style="color:#e6db74">&#39;unzip&#39;</span>])
+    <span style="color:#f92672">...</span>
+</code></pre></div><h2 id="tmpdir">tmpdir</h2>
+<p>対象のモジュールは、他のスクリプトがファイルシステム上に出力したファイルにも依存していたので、テストをするためには適切なパスにダミーのファイルを配置してやる必要があった。もちろん、これらのファイルはテスト終了後には残しておきたくないので、テンポラリなディレクトリで作業したいところだ。</p>
+<p>もちろん、Python 組み込みの <a href="https://docs.python.org/3.8/library/tempfile.html#module-tempfile"><code>tempfile</code></a> モジュールでも実現できるのだが、ここでも pytest の <a href="https://docs.pytest.org/en/latest/reference.html#std:fixture-tmpdir"><code>tmpdir</code></a> フィクスチャが使いやすい。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_sample</span>(tmpdir):
+    <span style="color:#66d9ef">with</span> tmpdir<span style="color:#f92672">.</span>mkdir(<span style="color:#e6db74">&#39;work&#39;</span>)<span style="color:#f92672">.</span>as_cwd():
+        <span style="color:#f92672">...</span>
+</code></pre></div><p><code>tmpdir</code> は <a href="https://py.readthedocs.io/en/latest/path.html"><code>py.path.local</code></a> オブジェクトを返すので、上記のように直感的な書き方で、</p>
+<ol>
+<li>テンポラリなディレクトリを作成</li>
+<li>そこに <code>work</code> というディレクトリを作成</li>
+<li>作業ディレクトリを <code>work</code> に変更</li>
+</ol>
+<p>することができる。</p>
+<h2 id="最後に">最後に</h2>
+<p>この他にも pytest には<a href="https://docs.pytest.org/en/latest/fixture.html#using-marks-with-parametrized-fixtures">テストをパラメータ化する機能</a>もあり、それもフィクスチャの仕組みに乗っかっているので、別に Parameterized testing のライブラリを採用するよりも使い勝手がよい。テスト関数の引数にフィクスチャがパラメーター・インジェクションされるスタイルには若干の慣れが必要かもしれないが、一度慣れてしまえばコードの改善に役立つ心強い味方になる。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>参考「<a href="https://www.shoeisha.co.jp/book/detail/9784798116839">レガシーコード改善ガイド</a>」 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    
+    <li class="prev"><a href="https://metareal.blog/post/2020/03/26/elixir-import-overrides-previous-import/">Elixir の import/2 は最後のものが優先される</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
+    <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
+  </ul>
+  <h2><a href="/ja">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  var all = MathJax.Hub.getAllJax(), i;
+  for(i = 0; i &lt; all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+</html>

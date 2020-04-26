@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Thu, 26 Mar 2020 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 25 Apr 2020 19:47:00 +0900</lastBuildDate>
     
 	<atom:link href="https://metareal.blog/en/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Useful pytest fixtures to help you improve legacy code</title>
+      <link>https://metareal.blog/en/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/</link>
+      <pubDate>Sat, 25 Apr 2020 19:47:00 +0900</pubDate>
+      
+      <guid>https://metareal.blog/en/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/</guid>
+      <description>Recently, I had the opportunity to work on improving legacy code &amp;ndash; in short, code that has no testing at all1. The following improvements were made by me as rough steps.
+ Adding Poetry as package manager. Adding tests with pytest. Running tests automatically on CI. Necessary code modifications and refactoring.  In particular, in step 2, the fixture feature of pytest was very useful, and I used it extensively, from generating dummy data to mocking external resource access.</description>
+    </item>
     
     <item>
       <title>Elixir import/2 overrides a previously declared import/2</title>

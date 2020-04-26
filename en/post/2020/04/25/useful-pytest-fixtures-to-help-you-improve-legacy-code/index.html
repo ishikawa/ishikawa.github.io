@@ -1,0 +1,233 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <title>Useful pytest fixtures to help you improve legacy code</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://metareal.blog/en/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/">
+  
+	  
+	  <link rel="alternate" hreflang="ja" href="https://metareal.blog/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/" title="日本語">
+	  
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/main.css">
+
+  
+  <link rel="stylesheet" href="https://metareal.blog/css/application.min.056dc003036eeb885f8c40348a02ac0502b9377900fd40a17df2a0d04510fb5c.css">
+  
+  
+  <link rel="stylesheet" href="https://metareal.blog/css/application.en.min.21ab326a83267ebe98d87e8ecdf4aa6172f08deba822eb68ef6d3d61cf79746b.css">
+  <link rel="stylesheet" href="/css/highlight/solarized_light.css">
+  <script src="/js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+	<nav class="languages">
+		<a href="/">Home</a><span class="separator"> | </span>
+  Read this article in » 
+	
+		<a href="https://metareal.blog/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/">日本語</a>
+	
+	</nav>
+
+
+
+
+<article>
+  <h1>Useful pytest fixtures to help you improve legacy code</h1>
+  <div class="metadata">
+    <p class="date">
+      2020/04/25 7:47pm
+    </p>
+    <ul class="tags">
+      
+      <li>python</li>
+      
+      <li>test</li>
+      
+    </ul>
+  </div>
+  <div class="content">
+    <p>Recently, I had the opportunity to work on improving legacy code &ndash; <em>in short, code that has no testing at all</em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. The following improvements were made by me as rough steps.</p>
+<ol>
+<li>Adding <a href="https://python-poetry.org/">Poetry</a> as package manager.</li>
+<li>Adding tests with <a href="https://docs.pytest.org/en/latest/">pytest</a>.</li>
+<li>Running tests automatically on CI.</li>
+<li>Necessary code modifications and refactoring.</li>
+</ol>
+<p>In particular, in step 2, <a href="https://docs.pytest.org/en/latest/fixture.html">the fixture feature of pytest</a> was very useful, and I used it extensively, from generating dummy data to mocking external resource access. For example, I often use <a href="https://requests-mock.readthedocs.io/en/latest/">requests-mock</a> to mock the Web API. To use it as a pytest fixture is easy:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pytest
+<span style="color:#f92672">import</span> requests_mock <span style="color:#f92672">as</span> requests_mock_module
+
+<span style="color:#a6e22e">@pytest.fixture</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">requests_mock</span>():
+    <span style="color:#66d9ef">with</span> requests_mock_module<span style="color:#f92672">.</span>Mocker() <span style="color:#66d9ef">as</span> m:
+        <span style="color:#66d9ef">yield</span> m
+
+<span style="color:#a6e22e">@pytest.fixture</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_api_response</span>():
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">response</span>(user_id):
+      <span style="color:#66d9ef">return</span> {
+          <span style="color:#e6db74">&#34;id&#34;</span>: user_id,
+          <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;dummy&#34;</span>,
+          <span style="color:#e6db74">&#34;updated_at&#34;</span>: fake_iso8601(),
+          <span style="color:#e6db74">&#34;created_at&#34;</span>: fake_iso8601()
+      }
+    <span style="color:#66d9ef">return</span> response
+</code></pre></div><p>if you save the above Python code as <code>conftest.py</code>, you can mock Web API accesses in any unit test as shown below:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_web_api</span>(requests_mock, user_api_response):
+    <span style="color:#75715e"># Mocking access to Web API</span>
+    requests_mock<span style="color:#f92672">.</span>get(
+        f<span style="color:#e6db74">&#39;https://api.example.com/users/{user_id}&#39;</span>,
+        json<span style="color:#f92672">=</span>user_api_response(user_id))
+    
+    <span style="color:#75715e"># Invoke test target function</span>
+    get_user()
+</code></pre></div><p>I also learned for the first time that pytest not only allows users to define their own fixtures, but also provides built-in fixtures. You know that I hadn&rsquo;t read the document very seriously until now.</p>
+<p>In this article, I&rsquo;d like to show you <strong>two of the most frequently used built-in fixtures</strong>.</p>
+<h2 id="monkeypatch">monkeypatch</h2>
+<p>First up is <a href="https://docs.pytest.org/en/latest/reference.html#std:fixture-monkeypatch">monkeypatch</a>. As its name implies, it provides a fixture where methods and attributes can be replaced.</p>
+<p>In this project, this fixture was very useful because the target module depends on many environment variables and executes external commands with <code>subprocess.run()</code> and <code>os.system()</code>.</p>
+<p>For example, if you want to replace environment variables with <a href="https://docs.python.org/3.8/library/unittest.mock.html#patch-dict"><code>unittest.mock</code></a>, you have to do the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> unittest.mock <span style="color:#f92672">import</span> patch
+
+<span style="color:#a6e22e">@patch.dict</span>(<span style="color:#e6db74">&#39;os.environ&#39;</span>, {<span style="color:#e6db74">&#39;FOO&#39;</span>: <span style="color:#e6db74">&#39;value&#39;</span>})
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_sample</span>():
+  <span style="color:#f92672">...</span>
+</code></pre></div><p>Maybe it&rsquo;s partly because I personally don&rsquo;t like <code>unittest.mock</code> very much because of its complexity, I feel that <code>monkeypatch.setenv()</code> is easier to understand.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_sample</span>(monkeypatch):
+  monkeypatch<span style="color:#f92672">.</span>setenv(<span style="color:#e6db74">&#39;FOO&#39;</span>, <span style="color:#e6db74">&#39;value&#39;</span>)
+  <span style="color:#f92672">...</span>
+</code></pre></div><p>Furthermore, it was easy to mock executing commands with <code>subprocess.run()</code> except for specific commands.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> subprocess
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_sample</span>(monkeypatch, subprocess_completion_process_factory):
+    <span style="color:#75715e"># Mock: subprocess.run</span>
+    subprocess_run <span style="color:#f92672">=</span> subprocess<span style="color:#f92672">.</span>run
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mock_subprocess_run</span>(command):
+        <span style="color:#75715e"># pass through invocation of some commands to the original function.</span>
+        <span style="color:#66d9ef">if</span> command[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">in</span> [<span style="color:#e6db74">&#39;gunzip&#39;</span>, <span style="color:#e6db74">&#39;unzip&#39;</span>]:
+            <span style="color:#66d9ef">return</span> subprocess_run(command)
+
+        <span style="color:#66d9ef">return</span> subprocess_completion_process_factory(returncode<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+
+    monkeypatch<span style="color:#f92672">.</span>setattr(subprocess, <span style="color:#e6db74">&#39;run&#39;</span>, mock_subprocess_run)
+</code></pre></div><p>The parameter <code>subprocess_completion_process_factory</code> is a user-defined fixture that returns a <a href="https://docs.python.org/3.8/library/collections.html#collections.namedtuple"><code>namedtuple</code></a> that implements only the necessary properties from the <a href="https://docs.python.org/3.8/library/subprocess.html#subprocess.CompletedProcess"><code>subprocess.CompletedProcess</code></a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> namedtuple
+
+FakeCompletionProcess <span style="color:#f92672">=</span> namedtuple(<span style="color:#e6db74">&#39;FakeCompletionProcess&#39;</span>, [<span style="color:#e6db74">&#39;returncode&#39;</span>])
+
+<span style="color:#a6e22e">@pytest.fixture</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">subprocess_completion_process_factory</span>():
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">factory</span>(returncode):
+        <span style="color:#66d9ef">return</span> FakeCompletionProcess(returncode<span style="color:#f92672">=</span>returncode)
+
+    <span style="color:#66d9ef">return</span> factory
+</code></pre></div><p>Of course, you can also define your own fixture to mock other commands. <strong>Pytest fixture can take other fixtures as arguments</strong>, so you can write a fixture that returns a function to mock other commands than the one that matches the array of commands given as arguments, like the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> subprocess
+<span style="color:#f92672">import</span> pytest
+<span style="color:#f92672">import</span> re
+
+<span style="color:#a6e22e">@pytest.fixture</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">monkeypatch_subprocess_run</span>(monkeypatch, subprocess_completion_process_factory):
+    subprocess_run <span style="color:#f92672">=</span> subprocess<span style="color:#f92672">.</span>run
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">patch</span>(allowed_commands):
+        <span style="color:#66d9ef">if</span> command[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">in</span> allowed_commands:
+            <span style="color:#66d9ef">return</span> subprocess_run(command)
+
+        <span style="color:#66d9ef">return</span> subprocess_completion_process_factory(returncode<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">return</span> patch
+
+<span style="color:#f92672">...</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_sample</span>(monkeypatch_subprocess_run):
+    monkeypatch_subprocess_run([<span style="color:#e6db74">&#39;gunzip&#39;</span>, <span style="color:#e6db74">&#39;unzip&#39;</span>])
+    <span style="color:#f92672">...</span>
+</code></pre></div><h2 id="tmpdir">tmpdir</h2>
+<p>The module in question also depended on the files that other scripts put out on the filesystem, so we had to put a dummy file in the appropriate path to test it. Of course, you don&rsquo;t want to leave these files after the test, so you want to work in a temporary directory.</p>
+<p>Of course, you can do this with the built-in Python <a href="https://docs.python.org/3.8/library/tempfile.html#module-tempfile"><code>tempfile</code></a> module, but even here, <a href="https://docs.pytest.org/en/latest/reference.html#std:fixture-tmpdir"><code>tmpdir</code></a> fixture is easy to use.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_sample</span>(tmpdir):
+    <span style="color:#66d9ef">with</span> tmpdir<span style="color:#f92672">.</span>mkdir(<span style="color:#e6db74">&#39;work&#39;</span>)<span style="color:#f92672">.</span>as_cwd():
+        <span style="color:#f92672">...</span>
+</code></pre></div><p>Since <code>tmpdir</code> returns a <a href="https://py.readthedocs.io/en/latest/path.html"><code>py.path.local</code></a> object, we can write the following in an intuitive way as described above.</p>
+<ol>
+<li>Create a temporary directory</li>
+<li>Create a directory called work in it</li>
+<li>Change the working directory to work</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>In addition to this, pytest also provides <a href="https://docs.pytest.org/en/latest/fixture.html#using-marks-with-parametrized-fixtures">parameterize tests</a>, and since it is on the fixture mechanism, it is easier to use than adopting a separate library for Parameterized testing. It may take some getting used to the style where fixtures are parameter injected into test function arguments, but once you get used to it, it&rsquo;s a reassuring way to improve your code.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Reference: <a href="https://www.amazon.com/dp/B005OYHF0A">Working Effectively With Legacy Code</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    
+    <li class="prev"><a href="https://metareal.blog/en/post/2020/03/26/elixir-import-overrides-previous-import/">Elixir import/2 overrides a previously declared import/2</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
+    <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
+  </ul>
+  <h2><a href="/en">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  var all = MathJax.Hub.getAllJax(), i;
+  for(i = 0; i &lt; all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+</html>

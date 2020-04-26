@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Thu, 26 Mar 2020 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 25 Apr 2020 19:47:00 +0900</lastBuildDate>
     
 	<atom:link href="https://metareal.blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>python</title>
+      <link>https://metareal.blog/tags/python/</link>
+      <pubDate>Sat, 25 Apr 2020 19:47:00 +0900</pubDate>
+      
+      <guid>https://metareal.blog/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>test</title>
+      <link>https://metareal.blog/tags/test/</link>
+      <pubDate>Sat, 25 Apr 2020 19:47:00 +0900</pubDate>
+      
+      <guid>https://metareal.blog/tags/test/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>elixir</title>
@@ -153,15 +171,6 @@
       <pubDate>Tue, 23 Feb 2010 23:26:00 +0900</pubDate>
       
       <guid>https://metareal.blog/tags/google/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://metareal.blog/tags/python/</link>
-      <pubDate>Sun, 31 Jan 2010 18:26:00 +0900</pubDate>
-      
-      <guid>https://metareal.blog/tags/python/</guid>
       <description></description>
     </item>
     

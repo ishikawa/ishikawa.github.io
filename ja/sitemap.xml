@@ -3,6 +3,96 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://metareal.blog/</loc>
+    <lastmod>2020-04-25T19:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://metareal.blog/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://metareal.blog/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://metareal.blog/post/</loc>
+    <lastmod>2020-04-25T19:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://metareal.blog/en/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://metareal.blog/post/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://metareal.blog/tags/python/</loc>
+    <lastmod>2020-04-25T19:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://metareal.blog/en/tags/python/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://metareal.blog/tags/python/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://metareal.blog/tags/</loc>
+    <lastmod>2020-04-25T19:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://metareal.blog/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://metareal.blog/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://metareal.blog/tags/test/</loc>
+    <lastmod>2020-04-25T19:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://metareal.blog/en/tags/test/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://metareal.blog/tags/test/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://metareal.blog/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/</loc>
+    <lastmod>2020-04-25T19:47:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://metareal.blog/en/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://metareal.blog/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/"
+                />
+  </url>
+  
+  <url>
     <loc>https://metareal.blog/tags/elixir/</loc>
     <lastmod>2020-03-26T00:00:00+09:00</lastmod>
     <xhtml:link
@@ -29,51 +119,6 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://metareal.blog/post/2020/03/26/elixir-import-overrides-previous-import/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://metareal.blog/</loc>
-    <lastmod>2020-03-26T00:00:00+09:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://metareal.blog/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://metareal.blog/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://metareal.blog/post/</loc>
-    <lastmod>2020-03-26T00:00:00+09:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://metareal.blog/en/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://metareal.blog/post/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://metareal.blog/tags/</loc>
-    <lastmod>2020-03-26T00:00:00+09:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://metareal.blog/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://metareal.blog/tags/"
                 />
   </url>
   
@@ -320,11 +365,6 @@
   <url>
     <loc>https://metareal.blog/2010/02/23/google-bookmark-makes-me-feel-so-good/</loc>
     <lastmod>2010-02-23T23:26:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://metareal.blog/tags/python/</loc>
-    <lastmod>2010-01-31T18:26:00+09:00</lastmod>
   </url>
   
   <url>

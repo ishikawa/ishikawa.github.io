@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Thu, 26 Mar 2020 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 25 Apr 2020 19:47:00 +0900</lastBuildDate>
     
 	<atom:link href="https://metareal.blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>レガシコードの改善に役立つ pytest の便利なフィクスチャ</title>
+      <link>https://metareal.blog/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/</link>
+      <pubDate>Sat, 25 Apr 2020 19:47:00 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/</guid>
+      <description>最近、業務でレガシーコード（要するにテストが一切ないコード1）の改善を担当する機会があった。だいたいのステップとして以下のような改善を行なった。
+ パッケージ管理として Poetry の導入 pytest によるテストの追加 CI によるテストの自動化 必要なコードの改修とリファクタリング  特に、2 のステップでは pytest のフィクスチャ機能が非常に便利で、ダミーデータの生成から外部リソースアクセスのモックまで幅広く利用させてもらった。たとえば、Web API アクセスのモックには requests-mock を利用したのだが、
+import pytest import requests_mock as requests_mock_module @pytest.fixture def requests_mock(): with requests_mock_module.Mocker() as m: yield m @pytest.fixture def user_api_response(): def response(user_id): return { &amp;#34;id&amp;#34;: user_id, &amp;#34;name&amp;#34;: &amp;#34;dummy&amp;#34;, &amp;#34;updated_at&amp;#34;: fake_iso8601(), &amp;#34;created_at&amp;#34;: fake_iso8601() } return response このような Python コードを conftest.py として保存しておけば、任意のユニットテストで以下のように Web API アクセスをモックできる。
+def test_web_api(requests_mock, user_api_response): # Web API アクセスのモック requests_mock.get( f&amp;#39;https://api.example.com/users/{user_id}&amp;#39;, json=user_api_response(user_id)) # テスト対象の関数を呼び出す get_user() また、pytest ではユーザー独自のフィクスチャを定義できるだけでなく、組み込みのフィクスチャも提供されている、ということをはじめて知った。いままで、あまり真面目にドキュメントを読んでいなかったので&amp;hellip;。</description>
+    </item>
     
     <item>
       <title>Elixir の import/2 は最後のものが優先される</title>
