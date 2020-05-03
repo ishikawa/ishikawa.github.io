@@ -7,10 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sat, 25 Apr 2020 19:47:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2020 20:11:54 +0900</lastBuildDate>
     
 	<atom:link href="https://metareal.blog/tags/test/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>requests-mock で multipart/form-data をテストする</title>
+      <link>https://metareal.blog/post/2020/05/03/validating-multipart-form-data-with-requests-mock/</link>
+      <pubDate>Sun, 03 May 2020 20:11:54 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2020/05/03/validating-multipart-form-data-with-requests-mock/</guid>
+      <description>Python の requests-mock でテストを書いているとき、multipart/form-data 形式のリクエストをテストしたくなるときがある。
+multipart/form-data multipart/form-data 形式のリクエストは requests で以下のようにして送ることができる。
+url = &amp;#39;http://httpbin.org/post&amp;#39; files = {&amp;#39;file&amp;#39;: (&amp;#39;settings.json&amp;#39;, open(&amp;#39;settings.json&amp;#39;, &amp;#39;rb&amp;#39;), &amp;#39;application/json&amp;#39;)} r = requests.post(url, files=files) このとき、期待するリクエストが送られていることをテストするために、requests-mock の Request History で上記のリクエストの body を調べてみる。
+history = requests_mock.request_history print(history[0].body) 送られているのは、以下のような MIME データ・ストリームだ（読みやすいように適宜改行を入れてある）。
+--c93780ea776047cd945c189bad1d081c Content-Disposition: form-data; name=&amp;quot;settings&amp;quot;; filename=&amp;quot;settings.json&amp;quot; Content-Type: application/json {&amp;quot;foo&amp;quot;: 1, &amp;quot;bar&amp;quot;: 2} --c93780ea776047cd945c189bad1d081c Content-Disposition: form-data; name=&amp;quot;archive&amp;quot;; filename=&amp;quot;archive.zip&amp;quot; Content-Type: application/zip ... --c93780ea776047cd945c189bad1d081c-- なんとなく、body は、
+ --{boundary} という行で区切られている 各パーツは複数のヘッダーとボディーから構成されている  ことが分かると思う。もちろん、これをそのままテストするのは難しいので、もうすこし扱いやすいデータ構造に変換したいところだ。
+cgi.parse_multipart() multipart/form-data の解析は cgi モジュールに parse_multipart() という、そのまんまの関数が用意されている。この関数を使って、リクエストで送られたデータをテストするコードは以下のようになる。</description>
+    </item>
     
     <item>
       <title>レガシコードの改善に役立つ pytest の便利なフィクスチャ</title>

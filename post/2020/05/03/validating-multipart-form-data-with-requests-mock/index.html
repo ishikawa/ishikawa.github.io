@@ -1,0 +1,203 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <title>requests-mock で multipart/form-data をテストする</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://metareal.blog/post/2020/05/03/validating-multipart-form-data-with-requests-mock/">
+  
+	  
+	  <link rel="alternate" hreflang="en" href="https://metareal.blog/en/post/2020/05/03/validating-multipart-form-data-with-requests-mock/" title="English">
+	  
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/main.css">
+
+  
+  <link rel="stylesheet" href="https://metareal.blog/css/application.min.2ab3dcdbe8bfa147d2c0e65b7ad850169b1c13e6f86b27a69e563ac6751e2fe4.css">
+  
+  
+  <link rel="stylesheet" href="https://metareal.blog/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+  <link rel="stylesheet" href="/css/highlight/solarized_light.css">
+  <script src="/js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+	<nav class="languages">
+		<a href="/">Home</a><span class="separator"> | </span>
+  他の言語で読む » 
+	
+		<a href="https://metareal.blog/en/post/2020/05/03/validating-multipart-form-data-with-requests-mock/">English</a>
+	
+	</nav>
+
+
+
+
+<article>
+  <h1>requests-mock で multipart/form-data をテストする</h1>
+  <div class="metadata">
+    <p class="date">
+      2020/05/03 8:11pm
+    </p>
+    <ul class="tags">
+      
+      <li>python</li>
+      
+      <li>test</li>
+      
+    </ul>
+  </div>
+  <div class="content">
+    <p>Python の <a href="https://requests-mock.readthedocs.io/en/latest/index.html">requests-mock</a> でテストを書いているとき、<code>multipart/form-data</code> 形式のリクエストをテストしたくなるときがある。</p>
+<h2 id="multipartform-data">multipart/form-data</h2>
+<p><code>multipart/form-data</code> 形式のリクエストは requests で<a href="https://requests-docs-ja.readthedocs.io/en/latest/user/quickstart/#id7">以下のようにして送る</a>ことができる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://httpbin.org/post&#39;</span>
+files <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;file&#39;</span>: (<span style="color:#e6db74">&#39;settings.json&#39;</span>, open(<span style="color:#e6db74">&#39;settings.json&#39;</span>, <span style="color:#e6db74">&#39;rb&#39;</span>), <span style="color:#e6db74">&#39;application/json&#39;</span>)}
+
+r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>post(url, files<span style="color:#f92672">=</span>files)
+</code></pre></div><p>このとき、期待するリクエストが送られていることをテストするために、requests-mock の <a href="https://requests-mock.readthedocs.io/en/latest/history.html#request-history">Request History</a> で上記のリクエストの <code>body</code> を調べてみる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">history <span style="color:#f92672">=</span> requests_mock<span style="color:#f92672">.</span>request_history
+
+<span style="color:#66d9ef">print</span>(history[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>body)
+</code></pre></div><p>送られているのは、以下のような <a href="https://tools.ietf.org/html/rfc2046">MIME データ・ストリーム</a>だ（読みやすいように適宜改行を入れてある）。</p>
+<pre><code>--c93780ea776047cd945c189bad1d081c
+Content-Disposition: form-data; name=&quot;settings&quot;; filename=&quot;settings.json&quot;
+Content-Type: application/json
+
+{&quot;foo&quot;: 1, &quot;bar&quot;: 2}
+--c93780ea776047cd945c189bad1d081c
+Content-Disposition: form-data; name=&quot;archive&quot;; filename=&quot;archive.zip&quot;
+Content-Type: application/zip
+
+...
+--c93780ea776047cd945c189bad1d081c--
+</code></pre><p>なんとなく、<code>body</code> は、</p>
+<ul>
+<li><code>--{boundary}</code> という行で区切られている</li>
+<li>各パーツは複数のヘッダーとボディーから構成されている</li>
+</ul>
+<p>ことが分かると思う。もちろん、これをそのままテストするのは難しいので、もうすこし扱いやすいデータ構造に変換したいところだ。</p>
+<h2 id="cgiparse_multipart">cgi.parse_multipart()</h2>
+<p><code>multipart/form-data</code> の解析は <a href="https://docs.python.org/3/library/cgi.html"><code>cgi</code></a> モジュールに <a href="https://docs.python.org/3/library/cgi.html#cgi.parse_multipart"><code>parse_multipart()</code></a> という、そのまんまの関数が用意されている。この関数を使って、リクエストで送られたデータをテストするコードは以下のようになる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> cgi
+<span style="color:#f92672">import</span> json
+<span style="color:#f92672">from</span> io <span style="color:#f92672">import</span> BytesIO
+<span style="color:#f92672">...</span>
+
+history <span style="color:#f92672">=</span> requests_mock<span style="color:#f92672">.</span>request_history
+
+<span style="color:#75715e"># Extract content type and its parameters.</span>
+c_type, c_data <span style="color:#f92672">=</span> cgi<span style="color:#f92672">.</span>parse_header(history[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#39;Content-Type&#39;</span>])
+<span style="color:#66d9ef">assert</span> c_type <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;multipart/form-data&#39;</span>
+
+<span style="color:#75715e"># Prior to Python 3.7, cgi.parse_multipart() works on bytes.</span>
+form_data <span style="color:#f92672">=</span> cgi<span style="color:#f92672">.</span>parse_multipart(BytesIO(history[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>body), {<span style="color:#e6db74">&#39;boundary&#39;</span>: c_data[<span style="color:#e6db74">&#39;boundary&#39;</span>]<span style="color:#f92672">.</span>encode()})
+settings <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(form_data[<span style="color:#e6db74">&#39;settings&#39;</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>))
+
+<span style="color:#66d9ef">assert</span> form_data[<span style="color:#e6db74">&#39;archive&#39;</span>][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> zip_content
+<span style="color:#66d9ef">assert</span> settings[<span style="color:#e6db74">&#39;foo&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">assert</span> settings[<span style="color:#e6db74">&#39;bar&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>
+</code></pre></div><p>（<strong>注意:</strong> Python 3.7 からは str を受けつけるようになっているので、encode()/decode() による変換は不要なはず）</p>
+<p>ただ、<code>cgi.parse_multipart()</code> では、残念なことに、</p>
+<ul>
+<li>あらかじめ <code>Content-Type</code> ヘッダーから boundary を抜き出しておく必要がある</li>
+<li>各パーツのヘッダーを取得できない</li>
+</ul>
+<p>という欠点がある。</p>
+<h2 id="cgifieldstorage">cgi.FieldStorage</h2>
+<p><code>cgi.parse_multipart()</code> には上記の欠点があるので、より細かい制御が可能な <code>cgi.FieldStorage</code> を使うことをおすすめする。<code>cgi.FieldStorage</code> は <a href="https://github.com/python/cpython/blob/v3.7.0/Lib/cgi.py#L201">Python 3.7 以降の parse_multipart() の内部でも使われている</a>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> cgi
+<span style="color:#f92672">import</span> json
+<span style="color:#f92672">from</span> io <span style="color:#f92672">import</span> BytesIO
+<span style="color:#f92672">...</span>
+history <span style="color:#f92672">=</span> requests_mock<span style="color:#f92672">.</span>request_history
+
+fs <span style="color:#f92672">=</span> cgi<span style="color:#f92672">.</span>FieldStorage(
+        fp<span style="color:#f92672">=</span>BytesIO(history[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>body),
+        headers<span style="color:#f92672">=</span>history[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>headers,
+        <span style="color:#75715e"># FieldStorage works only for POST request!</span>
+        environ<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;REQUEST_METHOD&#39;</span>: <span style="color:#e6db74">&#39;POST&#39;</span>})
+
+item <span style="color:#f92672">=</span> fs[<span style="color:#e6db74">&#39;settings&#39;</span>]
+settings <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(item<span style="color:#f92672">.</span>value<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>))
+
+<span style="color:#66d9ef">assert</span> item<span style="color:#f92672">.</span>filename <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;settings.json&#39;</span>
+<span style="color:#66d9ef">assert</span> item<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#39;Content-Type&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;application/json&#39;</span>
+<span style="color:#66d9ef">assert</span> settings[<span style="color:#e6db74">&#39;foo&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">assert</span> settings[<span style="color:#e6db74">&#39;bar&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>
+
+item <span style="color:#f92672">=</span> fs[<span style="color:#e6db74">&#39;archive&#39;</span>]
+<span style="color:#66d9ef">assert</span> item<span style="color:#f92672">.</span>filename <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;archive.zip&#39;</span>
+<span style="color:#66d9ef">assert</span> item<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#39;Content-Type&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;application/zip&#39;</span>
+<span style="color:#66d9ef">assert</span> item<span style="color:#f92672">.</span>value <span style="color:#f92672">==</span> zip_content
+</code></pre></div><p><code>environ={'REQUEST_METHOD': 'POST'}</code> を渡さないといけないのが多少トリッキーだが、使い方はなんとなく分かるだろう。</p>
+<ul>
+<li><code>instance[...]</code> - 各パーツの取得</li>
+<li><code>part.headers</code> - ヘッダー</li>
+<li><code>part.filename</code> - ファイル名</li>
+<li><code>part.value</code> - ボディ</li>
+</ul>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    
+    <li class="prev"><a href="https://metareal.blog/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/">レガシコードの改善に役立つ pytest の便利なフィクスチャ</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
+    <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
+  </ul>
+  <h2><a href="/ja">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  var all = MathJax.Hub.getAllJax(), i;
+  for(i = 0; i &lt; all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+</html>

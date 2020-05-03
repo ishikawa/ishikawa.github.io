@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sat, 25 Apr 2020 19:47:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2020 20:11:54 +0900</lastBuildDate>
     
 	<atom:link href="https://metareal.blog/en/tags/test/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Validating multipart/form-data request with requests-mock</title>
+      <link>https://metareal.blog/en/post/2020/05/03/validating-multipart-form-data-with-requests-mock/</link>
+      <pubDate>Sun, 03 May 2020 20:11:54 +0900</pubDate>
+      
+      <guid>https://metareal.blog/en/post/2020/05/03/validating-multipart-form-data-with-requests-mock/</guid>
+      <description>When writing tests with Python requests-mock, I often want to test requests which contain data in multipart/form-data format.
+multipart/form-data To upload multipart-encoded files, you may write the code like this.
+url = &amp;#39;http://httpbin.org/post&amp;#39; files = {&amp;#39;file&amp;#39;: (&amp;#39;settings.json&amp;#39;, open(&amp;#39;settings.json&amp;#39;, &amp;#39;rb&amp;#39;), &amp;#39;application/json&amp;#39;)} r = requests.post(url, files=files) To test that the expected request has been sent, let&amp;rsquo;s examine the body of the above request by using Request History of the requests-mock.
+history = requests_mock.</description>
+    </item>
     
     <item>
       <title>Useful pytest fixtures to help you improve legacy code</title>

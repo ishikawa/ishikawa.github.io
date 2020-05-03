@@ -1,0 +1,202 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <title>Validating multipart/form-data request with requests-mock</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://metareal.blog/en/post/2020/05/03/validating-multipart-form-data-with-requests-mock/">
+  
+	  
+	  <link rel="alternate" hreflang="ja" href="https://metareal.blog/post/2020/05/03/validating-multipart-form-data-with-requests-mock/" title="日本語">
+	  
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/main.css">
+
+  
+  <link rel="stylesheet" href="https://metareal.blog/css/application.min.2ab3dcdbe8bfa147d2c0e65b7ad850169b1c13e6f86b27a69e563ac6751e2fe4.css">
+  
+  
+  <link rel="stylesheet" href="https://metareal.blog/css/application.en.min.630a50e4af83b5d324a38378baf2412039d68dbffa8451f4df3b9e1e3fd5e7eb.css">
+  <link rel="stylesheet" href="/css/highlight/solarized_light.css">
+  <script src="/js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+
+	<nav class="languages">
+		<a href="/">Home</a><span class="separator"> | </span>
+  Read this article in » 
+	
+		<a href="https://metareal.blog/post/2020/05/03/validating-multipart-form-data-with-requests-mock/">日本語</a>
+	
+	</nav>
+
+
+
+
+<article>
+  <h1>Validating multipart/form-data request with requests-mock</h1>
+  <div class="metadata">
+    <p class="date">
+      2020/05/03 8:11pm
+    </p>
+    <ul class="tags">
+      
+      <li>python</li>
+      
+      <li>test</li>
+      
+    </ul>
+  </div>
+  <div class="content">
+    <p>When writing tests with Python <a href="https://requests-mock.readthedocs.io/en/latest/index.html">requests-mock</a>, I often want to test requests which contain data in <code>multipart/form-data</code> format.</p>
+<h2 id="multipartform-data">multipart/form-data</h2>
+<p>To upload multipart-encoded files, you may write the code like <a href="https://requests.readthedocs.io/en/master/user/quickstart/#post-a-multipart-encoded-file">this</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://httpbin.org/post&#39;</span>
+files <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;file&#39;</span>: (<span style="color:#e6db74">&#39;settings.json&#39;</span>, open(<span style="color:#e6db74">&#39;settings.json&#39;</span>, <span style="color:#e6db74">&#39;rb&#39;</span>), <span style="color:#e6db74">&#39;application/json&#39;</span>)}
+
+r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>post(url, files<span style="color:#f92672">=</span>files)
+</code></pre></div><p>To test that the expected request has been sent, let&rsquo;s examine the body of the above request by using <a href="https://requests-mock.readthedocs.io/en/latest/history.html#request-history">Request History</a> of the requests-mock.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">history <span style="color:#f92672">=</span> requests_mock<span style="color:#f92672">.</span>request_history
+
+<span style="color:#66d9ef">print</span>(history[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>body)
+</code></pre></div><p>Multipart-encoded request sends <a href="https://tools.ietf.org/html/rfc2046">MIME data stream</a> (<em>with line breaks where appropriate for readability</em>).</p>
+<pre><code>--c93780ea776047cd945c189bad1d081c
+Content-Disposition: form-data; name=&quot;settings&quot;; filename=&quot;settings.json&quot;
+Content-Type: application/json
+
+{&quot;foo&quot;: 1, &quot;bar&quot;: 2}
+--c93780ea776047cd945c189bad1d081c
+Content-Disposition: form-data; name=&quot;archive&quot;; filename=&quot;archive.zip&quot;
+Content-Type: application/zip
+
+...
+--c93780ea776047cd945c189bad1d081c--
+</code></pre><p>You&rsquo;ll notice a few things.</p>
+<ul>
+<li>Separated by the line like <code>--{boundary}</code>.</li>
+<li>Each part is made up of multiple headers and body part.</li>
+</ul>
+<p>Of course, it&rsquo;s difficult to test raw data stream, so I&rsquo;d like to convert it to a convenient data structure.</p>
+<h2 id="cgiparse_multipart">cgi.parse_multipart()</h2>
+<p>For parsing <code>multipart/form-data</code> request, the function <a href="https://docs.python.org/3/library/cgi.html#cgi.parse_multipart"><code>parse_multipart()</code></a> is provided in the <a href="https://docs.python.org/3/library/cgi.html"><code>cgi</code></a> module. Using this function is as follows.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> cgi
+<span style="color:#f92672">import</span> json
+<span style="color:#f92672">from</span> io <span style="color:#f92672">import</span> BytesIO
+<span style="color:#f92672">...</span>
+
+history <span style="color:#f92672">=</span> requests_mock<span style="color:#f92672">.</span>request_history
+
+<span style="color:#75715e"># Extract content type and its parameters.</span>
+c_type, c_data <span style="color:#f92672">=</span> cgi<span style="color:#f92672">.</span>parse_header(history[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#39;Content-Type&#39;</span>])
+<span style="color:#66d9ef">assert</span> c_type <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;multipart/form-data&#39;</span>
+
+<span style="color:#75715e"># Prior to Python 3.7, cgi.parse_multipart() works on bytes.</span>
+form_data <span style="color:#f92672">=</span> cgi<span style="color:#f92672">.</span>parse_multipart(BytesIO(history[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>body), {<span style="color:#e6db74">&#39;boundary&#39;</span>: c_data[<span style="color:#e6db74">&#39;boundary&#39;</span>]<span style="color:#f92672">.</span>encode()})
+settings <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(form_data[<span style="color:#e6db74">&#39;settings&#39;</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>))
+
+<span style="color:#66d9ef">assert</span> form_data[<span style="color:#e6db74">&#39;archive&#39;</span>][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> zip_content
+<span style="color:#66d9ef">assert</span> settings[<span style="color:#e6db74">&#39;foo&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">assert</span> settings[<span style="color:#e6db74">&#39;bar&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>
+</code></pre></div><p><strong>Note</strong>: Since Python 3.7, it accepts <code>str</code>, so you don&rsquo;t need to use <code>encode()/decode()</code> to convert data.</p>
+<p>However, <code>cgi.parse_multipart()</code> has the following disadvantages.</p>
+<ul>
+<li>You need to extract the boundary from the <code>Content-Type</code> header.</li>
+<li>Unable to get headers of each part.</li>
+</ul>
+<h2 id="cgifieldstorage">cgi.FieldStorage</h2>
+<p>Because <code>cgi.parse_multipart()</code> has the above drawbacks, I recommend you to use <code>cgi.FieldStorage</code> for more detailed control. <code>FieldStorage</code> is <a href="https://github.com/python/cpython/blob/v3.7.0/Lib/cgi.py#L201">used inside the parse_multipart() function since Python 3.7</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> cgi
+<span style="color:#f92672">import</span> json
+<span style="color:#f92672">from</span> io <span style="color:#f92672">import</span> BytesIO
+<span style="color:#f92672">...</span>
+history <span style="color:#f92672">=</span> requests_mock<span style="color:#f92672">.</span>request_history
+
+fs <span style="color:#f92672">=</span> cgi<span style="color:#f92672">.</span>FieldStorage(
+        fp<span style="color:#f92672">=</span>BytesIO(history[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>body),
+        headers<span style="color:#f92672">=</span>history[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>headers,
+        <span style="color:#75715e"># FieldStorage works only for POST request!</span>
+        environ<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;REQUEST_METHOD&#39;</span>: <span style="color:#e6db74">&#39;POST&#39;</span>})
+
+item <span style="color:#f92672">=</span> fs[<span style="color:#e6db74">&#39;settings&#39;</span>]
+settings <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(item<span style="color:#f92672">.</span>value<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>))
+
+<span style="color:#66d9ef">assert</span> item<span style="color:#f92672">.</span>filename <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;settings.json&#39;</span>
+<span style="color:#66d9ef">assert</span> item<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#39;Content-Type&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;application/json&#39;</span>
+<span style="color:#66d9ef">assert</span> settings[<span style="color:#e6db74">&#39;foo&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">assert</span> settings[<span style="color:#e6db74">&#39;bar&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>
+
+item <span style="color:#f92672">=</span> fs[<span style="color:#e6db74">&#39;archive&#39;</span>]
+<span style="color:#66d9ef">assert</span> item<span style="color:#f92672">.</span>filename <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;archive.zip&#39;</span>
+<span style="color:#66d9ef">assert</span> item<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#39;Content-Type&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;application/zip&#39;</span>
+<span style="color:#66d9ef">assert</span> item<span style="color:#f92672">.</span>value <span style="color:#f92672">==</span> zip_content
+</code></pre></div><p>It&rsquo;s a little tricky that you have to pass <code>environ={'REQUEST_METHOD': 'POST'}</code>, but you can understand how to use it.</p>
+<ul>
+<li><code>instance[...] </code> - Retrieves each part by name.</li>
+<li><code>part.headers</code> - Headers</li>
+<li><code>part.filename</code> - The name of the file</li>
+<li><code>part.value</code> - body</li>
+</ul>
+
+  </div>
+</article>
+
+<nav class="pagination">
+  <ul>
+    
+    
+    <li class="prev"><a href="https://metareal.blog/en/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/">Useful pytest fixtures to help you improve legacy code</a><i class="fa fa-angle-right"></i></li>
+    
+  </ul>
+</nav>
+
+<footer>
+  <ul class="about">
+    <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
+    <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
+  </ul>
+  <h2><a href="/en">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  var all = MathJax.Hub.getAllJax(), i;
+  for(i = 0; i &lt; all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+</html>
