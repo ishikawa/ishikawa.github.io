@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sat, 08 Nov 2008 03:00:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/cocoa/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 08 Nov 2008 03:00:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/cocoa/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cocoa で独自の Text View を実装する</title>
       <link>https://metareal.blog/2008/11/08/cocoa-custom-text-view/</link>

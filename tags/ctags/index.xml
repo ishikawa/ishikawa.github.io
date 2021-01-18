@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Fri, 25 Sep 2015 11:09:31 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/ctags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 25 Sep 2015 11:09:31 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/ctags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ctags に Elixir を追加する</title>
       <link>https://metareal.blog/post/2015/09/elixir-ctags/</link>

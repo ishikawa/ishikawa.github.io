@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/css/main.css">
 
   
-  <link rel="stylesheet" href="https://metareal.blog/css/application.min.2ab3dcdbe8bfa147d2c0e65b7ad850169b1c13e6f86b27a69e563ac6751e2fe4.css">
+  <link rel="stylesheet" href="https://metareal.blog/css/application.min.056dc003036eeb885f8c40348a02ac0502b9377900fd40a17df2a0d04510fb5c.css">
   
   
   <link rel="stylesheet" href="https://metareal.blog/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
@@ -23,6 +23,8 @@
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
+
+
 
 
 
@@ -115,7 +117,7 @@ end
       t.column :coke,       :&quot;CHAR(64)&quot;
       t.column :jolt,       :SMALLINT
 ...
-</code></pre><p><code>:CHAR</code> という指定を <code>:&quot;CHAR(64)&quot;</code> にしたわけだ（<a href="http://www.ruby-lang.org/ja/man/html/_A5EAA5C6A5E9A5EB.html#a.a5.b7.a5.f3.a5.dc.a5.eb">Ruby の Symbol リテラルでは :&quot;&hellip;&rdquo; や :'&hellip;&rsquo; の形式で、任意のシンボルを定義することができる</a>）。</p>
+</code></pre><p><code>:CHAR</code> という指定を <code>:&quot;CHAR(64)&quot;</code> にしたわけだ（<a href="http://www.ruby-lang.org/ja/man/html/_A5EAA5C6A5E9A5EB.html#a.a5.b7.a5.f3.a5.dc.a5.eb">Ruby の Symbol リテラルでは :&quot;&hellip;&quot; や :'&hellip;' の形式で、任意のシンボルを定義することができる</a>）。</p>
 <p>再度、<code>CREATE TABLE</code> を確認。</p>
 <pre><code>CREATE TABLE `pepsies` (
   `id` int(11) NOT NULL auto_increment,

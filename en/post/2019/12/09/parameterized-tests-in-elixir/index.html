@@ -18,10 +18,10 @@
   <link rel="stylesheet" href="/css/main.css">
 
   
-  <link rel="stylesheet" href="https://metareal.blog/css/application.min.2ab3dcdbe8bfa147d2c0e65b7ad850169b1c13e6f86b27a69e563ac6751e2fe4.css">
+  <link rel="stylesheet" href="https://metareal.blog/css/application.min.056dc003036eeb885f8c40348a02ac0502b9377900fd40a17df2a0d04510fb5c.css">
   
   
-  <link rel="stylesheet" href="https://metareal.blog/css/application.en.min.630a50e4af83b5d324a38378baf2412039d68dbffa8451f4df3b9e1e3fd5e7eb.css">
+  <link rel="stylesheet" href="https://metareal.blog/css/application.en.min.21ab326a83267ebe98d87e8ecdf4aa6172f08deba822eb68ef6d3d61cf79746b.css">
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
@@ -29,15 +29,15 @@
 <body>
 
 
-<nav class="languages">
+	<nav class="languages">
+		<a href="/">Home</a><span class="separator"> | </span>
+  Read this article in » 
 	
-	<a href="/en">Home</a><span class="separator"> | </span>
+		<a href="https://metareal.blog/post/2019/12/09/parameterized-tests-in-elixir/">日本語</a>
 	
-	Read this article in »
-	
-	<a href="https://metareal.blog/post/2019/12/09/parameterized-tests-in-elixir/">日本語</a>
-	
-</nav>
+	</nav>
+
+
 
 
 <article>
@@ -71,9 +71,9 @@
 <p>Currently, I settled on the code like below after trying a few times:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#75715e"># 1. The helper functions for the test module. To make it possible to import</span>
 <span style="color:#75715e"># this helper module in the test module, define this module outside the context that uses it.</span>
-defmodule <span style="color:#a6e22e">MyTest.Helpers</span> do
+<span style="color:#66d9ef">defmodule</span> <span style="color:#a6e22e">MyTest.Helpers</span> <span style="color:#66d9ef">do</span>
   <span style="color:#a6e22e">@spec</span> fake_params(<span style="color:#a6e22e">Enumerable</span><span style="color:#f92672">.</span>t()) <span style="color:#f92672">::</span> map
-  def fake_params(override \\ %{}) do
+  <span style="color:#66d9ef">def</span> fake_params(override \\ %{}) <span style="color:#66d9ef">do</span>
     %{
       <span style="color:#e6db74">country</span>: <span style="color:#e6db74">&#34;jp&#34;</span>,
       <span style="color:#e6db74">phone_number</span>: <span style="color:#a6e22e">Faker</span><span style="color:#f92672">.</span>phone_number(),
@@ -85,35 +85,35 @@ defmodule <span style="color:#a6e22e">MyTest.Helpers</span> do
       <span style="color:#e6db74">last_name</span>: <span style="color:#a6e22e">Faker.Name</span><span style="color:#f92672">.</span>last_name()
     }
     <span style="color:#f92672">|&gt;</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">.</span>merge(<span style="color:#a6e22e">Map</span><span style="color:#f92672">.</span>new(override))
-  end
-end
+  <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
 
-defmodule <span style="color:#a6e22e">MyTest</span> do
-  use <span style="color:#a6e22e">MyApp.ConnCase</span>
+<span style="color:#66d9ef">defmodule</span> <span style="color:#a6e22e">MyTest</span> <span style="color:#66d9ef">do</span>
+  <span style="color:#f92672">use</span> <span style="color:#a6e22e">MyApp.ConnCase</span>
 
   <span style="color:#75715e"># Because I&#39;d like to use functions in the helper module both in parameterized cases and</span>
   <span style="color:#75715e"># test cases, alias and import it.</span>
-  alias <span style="color:#a6e22e">MyTest.Helpers</span>
-  import <span style="color:#a6e22e">Helpers</span>
+  <span style="color:#f92672">alias</span> <span style="color:#a6e22e">MyTest.Helpers</span>
+  <span style="color:#f92672">import</span> <span style="color:#a6e22e">Helpers</span>
 
-  describe <span style="color:#e6db74">&#34;signup&#34;</span> do
-    for {description, signup_params} <span style="color:#f92672">&lt;-</span> [
+  describe <span style="color:#e6db74">&#34;signup&#34;</span> <span style="color:#66d9ef">do</span>
+    <span style="color:#66d9ef">for</span> {description, signup_params} <span style="color:#f92672">&lt;-</span> [
           <span style="color:#75715e"># 2. You cannot invoke functions in the testing module which is not defined yet.</span>
           <span style="color:#75715e"># So we need the helper module.</span>
           <span style="color:#e6db74">&#34;all filled&#34;</span>: <span style="color:#a6e22e">Helpers</span><span style="color:#f92672">.</span>fake_params(),
-          <span style="color:#e6db74">&#34;department can be omitted&#34;</span>: <span style="color:#a6e22e">Helpers</span><span style="color:#f92672">.</span>fake_params(<span style="color:#e6db74">department</span>: nil),
+          <span style="color:#e6db74">&#34;department can be omitted&#34;</span>: <span style="color:#a6e22e">Helpers</span><span style="color:#f92672">.</span>fake_params(<span style="color:#e6db74">department</span>: <span style="color:#66d9ef">nil</span>),
           <span style="color:#e6db74">&#34;department can be null&#34;</span>: <span style="color:#a6e22e">Helpers</span><span style="color:#f92672">.</span>fake_params() <span style="color:#f92672">|&gt;</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">.</span>delete(<span style="color:#e6db74">&#34;department&#34;</span>)
-        ] do
+        ] <span style="color:#66d9ef">do</span>
       <span style="color:#75715e"># 3. You cannot use variables in this context in the context inside a test case.</span>
       <span style="color:#75715e"># So you have to use module attributes or `@tag` feature in ExUnit. Personally,</span>
       <span style="color:#75715e"># I prefer the latter.</span>
       <span style="color:#a6e22e">@tag</span> <span style="color:#e6db74">signup_params</span>: signup_params
-      test <span style="color:#e6db74">&#34;no errors: </span><span style="color:#e6db74">#{</span>description<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>, %{<span style="color:#e6db74">conn</span>: conn, <span style="color:#e6db74">signup_params</span>: signup_params} do
+      test <span style="color:#e6db74">&#34;no errors: </span><span style="color:#e6db74">#{</span>description<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>, %{<span style="color:#e6db74">conn</span>: conn, <span style="color:#e6db74">signup_params</span>: signup_params} <span style="color:#66d9ef">do</span>
         <span style="color:#75715e"># ...</span>
-      end
-    end
-  end
-end
+      <span style="color:#66d9ef">end</span>
+    <span style="color:#66d9ef">end</span>
+  <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
 </code></pre></div><p>As for why it&rsquo;s like the code above, there are twists and turns (as I wrote in the comment):</p>
 <ol>
 <li>The module that defines helper functions is defined outside the test module. Because otherwise, you can&rsquo;t <code>import</code> it. Of course, you can write the absolute path to reference it, but you may want to reduce the noise from the test code as much as possible.</li>

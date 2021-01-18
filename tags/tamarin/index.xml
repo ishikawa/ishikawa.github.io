@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 06 Jul 2008 09:35:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/tamarin/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 06 Jul 2008 09:35:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/tamarin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C 言語で書かれたソフトウェアが Flash で動くようになるかもしれない</title>
       <link>https://metareal.blog/2008/07/06/running-legacy-applications-on-flash-player/</link>

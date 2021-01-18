@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Thu, 29 May 2008 01:48:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/cache/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 29 May 2008 01:48:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/cache/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Django のキャッシュで Google App Engine の Memcache API を使う</title>
       <link>https://metareal.blog/2008/05/29/django-cache-framework-meets-appengine-memcache-api/</link>

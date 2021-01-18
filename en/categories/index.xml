@@ -6,10 +6,6 @@
     <description>Recent content in Categories on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
-    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    
-	<atom:link href="https://metareal.blog/en/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright><atom:link href="https://metareal.blog/en/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

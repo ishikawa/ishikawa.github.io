@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Fri, 18 Apr 2008 07:41:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/rubyonrails/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 18 Apr 2008 07:41:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/rubyonrails/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ruby-openid でログの出力先を変更する</title>
       <link>https://metareal.blog/2008/04/18/ruby-openid-util-logger/</link>
@@ -95,7 +91,7 @@ class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pep
       <pubDate>Tue, 24 Jul 2007 09:29:00 +0900</pubDate>
       
       <guid>https://metareal.blog/2007/07/24/notes-on-rubyonrails-with-mysql/</guid>
-      <description>Rails のブログでも取り上げられていた、&amp;quot;Rubyisms - MySQL-dump&amp;rdquo; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。
+      <description>Rails のブログでも取り上げられていた、&amp;quot;Rubyisms - MySQL-dump&amp;quot; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。
 Rubyisms - MySQL-dump http://mysqldump.azundris.com/archives/72-Rubyisms.html
 &amp;ldquo;select *&amp;rdquo; が多すぎる ActiveRecord は、特に何も指定しないと select * で、すべてのカラムを取ってくる。SQL は動的に生成されて、どのカラムが存在するかチェックしているので、スキームが変更されても大丈夫。
 でも、必要のないデータまで取ってきてしまう、という問題はあるよね。そして、何が無駄かっていうと、必要のないデータのために一時的なテーブルが使われるかもしれない、ってことなんだ（SQL を EXPLAIN してみて、&amp;ldquo;using temporary&amp;rdquo; となっていれば、そういう事態が発生しているサインだ）。

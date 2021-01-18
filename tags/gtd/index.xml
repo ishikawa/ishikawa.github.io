@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Thu, 06 Dec 2007 08:08:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/gtd/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 06 Dec 2007 08:08:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/gtd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>iGTD も vacuum すると速くなる</title>
       <link>https://metareal.blog/2007/12/05/optimize-the-igtd-database/</link>

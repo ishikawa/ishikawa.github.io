@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 04 Mar 2008 12:12:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/estraier/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 04 Mar 2008 12:12:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/estraier/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mac OS X に Hyper Estraier をインストールする</title>
       <link>https://metareal.blog/2008/03/03/how-to-install-hyper-estraier-with-the-source-package-on-mac-os-x/</link>

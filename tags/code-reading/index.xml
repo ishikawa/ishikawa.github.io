@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Mon, 14 Jan 2013 00:00:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/code-reading/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 14 Jan 2013 00:00:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/code-reading/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Code Reading: Dump and Print Function in llvm::Module Class</title>
       <link>https://metareal.blog/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</link>

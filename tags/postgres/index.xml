@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Wed, 19 Dec 2007 07:18:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 19 Dec 2007 07:18:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PostgreSQL で使われていないインデックスを調べる</title>
       <link>https://metareal.blog/2007/12/18/postgresql-looking-for-unused-indexes/</link>

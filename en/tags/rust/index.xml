@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 26 Jul 2015 10:10:37 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/en/tags/rust/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 26 Jul 2015 10:10:37 +0900</lastBuildDate><atom:link href="https://metareal.blog/en/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Aliasing Traits</title>
       <link>https://metareal.blog/en/post/2015/07/rust-trait-alias/</link>
@@ -19,7 +15,7 @@
       
       <guid>https://metareal.blog/en/post/2015/07/rust-trait-alias/</guid>
       <description>(2020-04-04) Trait alias was finally introduced in the RFC 1733.
-Rust&amp;lsquo;s traits and its bound syntax gets longer and longer as you add associated types or specify multiple trait bounds with the + syntax.
+Rust&amp;rsquo;s traits and its bound syntax gets longer and longer as you add associated types or specify multiple trait bounds with the + syntax.
 struct A&amp;lt;T: Iterator&amp;lt;Item=char&amp;gt;&amp;gt; { ... } On the other hand, ordinaly types can be aliased with type keyword, however it can not be used for traits.
 type CharIterator = Iterator&amp;lt;Item=char&amp;gt;; // ERROR: note: `type` aliases cannot be used for traits struct A&amp;lt;T: CharIterator&amp;gt; { .</description>
     </item>

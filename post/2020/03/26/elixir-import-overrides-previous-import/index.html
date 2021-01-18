@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/css/main.css">
 
   
-  <link rel="stylesheet" href="https://metareal.blog/css/application.min.2ab3dcdbe8bfa147d2c0e65b7ad850169b1c13e6f86b27a69e563ac6751e2fe4.css">
+  <link rel="stylesheet" href="https://metareal.blog/css/application.min.056dc003036eeb885f8c40348a02ac0502b9377900fd40a17df2a0d04510fb5c.css">
   
   
   <link rel="stylesheet" href="https://metareal.blog/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
@@ -29,15 +29,15 @@
 <body>
 
 
-<nav class="languages">
+	<nav class="languages">
+		<a href="/">Home</a><span class="separator"> | </span>
+  他の言語で読む » 
 	
-	<a href="/ja">Home</a><span class="separator"> | </span>
+		<a href="https://metareal.blog/en/post/2020/03/26/elixir-import-overrides-previous-import/">English</a>
 	
-	他の言語で読む »
-	
-	<a href="https://metareal.blog/en/post/2020/03/26/elixir-import-overrides-previous-import/">English</a>
-	
-</nav>
+	</nav>
+
+
 
 
 <article>
@@ -55,55 +55,55 @@
   <div class="content">
     <p><em>この記事は以前に <a href="https://qiita.com/ishikawa@github/items/6eaba8c05726365fdf43">Qiita で公開した記事</a>です。</em></p>
 <p>Elixir の <a href="https://hexdocs.pm/elixir/Kernel.SpecialForms.html#import/2"><code>import/2</code></a> を同じモジュールにたいして複数回実行すると、最後に実行したものが優先される。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">iex(<span style="color:#ae81ff">1</span>)<span style="color:#f92672">&gt;</span> import <span style="color:#a6e22e">List</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">iex(<span style="color:#ae81ff">1</span>)<span style="color:#f92672">&gt;</span> <span style="color:#f92672">import</span> <span style="color:#a6e22e">List</span>
 <span style="color:#a6e22e">List</span>
 iex(<span style="color:#ae81ff">2</span>)<span style="color:#f92672">&gt;</span> first([<span style="color:#ae81ff">1</span>])
 <span style="color:#ae81ff">1</span>
-iex(<span style="color:#ae81ff">3</span>)<span style="color:#f92672">&gt;</span> import <span style="color:#a6e22e">List</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">flatten</span>: <span style="color:#ae81ff">1</span>]
+iex(<span style="color:#ae81ff">3</span>)<span style="color:#f92672">&gt;</span> <span style="color:#f92672">import</span> <span style="color:#a6e22e">List</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">flatten</span>: <span style="color:#ae81ff">1</span>]
 <span style="color:#a6e22e">List</span>
 iex(<span style="color:#ae81ff">4</span>)<span style="color:#f92672">&gt;</span> first([<span style="color:#ae81ff">1</span>])                     
 <span style="color:#f92672">**</span> (<span style="color:#a6e22e">CompileError</span>) iex:<span style="color:#ae81ff">4</span>: undefined function first<span style="color:#f92672">/</span><span style="color:#ae81ff">1</span>
 </code></pre></div><p>上記の例では、<code>iex(1)</code> で <code>import List</code> したときには参照できていた <code>List.first/1</code>  が、<code>iex(4)</code> の <code>import List, only: [flatten: 1]</code> のあとでは参照できなくなっている。</p>
 <h2 id="この挙動を知らずに失敗した話">この挙動を知らずに失敗した話</h2>
 <p>Phoenix のコントローラーで「認証済みのユーザーが conn にあれば処理を続行、そうでなければエラー」という処理が頻発するので、次のようなモジュールを書いた。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">defmodule <span style="color:#a6e22e">AuthUserAction</span> do
-  defmacro __using__(_opts) do
-    quote do
-      import <span style="color:#a6e22e">Plug.Conn</span>
-      import <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#66d9ef">defmodule</span> <span style="color:#a6e22e">AuthUserAction</span> <span style="color:#66d9ef">do</span>
+  <span style="color:#66d9ef">defmacro</span> __using__(_opts) <span style="color:#66d9ef">do</span>
+    <span style="color:#66d9ef">quote</span> <span style="color:#66d9ef">do</span>
+      <span style="color:#f92672">import</span> <span style="color:#a6e22e">Plug.Conn</span>
+      <span style="color:#f92672">import</span> <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
 
-      def action(conn, _) do
+      <span style="color:#66d9ef">def</span> action(conn, _) <span style="color:#66d9ef">do</span>
         with {<span style="color:#e6db74">:ok</span>, user_id} <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">.</span>fetch(conn<span style="color:#f92672">.</span>private, <span style="color:#e6db74">:user_id</span>),
-             %<span style="color:#a6e22e">User</span>{} <span style="color:#f92672">=</span> user <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Repo</span><span style="color:#f92672">.</span>get(<span style="color:#a6e22e">User</span>, user_id) do
+             %<span style="color:#a6e22e">User</span>{} <span style="color:#f92672">=</span> user <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Repo</span><span style="color:#f92672">.</span>get(<span style="color:#a6e22e">User</span>, user_id) <span style="color:#66d9ef">do</span>
           apply(__MODULE__, action_name(conn), [conn, conn<span style="color:#f92672">.</span>params, user])
-        else
+        <span style="color:#66d9ef">else</span>
           _ <span style="color:#f92672">-&gt;</span>
             conn
             <span style="color:#f92672">|&gt;</span> put_status(<span style="color:#e6db74">:forbidden</span>)
             <span style="color:#f92672">|&gt;</span> json(%{
               <span style="color:#e6db74">error</span>: <span style="color:#e6db74">&#34;forbidden&#34;</span>
             })
-        end
-      end
-    end
-  end
-end
+        <span style="color:#66d9ef">end</span>
+      <span style="color:#66d9ef">end</span>
+    <span style="color:#66d9ef">end</span>
+  <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
 </code></pre></div><p>これを使うコントローラーでは、毎回、</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">use <span style="color:#a6e22e">Phoenix.Controller</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#f92672">use</span> <span style="color:#a6e22e">Phoenix.Controller</span>
 
-def my_action(conn, params) do
+<span style="color:#66d9ef">def</span> my_action(conn, params) <span style="color:#66d9ef">do</span>
   with {<span style="color:#e6db74">:ok</span>, user_id} <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">.</span>fetch(conn<span style="color:#f92672">.</span>private, <span style="color:#e6db74">:user_id</span>),
-       %<span style="color:#a6e22e">User</span>{} <span style="color:#f92672">=</span> user <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Repo</span><span style="color:#f92672">.</span>get(<span style="color:#a6e22e">User</span>, user_id) do
+       %<span style="color:#a6e22e">User</span>{} <span style="color:#f92672">=</span> user <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Repo</span><span style="color:#f92672">.</span>get(<span style="color:#a6e22e">User</span>, user_id) <span style="color:#66d9ef">do</span>
     ...
-  end
-end
+  <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
 </code></pre></div><p>のように書いていた処理を、<code>use AuthUserAction</code> を追加するだけで、</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">use <span style="color:#a6e22e">Phoenix.Controller</span>
-use <span style="color:#a6e22e">AuthUserAction</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#f92672">use</span> <span style="color:#a6e22e">Phoenix.Controller</span>
+<span style="color:#f92672">use</span> <span style="color:#a6e22e">AuthUserAction</span>
 
-def my_action(conn, params, user) do
+<span style="color:#66d9ef">def</span> my_action(conn, params, user) <span style="color:#66d9ef">do</span>
   ...
-end
+<span style="color:#66d9ef">end</span>
 </code></pre></div><p>このように簡略化できる&hellip;はずだった。</p>
 <h3 id="コンパイルエラー">コンパイル・エラー</h3>
 <p>しかし、実装してコンパイルしてみると、以下のようなエラーが出るようになってしまった。</p>
@@ -113,49 +113,49 @@ end
     (stdlib 3.11.2) erl_eval.erl:680: :erl_eval.do_apply/6
     (elixir 1.10.1) lib/kernel/parallel_compiler.ex:233: anonymous fn/4 in Kernel.ParallelCompiler.spawn_workers/7
 </code></pre><p>何故こうなるか、というと、最初に説明した通り、マクロ中の</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">import <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#f92672">import</span> <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
 </code></pre></div><p>が、コントローラー側の <code>use Phoenix.Controller</code> で <code>import</code> されてる <code>put_new_layout/2</code> を上書きしてしまうからだ。</p>
 <h3 id="解決">解決</h3>
 <p>Elixir の <code>import/2</code> はレキシカル・スコープなので、import を関数内に移動するだけで解決できる。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">defmodule <span style="color:#a6e22e">AuthUserAction</span> do
-  defmacro __using__(_opts) do
-    quote do
-      def action(conn, _) do
-        import <span style="color:#a6e22e">Plug.Conn</span>
-        import <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#66d9ef">defmodule</span> <span style="color:#a6e22e">AuthUserAction</span> <span style="color:#66d9ef">do</span>
+  <span style="color:#66d9ef">defmacro</span> __using__(_opts) <span style="color:#66d9ef">do</span>
+    <span style="color:#66d9ef">quote</span> <span style="color:#66d9ef">do</span>
+      <span style="color:#66d9ef">def</span> action(conn, _) <span style="color:#66d9ef">do</span>
+        <span style="color:#f92672">import</span> <span style="color:#a6e22e">Plug.Conn</span>
+        <span style="color:#f92672">import</span> <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
 
         ...
-      end
-    end
-  end
-end
+      <span style="color:#66d9ef">end</span>
+    <span style="color:#66d9ef">end</span>
+  <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
 </code></pre></div><p>実際には、コードサイズを減らすためにも、action/2 の実装をマクロの外に出した。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">defmodule <span style="color:#a6e22e">AuthUserAction</span> do
-  import <span style="color:#a6e22e">Plug.Conn</span>
-  import <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#66d9ef">defmodule</span> <span style="color:#a6e22e">AuthUserAction</span> <span style="color:#66d9ef">do</span>
+  <span style="color:#f92672">import</span> <span style="color:#a6e22e">Plug.Conn</span>
+  <span style="color:#f92672">import</span> <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
 
-  defmacro __using__(_opts) do
-    quote do
-      def action(conn, _) do
+  <span style="color:#66d9ef">defmacro</span> __using__(_opts) <span style="color:#66d9ef">do</span>
+    <span style="color:#66d9ef">quote</span> <span style="color:#66d9ef">do</span>
+      <span style="color:#66d9ef">def</span> action(conn, _) <span style="color:#66d9ef">do</span>
         <span style="color:#a6e22e">AuthUserAction</span><span style="color:#f92672">.</span>action(conn, __MODULE__)
-      end
-    end
-  end
+      <span style="color:#66d9ef">end</span>
+    <span style="color:#66d9ef">end</span>
+  <span style="color:#66d9ef">end</span>
 
-  def action(conn, module) do
+  <span style="color:#66d9ef">def</span> action(conn, module) <span style="color:#66d9ef">do</span>
     with {<span style="color:#e6db74">:ok</span>, user_id} <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">.</span>fetch(conn<span style="color:#f92672">.</span>private, <span style="color:#e6db74">:user_id</span>),
-         %<span style="color:#a6e22e">User</span>{} <span style="color:#f92672">=</span> user <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Repo</span><span style="color:#f92672">.</span>get(<span style="color:#a6e22e">User</span>, user_id) do
+         %<span style="color:#a6e22e">User</span>{} <span style="color:#f92672">=</span> user <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Repo</span><span style="color:#f92672">.</span>get(<span style="color:#a6e22e">User</span>, user_id) <span style="color:#66d9ef">do</span>
       apply(module, action_name(conn), [conn, conn<span style="color:#f92672">.</span>params, user])
-    else
+    <span style="color:#66d9ef">else</span>
       _ <span style="color:#f92672">-&gt;</span>
         conn
         <span style="color:#f92672">|&gt;</span> put_status(<span style="color:#e6db74">:forbidden</span>)
         <span style="color:#f92672">|&gt;</span> json(%{
           <span style="color:#e6db74">error</span>: <span style="color:#e6db74">&#34;forbidden&#34;</span>
         })
-    end
-  end
-end
+    <span style="color:#66d9ef">end</span>
+  <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
 </code></pre></div>
   </div>
 </article>
@@ -166,7 +166,7 @@ end
     <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/">レガシコードの改善に役立つ pytest の便利なフィクスチャ</a></li>
     
     
-    <li class="prev"><a href="https://metareal.blog/post/2019/12/09/parameterized-tests-in-elixir/">Elixir で Parameterized test</a><i class="fa fa-angle-right"></i></li>
+    <li class="prev"><a href="https://metareal.blog/post/2020/01/02/fe001ef0ade5b3f8fcd8/">rbenv でインストールした irb で readline が効かなくなったときにやったこと</a><i class="fa fa-angle-right"></i></li>
     
   </ul>
 </nav>

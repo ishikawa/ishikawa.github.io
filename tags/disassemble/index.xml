@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Thu, 25 Sep 2008 17:39:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/disassemble/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 25 Sep 2008 17:39:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/disassemble/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python の dis モジュールでさまざまな import 文を disassemble する (2)</title>
       <link>https://metareal.blog/2008/09/25/disassembling-python-import-statements-take2/</link>

@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sat, 24 Nov 2007 02:58:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/css/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 24 Nov 2007 02:58:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/css/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ruby の CSS パーサはどこですか？</title>
       <link>https://metareal.blog/2007/11/23/looking-for-ruby-css-parser/</link>

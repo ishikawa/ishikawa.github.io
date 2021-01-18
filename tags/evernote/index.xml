@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 09 Dec 2008 03:37:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/evernote/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 09 Dec 2008 03:37:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/evernote/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Safari で開いているページのリンクを Evernote クライアントに送る</title>
       <link>https://metareal.blog/2008/12/09/copy-link-to-evernote-client-applescript/</link>

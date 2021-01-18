@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Thu, 22 Sep 2016 19:26:18 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 22 Sep 2016 19:26:18 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FileUtils in Rakefile</title>
       <link>https://metareal.blog/post/2016/09/fileutils-in-rakefile/</link>
@@ -375,7 +371,7 @@ def OpenURI.open_http(buf, target, proxy, options) # :nodoc: ... http = klass.ne
       <guid>https://metareal.blog/2006/12/28/reason-of-mysql-ruby-test-failure/</guid>
       <description>前回書いた、MySQL/Ruby の test.rb が失敗する原因を調査する。
 まずは、実行結果の出力を調べてみよう。 すべてのテストが失敗しているため長いので、最初のテスト結果のみ抜粋する。
-% ruby ./test.rb localhost root newpass ... 1) Failure: test_connect(TC_Mysql) [./test.rb:39]: Exception raised: Class: &amp;lt;Mysql::Error&amp;gt; **Message: &amp;lt;&amp;quot;Access denied for user &#39;ishikawa&#39;@&#39;localhost&#39; (using password: NO)&amp;quot;&amp;gt;** ---Backtrace--- ./test.rb:39:in `connect&#39; ./test.rb:39:in `test_connect&#39; ./test.rb:39:in `test_connect&#39; ... MySQL のエラーで &amp;quot;Access denied for user &amp;lsquo;ishikawa&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; (using password: NO)&amp;ldquo;と出力されているので、これは単なるアクセス制御の問題だ。
+% ruby ./test.rb localhost root newpass ... 1) Failure: test_connect(TC_Mysql) [./test.rb:39]: Exception raised: Class: &amp;lt;Mysql::Error&amp;gt; **Message: &amp;lt;&amp;quot;Access denied for user &#39;ishikawa&#39;@&#39;localhost&#39; (using password: NO)&amp;quot;&amp;gt;** ---Backtrace--- ./test.rb:39:in `connect&#39; ./test.rb:39:in `test_connect&#39; ./test.rb:39:in `test_connect&#39; ... MySQL のエラーで &amp;ldquo;Access denied for user &amp;lsquo;ishikawa&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; (using password: NO)&amp;quot;と出力されているので、これは単なるアクセス制御の問題だ。
 そして、test.rb のコマンドライン引数で root ユーザを指定しているにも関わらず、実際には ishikawa ユーザでアクセスしようとしている。
 うまくいくわけがない。 コマンドライン引数による指定が無視されているわけだ。
 何故、コマンドライン引数が無視されるのか コマンドライン引数が無視される原因を調べてみると、どうやら test.rb が使っている Test::Unit が悪さをしているらしい（Test::Unit は Ruby の標準添付ライブラリで、いわゆる xUnit ツールの Ruby 版である）。

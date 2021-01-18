@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 08 Jul 2007 09:47:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/scriptaculous/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 08 Jul 2007 09:47:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/scriptaculous/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>rake コマンドで環境変数を設定する</title>
       <link>https://metareal.blog/2007/07/08/setting-environment-variables-through-rake-command/</link>

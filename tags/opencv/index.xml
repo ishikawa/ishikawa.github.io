@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Wed, 28 Mar 2007 01:18:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 28 Mar 2007 01:18:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OpenCV 1.0.0 を Mac OS X 10.4 にインストール</title>
       <link>https://metareal.blog/2007/03/27/opencv-on-mac-os-x-tiger/</link>

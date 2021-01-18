@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/css/main.css">
 
   
-  <link rel="stylesheet" href="https://metareal.blog/css/application.min.2ab3dcdbe8bfa147d2c0e65b7ad850169b1c13e6f86b27a69e563ac6751e2fe4.css">
+  <link rel="stylesheet" href="https://metareal.blog/css/application.min.056dc003036eeb885f8c40348a02ac0502b9377900fd40a17df2a0d04510fb5c.css">
   
   
   <link rel="stylesheet" href="https://metareal.blog/css/application.ja.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
@@ -23,6 +23,8 @@
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
+
+
 
 
 
@@ -43,8 +45,8 @@
 <p><a href="https://golang.org">Go</a> で実装されているおかげでもあるのだろうが、サイトの生成スピードが速い。組み込みサーバには、ファイルの変更を検知してサイトを更新する機能が備わっているので、ストレスなく記事を書くことができる。ブラウザのリロードも不要。</p>
 <p>URL を記事ごとに指定可能なのは助かった。デフォルトだと <code>/post/title/</code> のような URL になるのだが、古い記事は <code>/YYYY/MM/DD/title/</code> という形式で URL を決めていたので、そのままだと URL が変わってしまう。記事中の YAML (<a href="http://gohugo.io/content/front-matter/">Front Matter</a>) で URL を上書きしてやることで、URL を変えずにすんだ。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
-<span style="color:#66d9ef">title</span>: <span style="color:#e6db74">&#34;Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった。&#34;</span>
-<span style="color:#66d9ef">url</span>: <span style="color:#e6db74">&#34;/2010/12/16/ffi-requires-ruby-version-1-9-2/&#34;</span>
+<span style="color:#f92672">title</span>: <span style="color:#e6db74">&#34;Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった。&#34;</span>
+<span style="color:#f92672">url</span>: <span style="color:#e6db74">&#34;/2010/12/16/ffi-requires-ruby-version-1-9-2/&#34;</span>
 ...
 </code></pre></div><p>とはいえ、今後もこの指定をしていくのはしんどいので、この記事から URL の形式を <code>/post/title/</code> に変えるつもり。</p>
 <h3 id="移行スクリプト">移行スクリプト</h3>
@@ -69,7 +71,7 @@
     <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/post/2015/07/rust-trait-alias/">Aliasing Traits</a></li>
     
     
-    <li class="prev"><a href="https://metareal.blog/2013/01/18/looper/">映画「LOOPER」</a><i class="fa fa-angle-right"></i></li>
+    <li class="prev"><a href="https://metareal.blog/post/2014/05/31/fb702054d3bef16bac3b/">ruby-llvm をビルドするまでにやること</a><i class="fa fa-angle-right"></i></li>
     
   </ul>
 </nav>

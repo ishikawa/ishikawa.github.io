@@ -7,24 +7,122 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 03 May 2020 20:11:54 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/post/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sat, 16 Jan 2021 08:57:09 +0000</lastBuildDate><atom:link href="https://metareal.blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Expo の TypeScript プロジェクトで自動テスト</title>
+      <link>https://metareal.blog/post/2021/01/16/setup-jest-for-expo-typescript-project/</link>
+      <pubDate>Sat, 16 Jan 2021 08:57:09 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2021/01/16/setup-jest-for-expo-typescript-project/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
     
     <item>
-      <title>requests-mock で multipart/form-data をテストする</title>
-      <link>https://metareal.blog/post/2020/05/03/validating-multipart-form-data-with-requests-mock/</link>
-      <pubDate>Sun, 03 May 2020 20:11:54 +0900</pubDate>
+      <title>Babel プラグインを書いて React Hooks 時代に追いつく</title>
+      <link>https://metareal.blog/post/2020/12/08/convert-legacy-code-with-home-brewed-babel-plugin/</link>
+      <pubDate>Tue, 08 Dec 2020 23:44:45 +0000</pubDate>
       
-      <guid>https://metareal.blog/post/2020/05/03/validating-multipart-form-data-with-requests-mock/</guid>
-      <description>Python の requests-mock でテストを書いているとき、multipart/form-data 形式のリクエストをテストしたくなるときがある。
-multipart/form-data multipart/form-data 形式のリクエストは requests で以下のようにして送ることができる。
-url = &amp;#39;http://httpbin.org/post&amp;#39; files = {&amp;#39;file&amp;#39;: (&amp;#39;settings.json&amp;#39;, open(&amp;#39;settings.json&amp;#39;, &amp;#39;rb&amp;#39;), &amp;#39;application/json&amp;#39;)} r = requests.post(url, files=files) このとき、期待するリクエストが送られていることをテストするために、requests-mock の Request History で上記のリクエストの body を調べてみる。
-history = requests_mock.request_history print(history[0].body) 送られているのは、以下のような MIME データ・ストリームだ（読みやすいように適宜改行を入れてある）。
---c93780ea776047cd945c189bad1d081c Content-Disposition: form-data; name=&amp;quot;settings&amp;quot;; filename=&amp;quot;settings.json&amp;quot; Content-Type: application/json {&amp;quot;foo&amp;quot;: 1, &amp;quot;bar&amp;quot;: 2} --c93780ea776047cd945c189bad1d081c Content-Disposition: form-data; name=&amp;quot;archive&amp;quot;; filename=&amp;quot;archive.zip&amp;quot; Content-Type: application/zip ... --c93780ea776047cd945c189bad1d081c-- なんとなく、body は、
- --{boundary} という行で区切られている 各パーツは複数のヘッダーとボディーから構成されている  ことが分かると思う。もちろん、これをそのままテストするのは難しいので、もうすこし扱いやすいデータ構造に変換したいところだ。
-cgi.parse_multipart() multipart/form-data の解析は cgi モジュールに parse_multipart() という、そのまんまの関数が用意されている。この関数を使って、リクエストで送られたデータをテストするコードは以下のようになる。</description>
+      <guid>https://metareal.blog/post/2020/12/08/convert-legacy-code-with-home-brewed-babel-plugin/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>React Testing Library で awaitable な Query を使いたい</title>
+      <link>https://metareal.blog/post/2020/12/03/awaitable-query-in-react-testing-library/</link>
+      <pubDate>Thu, 03 Dec 2020 10:04:17 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2020/12/03/awaitable-query-in-react-testing-library/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>モノレポで複数パッケージを管理するときの tsconfig</title>
+      <link>https://metareal.blog/post/2020/11/27/tsconfig-in-monorepo/</link>
+      <pubDate>Fri, 27 Nov 2020 04:46:09 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2020/11/27/tsconfig-in-monorepo/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>React Testing Library の render で独自のオプションを渡す</title>
+      <link>https://metareal.blog/post/2020/11/23/options-to-wrapper-component-in-custom-render/</link>
+      <pubDate>Mon, 23 Nov 2020 14:58:58 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2020/11/23/options-to-wrapper-component-in-custom-render/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>TypeScript の型定義ファイルにないメソッドを追加する</title>
+      <link>https://metareal.blog/post/2020/11/21/add-missing-method-type-declaration-for-typescript/</link>
+      <pubDate>Sat, 21 Nov 2020 15:47:20 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2020/11/21/add-missing-method-type-declaration-for-typescript/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>Redux Form の Field-Level Validation で無限ループ</title>
+      <link>https://metareal.blog/post/2020/11/14/redux-form-infinite-loop-in-field-validation/</link>
+      <pubDate>Sat, 14 Nov 2020 12:55:24 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2020/11/14/redux-form-infinite-loop-in-field-validation/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>Cypress をサーバ起動まで待機させる Returns</title>
+      <link>https://metareal.blog/post/2020/11/10/cypress-wait-for-server-startup-returns/</link>
+      <pubDate>Tue, 10 Nov 2020 08:14:18 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2020/11/10/cypress-wait-for-server-startup-returns/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>Babel プラグインを TypeScript で開発する</title>
+      <link>https://metareal.blog/post/2020/11/06/babel-plugin-development-with-typescript/</link>
+      <pubDate>Fri, 06 Nov 2020 01:44:37 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2020/11/06/babel-plugin-development-with-typescript/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>Cypress をサーバ起動まで待機させる</title>
+      <link>https://metareal.blog/post/2020/11/04/cypress-wait-for-server-startup/</link>
+      <pubDate>Wed, 04 Nov 2020 09:44:45 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2020/11/04/cypress-wait-for-server-startup/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>@babel/plugin-transform-instanceof を読む</title>
+      <link>https://metareal.blog/post/2020/11/03/reading-code-of-babel-plugin-transform-instanceof/</link>
+      <pubDate>Tue, 03 Nov 2020 15:41:41 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2020/11/03/reading-code-of-babel-plugin-transform-instanceof/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>Python で簡単にコマンドラインツールを作るなら Fire が便利</title>
+      <link>https://metareal.blog/post/2020/11/01/fire-is-one-of-python-library-for-creating-cli/</link>
+      <pubDate>Sun, 01 Nov 2020 06:39:14 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2020/11/01/fire-is-one-of-python-library-for-creating-cli/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>Poetry の virtualenv を VSCode に認識させる</title>
+      <link>https://metareal.blog/post/2020/10/31/let-poetry-create-virtualenv-under-project-folder/</link>
+      <pubDate>Sat, 31 Oct 2020 03:54:52 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2020/10/31/let-poetry-create-virtualenv-under-project-folder/</guid>
+      <description>この記事はこちらで公開しています。</description>
     </item>
     
     <item>
@@ -53,6 +151,24 @@ defmodule AuthUserAction do defmacro __using__(_opts) do quote do import Plug.Co
     </item>
     
     <item>
+      <title>rbenv でインストールした irb で readline が効かなくなったときにやったこと</title>
+      <link>https://metareal.blog/post/2020/01/02/fe001ef0ade5b3f8fcd8/</link>
+      <pubDate>Thu, 02 Jan 2020 19:02:20 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2020/01/02/fe001ef0ade5b3f8fcd8/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>個人メモ: ランダムな何かを生成する Ruby ワンライナー</title>
+      <link>https://metareal.blog/post/2019/12/13/0f41e45435ed7dd02005/</link>
+      <pubDate>Fri, 13 Dec 2019 14:44:35 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2019/12/13/0f41e45435ed7dd02005/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
       <title>Elixir で Parameterized test</title>
       <link>https://metareal.blog/post/2019/12/09/parameterized-tests-in-elixir/</link>
       <pubDate>Mon, 09 Dec 2019 00:00:00 +0900</pubDate>
@@ -67,6 +183,69 @@ KazuCocoa/ex_parameterized を試してみたこともあるのだが、記法�
     </item>
     
     <item>
+      <title>ABEJA Platform &#43; LINE Botで機械学習アプリをつくる</title>
+      <link>https://metareal.blog/post/2019/12/01/3b27d7836032f0e42f88/</link>
+      <pubDate>Sun, 01 Dec 2019 20:07:24 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2019/12/01/3b27d7836032f0e42f88/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>Ecto 3.17 から 3.2.2 にアップデート: Migration のテスト</title>
+      <link>https://metareal.blog/post/2019/10/12/a13377036c42e05d7043/</link>
+      <pubDate>Sat, 12 Oct 2019 09:58:51 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2019/10/12/a13377036c42e05d7043/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>Ecto 3.17 から 3.2.2 にアップデート: use Ecto.Type</title>
+      <link>https://metareal.blog/post/2019/10/12/e1dee393ecbe2debb8ad/</link>
+      <pubDate>Sat, 12 Oct 2019 09:20:36 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2019/10/12/e1dee393ecbe2debb8ad/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>Ecto の virtual field で struct を参照する</title>
+      <link>https://metareal.blog/post/2019/10/10/41faf488095c84196ee4/</link>
+      <pubDate>Thu, 10 Oct 2019 16:26:22 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2019/10/10/41faf488095c84196ee4/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>関数定義を Mix.env に応じて分ける方法とテスト</title>
+      <link>https://metareal.blog/post/2019/10/09/46b47c586aec81e201bf/</link>
+      <pubDate>Wed, 09 Oct 2019 12:57:38 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2019/10/09/46b47c586aec81e201bf/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>micro second 精度の NaiveDateTime を書く</title>
+      <link>https://metareal.blog/post/2019/10/09/3bf73aacb96d55a41515/</link>
+      <pubDate>Wed, 09 Oct 2019 11:51:52 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2019/10/09/3bf73aacb96d55a41515/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>builderscon tokyo 2019 - Elixir: Under the Hood</title>
+      <link>https://metareal.blog/post/2019/09/01/3d054f3d29920107687f/</link>
+      <pubDate>Sun, 01 Sep 2019 15:47:43 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2019/09/01/3d054f3d29920107687f/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
       <title>Jupyter で unzip の進捗状況を表示</title>
       <link>https://metareal.blog/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</link>
       <pubDate>Sun, 14 Apr 2019 00:00:00 +0900</pubDate>
@@ -77,6 +256,69 @@ KazuCocoa/ex_parameterized を試してみたこともあるのだが、記法�
 !unzip /home/data/large_dataset.zip -d /home/data/ Archive: /home/data/large_dataset.zip inflating: /home/data/large_dataset/1/1900_753325_0060.png inflating: /home/data/large_dataset/1/1900_754949_0023.png inflating: /home/data/large_dataset/1/1900_758495_0075.png inflating: /home/data/large_dataset/1/1900_761460_0029.png inflating: /home/data/large_dataset/1/1900_766994_0030.png inflating: /home/data/large_dataset/1/1900_776319_0015.png ... (More 80K lines) かといって、/dev/null にリダイレクトしたり、-q オプションを指定して出力そのものをなくしてしまうと、本当に解凍処理が進んでいるのか分からなくて不安になる。
 !unzip /home/data/large_dataset.zip -d /home/data/ &amp;gt; /dev/null !unzip -q /home/data/large_dataset.zip -d /home/data/ それ、pv コマンドで出来るよ ググってみると pv コマンドで出来る、とのことだったが、全体のファイル数を指定してちゃんとプログレス・バーが機能するようにしている例が見当たらなかったので、この記事を書いた。
 n_files = !unzip -l /home/data/large_dataset.zip | grep .png | wc -l !unzip -o /home/data/large_dataset.zip -d /home/data/ | pv -l -s {n_files[0]} &amp;gt; /dev/null  まず、unzip -l で全体のファイル数を取得する。unzip -l が報告する内容にはディレクトリも含まれているので、grep でフィルタが必要だ。残念ながら 次に再度 unzip コマンドを実行して、今度は実際に解凍処理を実行する。処理したファイル名が出力されるので、これを pv コマンドにつなぎ、-s (size) オプションでファイル数を指定する  これで、こんな感じのプログレス・バーが表示されるようになる。</description>
+    </item>
+    
+    <item>
+      <title>hexdocs のトップページを README.md にする</title>
+      <link>https://metareal.blog/post/2019/01/14/68f6d651c078cb7cbab7/</link>
+      <pubDate>Mon, 14 Jan 2019 19:20:46 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2019/01/14/68f6d651c078cb7cbab7/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>Ecto.Repo.transaction/3 は入れ子にできる</title>
+      <link>https://metareal.blog/post/2019/01/08/f15dead031db4e3763a1/</link>
+      <pubDate>Tue, 08 Jan 2019 14:32:21 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2019/01/08/f15dead031db4e3763a1/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>Stripe API のリトライと冪等性</title>
+      <link>https://metareal.blog/post/2018/12/25/087f5e5f9a5ed5a93b21/</link>
+      <pubDate>Tue, 25 Dec 2018 15:21:48 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2018/12/25/087f5e5f9a5ed5a93b21/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>Hackney による HTTP アクセスのデバッグ</title>
+      <link>https://metareal.blog/post/2018/12/14/5224d048828256223234/</link>
+      <pubDate>Fri, 14 Dec 2018 13:02:11 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2018/12/14/5224d048828256223234/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>ABEJA Platform の認証についてまとめる</title>
+      <link>https://metareal.blog/post/2018/12/04/150a0705d9581c1000c6/</link>
+      <pubDate>Tue, 04 Dec 2018 15:45:35 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2018/12/04/150a0705d9581c1000c6/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>mix docs で生成されるドキュメントの見た目をカスタマイズする</title>
+      <link>https://metareal.blog/post/2018/11/26/91c14c3df8ca81c8c3bb/</link>
+      <pubDate>Mon, 26 Nov 2018 14:54:35 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2018/11/26/91c14c3df8ca81c8c3bb/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
+    <item>
+      <title>Sentry で 4xx 系のエラーを送信しない</title>
+      <link>https://metareal.blog/post/2017/10/11/77c6dcc437736ca2fd51/</link>
+      <pubDate>Wed, 11 Oct 2017 17:35:35 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2017/10/11/77c6dcc437736ca2fd51/</guid>
+      <description>この記事はこちらで公開しています。</description>
     </item>
     
     <item>
@@ -159,6 +401,15 @@ URL を記事ごとに指定可能なのは助かった。デフォルトだと 
 --- title: &amp;#34;Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった。&amp;#34; url: &amp;#34;/2010/12/16/ffi-requires-ruby-version-1-9-2/&amp;#34; ... とはいえ、今後もこの指定をしていくのはしんどいので、この記事から URL の形式を /post/title/ に変えるつもり。
 移行スクリプト 移行にあたっては古い記事を Markdown + Front Matter に変換する必要があり、変換スクリプトを Ruby で書いた。
  指定された記事の URL から HTML を取得 Nokogiri で HTML をパースしてタイトルや日付といったメタデータを抽出 本文を Markdown に変換 Hugo コマンドを起動してファイル作成 Markdown を書き込んで、次に実行するコマンドを出力  移行しながら発展させていき、最終的には上のようなスクリプトに落ち着いた。 最初のうちは 3 までをスクリプトでやって残りは（変換結果が正しいことを確認しつつ）手作業だったのだが、 しばらくしてから 4, 5 を実装して一気に終わらせた。</description>
+    </item>
+    
+    <item>
+      <title>ruby-llvm をビルドするまでにやること</title>
+      <link>https://metareal.blog/post/2014/05/31/fb702054d3bef16bac3b/</link>
+      <pubDate>Sat, 31 May 2014 08:42:08 +0900</pubDate>
+      
+      <guid>https://metareal.blog/post/2014/05/31/fb702054d3bef16bac3b/</guid>
+      <description>この記事はこちらで公開しています。</description>
     </item>
     
     <item>
@@ -1526,7 +1777,7 @@ PostgreSQL 側で、実際に発行されている SQL をログに記録して�
       <pubDate>Tue, 24 Jul 2007 09:29:00 +0900</pubDate>
       
       <guid>https://metareal.blog/2007/07/24/notes-on-rubyonrails-with-mysql/</guid>
-      <description>Rails のブログでも取り上げられていた、&amp;quot;Rubyisms - MySQL-dump&amp;rdquo; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。
+      <description>Rails のブログでも取り上げられていた、&amp;quot;Rubyisms - MySQL-dump&amp;quot; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。
 Rubyisms - MySQL-dump http://mysqldump.azundris.com/archives/72-Rubyisms.html
 &amp;ldquo;select *&amp;rdquo; が多すぎる ActiveRecord は、特に何も指定しないと select * で、すべてのカラムを取ってくる。SQL は動的に生成されて、どのカラムが存在するかチェックしているので、スキームが変更されても大丈夫。
 でも、必要のないデータまで取ってきてしまう、という問題はあるよね。そして、何が無駄かっていうと、必要のないデータのために一時的なテーブルが使われるかもしれない、ってことなんだ（SQL を EXPLAIN してみて、&amp;ldquo;using temporary&amp;rdquo; となっていれば、そういう事態が発生しているサインだ）。
@@ -2522,7 +2773,7 @@ RubyForge から最新版をダウンロード。現時点での最新版は 0.9
       <guid>https://metareal.blog/2006/12/28/reason-of-mysql-ruby-test-failure/</guid>
       <description>前回書いた、MySQL/Ruby の test.rb が失敗する原因を調査する。
 まずは、実行結果の出力を調べてみよう。 すべてのテストが失敗しているため長いので、最初のテスト結果のみ抜粋する。
-% ruby ./test.rb localhost root newpass ... 1) Failure: test_connect(TC_Mysql) [./test.rb:39]: Exception raised: Class: &amp;lt;Mysql::Error&amp;gt; **Message: &amp;lt;&amp;quot;Access denied for user &#39;ishikawa&#39;@&#39;localhost&#39; (using password: NO)&amp;quot;&amp;gt;** ---Backtrace--- ./test.rb:39:in `connect&#39; ./test.rb:39:in `test_connect&#39; ./test.rb:39:in `test_connect&#39; ... MySQL のエラーで &amp;quot;Access denied for user &amp;lsquo;ishikawa&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; (using password: NO)&amp;ldquo;と出力されているので、これは単なるアクセス制御の問題だ。
+% ruby ./test.rb localhost root newpass ... 1) Failure: test_connect(TC_Mysql) [./test.rb:39]: Exception raised: Class: &amp;lt;Mysql::Error&amp;gt; **Message: &amp;lt;&amp;quot;Access denied for user &#39;ishikawa&#39;@&#39;localhost&#39; (using password: NO)&amp;quot;&amp;gt;** ---Backtrace--- ./test.rb:39:in `connect&#39; ./test.rb:39:in `test_connect&#39; ./test.rb:39:in `test_connect&#39; ... MySQL のエラーで &amp;ldquo;Access denied for user &amp;lsquo;ishikawa&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; (using password: NO)&amp;quot;と出力されているので、これは単なるアクセス制御の問題だ。
 そして、test.rb のコマンドライン引数で root ユーザを指定しているにも関わらず、実際には ishikawa ユーザでアクセスしようとしている。
 うまくいくわけがない。 コマンドライン引数による指定が無視されているわけだ。
 何故、コマンドライン引数が無視されるのか コマンドライン引数が無視される原因を調べてみると、どうやら test.rb が使っている Test::Unit が悪さをしているらしい（Test::Unit は Ruby の標準添付ライブラリで、いわゆる xUnit ツールの Ruby 版である）。

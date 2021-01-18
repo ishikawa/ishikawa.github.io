@@ -18,10 +18,10 @@
   <link rel="stylesheet" href="/css/main.css">
 
   
-  <link rel="stylesheet" href="https://metareal.blog/css/application.min.2ab3dcdbe8bfa147d2c0e65b7ad850169b1c13e6f86b27a69e563ac6751e2fe4.css">
+  <link rel="stylesheet" href="https://metareal.blog/css/application.min.056dc003036eeb885f8c40348a02ac0502b9377900fd40a17df2a0d04510fb5c.css">
   
   
-  <link rel="stylesheet" href="https://metareal.blog/css/application.en.min.630a50e4af83b5d324a38378baf2412039d68dbffa8451f4df3b9e1e3fd5e7eb.css">
+  <link rel="stylesheet" href="https://metareal.blog/css/application.en.min.21ab326a83267ebe98d87e8ecdf4aa6172f08deba822eb68ef6d3d61cf79746b.css">
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
@@ -29,15 +29,15 @@
 <body>
 
 
-<nav class="languages">
+	<nav class="languages">
+		<a href="/">Home</a><span class="separator"> | </span>
+  Read this article in » 
 	
-	<a href="/en">Home</a><span class="separator"> | </span>
+		<a href="https://metareal.blog/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/">日本語</a>
 	
-	Read this article in »
-	
-	<a href="https://metareal.blog/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/">日本語</a>
-	
-</nav>
+	</nav>
+
+
 
 
 <article>
@@ -165,8 +165,7 @@ FakeCompletionProcess <span style="color:#f92672">=</span> namedtuple(<span styl
 <li>Change the working directory to work</li>
 </ol>
 <h2 id="conclusion">Conclusion</h2>
-<p>In addition to these fancy fixtures, pytest also provides <a href="https://docs.pytest.org/en/latest/fixture.html#using-marks-with-parametrized-fixtures">parameterize tests</a>.</p>
-<p>Since it is also on the fixture mechanism, it&rsquo;s easier to use than adopting a separate library for parameterized testing. It may take some time to get used to the style where fixtures are parameter injected into test function arguments, but once you get used to it, it&rsquo;s a reassuring way to improve legacy code.</p>
+<p>In addition to this, pytest also provides <a href="https://docs.pytest.org/en/latest/fixture.html#using-marks-with-parametrized-fixtures">parameterize tests</a>, and since it is on the fixture mechanism, it is easier to use than adopting a separate library for Parameterized testing. It may take some getting used to the style where fixtures are parameter injected into test function arguments, but once you get used to it, it&rsquo;s a reassuring way to improve your code.</p>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -181,8 +180,6 @@ FakeCompletionProcess <span style="color:#f92672">=</span> namedtuple(<span styl
 
 <nav class="pagination">
   <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/en/post/2020/05/03/validating-multipart-form-data-with-requests-mock/">Validating multipart/form-data request with requests-mock</a></li>
     
     
     <li class="prev"><a href="https://metareal.blog/en/post/2020/03/26/elixir-import-overrides-previous-import/">Elixir import/2 overrides a previously declared import/2</a><i class="fa fa-angle-right"></i></li>

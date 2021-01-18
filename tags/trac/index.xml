@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 09 Sep 2007 11:49:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://metareal.blog/tags/trac/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 09 Sep 2007 11:49:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/trac/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</title>
       <link>https://metareal.blog/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/</link>
