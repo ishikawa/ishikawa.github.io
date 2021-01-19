@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,27 +22,31 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>XViewMiddleware の謎</h1>
-  <div class="metadata">
-    <p class="date">
-      2008/05/24 9:12am
-    </p>
-    <ul class="tags">
-      
-      <li>django</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>疑問に思ったことはないだろうか。</p>
+    <article>
+      <h1>XViewMiddleware の謎</h1>
+      <div class="metadata">
+        <p class="date">2008/05/24 9:12am</p>
+        <ul class="tags">
+          
+          <li>django</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>疑問に思ったことはないだろうか。</p>
 <p><a href="http://www.djangoproject.com/">Django</a> の <a href="http://www.djangoproject.com/documentation/middleware/">Middleware</a>（<a href="http://michilu.com/django/doc-ja/middleware/">和訳</a>）である。まずは、<code>settings.py</code> を見てほしい。</p>
 <pre><code>MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -114,22 +119,28 @@ content-length: 0
 <li>Django の管理インターフェースでも利用されている</li>
 </ul>
 <p>これでもう何も怖いものはない。この機能を活用するもよし、デバッグ目的だと割り切るなら無効にするもよし。それは自由だ。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2008/05/29/django-cache-framework-meets-appengine-memcache-api/"
+            >Django のキャッシュで Google App Engine の Memcache API を使う</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2008/05/20/porting-weblog-to-google-app-engine/">Google App Engine への移行</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2008/05/29/django-cache-framework-meets-appengine-memcache-api/">Django のキャッシュで Google App Engine の Memcache API を使う</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2008/05/20/porting-weblog-to-google-app-engine/">Google App Engine への移行</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -170,6 +181,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

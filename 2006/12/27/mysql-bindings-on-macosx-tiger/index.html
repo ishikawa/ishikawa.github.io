@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,29 +22,33 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Mac OS X に MySQL/Ruby をインストール &#43; 高速化パッチ</h1>
-  <div class="metadata">
-    <p class="date">
-      2006/12/28 3:14am
-    </p>
-    <ul class="tags">
-      
-      <li>ruby</li>
-      
-      <li>mysql</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>長かった Ruby on Rails 環境構築シリーズもやっと終盤です。</p>
+    <article>
+      <h1>Mac OS X に MySQL/Ruby をインストール &#43; 高速化パッチ</h1>
+      <div class="metadata">
+        <p class="date">2006/12/28 3:14am</p>
+        <ul class="tags">
+          
+          <li>ruby</li>
+          
+          <li>mysql</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>長かった Ruby on Rails 環境構築シリーズもやっと終盤です。</p>
 <p>Ruby から MySQL につなぐためのバインディングである <a href="http://www.tmtm.org/mysql/ruby/">MySQL/Ruby</a> をインストールすれば、<a href="http://www.rubyonrails.org/">Ruby on Rails</a> の開発環境構築は一段落。</p>
 <p>なお、同様のバインディングである <a href="http://www.tmtm.org/ruby/mysql/">Ruby/MySQL</a> もあり、こちらは Ruby で書かれているためコンパイルが不要。MySQL/Ruby とも、ほぼ互換性がある。ただ、今回はパフォーマンス優先でいきたいと思う。</p>
 <p>さて、<a href="http://tmtm.org/downloads/mysql/ruby/">ダウンロードページ</a>から最新版をダウンロード。現時点では <a href="http://tmtm.org/downloads/mysql/ruby/mysql-ruby-2.7.3.tar.gz"><code>mysql-ruby-2.7.3.tar.gz</code></a> が最新版のようだ。</p>
@@ -90,22 +95,28 @@ cc -dynamic -bundle -undefined suppress -flat_namespace  -L&quot;/usr/local/mysq
 ...
 113 tests, 44 assertions, 3 failures, 177 errors
 </code></pre><p>うーむ。つづきは<a href="http://weblog.metareal.org/2006/12/28/reason-of-mysql-ruby-test-failure/">今度</a>。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2006/12/28/reason-of-mysql-ruby-test-failure/"
+            >MySQL/Ruby の test.rb が失敗する理由と対策</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2006/12/27/mysql-post-installation/">MySQL をインストールしたあとの作業</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2006/12/28/reason-of-mysql-ruby-test-failure/">MySQL/Ruby の test.rb が失敗する理由と対策</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2006/12/27/mysql-post-installation/">MySQL をインストールしたあとの作業</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -146,6 +157,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,31 +22,35 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>kilim で Java でもジェネレーター</h1>
-  <div class="metadata">
-    <p class="date">
-      2008/06/27 3:41am
-    </p>
-    <ul class="tags">
-      
-      <li>java</li>
-      
-      <li>kilim</li>
-      
-      <li>concurrent</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p><a href="http://twitter.com/">Twitter</a> と <a href="http://www.erlang.org/">Erlang</a> をきっかけに注目を集めるようになった軽量プロセス（とかマイクロスレッドとか）を Java で実現するためのライブラリに <a href="http://www.malhar.net/sriram/kilim/">kilim</a> があります。</p>
+    <article>
+      <h1>kilim で Java でもジェネレーター</h1>
+      <div class="metadata">
+        <p class="date">2008/06/27 3:41am</p>
+        <ul class="tags">
+          
+          <li>java</li>
+          
+          <li>kilim</li>
+          
+          <li>concurrent</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p><a href="http://twitter.com/">Twitter</a> と <a href="http://www.erlang.org/">Erlang</a> をきっかけに注目を集めるようになった軽量プロセス（とかマイクロスレッドとか）を Java で実現するためのライブラリに <a href="http://www.malhar.net/sriram/kilim/">kilim</a> があります。</p>
 <ul>
 <li><a href="http://www.malhar.net/sriram/talks/kilim-google.pdf">Isolation-typed actors for Java</a> (PDF)</li>
 <li><a href="http://www.infoq.com/news/2008/06/kilim-message-passing-in-java">InfoQ: Kilim - actors and message passing in Java</a></li>
@@ -129,22 +134,28 @@ Fib(8) = 21
 Fib(9) = 34
 Fib(10) = 55
 </code></pre><p>今度は実行できました。フィボナッチ数が順番に出力されているのが分かると思います。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2008/07/06/running-legacy-applications-on-flash-player/"
+            >C 言語で書かれたソフトウェアが Flash で動くようになるかもしれない</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/">Flickr の JSON フィードで自作ブログパーツ</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2008/07/06/running-legacy-applications-on-flash-player/">C 言語で書かれたソフトウェアが Flash で動くようになるかもしれない</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/">Flickr の JSON フィードで自作ブログパーツ</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -185,6 +196,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

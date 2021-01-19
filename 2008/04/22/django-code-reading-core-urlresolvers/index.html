@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,29 +22,33 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Django の urlresolvers.py を読む</h1>
-  <div class="metadata">
-    <p class="date">
-      2008/04/22 10:38am
-    </p>
-    <ul class="tags">
-      
-      <li>python</li>
-      
-      <li>django</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p><a href="http://lifecoding.metareal.org/post/32387415">一身上の都合</a>により <a href="http://www.djangoproject.com/">Django</a> の <a href="http://www.djangoproject.com/documentation/url_dispatch/">URL dispatcher</a> について調べている。ドキュメントでだいたいの動作は把握したので、今回は <code>urls.py</code> に定義した URL のマッピングが実際にはどのように解決されているのか、ソースコードを読むことで理解を深めたい、と思う。</p>
+    <article>
+      <h1>Django の urlresolvers.py を読む</h1>
+      <div class="metadata">
+        <p class="date">2008/04/22 10:38am</p>
+        <ul class="tags">
+          
+          <li>python</li>
+          
+          <li>django</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p><a href="http://lifecoding.metareal.org/post/32387415">一身上の都合</a>により <a href="http://www.djangoproject.com/">Django</a> の <a href="http://www.djangoproject.com/documentation/url_dispatch/">URL dispatcher</a> について調べている。ドキュメントでだいたいの動作は把握したので、今回は <code>urls.py</code> に定義した URL のマッピングが実際にはどのように解決されているのか、ソースコードを読むことで理解を深めたい、と思う。</p>
 <p>なお、参照したソースコードは SVN の Revision 7438 である。公開リリースの 0.96.1 とは内容が大きく異なる可能性があること、 <a href="http://code.djangoproject.com/query">Trac</a> での議論やドキュメントを読むかぎり、このへんの実装については今後大きく変更されるかもしれないことを、あらかじめお断りしておく。</p>
 <h3 id="urlresolverspy">urlresolvers.py</h3>
 <p>まずは、調べるソースコードを特定しよう。URL の逆マッピングをしてくれる <a href="http://www.djangoproject.com/documentation/url_dispatch/#reverse">reverse() 関数</a>が用意されていることは分かっているので、これを手がかりにソースコードを探すのがよさそうだ。</p>
@@ -132,22 +137,28 @@ a string) and returns a tuple in this format:</p>
     result = re.sub(r'\(([^)]+)\)', MatchChecker(args, kwargs), regex.pattern)
     return result.replace('^', '').replace('$', '')
 </code></pre><p>余談だが、ここでは <code>^</code> と <code>$</code> のメタ文字しか削除していないため、他のメタ文字はそのまま残ってしまう（もっとも、通常のマッピングをする範囲で困ることはないだろうけど）。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2008/05/12/checking-whether-field-has-a-hidden-widget-in-django-template/"
+            >Django のテンプレートでフォームの要素が hidden かどうかを調べる</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2008/04/18/ruby-openid-util-logger/">ruby-openid でログの出力先を変更する</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2008/05/12/checking-whether-field-has-a-hidden-widget-in-django-template/">Django のテンプレートでフォームの要素が hidden かどうかを調べる</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2008/04/18/ruby-openid-util-logger/">ruby-openid でログの出力先を変更する</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -188,6 +199,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

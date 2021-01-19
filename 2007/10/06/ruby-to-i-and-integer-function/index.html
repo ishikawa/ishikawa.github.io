@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,27 +22,31 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Ruby の String#to_i と組み込み関数の Integer() は違う</h1>
-  <div class="metadata">
-    <p class="date">
-      2007/10/06 10:37am
-    </p>
-    <ul class="tags">
-      
-      <li>ruby</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>文字列から数値への変換に <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=String#to_i"><code>String.to_i</code></a> を使っていると、思わぬ問題に出くわすことがある。</p>
+    <article>
+      <h1>Ruby の String#to_i と組み込み関数の Integer() は違う</h1>
+      <div class="metadata">
+        <p class="date">2007/10/06 10:37am</p>
+        <ul class="tags">
+          
+          <li>ruby</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>文字列から数値への変換に <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=String#to_i"><code>String.to_i</code></a> を使っていると、思わぬ問題に出くわすことがある。</p>
 <p><a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=String#to_i">Ruby リファレンスマニュアル</a>には、</p>
 <blockquote>
 <p>整数とみなせない文字があればそこまでを変換対象とします。変換対象が 空文字列であれば 0 を返します。</p>
@@ -70,22 +75,28 @@ ArgumentError: invalid value for Integer: &quot;10fixnum&quot;
         from (irb):7
         from :0
 </code></pre><p><a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=%C1%C8%A4%DF%B9%FE%A4%DF%B4%D8%BF%F4#Integer">リファレンスマニュアル</a>にもあるように、変換できない場合は、例外 ArgumentError が発生する。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2007/10/07/java-singleton-collection/"
+            >Java で要素がひとつだけのコレクションをつくる</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/">Prototype 1.6.0 で大きく進化したイベント API（目次）</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2007/10/07/java-singleton-collection/">Java で要素がひとつだけのコレクションをつくる</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/">Prototype 1.6.0 で大きく進化したイベント API（目次）</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -126,6 +137,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

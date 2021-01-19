@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,27 +22,31 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>今日の Ruby 落とし穴</h1>
-  <div class="metadata">
-    <p class="date">
-      2007/09/12 6:31am
-    </p>
-    <ul class="tags">
-      
-      <li>ruby</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p><a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=Ruby%A4%CE%CD%EE%A4%C8%A4%B7%B7%EA">Ruby の落とし穴</a>には載っていないようなので。</p>
+    <article>
+      <h1>今日の Ruby 落とし穴</h1>
+      <div class="metadata">
+        <p class="date">2007/09/12 6:31am</p>
+        <ul class="tags">
+          
+          <li>ruby</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p><a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=Ruby%A4%CE%CD%EE%A4%C8%A4%B7%B7%EA">Ruby の落とし穴</a>には載っていないようなので。</p>
 <pre><code>def
 def foo
   # ...
@@ -61,22 +66,28 @@ test.rb:5: undefined local variable or method `foo' for main:Object (NameError)
   v + 1
 end
 </code></pre><p>このコードは意図通りに動作しないどころか、<strong>ブロックが実行されない</strong>、というのには驚いた。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2007/09/12/%E5%A5%87%E8%A1%93%E5%B8%AB/"
+            >クリストファー・プリースト「奇術師」</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/">Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2007/09/12/%E5%A5%87%E8%A1%93%E5%B8%AB/">クリストファー・プリースト「奇術師」</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/">Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -117,6 +128,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

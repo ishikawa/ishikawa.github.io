@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,29 +22,33 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Rails で MySQL を使うときの注意点</h1>
-  <div class="metadata">
-    <p class="date">
-      2007/07/24 9:29am
-    </p>
-    <ul class="tags">
-      
-      <li>rubyonrails</li>
-      
-      <li>mysql</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p><a href="http://weblog.rubyonrails.com/2007/7/20/rails-and-mysql">Rails のブログでも取り上げられていた</a>、&quot;<a href="http://mysqldump.azundris.com/archives/72-Rubyisms.html">Rubyisms - MySQL-dump</a>&quot; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。</p>
+    <article>
+      <h1>Rails で MySQL を使うときの注意点</h1>
+      <div class="metadata">
+        <p class="date">2007/07/24 9:29am</p>
+        <ul class="tags">
+          
+          <li>rubyonrails</li>
+          
+          <li>mysql</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p><a href="http://weblog.rubyonrails.com/2007/7/20/rails-and-mysql">Rails のブログでも取り上げられていた</a>、&quot;<a href="http://mysqldump.azundris.com/archives/72-Rubyisms.html">Rubyisms - MySQL-dump</a>&quot; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。</p>
 <p>Rubyisms - MySQL-dump
 <a href="http://mysqldump.azundris.com/archives/72-Rubyisms.html">http://mysqldump.azundris.com/archives/72-Rubyisms.html</a></p>
 <h3 id="select--が多すぎる">&ldquo;select *&rdquo; が多すぎる</h3>
@@ -100,22 +105,28 @@
 <li>そして、MEMORY ストレージエンジンは <code>VARCHAR(X)</code> を <code>CHAR(X)</code> として扱う</li>
 </ul>
 <p>ということのようだ。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/"
+            >PostgreSQL 7.4 を Intel Mac にインストールする方法</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2007/07/22/hello-world-llvm/">LLVM で Hello, World</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/">PostgreSQL 7.4 を Intel Mac にインストールする方法</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2007/07/22/hello-world-llvm/">LLVM で Hello, World</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -156,6 +167,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

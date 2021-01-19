@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,29 +22,33 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>PostgreSQL 7.4 を Intel Mac にインストールする方法</h1>
-  <div class="metadata">
-    <p class="date">
-      2007/07/25 4:24am
-    </p>
-    <ul class="tags">
-      
-      <li>postgres</li>
-      
-      <li>mac</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>理由あって <a href="http://www.postgresql.org/">PostgreSQL</a> 7.4 を Mac OS X にインストールすることになった。早速、ダウンロードページから手に入る中で最新の 7.4.17 をダウンロードしてインストールしようとするも、エラーが出てコンパイルできない。</p>
+    <article>
+      <h1>PostgreSQL 7.4 を Intel Mac にインストールする方法</h1>
+      <div class="metadata">
+        <p class="date">2007/07/25 4:24am</p>
+        <ul class="tags">
+          
+          <li>postgres</li>
+          
+          <li>mac</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>理由あって <a href="http://www.postgresql.org/">PostgreSQL</a> 7.4 を Mac OS X にインストールすることになった。早速、ダウンロードページから手に入る中で最新の 7.4.17 をダウンロードしてインストールしようとするも、エラーが出てコンパイルできない。</p>
 <pre><code>% ./configure
 % make
 ...
@@ -109,22 +114,28 @@ make: *** [all] Error 2
 ...
 All of PostgreSQL successfully made. Ready to install.
 </code></pre><p><code>psql</code> が動作することと、<code>make check</code> がパスすることは確認ずみ。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2007/07/31/%E4%B8%87%E7%89%A9%E7%90%86%E8%AB%96/"
+            >グレッグ・イーガン「万物理論」</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2007/07/24/notes-on-rubyonrails-with-mysql/">Rails で MySQL を使うときの注意点</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2007/07/31/%E4%B8%87%E7%89%A9%E7%90%86%E8%AB%96/">グレッグ・イーガン「万物理論」</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2007/07/24/notes-on-rubyonrails-with-mysql/">Rails で MySQL を使うときの注意点</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -165,6 +176,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

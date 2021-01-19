@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,29 +22,33 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Cocoa で独自の Text View を実装する</h1>
-  <div class="metadata">
-    <p class="date">
-      2008/11/08 3:00am
-    </p>
-    <ul class="tags">
-      
-      <li>typography</li>
-      
-      <li>cocoa</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p><a href="http://developer.apple.com/iphone/program/">iPhone</a> も盛り上がっていることだし、ひさしぶりに <a href="http://developer.apple.com/referencelibrary/Cocoa/">Cocoa</a> プログラミングを始めてみる。</p>
+    <article>
+      <h1>Cocoa で独自の Text View を実装する</h1>
+      <div class="metadata">
+        <p class="date">2008/11/08 3:00am</p>
+        <ul class="tags">
+          
+          <li>typography</li>
+          
+          <li>cocoa</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p><a href="http://developer.apple.com/iphone/program/">iPhone</a> も盛り上がっていることだし、ひさしぶりに <a href="http://developer.apple.com/referencelibrary/Cocoa/">Cocoa</a> プログラミングを始めてみる。</p>
 <p><a href="http://developer.apple.com/mac/">Mac Dev Center</a> をつらつらと眺めてみると、<a href="http://developer.apple.com/mac/articles/cocoa/managingconcurrency.html">Managing Concurrency with NSOperation</a> という記事に興味が湧く。<a href="http://developer.apple.com/documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html">NSOperation</a> と <a href="http://developer.apple.com/documentation/Cocoa/Reference/NSOperationQueue_class/Reference/Reference.html">NSOperationQueue</a>（優先順位付きキュー）を使うことで、タスクのスケジューリングと並行処理が手軽に行えるようになったようだ。Java の <a href="http://java.sun.com/javase/6/docs/api/java/util/concurrent/package-summary.html">concurrency パッケージ</a>に感銘を受けた身としては、こういう拡張は嬉しい。今後、マルチスレッドが必要になったときに、改めて詳しく調べてみよう。</p>
 <p><a href="http://developer.apple.com/referencelibrary/Cocoa/idxTextFonts-date.html">テキストシステム周り</a>も、ひところに比べると充実してきている。Mac OS X 10.3 では <a href="http://developer.apple.com/documentation/Cocoa/Reference/ApplicationKit/Classes/NSATSTypesetter_Class/Reference/Reference.html">NSATSTypesetter</a> が公開された。更に Mac OS X 10.5 では <a href="http://developer.apple.com/documentation/Cocoa/Reference/NSTextInputClient_Protocol/Reference/Reference.html">NSTextInputClient</a> プロトコルと <a href="http://developer.apple.com/releasenotes/Cocoa/RN-InputMethodKit/index.html">Input Method Kit</a> が追加されている（他にもあるかも）。</p>
 <p>さて、Cocoa プログラミングのリハビリとして、今回は独自の Text View を実装してみようと思う。</p>
@@ -118,22 +123,28 @@
 <li><a href="http://developer.apple.com/documentation/Cocoa/Conceptual/EventOverview/Introduction/chapter_1_section_1.html#//apple_ref/doc/uid/10000060i-CH1-DontLinkElementID_45">Cocoa Event-Handling Guide</a></li>
 <li><a href="http://developer.apple.com/documentation/Cocoa/Conceptual/InputManager/InputManager.html#//apple_ref/doc/uid/10000065">Introduction to Text Input Management</a></li>
 </ul>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2008/12/09/copy-link-to-evernote-client-applescript/"
+            >Safari で開いているページのリンクを Evernote クライアントに送る</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2008/10/03/google-app-engine-113-zipserve/">Google App Engine 1.1.3 の zipserve で静的ファイルをまとめてアップロード</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2008/12/09/copy-link-to-evernote-client-applescript/">Safari で開いているページのリンクを Evernote クライアントに送る</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2008/10/03/google-app-engine-113-zipserve/">Google App Engine 1.1.3 の zipserve で静的ファイルをまとめてアップロード</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -174,6 +185,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

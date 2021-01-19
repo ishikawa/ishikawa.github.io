@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,29 +22,33 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Python でプロパティリストを読み込む</h1>
-  <div class="metadata">
-    <p class="date">
-      2008/08/05 12:21pm
-    </p>
-    <ul class="tags">
-      
-      <li>python</li>
-      
-      <li>mac</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>Python で<a href="http://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%83%AA%E3%82%B9%E3%83%88">プロパティリスト</a>を読み込み、オブジェクトに変換するライブラリ <a href="http://github.com/ishikawa/python-plist-parser/">plist_parser</a> を書いた。<a href="http://github.com/ishikawa">GitHub</a> で<a href="http://github.com/ishikawa/python-plist-parser/">公開している</a>。Python 2.4 以降で動作確認済み。ただし、対応するフォーマットは XML のみで、書き込みにも対応していない。</p>
+    <article>
+      <h1>Python でプロパティリストを読み込む</h1>
+      <div class="metadata">
+        <p class="date">2008/08/05 12:21pm</p>
+        <ul class="tags">
+          
+          <li>python</li>
+          
+          <li>mac</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>Python で<a href="http://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%83%AA%E3%82%B9%E3%83%88">プロパティリスト</a>を読み込み、オブジェクトに変換するライブラリ <a href="http://github.com/ishikawa/python-plist-parser/">plist_parser</a> を書いた。<a href="http://github.com/ishikawa">GitHub</a> で<a href="http://github.com/ishikawa/python-plist-parser/">公開している</a>。Python 2.4 以降で動作確認済み。ただし、対応するフォーマットは XML のみで、書き込みにも対応していない。</p>
 <p>使い方は至って単純だ。たとえば、以下のプロパティリストは <code>iTunes Music Library.xml</code> から一部抜粋したものだが、</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
@@ -148,22 +153,28 @@ def load(file):
 <li>ライブラリを作るまえに、同じものがすでにないかチェックした方がよい</li>
 <li>パフォーマンスを測定するのは難しい</li>
 </ul>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/"
+            >Google Chrome に搭載されたオープンソースの JavaScript エンジン &#34;v8&#34; を試す</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2008/07/06/running-legacy-applications-on-flash-player/">C 言語で書かれたソフトウェアが Flash で動くようになるかもしれない</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/">Google Chrome に搭載されたオープンソースの JavaScript エンジン &#34;v8&#34; を試す</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2008/07/06/running-legacy-applications-on-flash-player/">C 言語で書かれたソフトウェアが Flash で動くようになるかもしれない</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -204,6 +215,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,31 +22,35 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Safari で開いているページのリンクを Evernote クライアントに送る</h1>
-  <div class="metadata">
-    <p class="date">
-      2008/12/09 3:37am
-    </p>
-    <ul class="tags">
-      
-      <li>applescript</li>
-      
-      <li>evernote</li>
-      
-      <li>mac</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>最近、プログラミング関係のまとめやインストール手順の記録といったものには <a href="http://evernote.com/">Evernote</a> を利用している。</p>
+    <article>
+      <h1>Safari で開いているページのリンクを Evernote クライアントに送る</h1>
+      <div class="metadata">
+        <p class="date">2008/12/09 3:37am</p>
+        <ul class="tags">
+          
+          <li>applescript</li>
+          
+          <li>evernote</li>
+          
+          <li>mac</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>最近、プログラミング関係のまとめやインストール手順の記録といったものには <a href="http://evernote.com/">Evernote</a> を利用している。</p>
 <p><a href="http://netafull.net/tech/024525.html">画像中の手書き文字認識</a>や「<a href="http://jp.techcrunch.com/archives/extend-your-brain-with-evernote-private-beta-invites/">脳を拡張する</a>」といった誇大広告ばかりが取り沙汰されるサービスだが、単純にメモツールとして優れており、特に <a href="http://www.evernote.com/about/download/">Mac クライアント</a>と <a href="http://www.evernote.com/about/download/iphone/">iPhone クライアント</a>の出来がすばらしい。</p>
 <h3 id="evernote-mac-クライアント">Evernote: Mac クライアント</h3>
 <p>プログラミング関係の話題をノートにまとめていると、興味深いページへのリンクを多く埋め込むことになる。ノートの編集は Mac のクライアントで行うことが多いのだが、この作業がけっこう面倒だ：</p>
@@ -121,22 +126,28 @@ set the clipboard to theClipboard
 <p>System Events を使っているため、上記スクリプトを実行するには「システム環境設定」＞「ユニバーサル・アクセス」＞「補助装置にアクセスできるようにする」チェックボックスをオンにする必要がある。</p>
 <p>なお、<a href="http://pygments.org/">Pygments</a> による AppleScript ソースコードのハイライトには自作の <a href="http://github.com/ishikawa/pygments-applescript-lexer/tree/master">The Pygments lexer for AppleScript language</a> を使用した。AppleScript 構文のサポートはまだ完全ではないが、何もないよりはマシだろう。</p>
 <p><strong>（2008/12/13 追記）</strong><a href="http://pygments.org/download/">Pygments 1.0</a> で AppleScript のサポートが<a href="http://dev.pocoo.org/projects/pygments/browser/CHANGES?rev=710%3Aa5748745272a">追加された</a>。このブログも Pygments 1.0 にアップデートし、自作のモジュールは OBSOLETE 扱いとした。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2008/12/09/adobe-alchemy-first-impression/"
+            >C/C&#43;&#43; のコードを ActionScript に変換する Adobe Alchemy を試す</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2008/11/08/cocoa-custom-text-view/">Cocoa で独自の Text View を実装する</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2008/12/09/adobe-alchemy-first-impression/">C/C&#43;&#43; のコードを ActionScript に変換する Adobe Alchemy を試す</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2008/11/08/cocoa-custom-text-view/">Cocoa で独自の Text View を実装する</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -177,6 +188,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

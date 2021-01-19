@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,27 +22,31 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>O記法で対数の底が省略される理由</h1>
-  <div class="metadata">
-    <p class="date">
-      2008/09/08 2:25am
-    </p>
-    <ul class="tags">
-      
-      <li>algorithm</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>プログラムにスピードを求めるなら<a href="http://ja.wikipedia.org/wiki/%E5%A4%9A%E9%A0%85%E5%BC%8F%E6%99%82%E9%96%93">多項式時間アルゴリズム</a>、特に対数時間で解けるアルゴリズムが重要になる。なにしろ、<a href="http://www.cs.sunysb.edu/~skiena/">Steven S. Skiena</a> 氏がその著書 <a href="http://www.amazon.com/exec/obidos/ASIN/0387948600/thealgorithmrepo">&ldquo;The Algorithm Design Manual&rdquo;</a> で述べているように、<em>Logarithm is an anagram of algorithm</em> なのだ。</p>
+    <article>
+      <h1>O記法で対数の底が省略される理由</h1>
+      <div class="metadata">
+        <p class="date">2008/09/08 2:25am</p>
+        <ul class="tags">
+          
+          <li>algorithm</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>プログラムにスピードを求めるなら<a href="http://ja.wikipedia.org/wiki/%E5%A4%9A%E9%A0%85%E5%BC%8F%E6%99%82%E9%96%93">多項式時間アルゴリズム</a>、特に対数時間で解けるアルゴリズムが重要になる。なにしろ、<a href="http://www.cs.sunysb.edu/~skiena/">Steven S. Skiena</a> 氏がその著書 <a href="http://www.amazon.com/exec/obidos/ASIN/0387948600/thealgorithmrepo">&ldquo;The Algorithm Design Manual&rdquo;</a> で述べているように、<em>Logarithm is an anagram of algorithm</em> なのだ。</p>
 <p>ところで、アルゴリズムの性能評価でお世話になる <a href="http://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%B3%E3%83%80%E3%82%A6%E3%81%AE%E8%A8%98%E5%8F%B7">O 記法</a>では、対数の底がしばしば省略される。たとえば、n 個のデータから二分探索で検索する場合、時間計算量は O(log2n) だが、これを O(log n) と表記することがある。</p>
 <p>では、どうして、対数の底を省略するのだろうか？</p>
 <p>恥ずかしながら、いままで「まあ、省略しても対数時間ということは分かるし、 そういうもんなんだろう」程度にしか考えていなかったが、書籍「<a href="http://www.amazon.co.jp/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3-Jon-Kleinberg/dp/4320122178">アルゴリズムデザイン</a>」に分かりやすい説明があった。</p>
@@ -59,22 +64,28 @@
 <p><a href="http://formula.s21g.com/?%5Clog_a%20n%3D%5CTheta%20(%5Clog_b%20n)"><img src="http://formula.s21g.com/?%5Clog_a%20n%3D%5CTheta%20(%5Clog_b%20n).png" alt="img"></a></p>
 <p>となることから結論づけているが、O 以外の記号を導入するのが面倒だったので、この記事の説明では端折ってある。</p>
 <p>また、使用している数式の画像は <a href="http://formula.s21g.com/">Formula</a> という Web サービスを利用した。Formula は LaTex 形式で入力された数式の画像を生成し、簡単に貼りつけられるようにしてくれるサービスである（参考：<a href="http://blog.s21g.com/articles/683">Formula: 数式をブログに貼り付けて共有するサービス - Hello, world! - s21g</a>）。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2008/09/25/disassembling-python-import-statements/"
+            >Python の dis モジュールでさまざまな import 文を disassemble する</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/">Google Chrome に搭載されたオープンソースの JavaScript エンジン &#34;v8&#34; を試す</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2008/09/25/disassembling-python-import-statements/">Python の dis モジュールでさまざまな import 文を disassemble する</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/">Google Chrome に搭載されたオープンソースの JavaScript エンジン &#34;v8&#34; を試す</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -115,6 +126,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

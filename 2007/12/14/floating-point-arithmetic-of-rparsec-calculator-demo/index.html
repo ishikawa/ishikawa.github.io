@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,29 +22,33 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>rparsec の四則演算デモを浮動小数点に対応させる</h1>
-  <div class="metadata">
-    <p class="date">
-      2007/12/14 10:05am
-    </p>
-    <ul class="tags">
-      
-      <li>ruby</li>
-      
-      <li>rparsec</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p><a href="http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec">rparsec</a> の<a href="http://weblog.metareal.org/2007/12/11/studying-rparsec-introduction/#rparsec-calculator-demo">四則演算デモ</a>を試しているうちに、整数による演算しかできないことに気づくことと思う。</p>
+    <article>
+      <h1>rparsec の四則演算デモを浮動小数点に対応させる</h1>
+      <div class="metadata">
+        <p class="date">2007/12/14 10:05am</p>
+        <ul class="tags">
+          
+          <li>ruby</li>
+          
+          <li>rparsec</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p><a href="http://docs.codehaus.org/display/JPARSEC/Ruby+Parsec">rparsec</a> の<a href="http://weblog.metareal.org/2007/12/11/studying-rparsec-introduction/#rparsec-calculator-demo">四則演算デモ</a>を試しているうちに、整数による演算しかできないことに気づくことと思う。</p>
 <p>四則演算デモが <code>calculator.rb</code> にあるとして、</p>
 <pre><code>require 'calculator.rb'
 parser = Calculator.new.parser
@@ -60,22 +65,28 @@ parser.parse '4 * 2.5'
 </code></pre><p>こう書き換えれば動く。</p>
 <pre><code>parser.parse '4 * 2.5'
 =&gt; 10.0
-</code></pre>
-  </div>
-</article>
+</code></pre></div>
+    </article>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2007/12/16/rparsec-quantifier-and-alternation/">rparsec での繰り返しと選択</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/">RParsec の many と many_ の違い</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2007/12/16/rparsec-quantifier-and-alternation/"
+            >rparsec での繰り返しと選択</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/">RParsec の many と many_ の違い</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -116,6 +127,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

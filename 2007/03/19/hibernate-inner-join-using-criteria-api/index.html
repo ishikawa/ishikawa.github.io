@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,29 +22,33 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Criteria API で inner join する</h1>
-  <div class="metadata">
-    <p class="date">
-      2007/03/20 8:36am
-    </p>
-    <ul class="tags">
-      
-      <li>java</li>
-      
-      <li>hibernate</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>毎回、<a href="http://www.hibernate.org/">Hibernate</a> の使い方を Google で検索する羽目になるのだが、今日はその検索の過程で、偶々こんな記事を見つけた。</p>
+    <article>
+      <h1>Criteria API で inner join する</h1>
+      <div class="metadata">
+        <p class="date">2007/03/20 8:36am</p>
+        <ul class="tags">
+          
+          <li>java</li>
+          
+          <li>hibernate</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>毎回、<a href="http://www.hibernate.org/">Hibernate</a> の使い方を Google で検索する羽目になるのだが、今日はその検索の過程で、偶々こんな記事を見つけた。</p>
 <p><a href="http://www.javalobby.org/articles/hibernatequery102/">Hibernate Querying 102 : The Criteria API</a></p>
 <p>Hibernate の Criteria API について網羅的に解説した記事。
 実は、<code>inner join</code> も Criteria API で記述できることを知って驚いた。</p>
@@ -63,22 +68,28 @@ order by foo.b desc
 .list();
 </code></pre><p>Criteria API で書ける。</p>
 <p>Criteria の便利さと保守のしやすさを知るたびに、独自 SQL 文法で書く気が失せるな。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2007/03/23/haxe-1-12-with-flash-lite-support/"
+            >haXe が 1.12 で Flash Lite をサポート</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2007/03/08/json-is-not-as-safe-as-people-think-it-is/">JSON はみんなが思ってるほど安全ではない</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2007/03/23/haxe-1-12-with-flash-lite-support/">haXe が 1.12 で Flash Lite をサポート</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2007/03/08/json-is-not-as-safe-as-people-think-it-is/">JSON はみんなが思ってるほど安全ではない</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -119,6 +130,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

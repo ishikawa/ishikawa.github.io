@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,29 +22,33 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Google App Engine で Django 1.0 を動かす</h1>
-  <div class="metadata">
-    <p class="date">
-      2008/10/02 10:26am
-    </p>
-    <ul class="tags">
-      
-      <li>appengine</li>
-      
-      <li>django</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>このブログは <a href="http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/">Google App Engine と Django で動かしている</a>のだが、いままで <a href="http://www.djangoproject.com/">Django</a> はすこし古い開発版を使っていた。</p>
+    <article>
+      <h1>Google App Engine で Django 1.0 を動かす</h1>
+      <div class="metadata">
+        <p class="date">2008/10/02 10:26am</p>
+        <ul class="tags">
+          
+          <li>appengine</li>
+          
+          <li>django</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>このブログは <a href="http://www.metareal.org/2008/05/20/porting-weblog-to-google-app-engine/">Google App Engine と Django で動かしている</a>のだが、いままで <a href="http://www.djangoproject.com/">Django</a> はすこし古い開発版を使っていた。</p>
 <p>しかし、先頃めでたく <a href="http://www.djangoproject.com/weblog/2008/sep/03/1/">Django 1.0 もリリースされた</a>ことだし、このブログも最新の開発版にアップデートすることにした。とりあえず、すこしソースコードを修正するだけで、動くだけは動いたので、変更点を残しておく。もっとも、このブログは機能がすくない分、Django に依存している箇所もすくないので、他のプログラムではこれ以上の修正が必要かもしれない。</p>
 <p>また、Django を Google App Engine 上で動かす方法については、もともと、<a href="http://code.google.com/appengine/articles/django.html">Running Django on Google App Engine</a> を参考にしている。そのため、他の手段、たとえば <a href="http://code.google.com/p/google-app-engine-django/">Google App Engine Helper for Django</a> を使っている人にとっては、この記事は役に立たないだろう。</p>
 <h3 id="djangodispatchdispatcherconnect">django.dispatch.dispatcher.connect</h3>
@@ -91,22 +96,28 @@
 <li><a href="http://djangoproject.jp/doc/ja/1.0/releases/1.0-porting-guide.html">アプリケーションを Django 0.96 から 1.0 に移行する — Django v1.0 documentation</a></li>
 <li><a href="http://googleappengine.blogspot.com/2008/09/sdk-113-now-available-for-download.html">Google App Engine Blog: SDK 1.1.3 Now Available for download</a></li>
 </ul>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2008/10/03/google-app-engine-113-zipserve/"
+            >Google App Engine 1.1.3 の zipserve で静的ファイルをまとめてアップロード</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2008/09/25/disassembling-python-import-statements-take2/">Python の dis モジュールでさまざまな import 文を disassemble する (2)</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2008/10/03/google-app-engine-113-zipserve/">Google App Engine 1.1.3 の zipserve で静的ファイルをまとめてアップロード</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2008/09/25/disassembling-python-import-statements-take2/">Python の dis モジュールでさまざまな import 文を disassemble する (2)</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -147,6 +158,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

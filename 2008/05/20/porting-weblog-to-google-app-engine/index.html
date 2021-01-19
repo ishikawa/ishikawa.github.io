@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,31 +22,35 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Google App Engine への移行</h1>
-  <div class="metadata">
-    <p class="date">
-      2008/05/20 7:39am
-    </p>
-    <ul class="tags">
-      
-      <li>appengine</li>
-      
-      <li>django</li>
-      
-      <li>python</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>ここ数日というもの、Mac の前に座ってやっていたことといえば、<a href="http://twitter.com/takanori_is">Twitter</a> か RSS フィードの消化か、でなければブログの移行作業だ。</p>
+    <article>
+      <h1>Google App Engine への移行</h1>
+      <div class="metadata">
+        <p class="date">2008/05/20 7:39am</p>
+        <ul class="tags">
+          
+          <li>appengine</li>
+          
+          <li>django</li>
+          
+          <li>python</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>ここ数日というもの、Mac の前に座ってやっていたことといえば、<a href="http://twitter.com/takanori_is">Twitter</a> か RSS フィードの消化か、でなければブログの移行作業だ。</p>
 <p>もともと、このブログは <a href="http://wordpress.org/">Wordpress</a> で運営していたのだが、色々と不満もたまってきたので、いつの日かつくりなおしたい、と思っていた。おりしも <a href="http://www.djangoproject.com/">Django</a> の勉強をはじめたばかりである。ちょうどよい。教材代わりに簡単なブログシステムを細々とつくっていた。</p>
 <p>それを更に、<a href="http://code.google.com/appengine/">Google App Engine</a> に移植しましたよ、というのが今回のお話。</p>
 <h3 id="google-app-engine-に移植した理由">Google App Engine に移植した理由</h3>
@@ -100,22 +105,28 @@
 </ul>
 <p>最後の点について補足。必要なライブラリはバンドルしなければならないが、それ以外の部分（サーバ管理とか、ミドルウェアとか、ログとか）は無視してアプリケーションの開発に集中できる、という意味で「ひとつの閉じた世界をいじくってる楽しさ」を感じた。そういうこと。</p>
 <p>あと 2 つアプリケーション作れるらしいので、何かネタを思いついたら挑戦してみたいですね。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2008/05/24/django-xview-middleware-tour/"
+            >XViewMiddleware の謎</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2008/05/12/checking-whether-field-has-a-hidden-widget-in-django-template/">Django のテンプレートでフォームの要素が hidden かどうかを調べる</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2008/05/24/django-xview-middleware-tour/">XViewMiddleware の謎</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2008/05/12/checking-whether-field-has-a-hidden-widget-in-django-template/">Django のテンプレートでフォームの要素が hidden かどうかを調べる</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -156,6 +167,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

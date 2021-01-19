@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,31 +22,35 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Flickr の JSON フィードで自作ブログパーツ</h1>
-  <div class="metadata">
-    <p class="date">
-      2008/06/15 10:09am
-    </p>
-    <ul class="tags">
-      
-      <li>flickr</li>
-      
-      <li>json</li>
-      
-      <li>javascript</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>写真を撮るのが好きじゃない。</p>
+    <article>
+      <h1>Flickr の JSON フィードで自作ブログパーツ</h1>
+      <div class="metadata">
+        <p class="date">2008/06/15 10:09am</p>
+        <ul class="tags">
+          
+          <li>flickr</li>
+          
+          <li>json</li>
+          
+          <li>javascript</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>写真を撮るのが好きじゃない。</p>
 <p>カメラは荷物になるし、壊れやすいから気をつかう。いざ撮影になると、バッグから取り出して、電源ボタンを押す、レンズを向ける、ピントを合わせて、と面倒だ。衆人環視の中、うんうん唸りながらシャッターを切るのも粋じゃない。</p>
 <p>では、何が楽しくて写真を撮るのかといえば、補正が楽しい。<a href="http://www.adobe.com/jp/products/photoshopelwin/">Photoshop Elements</a> の自動補正がよく出来ていて、何も考えずにボタンを押していくだけで、それなりの見栄えになってくれる。これは楽しい（ただし、たまに自力で補正に挑戦しても、自動補正の方がキレイで気分が悪い）。</p>
 <p>そのうち、出来上がった写真を他人に見せびらかしたくなるのが自然の流れ。写真を <a href="http://www.flickr.com/">Flickr</a> にアップロードするようになった。さらに、<a href="/2008/05/20/porting-weblog-to-google-app-engine/">このブログをリニューアル</a>するさいには、<a href="http://www.flickr.com/">Flickr</a> にアップロードした写真を表示するブログパーツを追加するつもりだった。</p>
@@ -142,22 +147,28 @@ document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">b_
 <li><a href="http://www.flickr.com/services/api/response.json.html">JSONP で渡される引数について</a></li>
 <li><a href="http://www.flickr.com/services/api/explore/?method=flickr.favorites.getList">Flickr API Explorer</a> API のテスト用ページ。自分の User ID を確認できる</li>
 </ul>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2008/06/26/java-generater-by-using-kilim/"
+            >kilim で Java でもジェネレーター</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2008/06/06/280slides-in-objective-j/">280Slides in Objective-J</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2008/06/26/java-generater-by-using-kilim/">kilim で Java でもジェネレーター</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2008/06/06/280slides-in-objective-j/">280Slides in Objective-J</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -198,6 +209,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

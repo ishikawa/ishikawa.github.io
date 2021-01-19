@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,27 +22,31 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Python のクロージャとレキシカル変数を使ったシングルトンっぽいもの</h1>
-  <div class="metadata">
-    <p class="date">
-      2010/01/31 6:26pm
-    </p>
-    <ul class="tags">
-      
-      <li>python</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>実際にはシングルトンではなくて、共有インスタンスを返すメソッドを実装する、ってだけなんだけど。</p>
+    <article>
+      <h1>Python のクロージャとレキシカル変数を使ったシングルトンっぽいもの</h1>
+      <div class="metadata">
+        <p class="date">2010/01/31 6:26pm</p>
+        <ul class="tags">
+          
+          <li>python</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>実際にはシングルトンではなくて、共有インスタンスを返すメソッドを実装する、ってだけなんだけど。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>(object):
 
     <span style="color:#a6e22e">@staticmethod</span>
@@ -55,22 +60,28 @@
 </ol>
 <p>何が嬉しいかというと、共有インスタンスを参照するための変数（今回の場合は <code>instance</code>）を関数外から不可視にできること。変数のスコープが必要以上に広いと不安になります。実行時に遅延インスタンス化されるのが嫌なら、クラス定義の直後に一度呼び出すなりすればいいと思う。</p>
 <p><a href="http://gist.github.com/290628">gist:290628</a> に doctest とか追加したものを置いてあります。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2010/02/23/google-bookmark-makes-me-feel-so-good/"
+            >Google Bookmark が快適すぎる</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2009/12/02/running-django-1-1-on-google-appengine/">Google AppEngine で Django 1.1 を使う</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2010/02/23/google-bookmark-makes-me-feel-so-good/">Google Bookmark が快適すぎる</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2009/12/02/running-django-1-1-on-google-appengine/">Google AppEngine で Django 1.1 を使う</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -111,6 +122,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -25,10 +26,17 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
-
-
+ 
 	<nav class="languages">
 		<a href="/">Home</a><span class="separator"> | </span>
   Read this article in » 
@@ -40,22 +48,19 @@
 
 
 
-<article>
-  <h1>Code Reading: Dump and Print Function in llvm::Module Class</h1>
-  <div class="metadata">
-    <p class="date">
-      2013/01/14 12:00am
-    </p>
-    <ul class="tags">
-      
-      <li>llvm</li>
-      
-      <li>code reading</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>It&rsquo;s time for code reading. Today, I read the functions <code>dump()</code> and <code>print()</code> which dump IR code and are implemented in <a href="http://llvm.org/doxygen/classllvm_1_1Module.html">llvm::Module</a> which I had been curious about it for a while. Notice, the referenced code base is <a href="http://llvm.org/releases/download.html#3.1">LLVM 3.1</a>.</p>
+    <article>
+      <h1>Code Reading: Dump and Print Function in llvm::Module Class</h1>
+      <div class="metadata">
+        <p class="date">2013/01/14 12:00am</p>
+        <ul class="tags">
+          
+          <li>llvm</li>
+          
+          <li>code reading</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>It&rsquo;s time for code reading. Today, I read the functions <code>dump()</code> and <code>print()</code> which dump IR code and are implemented in <a href="http://llvm.org/doxygen/classllvm_1_1Module.html">llvm::Module</a> which I had been curious about it for a while. Notice, the referenced code base is <a href="http://llvm.org/releases/download.html#3.1">LLVM 3.1</a>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">/// Print the module to an output stream with an optional
 </span><span style="color:#75715e">/// AssemblyAnnotationWriter.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print</span>(raw_ostream <span style="color:#f92672">&amp;</span>OS, AssemblyAnnotationWriter <span style="color:#f92672">*</span>AAW) <span style="color:#66d9ef">const</span>;
@@ -151,20 +156,23 @@ instance which points to standard error.</p>
 initialized in the constructor of a <code>struct dbgstream</code>. The struct is declared with <code>static</code>, so
 it is statically allocated and its constructor is invoked exactly once. The constructor does not
 initialize a stream but also set a signal handler.</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/en/post/2015/07/rust-trait-alias/"
+            >Aliasing Traits</a
+          >
+        </li>
+         
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/en/post/2015/07/rust-trait-alias/">Aliasing Traits</a></li>
-    
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -205,6 +213,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

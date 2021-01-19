@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,29 +22,33 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>ブログの XML-RPC サポート</h1>
-  <div class="metadata">
-    <p class="date">
-      2006/12/11 8:21am
-    </p>
-    <ul class="tags">
-      
-      <li>wordpress</li>
-      
-      <li>xmlrpc</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>個人的メモとして、各ブログの <a href="http://www.xmlrpc.com/spec">XML-RPC</a> サポート状況をまとめてみた。</p>
+    <article>
+      <h1>ブログの XML-RPC サポート</h1>
+      <div class="metadata">
+        <p class="date">2006/12/11 8:21am</p>
+        <ul class="tags">
+          
+          <li>wordpress</li>
+          
+          <li>xmlrpc</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>個人的メモとして、各ブログの <a href="http://www.xmlrpc.com/spec">XML-RPC</a> サポート状況をまとめてみた。</p>
 <p><a href="http://www.sixapart.jp/movabletype/mt3/">Movable Type</a> は
 <a href="http://www.blogger.com/">Blogger</a> の API と、<a href="http://www.userland.com/">米 UserLand Software 社</a>の
 MetaWeblog API に準拠しているようだ。また、<a href="http://wordpress.org/">WordPress</a> も <a href="http://codex.wordpress.org/XML-RPC_Support">Movable Type に準ずるかたちになっている</a>。</p>
@@ -55,22 +60,28 @@ MetaWeblog API に準拠しているようだ。また、<a href="http://wordpre
 <p>面白いのは Blogger。
 現在は XML-RPC ではなく、 <a href="http://code.google.com/apis/gdata/overview.html">Google Data APIs (GData)</a> による <a href="http://code.google.com/apis/gdata/blogger.html">Blogger Data API</a> を使用している。</p>
 <p>Web ページのサイドバーには他にも <strong>&ldquo;Calendar Data API&rdquo;</strong> や <strong>&ldquo;Spreadsheets Data API&rdquo;</strong> など、Google の他サービスの名前が並んでいるので、GData はこれらのサービスでも実装されているのだろう。GData によるサービス同士の連携もあるのかもしれない。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2006/12/12/apache-xml-rpc-no-thanks/"
+            >Apache XML-RPC への不満</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2006/12/09/relaxing-bear-knight/">熊の記念撮影</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2006/12/12/apache-xml-rpc-no-thanks/">Apache XML-RPC への不満</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2006/12/09/relaxing-bear-knight/">熊の記念撮影</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -111,6 +122,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,29 +22,33 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Ruby で平仮名にマッチする正規表現</h1>
-  <div class="metadata">
-    <p class="date">
-      2007/11/19 2:31am
-    </p>
-    <ul class="tags">
-      
-      <li>ruby</li>
-      
-      <li>unicode</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>Ruby 1.8 系で平仮名にマッチする正規表現を書きたい。</p>
+    <article>
+      <h1>Ruby で平仮名にマッチする正規表現</h1>
+      <div class="metadata">
+        <p class="date">2007/11/19 2:31am</p>
+        <ul class="tags">
+          
+          <li>ruby</li>
+          
+          <li>unicode</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>Ruby 1.8 系で平仮名にマッチする正規表現を書きたい。</p>
 <p>正規表現で <a href="http://www.unicode.org/Public/UNIDATA/Blocks.txt">Unicode ブロック</a>が使えれば楽なのだが、残念ながら Ruby 1.8 ではサポートされていない。</p>
 <h3 id="鬼車">鬼車</h3>
 <p>ちなみに 1.9 で搭載される予定の<a href="http://www.geocities.jp/kosako3/oniguruma/index_ja.html">鬼車</a>では、以下のような形式で Unicode ブロックやカテゴリを指定できるようだ（参考：<a href="http://www.geocities.jp/kosako3/oniguruma/doc/RE.ja.txt">鬼車 正規表現 Version 5.6.0</a>）。</p>
@@ -63,22 +68,28 @@
 <li><a href="http://www.unicode.org/reports/tr18/">Unicode Regular Expressions</a></li>
 <li><a href="http://www.geocities.jp/kosako3/oniguruma/index_ja.html">鬼車</a></li>
 </ul>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2007/11/23/looking-for-ruby-css-parser/"
+            >Ruby の CSS パーサはどこですか？</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2007/11/05/safari-external-interface-infinite-loop/">Safari で ExternalInterface を使うときは this に気をつけないと無限ループ</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2007/11/23/looking-for-ruby-css-parser/">Ruby の CSS パーサはどこですか？</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2007/11/05/safari-external-interface-infinite-loop/">Safari で ExternalInterface を使うときは this に気をつけないと無限ループ</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -119,6 +130,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,47 +22,57 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Ruby で16進数表記の整数を UTF-8 文字列として出力する</h1>
-  <div class="metadata">
-    <p class="date">
-      2007/12/10 10:16am
-    </p>
-    <ul class="tags">
-      
-      <li>ruby</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>前回の記事「<a href="http://weblog.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/">PostgreSQL 7.4.13 以降、異なるエンコーディングでの変換エラー</a>」でも書いたように、PostgreSQL で以下のようなエラーが出るようになった。</p>
+    <article>
+      <h1>Ruby で16進数表記の整数を UTF-8 文字列として出力する</h1>
+      <div class="metadata">
+        <p class="date">2007/12/10 10:16am</p>
+        <ul class="tags">
+          
+          <li>ruby</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>前回の記事「<a href="http://weblog.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/">PostgreSQL 7.4.13 以降、異なるエンコーディングでの変換エラー</a>」でも書いたように、PostgreSQL で以下のようなエラーが出るようになった。</p>
 <pre><code>ERROR:  22P05: character 0xe28094 of encoding &quot;UNICODE&quot; has no equivalent in &quot;EUC_JP&quot;
 </code></pre><p>では、<code>character 0xe28094</code> とは、どの文字なのか。</p>
 <p>PostgreSQL では <code>UNICODE</code> という名前のエンコーディングは UTF-8 のことなので、Ruby の <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=Array#pack">Array#pack</a> を使えば、0xe28094 という16進数表記の整数を UTF-8 文字列に変換できる。</p>
 <pre><code>ruby -e 'puts [ARGV[0]].pack(&quot;H*&quot;)' &quot;e28094&quot;
-</code></pre>
-  </div>
-</article>
+</code></pre></div>
+    </article>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2007/12/11/studying-rparsec-introduction/">Ruby によるパーサ・コンビネータ rparsec</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/">PostgreSQL 7.4.13 以降、異なるエンコーディングでの変換エラー</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2007/12/11/studying-rparsec-introduction/"
+            >Ruby によるパーサ・コンビネータ rparsec</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/">PostgreSQL 7.4.13 以降、異なるエンコーディングでの変換エラー</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -102,6 +113,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

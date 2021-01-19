@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,29 +22,33 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Xcode プロジェクトを Subversion 管理する</h1>
-  <div class="metadata">
-    <p class="date">
-      2007/06/18 3:35am
-    </p>
-    <ul class="tags">
-      
-      <li>subversion</li>
-      
-      <li>xcode</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>Apple の提供する開発環境 <a href="http://www.apple.com/jp/macosx/features/xcode/">Xcode</a> で作成したプロジェクトを Subversion 管理する手順。基本的に「<a href="http://rails.office.drecom.jp/ishikawa/archive/26">Rails のプロジェクトを Subversion で管理する</a>」の Xcode 版。</p>
+    <article>
+      <h1>Xcode プロジェクトを Subversion 管理する</h1>
+      <div class="metadata">
+        <p class="date">2007/06/18 3:35am</p>
+        <ul class="tags">
+          
+          <li>subversion</li>
+          
+          <li>xcode</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>Apple の提供する開発環境 <a href="http://www.apple.com/jp/macosx/features/xcode/">Xcode</a> で作成したプロジェクトを Subversion 管理する手順。基本的に「<a href="http://rails.office.drecom.jp/ishikawa/archive/26">Rails のプロジェクトを Subversion で管理する</a>」の Xcode 版。</p>
 <h3 id="リポジトリの場所を決める">リポジトリの場所を決める</h3>
 <p>まずは、リポジトリのルート URL を決めて、これを環境変数に設定しよう。以降はこの変数を使うことで、長々とした URL をタイプする手間が省ける。</p>
 <pre><code>% SVN_REPO=svn+ssh://svn.example.com/projects/Example
@@ -95,22 +100,28 @@ A         build
 *.pbxuser
 </code></pre><p>最後に変更をコミットして終わり。</p>
 <pre><code>% svn commit -m &quot;New Xcode project&quot;
-</code></pre>
-  </div>
-</article>
+</code></pre></div>
+    </article>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2007/06/19/xcode-subversion-troubleshooting/">Xcode で Subversion を利用するときのトラブルシューティング</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2007/06/16/sync-different-mac-with-dotmac/">.Mac の同期機能がすごく便利です</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2007/06/19/xcode-subversion-troubleshooting/"
+            >Xcode で Subversion を利用するときのトラブルシューティング</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2007/06/16/sync-different-mac-with-dotmac/">.Mac の同期機能がすごく便利です</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -151,6 +162,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

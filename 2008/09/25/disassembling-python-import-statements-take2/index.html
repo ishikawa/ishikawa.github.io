@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,29 +22,33 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Python の dis モジュールでさまざまな import 文を disassemble する (2)</h1>
-  <div class="metadata">
-    <p class="date">
-      2008/09/25 5:39pm
-    </p>
-    <ul class="tags">
-      
-      <li>python</li>
-      
-      <li>disassemble</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p><a href="/2008/09/25/disassembling-python-import-statements/">前回の記事</a>への追記が長くなりそうなので、新しい記事にまとめました。</p>
+    <article>
+      <h1>Python の dis モジュールでさまざまな import 文を disassemble する (2)</h1>
+      <div class="metadata">
+        <p class="date">2008/09/25 5:39pm</p>
+        <ul class="tags">
+          
+          <li>python</li>
+          
+          <li>disassemble</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p><a href="/2008/09/25/disassembling-python-import-statements/">前回の記事</a>への追記が長くなりそうなので、新しい記事にまとめました。</p>
 <h3 id="import-module-と-import-module-as-name">import <!-- raw HTML omitted --> と import <!-- raw HTML omitted --> as <!-- raw HTML omitted --></h3>
 <p><code>import &lt;module&gt;</code> と <code>import &lt;module&gt; as &lt;name&gt;</code> では、どのようなバイトコードにコンパイルされるか、つまり、実行時の振る舞いが<strong>微妙に異なる</strong>ことに注意しよう。</p>
 <pre><code>&gt;&gt;&gt; dis.disassemble(compile('import os.path', '', 'exec'))
@@ -113,22 +118,28 @@ AttributeError: 'module' object has no attribute 'B'
 ['B', '__builtins__', '__doc__', '__file__', '__name__', '__path__']
 </code></pre><p><em>A</em> モジュールに <code>B</code> が増えていることが分かる。</p>
 <p>これで <em>os</em> 以外のモジュールでも <code>import</code> がうまく動作する理由が分かった。おそらくは <code>IMPORT_NAME</code> が実行されるときに、内部的にこのような下準備が行われていたわけだ。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2008/10/02/running-django-1-0-on-google-app-engine/"
+            >Google App Engine で Django 1.0 を動かす</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2008/09/25/disassembling-python-import-statements/">Python の dis モジュールでさまざまな import 文を disassemble する</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2008/10/02/running-django-1-0-on-google-app-engine/">Google App Engine で Django 1.0 を動かす</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2008/09/25/disassembling-python-import-statements/">Python の dis モジュールでさまざまな import 文を disassemble する</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -169,6 +180,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

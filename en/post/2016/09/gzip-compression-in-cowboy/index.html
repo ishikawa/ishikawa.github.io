@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -25,10 +26,17 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
-
-
+ 
 	<nav class="languages">
 		<a href="/">Home</a><span class="separator"> | </span>
   Read this article in » 
@@ -40,22 +48,19 @@
 
 
 
-<article>
-  <h1>Gzip compression in Phoenix framework</h1>
-  <div class="metadata">
-    <p class="date">
-      2016/09/25 2:47pm
-    </p>
-    <ul class="tags">
-      
-      <li>elixir</li>
-      
-      <li>phoenix framework</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>To <strong>compress HTTP response body</strong> from a web application powered by <a href="http://www.phoenixframework.org">Phoenix framework</a>,
+    <article>
+      <h1>Gzip compression in Phoenix framework</h1>
+      <div class="metadata">
+        <p class="date">2016/09/25 2:47pm</p>
+        <ul class="tags">
+          
+          <li>elixir</li>
+          
+          <li>phoenix framework</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>To <strong>compress HTTP response body</strong> from a web application powered by <a href="http://www.phoenixframework.org">Phoenix framework</a>,
 you have to make <a href="https://hexdocs.pm/phoenix/Phoenix.Endpoint.html">Phoenix.Endpoint</a> pass
 <code>compress: true</code> property to <a href="https://github.com/ninenines/cowboy">Cowboy</a>. In your <code>config.exs</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">config <span style="color:#e6db74">:example_app</span>, <span style="color:#a6e22e">ExampleApp.Endpoint</span>,
@@ -67,22 +72,28 @@ you have to make <a href="https://hexdocs.pm/phoenix/Phoenix.Endpoint.html">Phoe
 </code></pre></div><p>When you send a HTTP request, include <code>Accept-Encoding</code> header. if you use the <code>curl</code> command, it has the option <code>--compressed</code>.</p>
 <pre><code>Accept-Encoding: gzip, deflate
 </code></pre><p>However it seems that <a href="https://github.com/ninenines/cowboy">Cowboy</a>, which is the HTTP server used in Phoenix framework, <a href="https://github.com/ninenines/cowboy/commit/01f57ad65d7c75fb455f48e354bb3a328c472ce4#diff-2db000a0dd01503e2f022387f23413cbR942">doesn&rsquo;t compress response body if its size is smaller than 300 bytes</a>.</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/en/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/"
+            >How to show progress bar while unzipping tons of files</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/en/post/2015/07/rust-trait-alias/">Aliasing Traits</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/en/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/">How to show progress bar while unzipping tons of files</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/en/post/2015/07/rust-trait-alias/">Aliasing Traits</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -123,6 +134,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,31 +22,35 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Python: Mac OS X での locale.getpreferredencoding() </h1>
-  <div class="metadata">
-    <p class="date">
-      2007/07/19 10:30am
-    </p>
-    <ul class="tags">
-      
-      <li>python</li>
-      
-      <li>mac</li>
-      
-      <li>trac</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>（追記）この記事に載せているパッチよりも <a href="http://weblog.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/">Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</a>のパッチを使った方がよさそうです。Mac OS X 標準の Python との互換性があります。</p>
+    <article>
+      <h1>Python: Mac OS X での locale.getpreferredencoding() </h1>
+      <div class="metadata">
+        <p class="date">2007/07/19 10:30am</p>
+        <ul class="tags">
+          
+          <li>python</li>
+          
+          <li>mac</li>
+          
+          <li>trac</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>（追記）この記事に載せているパッチよりも <a href="http://weblog.metareal.org/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/">Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</a>のパッチを使った方がよさそうです。Mac OS X 標準の Python との互換性があります。</p>
 <p><a href="http://trac.edgewall.org/wiki/TracInstall">TracInstall</a> に従って、Mac OS X で <a href="http://trac.edgewall.org/">Trac</a> を動かそうとしている。<a href="http://weblog.metareal.org/category/subversion/">以前試したときは頓挫した</a>のだが、今回は Python を含む<strong>すべてのライブラリ</strong>を一からインストールして、じっくりやってみることにした。</p>
 <p>とりあえず、<code>tracd</code> を起動するところまでは問題なくいったのだけれど、URL にアクセスしてみると早速こんなエラーが。</p>
 <pre><code>Traceback (most recent call last):
@@ -106,22 +111,28 @@ LookupError: unknown encoding: X-MAC-JAPANESE
 <li><a href="http://devworld.apple.com/documentation/CoreFoundation/Reference/CFStringRef/Reference/reference.html">CFString Reference</a></li>
 <li><a href="http://homepage.mac.com/mkino2/core/index.html">CoreFoundation の秘密</a></li>
 </ul>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2007/07/22/hello-world-llvm-and-runtime-libraries/"
+            >LLVM で Hello, World の puts 関数</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2007/07/17/yui-fonts-css-bigger-pre-code/">YUI の fonts.css だと pre &gt; code がでっかくなっちゃうね</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2007/07/22/hello-world-llvm-and-runtime-libraries/">LLVM で Hello, World の puts 関数</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2007/07/17/yui-fonts-css-bigger-pre-code/">YUI の fonts.css だと pre &gt; code がでっかくなっちゃうね</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -162,6 +173,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

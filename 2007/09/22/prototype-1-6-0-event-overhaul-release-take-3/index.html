@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,29 +22,33 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>Prototype 1.6.0 で大きく進化したイベント API (3)</h1>
-  <div class="metadata">
-    <p class="date">
-      2007/09/22 9:28am
-    </p>
-    <ul class="tags">
-      
-      <li>javascript</li>
-      
-      <li>prototypejs</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p><a href="http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate">Prototype 1.6.0 RC</a> イベント API の進化、更なるつづき。</p>
+    <article>
+      <h1>Prototype 1.6.0 で大きく進化したイベント API (3)</h1>
+      <div class="metadata">
+        <p class="date">2007/09/22 9:28am</p>
+        <ul class="tags">
+          
+          <li>javascript</li>
+          
+          <li>prototypejs</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p><a href="http://prototypejs.org/2007/8/15/prototype-1-6-0-release-candidate">Prototype 1.6.0 RC</a> イベント API の進化、更なるつづき。</p>
 <h3 id="eventstopobserving-で複数のイベント登録を解除できるようになった"><code>Event.stopObserving</code> で複数のイベント登録を解除できるようになった</h3>
 <p>イベントのコールバック関数は <a href="http://www.prototypejs.org/api/event/observe"><code>Event.observe</code></a> や <a href="http://www.prototypejs.org/api/element#method-observe"><code>Element#observe</code></a> で登録し、</p>
 <ul>
@@ -64,22 +69,28 @@ Event.stopObserving('signinForm', 'submit');
 // signinForm に登録されたコールバック関数を解除
 Event.stopObserving('signinForm');
 </code></pre><p>これまで <code>removeEventListener</code> や <code>detachEvent</code> の単なるラッパーに近かった <code>stopObserving</code> だが、これでだいぶ使いやすくなった。</p>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/"
+            >Prototype 1.6.0 で大きく進化したイベント API (4)</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/">Prototype 1.6.0 で大きく進化したイベント API (2)</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/">Prototype 1.6.0 で大きく進化したイベント API (4)</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/">Prototype 1.6.0 で大きく進化したイベント API (2)</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -120,6 +131,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>

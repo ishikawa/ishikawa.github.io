@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="ja">
-<head>
+  <body>
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -21,29 +22,33 @@
   <link rel="stylesheet" href="/css/highlight/solarized_light.css">
   <script src="/js/vendor/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
 </head>
-<body>
+ 
 
 
 
-
-
-<article>
-  <h1>iGTD も vacuum すると速くなる</h1>
-  <div class="metadata">
-    <p class="date">
-      2007/12/06 8:08am
-    </p>
-    <ul class="tags">
-      
-      <li>mac</li>
-      
-      <li>gtd</li>
-      
-    </ul>
-  </div>
-  <div class="content">
-    <p>日々の ToDo 管理には <a href="http://bargiel.home.pl/iGTD/index.html">iGTD</a> を愛用している。だが、最近、目に見えて動作が重くなってしまった。</p>
+    <article>
+      <h1>iGTD も vacuum すると速くなる</h1>
+      <div class="metadata">
+        <p class="date">2007/12/06 8:08am</p>
+        <ul class="tags">
+          
+          <li>mac</li>
+          
+          <li>gtd</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>日々の ToDo 管理には <a href="http://bargiel.home.pl/iGTD/index.html">iGTD</a> を愛用している。だが、最近、目に見えて動作が重くなってしまった。</p>
 <p>おそらく、完了したタスクも削除されることはなく、ずっと溜まっているのが原因だろう。iGTD は内部のデータベースとして SQLite を使っているので、<a href="http://weblog.metareal.org/2007/08/23/optimize-the-apple-mail-app-database/">Mail.app を vacuum して高速化</a>と同じ方法で高速化できる。</p>
 <h3 id="vacuum-analyze">VACUUM ANALYZE</h3>
 <p>手順は簡単で、ターミナルから以下のコマンドを実行するだけだ（iGTD が起動中なら終了する必要があるかもしれない）。</p>
@@ -54,22 +59,28 @@
 <li><a href="http://www.sqlite.org/lang_analyze.html">SQLite Query Language: ANALYZE</a></li>
 <li><a href="http://www.sqlite.org/lang_vacuum.html">SQLite Query Language: VACUUM</a></li>
 </ul>
+</div>
+    </article>
 
-  </div>
-</article>
+    <nav class="pagination">
+      <ul>
+        
+        <li class="next">
+          <i class="fa fa-angle-left"></i
+          ><a href="https://metareal.blog/2007/12/08/vacuum-analyze-sqlite-automatically-by-cron/"
+            >Mail.app や iGTD の vacuum を cron で自動化する</a
+          >
+        </li>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/2007/11/23/looking-for-ruby-css-parser/">Ruby の CSS パーサはどこですか？</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
 
-<nav class="pagination">
-  <ul>
-    
-    <li class="next"><i class="fa fa-angle-left"></i><a href="https://metareal.blog/2007/12/08/vacuum-analyze-sqlite-automatically-by-cron/">Mail.app や iGTD の vacuum を cron で自動化する</a></li>
-    
-    
-    <li class="prev"><a href="https://metareal.blog/2007/11/23/looking-for-ruby-css-parser/">Ruby の CSS パーサはどこですか？</a><i class="fa fa-angle-right"></i></li>
-    
-  </ul>
-</nav>
-
-<footer>
+    <footer>
   <ul class="about">
     <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
     <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
@@ -110,6 +121,5 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
-</body>
+  </body>
 </html>
