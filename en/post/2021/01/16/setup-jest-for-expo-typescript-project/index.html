@@ -224,7 +224,6 @@ $ npm i jest --save-dev
 // To overcome this, exclude these modules in the ignore pattern.
 const untranspiledModulePatterns = [
   &quot;(jest-)?react-native&quot;,
-  &quot;react-clone-referenced-element&quot;,
   &quot;@react-native-community&quot;,
   &quot;expo(nent)?&quot;,
   &quot;@expo(nent)?/.*&quot;,
@@ -234,7 +233,7 @@ const untranspiledModulePatterns = [
   &quot;unimodules&quot;,
   &quot;sentry-expo&quot;,
   &quot;native-base&quot;,
-  &quot;@sentry/.*&quot;,
+  &quot;react-native-svg&quot;,
 ];
 
 const config: Config.InitialOptions = {
@@ -248,6 +247,7 @@ const config: Config.InitialOptions = {
 export default config;
 </code></pre>
 <p>Simplifing the lengthy regex expression made things look a lot better. Compared to <code>package.json</code>, which doesn&rsquo;t allow comments, it&rsquo;s nice to be able to write comments😅.</p>
+<p><strong>[2021.01.24]</strong> Actually, <code>transformIgnorePatterns</code> is <a href="https://github.com/expo/expo/blob/9f1c0850d814e131cb565dd3d0fc9a91481e1e06/packages/jest-expo/jest-preset.js#L40">included</a> in the preset of jest-expo, so there is no need to specify them if you are fine with the default. However, since this list needs to be added depending on the library used, I personally use this method. The above example has been updated with the latest list.</p>
 <p>One last point: if you re-installed jest instead of the version that the jest-expo depends on, you will have two versions of jest mixed under your <code>node_modules</code>.</p>
 <p>Check it with the <code>npm list</code> command.</p>
 <pre><code class="language-bash">$ npm list jest        
