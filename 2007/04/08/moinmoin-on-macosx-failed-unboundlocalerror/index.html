@@ -54,7 +54,8 @@
 <p>ブログだとやっぱり時系列で流れちゃうし、書き殴りのメモとかは公開しづらいしね。MoinMoin はページごとのパーミッションを制御できるなど、今回の用途にはぴったり。</p>
 <p>ただし、バージョン 1.5.7 はそのままだと Mac OS X では動かなかった。</p>
 <pre><code>UnboundLocalError: local variable 'File' referenced before assignment
-</code></pre><p>こんなエラーが出てしまう。</p>
+</code></pre>
+<p>こんなエラーが出てしまう。</p>
 <p><a href="http://www.sagemath.org:9002/sage_trac/ticket/104">ここに書かれている通り</a>、<code>util/filesys.py</code> を修正すると動くようになった。</p>
 </div>
     </article>

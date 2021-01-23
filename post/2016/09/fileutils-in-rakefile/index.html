@@ -51,8 +51,9 @@
       <div class="content"><p>いつまでたっても Rakefile の書き方を覚える気になれないのだが、Rakefile では
 <a href="https://docs.ruby-lang.org/ja/latest/class/FileUtils.html">FileUtils</a> が
 インクルードされており <code>cp</code> や <code>mkdir_p</code> といったメソッドが使える。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">mkdir_p <span style="color:#e6db74">&#34;dir1/dir2&#34;</span>
-</code></pre></div><p>また、いくつかの拡張がされており、コマンドの実行が失敗したときに例外が投げられたり、<code>sh</code> メソッドという
+<pre><code class="language-ruby">mkdir_p &quot;dir1/dir2&quot;
+</code></pre>
+<p>また、いくつかの拡張がされており、コマンドの実行が失敗したときに例外が投げられたり、<code>sh</code> メソッドという
 <code>Kernel.system</code> にように外部コマンドを呼び出すメソッドが追加されている。</p>
 <ul>
 <li><a href="http://qiita.com/vzvu3k6k/items/7e6e5520eeb829ec1c8b">Rakeのshで外部コマンドを実行する - Qiita</a></li>

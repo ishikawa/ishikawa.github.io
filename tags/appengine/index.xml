@@ -32,12 +32,12 @@ import os os.environ[&#39;DJANGO_SETTINGS_MODULE&#39;] = &#39;settings&#39; from
       <description>Google App Engine SDK 1.1.3 で追加された zipserve を使うと、静的ファイルを zip にまとめてアップロードできるらしい。ただ、Developer&amp;rsquo;s Guide 内を検索してもドキュメントが見つからない。しかたがないので、ソースコードのコメントを頼りに zipserve を試してみる。
 zipserve するもの 今回は、このブログのレイアウトに使っている CSS フレームワークの YAML を zipserve したいと思う。ファイル数もそれなりにあり、しかも、まず変更することはないので、zipserve するにはうってつけなのだ。
 app.yaml YAML の CSS ファイルは /stylesheets/yaml/ 以下に置いてあるので、まずは app.yaml で以下のように設定する。
-- url: /stylesheets/yaml/.* script: $PYTHON_LIB/google/appengine/ext/zipserve $PYTHON_LIB/google/appengine/ext/zipserve というのが、さきほどソースコードをみた zipserve モジュールなのが分かるだろう。
+- url: /stylesheets/yaml/.* script: $PYTHON_LIB/google/appengine/ext/zipserve  $PYTHON_LIB/google/appengine/ext/zipserve というのが、さきほどソースコードをみた zipserve モジュールなのが分かるだろう。
 zip ファイルの作成と設置 アプリケーション側の設定もすんだし、zip ファイルをつくるわけだが、そのまえに実際に配置されるファイルと zip ファイルの対応関係を確認しておこう。
 URL で指定されたパスの最初のディレクトリが zip ファイル名、それ以降が zip 内のファイルパスになる。
 つまり、今回の例でいうと、/stylesheets/yaml/core/base.css というリクエストに対して、stylesheets.zip から yaml/core/base.css が返されるわけだ。また、zip ファイルはアプリケーションのルートディレクトリに置くようだ。
 それでは早速、zip コマンドで zip ファイルをつくってみよう。
-% zip -r -9 stylesheets.zip yaml yaml ディレクトリを含む stylesheets.</description>
+% zip -r -9 stylesheets.zip yaml  yaml ディレクトリを含む stylesheets.</description>
     </item>
     
     <item>
@@ -50,7 +50,7 @@ URL で指定されたパスの最初のディレクトリが zip ファイル�
 しかし、先頃めでたく Django 1.0 もリリースされたことだし、このブログも最新の開発版にアップデートすることにした。とりあえず、すこしソースコードを修正するだけで、動くだけは動いたので、変更点を残しておく。もっとも、このブログは機能がすくない分、Django に依存している箇所もすくないので、他のプログラムではこれ以上の修正が必要かもしれない。
 また、Django を Google App Engine 上で動かす方法については、もともと、Running Django on Google App Engine を参考にしている。そのため、他の手段、たとえば Google App Engine Helper for Django を使っている人にとっては、この記事は役に立たないだろう。
 django.dispatch.dispatcher.connect django.dispatch.dispatcher.connect, django.dispatch.dispatcher.disconnect は使えなくなっていた。
---- ../metareal.django.0.9/main.py 2008-06-06 17:33:42.000000000 +0900 +++ ./main.py 2008-10-02 21:14:00.000000000 +0900 @@ -53,20 +53,17 @@  import django.core.handlers.wsgi import django.core.signals -import django.db -import django.dispatch.dispatcher +from django.db import _rollback_on_exception +from django.core import signals  def log_exception(*args, **kwds): logging.</description>
+--- ../metareal.django.0.9/main.py 2008-06-06 17:33:42.000000000 +0900 +++ ./main.py 2008-10-02 21:14:00.000000000 +0900 @@ -53,20 +53,17 @@ import django.core.handlers.wsgi import django.core.signals -import django.db -import django.dispatch.dispatcher +from django.db import _rollback_on_exception +from django.core import signals def log_exception(*args, **kwds): logging.</description>
     </item>
     
     <item>

@@ -60,30 +60,36 @@
 % ./configure --with-ruby=/usr/local/bin/ruby
 % make
 % sudo make install
-</code></pre><p>Subversion は <code>subversion-1.4.2.tar.bz2</code> と <code>subversion-deps-1.4.2.tar.bz2</code> 解凍すると、どちらも <code>subversion-1.4.2</code> というディレクトリに展開されるので便利だ。</p>
+</code></pre>
+<p>Subversion は <code>subversion-1.4.2.tar.bz2</code> と <code>subversion-deps-1.4.2.tar.bz2</code> 解凍すると、どちらも <code>subversion-1.4.2</code> というディレクトリに展開されるので便利だ。</p>
 <pre><code>% curl -O http://subversion.tigris.org/downloads/subversion-1.4.2.tar.bz2
 % curl -O http://subversion.tigris.org/downloads/subversion-deps-1.4.2.tar.bz2
 % tar xvjf subversion-1.4.2.tar.bz2
 % tar xvjf subversion-deps-1.4.2.tar.bz2
-</code></pre><p><code>configure</code> で、SWIG バインディングを有効にする言語と SWIG のパスを指定する。<code>--enable-swig-bindings</code> には <code>perl</code> や <code>python</code> のように個別指定も可能。</p>
+</code></pre>
+<p><code>configure</code> で、SWIG バインディングを有効にする言語と SWIG のパスを指定する。<code>--enable-swig-bindings</code> には <code>perl</code> や <code>python</code> のように個別指定も可能。</p>
 <p>また、Subversion で BerkeleyDB を使う場合は、別にオプションが必要かもしれない。今回に限って言えば、BerkeleyDB は必要ないので指定していない。</p>
 <pre><code>% cd subversion-1.4.2
 % ./configure --enable-swig-bindings=all --with-swig=/usr/local/bin/swig
 % make
 % sudo make install
-</code></pre><p>次に、バインディングをインストール</p>
+</code></pre>
+<p>次に、バインディングをインストール</p>
 <pre><code>% make swig-rb
 % sudo make install-swig-rb
 % make check-swig-rb
-</code></pre><p>BerkeleyDB 周りでエラーが出てるが無視（BerkeleyDB サポートは入れてないので）。
+</code></pre>
+<p>BerkeleyDB 周りでエラーが出てるが無視（BerkeleyDB サポートは入れてないので）。
 pl, py も同様に。</p>
 <pre><code>% make swig-pl
 % sudo make install-swig-pl
 % make check-swig-pl
-</code></pre><pre><code>% make swig-py
+</code></pre>
+<pre><code>% make swig-py
 % sudo make install-swig-py
 % make check-swig-py
-</code></pre></div>
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

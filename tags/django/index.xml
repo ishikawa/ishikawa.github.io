@@ -33,7 +33,7 @@ import os os.environ[&#39;DJANGO_SETTINGS_MODULE&#39;] = &#39;settings&#39; from
 しかし、先頃めでたく Django 1.0 もリリースされたことだし、このブログも最新の開発版にアップデートすることにした。とりあえず、すこしソースコードを修正するだけで、動くだけは動いたので、変更点を残しておく。もっとも、このブログは機能がすくない分、Django に依存している箇所もすくないので、他のプログラムではこれ以上の修正が必要かもしれない。
 また、Django を Google App Engine 上で動かす方法については、もともと、Running Django on Google App Engine を参考にしている。そのため、他の手段、たとえば Google App Engine Helper for Django を使っている人にとっては、この記事は役に立たないだろう。
 django.dispatch.dispatcher.connect django.dispatch.dispatcher.connect, django.dispatch.dispatcher.disconnect は使えなくなっていた。
---- ../metareal.django.0.9/main.py 2008-06-06 17:33:42.000000000 +0900 +++ ./main.py 2008-10-02 21:14:00.000000000 +0900 @@ -53,20 +53,17 @@  import django.core.handlers.wsgi import django.core.signals -import django.db -import django.dispatch.dispatcher +from django.db import _rollback_on_exception +from django.core import signals  def log_exception(*args, **kwds): logging.</description>
+--- ../metareal.django.0.9/main.py 2008-06-06 17:33:42.000000000 +0900 +++ ./main.py 2008-10-02 21:14:00.000000000 +0900 @@ -53,20 +53,17 @@ import django.core.handlers.wsgi import django.core.signals -import django.db -import django.dispatch.dispatcher +from django.db import _rollback_on_exception +from django.core import signals def log_exception(*args, **kwds): logging.</description>
     </item>
     
     <item>
@@ -56,13 +56,12 @@ django.dispatch.dispatcher.connect django.dispatch.dispatcher.connect, django.di
       <guid>https://metareal.blog/2008/05/24/django-xview-middleware-tour/</guid>
       <description>疑問に思ったことはないだろうか。
 Django の Middleware（和訳）である。まずは、settings.py を見てほしい。
-MIDDLEWARE_CLASSES = ( &#39;django.middleware.common.CommonMiddleware&#39;, &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;, &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;, &#39;django.middleware.doc.XViewMiddleware&#39;, ) デフォルトではこのような設定になっている。上から三つは問題ないだろう。名前からだいたいの機能は想像できるはずだし、おそらくあなたは間違っていない。
-MIDDLEWARE_CLASSES = ( ... &#39;django.middleware.doc.XViewMiddleware&#39;, ) 問題はこれだ。XViewMiddleware ——名前だけでは、どんな働きをするのか見当もつかない。
+MIDDLEWARE_CLASSES = ( &#39;django.middleware.common.CommonMiddleware&#39;, &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;, &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;, &#39;django.middleware.doc.XViewMiddleware&#39;, )  デフォルトではこのような設定になっている。上から三つは問題ないだろう。名前からだいたいの機能は想像できるはずだし、おそらくあなたは間違っていない。
+MIDDLEWARE_CLASSES = ( ... &#39;django.middleware.doc.XViewMiddleware&#39;, )  問題はこれだ。XViewMiddleware ——名前だけでは、どんな働きをするのか見当もつかない。
 XViewMiddleware を試す まずはドキュメントを読んでみようか。XViewMiddleware のドキュメント（和訳）によると、
   Sends custom X-View HTTP headers to HEAD requests that come from IP addresses defined in the INTERNAL_IPS setting. This is used by Django’s automatic documentation system.
 INTERNAL_IPS 設定に定義されている IP アドレスから来た HEAD リクエストに 対してカスタムの X-View HTTP ヘッダを送信します。このミドルウェアは Django の自動ドキュメントシステムで使われています。
-まとめると、XViewMiddleware は、
- settings.INTERNAL_IPS に許可する IP アドレスを設定する その IP からの HEAD リクエストに対して、 Django 独自の X-View レスポンスヘッダを返す  という働きをするようだ。</description>
+まとめると、XViewMiddleware は、</description>
     </item>
     
     <item>
@@ -91,7 +90,7 @@ GAE では Django の Database API（和訳）は動作せず、GAE の Datastor
       <guid>https://metareal.blog/2008/05/12/checking-whether-field-has-a-hidden-widget-in-django-template/</guid>
       <description>Django の newforms library は、それだけでちいさな MVC の世界だ。テキストフィールドやラジオボタンといった View は django.newforms.widgets の Widget クラスとそのサブクラスが担当している。
 フォーム要素の HTML をテンプレートで出力する簡単な例は以下のとおり。
-&amp;lt;form method=&amp;quot;post&amp;quot; action=&amp;quot;&amp;quot;&amp;gt; {% for field in form %} {{ field.label_tag }} {{ field }}&amp;lt;br /&amp;gt; {% endfor %} &amp;lt;input type=&amp;quot;submit&amp;quot; /&amp;gt; &amp;lt;/form&amp;gt; しかし、このままだと hidden 要素でも が出力されて具合が悪い。
+&amp;lt;form method=&amp;quot;post&amp;quot; action=&amp;quot;&amp;quot;&amp;gt; {% for field in form %} {{ field.label_tag }} {{ field }}&amp;lt;br /&amp;gt; {% endfor %} &amp;lt;input type=&amp;quot;submit&amp;quot; /&amp;gt; &amp;lt;/form&amp;gt;  しかし、このままだと hidden 要素でも が出力されて具合が悪い。
 実は、Widget クラスには is_hidden という、その要素が hidden 要素の場合は True を返すメソッドが定義されているので、テンプレート中でこれをチェックすればいい。
 &amp;lt;form method=&amp;quot;post&amp;quot; action=&amp;quot;&amp;quot;&amp;gt; {% for field in form %} {% if field.field.widget.is_hidden %} {{ field }} {% else %} {{ field.</description>
     </item>
@@ -119,8 +118,8 @@ def resolve(path, urlconf=None): return get_resolver(urlconf).resolve(path) def 
       
       <guid>https://metareal.blog/2008/04/14/python-markdown-1-7-with-django/</guid>
       <description>Python Markdown の最新版である 1.7 を Django で使うと、日本語など ASCII 以外の文字で UnicodeDecodeError が発生する。
-MARKDOWN-CRITICAL: &amp;quot;UnicodeDecodeError: Markdown only accepts unicode or ascii input.&amp;quot; すでにチケットも登録されているが、とりあえず古いバージョンに戻すのがよさそう。1.6b はバグで同様のエラーが出るようなので、1.6a にしよう。
-% sudo easy_install markdown==1.6a 蛇足だが、この問題を調べている途中で見つけた。python-markdown2 という、別の Markdown ライブラリも存在するようだ。</description>
+MARKDOWN-CRITICAL: &amp;quot;UnicodeDecodeError: Markdown only accepts unicode or ascii input.&amp;quot;  すでにチケットも登録されているが、とりあえず古いバージョンに戻すのがよさそう。1.6b はバグで同様のエラーが出るようなので、1.6a にしよう。
+% sudo easy_install markdown==1.6a  蛇足だが、この問題を調べている途中で見つけた。python-markdown2 という、別の Markdown ライブラリも存在するようだ。</description>
     </item>
     
     <item>

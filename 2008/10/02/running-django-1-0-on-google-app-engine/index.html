@@ -53,39 +53,41 @@
 <p>また、Django を Google App Engine 上で動かす方法については、もともと、<a href="http://code.google.com/appengine/articles/django.html">Running Django on Google App Engine</a> を参考にしている。そのため、他の手段、たとえば <a href="http://code.google.com/p/google-app-engine-django/">Google App Engine Helper for Django</a> を使っている人にとっては、この記事は役に立たないだろう。</p>
 <h3 id="djangodispatchdispatcherconnect">django.dispatch.dispatcher.connect</h3>
 <p><code>django.dispatch.dispatcher.connect</code>, <code>django.dispatch.dispatcher.disconnect</code> は使えなくなっていた。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">--- ../metareal.django.0.9/main.py    2008-06-06 17:33:42.000000000 +0900
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ ./main.py 2008-10-02 21:14:00.000000000 +0900
-</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -53,20 +53,17 @@
-</span><span style="color:#75715e"></span>
+<pre><code class="language-diff">--- ../metareal.django.0.9/main.py    2008-06-06 17:33:42.000000000 +0900
++++ ./main.py 2008-10-02 21:14:00.000000000 +0900
+@@ -53,20 +53,17 @@
+
  import django.core.handlers.wsgi
  import django.core.signals
-<span style="color:#f92672">-import django.db
-</span><span style="color:#f92672">-import django.dispatch.dispatcher
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+from django.db import _rollback_on_exception
-</span><span style="color:#a6e22e">+from django.core import signals
-</span><span style="color:#a6e22e"></span>
+-import django.db
+-import django.dispatch.dispatcher
++from django.db import _rollback_on_exception
++from django.core import signals
+
  def log_exception(*args, **kwds):
-     logging.exception(&#39;Exception in request:&#39;)
+     logging.exception('Exception in request:')
 
  # Log errors.
-<span style="color:#f92672">-django.dispatch.dispatcher.connect(
-</span><span style="color:#f92672">-    log_exception, django.core.signals.got_request_exception)
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+signals.got_request_exception.connect(log_exception)
-</span><span style="color:#a6e22e"></span>
+-django.dispatch.dispatcher.connect(
+-    log_exception, django.core.signals.got_request_exception)
++signals.got_request_exception.connect(log_exception)
+
  # Unregister the rollback event handler.
-<span style="color:#f92672">-django.dispatch.dispatcher.disconnect(
-</span><span style="color:#f92672">-    django.db._rollback_on_exception,
-</span><span style="color:#f92672">-    django.core.signals.got_request_exception)
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+signals.got_request_exception.disconnect(_rollback_on_exception)
-</span></code></pre></div><h3 id="newforms">newforms</h3>
+-django.dispatch.dispatcher.disconnect(
+-    django.db._rollback_on_exception,
+-    django.core.signals.got_request_exception)
++signals.got_request_exception.disconnect(_rollback_on_exception)
+</code></pre>
+<h3 id="newforms">newforms</h3>
 <p><code>django.newforms</code> を <code>django.forms</code> に置き換える。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">--- ../metareal.django.0.9/weblog/forms.py    2008-05-16 15:08:47.000000000 +0900
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ ./weblog/forms.py 2008-10-02 21:15:45.000000000 +0900
-</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -1,4 +1,4 @@
-</span><span style="color:#75715e"></span><span style="color:#f92672">-from django import newforms as forms
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+from django import forms
-</span><span style="color:#a6e22e"></span> from django.utils.translation import ugettext_lazy
-</code></pre></div><p>使用している <a href="http://www.djangoproject.com/">Django</a> および <a href="http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes">Google App Engine SDK</a> それぞれのバージョンは以下の通り。</p>
+<pre><code class="language-diff">--- ../metareal.django.0.9/weblog/forms.py    2008-05-16 15:08:47.000000000 +0900
++++ ./weblog/forms.py 2008-10-02 21:15:45.000000000 +0900
+@@ -1,4 +1,4 @@
+-from django import newforms as forms
++from django import forms
+ from django.utils.translation import ugettext_lazy
+</code></pre>
+<p>使用している <a href="http://www.djangoproject.com/">Django</a> および <a href="http://code.google.com/p/googleappengine/wiki/SdkReleaseNotes">Google App Engine SDK</a> それぞれのバージョンは以下の通り。</p>
 <ul>
 <li>Django 1.0 (revision 9109)</li>
 <li>Google App Engine SDK 1.1.4</li>

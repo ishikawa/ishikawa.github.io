@@ -52,15 +52,19 @@
 <pre><code>% cd /usr/local/mysql/
 % sudo chown -R mysql:mysql /usr/local/mysql
 % sudo bin/mysql_install_db --user=mysql
-</code></pre><p>データベースを起動。</p>
+</code></pre>
+<p>データベースを起動。</p>
 <pre><code>% sudo bin/mysqld_safe --user=mysql &amp;
-</code></pre><p>いくつかのコマンドを実行して、動作を確認。</p>
+</code></pre>
+<p>いくつかのコマンドを実行して、動作を確認。</p>
 <pre><code>% bin/mysqladmin version
 % bin/mysqladmin variables
 % bin/mysqlshow
-</code></pre><p>停止。</p>
+</code></pre>
+<p>停止。</p>
 <pre><code>% sudo bin/mysqladmin -u root shutdown
-</code></pre><h3 id="アカウントの設定">アカウントの設定</h3>
+</code></pre>
+<h3 id="アカウントの設定">アカウントの設定</h3>
 <p>インストール直後の MySQL には 2 つのアカウントが用意されている。</p>
 <ul>
 <li><code>root</code></li>
@@ -80,15 +84,18 @@
 <p>まずは、匿名アカウントの削除を削除する。</p>
 <pre><code>mysql&gt; DELETE FROM mysql.user WHERE User = '';
 mysql&gt; FLUSH PRIVILEGES;
-</code></pre><p><code>root</code> にパスワードを設定する。</p>
+</code></pre>
+<p><code>root</code> にパスワードを設定する。</p>
 <pre><code>mysql&gt; SET PASSWORD FOR 'root'\@'localhost' = PASSWORD('newpwd');
 mysql&gt; SET PASSWORD FOR 'root'\@'%' = PASSWORD('newpwd');
-</code></pre><h3 id="アカウントの追加">アカウントの追加</h3>
+</code></pre>
+<h3 id="アカウントの追加">アカウントの追加</h3>
 <p>実際に、アプリケーションを開発する場合は、自分のアカウントを作っておいた方がいいだろう。</p>
 <p>アカウントの追加は <code>GRANT</code> コマンドで行う。</p>
 <pre><code>mysql&gt; GRANT ALL PRIVILEGES ON *.* TO 'ishikawa'\@'localhost'
     -&gt; IDENTIFIED BY 'newpwd' WITH GRANT OPTION;
-</code></pre><p>ここでは <code>ishikawa</code> というアカウントを作成した。開発用のため、外部から接続する必要はないので、local host からのみのアクセスを許可した。</p>
+</code></pre>
+<p>ここでは <code>ishikawa</code> というアカウントを作成した。開発用のため、外部から接続する必要はないので、local host からのみのアクセスを許可した。</p>
 </div>
     </article>
 

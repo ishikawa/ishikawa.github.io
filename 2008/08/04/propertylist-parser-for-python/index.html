@@ -64,7 +64,8 @@
   &lt;date&gt;2008-06-23T12:20:17Z&lt;/date&gt;
 &lt;/dict&gt;
 &lt;/plist&gt;
-</code></pre><p>このプロパティリストが <code>music.xml</code> という名前で保存されているとして、このファイルを読み込んでオブジェクトに変換するコードは以下のとおり。</p>
+</code></pre>
+<p>このプロパティリストが <code>music.xml</code> という名前で保存されているとして、このファイルを読み込んでオブジェクトに変換するコードは以下のとおり。</p>
 <pre><code>from plist_parser import XmlPropertyListParser, \
                          PropertyListParseError
 
@@ -82,7 +83,8 @@ except PropertyListParseError:
     raise
 finally:
     f.close()
-</code></pre><p>特に説明の必要はないだろう。</p>
+</code></pre>
+<p>特に説明の必要はないだろう。</p>
 <p>自作ライブラリの紹介はこれくらいにし、以降では、<strong>Python でプロパティリストを解析する他の手段</strong>と、それらのパフォーマンスを比較した結果について書いてみたい。</p>
 <h3 id="plistlib">plistlib</h3>
 <p>Python 2.6 からは、プロパティリストの読み書きをするためのライブラリ <a href="http://docs.python.org/dev/library/plistlib.html">plistlib</a> が標準で添付されている。また、Python 2.5 以前でもソースコードや Mac 向けのディストリビューションには含まれているので、実はプロパティリストを読み込みたいだけなら、今回自作した <a href="http://github.com/ishikawa/python-plist-parser/">plist_parser</a> の有用性はすくない。</p>
@@ -122,7 +124,8 @@ def load(file):
         elif elem.tag != &quot;plist&quot;:
             raise IOError(&quot;unknown plist type: %r&quot; % elem.tag)
     return parser.root[0].text
-</code></pre><p>非常にコンパクトだ。</p>
+</code></pre>
+<p>非常にコンパクトだ。</p>
 <p>xml.etree は C による実装 <code>xml.etree.cElementTree</code> も提供されており、これを使うとパフォーマンスでもかなりの好成績を出すようになる（具体的なパフォーマンスの比較は後述）。</p>
 <h3 id="パフォーマンスの比較">パフォーマンスの比較</h3>
 <p>さて、プロパティリストを読み込むためのライブラリとして、</p>

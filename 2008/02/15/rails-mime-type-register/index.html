@@ -49,14 +49,17 @@
       <div class="content"><p><a href="http://api.rubyonrails.org/classes/Mime/Type.html#M001651">Mime::Type.register</a> は、登録された <a href="http://api.rubyonrails.org/classes/Mime/Type.html">Mime::Type</a> ではなく拡張子の配列を返す、という謎の挙動になっている。</p>
 <pre><code>Mime::Type.register &quot;image/jpeg&quot;, :jpeg, [], [&quot;jpg&quot;, &quot;pjpeg&quot;]
 # =&gt; [&quot;jpeg&quot;, &quot;jpg&quot;, &quot;pjpeg&quot;]
-</code></pre><p>そのため、登録された Mime::Type を参照するには、改めて <a href="http://api.rubyonrails.org/classes/Mime/Type.html#M001648">Mime::Type.lookup</a> する。</p>
+</code></pre>
+<p>そのため、登録された Mime::Type を参照するには、改めて <a href="http://api.rubyonrails.org/classes/Mime/Type.html#M001648">Mime::Type.lookup</a> する。</p>
 <pre><code>Mime::Type.lookup(&quot;image/jpeg&quot;)
 # =&gt; #&lt;Mime::Type:0x30601dc @string=&quot;image/jpeg&quot;, @synonyms=[], @symbol=:jpeg&gt;
-</code></pre><p>しかし、この方法は <code>&quot;image/jpeg&quot;</code> を二ヶ所にハードコードしてしまう。</p>
+</code></pre>
+<p>しかし、この方法は <code>&quot;image/jpeg&quot;</code> を二ヶ所にハードコードしてしまう。</p>
 <p>代わりに、Mime::Type#register で Mime モジュールに定義される定数を使うことができる。</p>
 <pre><code>Mime::JPEG
 # =&gt; #&lt;Mime::Type:0x30601dc @string=&quot;image/jpeg&quot;, @synonyms=[], @symbol=:jpeg&gt;
-</code></pre><p>Mime::Type#register の第二引数に指定したシンボルを大文字にした定数が定義されているようだ。</p>
+</code></pre>
+<p>Mime::Type#register の第二引数に指定したシンボルを大文字にした定数が定義されているようだ。</p>
 </div>
     </article>
 

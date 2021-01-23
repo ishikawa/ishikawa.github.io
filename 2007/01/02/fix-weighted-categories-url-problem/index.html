@@ -57,7 +57,8 @@
       {
               ...
       }
-</code></pre><p>強調部分で <code>$cats</code> には末尾に改行が含まれているため、<strong>変換後の配列の最後の要素は空白文字列になる</strong>。そのため、最後のタグの URL がおかしくなっていた。</p>
+</code></pre>
+<p>強調部分で <code>$cats</code> には末尾に改行が含まれているため、<strong>変換後の配列の最後の要素は空白文字列になる</strong>。そのため、最後のタグの URL がおかしくなっていた。</p>
 <p>つまり、末尾の空白を取り除いておけば、問題は解決する。</p>
 <pre><code>--- weighted_categories.php.origin    2007-01-02 15:27:48.000000000 +0900
 +++ weighted_categories.php   2007-01-02 15:38:13.000000000 +0900
@@ -70,7 +71,8 @@
       foreach ($cats as $cat)
       {
               eregi(&quot;a href=\&quot;(.+)\&quot; &quot;, $cat, $regs);
-</code></pre></div>
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

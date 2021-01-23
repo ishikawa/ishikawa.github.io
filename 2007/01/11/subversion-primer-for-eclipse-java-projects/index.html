@@ -58,23 +58,28 @@
 % svn import -m &quot;initial import&quot; . $REPO
 % cd ../
 % rm -rf tmp
-</code></pre><p>Eclipse で新規 Java プロジェクトを作成する。</p>
+</code></pre>
+<p>Eclipse で新規 Java プロジェクトを作成する。</p>
 <p>そして、新規作成されたプロジェクトのディレクトリに、Subversion レポジトリからチェックアウト。</p>
 <pre><code>% cd /path/to/workspace/project/
 % svn co $REPO/trunk .
-</code></pre><p>いつも使っているディレクトリレイアウトを作成して必要なものを <code>svn add</code> しておく。</p>
+</code></pre>
+<p>いつも使っているディレクトリレイアウトを作成して必要なものを <code>svn add</code> しておく。</p>
 <pre><code>% mkdir -p build/classes build/test-classes build/reports
 % mkdir -p docs/api
 % mkdir -p src/java src/test
 % svn add . --force
-</code></pre><p>不要なものは <code>revert</code> して、<code>svn:ignore</code> を設定。</p>
+</code></pre>
+<p>不要なものは <code>revert</code> して、<code>svn:ignore</code> を設定。</p>
 <pre><code>% svn revert build/*
 % svn revert docs/api -R
 % svn propset svn:ignore &quot;*&quot; build
 % svn propset svn:ignore &quot;api&quot; docs
-</code></pre><p>Eclipse でビルドディレクトリや諸々の設定をすませたらコミット。</p>
+</code></pre>
+<p>Eclipse でビルドディレクトリや諸々の設定をすませたらコミット。</p>
 <pre><code>% svn commit -m &quot;New project&quot;
-</code></pre><p>Eclipse 側でプロジェクトが Subversion 管理されていないようなら、プロジェクトのアイコンを右クリック、「Team」＞「Share Project&hellip;」で設定できる（すでにある <code>.svn</code> を認識してくれるので、設定は簡単）。</p>
+</code></pre>
+<p>Eclipse 側でプロジェクトが Subversion 管理されていないようなら、プロジェクトのアイコンを右クリック、「Team」＞「Share Project&hellip;」で設定できる（すでにある <code>.svn</code> を認識してくれるので、設定は簡単）。</p>
 </div>
     </article>
 

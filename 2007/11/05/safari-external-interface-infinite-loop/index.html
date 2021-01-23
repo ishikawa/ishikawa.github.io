@@ -52,7 +52,8 @@
 </ul>
 <p>以前、<a href="http://haxe.org/">haXe</a> で遊んでたときは組み込みの JavaScript インターフェースを使っていたので、<a href="http://livedocs.adobe.com/flex/2_jp/langref/flash/external/ExternalInterface.html">ExternalInterface</a> を使うのは初めて。</p>
 <pre><code>document[&quot;as&quot;].callFlash();
-</code></pre><p>サンプルどおり、こんなふうに呼び出すのは問題ない。だが、もうすこし汎用的にしようと思って、以下のようなクラスを試しにつくってみた。</p>
+</code></pre>
+<p>サンプルどおり、こんなふうに呼び出すのは問題ない。だが、もうすこし汎用的にしようと思って、以下のようなクラスを試しにつくってみた。</p>
 <pre><code>var SWFInterface = Class.create();
 SWFInterface.prototype = {
   initialize: function(name) {
@@ -66,9 +67,11 @@ SWFInterface.prototype = {
     }
   }
 };
-</code></pre><p>だが、このクラス経由で呼び出すと Safari が反応しなくなってしまった。</p>
+</code></pre>
+<p>だが、このクラス経由で呼び出すと Safari が反応しなくなってしまった。</p>
 <pre><code>new SWFInterface(&quot;as&quot;).call(&quot;callFlash&quot;); // Safari が反応しなくなる
-</code></pre><p>どうやら、呼び出す関数の <code>this</code> は <code>embed</code> 要素に束縛しないといけないようだ。</p>
+</code></pre>
+<p>どうやら、呼び出す関数の <code>this</code> は <code>embed</code> 要素に束縛しないといけないようだ。</p>
 <pre><code>call: function(iname) {
     var embed = document[this.name];
     if (embed) {
@@ -76,7 +79,8 @@ SWFInterface.prototype = {
       alert(fn());
     }
   }
-</code></pre><p>というか、この方法は Mac の Firefox で動かない。ActionScript を呼び出す関数オブジェクトを取得できないようだ。</p>
+</code></pre>
+<p>というか、この方法は Mac の Firefox で動かない。ActionScript を呼び出す関数オブジェクトを取得できないようだ。</p>
 </div>
     </article>
 

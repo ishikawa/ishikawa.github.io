@@ -66,7 +66,8 @@
              12 STORE_NAME               2 (os_path)
              15 LOAD_CONST               1 (None)
              18 RETURN_VALUE
-</code></pre><p>前者では <code>IMPORT_NAME os.path</code> でロードされたモジュールを <code>os</code> という名前でシンボルテーブルに登録する。では、<code>IMPORT_NAME os.path</code> でロードされるモジュールは何かといえば、これは <a href="http://docs.python.org/lib/module-os.html">os</a> モジュールである。<a href="http://docs.python.org/lib/module-os.path.html">os.path</a> ではない。</p>
+</code></pre>
+<p>前者では <code>IMPORT_NAME os.path</code> でロードされたモジュールを <code>os</code> という名前でシンボルテーブルに登録する。では、<code>IMPORT_NAME os.path</code> でロードされるモジュールは何かといえば、これは <a href="http://docs.python.org/lib/module-os.html">os</a> モジュールである。<a href="http://docs.python.org/lib/module-os.path.html">os.path</a> ではない。</p>
 <p>そして、<em>os</em> モジュール内部では <em>os.path</em> モジュールを <code>path</code> という名前でインポートしている（実際には、プラットフォームごとに異なるモジュールをインポートする）。そのため、<em>os</em> モジュールを <code>os</code> という名前でシンボルテーブルに登録しておけば、<code>os.path</code> で <em>os.path</em> モジュールを参照できるわけだ（このへんは次節で更に掘り下げる）。</p>
 <p>それにたいして、後者の <code>import os.path as os_path</code> では <code>IMPORT_NAME os.path</code> でロードされたモジュールから <code>LOAD_ATTR path</code> で取り出した <em>os.path</em> モジュールを <code>os_path</code> という名前でシンボルテーブルに登録する。このように、<code>import &lt;module&gt;</code> と <code>import &lt;module&gt; as &lt;name&gt;</code> では、実行時の振る舞いが微妙に異なっている。</p>
 <h3 id="import-a-と-import-ab">import A と import A.B</h3>
@@ -84,12 +85,14 @@
 &lt;module 'A' from 'A/__init__.pyc'&gt;
 &gt;&gt;&gt; dir(A)
 ['__builtins__', '__doc__', '__file__', '__name__', '__path__']
-</code></pre><p>このように、<code>dir()</code> で調べても、<em>A</em> モジュールに <code>B</code> という属性はない。</p>
+</code></pre>
+<p>このように、<code>dir()</code> で調べても、<em>A</em> モジュールに <code>B</code> という属性はない。</p>
 <pre><code>&gt;&gt;&gt; A.B
 Traceback (most recent call last):
   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
 AttributeError: 'module' object has no attribute 'B'
-</code></pre><p>ということは、このパッケージでは <code>import A.B as A_B</code> のようなインポートは失敗しそうだ。何故なら <em>A</em> モジュールに <code>B</code> という属性はないのだから、上の手順では 2. で失敗するはずである。</p>
+</code></pre>
+<p>ということは、このパッケージでは <code>import A.B as A_B</code> のようなインポートは失敗しそうだ。何故なら <em>A</em> モジュールに <code>B</code> という属性はないのだから、上の手順では 2. で失敗するはずである。</p>
 <p>まずは念のため、バイトコードも確認しておこう。</p>
 <pre><code>&gt;&gt;&gt; dis.disassemble(compile('import A.B as A_B', '', 'exec'))
   1           0 LOAD_CONST               0 (-1)
@@ -99,24 +102,29 @@ AttributeError: 'module' object has no attribute 'B'
              12 STORE_NAME               2 (A_B)
              15 LOAD_CONST               1 (None)
              18 RETURN_VALUE
-</code></pre><p>前節でみたものと同じだ。やはり、<code>LOAD_ATTR</code> で <code>B</code> を取り出そうとしている。では、実行してみる。</p>
+</code></pre>
+<p>前節でみたものと同じだ。やはり、<code>LOAD_ATTR</code> で <code>B</code> を取り出そうとしている。では、実行してみる。</p>
 <pre><code>&gt;&gt;&gt; import A.B as A_B
 &gt;&gt;&gt;
-</code></pre><p>おかしい。成功してしまった。</p>
+</code></pre>
+<p>おかしい。成功してしまった。</p>
 <pre><code>&gt;&gt;&gt; A_B
 &lt;module 'A.B' from 'A/B/__init__.pyc'&gt;
-</code></pre><p>ちゃんとインポートもできているようだ。どういうことだろうか？　一旦インタプリタを終了して、もう一度、今度は <code>import A.B</code> を試してみよう。</p>
+</code></pre>
+<p>ちゃんとインポートもできているようだ。どういうことだろうか？　一旦インタプリタを終了して、もう一度、今度は <code>import A.B</code> を試してみよう。</p>
 <pre><code>% python
 &gt;&gt;&gt; import A.B
 &gt;&gt;&gt; A.B
 &lt;module 'A.B' from 'A/B/__init__.pyc'&gt;
-</code></pre><p>なんと、<code>A.B</code> でモジュールにアクセスできている。更に <code>import A</code> して <em>A</em> モジュールを調べてみると、</p>
+</code></pre>
+<p>なんと、<code>A.B</code> でモジュールにアクセスできている。更に <code>import A</code> して <em>A</em> モジュールを調べてみると、</p>
 <pre><code>&gt;&gt;&gt; import A
 &gt;&gt;&gt; A
 &lt;module 'A' from 'A/__init__.pyc'&gt;
 &gt;&gt;&gt; dir(A)
 ['B', '__builtins__', '__doc__', '__file__', '__name__', '__path__']
-</code></pre><p><em>A</em> モジュールに <code>B</code> が増えていることが分かる。</p>
+</code></pre>
+<p><em>A</em> モジュールに <code>B</code> が増えていることが分かる。</p>
 <p>これで <em>os</em> 以外のモジュールでも <code>import</code> がうまく動作する理由が分かった。おそらくは <code>IMPORT_NAME</code> が実行されるときに、内部的にこのような下準備が行われていたわけだ。</p>
 </div>
     </article>

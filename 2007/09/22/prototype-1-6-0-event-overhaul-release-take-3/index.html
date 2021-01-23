@@ -58,9 +58,11 @@
 <p>で登録を解除できる。</p>
 <p>これまで <code>stopObserving()</code> で登録を解除するには <code>observe()</code> に渡した引数と同じものを渡す必要があった。つまり、</p>
 <pre><code>Event.observe('signinForm', 'submit', checkForm);
-</code></pre><p>でコールバック関数 <code>checkForm</code> を登録した場合は、</p>
+</code></pre>
+<p>でコールバック関数 <code>checkForm</code> を登録した場合は、</p>
 <pre><code>Event.stopObserving('signinForm', 'submit', checkForm);
-</code></pre><p>としていたはず。</p>
+</code></pre>
+<p>としていたはず。</p>
 <p>1.6.0 では引数を省略することで、対応するコールバック関数すべてを解除できるようになった。</p>
 <pre><code>// checkForm を解除
 Event.stopObserving('signinForm', 'submit', checkForm);
@@ -68,7 +70,8 @@ Event.stopObserving('signinForm', 'submit', checkForm);
 Event.stopObserving('signinForm', 'submit');
 // signinForm に登録されたコールバック関数を解除
 Event.stopObserving('signinForm');
-</code></pre><p>これまで <code>removeEventListener</code> や <code>detachEvent</code> の単なるラッパーに近かった <code>stopObserving</code> だが、これでだいぶ使いやすくなった。</p>
+</code></pre>
+<p>これまで <code>removeEventListener</code> や <code>detachEvent</code> の単なるラッパーに近かった <code>stopObserving</code> だが、これでだいぶ使いやすくなった。</p>
 </div>
     </article>
 

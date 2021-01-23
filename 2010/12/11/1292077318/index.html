@@ -47,14 +47,16 @@
         </ul>
       </div>
       <div class="content"><p>Ruby FFI のメモリ管理についてメモ。FFI::MemoryPointer で確保したメモリを自分で破棄する場合は、autorelease を false にする。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">error   <span style="color:#f92672">=</span> <span style="color:#66d9ef">FFI</span><span style="color:#f92672">::</span><span style="color:#66d9ef">MemoryPointer</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">:pointer</span>)
-<span style="color:#f92672">...</span>
-C<span style="color:#f92672">.</span>LLVMDisposeMessage(error)
-error<span style="color:#f92672">.</span>autorelease<span style="color:#f92672">=</span><span style="color:#66d9ef">false</span>
-</code></pre></div><p>そうしないと、FFI::MemoryPointer は GC 時に確保したメモリを破棄しようとする (<a href="https://github.com/ffi/ffi/blob/1.0.1/ext/ffi_c/MemoryPointer.c#L138">MemoryPointer.c#L138</a>) ので、たとえば Mac OS X では以下のようなエラーが出る。</p>
+<pre><code class="language-ruby">error   = FFI::MemoryPointer.new(:pointer)
+...
+C.LLVMDisposeMessage(error)
+error.autorelease=false
+</code></pre>
+<p>そうしないと、FFI::MemoryPointer は GC 時に確保したメモリを破棄しようとする (<a href="https://github.com/ffi/ffi/blob/1.0.1/ext/ffi_c/MemoryPointer.c#L138">MemoryPointer.c#L138</a>) ので、たとえば Mac OS X では以下のようなエラーが出る。</p>
 <pre><code>ruby(891,0x7fff70874ca0) malloc: *** error for object 0x102e8fb10: pointer being freed was not allocated
 *** set a breakpoint in malloc_error_break to debug
-</code></pre><p>エラー処理とかでは割と忘れがちかもしれない。</p>
+</code></pre>
+<p>エラー処理とかでは割と忘れがちかもしれない。</p>
 </div>
     </article>
 

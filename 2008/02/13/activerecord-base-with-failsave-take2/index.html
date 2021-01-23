@@ -74,7 +74,8 @@
     remove_method :create_or_update if subclass
   end
 end
-</code></pre><p>変更点はふたつ。</p>
+</code></pre>
+<p>変更点はふたつ。</p>
 <ol>
 <li>ブロック実行中に例外が発生しても、create_or_update が元に戻るように</li>
 <li>ActiveRecord::Base のサブクラスだけに適用することもできるように</li>
@@ -83,7 +84,8 @@ end
 <pre><code>User.with_failsave do
   ...
 end
-</code></pre><p><a href="http://diary.metareal.org/2008/02/13/ruby-alias-method/">alias_method の挙動がよく分かってない</a>ので、コメントに書いていることとか間違ってるかも。</p>
+</code></pre>
+<p><a href="http://diary.metareal.org/2008/02/13/ruby-alias-method/">alias_method の挙動がよく分かってない</a>ので、コメントに書いていることとか間違ってるかも。</p>
 </div>
     </article>
 

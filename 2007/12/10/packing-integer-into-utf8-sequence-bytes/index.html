@@ -48,10 +48,12 @@
       </div>
       <div class="content"><p>前回の記事「<a href="http://weblog.metareal.org/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/">PostgreSQL 7.4.13 以降、異なるエンコーディングでの変換エラー</a>」でも書いたように、PostgreSQL で以下のようなエラーが出るようになった。</p>
 <pre><code>ERROR:  22P05: character 0xe28094 of encoding &quot;UNICODE&quot; has no equivalent in &quot;EUC_JP&quot;
-</code></pre><p>では、<code>character 0xe28094</code> とは、どの文字なのか。</p>
+</code></pre>
+<p>では、<code>character 0xe28094</code> とは、どの文字なのか。</p>
 <p>PostgreSQL では <code>UNICODE</code> という名前のエンコーディングは UTF-8 のことなので、Ruby の <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=Array#pack">Array#pack</a> を使えば、0xe28094 という16進数表記の整数を UTF-8 文字列に変換できる。</p>
 <pre><code>ruby -e 'puts [ARGV[0]].pack(&quot;H*&quot;)' &quot;e28094&quot;
-</code></pre></div>
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

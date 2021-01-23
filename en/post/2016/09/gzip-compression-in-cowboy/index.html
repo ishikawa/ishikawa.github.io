@@ -63,15 +63,17 @@
       <div class="content"><p>To <strong>compress HTTP response body</strong> from a web application powered by <a href="http://www.phoenixframework.org">Phoenix framework</a>,
 you have to make <a href="https://hexdocs.pm/phoenix/Phoenix.Endpoint.html">Phoenix.Endpoint</a> pass
 <code>compress: true</code> property to <a href="https://github.com/ninenines/cowboy">Cowboy</a>. In your <code>config.exs</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">config <span style="color:#e6db74">:example_app</span>, <span style="color:#a6e22e">ExampleApp.Endpoint</span>,
-  <span style="color:#e6db74">http</span>: [<span style="color:#e6db74">port</span>: <span style="color:#ae81ff">4040</span>, <span style="color:#e6db74">compress</span>: <span style="color:#66d9ef">true</span>],
-  <span style="color:#e6db74">debug_errors</span>: <span style="color:#66d9ef">true</span>,
-  <span style="color:#e6db74">code_reloader</span>: <span style="color:#66d9ef">true</span>,
-  <span style="color:#e6db74">check_origin</span>: <span style="color:#66d9ef">false</span>,
-  <span style="color:#e6db74">watchers</span>: []
-</code></pre></div><p>When you send a HTTP request, include <code>Accept-Encoding</code> header. if you use the <code>curl</code> command, it has the option <code>--compressed</code>.</p>
+<pre><code class="language-elixir">config :example_app, ExampleApp.Endpoint,
+  http: [port: 4040, compress: true],
+  debug_errors: true,
+  code_reloader: true,
+  check_origin: false,
+  watchers: []
+</code></pre>
+<p>When you send a HTTP request, include <code>Accept-Encoding</code> header. if you use the <code>curl</code> command, it has the option <code>--compressed</code>.</p>
 <pre><code>Accept-Encoding: gzip, deflate
-</code></pre><p>However it seems that <a href="https://github.com/ninenines/cowboy">Cowboy</a>, which is the HTTP server used in Phoenix framework, <a href="https://github.com/ninenines/cowboy/commit/01f57ad65d7c75fb455f48e354bb3a328c472ce4#diff-2db000a0dd01503e2f022387f23413cbR942">doesn&rsquo;t compress response body if its size is smaller than 300 bytes</a>.</p>
+</code></pre>
+<p>However it seems that <a href="https://github.com/ninenines/cowboy">Cowboy</a>, which is the HTTP server used in Phoenix framework, <a href="https://github.com/ninenines/cowboy/commit/01f57ad65d7c75fb455f48e354bb3a328c472ce4#diff-2db000a0dd01503e2f022387f23413cbR942">doesn&rsquo;t compress response body if its size is smaller than 300 bytes</a>.</p>
 </div>
     </article>
 

@@ -49,11 +49,12 @@
       <div class="content"><p>すでに4年半近くの時が経過したが、ひさしぶりの投稿だ。Google AppEngine (Python + Django) で動かしていた自作ブログエンジンを <a href="http://gohugo.io/">Hugo</a> に移行している。</p>
 <p><a href="https://golang.org">Go</a> で実装されているおかげでもあるのだろうが、サイトの生成スピードが速い。組み込みサーバには、ファイルの変更を検知してサイトを更新する機能が備わっているので、ストレスなく記事を書くことができる。ブラウザのリロードも不要。</p>
 <p>URL を記事ごとに指定可能なのは助かった。デフォルトだと <code>/post/title/</code> のような URL になるのだが、古い記事は <code>/YYYY/MM/DD/title/</code> という形式で URL を決めていたので、そのままだと URL が変わってしまう。記事中の YAML (<a href="http://gohugo.io/content/front-matter/">Front Matter</a>) で URL を上書きしてやることで、URL を変えずにすんだ。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
-<span style="color:#f92672">title</span>: <span style="color:#e6db74">&#34;Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった。&#34;</span>
-<span style="color:#f92672">url</span>: <span style="color:#e6db74">&#34;/2010/12/16/ffi-requires-ruby-version-1-9-2/&#34;</span>
+<pre><code class="language-yaml">---
+title: &quot;Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった。&quot;
+url: &quot;/2010/12/16/ffi-requires-ruby-version-1-9-2/&quot;
 ...
-</code></pre></div><p>とはいえ、今後もこの指定をしていくのはしんどいので、この記事から URL の形式を <code>/post/title/</code> に変えるつもり。</p>
+</code></pre>
+<p>とはいえ、今後もこの指定をしていくのはしんどいので、この記事から URL の形式を <code>/post/title/</code> に変えるつもり。</p>
 <h3 id="移行スクリプト">移行スクリプト</h3>
 <p>移行にあたっては古い記事を Markdown + Front Matter に変換する必要があり、変換スクリプトを Ruby で書いた。</p>
 <ol>

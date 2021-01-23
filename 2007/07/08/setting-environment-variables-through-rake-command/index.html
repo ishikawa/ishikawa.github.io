@@ -51,7 +51,8 @@
       <div class="content"><p><a href="http://docs.rubyrake.org/read/chapter/5">Rake のユーザーガイド</a>には書かれているのに、<code>rake --help</code> では出てこないようなのでメモ。</p>
 <p><a href="http://script.aculo.us/">Rake</a> では <code>rake</code> コマンドのオプションに <code>name=value</code> と指定することで環境変数を指定できる。</p>
 <pre><code>% rake [options ...]  [VAR=VALUE]  [targets ...]
-</code></pre><p>環境変数はタスクから <code>ENV</code> 定数で参照できるので、コマンドオプションでてっとりばやく動作を切り替えたいときなんかは重宝するかもしれない。</p>
+</code></pre>
+<p>環境変数はタスクから <code>ENV</code> 定数で参照できるので、コマンドオプションでてっとりばやく動作を切り替えたいときなんかは重宝するかもしれない。</p>
 <p>というわけで、<a href="http://script.aculo.us/">script.aculo.us</a> の <code>rake unittest</code> で、対象ブラウザと対象ファイルを環境変数で指定できるようにした<a href="http://dev.rubyonrails.org/ticket/8901">パッチ</a>を送ってみた。</p>
 </div>
     </article>

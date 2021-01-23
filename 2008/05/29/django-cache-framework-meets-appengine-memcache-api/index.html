@@ -64,7 +64,8 @@
 &quot;GET /index.xml HTTP/1.1&quot; 200 117413 - -
 ...
 This request used a high amount of CPU, and was roughly 5.5 times over the average request CPU limit. High CPU requests have a small quota, and if you exceed this quota, your app will be temporarily disabled.
-</code></pre><p>どうやら、フィードの生成が重いようである。</p>
+</code></pre>
+<p>どうやら、フィードの生成が重いようである。</p>
 <p>考えてみれば、フィードがリクエストされるたびに、この重い処理を繰り返す必要はない。どうせ、記事の更新があるまでは生成される内容は同じだし、記事の更新をリアルタイムに反映する必要もないだろう。キャッシュしてしまおう。</p>
 <h3 id="the-django-cache-framework">The Django cache framework</h3>
 <p><a href="http://www.djangoproject.com/">Django</a> には<a href="http://www.djangoproject.com/documentation/cache/">簡単に使えるキャッシュ・フレームワーク</a>（<a href="http://ymasuda.jp/python/django/docs/cache.html">和訳</a>）が組込まれており、<a href="http://danga.com/memcached/">memcached</a> もサポートされている。</p>
@@ -75,16 +76,19 @@ This request used a high amount of CPU, and was roughly 5.5 times over the avera
 <pre><code># Install App Engine memcache backend for cache framework
 from google.appengine.api import memcache
 sys.modules['memcache'] = memcache
-</code></pre><p>変更は一目瞭然。トップレベルの <code>memcache</code> モジュールを GAE の <code>memcache</code> モジュールにしてしまう。</p>
+</code></pre>
+<p>変更は一目瞭然。トップレベルの <code>memcache</code> モジュールを GAE の <code>memcache</code> モジュールにしてしまう。</p>
 <p>あとは、Django のキャッシュ・フレームワークを設定するだけだ。<code>settings.py</code> に <code>CACHE_BACKEND</code> の指定を追加しよう。GAE の Memcache API では接続先や負荷分散を指定する必要はないので、ホストの部分は空にしておく。</p>
 <pre><code>CACHE_BACKEND = 'memcached:///'
-</code></pre><p>とりあえず、フィードをキャッシュしたかったので <code>cache_page</code> デコレータで、フィードを生成している View をキャッシュするようにした。</p>
+</code></pre>
+<p>とりあえず、フィードをキャッシュしたかったので <code>cache_page</code> デコレータで、フィードを生成している View をキャッシュするようにした。</p>
 <pre><code>from django.views.decorators.cache import cache_page, never_cache
 
 @cache_page
 def archive_tag(request, slug, page=1):
   ...
-</code></pre><p>たったこれだけで、初回リクエスト以降、重いフィード生成の処理をキャッシュしてくれるようになった。</p>
+</code></pre>
+<p>たったこれだけで、初回リクエスト以降、重いフィード生成の処理をキャッシュしてくれるようになった。</p>
 <h3 id="keyerror">KeyError</h3>
 <p>**（2008.5.29 追記）**memcached.Client#get が <code>KeyError</code> を返すことがあるようだ。<a href="http://code.google.com/appengine/docs/memcache/clientclass.html#Client_get">キーが存在しない場合は None を返すはず</a>なので、バグかもしれない。</p>
 <ul>
@@ -103,7 +107,8 @@ def archive_tag(request, slug, page=1):
 from django.core.cache.backends.memcached import CacheClass as MemcacheCache
 MemcacheCache.get = silent_missing_key_error(MemcacheCache.get)
 MemcacheCache.get_many = silent_missing_key_error(MemcacheCache.get_many)
-</code></pre><p><code>KeyError</code> が起こった場合はログに残して、<code>None</code> を返すようにしている。</p>
+</code></pre>
+<p><code>KeyError</code> が起こった場合はログに残して、<code>None</code> を返すようにしている。</p>
 </div>
     </article>
 

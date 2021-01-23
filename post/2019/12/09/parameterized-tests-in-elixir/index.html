@@ -65,52 +65,53 @@
 <p><a href="https://github.com/KazuCocoa/ex_parameterized">KazuCocoa/ex_parameterized</a> を試してみたこともあるのだが、記法が変則的（こうなる理由も分かる）なのと、<a href="https://github.com/KazuCocoa/ex_parameterized/issues/19">パラメータを評価する部分で動かないコードがある</a>ので採用を見送っている。</p>
 <h2 id="いま採用している手法">いま採用している手法</h2>
 <p>結局、いろいろ試した末、いまは<a href="https://gist.github.com/ishikawa/2ad8c415c2a5b6a619e99c18870d6392">このようなコード</a>に落ち着いている。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#75715e"># 1. The helper functions for the test module. To make it possible to import</span>
-<span style="color:#75715e"># this helper module in the test module, define this module outside the context that uses it.</span>
-<span style="color:#66d9ef">defmodule</span> <span style="color:#a6e22e">MyTest.Helpers</span> <span style="color:#66d9ef">do</span>
-  <span style="color:#a6e22e">@spec</span> fake_params(<span style="color:#a6e22e">Enumrable</span><span style="color:#f92672">.</span>t()) <span style="color:#f92672">::</span> map
-  <span style="color:#66d9ef">def</span> fake_params(override \\ %{}) <span style="color:#66d9ef">do</span>
+<pre><code class="language-elixir"># 1. The helper functions for the test module. To make it possible to import
+# this helper module in the test module, define this module outside the context that uses it.
+defmodule MyTest.Helpers do
+  @spec fake_params(Enumrable.t()) :: map
+  def fake_params(override \\ %{}) do
     %{
-      <span style="color:#e6db74">country</span>: <span style="color:#e6db74">&#34;jp&#34;</span>,
-      <span style="color:#e6db74">phone_number</span>: <span style="color:#a6e22e">Faker</span><span style="color:#f92672">.</span>phone_number(),
-      <span style="color:#e6db74">locale</span>: <span style="color:#e6db74">&#34;ja&#34;</span>,
-      <span style="color:#e6db74">company</span>: <span style="color:#e6db74">&#34;My Company&#34;</span>,
-      <span style="color:#e6db74">department</span>: <span style="color:#e6db74">&#34;My Department&#34;</span>,
-      <span style="color:#e6db74">email</span>: <span style="color:#a6e22e">Faker.Internet</span><span style="color:#f92672">.</span>email(),
-      <span style="color:#e6db74">first_name</span>: <span style="color:#a6e22e">Faker.Name</span><span style="color:#f92672">.</span>first_name(),
-      <span style="color:#e6db74">last_name</span>: <span style="color:#a6e22e">Faker.Name</span><span style="color:#f92672">.</span>last_name()
+      country: &quot;jp&quot;,
+      phone_number: Faker.phone_number(),
+      locale: &quot;ja&quot;,
+      company: &quot;My Company&quot;,
+      department: &quot;My Department&quot;,
+      email: Faker.Internet.email(),
+      first_name: Faker.Name.first_name(),
+      last_name: Faker.Name.last_name()
     }
-    <span style="color:#f92672">|&gt;</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">.</span>merge(<span style="color:#a6e22e">Map</span><span style="color:#f92672">.</span>new(override))
-  <span style="color:#66d9ef">end</span>
-<span style="color:#66d9ef">end</span>
+    |&gt; Map.merge(Map.new(override))
+  end
+end
 
-<span style="color:#66d9ef">defmodule</span> <span style="color:#a6e22e">MyTest</span> <span style="color:#66d9ef">do</span>
-  <span style="color:#f92672">use</span> <span style="color:#a6e22e">MyApp.ConnCase</span>
+defmodule MyTest do
+  use MyApp.ConnCase
 
-  <span style="color:#75715e"># Because I&#39;d like to use functions in the helper module both in parameterized cases and</span>
-  <span style="color:#75715e"># test cases, alias and import it.</span>
-  <span style="color:#f92672">alias</span> <span style="color:#a6e22e">MyTest.Helpers</span>
-  <span style="color:#f92672">import</span> <span style="color:#a6e22e">Helpers</span>
+  # Because I'd like to use functions in the helper module both in parameterized cases and
+  # test cases, alias and import it.
+  alias MyTest.Helpers
+  import Helpers
 
-  describe <span style="color:#e6db74">&#34;signup&#34;</span> <span style="color:#66d9ef">do</span>
-    <span style="color:#66d9ef">for</span> {description, signup_params} <span style="color:#f92672">&lt;-</span> [
-          <span style="color:#75715e"># 2. You cannot invoke functions in the testing module which is not defined yet.</span>
-          <span style="color:#75715e"># So we need the helper module.</span>
-          <span style="color:#e6db74">&#34;all filled&#34;</span>: <span style="color:#a6e22e">Helpers</span><span style="color:#f92672">.</span>fake_params(),
-          <span style="color:#e6db74">&#34;department can be omitted&#34;</span>: <span style="color:#a6e22e">Helpers</span><span style="color:#f92672">.</span>fake_params(<span style="color:#e6db74">department</span>: <span style="color:#66d9ef">nil</span>),
-          <span style="color:#e6db74">&#34;department can be null&#34;</span>: <span style="color:#a6e22e">Helpers</span><span style="color:#f92672">.</span>fake_params() <span style="color:#f92672">|&gt;</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">.</span>delete(<span style="color:#e6db74">&#34;department&#34;</span>)
-        ] <span style="color:#66d9ef">do</span>
-      <span style="color:#75715e"># 3. You cannot use variables in this context in the context inside a test case.</span>
-      <span style="color:#75715e"># So you have to use module attributes or `@tag` feature in ExUnit. Personally,</span>
-      <span style="color:#75715e"># I prefer the latter.</span>
-      <span style="color:#a6e22e">@tag</span> <span style="color:#e6db74">signup_params</span>: signup_params
-      test <span style="color:#e6db74">&#34;no errors: </span><span style="color:#e6db74">#{</span>description<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>, %{<span style="color:#e6db74">conn</span>: conn, <span style="color:#e6db74">signup_params</span>: signup_params} <span style="color:#66d9ef">do</span>
-        <span style="color:#75715e"># ...</span>
-      <span style="color:#66d9ef">end</span>
-    <span style="color:#66d9ef">end</span>
-  <span style="color:#66d9ef">end</span>
-<span style="color:#66d9ef">end</span>
-</code></pre></div><p>なんでこうなってるかはコメントの通りで紆余曲折あるのだが、</p>
+  describe &quot;signup&quot; do
+    for {description, signup_params} &lt;- [
+          # 2. You cannot invoke functions in the testing module which is not defined yet.
+          # So we need the helper module.
+          &quot;all filled&quot;: Helpers.fake_params(),
+          &quot;department can be omitted&quot;: Helpers.fake_params(department: nil),
+          &quot;department can be null&quot;: Helpers.fake_params() |&gt; Map.delete(&quot;department&quot;)
+        ] do
+      # 3. You cannot use variables in this context in the context inside a test case.
+      # So you have to use module attributes or `@tag` feature in ExUnit. Personally,
+      # I prefer the latter.
+      @tag signup_params: signup_params
+      test &quot;no errors: #{description}&quot;, %{conn: conn, signup_params: signup_params} do
+        # ...
+      end
+    end
+  end
+end
+</code></pre>
+<p>なんでこうなってるかはコメントの通りで紆余曲折あるのだが、</p>
 <ol>
 <li>ヘルパー関数を定義するモジュールはテストのモジュールの外側で定義する。なぜなら、そうしないと <code>import</code> できないから。もちろん、<code>import</code> しなくてもいいのだが、テストコードからノイズはできるだけ減らしたい</li>
 <li>そもそも、なんでヘルパー関数をプライベートな関数ではなく、わざわざ別のモジュールに定義しているか、というと、パラメータのパターンを生成するときに使いたいから。この時点ではテストのモジュールは定義されていない</li>

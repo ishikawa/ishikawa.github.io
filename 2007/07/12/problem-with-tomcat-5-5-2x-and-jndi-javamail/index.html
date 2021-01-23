@@ -49,7 +49,8 @@
       <div class="content"><p>Tomcat のバージョンを 5.5.17 から 5.5.23 にあげたところ、次のような例外が発生するようになった。</p>
 <pre><code>javax.naming.NamingException: Could not create resource factory instance [Root exception is java.lang.ClassNotFoundException: org.apache.naming.factory.MailSessionFactory]
   at org.apache.naming.factory.ResourceFactory.getObjectInstance(ResourceFactory.java:132)
-</code></pre><p>JNDI から <a href="http://java.sun.com/products/javamail/">JavaMail</a> の <code>javax.mail.Session</code> を取り出すときに失敗しているようだ。</p>
+</code></pre>
+<p>JNDI から <a href="http://java.sun.com/products/javamail/">JavaMail</a> の <code>javax.mail.Session</code> を取り出すときに失敗しているようだ。</p>
 <p>「<code>MailSessionFactory</code> が見つからないってことは<strong>また</strong>クラスパス周りの問題かな、面倒くさいな&hellip;」と思いきや、検索してみると、次のようなバグ報告が。</p>
 <p>Bug 40668 - MailSessionFactory is missing in Tomcat 5.5.23
 <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=40668">http://issues.apache.org/bugzilla/show_bug.cgi?id=40668</a></p>
@@ -58,11 +59,13 @@
 <p>この際、SMTP でメールを送信するくらいの用途なら、JNDI やめちゃうってのも手だと思う。JNDI のルックアップって非結合になっているようで、結局、新しい依存性を持ち込んでるだけ、というか、テストを考えると余計面倒だし。</p>
 <pre><code>Context context = new InitialContext();
 Session session = (Session) context.lookup(&quot;java:comp/env/mail/Session&quot;);
-</code></pre><p>これを</p>
+</code></pre>
+<p>これを</p>
 <pre><code>Properties props = new Properties();
 props.put(&quot;mail.smtp.host&quot;, smtpHost);
 Session session = Session.getDefaultInstance(props);
-</code></pre><p>こんな感じで。</p>
+</code></pre>
+<p>こんな感じで。</p>
 </div>
     </article>
 

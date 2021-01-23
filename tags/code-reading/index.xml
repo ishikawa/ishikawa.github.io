@@ -15,8 +15,8 @@
       
       <guid>https://metareal.blog/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</guid>
       <description>LLVM 3.1 のソースコードから、llvm::Module の IR 出力用関数のソースコードを読んだ。
-/// Print the module to an output stream with an optional /// AssemblyAnnotationWriter. void print(raw_ostream &amp;amp;OS, AssemblyAnnotationWriter *AAW) const; /// Dump the module to stderr (for debugging). void dump() const; 実装は lib/VMCore/Module.cpp ではなく、他の IR 出力用関数とともに lib/VMCore/AsmWriter.cpp にまとめられている。まずは llvm::Module::print を見てみよう。
-void Module::print(raw_ostream &amp;amp;ROS, AssemblyAnnotationWriter *AAW) const { SlotTracker SlotTable(this); formatted_raw_ostream OS(ROS); AssemblyWriter W(OS, SlotTable, this, AAW); W.printModule(this); } llvm::Module::print AssemblyWriter は lib/VMCore/AsmWriter.cpp の無名ネームスペースに定義されているクラスであり、llvm 内のさまざまな型をストリームに出力する関数を提供している。AssemblyWriter::printModule のコードをざっと眺めてみれば、やっていることの想像はつくだろう。</description>
+/// Print the module to an output stream with an optional /// AssemblyAnnotationWriter. void print(raw_ostream &amp;amp;OS, AssemblyAnnotationWriter *AAW) const; /// Dump the module to stderr (for debugging). void dump() const;  実装は lib/VMCore/Module.cpp ではなく、他の IR 出力用関数とともに lib/VMCore/AsmWriter.cpp にまとめられている。まずは llvm::Module::print を見てみよう。
+void Module::print(raw_ostream &amp;amp;ROS, AssemblyAnnotationWriter *AAW) const { SlotTracker SlotTable(this); formatted_raw_ostream OS(ROS); AssemblyWriter W(OS, SlotTable, this, AAW); W.printModule(this); }  llvm::Module::print AssemblyWriter は lib/VMCore/AsmWriter.cpp の無名ネームスペースに定義されているクラスであり、llvm 内のさまざまな型をストリームに出力する関数を提供している。AssemblyWriter::printModule のコードをざっと眺めてみれば、やっていることの想像はつくだろう。</description>
     </item>
     
   </channel>

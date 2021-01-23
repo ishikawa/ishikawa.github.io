@@ -52,17 +52,20 @@
 <pre><code>% curl --location &quot;http://dev.mysql.com/get/Downloads/MySQL-5.0/mysql-5.0.27.tar.gz/from/http://mirror.mysql-partners-jp.biz/&quot; &gt; mysql-5.0.27.tar.gz
 % tar xvzf mysql-5.0.27.tar.gz
 % cd mysql-5.0.27
-</code></pre><p><code>configure</code> のオプションは<a href="http://dev.mysql.com/doc/refman/5.0/en/mac-os-x.html">マニュアルに載っていた</a>ものを参考にした。</p>
+</code></pre>
+<p><code>configure</code> のオプションは<a href="http://dev.mysql.com/doc/refman/5.0/en/mac-os-x.html">マニュアルに載っていた</a>ものを参考にした。</p>
 <pre><code>CC=gcc CFLAGS=&quot;-O3 -fno-omit-frame-pointer&quot; CXX=gcc \
 CXXFLAGS=&quot;-O3 -fno-omit-frame-pointer -felide-constructors \
     -fno-exceptions -fno-rtti&quot; \
     ./configure --prefix=/usr/local/mysql \
     --with-extra-charsets=complex --enable-thread-safe-client \
     --enable-local-infile --disable-shared
-</code></pre><p>あとは、<code>make, make install</code></p>
+</code></pre>
+<p>あとは、<code>make, make install</code></p>
 <pre><code>% make
 % sudo make install
-</code></pre></div>
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

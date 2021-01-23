@@ -65,7 +65,8 @@
 
 <p>In the machine learning field, there is plenty of public dataset for model training. Usually, such a dataset is provided as a zip archive file, so we can just download it, unarchive it with our good old friend <code>unzip</code>:</p>
 <pre><code>$ unzip /home/data/large_dataset.zip
-</code></pre><p>But if you are working in Jupyter notebook, simple unzip command might hurt your screen with too much output and you’ll soon notice the performance of frontend UI is decreasing as the output increasing.</p>
+</code></pre>
+<p>But if you are working in Jupyter notebook, simple unzip command might hurt your screen with too much output and you’ll soon notice the performance of frontend UI is decreasing as the output increasing.</p>
 <pre><code>!unzip /home/data/large_dataset.zip -d /home/data/
 Archive:  /home/data/large_dataset.zip
   inflating: /home/data/large_dataset/1/1900_753325_0060.png  
@@ -76,18 +77,22 @@ Archive:  /home/data/large_dataset.zip
   inflating: /home/data/large_dataset/1/1900_776319_0015.png  
   ...
   (More 80K lines)
-</code></pre><p>So people often shut it up with output redirecting:</p>
+</code></pre>
+<p>So people often shut it up with output redirecting:</p>
 <pre><code>!unzip /home/data/large_dataset.zip -d /home/data/ &gt; /dev/null
-</code></pre><p>or short <code>-q</code> option:</p>
+</code></pre>
+<p>or short <code>-q</code> option:</p>
 <pre><code>!unzip -q /home/data/large_dataset.zip -d /home/data/
-</code></pre><p>Got it! The <code>unzip</code> command now silently unarchive files, no performance penalty, everything alright, just waiting … (few minutes passed); <em>How soon can I expect unzip to finish?</em></p>
+</code></pre>
+<p>Got it! The <code>unzip</code> command now silently unarchive files, no performance penalty, everything alright, just waiting … (few minutes passed); <em>How soon can I expect unzip to finish?</em></p>
 <h2 id="pv-command-is-rescue"><code>pv</code> command is rescue!</h2>
 <p>To prevent unzip command from making us anxious or sleepy, we want to see a progress bar which periodically reports an indication while unarchive. The <code>pv</code> command solves this problem, it can display a progress bar from <strong>any command’s output</strong>. As tried some times, finally I got an expected result:</p>
 <pre><code>n_files = !unzip -l /home/data/large_dataset.zip | grep .png | wc -l
 !unzip -o /home/data/large_dataset.zip -d /home/data/ | pv -l -s {n_files[0]} &gt; /dev/null
 ...
 80.1k 0:00:09 [8.54k/s] [====================================&gt;] 100%
-</code></pre><p>Nice! Very helpful. What’s going on here is:</p>
+</code></pre>
+<p>Nice! Very helpful. What’s going on here is:</p>
 <ol>
 <li>Run <code>unzip -l</code> to take the number of files to process. We have to filter lines with <code>grep</code> and count lines by <code>wc -l</code> because <code>unzip -l</code> output includes directories.</li>
 <li>Pipe the output of <code>unzip</code> and pass the number of files to <code>-s (size)</code> option to show meaningful indicator.</li>

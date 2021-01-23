@@ -55,12 +55,14 @@
 <pre><code>if (document.images) {
   new Image().src=&quot;/url?sa=Q&amp;client=safari&amp;rls=ja-jp&amp;q=...&quot;;
 }
-</code></pre><p>まずは冒頭。新しい <code>Image</code> を生成することで <code>http://www.google.com/url/</code> にアクセスさせている。</p>
+</code></pre>
+<p>まずは冒頭。新しい <code>Image</code> を生成することで <code>http://www.google.com/url/</code> にアクセスさせている。</p>
 <p>URL から推測するに検索クエリーを保存しているのだろう。</p>
 <h3 id="クリックされたページの-url-を保存">クリックされたページの URL を保存</h3>
 <p>クリックされたページの URL を保存する処理は、各リンクの <code>onmousedown</code> に JavaScript を仕込むことで実現している。</p>
 <pre><code>&lt;a href=&quot;...&quot; class=l onmousedown=&quot;return asq(event,this,'','','res','1','&amp;amp;sig2=...')&quot;&gt;
-</code></pre><p>リンクをクリックすると <code>asq</code> 関数が実行されたのち、ページに遷移する、というわけだ。</p>
+</code></pre>
+<p>リンクをクリックすると <code>asq</code> 関数が実行されたのち、ページに遷移する、というわけだ。</p>
 <h3 id="asq-関数の実装">asq 関数の実装</h3>
 <p>では、<code>asq</code> 関数はどのような実装になっているのだろう。それなりに長いので些末な部分は削除したソースは以下の通り。</p>
 <pre><code>window.asq = function(d,a,f,g,k,l,m) {
@@ -94,7 +96,8 @@
   }
   return true
 };
-</code></pre><p><code>XMLHttpRequest</code> を使って、クリックされたページの URL を非同期送信している。強調した部分では、<code>setTimeout</code> でタイムアウト処理をしているようだ。</p>
+</code></pre>
+<p><code>XMLHttpRequest</code> を使って、クリックされたページの URL を非同期送信している。強調した部分では、<code>setTimeout</code> でタイムアウト処理をしているようだ。</p>
 <h3 id="ie-6-以下の場合は">IE 6 以下の場合は？</h3>
 <p>見ての通り、<code>asq</code> 関数の実装は <code>XMLHttpRequest</code> オブジェクトがあるかどうかに依存している。</p>
 <p>では、<code>XMLHttpRequest</code> オブジェクトではなく、<code>ActiveXObject</code> 経由で非同期通信を行う IE 6 などではどうするのだろう？</p>

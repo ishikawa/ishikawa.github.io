@@ -65,7 +65,8 @@
 <h3 id="rparsec-のインストール">rparsec のインストール</h3>
 <p>普通に <a href="http://rubyforge.org/projects/rparsec/">RubyForge</a> で gem がホスティングされているので、<code>gem</code> コマンド一発でインストールできる。</p>
 <pre><code>% sudo gem install rparsec
-</code></pre><h3 id="四則演算デモ">四則演算デモ</h3>
+</code></pre>
+<h3 id="四則演算デモ">四則演算デモ</h3>
 <p>まずは公式ページにもデモとして紹介されている四則演算から。</p>
 <pre><code>#!/usr/local/bin/ruby
 require 'rubygems'
@@ -87,14 +88,16 @@ class Calculator
     expr = delim &gt;&gt; Expressions.build(term, ops, delim)
   end
 end
-</code></pre><p>これを calc.rb として保存し、irb から簡単な数式を処理させてみる。</p>
+</code></pre>
+<p>これを calc.rb として保存し、irb から簡単な数式を処理させてみる。</p>
 <pre><code>% irb
 irb(main):001:0&gt; require 'calc'
 =&gt; true
 irb(main):002:0&gt; Calculator.new.parser.parse '1+2*(3-1)'
 =&gt; 5
 # =&gt; 5
-</code></pre></div>
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

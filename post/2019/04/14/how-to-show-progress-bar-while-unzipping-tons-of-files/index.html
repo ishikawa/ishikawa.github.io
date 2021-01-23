@@ -75,21 +75,25 @@ Archive:  /home/data/large_dataset.zip
   inflating: /home/data/large_dataset/1/1900_776319_0015.png  
   ...
   (More 80K lines) 
-</code></pre><p>かといって、<code>/dev/null</code> にリダイレクトしたり、<code>-q</code> オプションを指定して出力そのものをなくしてしまうと、本当に解凍処理が進んでいるのか分からなくて不安になる。</p>
+</code></pre>
+<p>かといって、<code>/dev/null</code> にリダイレクトしたり、<code>-q</code> オプションを指定して出力そのものをなくしてしまうと、本当に解凍処理が進んでいるのか分からなくて不安になる。</p>
 <pre><code>!unzip /home/data/large_dataset.zip -d /home/data/ &gt; /dev/null
 
 !unzip -q /home/data/large_dataset.zip -d /home/data/
-</code></pre><h2 id="それpv-コマンドで出来るよ">それ、<code>pv</code> コマンドで出来るよ</h2>
+</code></pre>
+<h2 id="それpv-コマンドで出来るよ">それ、<code>pv</code> コマンドで出来るよ</h2>
 <p>ググってみると pv コマンドで出来る、とのことだったが、全体のファイル数を指定してちゃんとプログレス・バーが機能するようにしている例が見当たらなかったので、この記事を書いた。</p>
 <pre><code>n_files = !unzip -l /home/data/large_dataset.zip | grep .png | wc -l
 !unzip -o /home/data/large_dataset.zip -d /home/data/ | pv -l -s {n_files[0]} &gt; /dev/null
-</code></pre><ol>
+</code></pre>
+<ol>
 <li>まず、<code>unzip -l</code> で全体のファイル数を取得する。<code>unzip -l</code> が報告する内容にはディレクトリも含まれているので、<code>grep</code> でフィルタが必要だ。残念ながら</li>
 <li>次に再度 <code>unzip</code> コマンドを実行して、今度は実際に解凍処理を実行する。処理したファイル名が出力されるので、これを <code>pv</code> コマンドにつなぎ、<code>-s (size)</code> オプションでファイル数を指定する</li>
 </ol>
 <p>これで、こんな感じのプログレス・バーが表示されるようになる。</p>
 <pre><code>80.1k 0:00:09 [8.54k/s] [====================================&gt;] 100%
-</code></pre></div>
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

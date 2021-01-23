@@ -71,7 +71,8 @@ var stream:NetStream = new NetStream(nc);
 var video:Video = new Video(300,300);
 ...
 video.attachVideo(_ns);
-</code></pre><p><strong>Flash Player 6</strong> では、肝心の <code>NetConnection</code> が RTMP (Real Time Messaging Protocol) という Adobe (Macromedia) 独自のプロトコルのみサポートしていたため、フラッシュなんちゃらサーバでしかストリーミングができなかった（このへんは Flash MX 関連のドキュメントにあった記述から推測したもの。ちなみに、RTMP の仕様は非公開）。</p>
+</code></pre>
+<p><strong>Flash Player 6</strong> では、肝心の <code>NetConnection</code> が RTMP (Real Time Messaging Protocol) という Adobe (Macromedia) 独自のプロトコルのみサポートしていたため、フラッシュなんちゃらサーバでしかストリーミングができなかった（このへんは Flash MX 関連のドキュメントにあった記述から推測したもの。ちなみに、RTMP の仕様は非公開）。</p>
 <ul>
 <li><a href="http://en.wikipedia.org/wiki/Real_Time_Messaging_Protocol">[Wikipedia] Real Time Messaging Protocol</a></li>
 <li><a href="http://www.osflash.org/red5/">Red5 : Open Source Flash Server</a> (RTMP を自力で解析)</li>
@@ -92,7 +93,8 @@ video.attachVideo(_ns);
   &quot;mod_flv_streaming&quot;
 )
 flv-streaming.extensions = ( &quot;.flv&quot; )
-</code></pre><p>こんだけ。</p>
+</code></pre>
+<p>こんだけ。</p>
 <p>仕組みも単純。
 クライアント側では、URL のクエリー文字列に <code>start</code> パラメータを追加。これで開始位置を指定してもらい、サーバ側では指定された位置のデータを返すようになっています（そのため、<code>start</code> パラメータによる位置指定をプレイヤー側で実装する必要がある）。</p>
 <ul>

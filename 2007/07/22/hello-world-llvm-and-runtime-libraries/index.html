@@ -58,11 +58,13 @@ define i32 @main() {
   **call i32 (i8 *, ...)* @printf(i8 * %cast210)**
   ret i32 0
 }
-</code></pre><p>では、コンパイル、実行。</p>
+</code></pre>
+<p>では、コンパイル、実行。</p>
 <pre><code>% llvm-as -f hello-printf.ll
 % lli hello-printf.bc
 Hello world!
-</code></pre><p>うんうん。</p>
+</code></pre>
+<p>うんうん。</p>
 <ul>
 <li><a href="http://www.oversea-pub.com/books/gnudevjp/about.htm">書籍「GNU開発ツール」</a></li>
 <li><a href="http://memo.wnishida.com/?date=20031008#p01">CC プログラミング工房 書籍 Vol.1 第１章 - Wataru&rsquo;s memo</a></li>

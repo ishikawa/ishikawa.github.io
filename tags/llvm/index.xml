@@ -15,8 +15,8 @@
       
       <guid>https://metareal.blog/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</guid>
       <description>LLVM 3.1 のソースコードから、llvm::Module の IR 出力用関数のソースコードを読んだ。
-/// Print the module to an output stream with an optional /// AssemblyAnnotationWriter. void print(raw_ostream &amp;amp;OS, AssemblyAnnotationWriter *AAW) const; /// Dump the module to stderr (for debugging). void dump() const; 実装は lib/VMCore/Module.cpp ではなく、他の IR 出力用関数とともに lib/VMCore/AsmWriter.cpp にまとめられている。まずは llvm::Module::print を見てみよう。
-void Module::print(raw_ostream &amp;amp;ROS, AssemblyAnnotationWriter *AAW) const { SlotTracker SlotTable(this); formatted_raw_ostream OS(ROS); AssemblyWriter W(OS, SlotTable, this, AAW); W.printModule(this); } llvm::Module::print AssemblyWriter は lib/VMCore/AsmWriter.cpp の無名ネームスペースに定義されているクラスであり、llvm 内のさまざまな型をストリームに出力する関数を提供している。AssemblyWriter::printModule のコードをざっと眺めてみれば、やっていることの想像はつくだろう。</description>
+/// Print the module to an output stream with an optional /// AssemblyAnnotationWriter. void print(raw_ostream &amp;amp;OS, AssemblyAnnotationWriter *AAW) const; /// Dump the module to stderr (for debugging). void dump() const;  実装は lib/VMCore/Module.cpp ではなく、他の IR 出力用関数とともに lib/VMCore/AsmWriter.cpp にまとめられている。まずは llvm::Module::print を見てみよう。
+void Module::print(raw_ostream &amp;amp;ROS, AssemblyAnnotationWriter *AAW) const { SlotTracker SlotTable(this); formatted_raw_ostream OS(ROS); AssemblyWriter W(OS, SlotTable, this, AAW); W.printModule(this); }  llvm::Module::print AssemblyWriter は lib/VMCore/AsmWriter.cpp の無名ネームスペースに定義されているクラスであり、llvm 内のさまざまな型をストリームに出力する関数を提供している。AssemblyWriter::printModule のコードをざっと眺めてみれば、やっていることの想像はつくだろう。</description>
     </item>
     
     <item>
@@ -65,8 +65,8 @@ Mozilla で行われたデモでは、Quake や、C 言語で書かれたエミ�
       
       <guid>https://metareal.blog/2007/07/22/hello-world-llvm/</guid>
       <description>LLVM で Hello, World プログラム。
-@.LC0 = internal constant [13 x i8] c&amp;quot;Hello world!\00&amp;quot; declare i32 @puts(i8 *) define i32 @main() { %cast210 = getelementptr [13 x i8]* @.LC0, i64 0, i64 0 call i32 @puts(i8 * %cast210) ret i32 0 } バイトコードにコンパイルして実行。
-% llvm-as -f hello.ll % lli hello.bc Hello world! まあ、プログラム自体は LLVM Assembly Language Reference Manual からの抜粋なわけだが。</description>
+@.LC0 = internal constant [13 x i8] c&amp;quot;Hello world!\00&amp;quot; declare i32 @puts(i8 *) define i32 @main() { %cast210 = getelementptr [13 x i8]* @.LC0, i64 0, i64 0 call i32 @puts(i8 * %cast210) ret i32 0 }  バイトコードにコンパイルして実行。
+% llvm-as -f hello.ll % lli hello.bc Hello world!  まあ、プログラム自体は LLVM Assembly Language Reference Manual からの抜粋なわけだが。</description>
     </item>
     
     <item>
@@ -78,9 +78,9 @@ Mozilla で行われたデモでは、Quake や、C 言語で書かれたエミ�
       <description>前回のように簡単なプログラムでも、実際に書いてみると疑問が湧いてくる。
 まず、文字列を出力している puts 関数。こいつの実体はどこにあるんだろう？ C のプログラムなら、リンカが標準ライブラリをこっそりリンクしている、という結末になるのだが&amp;hellip;。検索してみると、やはり、同じように疑問をもった人がいるようで、lli が実行時のライブラリとして標準 C ライブラリを利用しているらしい。
 ということは printf なんかも使えるはずだよね。
-@.LC0 = internal constant [14 x i8] c&amp;quot;Hello world!\0A\00&amp;quot; **declare i32 @printf(i8 *, ...)** define i32 @main() { %cast210 = getelementptr [14 x i8]* @.LC0, i64 0, i64 0 **call i32 (i8 *, ...)* @printf(i8 * %cast210)** ret i32 0 } では、コンパイル、実行。
-% llvm-as -f hello-printf.ll % lli hello-printf.bc Hello world! うんうん。
- 書籍「GNU開発ツール」 CC プログラミング工房 書籍 Vol.1 第１章 - Wataru&amp;rsquo;s memo  </description>
+@.LC0 = internal constant [14 x i8] c&amp;quot;Hello world!\0A\00&amp;quot; **declare i32 @printf(i8 *, ...)** define i32 @main() { %cast210 = getelementptr [14 x i8]* @.LC0, i64 0, i64 0 **call i32 (i8 *, ...)* @printf(i8 * %cast210)** ret i32 0 }  では、コンパイル、実行。
+% llvm-as -f hello-printf.ll % lli hello-printf.bc Hello world!  うんうん。
+ 書籍「GNU開発ツール」 CC プログラミング工房 書籍 Vol.</description>
     </item>
     
   </channel>

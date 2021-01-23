@@ -65,7 +65,8 @@ WebKitDetect.isMobile = function isMobile()
 {
     return WebKitDetect.isWebKit() &amp;amp;&amp;amp; RegExp(&quot; Mobile/&quot;).test(navigator.userAgent);
 }
-</code></pre><p>つまり、User-Agent に、</p>
+</code></pre>
+<p>つまり、User-Agent に、</p>
 <ul>
 <li>&ldquo;AppleWebKit/&rdquo; があれば WebKit</li>
 <li>&ldquo;Mobile/&rdquo; があれば携帯端末</li>
@@ -73,7 +74,8 @@ WebKitDetect.isMobile = function isMobile()
 <p>ということのようだ。</p>
 <p>ここで、prototype.js のブラウザ判定コードを復習してみる。</p>
 <pre><code>MobileSafari: !!navigator.userAgent.match(/iPhone.*Mobile.*Safari/)
-</code></pre><p>User-Agent に &ldquo;iPhone&rdquo; という文字列を想定していることからも、おそらく iPod touch では動作しないだろう。まあ、すぐ直るだろうけど。</p>
+</code></pre>
+<p>User-Agent に &ldquo;iPhone&rdquo; という文字列を想定していることからも、おそらく iPod touch では動作しないだろう。まあ、すぐ直るだろうけど。</p>
 </div>
     </article>
 

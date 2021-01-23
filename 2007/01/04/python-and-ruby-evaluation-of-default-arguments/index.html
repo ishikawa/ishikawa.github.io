@@ -73,7 +73,8 @@
 &gt;&gt;&gt; print f(3)
 [1, 2, 3]
 **
-</code></pre><p>たしかに、関数 <code>f</code> のデフォルト引数 <code>l</code> には定義した時点での <code>[]</code> が、そのまま保持されているようだ。</p>
+</code></pre>
+<p>たしかに、関数 <code>f</code> のデフォルト引数 <code>l</code> には定義した時点での <code>[]</code> が、そのまま保持されているようだ。</p>
 <p>では、同様のサンプルを今度は Ruby で試してみる。</p>
 <pre><code>% irb
 irb(main):001:0&gt; def f(a, l=[])
@@ -87,7 +88,8 @@ irb(main):005:0&gt; f(2)
 irb(main):006:0&gt; f(3)
 =&gt; [3]
 **
-</code></pre><p>実行結果のとおり、Ruby のデフォルト引数は Python とは異なり、関数を実行するたびに評価される。</p>
+</code></pre>
+<p>実行結果のとおり、Ruby のデフォルト引数は Python とは異なり、関数を実行するたびに評価される。</p>
 </div>
     </article>
 

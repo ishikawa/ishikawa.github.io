@@ -66,7 +66,8 @@ def reverse(viewname, urlconf=None, args=None, kwargs=None):
     args = args or []
     kwargs = kwargs or {}
     return iri_to_uri(u'/' + get_resolver(urlconf).reverse(viewname, *args, **kwargs))
-</code></pre><p>関数名や引数から <code>reverse()</code> が URL の逆マッピング（名前、引数から URL を探索）を行うのにたいし、<code>resolve()</code> が URL のマッピング（URL から探索）を担当していることは容易に想像がつく。</p>
+</code></pre>
+<p>関数名や引数から <code>reverse()</code> が URL の逆マッピング（名前、引数から URL を探索）を行うのにたいし、<code>resolve()</code> が URL のマッピング（URL から探索）を担当していることは容易に想像がつく。</p>
 <p>では、<code>resolve()</code> が返すものはなんだろうか？　これはソースコードのコメントに書いてある。</p>
 <blockquote>
 </blockquote>
@@ -86,7 +87,8 @@ a string) and returns a tuple in this format:</p>
 <pre><code>def get_resolver(urlconf):
 ...
     return RegexURLResolver(r'^/', urlconf)
-</code></pre><p><code>RegexURLResolver</code> は <code>urls.py</code> に対応したクラスであり、そこで定義された <code>urlpatterns</code> や <code>handler404</code> などを参照している。</p>
+</code></pre>
+<p><code>RegexURLResolver</code> は <code>urls.py</code> に対応したクラスであり、そこで定義された <code>urlpatterns</code> や <code>handler404</code> などを参照している。</p>
 <pre><code>class RegexURLResolver(object):
 ...
     def _get_urlconf_module(self):
@@ -107,7 +109,8 @@ a string) and returns a tuple in this format:</p>
 
     def resolve500(self):
         return self._resolve_special('500')
-</code></pre><p>なお、<code>urlpatterns</code> の中身は何かといえば、同じファイルで定義されている <code>RegexURLPattern</code> インスタンスのリストだ（ただし、別の <code>urls.py</code> を <code>include()</code> している場合は <code>RegexURLPattern</code> ではなく <code>RegexURLResolver</code> インスタンスがリストに挿入されて入れ子構造になる）。このへんは patterns() や url() が定義されている <code>django/conf/defaults.py</code> を読むと分かる。</p>
+</code></pre>
+<p>なお、<code>urlpatterns</code> の中身は何かといえば、同じファイルで定義されている <code>RegexURLPattern</code> インスタンスのリストだ（ただし、別の <code>urls.py</code> を <code>include()</code> している場合は <code>RegexURLPattern</code> ではなく <code>RegexURLResolver</code> インスタンスがリストに挿入されて入れ子構造になる）。このへんは patterns() や url() が定義されている <code>django/conf/defaults.py</code> を読むと分かる。</p>
 <p><code>resolve()</code> メソッドの実装を見れば、URL パス文字列の対応を <code>urlpatterns</code> から探索する様子が分かるだろう。</p>
 <pre><code>def resolve(self, path):
     tried = []
@@ -128,7 +131,8 @@ a string) and returns a tuple in this format:</p>
                     return sub_match[0], sub_match[1], sub_match_dict
                 tried.append(pattern.regex.pattern)
         raise Resolver404, {'tried': tried, 'path': new_path}
-</code></pre><p><code>resolve()</code> メソッドは <code>RegexURLPattern</code> にも <code>RegexURLResolver</code> にも実装されていることに注意。</p>
+</code></pre>
+<p><code>resolve()</code> メソッドは <code>RegexURLPattern</code> にも <code>RegexURLResolver</code> にも実装されていることに注意。</p>
 <h3 id="matchchecker">MatchChecker</h3>
 <p><code>urlresolver.py</code> にはこの他に <code>MatchChecker</code> というクラスが定義されており、これは <code>reverse()</code> の過程で正規表現をパス文字列に変換するために使われているようだ。</p>
 <pre><code>def reverse_helper(regex, *args, **kwargs):
@@ -136,7 +140,8 @@ a string) and returns a tuple in this format:</p>
     # TODO: Handle nested parenthesis in the following regex.
     result = re.sub(r'\(([^)]+)\)', MatchChecker(args, kwargs), regex.pattern)
     return result.replace('^', '').replace('$', '')
-</code></pre><p>余談だが、ここでは <code>^</code> と <code>$</code> のメタ文字しか削除していないため、他のメタ文字はそのまま残ってしまう（もっとも、通常のマッピングをする範囲で困ることはないだろうけど）。</p>
+</code></pre>
+<p>余談だが、ここでは <code>^</code> と <code>$</code> のメタ文字しか削除していないため、他のメタ文字はそのまま残ってしまう（もっとも、通常のマッピングをする範囲で困ることはないだろうけど）。</p>
 </div>
     </article>
 

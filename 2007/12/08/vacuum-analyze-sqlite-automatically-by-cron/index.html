@@ -55,7 +55,8 @@
 <pre><code>% **crontab -e**
 0 15 * * * sqlite3 ~/Library/Application\ Support/iGTD/iGTD.sql &quot;vacuum analyze&quot; &gt; /dev/null 2&gt;&amp;1
 0 15 * * * sqlite3 ~/Library/Mail/Envelope\ Index &quot;vacuum analyze&quot; &gt; /dev/null 2&gt;&amp;1
-</code></pre><p><code>sqlite</code> コマンドを直接書いているので見苦しいが、別スクリプトにした場合の管理を考えると面倒だった。ここでは標準エラー出力を <code>/dev/null</code> に捨てている（ただし、アプリケーションがデータベースをロックしていると、<code>VACUUM ANALYZE</code> は &ldquo;database is locked&rdquo; というエラーで即座に終了する）。</p>
+</code></pre>
+<p><code>sqlite</code> コマンドを直接書いているので見苦しいが、別スクリプトにした場合の管理を考えると面倒だった。ここでは標準エラー出力を <code>/dev/null</code> に捨てている（ただし、アプリケーションがデータベースをロックしていると、<code>VACUUM ANALYZE</code> は &ldquo;database is locked&rdquo; というエラーで即座に終了する）。</p>
 </div>
     </article>
 

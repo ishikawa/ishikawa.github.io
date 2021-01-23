@@ -17,7 +17,7 @@
       <description>作業メモや備忘録を残しておくためのシステムがほしくて、MoinMoin を自宅サーバの Mac OS X にインストールした。
 ブログだとやっぱり時系列で流れちゃうし、書き殴りのメモとかは公開しづらいしね。MoinMoin はページごとのパーミッションを制御できるなど、今回の用途にはぴったり。
 ただし、バージョン 1.5.7 はそのままだと Mac OS X では動かなかった。
-UnboundLocalError: local variable &#39;File&#39; referenced before assignment こんなエラーが出てしまう。
+UnboundLocalError: local variable &#39;File&#39; referenced before assignment  こんなエラーが出てしまう。
 ここに書かれている通り、util/filesys.py を修正すると動くようになった。</description>
     </item>
     

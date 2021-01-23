@@ -16,7 +16,7 @@
       <guid>https://metareal.blog/2007/07/08/setting-environment-variables-through-rake-command/</guid>
       <description>Rake のユーザーガイドには書かれているのに、rake --help では出てこないようなのでメモ。
 Rake では rake コマンドのオプションに name=value と指定することで環境変数を指定できる。
-% rake [options ...] [VAR=VALUE] [targets ...] 環境変数はタスクから ENV 定数で参照できるので、コマンドオプションでてっとりばやく動作を切り替えたいときなんかは重宝するかもしれない。
+% rake [options ...] [VAR=VALUE] [targets ...]  環境変数はタスクから ENV 定数で参照できるので、コマンドオプションでてっとりばやく動作を切り替えたいときなんかは重宝するかもしれない。
 というわけで、script.aculo.us の rake unittest で、対象ブラウザと対象ファイルを環境変数で指定できるようにしたパッチを送ってみた。</description>
     </item>
     

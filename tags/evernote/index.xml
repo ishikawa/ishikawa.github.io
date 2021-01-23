@@ -19,7 +19,7 @@
 Evernote: Mac クライアント プログラミング関係の話題をノートにまとめていると、興味深いページへのリンクを多く埋め込むことになる。ノートの編集は Mac のクライアントで行うことが多いのだが、この作業がけっこう面倒だ：
  Safari で開いているページのタイトルをコピーして、Evernote クライアントにペースト コピーしたタイトルを選択 リンクを追加するためのシートを表示 Safari で開いているページの URL をコピーして、Evernote クライアントにペースト OK ボタンをクリック  この手順を毎回、繰り返さなければならない。慣れれば無意識に出来るような単純作業ではあるが、単純作業なら自動化した方がいい。
 AppleScript Mac で自動化といえば AppleScript の出番なのだが、残念ながら Mac 向け Evernote クライアントの AppleScript 対応は今回の要件には不十分である。そのため、今回は System Events による GUI スクリプティングにより、上記手順のキー操作やボタンクリックをエミュレートすることにした。
--- EvernoteCopyLink.applescript -- Copy title and URL in the front most window of Safari to Evernote with link -- Author: Takanori Ishikawa on copyLinkToEvernote(theTitle, theURL) tell application &amp;#34;System Events&amp;#34; -- copy &amp;amp;amp; paste set the clipboard to theTitle as text keystroke &amp;#34;v&amp;#34; using command down tell process &amp;#34;Evernote&amp;#34; -- Select pasted text -- Note 1: &amp;#39;ASCII character 28&amp;#39; means &amp;#39;move left&amp;#39;.</description>
+-- EvernoteCopyLink.applescript -- Copy title and URL in the front most window of Safari to Evernote with link -- Author: Takanori Ishikawa on copyLinkToEvernote(theTitle, theURL) tell application &amp;quot;System Events&amp;quot; -- copy &amp;amp;amp; paste set the clipboard to theTitle as text keystroke &amp;quot;v&amp;quot; using command down tell process &amp;quot;Evernote&amp;quot; -- Select pasted text -- Note 1: &#39;ASCII character 28&#39; means &#39;move left&#39;.</description>
     </item>
     
   </channel>

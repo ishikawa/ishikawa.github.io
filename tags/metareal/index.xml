@@ -15,11 +15,11 @@
       
       <guid>https://metareal.blog/2007/07/17/yui-fonts-css-bigger-pre-code/</guid>
       <description>Yahoo! UI Library (YUI) の fonts.css では pre と code を次のようにスタイルづけしている。
-/** * Bump up !IE to get to 13px equivalent */ pre, code {font:115% monospace;*font-size:100%;} 要するに、
+/** * Bump up !IE to get to 13px equivalent */ pre, code {font:115% monospace;*font-size:100%;}  要するに、
  等幅フォント IE では font-size:100% それ以外は font-size:115%  ってことなんだが、このブログみたいにサンプルコードとかを pre 要素と code 要素でマークアップしている場合は IE 以外でフォントが大きくなってしまう（font-size:115% が二回適用される）。
 なので、別のスタイルシートにでも
-pre &amp;gt; code { font-size: 100%; } こういうのを追加しておくといい、と思った。ただ、実際にはインラインのコード片には code 要素を使っていて、これも font-size:115% とかされると行間がガタガタになってしまうので、単純に、
-code { font-size: 100%; } とかしてしまった方がいいかも（このへん、いつか整理しないと駄目だな&amp;hellip;）。
+pre &amp;gt; code { font-size: 100%; }  こういうのを追加しておくといい、と思った。ただ、実際にはインラインのコード片には code 要素を使っていて、これも font-size:115% とかされると行間がガタガタになってしまうので、単純に、
+code { font-size: 100%; }  とかしてしまった方がいいかも（このへん、いつか整理しないと駄目だな&amp;hellip;）。
 ちなみに、プロパティ名の先頭にアスタリスクをつける CSS ハックが、fonts.css の随所で使われているが、これについては以下のブログ記事を参照。
   アスタリスクをプロパティ名の頭につけるというCSSハック   </description>
     </item>
@@ -56,7 +56,7 @@ http://www.youtube.com/watch?v=ZpucUihZ4HE</description>
       <description>作業メモや備忘録を残しておくためのシステムがほしくて、MoinMoin を自宅サーバの Mac OS X にインストールした。
 ブログだとやっぱり時系列で流れちゃうし、書き殴りのメモとかは公開しづらいしね。MoinMoin はページごとのパーミッションを制御できるなど、今回の用途にはぴったり。
 ただし、バージョン 1.5.7 はそのままだと Mac OS X では動かなかった。
-UnboundLocalError: local variable &#39;File&#39; referenced before assignment こんなエラーが出てしまう。
+UnboundLocalError: local variable &#39;File&#39; referenced before assignment  こんなエラーが出てしまう。
 ここに書かれている通り、util/filesys.py を修正すると動くようになった。</description>
     </item>
     
@@ -67,13 +67,12 @@ UnboundLocalError: local variable &#39;File&#39; referenced before assignment �
       
       <guid>https://metareal.blog/2007/01/08/looking-for-loving-title-element/</guid>
       <description>WordPress のインストール直後は タグを出力するテンプレートは以下のようになっていた。
-&amp;lt;title&amp;gt;&amp;lt;?php bloginfo(&#39;name&#39;); ?&amp;gt; &amp;lt;?php if ( is_single() ) { ?&amp;gt; &amp;amp;raquo; Blog Archive &amp;lt;?php } ?&amp;gt; &amp;lt;?php wp_title(); ?&amp;gt;&amp;lt;/title&amp;gt; これだと記事のタイトルは「ブログ名 » Blog Archive » 記事タイトル」のようになる。これを「記事タイトル - ブログ名」にしたくて、
-&amp;lt;title&amp;gt;&amp;lt;?php wp_title(&#39; &#39;); if (wp_title(&#39; &#39;, false)) echo &#39; - &#39;; bloginfo(&#39;name&#39;); ?&amp;gt;&amp;lt;/title&amp;gt; というテンプレートをいままでは使っていた。
+&amp;lt;title&amp;gt;&amp;lt;?php bloginfo(&#39;name&#39;); ?&amp;gt; &amp;lt;?php if ( is_single() ) { ?&amp;gt; &amp;amp;raquo; Blog Archive &amp;lt;?php } ?&amp;gt; &amp;lt;?php wp_title(); ?&amp;gt;&amp;lt;/title&amp;gt;  これだと記事のタイトルは「ブログ名 » Blog Archive » 記事タイトル」のようになる。これを「記事タイトル - ブログ名」にしたくて、
+&amp;lt;title&amp;gt;&amp;lt;?php wp_title(&#39; &#39;); if (wp_title(&#39; &#39;, false)) echo &#39; - &#39;; bloginfo(&#39;name&#39;); ?&amp;gt;&amp;lt;/title&amp;gt;  というテンプレートをいままでは使っていた。
 しかし、今日はじめて気づいたのだが、これだと「記事タイトル - ブログ名」というふうに、タイトルの直前に余分なスペースが残ってしまう。
 どうやら、wp_title() は区切り文字が空文字のときでも、周囲のスペースを挿入してしまうらしい。
 しょうがないので、力技だが、出力前に trim() してみる。
-&amp;lt;title&amp;gt;&amp;lt;?php echo trim(wp_title(&#39;&#39;, false)); if (wp_title(&#39;&#39;, false)) echo &#39; - &#39;; bloginfo(&#39;name&#39;); ?&amp;gt;&amp;lt;/title&amp;gt; これでやっと「記事タイトル - ブログ名」にできた。
-なお、Optimal Title というプラグインもあるようだ。このプラグインをインストールすれば、区切り文字を末尾に追加してくれるバージョンの wp_title() として、optimal_title() が使えるようになる、とのこと。</description>
+&amp;lt;title&amp;gt;&amp;lt;?php echo trim(wp_title(&#39;&#39;, false)); if (wp_title(&#39;&#39;, false)) echo &#39; - &#39;; bloginfo(&#39;name&#39;); ?&amp;gt;&amp;lt;/title&amp;gt;  これでやっと「記事タイトル - ブログ名」にできた。</description>
     </item>
     
     <item>

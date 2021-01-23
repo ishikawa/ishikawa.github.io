@@ -58,7 +58,8 @@ inner join fetch foo.bar
 where foo.a = :a and
       foo.b between :x and :y
 order by foo.b desc
-</code></pre><p>こんなふうに HQL で書いていた <code>inner join</code> も、</p>
+</code></pre>
+<p>こんなふうに HQL で書いていた <code>inner join</code> も、</p>
 <pre><code>getSession()
 .createCriteria(Foo.class)
 .add(Expression.eq(&quot;a&quot;, a))
@@ -66,7 +67,8 @@ order by foo.b desc
 .addOrder(Order.desc(&quot;b&quot;))
 .createCriteria(&quot;bar&quot;)
 .list();
-</code></pre><p>Criteria API で書ける。</p>
+</code></pre>
+<p>Criteria API で書ける。</p>
 <p>Criteria の便利さと保守のしやすさを知るたびに、独自 SQL 文法で書く気が失せるな。</p>
 </div>
     </article>

@@ -15,8 +15,8 @@
       
       <guid>https://metareal.blog/2008/02/06/using-mysql-data-types-in-rails-migration/</guid>
       <description>たとえば、こんな感じの Migration を考えてみる。
-class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pepsies do |t| t.column :coke, :string, :limit =&amp;gt; 64 t.column :jolt, :integer t.column :created_at, :datetime t.column :updated_at, :datetime end end def self.down drop_table :addresses end end Rails 2.0 の sexy migration ではこんなふうにも書けるんだけど、個人的に馴染まないので今回はスルー。
-class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pepsies do |t| t.string :coke, :limit =&amp;gt; 64 t.integer :jolt t.timestamps end end def self.down drop_table :addresses end end rake db:migrate したときの CREATE TABLE はこうなる。</description>
+class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pepsies do |t| t.column :coke, :string, :limit =&amp;gt; 64 t.column :jolt, :integer t.column :created_at, :datetime t.column :updated_at, :datetime end end def self.down drop_table :addresses end end  Rails 2.0 の sexy migration ではこんなふうにも書けるんだけど、個人的に馴染まないので今回はスルー。
+class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pepsies do |t| t.string :coke, :limit =&amp;gt; 64 t.integer :jolt t.timestamps end end def self.down drop_table :addresses end end  rake db:migrate したときの CREATE TABLE はこうなる。</description>
     </item>
     
     <item>
@@ -62,9 +62,9 @@ Rubyisms - MySQL-dump http://mysqldump.azundris.com/archives/72-Rubyisms.html
       <description>Ruby on Rails で開発するアプリケーションのバックエンドだが、データベースには MySQL を使用するつもりなので、これもインストールしてやる。
 MySQL 5.0 のダウンロードページには、Mac OS X 向けのバイナリも配布されているので、通常はこちらを使うのがよさそうだ。
 まあ、コンパイルも楽しいので、今回は自前でソースコードからインストールしてみる。
-% curl --location &amp;quot;http://dev.mysql.com/get/Downloads/MySQL-5.0/mysql-5.0.27.tar.gz/from/http://mirror.mysql-partners-jp.biz/&amp;quot; &amp;gt; mysql-5.0.27.tar.gz % tar xvzf mysql-5.0.27.tar.gz % cd mysql-5.0.27 configure のオプションはマニュアルに載っていたものを参考にした。
-CC=gcc CFLAGS=&amp;quot;-O3 -fno-omit-frame-pointer&amp;quot; CXX=gcc \ CXXFLAGS=&amp;quot;-O3 -fno-omit-frame-pointer -felide-constructors \ -fno-exceptions -fno-rtti&amp;quot; \ ./configure --prefix=/usr/local/mysql \ --with-extra-charsets=complex --enable-thread-safe-client \ --enable-local-infile --disable-shared あとは、make, make install
-% make % sudo make install </description>
+% curl --location &amp;quot;http://dev.mysql.com/get/Downloads/MySQL-5.0/mysql-5.0.27.tar.gz/from/http://mirror.mysql-partners-jp.biz/&amp;quot; &amp;gt; mysql-5.0.27.tar.gz % tar xvzf mysql-5.0.27.tar.gz % cd mysql-5.0.27  configure のオプションはマニュアルに載っていたものを参考にした。
+CC=gcc CFLAGS=&amp;quot;-O3 -fno-omit-frame-pointer&amp;quot; CXX=gcc \ CXXFLAGS=&amp;quot;-O3 -fno-omit-frame-pointer -felide-constructors \ -fno-exceptions -fno-rtti&amp;quot; \ ./configure --prefix=/usr/local/mysql \ --with-extra-charsets=complex --enable-thread-safe-client \ --enable-local-infile --disable-shared  あとは、make, make install
+% make % sudo make install  </description>
     </item>
     
     <item>
@@ -75,11 +75,10 @@ CC=gcc CFLAGS=&amp;quot;-O3 -fno-omit-frame-pointer&amp;quot; CXX=gcc \ CXXFLAGS
       <guid>https://metareal.blog/2006/12/28/reason-of-mysql-ruby-test-failure/</guid>
       <description>前回書いた、MySQL/Ruby の test.rb が失敗する原因を調査する。
 まずは、実行結果の出力を調べてみよう。 すべてのテストが失敗しているため長いので、最初のテスト結果のみ抜粋する。
-% ruby ./test.rb localhost root newpass ... 1) Failure: test_connect(TC_Mysql) [./test.rb:39]: Exception raised: Class: &amp;lt;Mysql::Error&amp;gt; **Message: &amp;lt;&amp;quot;Access denied for user &#39;ishikawa&#39;@&#39;localhost&#39; (using password: NO)&amp;quot;&amp;gt;** ---Backtrace--- ./test.rb:39:in `connect&#39; ./test.rb:39:in `test_connect&#39; ./test.rb:39:in `test_connect&#39; ... MySQL のエラーで &amp;ldquo;Access denied for user &amp;lsquo;ishikawa&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; (using password: NO)&amp;quot;と出力されているので、これは単なるアクセス制御の問題だ。
+% ruby ./test.rb localhost root newpass ... 1) Failure: test_connect(TC_Mysql) [./test.rb:39]: Exception raised: Class: &amp;lt;Mysql::Error&amp;gt; **Message: &amp;lt;&amp;quot;Access denied for user &#39;ishikawa&#39;@&#39;localhost&#39; (using password: NO)&amp;quot;&amp;gt;** ---Backtrace--- ./test.rb:39:in `connect&#39; ./test.rb:39:in `test_connect&#39; ./test.rb:39:in `test_connect&#39; ...  MySQL のエラーで &amp;ldquo;Access denied for user &amp;lsquo;ishikawa&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; (using password: NO)&amp;quot;と出力されているので、これは単なるアクセス制御の問題だ。
 そして、test.rb のコマンドライン引数で root ユーザを指定しているにも関わらず、実際には ishikawa ユーザでアクセスしようとしている。
 うまくいくわけがない。 コマンドライン引数による指定が無視されているわけだ。
-何故、コマンドライン引数が無視されるのか コマンドライン引数が無視される原因を調べてみると、どうやら test.rb が使っている Test::Unit が悪さをしているらしい（Test::Unit は Ruby の標準添付ライブラリで、いわゆる xUnit ツールの Ruby 版である）。
-簡単な検証スクリプトを書いてみる。</description>
+何故、コマンドライン引数が無視されるのか コマンドライン引数が無視される原因を調べてみると、どうやら test.rb が使っている Test::Unit が悪さをしているらしい（Test::Unit は Ruby の標準添付ライブラリで、いわゆる xUnit ツールの Ruby 版である）。</description>
     </item>
     
     <item>
@@ -92,7 +91,7 @@ CC=gcc CFLAGS=&amp;quot;-O3 -fno-omit-frame-pointer&amp;quot; CXX=gcc \ CXXFLAGS
 Ruby から MySQL につなぐためのバインディングである MySQL/Ruby をインストールすれば、Ruby on Rails の開発環境構築は一段落。
 なお、同様のバインディングである Ruby/MySQL もあり、こちらは Ruby で書かれているためコンパイルが不要。MySQL/Ruby とも、ほぼ互換性がある。ただ、今回はパフォーマンス優先でいきたいと思う。
 さて、ダウンロードページから最新版をダウンロード。現時点では mysql-ruby-2.7.3.tar.gz が最新版のようだ。
-% curl --location -O http://tmtm.org/downloads/mysql/ruby/mysql-ruby-2.7.3.tar.gz % tar xvzf mysql-ruby-2.7.3.tar.gz % cd mysql-ruby-2.7.3 さきほど「パフォーマンス優先」と書いたけど、RailsExpress.blog の人が MySQL/Ruby を 30% 高速にするパッチを公開している。記事を読んだときから試してみたかったので、これを機会に使ってみよう。
+% curl --location -O http://tmtm.org/downloads/mysql/ruby/mysql-ruby-2.7.3.tar.gz % tar xvzf mysql-ruby-2.7.3.tar.gz % cd mysql-ruby-2.7.3  さきほど「パフォーマンス優先」と書いたけど、RailsExpress.blog の人が MySQL/Ruby を 30% 高速にするパッチを公開している。記事を読んだときから試してみたかったので、これを機会に使ってみよう。
 パッチをダウンロードして、MySQL/Ruby の展開先に置いたら、patch コマンドでパッチを適用する。
 % curl -O http://railsexpress.de/downloads/mysql-ruby-2.7-less-string-copies-in-each-hash.diff % patch &amp;lt; mysql-ruby-2.7-less-string-copies-in-each-hash.diff patching file mysql.c.in Hunk #1 succeeded at 1009 (offset -1 lines). Hunk #2 succeeded at 1027 (offset -1 lines).</description>
     </item>
@@ -105,10 +104,10 @@ Ruby から MySQL につなぐためのバインディングである MySQL/Ruby
       <guid>https://metareal.blog/2006/12/27/mysql-post-installation/</guid>
       <description>初期化 MySQL のインストールが完了したら、マニュアル通り、インストール後の作業を進めていく。
 mysql_install_db でデータ格納ディレクトリとアカウントを初期化する。
-% cd /usr/local/mysql/ % sudo chown -R mysql:mysql /usr/local/mysql % sudo bin/mysql_install_db --user=mysql データベースを起動。
-% sudo bin/mysqld_safe --user=mysql &amp;amp; いくつかのコマンドを実行して、動作を確認。
-% bin/mysqladmin version % bin/mysqladmin variables % bin/mysqlshow 停止。
-% sudo bin/mysqladmin -u root shutdown アカウントの設定 インストール直後の MySQL には 2 つのアカウントが用意されている。
+% cd /usr/local/mysql/ % sudo chown -R mysql:mysql /usr/local/mysql % sudo bin/mysql_install_db --user=mysql  データベースを起動。
+% sudo bin/mysqld_safe --user=mysql &amp;amp;  いくつかのコマンドを実行して、動作を確認。
+% bin/mysqladmin version % bin/mysqladmin variables % bin/mysqlshow  停止。
+% sudo bin/mysqladmin -u root shutdown  アカウントの設定 インストール直後の MySQL には 2 つのアカウントが用意されている。
  root パスワードなし local host からの接続のみ許可 匿名アカウント パスワードなし local host からの接続のみ許可 test または test_ で始まる名前のデータベースへの権限  つまり、最初から用意されているアカウントには、いずれもパスワードが設定されていない。これはセキュリティ的によろしくないので、次のふたつを実行する。
  匿名アカウントの削除 root にパスワードを設定  MySQL を起動し、mysql -u root で接続。</description>
     </item>

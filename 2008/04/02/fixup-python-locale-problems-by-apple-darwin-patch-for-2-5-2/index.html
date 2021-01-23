@@ -53,17 +53,20 @@
 <pre><code>
 % curl -LO http://www.python.org/ftp/python/2.5.2/Python-2.5.2.tar.bz2
 % tar xjf Python-2.5.2.tar.bz2
-</code></pre><p><a href="/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/">Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</a>で公開したパッチをあてる。</p>
+</code></pre>
+<p><a href="/2007/09/09/fixup-python-locale-problems-by-apple-darwin-patch/">Apple によるロケール周りの変更点を Python 2.5.1 にも適用する</a>で公開したパッチをあてる。</p>
 <pre><code>
 % curl -LO http://www.metareal.org/wp-content/uploads/2007/09/python251_apple_locale.txt
 % cd Python-2.5.2
 % patch -p2 -d . &lt; ../python251_apple_locale.txt
-</code></pre><p>最後の <code>patch</code> コマンドによりパッチを適用している。<code>-p2</code> オプションの指定をしないとパッチがうまく適用されないので注意。あとは通常どおり confgure, make すればいい。</p>
+</code></pre>
+<p>最後の <code>patch</code> コマンドによりパッチを適用している。<code>-p2</code> オプションの指定をしないとパッチがうまく適用されないので注意。あとは通常どおり confgure, make すればいい。</p>
 <pre><code>
 % ./configure
 % make
 % sudo make install
-</code></pre><p>2.5.3 がリリースされたら、また同じパターンで記事が一本できるな。</p>
+</code></pre>
+<p>2.5.3 がリリースされたら、また同じパターンで記事が一本できるな。</p>
 <p>【追記】こうしてインストールされた Python インタプリタではヒストリ機能などが有効になっていないかもしれない。その場合は <a href="/2008/04/11/building-readline-enabled-python-on-mac/">Mac の Python をビルドするときに GNU Readline ライブラリを有効にする</a>をどうぞ。</p>
 </div>
     </article>

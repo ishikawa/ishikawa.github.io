@@ -65,7 +65,8 @@ make[3]: *** [transam-recursive] Error 2
 make[2]: *** [access-recursive] Error 2
 make[1]: *** [all] Error 2
 make: *** [all] Error 2
-</code></pre><p>ちなみに環境は以下の通り。</p>
+</code></pre>
+<p>ちなみに環境は以下の通り。</p>
 <ul>
 <li>PostgreSQL 7.4.17 (download)</li>
 <li>Mac OS X 10.4.10</li>
@@ -88,7 +89,8 @@ make[3]: *** [transam-recursive] Error 2
 make[2]: *** [access-recursive] Error 2
 make[1]: *** [all] Error 2
 make: *** [all] Error 2
-</code></pre><p>やはり駄目だ。該当のエラーはなくなったけど、そのあとのエラーが直らない。</p>
+</code></pre>
+<p>やはり駄目だ。該当のエラーはなくなったけど、そのあとのエラーが直らない。</p>
 <p>Google で検索してみると、同様に困っている人も何人かいるようだ。</p>
 <ul>
 <li><a href="http://archives.postgresql.org/pgsql-bugs/2006-08/msg00083.php">no native spinlock support on os x 10.4.7</a></li>
@@ -107,13 +109,15 @@ make: *** [all] Error 2
 
  #if defined(__ppc__)
  typedef unsigned int slock_t;
-</code></pre><p>ざっとソースコードを眺めた感じ、Intel Mac のチェックが抜けているだけのように思えた（というか、読む気が失せて、そう思い込むことにした）ので、こんな適当な変更でコンパイルしてみる。</p>
+</code></pre>
+<p>ざっとソースコードを眺めた感じ、Intel Mac のチェックが抜けているだけのように思えた（というか、読む気が失せて、そう思い込むことにした）ので、こんな適当な変更でコンパイルしてみる。</p>
 <pre><code>% make clean
 % ./configure
 % make
 ...
 All of PostgreSQL successfully made. Ready to install.
-</code></pre><p><code>psql</code> が動作することと、<code>make check</code> がパスすることは確認ずみ。</p>
+</code></pre>
+<p><code>psql</code> が動作することと、<code>make check</code> がパスすることは確認ずみ。</p>
 </div>
     </article>
 

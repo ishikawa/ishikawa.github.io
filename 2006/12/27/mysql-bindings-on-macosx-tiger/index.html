@@ -55,7 +55,8 @@
 <pre><code>% curl --location -O http://tmtm.org/downloads/mysql/ruby/mysql-ruby-2.7.3.tar.gz
 % tar xvzf mysql-ruby-2.7.3.tar.gz
 % cd mysql-ruby-2.7.3
-</code></pre><p>さきほど「パフォーマンス優先」と書いたけど、<a href="http://railsexpress.de/blog/">RailsExpress.blog</a> の人が <a href="http://railsexpress.de/blog/articles/2006/10/05/make-ruby-mysql-create-less-garbage">MySQL/Ruby を 30% 高速にするパッチを公開</a>している。記事を読んだときから試してみたかったので、これを機会に使ってみよう。</p>
+</code></pre>
+<p>さきほど「パフォーマンス優先」と書いたけど、<a href="http://railsexpress.de/blog/">RailsExpress.blog</a> の人が <a href="http://railsexpress.de/blog/articles/2006/10/05/make-ruby-mysql-create-less-garbage">MySQL/Ruby を 30% 高速にするパッチを公開</a>している。記事を読んだときから試してみたかったので、これを機会に使ってみよう。</p>
 <p>パッチをダウンロードして、MySQL/Ruby の展開先に置いたら、<code>patch</code> コマンドでパッチを適用する。</p>
 <pre><code>% curl -O http://railsexpress.de/downloads/mysql-ruby-2.7-less-string-copies-in-each-hash.diff
 % patch &lt; mysql-ruby-2.7-less-string-copies-in-each-hash.diff
@@ -65,7 +66,8 @@ Hunk #2 succeeded at 1027 (offset -1 lines).
 Hunk #3 succeeded at 1059 (offset -1 lines).
 Hunk #4 succeeded at 1136 (offset -1 lines).
 Hunk #5 succeeded at 2079 (offset 3 lines).
-</code></pre><p>無事、パッチを適用できたようなので、そのままインストールに進む。<code>extconf.rb</code> を実行するときに、<code>--with-mysql-dir</code> オプションで MySQL のインストール先ディレクトリを指定する必要があった。</p>
+</code></pre>
+<p>無事、パッチを適用できたようなので、そのままインストールに進む。<code>extconf.rb</code> を実行するときに、<code>--with-mysql-dir</code> オプションで MySQL のインストール先ディレクトリを指定する必要があった。</p>
 <pre><code>% ruby extconf.rb --with-mysql-dir=/usr/local/mysql
 checking for mysql_query() in -lmysqlclient... no
 checking for main() in -lm... yes
@@ -76,25 +78,30 @@ checking for mysql_ssl_set()... yes
 checking for mysql.h... no
 checking for mysql/mysql.h... yes
 creating Makefile
-</code></pre><p>さて、コンパイル &hellip;</p>
+</code></pre>
+<p>さて、コンパイル &hellip;</p>
 <pre><code>% make
 ...
 mysql.c: In function 'Init_mysql':
 mysql.c:2018: error: 'ulong' undeclared (first use in this function)
-</code></pre><p>怒られてしまった。<code>ulong</code> 型が定義されていないようだ。
+</code></pre>
+<p>怒られてしまった。<code>ulong</code> 型が定義されていないようだ。
 検索してみて、<a href="http://www.maxdunn.com/typo/articles/2006/12/12/installing-mysql-gem-on-mac-os-x-10-4">ここ</a>に書かれている解決策を採用。ただし <code>unsigned long</code> ではなく <code>u_long</code> にしておく。</p>
 <p><code>mysql.c</code> の最初（16 行目くらい）に</p>
 <pre><code>#define ulong u_long
-</code></pre><p>を追加してリトライ。</p>
+</code></pre>
+<p>を追加してリトライ。</p>
 <pre><code>% make
 gcc -I. -I. -I/usr/local/lib/ruby/1.8/i686-darwin8.8.3 -I. -DHAVE_MYSQL_SSL_SET -DHAVE_MYSQL_MYSQL_H -I/usr/local/mysql/include  -fno-common -g -O2 -pipe -fno-common  -c mysql.c
 cc -dynamic -bundle -undefined suppress -flat_namespace  -L&quot;/usr/local/mysql/lib&quot; -L&quot;/usr/local/lib&quot; -L&quot;/usr/local/mysql/lib/mysql&quot; -o mysql.bundle mysql.o  -lmysqlclient -lz -lm  -ldl -lobjc
-</code></pre><p>無事コンパイルできた。
+</code></pre>
+<p>無事コンパイルできた。
 しかし、テストが通らない &hellip;</p>
 <pre><code>% ruby ./test.rb localhost ishikawa password
 ...
 113 tests, 44 assertions, 3 failures, 177 errors
-</code></pre><p>うーむ。つづきは<a href="http://weblog.metareal.org/2006/12/28/reason-of-mysql-ruby-test-failure/">今度</a>。</p>
+</code></pre>
+<p>うーむ。つづきは<a href="http://weblog.metareal.org/2006/12/28/reason-of-mysql-ruby-test-failure/">今度</a>。</p>
 </div>
     </article>
 

@@ -42,12 +42,12 @@ Redstone の前身である Marquee というライブラリは developerWorks �
       <guid>https://metareal.blog/2006/12/13/xml-rpc-premature-end-of-file/</guid>
       <description>Java で XML-RPC の開発をしている。
 動作確認は UNIX コマンドの curl で手軽にすませているのだが、突然、すべての curl コマンドで Premature end of file. というエラーが出るようになった。
-[Fatal Error] :-1:-1: Premature end of file. このエラーには見覚えがある。たしか、XML の絡んだ通信で接続状態が悪くなり、通信が途絶えた場合などに ぼろぼろ出ていたやつだ。つまり、XML が不完全なのだろう。
+[Fatal Error] :-1:-1: Premature end of file.  このエラーには見覚えがある。たしか、XML の絡んだ通信で接続状態が悪くなり、通信が途絶えた場合などに ぼろぼろ出ていたやつだ。つまり、XML が不完全なのだろう。
 しかし、curl の POST で送っているデータをいくら調べてもおかしい部分が見つからない。 問題になりがちな改行を取り除いても、コンソールのエンコーディングを変更しても同じ。
 しかたがないので、デバッガでブレークポイントを設定し、動作を追ってみた。
 その結果、リクエストオブジェクトの入力ストリームから読み出す時点でデータが空なことが判明。つまり、curl で POST したデータを読みだせていないわけだ。
 では、何が原因でデータを読みだせていないんだろう？　curl の -v オプションの出力を眺めているうちに気がついた。
-POST /api/xmlrpc HTTP/1.1 User-Agent: curl/7.13.1 (powerpc-apple-darwin8.0) libcurl/7.13.1 OpenSSL/0.9.7l zlib/1.2.3 Host: example.com Pragma: no-cache Accept: */* Content-Length: 123 Content-Type: **application/x-www-form-urlencoded** application/x-www-form-urlencoded で POST しているせいだ。
+POST /api/xmlrpc HTTP/1.1 User-Agent: curl/7.13.1 (powerpc-apple-darwin8.0) libcurl/7.13.1 OpenSSL/0.9.7l zlib/1.2.3 Host: example.com Pragma: no-cache Accept: */* Content-Length: 123 Content-Type: **application/x-www-form-urlencoded**  application/x-www-form-urlencoded で POST しているせいだ。
 Content-Type が application/x-www-form-urlencoded だと、HttpServletRequest がパラメータとして解析するために先に入力を読みだしてしまうので、HttpServletRequest#getInputStream() から読みだすときは空なわけだ。</description>
     </item>
     

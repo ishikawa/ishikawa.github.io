@@ -63,7 +63,8 @@
   File &quot;/path/to/trac/lib/python2.5/site-packages/trac/util/datefmt.py&quot;, line 65, in format_datetime
     return unicode(text, encoding, 'replace')
 LookupError: unknown encoding: X-MAC-JAPANESE
-</code></pre><p>じっくりやってみる、と書いた矢先にくじけそうになりましたが、諦めずに原因を追ってみますね。</p>
+</code></pre>
+<p>じっくりやってみる、と書いた矢先にくじけそうになりましたが、諦めずに原因を追ってみますね。</p>
 <p>その前に、今回試したバージョンは、</p>
 <ul>
 <li>Python 2.5.1</li>
@@ -87,7 +88,8 @@ LookupError: unknown encoding: X-MAC-JAPANESE
         encoding = locale.getlocale(locale.LC_TIME)[1] or encoding
         # the above is broken on win32, e.g. we'd get '437' instead of 'cp437'
     return unicode(text, encoding, 'replace')
-</code></pre><p>今回のエラーはビルトイン関数の <code>unicode</code> が <code>X-MAC-JAPANESE</code> エンコーディングをサポートしていないのが原因のようだ。<code>X-MAC-JAPANESE</code> は Mac ユーザにとってはお馴染みの MacJapanese（ほぼ Shift-JIS）のことだろう。たしかにリファレンスの <a href="http://docs.python.org/lib/standard-encodings.html">4.8.3 Standard Encodings</a> を読んでもそれらしきエンコーディングがない。</p>
+</code></pre>
+<p>今回のエラーはビルトイン関数の <code>unicode</code> が <code>X-MAC-JAPANESE</code> エンコーディングをサポートしていないのが原因のようだ。<code>X-MAC-JAPANESE</code> は Mac ユーザにとってはお馴染みの MacJapanese（ほぼ Shift-JIS）のことだろう。たしかにリファレンスの <a href="http://docs.python.org/lib/standard-encodings.html">4.8.3 Standard Encodings</a> を読んでもそれらしきエンコーディングがない。</p>
 <p>となると、考えられる解決方法はふたつ</p>
 <ol>
 <li>MacJapanese をサポートするコーデックを追加</li>
@@ -106,7 +108,8 @@ LookupError: unknown encoding: X-MAC-JAPANESE
      /* XXX which one is mac-latin2? */
      }
      if (!name) {
-</code></pre><p>ちなみに、このへんのコードでは Mac OS X のフレームワークである <a href="http://developer.apple.com/corefoundation/">Core Foundation</a> が利用されている。</p>
+</code></pre>
+<p>ちなみに、このへんのコードでは Mac OS X のフレームワークである <a href="http://developer.apple.com/corefoundation/">Core Foundation</a> が利用されている。</p>
 <ul>
 <li><a href="http://devworld.apple.com/documentation/CoreFoundation/Reference/CFStringRef/Reference/reference.html">CFString Reference</a></li>
 <li><a href="http://homepage.mac.com/mkino2/core/index.html">CoreFoundation の秘密</a></li>

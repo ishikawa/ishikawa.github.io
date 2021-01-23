@@ -65,13 +65,15 @@
 <pre><code>$ docker info
 …
 Storage Driver: aufs
-</code></pre><p>Issue のコメントを読む限り、Docker のバージョンを 1.9.0 以前に戻すのが確実そう。</p>
+</code></pre>
+<p>Issue のコメントを読む限り、Docker のバージョンを 1.9.0 以前に戻すのが確実そう。</p>
 <p>ただ、Docker のインストールは Vagrant の <a href="https://docs.vagrantup.com/v2/provisioning/docker.html">Docker Provisioner</a> を利用していて、こいつでバージョン指定する方法が分からなかった（<a href="https://github.com/mitchellh/vagrant/blob/1b08cfcd0945d1f7c2273d9c56d90a1e456d26aa/plugins/provisioners/docker/cap/debian/docker_install.rb">ソースコード</a>を眺めた感じ、常に最新版がインストールされているみたい）。</p>
 <p><strong>CPU が複数ある場合は再現率がかなり低くなる</strong>ようなので、仮想 CPU 数を <code>2</code> にすることで、とりあえずの対策とした。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>provider <span style="color:#e6db74">&#34;virtualbox&#34;</span> <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>vm<span style="color:#f92672">|</span>
-  vm<span style="color:#f92672">.</span>cpus <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
-<span style="color:#66d9ef">end</span>
-</code></pre></div></div>
+<pre><code class="language-ruby">config.vm.provider &quot;virtualbox&quot; do |vm|
+  vm.cpus = 2
+end
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

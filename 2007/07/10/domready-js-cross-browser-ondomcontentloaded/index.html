@@ -65,20 +65,24 @@
 <h3 id="使い方">使い方</h3>
 <p>まず、domready.js を読み込む。</p>
 <pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/domready.js&quot;&gt;&lt;/script&gt;
-</code></pre><p><code>prototype.js</code> と併用する場合は <code>prototype.js</code> より後に読み込む。</p>
+</code></pre>
+<p><code>prototype.js</code> と併用する場合は <code>prototype.js</code> より後に読み込む。</p>
 <pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/prototype.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/domready.js&quot;&gt;&lt;/script&gt;
-</code></pre><p>あとは、DOM 読み込み完了のタイミングで実行したい関数を <code>Event.domReady.add</code> で登録するだけ。</p>
+</code></pre>
+<p>あとは、DOM 読み込み完了のタイミングで実行したい関数を <code>Event.domReady.add</code> で登録するだけ。</p>
 <pre><code>Event.domReady.add(function() {
   ...
 });
-</code></pre><p>他のイベントと登録方法が異なるのは直感的じゃない、とか言われそうだけど、正直あんまり気にならない。</p>
+</code></pre>
+<p>他のイベントと登録方法が異なるのは直感的じゃない、とか言われそうだけど、正直あんまり気にならない。</p>
 <h3 id="経緯-windowonload-の欠点">経緯: window.onload の欠点</h3>
 <p>多くの Ajax 系実装では、ページ読み込み完了時に初期化などを実行するようになっている。</p>
 <pre><code>Event.observe(window, 'load', function() {
   ...
 });
-</code></pre><p>これは <a href="http://www.prototypejs.org/">prototype.js</a> によるイベント処理だが、<code>window.onload</code> イベントで処理を実行するために、関数を登録しているのが分かるだろう。</p>
+</code></pre>
+<p>これは <a href="http://www.prototypejs.org/">prototype.js</a> によるイベント処理だが、<code>window.onload</code> イベントで処理を実行するために、関数を登録しているのが分かるだろう。</p>
 <p>わざわざこんなことをしているのは、DOM を操作したいからだ。</p>
 <p>だから、ほとんどの Ajax 系実装は <code>window.onload</code> イベントがやってくるのをじっと待っている。<code>window.onload</code> イベントのあとでは DOM ツリーは完全に構築されているし、他に DOM ツリーが構築済みなのを知る、適当なイベントもないからね。</p>
 <p>もちろん、<code>window.onload</code> は完全じゃない &hellip; いや、それは嘘で、<strong>完全すぎる</strong>。DOM ツリーの構築を待つだけじゃなく、すべての画像の読み込みも待ってしまうんだ。そうすると、画像を多く含むようなページでは、Ajax の処理がいつまでたってもはじまらない、なんてことが起こって、これは、あんまり嬉しくない。</p>

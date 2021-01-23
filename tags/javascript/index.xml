@@ -57,7 +57,7 @@ v8 では hidden class という実装テクニックを用いることにより
 まずは、Flash 版だが、
  サムネイルがちいさい 一定時間ごとにアニメーションで拡大するのは面白いが、読者からすれば煩わしいものだ  という不満がある。
 一方、HTML 版はというと、サムネイルの大きさは選択可能、レイアウトも CSS で設定できるので自由度も高い。ただし、ブログパーツを挿入するための JavaScript が好みじゃない（以下、一部整形済み）。
-var b_txt = &amp;#39;&amp;#39;; b_txt+= &amp;#39;&amp;lt;div class=&amp;#34;flickr_badge_image&amp;#34; id=&amp;#34;flickr_badge_image1&amp;#34;&amp;gt;&amp;lt;a href=&amp;#34;http://www.flickr.com/photos/ishikawa_takanori/2555186680/&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;http://farm4.static.flickr.com/3006/2555186680_7c18b8cc1a_s.jpg&amp;#34; alt=&amp;#34;A photo on Flickr&amp;#34; title=&amp;#34;BUFFET STYLE&amp;#34; height=&amp;#34;75&amp;#34; width=&amp;#34;75&amp;#34;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&amp;#39;; b_txt+= &amp;#39;&amp;lt;div class=&amp;#34;flickr_badge_image&amp;#34; id=&amp;#34;flickr_badge_image2&amp;#34;&amp;gt;&amp;lt;a href=&amp;#34;http://www.flickr.com/photos/ishikawa_takanori/2555186616/&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;http://farm4.static.flickr.com/3140/2555186616_823d69311e_s.jpg&amp;#34; alt=&amp;#34;A photo on Flickr&amp;#34; title=&amp;#34;spaghetti with Genova style basil sauce&amp;#34; height=&amp;#34;75&amp;#34; width=&amp;#34;75&amp;#34;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&amp;#39;; b_txt+= &amp;#39;&amp;lt;div class=&amp;#34;flickr_badge_image&amp;#34; id=&amp;#34;flickr_badge_image3&amp;#34;&amp;gt;&amp;lt;a href=&amp;#34;http://www.</description>
+var b_txt = &#39;&#39;; b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_image&amp;quot; id=&amp;quot;flickr_badge_image1&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.flickr.com/photos/ishikawa_takanori/2555186680/&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;http://farm4.static.flickr.com/3006/2555186680_7c18b8cc1a_s.jpg&amp;quot; alt=&amp;quot;A photo on Flickr&amp;quot; title=&amp;quot;BUFFET STYLE&amp;quot; height=&amp;quot;75&amp;quot; width=&amp;quot;75&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&#39;; b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_image&amp;quot; id=&amp;quot;flickr_badge_image2&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.flickr.com/photos/ishikawa_takanori/2555186616/&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;http://farm4.static.flickr.com/3140/2555186616_823d69311e_s.jpg&amp;quot; alt=&amp;quot;A photo on Flickr&amp;quot; title=&amp;quot;spaghetti with Genova style basil sauce&amp;quot; height=&amp;quot;75&amp;quot; width=&amp;quot;75&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&#39;; b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_image&amp;quot; id=&amp;quot;flickr_badge_image3&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;http://www.</description>
     </item>
     
     <item>
@@ -106,11 +106,11 @@ SunSpider 0.9 このベンチマークは Surfin’ Safari のブログ上で公
       <description>Prototype 1.6.0 RC のイベント API について紹介するシリーズも今回が最後。
 カスタム・イベント あらかじめ定義された組み込みのイベント click や submit 以外にも、ユーザーが好きなイベントを発生させることができるようになった。
 たとえば、こんな HTML があるとして、
-&amp;lt;div id=&amp;quot;container&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;&amp;lt;span id=&amp;quot;title&amp;quot;&amp;gt;Release notes&amp;lt;/span&amp;gt;&amp;lt;/h1&amp;gt; ... &amp;lt;/div&amp;gt; Element#fire（実体は Event.fire）メソッドを使って、タイトルが変更された、という通知を送る（イベントを発生させる）ことができる。
-$(&amp;quot;title&amp;quot;).fire(&amp;quot;titleChanged&amp;quot;); 当然、受け手も必要なわけで、組み込みのイベントと同様、Element#observe でコールバック関数を登録できる。
-$(&amp;quot;container&amp;quot;).observe(&amp;quot;titleChanged&amp;quot;, function(event) { this.highlight({ duration: 0.5 }); }); ちなみに、Event.fire メソッドは内部で次のどちらかの処理を行う。
+&amp;lt;div id=&amp;quot;container&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;&amp;lt;span id=&amp;quot;title&amp;quot;&amp;gt;Release notes&amp;lt;/span&amp;gt;&amp;lt;/h1&amp;gt; ... &amp;lt;/div&amp;gt;  Element#fire（実体は Event.fire）メソッドを使って、タイトルが変更された、という通知を送る（イベントを発生させる）ことができる。
+$(&amp;quot;title&amp;quot;).fire(&amp;quot;titleChanged&amp;quot;);  当然、受け手も必要なわけで、組み込みのイベントと同様、Element#observe でコールバック関数を登録できる。
+$(&amp;quot;container&amp;quot;).observe(&amp;quot;titleChanged&amp;quot;, function(event) { this.highlight({ duration: 0.5 }); });  ちなみに、Event.fire メソッドは内部で次のどちらかの処理を行う。
  ブラウザが DOM Events をサポートしていれば、document.createEvent でイベントを作成し、element.dispatchEvent でイベントを発生 そうでなければ、document.createEventObject でイベントを作成し、element.fireEvent でイベントを発生  クロスブラウザな DOMContentLoaded イベント window.onload 前でも DOM 処理が可能なら通知してくれる domready.js でも紹介した DOMContentLoaded がサポートされた。
-document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... }) 従来の Element#observe メソッドを通して、透過的に扱うことができる。</description>
+document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... })  従来の Element#observe メソッドを通して、透過的に扱うことができる。</description>
     </item>
     
     <item>
@@ -123,10 +123,10 @@ document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... }) 従来�
 Event.stopObserving で複数のイベント登録を解除できるようになった イベントのコールバック関数は Event.observe や Element#observe で登録し、
  Event.stopObserving Element#stopObserving  で登録を解除できる。
 これまで stopObserving() で登録を解除するには observe() に渡した引数と同じものを渡す必要があった。つまり、
-Event.observe(&#39;signinForm&#39;, &#39;submit&#39;, checkForm); でコールバック関数 checkForm を登録した場合は、
-Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm); としていたはず。
+Event.observe(&#39;signinForm&#39;, &#39;submit&#39;, checkForm);  でコールバック関数 checkForm を登録した場合は、
+Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm);  としていたはず。
 1.6.0 では引数を省略することで、対応するコールバック関数すべてを解除できるようになった。
-// checkForm を解除 Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm); // signinForm の submit イベントに登録されたコールバック関数を解除 Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;); // signinForm に登録されたコールバック関数を解除 Event.stopObserving(&#39;signinForm&#39;); これまで removeEventListener や detachEvent の単なるラッパーに近かった stopObserving だが、これでだいぶ使いやすくなった。</description>
+// checkForm を解除 Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm); // signinForm の submit イベントに登録されたコールバック関数を解除 Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;); // signinForm に登録されたコールバック関数を解除 Event.stopObserving(&#39;signinForm&#39;);  これまで removeEventListener や detachEvent の単なるラッパーに近かった stopObserving だが、これでだいぶ使いやすくなった。</description>
     </item>
     
     <item>
@@ -138,7 +138,7 @@ Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm); とし�
       <description>随分と間が空いてしまった。前回の記事 Prototype 1.6.0 で大きく進化したイベント API に引き続き、Prototype 1.6.0 RC で導入された、イベント API の変更点を見ていく。
 イベントオブジェクトの拡張 これまでも、たとえば $() から返された DOM 要素は Element.extend で色々と便利なメソッドが追加されていたが、1.6.0 からはイベントのコールバックに渡されるイベントオブジェクトでも Event.extend されるようになった。
 これからはコールバック関数でこんなふうに書ける。
-function onClickListener(event) { if (event.isLeftClick()) { ... } } また、IE の場合は他のモダンブラウザとの差異をなくすため、以下のプロパティも追加されている。
+function onClickListener(event) { if (event.isLeftClick()) { ... } }  また、IE の場合は他のモダンブラウザとの差異をなくすため、以下のプロパティも追加されている。
  target relatedTarget pageX pageY  また、Document Object Model Events に準拠した、
  stopPropagation() preventDefault()  メソッドも追加されているようだ。（更につづく）</description>
     </item>
@@ -154,7 +154,7 @@ function onClickListener(event) { if (event.isLeftClick()) { ... } } また、IE
  として prototype.js のブラウザ判定コードを紹介した。iPhone を含む WebKit ベースのブラウザも判別できる。
 WebKit Detect script Surfin’ Safari の WebKit Detect script updated for iPhone and iPod touch で知った。WebKit detection script というものがあるらしい。
 記事では iPhone と iPod touch もサポートしたよ、と書かれている。ソースコードではこんな感じ、
-WebKitDetect.isWebKit = function isWebKit() { return RegExp(&amp;quot; AppleWebKit/&amp;quot;).test(navigator.userAgent); } ... WebKitDetect.isMobile = function isMobile() { return WebKitDetect.isWebKit() &amp;amp;amp;&amp;amp;amp; RegExp(&amp;quot; Mobile/&amp;quot;).test(navigator.userAgent); } つまり、User-Agent に、
+WebKitDetect.isWebKit = function isWebKit() { return RegExp(&amp;quot; AppleWebKit/&amp;quot;).test(navigator.userAgent); } ... WebKitDetect.isMobile = function isMobile() { return WebKitDetect.isWebKit() &amp;amp;amp;&amp;amp;amp; RegExp(&amp;quot; Mobile/&amp;quot;).test(navigator.userAgent); }  つまり、User-Agent に、
  &amp;ldquo;AppleWebKit/&amp;rdquo; があれば WebKit &amp;ldquo;Mobile/&amp;rdquo; があれば携帯端末  ということのようだ。</description>
     </item>
     
@@ -167,12 +167,12 @@ WebKitDetect.isWebKit = function isWebKit() { return RegExp(&amp;quot; AppleWebK
       <description>Prototype 1.6.0 RC にはいくつもの変更点がある。
 特に イベント周りの API で顕著だ。Event.observe メソッドなど、お馴染みの API が大幅に手を加えられている。
 Event.observe で登録したコールバックの this いままで Event.observe でコールバック関数を登録するときは、コールバックが呼ばれたときの this を固定するため（と、引数に event が確実に渡ってくるように）、
-var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onClickEventListener.bindAsEventListener(element)); Function#bindAsEventListener を使っていたと思う。
+var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onClickEventListener.bindAsEventListener(element));  Function#bindAsEventListener を使っていたと思う。
 これが 1.6.0 では、Event.observe や Element.observe で登録したコールバック関数はすべてのブラウザで、this がイベントの発生した DOM 要素となるように変更された。
 そのため、上記のコードはシンプルに、
-var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onClickEventListener); と書けるようになった。
+var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onClickEventListener);  と書けるようになった。
 もっとも、コールバック関数を登録するオブジェクト（コントローラー）自身を this にすることの方が多いかもしれない。その場合は bind する必要がある。
-var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onClickEventListener.bind(this)); コールバック関数の this を固定する処理 すでに Function#bind や Function#bindAsEventListener が紹介されつくしているご時世に今更な感もあるが、Event.observe で登録したコールバック関数の this を固定している処理を見てみよう。</description>
+var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onClickEventListener.bind(this));  コールバック関数の this を固定する処理 すでに Function#bind や Function#bindAsEventListener が紹介されつくしているご時世に今更な感もあるが、Event.</description>
     </item>
     
     <item>
@@ -182,7 +182,7 @@ var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onC
       
       <guid>https://metareal.blog/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</guid>
       <description>prototype.js には 1.5.1 から、各種ブラウザを判定するための Prototype.Browser が定義されている。
-var Prototype = { ... Browser: { IE: !!(window.attachEvent &amp;amp;&amp;amp; !window.opera), Opera: !!window.opera, WebKit: navigator.userAgent.indexOf(&#39;AppleWebKit/&#39;) &amp;gt; -1, Gecko: navigator.userAgent.indexOf(&#39;Gecko&#39;) &amp;gt; -1 &amp;amp;&amp;amp; navigator.userAgent.indexOf(&#39;KHTML&#39;) == -1, ... 使い方は一目瞭然だろう。
+var Prototype = { ... Browser: { IE: !!(window.attachEvent &amp;amp;&amp;amp; !window.opera), Opera: !!window.opera, WebKit: navigator.userAgent.indexOf(&#39;AppleWebKit/&#39;) &amp;gt; -1, Gecko: navigator.userAgent.indexOf(&#39;Gecko&#39;) &amp;gt; -1 &amp;amp;&amp;amp; navigator.userAgent.indexOf(&#39;KHTML&#39;) == -1, ...  使い方は一目瞭然だろう。
 たとえば Internet Explorer の場合は Prototype.Browser.IE が、Safari など WebKit を利用しているブラウザでは Prototype.Browser.WebKit が true になる。
 Prototype 1.6.0 RC での Prototype.Browser そして、Prototype 1.6.0 RC では、ここに新しい定義が追加された。
 iPhone だ。
@@ -198,7 +198,7 @@ var Prototype = { Version: &#39;1.6.0_rc0&#39;, Browser: { IE: !!(window.attachE
       <description>Prototype 1.6.0 のリリース候補版が公開されたようだ。
  Prototype JavaScript framework: Prototype 1.6.0 release candidate Riding Rails: Prototype 1.6.0 release candidate  変更点が多い。目を引くものとしては、クラスの継承がサポートされた。新しい Class.create では親クラスを指定できる。いままでは Object.extend によるコピーで擬似的な継承をしていただけなので、これは嬉しいかもしれない。
 クロスブラウザな DOMContentLoaded イベント また、「window.onload 前でも DOM 処理が可能なら通知してくれる domready.js」という記事でも書いた、DOMContentLoaded がサポートされた。
-document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... }) 従来の Element#observe メソッドを通して、透過的に扱うことができる。これで、先の記事にアップしていた domready.js は不要になるだろう。
+document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... })  従来の Element#observe メソッドを通して、透過的に扱うことができる。これで、先の記事にアップしていた domready.js は不要になるだろう。
 1.6.0 には他にも色々面白そうな機能が追加されている。暇があるときに追々調べていくつもり。</description>
     </item>
     
@@ -209,12 +209,12 @@ document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... }) 従来�
       
       <guid>https://metareal.blog/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</guid>
       <description>prototype.js の $$ 関数（実際の処理は Selector.findChildElements）は CSS セレクタを受け取り、セレクタにマッチする要素を配列で返してくれる。
-var links = $$(&#39;#contents a&#39;); だが、単純にひとつのセレクタだけではなくて、複数のセレクタを引数に渡したり、CSS と同じく、カンマ区切りで複数指定することもできる（結果は重複要素のない配列となって返ってくる）。
-var links = $$(&amp;quot;#contents a&amp;quot;, &amp;quot;#footer .items a&amp;quot;); このコードは、こう書くこともできる。
-var links = $$(&amp;quot;#contents a, #footer .items a&amp;quot;); そして、いまさらながら気づいたのは、これらの特徴を利用すれば、DOM の処理を CSS のように宣言的に書くのが可能だ、ということ。
+var links = $$(&#39;#contents a&#39;);  だが、単純にひとつのセレクタだけではなくて、複数のセレクタを引数に渡したり、CSS と同じく、カンマ区切りで複数指定することもできる（結果は重複要素のない配列となって返ってくる）。
+var links = $$(&amp;quot;#contents a&amp;quot;, &amp;quot;#footer .items a&amp;quot;);  このコードは、こう書くこともできる。
+var links = $$(&amp;quot;#contents a, #footer .items a&amp;quot;);  そして、いまさらながら気づいたのは、これらの特徴を利用すれば、DOM の処理を CSS のように宣言的に書くのが可能だ、ということ。
 CSS 風に DOM プログラミング たとえば、フォーム入力画面で最初のテキストフィールドまたはテキストエリアを取り出す場合は、
-$$( &amp;quot;form input[type=text]&amp;quot;, &amp;quot;form textarea&amp;quot; ).slice(0, 1) と書けるので、以前の domready.js と組み合わせると、読み込み時に最初のテキストフィールドまたはテキストエリアを選択状態にするコードは以下のように書ける。
-Event.domReady.add(function() { // Select initial first responder when the window is first placed onscreen. $$( &amp;quot;form input[type=text]&amp;quot;, &amp;quot;form textarea&amp;quot; ).slice(0, 1).</description>
+$$( &amp;quot;form input[type=text]&amp;quot;, &amp;quot;form textarea&amp;quot; ).slice(0, 1)  と書けるので、以前の domready.js と組み合わせると、読み込み時に最初のテキストフィールドまたはテキストエリアを選択状態にするコードは以下のように書ける。
+Event.domReady.add(function() { // Select initial first responder when the window is first placed onscreen. $$( &amp;quot;form input[type=text]&amp;quot;, &amp;quot;form textarea&amp;quot; ).</description>
     </item>
     
     <item>
@@ -228,11 +228,10 @@ Event.domReady.add(function() { // Select initial first responder when the windo
 現状、手元の環境では以下のブラウザで動作確認済み。
  IE 7 (XP standalone) IE 6 SP2 Firefox 2.0.0.4 Opera 9.21 Safari 2.0.4 Mac Firefox 2.0.0.4 Mac IE 5.2.3  ただし、Mac IE では window.onload で代用するように実装してある。まあ、スクリプトエラーが出るよりマシだろう。
 使い方 まず、domready.js を読み込む。
-&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/javascripts/domready.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; prototype.js と併用する場合は prototype.js より後に読み込む。
-&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/javascripts/prototype.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/javascripts/domready.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; あとは、DOM 読み込み完了のタイミングで実行したい関数を Event.domReady.add で登録するだけ。
-Event.domReady.add(function() { ... }); 他のイベントと登録方法が異なるのは直感的じゃない、とか言われそうだけど、正直あんまり気にならない。
-経緯: window.onload の欠点 多くの Ajax 系実装では、ページ読み込み完了時に初期化などを実行するようになっている。
-Event.observe(window, &#39;load&#39;, function() { .</description>
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/javascripts/domready.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  prototype.js と併用する場合は prototype.js より後に読み込む。
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/javascripts/prototype.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/javascripts/domready.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  あとは、DOM 読み込み完了のタイミングで実行したい関数を Event.domReady.add で登録するだけ。
+Event.domReady.add(function() { ... });  他のイベントと登録方法が異なるのは直感的じゃない、とか言われそうだけど、正直あんまり気にならない。
+経緯: window.onload の欠点 多くの Ajax 系実装では、ページ読み込み完了時に初期化などを実行するようになっている。</description>
     </item>
     
     <item>
@@ -262,7 +261,7 @@ WordPress といえば、あれか &amp;hellip; PHP か。なので、Ruby の S
  syntaxhighlighter google-code-prettify  syntaxhighlighter は対応言語は申し分ないのだが、ちょっとオーバースペック気味だ。行番号表示やクリップボードへのコピーとかは、とりあえずいらないだろう。
 一方の google-code-prettify はシンプルでいい感じ。早速、試してみることにする。
 google-code-prettify 使い方は README を読めば問題ないと思う。このブログでは prototype.js を使って、こんなふうに組み込んだ。
-&amp;lt;script src=&amp;quot;http://metareal.org/javascripts/prototype.js&amp;quot; type=&amp;quot;text/javascript&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;http://metareal.org/javascripts/prettify.js&amp;quot; type=&amp;quot;text/javascript&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt; Event.observe(window, &#39;load&#39;, function() { prettyPrint(); }); &amp;lt;/script&amp;gt; この通り、HTML も色づけしてくれる。HTML に埋め込んだ JavaScript も認識されてるのはすごいな。しかも、コード部分の指定は pre 要素か code 要素の class 属性に prettyprint を指定するだけ。シンプル。</description>
+&amp;lt;script src=&amp;quot;http://metareal.org/javascripts/prototype.js&amp;quot; type=&amp;quot;text/javascript&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;http://metareal.org/javascripts/prettify.js&amp;quot; type=&amp;quot;text/javascript&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt; Event.observe(window, &#39;load&#39;, function() { prettyPrint(); }); &amp;lt;/script&amp;gt;  この通り、HTML も色づけしてくれる。HTML に埋め込んだ JavaScript も認識されてるのはすごいな。しかも、コード部分の指定は pre 要素か code 要素の class 属性に prettyprint を指定するだけ。シンプル。</description>
     </item>
     
     <item>
@@ -274,10 +273,10 @@ google-code-prettify 使い方は README を読めば問題ないと思う。こ
       <description>Google 検索履歴では、検索クエリーの履歴だけではなく、検索結果で実際にどのページをクリックしたか、も記録している。
 検索結果ページのソースコードを読んでみると、履歴の保存は JavaScript で行われているようだ。
 改行やインデントを加えて読みやすくしたソースコードを基に、履歴を保存する処理や興味深い部分を紹介する。
-検索クエリーの保存 if (document.images) { new Image().src=&amp;quot;/url?sa=Q&amp;amp;client=safari&amp;amp;rls=ja-jp&amp;amp;q=...&amp;quot;; } まずは冒頭。新しい Image を生成することで http://www.google.com/url/ にアクセスさせている。
+検索クエリーの保存 if (document.images) { new Image().src=&amp;quot;/url?sa=Q&amp;amp;client=safari&amp;amp;rls=ja-jp&amp;amp;q=...&amp;quot;; }  まずは冒頭。新しい Image を生成することで http://www.google.com/url/ にアクセスさせている。
 URL から推測するに検索クエリーを保存しているのだろう。
 クリックされたページの URL を保存 クリックされたページの URL を保存する処理は、各リンクの onmousedown に JavaScript を仕込むことで実現している。
-&amp;lt;a href=&amp;quot;...&amp;quot; class=l onmousedown=&amp;quot;return asq(event,this,&#39;&#39;,&#39;&#39;,&#39;res&#39;,&#39;1&#39;,&#39;&amp;amp;amp;sig2=...&#39;)&amp;quot;&amp;gt; リンクをクリックすると asq 関数が実行されたのち、ページに遷移する、というわけだ。
+&amp;lt;a href=&amp;quot;...&amp;quot; class=l onmousedown=&amp;quot;return asq(event,this,&#39;&#39;,&#39;&#39;,&#39;res&#39;,&#39;1&#39;,&#39;&amp;amp;amp;sig2=...&#39;)&amp;quot;&amp;gt;  リンクをクリックすると asq 関数が実行されたのち、ページに遷移する、というわけだ。
 asq 関数の実装 では、asq 関数はどのような実装になっているのだろう。それなりに長いので些末な部分は削除したソースは以下の通り。
 window.asq = function(d,a,f,g,k,l,m) { if (window.XMLHttpRequest) { var c = window.encodeURIComponent ? encodeURIComponent : escape; var h = &amp;quot;&amp;quot;, i = &amp;quot;&amp;quot;; var b = new XMLHttpRequest; var e = d.</description>
     </item>
@@ -292,7 +291,7 @@ window.asq = function(d,a,f,g,k,l,m) { if (window.XMLHttpRequest) { var c = wind
 JSON is not as safe as people think it is - Joe Walker&amp;rsquo;s Blog http://getahead.org/blog/joe/2007/03/05/ json_is_not_as_safe_as_people_think_it_is.html
 script による CSRF と JavaScript のハック的手法を組み合わせることで、たとえログイン必須にしている JSON データであっても盗まれるかもしれない、という話。
 たとえば、
-&amp;lt;script type=&#39;text/javascript&#39; src=&#39;http://example.com/jsonservice&#39;&amp;gt;&amp;lt;/script&amp;gt; という script で JSON を読み込めたとする。
+&amp;lt;script type=&#39;text/javascript&#39; src=&#39;http://example.com/jsonservice&#39;&amp;gt;&amp;lt;/script&amp;gt;  という script で JSON を読み込めたとする。
 このままだと読み込んだ JSON のデータが評価されるだけで、どんなコードも実行されないのでそれほど問題にはならない （評価された JSON のデータはどんな変数にも代入されてないので参照できない）。
 しかし、元記事に紹介されている方法で、たとえば Array のコンストラクタを再定義してやると、JSON が評価されるときに 任意のコード（どこかにデータを送信するなど）を実行できてしまう。</description>
     </item>

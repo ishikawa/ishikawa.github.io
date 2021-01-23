@@ -60,7 +60,8 @@
 <p><a href="http://jdbc.postgresql.org/development/cvs.html">PostgreSQL JDBC ドライバの CVS リポジトリ</a>からバージョン 7.4 リリース時のタグを指定してソースコードを取得する。</p>
 <pre><code>cvs -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc login
 cvs -z3 -d :pserver:anonymous@cvs.pgfoundry.org:/cvsroot/jdbc co **-r REL7_4_STABLE** -P pgjdbc
-</code></pre><h3 id="buildproperties-を用意">build.properties を用意</h3>
+</code></pre>
+<h3 id="buildproperties-を用意">build.properties を用意</h3>
 <p>バージョン番号情報などを指定するための <code>build.properties</code> がないとビルドが失敗してしまう。
 トップディレクトリに <code>build.properties</code> を作成し、以下のように書いておこう。</p>
 <pre><code>major=7
@@ -70,7 +71,8 @@ edition=JDBC3
 def_pgport=5432
 enable_debug=no
 connectclass=org.postgresql.jdbc3.Jdbc3Connection
-</code></pre><p><code>major</code>, <code>minor</code>, <code>fullversion</code>, <code>edition</code> は <code>org.postgresql.Driver.getVersion()</code> で使われる。</p>
+</code></pre>
+<p><code>major</code>, <code>minor</code>, <code>fullversion</code>, <code>edition</code> は <code>org.postgresql.Driver.getVersion()</code> で使われる。</p>
 <p>それ以外の変数には以下のような意味があるようだ。</p>
 <ul>
 <li><strong>def_pgport</strong> デフォルトの接続ポート番号</li>

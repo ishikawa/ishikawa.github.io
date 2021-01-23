@@ -62,7 +62,8 @@
 <p>結局、Ruby 1.8 では平仮名に相当するコードポイントの範囲を直接、正規表現で指定してやるのが簡単そうだ。</p>
 <p><a href="http://www.unicode.org/Public/UNIDATA/Blocks.txt">Unicode Character Database の Block.txt</a> によると平仮名（<code>Hiragana</code>）の範囲は <code>0x3040</code> から <code>0x309f</code> なので、<a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=FAQ%3A%3A%C6%FC%CB%DC%B8%EC%A4%CE%BC%E8%A4%EA%B0%B7%A4%A4#a10.2e7.20SJIS.a4.ce.b5.a1.bc.ef.b0.cd.c2.b8.a5.b3.a1.bc.a5.c984BF.20.a4.ab.a4.e9.20889F.a4.de.a4.c7.a4.f2.b6.f5.c7.f2.a4.cb.c3.d6.a4.ad.b4.b9.a4.a8.a4.bf.a4.a4.a4.ce.a4.c7.a4.b9.a4.ac">Ruby リファレンスマニュアルの FAQ「10.7 SJISの機種依存コード84BF から 889Fまでを空白に置き換えたいのですが」</a>を参考に正規表現を書いてみる（ただし、UTF-8 限定）。</p>
 <pre><code>/#{&quot;[#{[0x3040].pack('U')}-#{[0x309f].pack('U')}]&quot;}/u
-</code></pre><p>コードポイントから UTF-8 リテラル文字列への変換に <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=Array#pack"><code>Array#pack</code></a> を利用しているため読みづらくなっている。もっといい方法があるのかもしれない。</p>
+</code></pre>
+<p>コードポイントから UTF-8 リテラル文字列への変換に <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=Array#pack"><code>Array#pack</code></a> を利用しているため読みづらくなっている。もっといい方法があるのかもしれない。</p>
 <h3 id="参考">参考</h3>
 <ul>
 <li><a href="http://www.unicode.org/reports/tr18/">Unicode Regular Expressions</a></li>

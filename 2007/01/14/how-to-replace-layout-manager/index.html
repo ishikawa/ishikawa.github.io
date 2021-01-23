@@ -61,7 +61,8 @@
   [layoutManager addTextContainer:textContainer];
   [textContainer replaceLayoutManager:layoutManager];
 **}
-</code></pre><p>肝になるのは <code>NSLayoutManager</code> の <code>addTextContainer:</code> で元々の <code>NSTextContainer</code> を追加したあとに、<code>NSTextContainer</code> の <code>replaceLayoutManager:</code> を呼ぶこと。これで <code>NSLayoutManager</code> を置き換えられる。</p>
+</code></pre>
+<p>肝になるのは <code>NSLayoutManager</code> の <code>addTextContainer:</code> で元々の <code>NSTextContainer</code> を追加したあとに、<code>NSTextContainer</code> の <code>replaceLayoutManager:</code> を呼ぶこと。これで <code>NSLayoutManager</code> を置き換えられる。</p>
 </div>
     </article>
 

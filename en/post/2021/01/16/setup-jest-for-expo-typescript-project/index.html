@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+  <body>
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <title>Testing Expo apps with Jest in TypeScript</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://metareal.blog/en/post/2021/01/16/setup-jest-for-expo-typescript-project/">
+  
+	  
+	  <link rel="alternate" hreflang="ja" href="https://metareal.blog/post/2021/01/16/setup-jest-for-expo-typescript-project/" title="日本語">
+	  
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/main.css">
+
+  
+  <link rel="stylesheet" href="https://metareal.blog/css/application.min.056dc003036eeb885f8c40348a02ac0502b9377900fd40a17df2a0d04510fb5c.css">
+  
+  
+  <link rel="stylesheet" href="https://metareal.blog/css/application.en.min.21ab326a83267ebe98d87e8ecdf4aa6172f08deba822eb68ef6d3d61cf79746b.css">
+  <link rel="stylesheet" href="/css/highlight/solarized_light.css">
+  <script src="/js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
+</head>
+ 
+	<nav class="languages">
+		<a href="/">Home</a><span class="separator"> | </span>
+  Read this article in » 
+	
+		<a href="https://metareal.blog/post/2021/01/16/setup-jest-for-expo-typescript-project/">日本語</a>
+	
+	</nav>
+
+
+
+
+    <article>
+      <h1>Testing Expo apps with Jest in TypeScript</h1>
+      <div class="metadata">
+        <p class="date">2021/01/16 8:57am</p>
+        <ul class="tags">
+          
+          <li>expo</li>
+          
+          <li>reactnative</li>
+          
+          <li>typescript</li>
+          
+          <li>jest</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>Recently I&rsquo;ve been working on a new project with <a href="https://expo.io/">Expo</a> and <a href="https://reactnative.dev/">React Native</a> 🙂</p>
+<p>I want to test my Expo project with Jest. Basically, you can follow <a href="https://docs.expo.io/guides/testing-with-jest/">Testing with Jest - Expo Documentation</a>, but in the case of TypeScript, you have to change some settings in following points:</p>
+<ol>
+<li><a href="#configuring-jest-and-add-a-simple-test">Jest configuration for Expo project in TypeScript</a></li>
+<li><a href="#writing-jest-configuration-file-with-typescript">Writing Jest configuration file with TypeScript</a></li>
+</ol>
+<p>First, let me show what the version. of Expo in my machine.</p>
+<pre><code class="language-bash">$ expo --version                                              
+4.0.17
+$ npm list expo
+my-expo-app
+└── expo@40.0.0
+</code></pre>
+<h2 id="configuring-jest-and-add-a-simple-test">Configuring Jest and add a simple test</h2>
+<p>First of all, install the necessary packages; it is the Expo way to install <a href="https://www.npmjs.com/package/jest-expo">jest-expo</a> instead of the jest package.</p>
+<pre><code class="language-bash">$ npm i jest-expo react-test-renderer --save-dev
+</code></pre>
+<p>Since it is a TypeScript project, we should install <code>.d.ts</code> of the package too.</p>
+<pre><code class="language-bash">$ npm i @types/jest @types/react-test-renderer --save-dev
+</code></pre>
+<p>Add the Jest configuration to <code>package.json</code> as mentioned in the documentation.</p>
+<pre><code class="language-json">{
+  ...
+  &quot;jest&quot;: {
+    &quot;preset&quot;: &quot;jest-expo&quot;,
+    &quot;transformIgnorePatterns&quot;: [
+      &quot;node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)&quot;
+    ]
+  }
+}
+</code></pre>
+<p>Notice <code>transformIgnorePatterns</code> contains a long regular expression 🤔</p>
+<p>Jest doesn&rsquo;t transpile files under the <code>node_modules</code> directory by default, but there are some React Native libraries that are distributed without being transpiled. By setting <a href="https://jestjs.io/docs/en/configuration#transformignorepatterns-arraystring"><code>transformIgnorePatterns</code></a> as above, we can make them the target of the transpile.</p>
+<ul>
+<li><code>x(?!y)</code> <strong>Negative lookahead assertion:</strong> Matches &ldquo;x&rdquo; only if &ldquo;x&rdquo; is not followed by &ldquo;y&rdquo;. Such long regular expressions should be commented like Perl, but unfortunately the <code>/x</code> modifier is not available in JavaScript. <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+</ul>
+<p>Now, let&rsquo;s write a sample test <code>App.test.tsx</code>.</p>
+<pre><code class="language-typescript:App.test.tsx">import React from &quot;react&quot;;
+import renderer from &quot;react-test-renderer&quot;;
+
+import App from &quot;./App&quot;;
+
+describe(&quot;&lt;App /&gt;&quot;, () =&gt; {
+  it(&quot;has 1 child&quot;, () =&gt; {
+    const tree = renderer.create(&lt;App /&gt;).toJSON();
+    // @ts-ignore
+    expect(tree.children.length).toBe(1);
+  });
+});
+</code></pre>
+<p>In fact, the above code can&rsquo;t be compiled by a type error, but here I&rsquo;ve ignored it with <code>@ts-ignore</code>. This is because fixing the type error is out of the scope of this article, and in the future I will use the [React Testing Library](<a href="https://testing-library.com/docs/react-testing-library/">https://testing-library.com/docs/react-testing-library/</a> intro/) instead of using react-test-renderer directly.</p>
+<h2 id="running-test-and-configuring-jest-properly">Running test and configuring Jest properly</h2>
+<p>Okay, let&rsquo;s run the test.</p>
+<pre><code class="language-bash">$ npx jest
+ FAIL  ./App.test.tsx
+  &lt;App /&gt;
+    ✕ has 1 child (45ms)
+
+  ● &lt;App /&gt; › has 1 child
+
+    Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object.
+
+      at createFiberFromTypeAndProps (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:16180:21)
+      at createFiberFromElement (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:16208:15)
+      at reconcileSingleElement (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:5358:23)
+      at reconcileChildFibers (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:5418:35)
+      at reconcileChildren (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:7991:28)
+      at updateHostRoot (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:8547:5)
+      at beginWork (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:9994:14)
+      at performUnitOfWork (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:13800:12)
+      at workLoopSync (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:13728:5)
+      at renderRootSync (node_modules/react-test-renderer/cjs/react-test-renderer.development.js:13691:7)
+
+  console.error
+    Warning: React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: object.
+
+       6 | describe(&quot;&lt;App /&gt;&quot;, () =&gt; {
+       7 |   it(&quot;has 1 child&quot;, () =&gt; {
+    &gt;  8 |     const tree = renderer.create(&lt;App /&gt;).toJSON();
+         |                                  ^
+       9 |     expect(tree.children.length).toBe(1);
+      10 |   });
+      11 | });
+
+      at printWarning (node_modules/react/cjs/react.development.js:315:30)
+      at error (node_modules/react/cjs/react.development.js:287:5)
+      at Object.createElementWithValidation [as createElement] (node_modules/react/cjs/react.development.js:1788:7)
+      at Object.&lt;anonymous&gt; (App.test.tsx:8:34)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        1.254s
+Ran all test suites.
+</code></pre>
+<p>It failed. The error is also mysterious.</p>
+<pre><code>Warning: React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: object.
+</code></pre>
+<p>Getting a warning that the <code>App</code> component is an <code>object</code>. When I run Jest, I get this error on the line below.</p>
+<pre><code class="language-typescript">import App from &quot;./App&quot;;
+</code></pre>
+<p>The error was happened because the <code>import</code> loads <strong><code>app.json</code> instead of <code>App.tsx</code></strong>. To prevent this, configure Jest&rsquo;s <a href="https://jestjs.io/docs/ja/configuration#"><code>moduleFileExtensions</code></a> to prioritize <code>.tsx</code> and <code>.ts</code> over <code>.json</code> when loading modules.</p>
+<pre><code class="language-json">&quot;jest&quot;: {
+  ...
+  &quot;moduleFileExtensions&quot;: [
+    &quot;ts&quot;,
+    &quot;tsx&quot;,
+    &quot;js&quot;,
+    &quot;jsx&quot;
+  ]
+},
+</code></pre>
+<p>After making this change, the test will pass successfully.</p>
+<pre><code class="language-bash">$ npx jest
+ PASS  ./App.test.tsx
+  &lt;App /&gt;
+    ✓ has 1 child (2341ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        4.855s
+</code></pre>
+<p>Googled and found that someone has the same issue <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, so I posted a <a href="https://github.com/expo/expo/pull/11580">PR</a> to the documentation.</p>
+<h2 id="writing-jest-configuration-file-with-typescript">Writing Jest configuration file with TypeScript</h2>
+<p>Okay, I was able to run the test, but the configuration became a bit complicated.</p>
+<pre><code class="language-json">&quot;jest&quot;: {
+  &quot;preset&quot;: &quot;jest-expo&quot;,
+  &quot;transformIgnorePatterns&quot;: [
+    &quot;node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)&quot;
+  ],
+  &quot;moduleFileExtensions&quot;: [
+    &quot;ts&quot;,
+    &quot;tsx&quot;,
+    &quot;js&quot;,
+    &quot;jsx&quot;
+  ]
+}
+</code></pre>
+<p>In particular, <code>transformIgnorePatterns</code> is complex, and I&rsquo;d rather take it out than put it in <code>package.json</code>. And I want to write it with TypeScript if possible.</p>
+<p>From Jest version <a href="https://github.com/facebook/jest/blob/master/CHANGELOG.md#2660">26.6.0</a>, <strong>TypeScript configuration file is supported</strong>. <a href="https://www.npmjs.com/package/ts-node">ts-node</a> is required and must be installed.</p>
+<pre><code class="language-bash">$ npm i ts-node --save-dev
+</code></pre>
+<p>If the jest which jest-expo depends on is old, install it as well.</p>
+<pre><code class="language-bash">$ npm list jest           
+my-expo-app
+└─┬ jest-expo@40.0.1
+  └── jest@25.5.4 
+$ npm i jest --save-dev 
+</code></pre>
+<p>Then create a new <code>jest.config.ts</code> and migrate the configuration in <code>package.json</code></p>
+<pre><code class="language-typescript:jest.config.ts">import { Config } from &quot;@jest/types&quot;;
+
+// By default, all files inside `node_modules` are not transformed. But some 3rd party
+// modules are published as untranspiled, Jest will not understand the code in these modules.
+// To overcome this, exclude these modules in the ignore pattern.
+const untranspiledModulePatterns = [
+  &quot;(jest-)?react-native&quot;,
+  &quot;react-clone-referenced-element&quot;,
+  &quot;@react-native-community&quot;,
+  &quot;expo(nent)?&quot;,
+  &quot;@expo(nent)?/.*&quot;,
+  &quot;react-navigation&quot;,
+  &quot;@react-navigation/.*&quot;,
+  &quot;@unimodules/.*&quot;,
+  &quot;unimodules&quot;,
+  &quot;sentry-expo&quot;,
+  &quot;native-base&quot;,
+  &quot;@sentry/.*&quot;,
+];
+
+const config: Config.InitialOptions = {
+  preset: &quot;jest-expo&quot;,
+  transformIgnorePatterns: [
+    `node_modules/(?!${untranspiledModulePatterns.join(&quot;|&quot;)})`,
+  ],
+  moduleFileExtensions: [&quot;ts&quot;, &quot;tsx&quot;, &quot;js&quot;, &quot;jsx&quot;],
+};
+
+export default config;
+</code></pre>
+<p>Simplifing the lengthy regex expression made things look a lot better. Compared to <code>package.json</code>, which doesn&rsquo;t allow comments, it&rsquo;s nice to be able to write comments😅.</p>
+<p>One last point: if you re-installed jest instead of the version that the jest-expo depends on, you will have two versions of jest mixed under your <code>node_modules</code>.</p>
+<p>Check it with the <code>npm list</code> command.</p>
+<pre><code class="language-bash">$ npm list jest        
+my-expo-app
+├── jest@26.6.3 
+└─┬ jest-expo@40.0.1
+  └── jest@25.5.4
+</code></pre>
+<p>You can see that there are two versions of Jest. There is one problem with this: <strong>we don&rsquo;t know which version the npx command will execute</strong>.</p>
+<p>The npx command executes commands placed under <code>node_modules/.bin</code>. These are symbolic links to files in each package, and they will be overwritten depending on the order of installation.</p>
+<p>For example, <code>./node_modules/.bin/jest</code>  is now pointing to <code>. /node_modules/.bin/jest/bin/jest.js</code>.</p>
+<pre><code class="language-bash">$ ls -l ./node_modules/.bin/jest
+lrwxr-xr-x  1 takanori_is  staff  19  1 16 16:31 ./node_modules/.bin/jest -&gt; ../jest/bin/jest.js
+</code></pre>
+<p>However, if you re-install <code>jest-expo</code>, <code>./node_modules/jest-expo/bin/jest.js</code> will replace it.</p>
+<pre><code class="language-bash">$ ls -l ./node_modules/.bin/jest
+lrwxr-xr-x  1 takanori_is  staff  24  1 16 16:34 ./node_modules/.bin/jest -&gt; ../jest-expo/bin/jest.js
+</code></pre>
+<p>So, until the version of <code>jest</code> on which <code>jest-expo</code> depends is upgraded, it is safe to run <code>. /node_modules/jest/bin/jest.js</code> directly instead of via npx command. Let&rsquo;s register it as a script in <code>package.json</code>.</p>
+<pre><code class="language-json">&quot;scripts&quot;: {
+  ...
+  &quot;test&quot;: &quot;./node_modules/jest/bin/jest.js&quot;
+}
+</code></pre>
+<p>You can now run it with <code>npm test</code>.</p>
+<pre><code class="language-bash">$ npm test                  
+
+&gt; @ test /Users/ishikawasonkyou/Developer/Workspace/my-expo-app
+&gt; ./node_modules/jest/bin/jest.js
+
+ PASS  ./App.test.tsx
+  &lt;App /&gt;
+    ✓ has 1 child (150 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.767 s, estimated 1 s
+Ran all test suites.
+</code></pre>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet">Regular expression syntax cheatsheet - JavaScript | MDN</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://stackoverflow.com/questions/65549722/jest-expo-crashes-on-example-react-createelement-type-is-invalid-expected-a">reactjs - Jest-Expo crashes on example (React.createElement: type is invalid &ndash; expected a string) - Stack Overflow</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</div>
+    </article>
+
+    <nav class="pagination">
+      <ul>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/en/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/">Useful pytest fixtures to help you improve legacy code</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <footer>
+  <ul class="about">
+    <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
+    <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
+  </ul>
+  <h2><a href="/en">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  var all = MathJax.Hub.getAllJax(), i;
+  for(i = 0; i &lt; all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  </body>
+</html>

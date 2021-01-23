@@ -49,9 +49,11 @@
       <div class="content"><p>きちんと調べたわけじゃないけど、PostgreSQL で空文字列で検索するとインデックスが効かない気がする。</p>
 <p>具体的には、こういうやつ。</p>
 <pre><code>select * from table where column = '';
-</code></pre><p><code>table</code> の <code>column</code> にインデックスがあっても、<code>explain</code> してみると <code>Seq Scan</code> になってしまう。</p>
+</code></pre>
+<p><code>table</code> の <code>column</code> にインデックスがあっても、<code>explain</code> してみると <code>Seq Scan</code> になってしまう。</p>
 <pre><code>select * from table where column = 'hoge';
-</code></pre><p>とかだと問題ない。<code>Index Scan</code> してくれる。</p>
+</code></pre>
+<p>とかだと問題ない。<code>Index Scan</code> してくれる。</p>
 <p>PostgreSQL が古い 7.4 系のせいかも。MySQL は調べてない。そもそも、空文字はインデックスに含めてない気もしてきた。</p>
 <p>とりあえず、空文字の検索で結果がないのが分かってる場合は、クエリを実行せずに無条件で失敗させるのがよさそう。</p>
 </div>

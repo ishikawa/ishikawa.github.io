@@ -51,21 +51,25 @@
 def foo
   # ...
 end
-</code></pre><p>上記スクリプトは <strong>SyntaxError にならない</strong>（<code>def</code> がふたつあるのに注意）。</p>
+</code></pre>
+<p>上記スクリプトは <strong>SyntaxError にならない</strong>（<code>def</code> がふたつあるのに注意）。</p>
 <p>しかし、実際にメソッド <code>foo</code> を呼び出そうとすると、</p>
 <pre><code>def
 def foo
   # ...
 end
 foo
-</code></pre><pre><code>% ruby test.rb
+</code></pre>
+<pre><code>% ruby test.rb
 test.rb:5: undefined local variable or method `foo' for main:Object (NameError)
-</code></pre><p>未定義だと怒られる。</p>
+</code></pre>
+<p>未定義だと怒られる。</p>
 <p>あと、</p>
 <pre><code>p [1, 2, 3].map do |v|
   v + 1
 end
-</code></pre><p>このコードは意図通りに動作しないどころか、<strong>ブロックが実行されない</strong>、というのには驚いた。</p>
+</code></pre>
+<p>このコードは意図通りに動作しないどころか、<strong>ブロックが実行されない</strong>、というのには驚いた。</p>
 </div>
     </article>
 

@@ -54,16 +54,19 @@
 <p>いままで <code>Event.observe</code> でコールバック関数を登録するときは、コールバックが呼ばれたときの <code>this</code> を固定するため（と、引数に <code>event</code> が確実に渡ってくるように）、</p>
 <pre><code>var element = $('mybutton');
 Event.observe(element, 'click', onClickEventListener.bindAsEventListener(element));
-</code></pre><p><code>Function#bindAsEventListener</code> を使っていたと思う。</p>
+</code></pre>
+<p><code>Function#bindAsEventListener</code> を使っていたと思う。</p>
 <p>これが 1.6.0 では、<code>Event.observe</code> や <code>Element.observe</code> で登録したコールバック関数はすべてのブラウザで、<code>this</code> がイベントの発生した DOM 要素となるように変更された。</p>
 <p>そのため、上記のコードはシンプルに、</p>
 <pre><code>var element = $('mybutton');
 Event.observe(element, 'click', onClickEventListener);
-</code></pre><p>と書けるようになった。</p>
+</code></pre>
+<p>と書けるようになった。</p>
 <p>もっとも、コールバック関数を登録するオブジェクト（コントローラー）自身を <code>this</code> にすることの方が多いかもしれない。その場合は <code>bind</code> する必要がある。</p>
 <pre><code>var element = $('mybutton');
 Event.observe(element, 'click', onClickEventListener.bind(this));
-</code></pre><p>コールバック関数の <code>this</code> を固定する処理
+</code></pre>
+<p>コールバック関数の <code>this</code> を固定する処理
 すでに <code>Function#bind</code> や <code>Function#bindAsEventListener</code> が紹介されつくしているご時世に今更な感もあるが、<code>Event.observe</code> で登録したコールバック関数の <code>this</code> を固定している処理を見てみよう。</p>
 <pre><code>observe: function(element, eventName, handler) {
   element = $(element);
@@ -71,7 +74,8 @@ Event.observe(element, 'click', onClickEventListener.bind(this));
 
   var wrapper = createWrapper(id, eventName, handler);
   if (!wrapper) return element;
-</code></pre><p><code>createWrapper</code> が、渡されたコールバック関数 <code>handler</code> から <code>this</code> を固定したラッパー関数を返す。</p>
+</code></pre>
+<p><code>createWrapper</code> が、渡されたコールバック関数 <code>handler</code> から <code>this</code> を固定したラッパー関数を返す。</p>
 <pre><code>function createWrapper(id, eventName, handler) {
   var c = getWrappersForEventName(id, eventName);
   if (c.pluck(&quot;handler&quot;).include(handler)) return false;
@@ -88,7 +92,8 @@ Event.observe(element, 'click', onClickEventListener.bind(this));
   c.push(wrapper);
   return wrapper;
 }
-</code></pre><p>強調部分に注目してほしい。<code>Event.extend</code> でイベントオブジェクトを拡張したうえで、<code>event.target</code> つまりイベントが発生した DOM 要素のメソッドとしてコールバック関数を呼んでいる。</p>
+</code></pre>
+<p>強調部分に注目してほしい。<code>Event.extend</code> でイベントオブジェクトを拡張したうえで、<code>event.target</code> つまりイベントが発生した DOM 要素のメソッドとしてコールバック関数を呼んでいる。</p>
 <p><code>Object.extend</code> と静的スコープの利用
 ところで、<code>Event</code> オブジェクトに <code>observe</code> メソッドを追加するときは <code>Object.extend</code> によるコピーを利用しているのだが、その利用法が珍しい。</p>
 <p>どのようになっているのか？　構造を示すために細かい部分を省略したコードを以下に載せる。</p>
@@ -104,9 +109,11 @@ Event.observe(element, 'click', onClickEventListener.bind(this));
     ...
   };
 })());
-</code></pre><p>かなり読みづらいが、無名関数の呼び出し結果を <code>Object.extend</code> に渡している。</p>
+</code></pre>
+<p>かなり読みづらいが、無名関数の呼び出し結果を <code>Object.extend</code> に渡している。</p>
 <pre><code>Object.extend(Event, (function() {...})());
-</code></pre><p>ここで、</p>
+</code></pre>
+<p>ここで、</p>
 <ul>
 <li>実際に <code>Object.extend</code> に渡されるのは、無名関数内で <code>return</code> されているオブジェクト</li>
 <li>このオブジェクトのメソッドが公開される API として <code>Object.extend</code> される</li>
@@ -121,7 +128,8 @@ Event.observe(element, 'click', onClickEventListener.bind(this));
     ...
   }
 })();
-</code></pre><p>ただ、そこから <code>return</code> されるオブジェクトを別の関数の引数に渡す、というやり方ははじめて見た。少なくとも <a href="http://prototypejs.org/assets/2007/6/20/prototype.js">Prototype 1.5.1.1</a> までは見られなかった手法だ。</p>
+</code></pre>
+<p>ただ、そこから <code>return</code> されるオブジェクトを別の関数の引数に渡す、というやり方ははじめて見た。少なくとも <a href="http://prototypejs.org/assets/2007/6/20/prototype.js">Prototype 1.5.1.1</a> までは見られなかった手法だ。</p>
 <p>長くなってしまった&hellip;。Prototype 1.6.0 のイベント API には他にも変更点がある。それらはまた次回。</p>
 </div>
     </article>

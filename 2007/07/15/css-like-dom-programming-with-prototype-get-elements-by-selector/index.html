@@ -50,18 +50,22 @@
       </div>
       <div class="content"><p><a href="http://www.prototypejs.org/">prototype.js</a> の <code>$$</code> 関数（実際の処理は <code>Selector.findChildElements</code>）は CSS セレクタを受け取り、セレクタにマッチする要素を配列で返してくれる。</p>
 <pre><code>var links = $$('#contents a');
-</code></pre><p>だが、単純にひとつのセレクタだけではなくて、複数のセレクタを引数に渡したり、CSS と同じく、カンマ区切りで複数指定することもできる（結果は重複要素のない配列となって返ってくる）。</p>
+</code></pre>
+<p>だが、単純にひとつのセレクタだけではなくて、複数のセレクタを引数に渡したり、CSS と同じく、カンマ区切りで複数指定することもできる（結果は重複要素のない配列となって返ってくる）。</p>
 <pre><code>var links = $$(&quot;#contents a&quot;, &quot;#footer .items a&quot;);
-</code></pre><p>このコードは、こう書くこともできる。</p>
+</code></pre>
+<p>このコードは、こう書くこともできる。</p>
 <pre><code>var links = $$(&quot;#contents a, #footer .items a&quot;);
-</code></pre><p>そして、いまさらながら気づいたのは、これらの特徴を利用すれば、DOM の処理を CSS のように<strong>宣言的に</strong>書くのが可能だ、ということ。</p>
+</code></pre>
+<p>そして、いまさらながら気づいたのは、これらの特徴を利用すれば、DOM の処理を CSS のように<strong>宣言的に</strong>書くのが可能だ、ということ。</p>
 <h3 id="css-風に-dom-プログラミング">CSS 風に DOM プログラミング</h3>
 <p>たとえば、フォーム入力画面で最初のテキストフィールドまたはテキストエリアを取り出す場合は、</p>
 <pre><code>$$(
   &quot;form input[type=text]&quot;,
   &quot;form textarea&quot;
 ).slice(0, 1)
-</code></pre><p>と書けるので、以前の <a href="http://weblog.metareal.org/2007/07/10/domready-js-cross-browser-ondomcontentloaded/">domready.js</a> と組み合わせると、<strong>読み込み時に最初のテキストフィールドまたはテキストエリアを選択状態にする</strong>コードは以下のように書ける。</p>
+</code></pre>
+<p>と書けるので、以前の <a href="http://weblog.metareal.org/2007/07/10/domready-js-cross-browser-ondomcontentloaded/">domready.js</a> と組み合わせると、<strong>読み込み時に最初のテキストフィールドまたはテキストエリアを選択状態にする</strong>コードは以下のように書ける。</p>
 <pre><code>Event.domReady.add(function() {
 
   // Select initial first responder when the window is first placed onscreen.
@@ -73,7 +77,8 @@
   });
 
 });
-</code></pre><p>強調部分のみに注目してもらうと分かりやすいが、CSS に近い記述になっている。また、今回の例のように、<code>slice</code> して特定の要素のみに限定したり、<a href="http://www.prototypejs.org/api/utility/dollar-dollar">Prototype.js 1.5.1 では CSS3 もサポートされている</a>など、より柔軟な選択が可能なのも嬉しい。</p>
+</code></pre>
+<p>強調部分のみに注目してもらうと分かりやすいが、CSS に近い記述になっている。また、今回の例のように、<code>slice</code> して特定の要素のみに限定したり、<a href="http://www.prototypejs.org/api/utility/dollar-dollar">Prototype.js 1.5.1 では CSS3 もサポートされている</a>など、より柔軟な選択が可能なのも嬉しい。</p>
 <h3 id="参考">参考</h3>
 <ul>
 <li><a href="http://www.prototypejs.org/">Prototype.js</a></li>

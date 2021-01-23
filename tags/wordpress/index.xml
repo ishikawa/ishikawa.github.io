@@ -15,13 +15,13 @@
       
       <guid>https://metareal.blog/2007/01/25/writing-underscores-named-variable-with-markdown/</guid>
       <description>Markdown ではアンダースコアで囲むと強調になるので、アンダースコアでつなげるスタイルの変数がものすごく書きづらい。
-mt&amp;amp;#x5f;convert&amp;amp;#x5f;breaks 数値参照を使って、こんなふうに書くしかないのかね。
+mt&amp;amp;#x5f;convert&amp;amp;#x5f;breaks  数値参照を使って、こんなふうに書くしかないのかね。
 更に、等幅フォントで強調にするには、HTML タグを使わないと駄目っぽい。
-&amp;lt;code&amp;gt;&amp;lt;strong&amp;gt;mt&amp;amp;#x5f;convert&amp;amp;#x5f;breaks&amp;lt;/strong&amp;gt;&amp;lt;/code&amp;gt; まあ、すでに Markdown じゃないわけだが。
+&amp;lt;code&amp;gt;&amp;lt;strong&amp;gt;mt&amp;amp;#x5f;convert&amp;amp;#x5f;breaks&amp;lt;/strong&amp;gt;&amp;lt;/code&amp;gt;  まあ、すでに Markdown じゃないわけだが。
 （追記） yuin さんのコメントで気づいた。バッククォートで囲めば等幅フォントでそのまま出せるね。Markdown による記述と変換後の HTML で書くと、
-`mt_convert_breaks\ ` --&amp;gt; &amp;lt;code&amp;gt;mt_convert_breaks&amp;lt;/code&amp;gt; こうなるので大丈夫。
+`mt_convert_breaks\ ` --&amp;gt; &amp;lt;code&amp;gt;mt_convert_breaks&amp;lt;/code&amp;gt;  こうなるので大丈夫。
 ただ、等幅フォントで強調もしようとすると大変になるみたい。
-(1) `__\ mt_convert_breaks__` --&amp;gt; &amp;lt;code&amp;gt;__mt_convert_breaks__&amp;lt;/code&amp;gt; (2) __\ `mt_convert_breaks`__\ --&amp;gt; &amp;lt;strong&amp;gt;&amp;lt;code&amp;gt;hoge_foo_bar&amp;lt;/code&amp;gt;&amp;lt;/strong&amp;gt;  は上手くいってそうなんだが、このブログでは YUI の reset.css で oode{font-style:normal;font-weight:normal;} となっているため効果なし。  </description>
+(1) `__\ mt_convert_breaks__` --&amp;gt; &amp;lt;code&amp;gt;__mt_convert_breaks__&amp;lt;/code&amp;gt; (2) __\ `mt_convert_breaks`__\ --&amp;gt; &amp;lt;strong&amp;gt;&amp;lt;code&amp;gt;hoge_foo_bar&amp;lt;/code&amp;gt;&amp;lt;/strong&amp;gt;   は上手くいってそうなんだが、このブログでは YUI の reset.css で oode{font-style:normal;font-weight:normal;} となっているため効果なし。  </description>
     </item>
     
     <item>
@@ -31,13 +31,12 @@ mt&amp;amp;#x5f;convert&amp;amp;#x5f;breaks 数値参照を使って、こんな
       
       <guid>https://metareal.blog/2007/01/08/looking-for-loving-title-element/</guid>
       <description>WordPress のインストール直後は タグを出力するテンプレートは以下のようになっていた。
-&amp;lt;title&amp;gt;&amp;lt;?php bloginfo(&#39;name&#39;); ?&amp;gt; &amp;lt;?php if ( is_single() ) { ?&amp;gt; &amp;amp;raquo; Blog Archive &amp;lt;?php } ?&amp;gt; &amp;lt;?php wp_title(); ?&amp;gt;&amp;lt;/title&amp;gt; これだと記事のタイトルは「ブログ名 » Blog Archive » 記事タイトル」のようになる。これを「記事タイトル - ブログ名」にしたくて、
-&amp;lt;title&amp;gt;&amp;lt;?php wp_title(&#39; &#39;); if (wp_title(&#39; &#39;, false)) echo &#39; - &#39;; bloginfo(&#39;name&#39;); ?&amp;gt;&amp;lt;/title&amp;gt; というテンプレートをいままでは使っていた。
+&amp;lt;title&amp;gt;&amp;lt;?php bloginfo(&#39;name&#39;); ?&amp;gt; &amp;lt;?php if ( is_single() ) { ?&amp;gt; &amp;amp;raquo; Blog Archive &amp;lt;?php } ?&amp;gt; &amp;lt;?php wp_title(); ?&amp;gt;&amp;lt;/title&amp;gt;  これだと記事のタイトルは「ブログ名 » Blog Archive » 記事タイトル」のようになる。これを「記事タイトル - ブログ名」にしたくて、
+&amp;lt;title&amp;gt;&amp;lt;?php wp_title(&#39; &#39;); if (wp_title(&#39; &#39;, false)) echo &#39; - &#39;; bloginfo(&#39;name&#39;); ?&amp;gt;&amp;lt;/title&amp;gt;  というテンプレートをいままでは使っていた。
 しかし、今日はじめて気づいたのだが、これだと「記事タイトル - ブログ名」というふうに、タイトルの直前に余分なスペースが残ってしまう。
 どうやら、wp_title() は区切り文字が空文字のときでも、周囲のスペースを挿入してしまうらしい。
 しょうがないので、力技だが、出力前に trim() してみる。
-&amp;lt;title&amp;gt;&amp;lt;?php echo trim(wp_title(&#39;&#39;, false)); if (wp_title(&#39;&#39;, false)) echo &#39; - &#39;; bloginfo(&#39;name&#39;); ?&amp;gt;&amp;lt;/title&amp;gt; これでやっと「記事タイトル - ブログ名」にできた。
-なお、Optimal Title というプラグインもあるようだ。このプラグインをインストールすれば、区切り文字を末尾に追加してくれるバージョンの wp_title() として、optimal_title() が使えるようになる、とのこと。</description>
+&amp;lt;title&amp;gt;&amp;lt;?php echo trim(wp_title(&#39;&#39;, false)); if (wp_title(&#39;&#39;, false)) echo &#39; - &#39;; bloginfo(&#39;name&#39;); ?&amp;gt;&amp;lt;/title&amp;gt;  これでやっと「記事タイトル - ブログ名」にできた。</description>
     </item>
     
     <item>
@@ -48,7 +47,7 @@ mt&amp;amp;#x5f;convert&amp;amp;#x5f;breaks 数値参照を使って、こんな
       <guid>https://metareal.blog/2007/01/02/fix-weighted-categories-url-problem/</guid>
       <description>前回書いた「タグクラウドのリンクがおかしい？」という問題は、やはり Weighted Categories のバグだった。
 問題は WordPress の list_cats で得たカテゴリーのリスト (HTML) を、配列に変換する部分：
-function weighted_categories($smallest=10, $largest=48, $unit=&amp;quot;pt&amp;quot;, $exclude=&#39;&#39;) { $cats = list_cats(1, &#39;all&#39;, &#39;name&#39;, &#39;asc&#39;, &#39;&#39;, 0, 0, 1, 1, 0, 1, 1, 0, 1, &#39;&#39;, &#39;&#39;, $exclude, 0); **$cats = explode(&amp;quot;\n&amp;quot;, $cats);** foreach ($cats as $cat) { ... } 強調部分で $cats には末尾に改行が含まれているため、変換後の配列の最後の要素は空白文字列になる。そのため、最後のタグの URL がおかしくなっていた。
+function weighted_categories($smallest=10, $largest=48, $unit=&amp;quot;pt&amp;quot;, $exclude=&#39;&#39;) { $cats = list_cats(1, &#39;all&#39;, &#39;name&#39;, &#39;asc&#39;, &#39;&#39;, 0, 0, 1, 1, 0, 1, 1, 0, 1, &#39;&#39;, &#39;&#39;, $exclude, 0); **$cats = explode(&amp;quot;\n&amp;quot;, $cats);** foreach ($cats as $cat) { ... }  強調部分で $cats には末尾に改行が含まれているため、変換後の配列の最後の要素は空白文字列になる。そのため、最後のタグの URL がおかしくなっていた。
 つまり、末尾の空白を取り除いておけば、問題は解決する。
 --- weighted_categories.php.origin 2007-01-02 15:27:48.000000000 +0900 +++ weighted_categories.php 2007-01-02 15:38:13.000000000 +0900 @@ -11,7 +11,7 @@ { $cats = list_cats(1, &#39;all&#39;, &#39;name&#39;, &#39;asc&#39;, &#39;&#39;, 0, 0, 1, 1, 0, 1, 1, 0, 1, &#39;&#39;, &#39;&#39;, $exclude, 0); - $cats = explode(&amp;quot;\n&amp;quot;, $cats); + $cats = explode(&amp;quot;\n&amp;quot;, **trim($cats)**); foreach ($cats as $cat) { eregi(&amp;quot;a href=\&amp;quot;(.</description>
     </item>
@@ -61,7 +60,7 @@ function weighted_categories($smallest=10, $largest=48, $unit=&amp;quot;pt&amp;q
       <guid>https://metareal.blog/2007/01/02/tag-cloud-url-problem/</guid>
       <description>このブログのサイドバーにあるタグクラウドの表示には、Weighted Categories という WordPress プラグインを使っているのですが、どうも xmlrpc というタグだけ URL がおかしい。
 他のタグは絶対 URL なのに、こいつだけ
-&amp;lt;a href=&amp;quot;xmlrpc&amp;quot; title=&amp;quot;3 entries&amp;quot; style=&amp;quot;font-size: 15.6px;&amp;quot;&amp;gt;xmlrpc&amp;lt;/a&amp;gt; こんな感じで URL が間違っている。うーん、プラグインのバグなのかなあ。</description>
+&amp;lt;a href=&amp;quot;xmlrpc&amp;quot; title=&amp;quot;3 entries&amp;quot; style=&amp;quot;font-size: 15.6px;&amp;quot;&amp;gt;xmlrpc&amp;lt;/a&amp;gt;  こんな感じで URL が間違っている。うーん、プラグインのバグなのかなあ。</description>
     </item>
     
     <item>

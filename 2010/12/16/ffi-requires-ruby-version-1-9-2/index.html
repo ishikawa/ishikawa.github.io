@@ -47,19 +47,21 @@
         </ul>
       </div>
       <div class="content"><p><a href="https://github.com/ffi/ffi">Ruby-FFI 1.0.0</a> からは <a href="http://groups.google.com/group/ruby-ffi/browse_thread/thread/c40766b574a15962">Ruby 1.9.2 以降が必要になった</a>。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">% sudo gem1.8 install ffi
+<pre><code class="language-bash">% sudo gem1.8 install ffi
 Password:
 ERROR:  Error installing ffi:
-        ffi requires Ruby version &gt;<span style="color:#f92672">=</span> 1.9.2
-</code></pre></div><p>そのため、Ruby 1.8 向けの gem をインストールするときはバージョン 0.6.3 を指定する。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">% sudo gem1.8 install ffi --version <span style="color:#e6db74">&#34;= 0.6.3&#34;</span>
+        ffi requires Ruby version &gt;= 1.9.2
+</code></pre>
+<p>そのため、Ruby 1.8 向けの gem をインストールするときはバージョン 0.6.3 を指定する。</p>
+<pre><code class="language-bash">% sudo gem1.8 install ffi --version &quot;= 0.6.3&quot;
 Password:
-Building native extensions.  This could take a <span style="color:#66d9ef">while</span>...
+Building native extensions.  This could take a while...
 Successfully installed ffi-0.6.3
-<span style="color:#ae81ff">1</span> gem installed
-Installing ri documentation <span style="color:#66d9ef">for</span> ffi-0.6.3...
-Installing RDoc documentation <span style="color:#66d9ef">for</span> ffi-0.6.3...
-</code></pre></div></div>
+1 gem installed
+Installing ri documentation for ffi-0.6.3...
+Installing RDoc documentation for ffi-0.6.3...
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

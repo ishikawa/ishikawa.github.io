@@ -54,7 +54,8 @@
 <pre><code>def update
   render :text =&gt; h(params[:value])
 end
-</code></pre><p>というか、そもそも <a href="http://api.rubyonrails.org/">API リファレンス</a>にないんですけど&hellip;。</p>
+</code></pre>
+<p>というか、そもそも <a href="http://api.rubyonrails.org/">API リファレンス</a>にないんですけど&hellip;。</p>
 <p>ソースコードを調べてみて、やっと分かった。</p>
 <p>どうやら、<code>h</code> メソッドは  <a href="http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB/Util.html">erb の ERB::Util モジュール</a>で定義されているらしい。</p>
 <p><code>actionpack-1.13.3 - lib/action_view/helpers/tag_helper.rb</code></p>
@@ -65,7 +66,8 @@ end
     module TagHelper
       include ERB::Util
       ...
-</code></pre><p>以下は ruby 1.8.6 の <code>erb.rb</code> から</p>
+</code></pre>
+<p>以下は ruby 1.8.6 の <code>erb.rb</code> から</p>
 <pre><code>class ERB
   module Util
     public
@@ -76,11 +78,13 @@ end
     module_function :h
     module_function :html_escape
     ...
-</code></pre><p>というわけで、Rails のコントローラーで <code>h</code> メソッドを使うには以下のようにすればいい。</p>
+</code></pre>
+<p>というわけで、Rails のコントローラーで <code>h</code> メソッドを使うには以下のようにすればいい。</p>
 <pre><code>def update
   render :text =&gt; ERB::Util.html_escape(params[:value])
 end
-</code></pre></div>
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

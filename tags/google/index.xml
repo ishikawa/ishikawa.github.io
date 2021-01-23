@@ -17,7 +17,7 @@
       <description>Google Bookmark を使いはじめた。シンプルながら快適な使い心地で気に入っている。
  とにかく、ブックマーク編集画面が開くまでが速い ブックマーク先のページも含めて全文検索が可能  ソーシャル要素は考えず、純粋に「ブックマーク」という行為を突き詰めていくと、上記二点が非常に重要であることが分かると思う。
 ちなみに、ブックマークレットにはGoogleブックマークに追加するブックマークレット（メモ欄対応版）で配布されているものを別窓で開くようにして使わせてもらっている。感謝。
-javascript:var%20u=encodeURIComponent(location.href);var%20ti=encodeURIComponent(document.title);var%20te=encodeURIComponent((window.getSelection&amp;amp;&amp;amp;window.getSelection())||(document.getSelection&amp;amp;&amp;amp;document.getSelection())||(document.selection&amp;amp;&amp;amp;document.selection.createRange&amp;amp;&amp;amp;document.selection.createRange().text));window.open((te!=&#39;&#39;)?&#39;http://www.google.com/bookmarks/mark?op=add&amp;amp;bkmk=&#39;+u+&#39;&amp;amp;title=&#39;+ti+&#39;&amp;amp;annotation=&#39;+te:&#39;http://www.google.com/bookmarks/mark?op=add&amp;amp;bkmk=&#39;+u+&#39;&amp;amp;title=&#39;+ti); </description>
+javascript:var%20u=encodeURIComponent(location.href);var%20ti=encodeURIComponent(document.title);var%20te=encodeURIComponent((window.getSelection&amp;amp;&amp;amp;window.getSelection())||(document.getSelection&amp;amp;&amp;amp;document.getSelection())||(document.selection&amp;amp;&amp;amp;document.selection.createRange&amp;amp;&amp;amp;document.selection.createRange().text));window.open((te!=&#39;&#39;)?&#39;http://www.google.com/bookmarks/mark?op=add&amp;amp;bkmk=&#39;+u+&#39;&amp;amp;title=&#39;+ti+&#39;&amp;amp;annotation=&#39;+te:&#39;http://www.google.com/bookmarks/mark?op=add&amp;amp;bkmk=&#39;+u+&#39;&amp;amp;title=&#39;+ti);  </description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@ javascript:var%20u=encodeURIComponent(location.href);var%20ti=encodeURIComponent
       
       <guid>https://metareal.blog/2009/11/11/go-vim/</guid>
       <description>Io と並んで、自らの検索能力が試される名前の Go ですが、実用性と簡潔さを兼ねそなえた言語設計は好感がもてます。
-% cd $GOROOT % ls misc/vim/ go.vim % cp misc/vim/go.vim ~/.vim/syntax/ % cat &amp;amp;gt; ~/.vim/ftdetect/go.vim au BufRead,BufNewFile *.go set filetype=go 今日はここまで。</description>
+% cd $GOROOT % ls misc/vim/ go.vim % cp misc/vim/go.vim ~/.vim/syntax/ % cat &amp;amp;gt; ~/.vim/ftdetect/go.vim au BufRead,BufNewFile *.go set filetype=go  今日はここまで。</description>
     </item>
     
     <item>
@@ -58,10 +58,10 @@ v8 では hidden class という実装テクニックを用いることにより
       <description>Google 検索履歴では、検索クエリーの履歴だけではなく、検索結果で実際にどのページをクリックしたか、も記録している。
 検索結果ページのソースコードを読んでみると、履歴の保存は JavaScript で行われているようだ。
 改行やインデントを加えて読みやすくしたソースコードを基に、履歴を保存する処理や興味深い部分を紹介する。
-検索クエリーの保存 if (document.images) { new Image().src=&amp;quot;/url?sa=Q&amp;amp;client=safari&amp;amp;rls=ja-jp&amp;amp;q=...&amp;quot;; } まずは冒頭。新しい Image を生成することで http://www.google.com/url/ にアクセスさせている。
+検索クエリーの保存 if (document.images) { new Image().src=&amp;quot;/url?sa=Q&amp;amp;client=safari&amp;amp;rls=ja-jp&amp;amp;q=...&amp;quot;; }  まずは冒頭。新しい Image を生成することで http://www.google.com/url/ にアクセスさせている。
 URL から推測するに検索クエリーを保存しているのだろう。
 クリックされたページの URL を保存 クリックされたページの URL を保存する処理は、各リンクの onmousedown に JavaScript を仕込むことで実現している。
-&amp;lt;a href=&amp;quot;...&amp;quot; class=l onmousedown=&amp;quot;return asq(event,this,&#39;&#39;,&#39;&#39;,&#39;res&#39;,&#39;1&#39;,&#39;&amp;amp;amp;sig2=...&#39;)&amp;quot;&amp;gt; リンクをクリックすると asq 関数が実行されたのち、ページに遷移する、というわけだ。
+&amp;lt;a href=&amp;quot;...&amp;quot; class=l onmousedown=&amp;quot;return asq(event,this,&#39;&#39;,&#39;&#39;,&#39;res&#39;,&#39;1&#39;,&#39;&amp;amp;amp;sig2=...&#39;)&amp;quot;&amp;gt;  リンクをクリックすると asq 関数が実行されたのち、ページに遷移する、というわけだ。
 asq 関数の実装 では、asq 関数はどのような実装になっているのだろう。それなりに長いので些末な部分は削除したソースは以下の通り。
 window.asq = function(d,a,f,g,k,l,m) { if (window.XMLHttpRequest) { var c = window.encodeURIComponent ? encodeURIComponent : escape; var h = &amp;quot;&amp;quot;, i = &amp;quot;&amp;quot;; var b = new XMLHttpRequest; var e = d.</description>
     </item>

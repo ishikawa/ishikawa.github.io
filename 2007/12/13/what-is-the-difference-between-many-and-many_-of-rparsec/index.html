@@ -50,7 +50,8 @@
       </div>
       <div class="content"><p><a href="http://weblog.metareal.org/2007/12/11/studying-rparsec-introduction/#rparsec-calculator-demo">前回の四則演算デモ</a>で真っ先に目を引いたのは <code>many_</code> という奇妙な名前のメソッドだった。</p>
 <pre><code>delim = whitespace.many_
-</code></pre><p>他にもっと注目すべきところがあるだろうと言われそうだが、<strong>非公開の関数か一時変数のようなメソッド</strong>が公開 API の一部というのに驚いた。</p>
+</code></pre>
+<p>他にもっと注目すべきところがあるだろうと言われそうだが、<strong>非公開の関数か一時変数のようなメソッド</strong>が公開 API の一部というのに驚いた。</p>
 <p>また、<a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000015">many_</a> は <a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html">Parser</a> クラスのメソッドだが、このクラスには他にも <a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000016">many</a> というメソッドが用意されている。</p>
 <p>両者の違いは何だろう？</p>
 <h3 id="many-と-many_-の違い">many と many_ の違い</h3>
@@ -64,17 +65,20 @@
 irb(main):001:0&gt; require 'rubygems'
 irb(main):002:0&gt; require 'rparsec'
 irb(main):003:0&gt; include Parsers
-</code></pre><p>まずは必要な require や include を済ませておく。</p>
+</code></pre>
+<p>まずは必要な require や include を済ませておく。</p>
 <pre><code>irb(main):004:0&gt; whitespace.many.parse(&quot;\t\r\n&quot;)
 =&gt; [9, 13, 10]
 irb(main):005:0&gt; whitespace.many_.parse(&quot;\t\r\n&quot;)
 =&gt; 10
-</code></pre><p>many では引数で渡した文字列（タブと改行）の各文字が配列で返されるのにたいして、many_ では最後の改行文字のみが返されているのが確認できた。</p>
+</code></pre>
+<p>many では引数で渡した文字列（タブと改行）の各文字が配列で返されるのにたいして、many_ では最後の改行文字のみが返されているのが確認できた。</p>
 <pre><code>irb(main):007:0&gt; whitespace.many.parse(&quot;&quot;)
 =&gt; []
 irb(main):006:0&gt; whitespace.many_.parse(&quot;&quot;)
 =&gt; nil
-</code></pre><p>ちなみに、一度もマッチしなかった場合は many では空の配列、many_ では nil が返されるようだ。</p>
+</code></pre>
+<p>ちなみに、一度もマッチしなかった場合は many では空の配列、many_ では nil が返されるようだ。</p>
 </div>
     </article>
 

@@ -66,22 +66,26 @@
 stmt.setInt(1, type);
 ...
 statement: SELECT * FROM example WHERE smallint_column = 1
-</code></pre><p><code>java.sql.PreparedStatement.setShort(int, short)</code> を使った場合、</p>
+</code></pre>
+<p><code>java.sql.PreparedStatement.setShort(int, short)</code> を使った場合、</p>
 <pre><code>int type = ...;
 stmt.setShort(1, (short)type);
 ...
 statement: SELECT * FROM example WHERE smallint_column = 1
-</code></pre><p><code>java.sql.PreparedStatement.setObject(int, Object, int)</code> を使った場合、</p>
+</code></pre>
+<p><code>java.sql.PreparedStatement.setObject(int, Object, int)</code> を使った場合、</p>
 <pre><code>int type = ...;
 stmt.setObject(3, Integer.valueOf(type), java.sql.Types.SMALLINT);
 ...
 statement: SELECT * FROM example WHERE smallint_column = 1
-</code></pre><p><code>java.sql.PreparedStatement.setString(int, String)</code> を使った場合、</p>
+</code></pre>
+<p><code>java.sql.PreparedStatement.setString(int, String)</code> を使った場合、</p>
 <pre><code>int type = ...;
 stmt.setString(1, Integer.toString(type));
 ...
 statement: SELECT * FROM example WHERE smallint_column = '1&amp;#x27;
-</code></pre><p>setShort や setObject で SQL の型を指定しても、実際に発行される SQL では型指定がないのでインデックスが使用されない。setString を使えば、引用符に囲まれ、インデックスが使われるようになる。</p>
+</code></pre>
+<p>setShort や setObject で SQL の型を指定しても、実際に発行される SQL では型指定がないのでインデックスが使用されない。setString を使えば、引用符に囲まれ、インデックスが使われるようになる。</p>
 <p>最後に、今回の検証に使用した環境は以下のとおり。</p>
 <ul>
 <li>PostgreSQL 7.4.7</li>

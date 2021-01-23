@@ -53,7 +53,8 @@
  * Bump up !IE to get to 13px equivalent
  */
 pre, code {font:115% monospace;*font-size:100%;}
-</code></pre><p>要するに、</p>
+</code></pre>
+<p>要するに、</p>
 <ul>
 <li>等幅フォント</li>
 <li>IE では <code>font-size:100%</code></li>
@@ -62,9 +63,11 @@ pre, code {font:115% monospace;*font-size:100%;}
 <p>ってことなんだが、このブログみたいにサンプルコードとかを pre 要素と code 要素でマークアップしている場合は IE 以外でフォントが大きくなってしまう（<code>font-size:115%</code> が二回適用される）。</p>
 <p>なので、別のスタイルシートにでも</p>
 <pre><code>pre &gt; code { font-size: 100%; }
-</code></pre><p>こういうのを追加しておくといい、と思った。ただ、実際にはインラインのコード片には code 要素を使っていて、これも <code>font-size:115%</code> とかされると行間がガタガタになってしまうので、単純に、</p>
+</code></pre>
+<p>こういうのを追加しておくといい、と思った。ただ、実際にはインラインのコード片には code 要素を使っていて、これも <code>font-size:115%</code> とかされると行間がガタガタになってしまうので、単純に、</p>
 <pre><code>code { font-size: 100%; }
-</code></pre><p>とかしてしまった方がいいかも（このへん、いつか整理しないと駄目だな&hellip;）。</p>
+</code></pre>
+<p>とかしてしまった方がいいかも（このへん、いつか整理しないと駄目だな&hellip;）。</p>
 <p>ちなみに、プロパティ名の先頭にアスタリスクをつける CSS ハックが、fonts.css の随所で使われているが、これについては以下のブログ記事を参照。</p>
 <blockquote>
 <ul>

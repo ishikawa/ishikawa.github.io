@@ -49,10 +49,12 @@
       <div class="content"><p>アクセスログのローテーションに使っているのは、<a href="http://httpd.apache.org/">Apache</a> に付属している <a href="http://httpd.apache.org/docs/2.2/ja/programs/rotatelogs.html"><code>rotatelogs</code></a> だ。わたしも多くの初心者と同じく、こいつにまつわる時差の問題に直面した。</p>
 <p>これは、<a href="http://httpd.apache.org/docs/2.2/ja/logs.html#piped">Apache のマニュアル</a>に書かれている <code>rotatelogs</code> の設定例。</p>
 <pre><code>CustomLog &quot;|/usr/local/apache/bin/rotatelogs /var/log/access_log 86400&quot; common
-</code></pre><p>しかし、このままだとログファイルに残されるアクセス時間が 9 時間ずれてしまう（<strong>日本の標準時間と比べて</strong>）。<code>rotatelogs</code> の第一引数に指定するローテーション秒数は UTC を基準にしているためだ。</p>
+</code></pre>
+<p>しかし、このままだとログファイルに残されるアクセス時間が 9 時間ずれてしまう（<strong>日本の標準時間と比べて</strong>）。<code>rotatelogs</code> の第一引数に指定するローテーション秒数は UTC を基準にしているためだ。</p>
 <p>UTC とのズレは第二引数に<strong>分</strong>で指定する。日本標準時間は UTC より 9 時間ずれているので、ここに <code>540</code> を指定すればよい。</p>
 <pre><code>CustomLog &quot;|/usr/local/apache/bin/rotatelogs /var/log/access_log 86400 540 &quot; common
-</code></pre></div>
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

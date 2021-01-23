@@ -15,7 +15,7 @@
       
       <guid>https://metareal.blog/2009/11/11/go-vim/</guid>
       <description>Io と並んで、自らの検索能力が試される名前の Go ですが、実用性と簡潔さを兼ねそなえた言語設計は好感がもてます。
-% cd $GOROOT % ls misc/vim/ go.vim % cp misc/vim/go.vim ~/.vim/syntax/ % cat &amp;amp;gt; ~/.vim/ftdetect/go.vim au BufRead,BufNewFile *.go set filetype=go 今日はここまで。</description>
+% cd $GOROOT % ls misc/vim/ go.vim % cp misc/vim/go.vim ~/.vim/syntax/ % cat &amp;amp;gt; ~/.vim/ftdetect/go.vim au BufRead,BufNewFile *.go set filetype=go  今日はここまで。</description>
     </item>
     
   </channel>

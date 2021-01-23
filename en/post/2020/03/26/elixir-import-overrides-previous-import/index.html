@@ -59,15 +59,16 @@
         </ul>
       </div>
       <div class="content"><p>Elixir has <a href="https://hexdocs.pm/elixir/Kernel.SpecialForms.html#import/2"><code>import/2</code></a> form that imports some symbols in the current scope from other modules. It overrides previously declared <code>import/2</code>. Let me show an example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">iex(<span style="color:#ae81ff">1</span>)<span style="color:#f92672">&gt;</span> <span style="color:#f92672">import</span> <span style="color:#a6e22e">List</span>
-<span style="color:#a6e22e">List</span>
-iex(<span style="color:#ae81ff">2</span>)<span style="color:#f92672">&gt;</span> first([<span style="color:#ae81ff">1</span>])
-<span style="color:#ae81ff">1</span>
-iex(<span style="color:#ae81ff">3</span>)<span style="color:#f92672">&gt;</span> <span style="color:#f92672">import</span> <span style="color:#a6e22e">List</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">flatten</span>: <span style="color:#ae81ff">1</span>]
-<span style="color:#a6e22e">List</span>
-iex(<span style="color:#ae81ff">4</span>)<span style="color:#f92672">&gt;</span> first([<span style="color:#ae81ff">1</span>])                     
-<span style="color:#f92672">**</span> (<span style="color:#a6e22e">CompileError</span>) iex:<span style="color:#ae81ff">4</span>: undefined function first<span style="color:#f92672">/</span><span style="color:#ae81ff">1</span>
-</code></pre></div><p>In the above example, you can see <code>List.first/1</code> which was available at <code>iex(3)</code> is undefined after <code>import List, only: [flatten: 1]</code> at <code>iex(4)</code>.</p>
+<pre><code class="language-elixir">iex(1)&gt; import List
+List
+iex(2)&gt; first([1])
+1
+iex(3)&gt; import List, only: [flatten: 1]
+List
+iex(4)&gt; first([1])                     
+** (CompileError) iex:4: undefined function first/1
+</code></pre>
+<p>In the above example, you can see <code>List.first/1</code> which was available at <code>iex(3)</code> is undefined after <code>import List, only: [flatten: 1]</code> at <code>iex(4)</code>.</p>
 <h2 id="postmortem">Postmortem</h2>
 <p>It&rsquo;s a real story in my company&rsquo;s production code. When I was writing a new Phoenix controller, I noticed that there were similar patterns in some controllers:</p>
 <ol>
@@ -76,45 +77,48 @@ iex(<span style="color:#ae81ff">4</span>)<span style="color:#f92672">&gt;</span>
 <li>Otherwise, return an error response.</li>
 </ol>
 <p>I happened to feel like being a good programmer, I began to write a macro to reduce duplicate code.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#66d9ef">defmodule</span> <span style="color:#a6e22e">AuthUserAction</span> <span style="color:#66d9ef">do</span>
-  <span style="color:#66d9ef">defmacro</span> __using__(_opts) <span style="color:#66d9ef">do</span>
-    <span style="color:#66d9ef">quote</span> <span style="color:#66d9ef">do</span>
-      <span style="color:#f92672">import</span> <span style="color:#a6e22e">Plug.Conn</span>
-      <span style="color:#f92672">import</span> <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
+<pre><code class="language-elixir">defmodule AuthUserAction do
+  defmacro __using__(_opts) do
+    quote do
+      import Plug.Conn
+      import Phoenix.Controller, only: [json: 2, action_name: 1]
 
-      <span style="color:#66d9ef">def</span> action(conn, _) <span style="color:#66d9ef">do</span>
-        with {<span style="color:#e6db74">:ok</span>, user_id} <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">.</span>fetch(conn<span style="color:#f92672">.</span>private, <span style="color:#e6db74">:user_id</span>),
-             %<span style="color:#a6e22e">User</span>{} <span style="color:#f92672">=</span> user <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Repo</span><span style="color:#f92672">.</span>get(<span style="color:#a6e22e">User</span>, user_id) <span style="color:#66d9ef">do</span>
-          apply(__MODULE__, action_name(conn), [conn, conn<span style="color:#f92672">.</span>params, user])
-        <span style="color:#66d9ef">else</span>
-          _ <span style="color:#f92672">-&gt;</span>
+      def action(conn, _) do
+        with {:ok, user_id} &lt;- Map.fetch(conn.private, :user_id),
+             %User{} = user &lt;- Repo.get(User, user_id) do
+          apply(__MODULE__, action_name(conn), [conn, conn.params, user])
+        else
+          _ -&gt;
             conn
-            <span style="color:#f92672">|&gt;</span> put_status(<span style="color:#e6db74">:forbidden</span>)
-            <span style="color:#f92672">|&gt;</span> json(%{
-              <span style="color:#e6db74">error</span>: <span style="color:#e6db74">&#34;forbidden&#34;</span>
+            |&gt; put_status(:forbidden)
+            |&gt; json(%{
+              error: &quot;forbidden&quot;
             })
-        <span style="color:#66d9ef">end</span>
-      <span style="color:#66d9ef">end</span>
-    <span style="color:#66d9ef">end</span>
-  <span style="color:#66d9ef">end</span>
-<span style="color:#66d9ef">end</span>
-</code></pre></div><p>Previously, a typical controller looks like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#f92672">use</span> <span style="color:#a6e22e">Phoenix.Controller</span>
+        end
+      end
+    end
+  end
+end
+</code></pre>
+<p>Previously, a typical controller looks like:</p>
+<pre><code class="language-elixir">use Phoenix.Controller
 
-<span style="color:#66d9ef">def</span> my_action(conn, params) <span style="color:#66d9ef">do</span>
-  with {<span style="color:#e6db74">:ok</span>, user_id} <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">.</span>fetch(conn<span style="color:#f92672">.</span>private, <span style="color:#e6db74">:user_id</span>),
-       %<span style="color:#a6e22e">User</span>{} <span style="color:#f92672">=</span> user <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Repo</span><span style="color:#f92672">.</span>get(<span style="color:#a6e22e">User</span>, user_id) <span style="color:#66d9ef">do</span>
+def my_action(conn, params) do
+  with {:ok, user_id} &lt;- Map.fetch(conn.private, :user_id),
+       %User{} = user &lt;- Repo.get(User, user_id) do
     ...
-  <span style="color:#66d9ef">end</span>
-<span style="color:#66d9ef">end</span>
-</code></pre></div><p>It&rsquo;s verbose and boring. With my new <code>AuthUserAction</code> module, it should turn to be simpler.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#f92672">use</span> <span style="color:#a6e22e">Phoenix.Controller</span>
-<span style="color:#f92672">use</span> <span style="color:#a6e22e">AuthUserAction</span>
+  end
+end
+</code></pre>
+<p>It&rsquo;s verbose and boring. With my new <code>AuthUserAction</code> module, it should turn to be simpler.</p>
+<pre><code class="language-elixir">use Phoenix.Controller
+use AuthUserAction
 
-<span style="color:#66d9ef">def</span> my_action(conn, params, user) <span style="color:#66d9ef">do</span>
+def my_action(conn, params, user) do
   ...
-<span style="color:#66d9ef">end</span>
-</code></pre></div><p>Great! Job done, right?</p>
+end
+</code></pre>
+<p>Great! Job done, right?</p>
 <h3 id="compiler-errors">Compiler Errors</h3>
 <p>But once I run <code>mix compile</code>, the compiler complained about <code>AuthUserAction</code>:</p>
 <pre><code>== Compilation error in file lib/my_app/controllers/my_controller.ex ==
@@ -122,52 +126,56 @@ iex(<span style="color:#ae81ff">4</span>)<span style="color:#f92672">&gt;</span>
     (elixir 1.10.1) src/elixir_locals.erl:114: anonymous fn/3 in :elixir_locals.ensure_no_undefined_local/3
     (stdlib 3.11.2) erl_eval.erl:680: :erl_eval.do_apply/6
     (elixir 1.10.1) lib/kernel/parallel_compiler.ex:233: anonymous fn/4 in Kernel.ParallelCompiler.spawn_workers/7
-</code></pre><p>The reason why the compiler couldn&rsquo;t find the function <code>put_new_layout/2</code> was <code>import/2</code> behavior I already described. The line below:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#f92672">import</span> <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
-</code></pre></div><p>This <code>import/2</code> overrode the function <code>put_new_layout/2</code> imported in <code>use Phoenix.Controller</code>.</p>
+</code></pre>
+<p>The reason why the compiler couldn&rsquo;t find the function <code>put_new_layout/2</code> was <code>import/2</code> behavior I already described. The line below:</p>
+<pre><code class="language-elixir">import Phoenix.Controller, only: [json: 2, action_name: 1]
+</code></pre>
+<p>This <code>import/2</code> overrode the function <code>put_new_layout/2</code> imported in <code>use Phoenix.Controller</code>.</p>
 <h3 id="how-to-solved-it">How to solved it?</h3>
 <p>Because <code>import/2</code> is lexical, so we moved it into the <code>action/2</code> function.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#66d9ef">defmodule</span> <span style="color:#a6e22e">AuthUserAction</span> <span style="color:#66d9ef">do</span>
-  <span style="color:#66d9ef">defmacro</span> __using__(_opts) <span style="color:#66d9ef">do</span>
-    <span style="color:#66d9ef">quote</span> <span style="color:#66d9ef">do</span>
-      <span style="color:#66d9ef">def</span> action(conn, _) <span style="color:#66d9ef">do</span>
-        <span style="color:#f92672">import</span> <span style="color:#a6e22e">Plug.Conn</span>
-        <span style="color:#f92672">import</span> <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
+<pre><code class="language-elixir">defmodule AuthUserAction do
+  defmacro __using__(_opts) do
+    quote do
+      def action(conn, _) do
+        import Plug.Conn
+        import Phoenix.Controller, only: [json: 2, action_name: 1]
 
         ...
-      <span style="color:#66d9ef">end</span>
-    <span style="color:#66d9ef">end</span>
-  <span style="color:#66d9ef">end</span>
-<span style="color:#66d9ef">end</span>
-</code></pre></div><p>Now the compiler successfully compiles our code.</p>
+      end
+    end
+  end
+end
+</code></pre>
+<p>Now the compiler successfully compiles our code.</p>
 <p>By the way, in the real production code, the most of implementation was moved into an ordinary function.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#66d9ef">defmodule</span> <span style="color:#a6e22e">AuthUserAction</span> <span style="color:#66d9ef">do</span>
-  <span style="color:#f92672">import</span> <span style="color:#a6e22e">Plug.Conn</span>
-  <span style="color:#f92672">import</span> <span style="color:#a6e22e">Phoenix.Controller</span>, <span style="color:#e6db74">only</span>: [<span style="color:#e6db74">json</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">action_name</span>: <span style="color:#ae81ff">1</span>]
+<pre><code class="language-elixir">defmodule AuthUserAction do
+  import Plug.Conn
+  import Phoenix.Controller, only: [json: 2, action_name: 1]
 
-  <span style="color:#66d9ef">defmacro</span> __using__(_opts) <span style="color:#66d9ef">do</span>
-    <span style="color:#66d9ef">quote</span> <span style="color:#66d9ef">do</span>
-      <span style="color:#66d9ef">def</span> action(conn, _) <span style="color:#66d9ef">do</span>
-        <span style="color:#a6e22e">AuthUserAction</span><span style="color:#f92672">.</span>action(conn, __MODULE__)
-      <span style="color:#66d9ef">end</span>
-    <span style="color:#66d9ef">end</span>
-  <span style="color:#66d9ef">end</span>
+  defmacro __using__(_opts) do
+    quote do
+      def action(conn, _) do
+        AuthUserAction.action(conn, __MODULE__)
+      end
+    end
+  end
 
-  <span style="color:#66d9ef">def</span> action(conn, module) <span style="color:#66d9ef">do</span>
-    with {<span style="color:#e6db74">:ok</span>, user_id} <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">.</span>fetch(conn<span style="color:#f92672">.</span>private, <span style="color:#e6db74">:user_id</span>),
-         %<span style="color:#a6e22e">User</span>{} <span style="color:#f92672">=</span> user <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">Repo</span><span style="color:#f92672">.</span>get(<span style="color:#a6e22e">User</span>, user_id) <span style="color:#66d9ef">do</span>
-      apply(module, action_name(conn), [conn, conn<span style="color:#f92672">.</span>params, user])
-    <span style="color:#66d9ef">else</span>
-      _ <span style="color:#f92672">-&gt;</span>
+  def action(conn, module) do
+    with {:ok, user_id} &lt;- Map.fetch(conn.private, :user_id),
+         %User{} = user &lt;- Repo.get(User, user_id) do
+      apply(module, action_name(conn), [conn, conn.params, user])
+    else
+      _ -&gt;
         conn
-        <span style="color:#f92672">|&gt;</span> put_status(<span style="color:#e6db74">:forbidden</span>)
-        <span style="color:#f92672">|&gt;</span> json(%{
-          <span style="color:#e6db74">error</span>: <span style="color:#e6db74">&#34;forbidden&#34;</span>
+        |&gt; put_status(:forbidden)
+        |&gt; json(%{
+          error: &quot;forbidden&quot;
         })
-    <span style="color:#66d9ef">end</span>
-  <span style="color:#66d9ef">end</span>
-<span style="color:#66d9ef">end</span>
-</code></pre></div></div>
+    end
+  end
+end
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

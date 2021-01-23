@@ -16,10 +16,10 @@
       <guid>https://metareal.blog/2008/03/03/how-to-install-hyper-estraier-with-the-source-package-on-mac-os-x/</guid>
       <description>Mac OS X に Hyper Estraier をソースパッケージからインストールしたときのメモ。
  Mac OS X 10.4.11 libiconv と libz はインストール済み /usr/lib/libiconv.2.2.0.dylib /usr/lib/libz.1.2.3.dylib  QDBM まずは QDBM をインストールする。バージョンは最新の 1.8.77 を選択した。
- % curl -LO http://qdbm.sourceforge.net/qdbm-1.8.77.tar.gz % tar xvzf qdbm-1.8.77.tar.gz % cd qdbm-1.8.77 Hyper Estraier のインストールガイドによると、zlib を有効化すると Hyper Estraier の作るインデックスが小さくなるそうなので有効にしておく。
- % ./configure --enable-zlib % make mac % make check-mac % sudo make install-mac /usr/local/lib/libqdbm.dylib にライブラリがインストールされる。
+ % curl -LO http://qdbm.sourceforge.net/qdbm-1.8.77.tar.gz % tar xvzf qdbm-1.8.77.tar.gz % cd qdbm-1.8.77  Hyper Estraier のインストールガイドによると、zlib を有効化すると Hyper Estraier の作るインデックスが小さくなるそうなので有効にしておく。
+ % ./configure --enable-zlib % make mac % make check-mac % sudo make install-mac  /usr/local/lib/libqdbm.dylib にライブラリがインストールされる。
 Hyper Estraier 最新のソースパッケージであるバージョン 1.4.13 を選択した。
- % curl -LO http://hyperestraier.sourceforge.net/hyperestraier-1.4.13.tar.gz % tar xvzf hyperestraier-1.</description>
+ % curl -LO http://hyperestraier.</description>
     </item>
     
   </channel>

@@ -56,20 +56,24 @@
 % tar xvzf Jinja2-2.1.1.tar.gz
 % cd Jinja2-2.1.1
 % sudo python setup.py install
-</code></pre><p>つづいて <a href="http://pypi.python.org/pypi/Sphinx/0.6.2">Sphinx 0.6.2</a></p>
+</code></pre>
+<p>つづいて <a href="http://pypi.python.org/pypi/Sphinx/0.6.2">Sphinx 0.6.2</a></p>
 <pre><code>% curl -LO http://pypi.python.org/packages/source/S/Sphinx/Sphinx-0.6.2.tar.gz
 % tar xvzf Sphinx-0.6.2.tar.gz
 % cd Sphinx-0.6.2
 % sudo python setup.py install
-</code></pre><h3 id="sphinxbuilder">sphinx.builder</h3>
+</code></pre>
+<h3 id="sphinxbuilder">sphinx.builder</h3>
 <p>Sphinx 0.6.2 では <code>sphinx.builder</code> が非推奨扱いになっていた (<a href="http://bitbucket.org/birkenfeld/sphinx/changeset/254e0ff435e8/">changeset:254e0ff435e8</a>)。</p>
 <pre><code>Running Sphinx v0.6.2
 docs/ja/source/../../sphinxext/__init__.py:1:
 DeprecationWarning: The sphinx.builder module is deprecated; please import builders from the respective sphinx.builders submodules.
-</code></pre><p>次のバージョンでは<a href="http://bitbucket.org/birkenfeld/sphinx/changeset/7da5ae249f61/">削除されている</a>ようだし、モジュール名を適切に直す。</p>
+</code></pre>
+<p>次のバージョンでは<a href="http://bitbucket.org/birkenfeld/sphinx/changeset/7da5ae249f61/">削除されている</a>ようだし、モジュール名を適切に直す。</p>
 <pre><code>-from sphinx.builder import StandaloneHTMLBuilder
 +from sphinx.builders.html import StandaloneHTMLBuilder
-</code></pre><h3 id="unicodedecodeerror">UnicodeDecodeError</h3>
+</code></pre>
+<h3 id="unicodedecodeerror">UnicodeDecodeError</h3>
 <p>今度は、日本語を含むドキュメントを変換しようとすると UnicodeDecodeError が発生する。</p>
 <pre><code>Exception occurred:
   File &quot;/Library/Python/2.5/site-packages/Sphinx-0.6.2-py2.5.egg/sphinx/themes/basic/layout.html&quot;, line 19, in block &quot;rootrellink&quot;
@@ -77,7 +81,8 @@ DeprecationWarning: The sphinx.builder module is deprecated; please import build
 UnicodeDecodeError: 'ascii' codec can't decode byte 0xe3 in position 8: ordinal not in range(128)
 The full traceback has been saved in /var/folders/Xg/XgsbIugsGWiYSnTBrMoebU+++TI/-Tmp-/sphinx-err-cfE9NN.log, if you want to report the issue to the author.
 Please also report this if it was a user error, so that a better error message can be provided next time.
-</code></pre><p>どうやら、<code>conf.py</code> に <strong>str</strong> で日本語を書いていたのが原因らしい。<strong>unicode</strong> リテラルで書き直したらうまくいった。<a href="http://jinja.pocoo.org/2/documentation/api#unicode">Jinja2 の Unicode 対応</a>が原因だろうか。</p>
+</code></pre>
+<p>どうやら、<code>conf.py</code> に <strong>str</strong> で日本語を書いていたのが原因らしい。<strong>unicode</strong> リテラルで書き直したらうまくいった。<a href="http://jinja.pocoo.org/2/documentation/api#unicode">Jinja2 の Unicode 対応</a>が原因だろうか。</p>
 </div>
     </article>
 

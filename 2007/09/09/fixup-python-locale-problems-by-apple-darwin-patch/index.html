@@ -76,14 +76,16 @@
 % curl -LO http://www.opensource.apple.com/darwinsource/tarballs/other/python-16.1.3.tar.gz
 % tar xvzf Python-2.5.1.tgz
 % tar xvzf python-16.1.3.tar.gz
-</code></pre><p>以下のようなシェルスクリプトでパッチを適用した。</p>
+</code></pre>
+<p>以下のようなシェルスクリプトでパッチを適用した。</p>
 <pre><code>PROJECT=Python-2.5.1
 FIX=python-16.1.3/fix
 echo ed - ${PROJECT}/Lib/locale.py \&lt; ${FIX}/locale.py.ed &amp;&amp; \
 ed - ${PROJECT}/Lib/locale.py &lt; ${FIX}/locale.py.ed &amp;&amp; \
 echo ed - ${PROJECT}/Modules/_localemodule.c \&lt; ${FIX}/_localemodule.c.ed &amp;&amp; \
 ed - ${PROJECT}/Modules/_localemodule.c &lt; ${FIX}/_localemodule.c.ed
-</code></pre><p>要するに、</p>
+</code></pre>
+<p>要するに、</p>
 <ul>
 <li><code>python-16.1.3/fix/locale.py.ed</code></li>
 <li><code>python-16.1.3/fix/_localemodule.c.ed</code></li>

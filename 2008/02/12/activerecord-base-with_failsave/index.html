@@ -63,12 +63,14 @@
     alias_method :create_or_update, :create_or_update_without_fail
   end
 end
-</code></pre><p>テストコードで以下のように使うのが目的</p>
+</code></pre>
+<p>テストコードで以下のように使うのが目的</p>
 <pre><code>assert_nothing_raised{ model.save! }
 ActiveRecord::Base.with_failsave do
   assert_raise(ActiveRecord::RecordNotSaved){ model.save! }
 end
-</code></pre><p>これで例外処理コードのカバレッジも稼げるよ！</p>
+</code></pre>
+<p>これで例外処理コードのカバレッジも稼げるよ！</p>
 </div>
     </article>
 

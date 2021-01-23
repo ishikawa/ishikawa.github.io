@@ -59,13 +59,15 @@
 % curl -LO http://qdbm.sourceforge.net/qdbm-1.8.77.tar.gz
 % tar xvzf qdbm-1.8.77.tar.gz
 % cd qdbm-1.8.77
-</code></pre><p><a href="http://hyperestraier.sourceforge.net/intro-ja.html#installation">Hyper Estraier のインストールガイド</a>によると、zlib を有効化すると Hyper Estraier の作るインデックスが小さくなるそうなので有効にしておく。</p>
+</code></pre>
+<p><a href="http://hyperestraier.sourceforge.net/intro-ja.html#installation">Hyper Estraier のインストールガイド</a>によると、zlib を有効化すると Hyper Estraier の作るインデックスが小さくなるそうなので有効にしておく。</p>
 <pre><code>
 % ./configure --enable-zlib
 % make mac
 % make check-mac
 % sudo make install-mac
-</code></pre><p><code>/usr/local/lib/libqdbm.dylib</code> にライブラリがインストールされる。</p>
+</code></pre>
+<p><code>/usr/local/lib/libqdbm.dylib</code> にライブラリがインストールされる。</p>
 <h3 id="hyper-estraier">Hyper Estraier</h3>
 <p>最新のソースパッケージであるバージョン 1.4.13 を選択した。</p>
 <pre><code>
@@ -76,7 +78,8 @@
 % make mac
 % make check-mac
 % sudo make install-mac
-</code></pre><h3 id="動作確認">動作確認</h3>
+</code></pre>
+<h3 id="動作確認">動作確認</h3>
 <p>動作確認として、Hyper Estraier のソースパッケージに含まれるドキュメントをインデックス化してみよう。</p>
 <pre><code>
 % mkdir test
@@ -89,7 +92,8 @@ estcmd: INFO: flushing index words: name=estraier.index dnum=205 wnum=1 fsiz=721
 estcmd: INFO: flushing index words: name=estraier.index dnum=205 wnum=10001 fsiz=7486161 crnum=2376 csiz=214737 dknum=0
 estcmd: INFO: closing: name=estraier.index dnum=205 wnum=12377 fsiz=7643824 crnum=0 csiz=0 dknum=0
 estcmd: INFO: finished successfully: elapsed time: 0h 0m 1s
-</code></pre><p>特に問題なくインデックスを作成できたようだ。検索はどうだろうか。</p>
+</code></pre>
+<p>特に問題なくインデックスを作成できたようだ。検索はどうだろうか。</p>
 <pre><code>
 % estcmd search -vu estraier.index &quot;Hyper Estraier&quot;
 --------[13A09C711ADAF69A]--------
@@ -101,7 +105,8 @@ TIME    0.001225
 DOCNUM  205
 WORDNUM 12377
 VIEW    URI
-</code></pre><pre><code>
+</code></pre>
+<pre><code>
 --------[13A09C711ADAF69A]--------
 3       file:///Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/index.html
 19      file:///Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/javanativeapi/index-all.html
@@ -114,7 +119,8 @@ VIEW    URI
 4       file:///Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/index.ja.html
 2       file:///Users/ishikawa/Developer/System/src/estraier/hyperestraier-1.4.13/doc/cguide-ja.html
 --------[13A09C711ADAF69A]--------:END
-</code></pre><p><code>estcmd get</code> で文書の情報を取得することも出来る。</p>
+</code></pre>
+<p><code>estcmd get</code> で文書の情報を取得することも出来る。</p>
 <pre><code>
 % estcmd get estraier.index ../hyperestraier-1.4.13/doc/index.ja.html
 @author=Mikio Hirabayashi
@@ -125,7 +131,8 @@ VIEW    URI
 @size=13374
 @title=全文検索システム Hyper Estraier
 ...
-</code></pre></div>
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

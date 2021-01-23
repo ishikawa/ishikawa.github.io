@@ -52,13 +52,15 @@
       </div>
       <div class="content"><p><a href="http://www.sqlite.org/">SQLite</a> の <code>vacuum</code> コマンドで Mail.app を高速化する。ターミナルで、</p>
 <pre><code>% cd ~/Library/Mail/; sqlite3 Envelope\ Index &quot;vacuum;&quot;
-</code></pre><p>Automator で自動化する <a href="http://automatorworld.com/archives/mail-vacuum/">Mail Vacuum</a> なんてのもある。</p>
+</code></pre>
+<p>Automator で自動化する <a href="http://automatorworld.com/archives/mail-vacuum/">Mail Vacuum</a> なんてのもある。</p>
 <p>個人的には、以下のような AppleScript を、</p>
 <pre><code>tell application &quot;Terminal&quot;
   activate
   do script &quot;cd ~/Library/Mail/; sqlite3 Envelope\\ Index \&quot;vacuum;\&quot;&quot;
 end tell
-</code></pre><p><code>Optimize Mail.app.scpt</code> として保存し、QuickSilver から実行できるようにしている。</p>
+</code></pre>
+<p><code>Optimize Mail.app.scpt</code> として保存し、QuickSilver から実行できるようにしている。</p>
 </div>
     </article>
 

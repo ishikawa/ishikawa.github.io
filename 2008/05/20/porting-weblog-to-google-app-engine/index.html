@@ -74,7 +74,8 @@
     except ValueError, error:
         self.error(error)
     self.set_defaults(**config_settings.__dict__)
-</code></pre><p>この部分は潔くコメントアウトした。</p>
+</code></pre>
+<p>この部分は潔くコメントアウトした。</p>
 <h3 id="検索機能">検索機能</h3>
 <p>モデルクラスで db.Model ではなく、そのサブクラスである google.appengine.ext.search.SearchableModel を継承することで、モデルの検索ができるようになるようだ（<a href="http://groups.google.com/group/google-appengine/browse_thread/thread/ba4a4a4ccefb96c5/0e3f0ab63c4c8afd">Indexing Large Chunks of Text for Search - Google App Engine | Google グループ</a> を参照）。「検索機能を備えたクラスを継承する」というだけでもダサいのに、日本語での使用とか不安なので、検索機能はとりあえず見送った。</p>
 <h3 id="デプロイして直面した問題">デプロイして直面した問題</h3>
@@ -93,7 +94,8 @@
 - url: (.*?)/robots.txt
   static_files: public/robots.txt
   upload: public/robots\.txt
-</code></pre><h3 id="gae-にしてよかったこと不満">GAE にしてよかったこと・不満</h3>
+</code></pre>
+<h3 id="gae-にしてよかったこと不満">GAE にしてよかったこと・不満</h3>
 <p>最後に感想でも。</p>
 <ul>
 <li>デプロイも管理も楽</li>

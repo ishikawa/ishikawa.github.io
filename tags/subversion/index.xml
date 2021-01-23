@@ -17,8 +17,8 @@
       <description>Xcode の SCM 連携機能は、すくなくとも Eclipse なんかに比べると貧弱で、実作業ではコマンドラインで svn を使っている。
 それでも一度は試しておきたい、と試してみたときの、あまり一般的ではないトラブルシューティングを覚え書き。
 svn+ssh で 22 番以外のポートを使いたいとき これは別に Xcode に限った話じゃないけど、svn+ssh プロトコルで 22 番以外のポートを使う場合は、環境変数 SVN_SSH で ssh プログラムの引数に指定します。
-export SVN_SSH=&amp;quot;ssh -p 12345&amp;quot; 環境変数を export したターミナルで、そのまま .xcodeproj を開けばいいです。
-open ./Example.xcodeproj それでも、パスフレーズ入力できないとき 上の方法で Xcode 起動して、SCM を有効にしても、パスフレーズの入力画面などがでず、Permission denied で怒られてしまうことがある &amp;hellip; というか、僕がまさにそれ。
+export SVN_SSH=&amp;quot;ssh -p 12345&amp;quot;  環境変数を export したターミナルで、そのまま .xcodeproj を開けばいいです。
+open ./Example.xcodeproj  それでも、パスフレーズ入力できないとき 上の方法で Xcode 起動して、SCM を有効にしても、パスフレーズの入力画面などがでず、Permission denied で怒られてしまうことがある &amp;hellip; というか、僕がまさにそれ。
 このときは、SSHKeychain を使って、パスフレーズ入力を横取りすることで動くようになった。</description>
     </item>
     
@@ -30,11 +30,11 @@ open ./Example.xcodeproj それでも、パスフレーズ入力できないと�
       <guid>https://metareal.blog/2007/06/17/subversion-primer-for-xcode-projects/</guid>
       <description>Apple の提供する開発環境 Xcode で作成したプロジェクトを Subversion 管理する手順。基本的に「Rails のプロジェクトを Subversion で管理する」の Xcode 版。
 リポジトリの場所を決める まずは、リポジトリのルート URL を決めて、これを環境変数に設定しよう。以降はこの変数を使うことで、長々とした URL をタイプする手間が省ける。
-% SVN_REPO=svn+ssh://svn.example.com/projects/Example もちろん、実際の URL は自分で使うものに置き換えてほしい。
+% SVN_REPO=svn+ssh://svn.example.com/projects/Example  もちろん、実際の URL は自分で使うものに置き換えてほしい。
 空のプロジェクトをコミットする ここで、いきなり Xcode を起動して新規プロジェクトをつくるのではなく、まずは、プロジェクトのディレクトリ・レイアウトを構成した、空のプロジェクトをコミットする。
 Subversion 管理するプロジェクトのディレクトリ・レイアウトといえば、trunk branches tags が王道なので、これに合わせておくのがいいだろう。たとえ、開発者があなたひとりで、職場の数人しか使わないようなアプリケーションを開発しており、ブランチなんか作る予定がないのだとしても。
-% mkdir tmp % cd tmp % mkdir trunk tags branches % svn import ./ ${SVN_REPO} -m &amp;quot;initial import&amp;quot; Adding trunk Adding branches Adding tags Committed revision 20. コミットしたら、このディレクトリは必要ないので削除しても大丈夫だ。
-% cd .. % rm -rf tmp Xcode のプロジェクトにチェックアウト そうして、コミットした空のプロジェクトを Xocde のプロジェクト・ディレクトリにチェックアウトすれば、Subversion 管理された Xcode プロジェクトが出来上がる。この方法なら、すでに開発中のプロジェクトにも適用しやすい。</description>
+% mkdir tmp % cd tmp % mkdir trunk tags branches % svn import ./ ${SVN_REPO} -m &amp;quot;initial import&amp;quot; Adding trunk Adding branches Adding tags Committed revision 20.  コミットしたら、このディレクトリは必要ないので削除しても大丈夫だ。
+% cd .. % rm -rf tmp  Xcode のプロジェクトにチェックアウト そうして、コミットした空のプロジェクトを Xocde のプロジェクト・ディレクトリにチェックアウトすれば、Subversion 管理された Xcode プロジェクトが出来上がる。この方法なら、すでに開発中のプロジェクトにも適用しやすい。</description>
     </item>
     
     <item>
@@ -45,9 +45,9 @@ Subversion 管理するプロジェクトのディレクトリ・レイアウト
       <guid>https://metareal.blog/2007/01/11/subversion-primer-for-eclipse-java-projects/</guid>
       <description>Eclipse の Java プロジェクトを Subversion 管理するときの手順を、メモも兼ねて残しておこう。ちなみに、Eclipse での Subversion サポートに使っているのは Subclipse プラグイン。
 以下の $REPO 変数はプロジェクトを作成する、Subversion レポジトリの URL とする（たとえば、svn+ssh://svn.metareal.org/path/to/repo/project/）。
-% mkdir tmp % cd tmp % mkdir trunk branches tags % svn import -m &amp;quot;initial import&amp;quot; . $REPO % cd ../ % rm -rf tmp Eclipse で新規 Java プロジェクトを作成する。
+% mkdir tmp % cd tmp % mkdir trunk branches tags % svn import -m &amp;quot;initial import&amp;quot; . $REPO % cd ../ % rm -rf tmp  Eclipse で新規 Java プロジェクトを作成する。
 そして、新規作成されたプロジェクトのディレクトリに、Subversion レポジトリからチェックアウト。
-% cd /path/to/workspace/project/ % svn co $REPO/trunk . いつも使っているディレクトリレイアウトを作成して必要なものを svn add しておく。
+% cd /path/to/workspace/project/ % svn co $REPO/trunk .  いつも使っているディレクトリレイアウトを作成して必要なものを svn add しておく。
 % mkdir -p build/classes build/test-classes build/reports % mkdir -p docs/api % mkdir -p src/java src/test % svn add .</description>
     </item>
     
@@ -60,8 +60,8 @@ Subversion 管理するプロジェクトのディレクトリ・レイアウト
       <description>SWIG によるスクリプト言語サポートつきで Subversion をインストールしたときのメモ。
 必要なファイルは以下の通り。
  swig-1.3.31.tar.gz subversion-1.4.2.tar.bz2 subversion-deps-1.4.2.tar.bz2  まずは SWIG をインストールする。Ruby はシステム標準のものとは別に 1.8.5-p2 をインストールしていたので、configure でパスを指定してある。
-% curl --location -O http://prdownloads.sourceforge.net/swig/swig-1.3.31.tar.gz % tar xvzf swig-1.3.31.tar.gz % cd swig-1.3.31 % ./configure --with-ruby=/usr/local/bin/ruby % make % sudo make install Subversion は subversion-1.4.2.tar.bz2 と subversion-deps-1.4.2.tar.bz2 解凍すると、どちらも subversion-1.4.2 というディレクトリに展開されるので便利だ。
-% curl -O http://subversion.tigris.org/downloads/subversion-1.4.2.tar.bz2 % curl -O http://subversion.tigris.org/downloads/subversion-deps-1.4.2.tar.bz2 % tar xvjf subversion-1.4.2.tar.bz2 % tar xvjf subversion-deps-1.4.2.tar.bz2 configure で、SWIG バインディングを有効にする言語と SWIG のパスを指定する。--enable-swig-bindings には perl や python のように個別指定も可能。</description>
+% curl --location -O http://prdownloads.sourceforge.net/swig/swig-1.3.31.tar.gz % tar xvzf swig-1.3.31.tar.gz % cd swig-1.3.31 % ./configure --with-ruby=/usr/local/bin/ruby % make % sudo make install  Subversion は subversion-1.4.2.tar.bz2 と subversion-deps-1.4.2.tar.bz2 解凍すると、どちらも subversion-1.4.2 というディレクトリに展開されるので便利だ。
+% curl -O http://subversion.tigris.org/downloads/subversion-1.4.2.tar.bz2 % curl -O http://subversion.tigris.org/downloads/subversion-deps-1.4.2.tar.bz2 % tar xvjf subversion-1.4.2.tar.bz2 % tar xvjf subversion-deps-1.4.2.tar.bz2  configure で、SWIG バインディングを有効にする言語と SWIG のパスを指定する。--enable-swig-bindings には perl や python のように個別指定も可能。</description>
     </item>
     
     <item>
@@ -74,7 +74,7 @@ Subversion 管理するプロジェクトのディレクトリ・レイアウト
 ネタはその日のうちに書いておけ、という教訓。
 もっとも、インストールや設定自体は、ほぼ INSTALL ファイルの手順どおりでいけたので、ブログに書くまでもない気がする。気をつける部分といえば、セキュリティ的な理由から、Apache の DocumentRoot 以下にはインストールしないことくらいだろうか（INSTALL ファイルにも書いてあるけど）。
 これだけじゃなんなので、httpd.conf も載せておく（パスなどは変えてある）。要点は：
- mod_python で動かしている 付属の .htaccess は使っていない /viewvc でアクセスできるように ScriptAlias を使う  LoadModule python_module modules/mod_python.so &amp;lt;VirtualHost *:80&amp;gt; ServerName svn.metareal.org DocumentRoot /sites/viewvc ScriptAlias /viewvc /sites/viewvc/viewvc.py &amp;lt;Directory &amp;quot;/sites/viewvc&amp;quot;&amp;gt; DirectoryIndex viewvc.py AddHandler python-program .py PythonHandler handler PythonDebug On AllowOverride None Order allow,deny Allow from all &amp;lt;/Directory&amp;gt; &amp;lt;/VirtualHost&amp;gt; </description>
+ mod_python で動かしている 付属の .htaccess は使っていない /viewvc でアクセスできるように ScriptAlias を使う  LoadModule python_module modules/mod_python.so &amp;lt;VirtualHost *:80&amp;gt; ServerName svn.metareal.org DocumentRoot /sites/viewvc ScriptAlias /viewvc /sites/viewvc/viewvc.py &amp;lt;Directory &amp;quot;/sites/viewvc&amp;quot;&amp;gt; DirectoryIndex viewvc.py AddHandler python-program .py PythonHandler handler PythonDebug On AllowOverride None Order allow,deny Allow from all &amp;lt;/Directory&amp;gt; &amp;lt;/VirtualHost&amp;gt;  </description>
     </item>
     
     <item>

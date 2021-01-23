@@ -18,7 +18,7 @@
 JSON is not as safe as people think it is - Joe Walker&amp;rsquo;s Blog http://getahead.org/blog/joe/2007/03/05/ json_is_not_as_safe_as_people_think_it_is.html
 script による CSRF と JavaScript のハック的手法を組み合わせることで、たとえログイン必須にしている JSON データであっても盗まれるかもしれない、という話。
 たとえば、
-&amp;lt;script type=&#39;text/javascript&#39; src=&#39;http://example.com/jsonservice&#39;&amp;gt;&amp;lt;/script&amp;gt; という script で JSON を読み込めたとする。
+&amp;lt;script type=&#39;text/javascript&#39; src=&#39;http://example.com/jsonservice&#39;&amp;gt;&amp;lt;/script&amp;gt;  という script で JSON を読み込めたとする。
 このままだと読み込んだ JSON のデータが評価されるだけで、どんなコードも実行されないのでそれほど問題にはならない （評価された JSON のデータはどんな変数にも代入されてないので参照できない）。
 しかし、元記事に紹介されている方法で、たとえば Array のコンストラクタを再定義してやると、JSON が評価されるときに 任意のコード（どこかにデータを送信するなど）を実行できてしまう。</description>
     </item>

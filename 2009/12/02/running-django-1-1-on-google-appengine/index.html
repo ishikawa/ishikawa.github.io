@@ -67,7 +67,8 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
 from google.appengine.dist import use_library
 use_library('django', '1.1')
-</code></pre><p>これまで開発者が各自行っていた <code>sys.path</code> の調整は <code>use_library</code> 関数がやってくれる。</p>
+</code></pre>
+<p>これまで開発者が各自行っていた <code>sys.path</code> の調整は <code>use_library</code> 関数がやってくれる。</p>
 <p>更に嬉しいことに、Django のコードをアップロードする必要もなくなった。Google AppEngine のサーバには Django 1.0/1.1 がインストールされている。ただし、SDK には Django 0.96 しか添付されていないので、1.0/1.1 を使う場合は、あらかじめローカルのマシンに Django 1.0/1.1 をインストールしておこう。</p>
 <h3 id="django-のバージョンと-dos-攻撃可能な脆弱性について">Django のバージョンと DoS 攻撃可能な脆弱性について</h3>
 <p>なお、実際に有効になる Django の詳細なバージョンは、本記事執筆時点の 2009 年 11 月で以下のようになっている（<code>django.VERSION</code> で調べた）。</p>

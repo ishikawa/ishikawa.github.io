@@ -18,7 +18,7 @@
 この方法でデータベースを VACUUM すると、Mail.app で問題が起こるようだ。Mail.app を起動中に cron が実行されるとメールを送信できない、下書き保存できない、などの問題があった。というわけで、この方法は使わないか、問題が起こらないように改良する必要がある。
 「Mail.app を vacuum して高速化」や「iGTD も vacuum すると速くなる」でも書いたように、Mac のアプリケーションのいくつかは、ターミナルから VACUUM ANALYZE という SQL を実行することで高速に動作するようになる。
 しかし、このコマンドを毎回手動で実行するのは面倒なので、自動化することにした。自動化、といっても大層なものではなく crontab にコマンドを書いておき、毎日実行されるようにしただけ。
-% **crontab -e** 0 15 * * * sqlite3 ~/Library/Application\ Support/iGTD/iGTD.sql &amp;quot;vacuum analyze&amp;quot; &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 0 15 * * * sqlite3 ~/Library/Mail/Envelope\ Index &amp;quot;vacuum analyze&amp;quot; &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 sqlite コマンドを直接書いているので見苦しいが、別スクリプトにした場合の管理を考えると面倒だった。ここでは標準エラー出力を /dev/null に捨てている（ただし、アプリケーションがデータベースをロックしていると、VACUUM ANALYZE は &amp;ldquo;database is locked&amp;rdquo; というエラーで即座に終了する）。</description>
+% **crontab -e** 0 15 * * * sqlite3 ~/Library/Application\ Support/iGTD/iGTD.sql &amp;quot;vacuum analyze&amp;quot; &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 0 15 * * * sqlite3 ~/Library/Mail/Envelope\ Index &amp;quot;vacuum analyze&amp;quot; &amp;gt; /dev/null 2&amp;gt;&amp;amp;1  sqlite コマンドを直接書いているので見苦しいが、別スクリプトにした場合の管理を考えると面倒だった。ここでは標準エラー出力を /dev/null に捨てている（ただし、アプリケーションがデータベースをロックしていると、VACUUM ANALYZE は &amp;ldquo;database is locked&amp;rdquo; というエラーで即座に終了する）。</description>
     </item>
     
     <item>
@@ -29,7 +29,7 @@
       <guid>https://metareal.blog/2007/08/30/setup-simple-http-server-with-mongrel/</guid>
       <description>先日、やっつけスクリプトのサーバ部分に Mongrel を使ってみたんだけど、Rails で使う以外だとドキュメント少ないのね。
 とりあえず、Ruby の Webrick でお手軽 HTTP サーバの Mongrel 版はこんな感じ。
-#!/usr/local/bin/ruby require &#39;rubygems&#39; require &#39;mongrel&#39; def mongrel(config = {}) server = Mongrel::HttpServer.new(&#39;localhost&#39;, config[:Port]) server.register(&amp;quot;/&amp;quot;, Mongrel::DirHandler.new(config[:DocumentRoot])) server.run.join end mongrel :DocumentRoot =&amp;gt; &#39;/Users/ishikawa/Sites/spotwide&#39;, :Port =&amp;gt; 5001 まあ、これくらいなら API ドキュメント眺めたら書ける（というか載ってる）けど。</description>
+#!/usr/local/bin/ruby require &#39;rubygems&#39; require &#39;mongrel&#39; def mongrel(config = {}) server = Mongrel::HttpServer.new(&#39;localhost&#39;, config[:Port]) server.register(&amp;quot;/&amp;quot;, Mongrel::DirHandler.new(config[:DocumentRoot])) server.run.join end mongrel :DocumentRoot =&amp;gt; &#39;/Users/ishikawa/Sites/spotwide&#39;, :Port =&amp;gt; 5001  まあ、これくらいなら API ドキュメント眺めたら書ける（というか載ってる）けど。</description>
     </item>
     
     <item>
@@ -40,12 +40,11 @@
       <guid>https://metareal.blog/2007/08/25/setup-simple-http-server-with-webrick/</guid>
       <description>サイトの HTML や CSS を自分のパソコン上で編集するとき、不便に感じるのは画像や外部 CSS ファイルの指定方法の違いだ。
 サイト上の HTML や CSS では、たとえば、
-&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/stylesheets/application.css&amp;quot; type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot; charset=&amp;quot;utf-8&amp;quot; /&amp;gt; とか、
-div#header div.logo h1 { width: 250px; height: 50px; background: url(/images/logo.png) no-repeat center center; } になっているのに、自分のパソコン上で編集するときには、これらを
-&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;./stylesheets/application.css&amp;quot; type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot; charset=&amp;quot;utf-8&amp;quot; /&amp;gt; ... div#header div.logo h1 { width: 250px; height: 50px; background: url(./images/logo.png) no-repeat center center; } いちいち、相対パスに変換しなくてはいけないのだ。面倒だし、誤って別の箇所を削ってしまったり、一部だけ変更し忘れるなんてことがないとも限らない。
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/stylesheets/application.css&amp;quot; type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot; charset=&amp;quot;utf-8&amp;quot; /&amp;gt;  とか、
+div#header div.logo h1 { width: 250px; height: 50px; background: url(/images/logo.png) no-repeat center center; }  になっているのに、自分のパソコン上で編集するときには、これらを
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;./stylesheets/application.css&amp;quot; type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot; charset=&amp;quot;utf-8&amp;quot; /&amp;gt; ... div#header div.logo h1 { width: 250px; height: 50px; background: url(./images/logo.png) no-repeat center center; }  いちいち、相対パスに変換しなくてはいけないのだ。面倒だし、誤って別の箇所を削ってしまったり、一部だけ変更し忘れるなんてことがないとも限らない。
 変更しなくても済むように こういうときは、ローカルに HTTP サーバを用意すると便利だ。
-ローカルに HTTP サーバを用意して、そこで編集中のサイトを表示させるようにすれば、画像や外部 CSS ファイルのパスを実際のサイトのものから書き換えなくても、正常に表示できるようになる。
-そして、Mac には Ruby が標準添付されているので、簡単に HTTP サーバを用意することができる。</description>
+ローカルに HTTP サーバを用意して、そこで編集中のサイトを表示させるようにすれば、画像や外部 CSS ファイルのパスを実際のサイトのものから書き換えなくても、正常に表示できるようになる。</description>
     </item>
     
     <item>
@@ -55,9 +54,9 @@ div#header div.logo h1 { width: 250px; height: 50px; background: url(/images/log
       
       <guid>https://metareal.blog/2007/08/23/optimize-the-apple-mail-app-database/</guid>
       <description>SQLite の vacuum コマンドで Mail.app を高速化する。ターミナルで、
-% cd ~/Library/Mail/; sqlite3 Envelope\ Index &amp;quot;vacuum;&amp;quot; Automator で自動化する Mail Vacuum なんてのもある。
+% cd ~/Library/Mail/; sqlite3 Envelope\ Index &amp;quot;vacuum;&amp;quot;  Automator で自動化する Mail Vacuum なんてのもある。
 個人的には、以下のような AppleScript を、
-tell application &amp;quot;Terminal&amp;quot; activate do script &amp;quot;cd ~/Library/Mail/; sqlite3 Envelope\\ Index \&amp;quot;vacuum;\&amp;quot;&amp;quot; end tell Optimize Mail.app.scpt として保存し、QuickSilver から実行できるようにしている。</description>
+tell application &amp;quot;Terminal&amp;quot; activate do script &amp;quot;cd ~/Library/Mail/; sqlite3 Envelope\\ Index \&amp;quot;vacuum;\&amp;quot;&amp;quot; end tell  Optimize Mail.app.scpt として保存し、QuickSilver から実行できるようにしている。</description>
     </item>
     
     <item>
@@ -67,7 +66,7 @@ tell application &amp;quot;Terminal&amp;quot; activate do script &amp;quot;cd ~/
       
       <guid>https://metareal.blog/2007/08/20/how-does-rsync-specify-ssh-port-in-command-line/</guid>
       <description>rsync で ssh のポートを指定するには -e または --rsh オプションを使う。
-rsync **-e &amp;quot;ssh -p 2234&amp;quot;** ... </description>
+rsync **-e &amp;quot;ssh -p 2234&amp;quot;** ...  </description>
     </item>
     
     <item>
@@ -83,7 +82,7 @@ rsync **-e &amp;quot;ssh -p 2234&amp;quot;** ... </description>
 
 クリックしたリンクのフォントサイズが小さくなるのだ。
 考えられる原因とか対策  YUI の Reset CSS や Fonts CSS を使っているせいかも？ てか、いま気づいたけど、YUI に Base CSS なんて追加されたのね（他にも色々増えたようだ） いやいや、メイリオとか日本語の場合だけ駄目とか 検証する気力がない  とりあえず、強制的に font-size を指定してやることで、この問題は起きなくなるようだ。
-* {font-size:100%;} このブログの場合、上記 CSS を reset.css の最後に追加した。
+* {font-size:100%;}  このブログの場合、上記 CSS を reset.css の最後に追加した。
 結論 CSS ハックも可能な IE って面白いですね。</description>
     </item>
     
@@ -94,7 +93,7 @@ rsync **-e &amp;quot;ssh -p 2234&amp;quot;** ... </description>
       
       <guid>https://metareal.blog/2007/05/31/open-current-directory-in-finder/</guid>
       <description>Terminal で作業中のディレクトリを Finder で表示させたいときがある。そういうときは、
-% open . </description>
+% open .  </description>
     </item>
     
     <item>

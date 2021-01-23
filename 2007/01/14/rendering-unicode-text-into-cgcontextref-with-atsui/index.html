@@ -55,7 +55,8 @@ ATSUAttributeTag tags[] = { kATSUCGContextTag };
 ByteCount sizes[] = { sizeof(CGContextRef) };
 ATSUAttributeValuePtr values[] = { **&amp;context** };
 ATSUSetLayoutControls(layout, 1, tags, sizes, values);
-</code></pre><p>以下のコードでは、<code>NSView</code> の <code>drawRect:</code> で Hello, World を描画している。</p>
+</code></pre>
+<p>以下のコードでは、<code>NSView</code> の <code>drawRect:</code> で Hello, World を描画している。</p>
 <pre><code>- (void) drawRect : (NSRect) rect
 {
   NSString *s = @&quot;Hello, World!&quot;;
@@ -104,7 +105,8 @@ ATSUSetLayoutControls(layout, 1, tags, sizes, values);
   ATSUDisposeStyle(style);
   ATSUDisposeTextLayout(layout);
 }
-</code></pre></div>
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

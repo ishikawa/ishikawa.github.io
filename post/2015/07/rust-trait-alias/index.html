@@ -60,41 +60,45 @@
       </div>
       <div class="content"><p><em>(2020-04-04) Trait alias は <a href="https://github.com/rust-lang/rfcs/blob/master/text/1733-trait-alias.md">RFC 1733</a> で導入された。</em></p>
 <p><a href="http://www.rust-lang.org">Rust</a> の <a href="https://doc.rust-lang.org/book/traits.html">Traits</a> による制約は <a href="https://doc.rust-lang.org/stable/book/associated-types.html">Associated Types</a> や複数の Traits を <code>+</code> で指定したりすると、どんどん長くなってしまう。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">A</span><span style="color:#f92672">&lt;</span>T: Iterator<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">=</span>char<span style="color:#f92672">&gt;&gt;</span> {
+<pre><code class="language-rust">struct A&lt;T: Iterator&lt;Item=char&gt;&gt; {
     ...
 }
-</code></pre></div><p>通常の型には <a href="https://doc.rust-lang.org/book/type-aliases.html"><code>type</code> キーワード</a>による別名づけの手段が用意されているが、これは Traits には使えない。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">CharIterator</span> <span style="color:#f92672">=</span> Iterator<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">=</span>char<span style="color:#f92672">&gt;</span>;
+</code></pre>
+<p>通常の型には <a href="https://doc.rust-lang.org/book/type-aliases.html"><code>type</code> キーワード</a>による別名づけの手段が用意されているが、これは Traits には使えない。</p>
+<pre><code class="language-rust">type CharIterator = Iterator&lt;Item=char&gt;;
 
-<span style="color:#75715e">// ERROR: note: `type` aliases cannot be used for traits
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">A</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">CharIterator</span><span style="color:#f92672">&gt;</span> {
+// ERROR: note: `type` aliases cannot be used for traits
+struct A&lt;T: CharIterator&gt; {
     ...
 }
-</code></pre></div><p>過去に提案はあったが却下されたようだ。</p>
+</code></pre>
+<p>過去に提案はあったが却下されたようだ。</p>
 <p><a href="https://github.com/rust-lang/rust/issues/8634">Allow <code>type</code> to create an alias for several trait bounds · Issue #8634 · rust-lang/rust</a></p>
 <ol>
 <li>別名を与えたい Trait を継承した空の Trait をつくればいい</li>
 <li>言語に新しい機能をつけくわえるほどの価値はなさそう</li>
 </ol>
 <p>たしかに、空の Trait をつくることで似たような効果を得ることはできる。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">trait</span> CharIterator: Iterator<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">=</span>char<span style="color:#f92672">&gt;</span> {}
+<pre><code class="language-rust">trait CharIterator: Iterator&lt;Item=char&gt; {}
 
-<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">A</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">CharIterator</span><span style="color:#f92672">&gt;</span> {
+struct A&lt;T: CharIterator&gt; {
     ...
 }
-</code></pre></div><p>ただし、既存の <code>Iterator&lt;Item=char&gt;</code> を実装している型 (<a href="https://doc.rust-lang.org/std/str/struct.Chars.html"><code>std::str::Chars</code></a> など) は、今回追加した <code>CharIterator</code> を実装しているわけではないので、このままだと <code>T</code> の実体として使うことができない。</p>
+</code></pre>
+<p>ただし、既存の <code>Iterator&lt;Item=char&gt;</code> を実装している型 (<a href="https://doc.rust-lang.org/std/str/struct.Chars.html"><code>std::str::Chars</code></a> など) は、今回追加した <code>CharIterator</code> を実装しているわけではないので、このままだと <code>T</code> の実体として使うことができない。</p>
 <p>「<code>Iterator&lt;Item=char&gt;</code> を実装した型が <code>CharIterator</code> も実装している」という <code>impl</code> を書いておこう。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">trait</span> CharIterator: Iterator<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">=</span>char<span style="color:#f92672">&gt;</span> {}
-<span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>T: Iterator<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">=</span>char<span style="color:#f92672">&gt;&gt;</span> CharIterator <span style="color:#66d9ef">for</span> T {}
+<pre><code class="language-rust">trait CharIterator: Iterator&lt;Item=char&gt; {}
+impl&lt;T: Iterator&lt;Item=char&gt;&gt; CharIterator for T {}
 
-<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">A</span><span style="color:#f92672">&lt;</span>T: <span style="color:#a6e22e">CharIterator</span><span style="color:#f92672">&gt;</span> {
-    it: <span style="color:#a6e22e">T</span>,
+struct A&lt;T: CharIterator&gt; {
+    it: T,
 }
 
 ...
 
-<span style="color:#66d9ef">let</span> a <span style="color:#f92672">=</span> A { it: <span style="color:#e6db74">&#34;test&#34;</span>.chars() };
-</code></pre></div><p>参考にした記事</p>
+let a = A { it: &quot;test&quot;.chars() };
+</code></pre>
+<p>参考にした記事</p>
 <ul>
 <li><a href="https://github.com/rust-lang/rust/issues/8634">Allow <code>type</code> to create an alias for several trait bounds · Issue #8634 · rust-lang/rust</a></li>
 <li><a href="http://stackoverflow.com/questions/26070559/alias-on-compound-type-in-rust">Alias on compound type in Rust - Stack Overflow</a></li>

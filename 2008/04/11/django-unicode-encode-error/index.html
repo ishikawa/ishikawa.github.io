@@ -69,7 +69,8 @@
                 s = unicode(s)
             else:
                 s = unicode(str(s), encoding, errors)
-</code></pre><p>エラーは最後の str 関数の呼び出しで起きているわけだが、その前に hasattr で <strong>unicode</strong> を調べているのが分かると思う。実をいうと上のドキュメントは、ここから <strong>unicode</strong> を検索してみて見つけたものだった。</p>
+</code></pre>
+<p>エラーは最後の str 関数の呼び出しで起きているわけだが、その前に hasattr で <strong>unicode</strong> を調べているのが分かると思う。実をいうと上のドキュメントは、ここから <strong>unicode</strong> を検索してみて見つけたものだった。</p>
 <p>しかし、改めて検索してみると常識っぽいな&hellip;。最初の検索の仕方がまずかったか。</p>
 </div>
     </article>

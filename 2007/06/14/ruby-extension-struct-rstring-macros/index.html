@@ -50,16 +50,19 @@
 <p>Ruby 1.9 からは <code>Array</code> や <code>String</code> の短いものが <code>struct RObject</code> の構造体に埋め込まれるようになった。そのため、<code>struct RString</code> が変更されており、<code>struct RString</code> の C 文字列や文字（バイト）数にアクセスする従来の直接的な方法、</p>
 <pre><code>char *p  = RSTRING(s)-&gt;ptr;
 long len = RSTRING(s)-&gt;len;
-</code></pre><p>は 1.9 の環境ではコンパイルできなくなっている。</p>
+</code></pre>
+<p>は 1.9 の環境ではコンパイルできなくなっている。</p>
 <p>では、どうするか、というと、1.9 からは <code>RSTRING_PTR</code>, <code>RSTRING_LEN</code> というマクロをかましてアクセスする。</p>
 <pre><code>char *p = RSTRING_PTR(s);
 long len = RSTRING_LEN(s);
-</code></pre><p>実をいうと、1.9 向けの拡張ライブラリを書いてるわけではないので、ここからが本題。</p>
+</code></pre>
+<p>実をいうと、1.9 向けの拡張ライブラリを書いてるわけではないので、ここからが本題。</p>
 <p>この <code>RSTRING_PTR</code>, <code>RSTRING_LEN</code>、1.8.6 でも用意されていたりする。いまから、これらのマクロを使っておけば、1.9 への移行がすこしは楽になるかもしれない。</p>
 <p><code>ruby.h</code></p>
 <pre><code>#define RSTRING_PTR(s) (RSTRING(s)-&gt;ptr)
 #define RSTRING_LEN(s) (RSTRING(s)-&gt;len)
-</code></pre><p>しかし、このままだと問題が残る。</p>
+</code></pre>
+<p>しかし、このままだと問題が残る。</p>
 <p>というのも、1.8.5 以前のバージョンでは、依然、これらのマクロが利用できないからだ。なので、以下のように、<code>#ifndef</code> ディレクティブを使って対応するようにしている。</p>
 <pre><code>#ifndef RSTRING_PTR
 #  define RSTRING_PTR(s) (RSTRING(s)-&gt;ptr)
@@ -67,7 +70,8 @@ long len = RSTRING_LEN(s);
 #ifndef RSTRING_LEN
 #  define RSTRING_LEN(s) (RSTRING(s)-&gt;len)
 #endif
-</code></pre><p>これで、1.8.6 以降では <code>ruby.h</code> のマクロが、それより前のバージョンでも独自に定義したマクロが使われるようになるというわけ。普段 1.8.6 で開発していて、1.8.5 な環境でコンパイルしようとして怒られたので、ブログに書いて残しておく。</p>
+</code></pre>
+<p>これで、1.8.6 以降では <code>ruby.h</code> のマクロが、それより前のバージョンでも独自に定義したマクロが使われるようになるというわけ。普段 1.8.6 で開発していて、1.8.5 な環境でコンパイルしようとして怒られたので、ブログに書いて残しておく。</p>
 </div>
     </article>
 

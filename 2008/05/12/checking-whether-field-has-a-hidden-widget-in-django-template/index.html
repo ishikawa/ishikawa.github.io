@@ -55,7 +55,8 @@
 {% endfor %}
 &lt;input type=&quot;submit&quot; /&gt;
 &lt;/form&gt;
-</code></pre><p>しかし、このままだと hidden 要素でも <!-- raw HTML omitted --> が出力されて具合が悪い。</p>
+</code></pre>
+<p>しかし、このままだと hidden 要素でも <!-- raw HTML omitted --> が出力されて具合が悪い。</p>
 <p>実は、<code>Widget</code> クラスには <code>is_hidden</code> という、その要素が hidden 要素の場合は <code>True</code> を返すメソッドが定義されているので、テンプレート中でこれをチェックすればいい。</p>
 <pre><code>&lt;form method=&quot;post&quot; action=&quot;&quot;&gt;
 {% for field in form %}
@@ -68,7 +69,8 @@
 {% endfor %}
 &lt;input type=&quot;submit&quot; /&gt;
 &lt;/form&gt;
-</code></pre><p>ひとつだけ注意。<a href="http://www.djangoproject.com/documentation/newforms/#highlighting-required-fields-in-templates">ドキュメント</a>にも書かれているように、ここでの <code>field</code> は <code>newforms.forms.BoundField</code> なので、実際の <code>Field</code> インスタンスを調べる場合は <code>field.field</code> とする必要がある。</p>
+</code></pre>
+<p>ひとつだけ注意。<a href="http://www.djangoproject.com/documentation/newforms/#highlighting-required-fields-in-templates">ドキュメント</a>にも書かれているように、ここでの <code>field</code> は <code>newforms.forms.BoundField</code> なので、実際の <code>Field</code> インスタンスを調べる場合は <code>field.field</code> とする必要がある。</p>
 </div>
     </article>
 

@@ -57,7 +57,8 @@
 <p>まずは <a href="http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/java/awt/image/BufferedImage.html"><code>java.awt.image.BufferedImage</code></a> を <code>byte</code> 配列に変換する方法を紹介する。</p>
 <p>そのあと、<a href="http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/java/awt/Image.html"><code>java.awt.Image</code></a> を <code>java.awt.image.BufferedImage</code> に変換する方法を紹介するので、このふたつを組み合わせれば、</p>
 <pre><code>Image --&gt; BufferedImage --&gt; byte[]
-</code></pre><p>が実現できるわけだ。</p>
+</code></pre>
+<p>が実現できるわけだ。</p>
 <h3 id="bufferedimage-を-byte-に変換する">BufferedImage を byte[] に変換する</h3>
 <p><code>BufferedImage</code> から <code>byte</code> 配列の変換は、<a href="http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/javax/imageio/ImageWriter.html"><code>javax.imageio.ImageWriter</code></a> でわりかし素直に実装できる。</p>
 <pre><code>BufferedImage image = ...;
@@ -76,7 +77,8 @@ try {
 
 byte[] bytes = bytesOut.toByteArray();
 ...
-</code></pre><p><a href="http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/javax/imageio/ImageWriteParam.html"><code>ImageWriteParam</code></a> も組み合わせれば、圧縮率などの設定ができる。</p>
+</code></pre>
+<p><a href="http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/javax/imageio/ImageWriteParam.html"><code>ImageWriteParam</code></a> も組み合わせれば、圧縮率などの設定ができる。</p>
 <h3 id="image-を-bufferedimage-をに変換する">Image を BufferedImage をに変換する</h3>
 <p>一筋縄ではいかないのが、Image を BufferedImage をに変換する方法だ。</p>
 <p>以下では、<code>image</code> 変数が <code>java.awt.Image</code> のインスタンスであるとして、順を追って説明する。</p>
@@ -84,12 +86,14 @@ byte[] bytes = bytesOut.toByteArray();
 <pre><code>if (image instanceof BufferedImage) {
   ...
 }
-</code></pre><p>次に、<code>java.awt.Image</code> のインスタンスは、実際のデータが非同期でロードされているかもしれないので、変換処理を行う前に、<a href="http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/java/awt/MediaTracker.html"><code>java.awt.MediaTracker</code></a> でロードが完了するまで待機する。</p>
+</code></pre>
+<p>次に、<code>java.awt.Image</code> のインスタンスは、実際のデータが非同期でロードされているかもしれないので、変換処理を行う前に、<a href="http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/api/java/awt/MediaTracker.html"><code>java.awt.MediaTracker</code></a> でロードが完了するまで待機する。</p>
 <pre><code>// java.awt.MediaTracker でロードを待機
 MediaTracker tracker = new MediaTracker(new Component(){});
 tracker.addImage(image, 0);
 tracker.waitForAll();
-</code></pre><p>ここからが実際の変換処理になるが、基本的に、</p>
+</code></pre>
+<p>ここからが実際の変換処理になるが、基本的に、</p>
 <ol>
 <li>新規に <code>BufferedImage</code> を生成</li>
 <li>生成した <code>BufferedImage</code> に <code>Image</code> のピクセルをコピー</li>
@@ -109,7 +113,8 @@ BufferedImage renderedImage =
     cm.isAlphaPremultiplied(),
     new Hashtable());
 renderedImage.getRaster().setDataElements(0, 0, w, h, pixelGrabber.getPixels());
-</code></pre><p>上記のコードでは、元の <a href="http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/java/awt/image/ColorModel.html"><code>ColorModel</code></a> もサポートするために、<a href="http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/java/awt/image/PixelGrabber.html">PixelGrabber</a> を使っている。</p>
+</code></pre>
+<p>上記のコードでは、元の <a href="http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/java/awt/image/ColorModel.html"><code>ColorModel</code></a> もサポートするために、<a href="http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/java/awt/image/PixelGrabber.html">PixelGrabber</a> を使っている。</p>
 <p>あとは、ここで生成した <code>BufferedImage</code> を <code>byte</code> 配列に変換してやればよい。</p>
 </div>
     </article>

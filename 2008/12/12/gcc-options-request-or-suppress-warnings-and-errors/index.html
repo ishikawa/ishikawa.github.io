@@ -64,19 +64,23 @@ i686-apple-darwin9-gcc-4.0.1 (GCC) 4.0.1 (Apple Inc. build 5490)
 Copyright (C) 2005 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-</code></pre><p><a href="http://gcc.gnu.org/gcc-4.0/">gcc 4.0</a> の場合、<code>-Wno-unused-parameter</code> を指定することで「未使用の関数引数」警告自体をなくすことはできる。しかし、できれば、「未使用の関数引数」も警告のまま残し、他の警告はエラー扱いにしたい。</p>
+</code></pre>
+<p><a href="http://gcc.gnu.org/gcc-4.0/">gcc 4.0</a> の場合、<code>-Wno-unused-parameter</code> を指定することで「未使用の関数引数」警告自体をなくすことはできる。しかし、できれば、「未使用の関数引数」も警告のまま残し、他の警告はエラー扱いにしたい。</p>
 <pre><code>% gcc -std=c++98 -pedantic -Wall -Wextra -Werror -Wno-unused-parameter -c -o src/utils.o src/utils.cpp
-</code></pre><h3 id="-werror--wno-error">-Werror=, -Wno-error=</h3>
+</code></pre>
+<h3 id="-werror--wno-error">-Werror=, -Wno-error=</h3>
 <p><a href="http://gcc.gnu.org/onlinedocs/gcc-4.2.4/gcc/">オンラインマニュアル</a>によると、<a href="http://gcc.gnu.org/gcc-4.2/">gcc 4.2</a> からは <a href="http://gcc.gnu.org/onlinedocs/gcc-4.2.4/gcc/Warning-Options.html#index-Werror_003d-325">-Werror= および -Wno-error= というオプション</a>が追加され、エラー扱いにする警告を個別に指定できるようだ。このオプションを使えば、<code>-Wunused-parameter</code> は警告のまま、その他の警告をエラーに出来るだろう。Mac OS X では gcc 4.2 は <code>gcc-4.2</code> という名前でインストールされている。</p>
 <pre><code>% gcc-4.2 -std=c++98 -pedantic -Wall -Wextra -Werror -Wno-error=unused-parameter -c -o src/utils.o src/utils.cpp
 src/utils.cpp:108: warning: unused parameter 'start'
 src/utils.cpp:108: warning: unused parameter 'end'
 src/utils.cpp:108: warning: unused parameter 'positiveOnly'
-</code></pre><p>しかし、Mac の場合、gcc 4.0 がデフォルトなので、このオプションを使っていいのか悩むところ。</p>
+</code></pre>
+<p>しかし、Mac の場合、gcc 4.0 がデフォルトなので、このオプションを使っていいのか悩むところ。</p>
 <h3 id="環境変数の利用">環境変数の利用</h3>
 <p>いまのところ、Makefile には直接書かずに、環境変数で指定する、という方法で対応している：</p>
 <pre><code>% CXX=gcc-4.2 CPPFLAGS=-Wno-error=unused-parameter make
-</code></pre></div>
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

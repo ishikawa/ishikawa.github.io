@@ -51,16 +51,19 @@
 
 Time.parse(&quot;2007/6/21 19:23&quot;)
 # =&gt; Thu Jun 21 19:23:00 +0900 2007
-</code></pre><p><code>Time.parse</code> は内部的に <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=parsedate"><code>ParseDate.parsedate</code></a> を利用しているので、さまざまなフォーマットをサポートしており、それなりに便利だ。逆に、サポートされていないフォーマットの文字列を変換するときは、事前に正規表現で変換するなどの泥臭い作業になる。</p>
+</code></pre>
+<p><code>Time.parse</code> は内部的に <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=parsedate"><code>ParseDate.parsedate</code></a> を利用しているので、さまざまなフォーマットをサポートしており、それなりに便利だ。逆に、サポートされていないフォーマットの文字列を変換するときは、事前に正規表現で変換するなどの泥臭い作業になる。</p>
 <pre><code>Time.parse(&quot;Sat Aug 28 21:45:09 1999&quot;)
 # =&gt; Sat Aug 28 21:45:09 +0900 1999
 Time.parse(&quot;08/28/1999&quot;)
 # =&gt; Sat Aug 28 00:00:00 +0900 1999
-</code></pre><p>他にも問題がある。</p>
+</code></pre>
+<p>他にも問題がある。</p>
 <p>変換対象の文字列が日付形式ではなかった場合は、当然 <code>Time</code> に変換できないわけだが、そういうときでもエラーを検知する仕組みがないのだ。</p>
 <pre><code>Time.parse(&quot;Happy Hacking!&quot;)
 # =&gt; Thu Jun 21 19:33:12 +0900 2007
-</code></pre><p>このように、明らかに日付ではない文字列を渡しても、例外が発生するでもなく、<code>Time</code> オブジェクトが返ってくる。</p>
+</code></pre>
+<p>このように、明らかに日付ではない文字列を渡しても、例外が発生するでもなく、<code>Time</code> オブジェクトが返ってくる。</p>
 <p><a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=time#Time.2eparse">Time.parse のマニュアル</a>によると、</p>
 <blockquote>
 <p>Time.parse(date, now=Time.now)</p>
@@ -70,7 +73,8 @@ Time.parse(&quot;08/28/1999&quot;)
 <p>では、この引数 <code>now</code> に <code>nil</code> を渡せば、失敗時に <code>nil</code> が返ってくるだろうか？</p>
 <pre><code>Time.parse(&quot;Happy Hacking!&quot;, nil)
 # =&gt; Thu Jan 01 00:00:00 +0900 1970
-</code></pre><p>違った。</p>
+</code></pre>
+<p>違った。</p>
 <p>実は <code>Time.parse</code> は、それぞれの時刻要素のデフォルトとして <code>1970-01-01 00:00:00:00</code> を指定している。また、この値は <code>Time</code> の起算時間（<code>Unix epoch</code>）に見えるが、結果は地方時間で返ってくるので必ずしもそうではない（日本の場合、<code>1970-01-01 00:00:00 +0900</code>）。</p>
 <p>これだと困るので、解析に失敗した場合は <code>nil</code> を返す <code>Time.parse</code> を書いてみた。</p>
 <pre><code>require &quot;parsedate&quot;
@@ -90,7 +94,8 @@ def strict_parsetime(string)
   end
   time
 end
-</code></pre><p>実装としては、<code>TIme.parse</code> の第二引数に特定の日時を指定し、結果がこの値なら再度 <code>ParseDate.parsedate</code> して本当にエラーなのかチェックしている。</p>
+</code></pre>
+<p>実装としては、<code>TIme.parse</code> の第二引数に特定の日時を指定し、結果がこの値なら再度 <code>ParseDate.parsedate</code> して本当にエラーなのかチェックしている。</p>
 <p>ちゃんとした方法がありそうなんだけどなー。</p>
 </div>
     </article>

@@ -63,7 +63,8 @@
     drop_table :addresses
   end
 end
-</code></pre><p>Rails 2.0 の <a href="http://ryandaigle.com/articles/2007/5/6/what-s-new-in-edge-rails-bringin-sexy-back">sexy migration</a> ではこんなふうにも書けるんだけど、個人的に馴染まないので今回はスルー。</p>
+</code></pre>
+<p>Rails 2.0 の <a href="http://ryandaigle.com/articles/2007/5/6/what-s-new-in-edge-rails-bringin-sexy-back">sexy migration</a> ではこんなふうにも書けるんだけど、個人的に馴染まないので今回はスルー。</p>
 <pre><code>class CreatePepsi &lt; ActiveRecord::Migration
   def self.up
     create_table :pepsies do |t|
@@ -77,7 +78,8 @@ end
     drop_table :addresses
   end
 end
-</code></pre><p><code>rake db:migrate</code> したときの <code>CREATE TABLE</code> はこうなる。</p>
+</code></pre>
+<p><code>rake db:migrate</code> したときの <code>CREATE TABLE</code> はこうなる。</p>
 <pre><code>CREATE TABLE `pepsies` (
   `id` int(11) NOT NULL auto_increment,
   `coke` varchar(64) default NULL,
@@ -86,7 +88,8 @@ end
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-</code></pre><p>string は MySQL の VARCHAR に、integer は int になる。これを CHAR とか SMALLINT とかにできないか、というのが今回の話題。</p>
+</code></pre>
+<p>string は MySQL の VARCHAR に、integer は int になる。これを CHAR とか SMALLINT とかにできないか、というのが今回の話題。</p>
 <h3 id="char-とか-smallint-とかにしてみる">CHAR とか SMALLINT とかにしてみる</h3>
 <p>結論からいえば、これでよい。</p>
 <pre><code>class CreatePepsi &lt; ActiveRecord::Migration
@@ -103,7 +106,8 @@ end
     drop_table :addresses
   end
 end
-</code></pre><p>本当に CHAR とか SMALLINT とかにしてみただけである（といっても Symbol になってるけど）。</p>
+</code></pre>
+<p>本当に CHAR とか SMALLINT とかにしてみただけである（といっても Symbol になってるけど）。</p>
 <p><code>CREATE TABLE</code> はこうなる。</p>
 <pre><code>CREATE TABLE `pepsies` (
   `id` int(11) NOT NULL auto_increment,
@@ -113,7 +117,8 @@ end
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-</code></pre><h3 id="limit-が効かない">:limit が効かない</h3>
+</code></pre>
+<h3 id="limit-が効かない">:limit が効かない</h3>
 <p>SQL を見ると分かるように <code>coke</code> が <code>char(1)</code> となってしまい、Migration で指定した <code>:limit =&gt; 64</code> が効いていないようだ。</p>
 <p>とりあえず素直に対応してみよう。</p>
 <pre><code>class CreatePepsi &lt; ActiveRecord::Migration
@@ -122,14 +127,16 @@ end
       t.column :coke,       :&quot;CHAR(64)&quot;
       t.column :jolt,       :SMALLINT
 ...
-</code></pre><p><code>:CHAR</code> という指定を <code>:&quot;CHAR(64)&quot;</code> にしたわけだ（<a href="http://www.ruby-lang.org/ja/man/html/_A5EAA5C6A5E9A5EB.html#a.a5.b7.a5.f3.a5.dc.a5.eb">Ruby の Symbol リテラルでは :&quot;&hellip;&quot; や :'&hellip;' の形式で、任意のシンボルを定義することができる</a>）。</p>
+</code></pre>
+<p><code>:CHAR</code> という指定を <code>:&quot;CHAR(64)&quot;</code> にしたわけだ（<a href="http://www.ruby-lang.org/ja/man/html/_A5EAA5C6A5E9A5EB.html#a.a5.b7.a5.f3.a5.dc.a5.eb">Ruby の Symbol リテラルでは :&quot;&hellip;&quot; や :'&hellip;' の形式で、任意のシンボルを定義することができる</a>）。</p>
 <p>再度、<code>CREATE TABLE</code> を確認。</p>
 <pre><code>CREATE TABLE `pepsies` (
   `id` int(11) NOT NULL auto_increment,
   `coke` char(64) default NULL,
   `jolt` smallint(6) default NULL,
 ...
-</code></pre><p>うまくいったらしい。</p>
+</code></pre>
+<p>うまくいったらしい。</p>
 </div>
     </article>
 

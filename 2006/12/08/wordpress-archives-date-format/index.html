@@ -65,7 +65,8 @@
     }
   } elseif ( 'daily' == $type ) {
   ...
-</code></pre><p>どうやら月別表示のフォーマットは <code>sprintf</code> で決め打ちらしいので、アドホックなコードにはアドホックな修正で対応する。PHP でプログラミングをしたことはないが、まあ<strong>適当に書いたら動くだろう</strong>、という魂胆。</p>
+</code></pre>
+<p>どうやら月別表示のフォーマットは <code>sprintf</code> で決め打ちらしいので、アドホックなコードにはアドホックな修正で対応する。PHP でプログラミングをしたことはないが、まあ<strong>適当に書いたら動くだろう</strong>、という魂胆。</p>
 <pre><code>function get_archives($type='', $limit='', $format='html', $before = '', $after = '', $show_post_count = false) {
   ...
   if ( 'monthly' == $type ) {
@@ -74,7 +75,8 @@
       if ( $show_post_count ) {
         $after = ' ('.$arcresult-&gt;posts.')' . $afterafter;
       }
-</code></pre><p>これで「November 2006」が「2006/11」と表示されるようになった。</p>
+</code></pre>
+<p>これで「November 2006」が「2006/11」と表示されるようになった。</p>
 </div>
     </article>
 

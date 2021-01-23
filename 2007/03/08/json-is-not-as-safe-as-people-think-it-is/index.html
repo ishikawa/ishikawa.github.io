@@ -56,7 +56,8 @@ json_is_not_as_safe_as_people_think_it_is.html</a></p>
 JavaScript のハック的手法を組み合わせることで、たとえログイン必須にしている JSON データであっても盗まれるかもしれない、という話。</p>
 <p>たとえば、</p>
 <pre><code>&lt;script type='text/javascript' src='http://example.com/jsonservice'&gt;&lt;/script&gt;
-</code></pre><p>という <code>script</code> で JSON を読み込めたとする。</p>
+</code></pre>
+<p>という <code>script</code> で JSON を読み込めたとする。</p>
 <p>このままだと読み込んだ JSON のデータが評価されるだけで、どんなコードも実行されないのでそれほど問題にはならない
 （評価された JSON のデータはどんな変数にも代入されてないので参照できない）。</p>
 <p>しかし、元記事に紹介されている方法で、たとえば <code>Array</code> のコンストラクタを再定義してやると、JSON が評価されるときに

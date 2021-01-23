@@ -63,7 +63,8 @@ Class: &lt;Mysql::Error&gt;
 ./test.rb:39:in `test_connect'
 ./test.rb:39:in `test_connect'
 ...
-</code></pre><p>MySQL のエラーで <!-- raw HTML omitted -->&ldquo;Access denied for user &lsquo;ishikawa&rsquo;@&lsquo;localhost&rsquo; (using password: NO)&quot;<!-- raw HTML omitted --> と出力されているので、これは単なるアクセス制御の問題だ。</p>
+</code></pre>
+<p>MySQL のエラーで <!-- raw HTML omitted -->&ldquo;Access denied for user &lsquo;ishikawa&rsquo;@&lsquo;localhost&rsquo; (using password: NO)&quot;<!-- raw HTML omitted --> と出力されているので、これは単なるアクセス制御の問題だ。</p>
 <p>そして、<code>test.rb</code> のコマンドライン引数で <code>root</code> ユーザを指定しているにも関わらず、実際には <code>ishikawa</code> ユーザでアクセスしようとしている。</p>
 <p>うまくいくわけがない。
 <strong>コマンドライン引数による指定が無視されている</strong>わけだ。</p>
@@ -78,7 +79,8 @@ class SimpleTestCase &lt; Test::Unit::TestCase
     puts &quot;in test: ARGV = #{ARGV.inspect}&quot;
   end
 end
-</code></pre><p>ユニットテストが実行される前と、実行されるときに ARGV（コマンドライン引数の配列）をダンプするだけのスクリプトだ。これを適当な引数つきで実行して、その結果を確認する。</p>
+</code></pre>
+<p>ユニットテストが実行される前と、実行されるときに ARGV（コマンドライン引数の配列）をダンプするだけのスクリプトだ。これを適当な引数つきで実行して、その結果を確認する。</p>
 <pre><code>% ruby ./simple_test.rb 1 2 3
 **before test: ARGV = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;]**
 Loaded suite ./simple_test
@@ -88,7 +90,8 @@ Started
 Finished in 0.000316 seconds.
 
 1 tests, 0 assertions, 0 failures, 0 errors
-</code></pre><p>ユニットテストを実行する前では ARGV に引数の <code>1, 2, 3</code> が格納されているが、テストの内部では <strong>ARGV が空になっている</strong>。となると、<code>Test::Unit</code> が渡ってきた引数を食べてしまっているのに違いない。</p>
+</code></pre>
+<p>ユニットテストを実行する前では ARGV に引数の <code>1, 2, 3</code> が格納されているが、テストの内部では <strong>ARGV が空になっている</strong>。となると、<code>Test::Unit</code> が渡ってきた引数を食べてしまっているのに違いない。</p>
 <h3 id="testunit-のソースを調べる">Test::Unit のソースを調べる</h3>
 <p>実際のとこ、どうなっているのか。ソースコードに聞いてみよう。場所は <code>/usr/local/lib/ruby/1.8/test/</code>。まずは動作を確認するために、<code>unit.rb</code> の 276 行目だ。</p>
 <pre><code>at_exit do
@@ -96,7 +99,8 @@ Finished in 0.000316 seconds.
     exit **Test::Unit::AutoRunner.run**
   end
 end
-</code></pre><p>このコードは <code>require</code> されたときに実行され、<code>at_exit</code> で <code>Test::Unit::AutoRunner</code> の <code>run</code> メソッドが呼び出される。この定義は <code>autorunner.rb</code> だ。</p>
+</code></pre>
+<p>このコードは <code>require</code> されたときに実行され、<code>at_exit</code> で <code>Test::Unit::AutoRunner</code> の <code>run</code> メソッドが呼び出される。この定義は <code>autorunner.rb</code> だ。</p>
 <pre><code>module Test
   module Unit
     class AutoRunner
@@ -107,7 +111,8 @@ end
         end
         r.run
       end
-</code></pre><p>怪しげなコードを発見できた。
+</code></pre>
+<p>怪しげなコードを発見できた。
 インスタンスの <code>process_args</code> メソッドに ARGV をそのまま渡している。</p>
 <pre><code>def process_args(args = ARGV)
   begin
@@ -122,7 +127,8 @@ end
   end
   not @to_run.empty?
 end
-</code></pre><p>肝になるのは <code>options.order!(args)</code> の部分だ。<code>options</code> では、<a href="http://www.ruby-lang.org/ja/man/index.cgi?cmd=view;name=OptionParser"><code>OptionParser</code></a> インスタンスが返り、そして、<code>OptionParser#order!</code> はマニュアルによると、</p>
+</code></pre>
+<p>肝になるのは <code>options.order!(args)</code> の部分だ。<code>options</code> では、<a href="http://www.ruby-lang.org/ja/man/index.cgi?cmd=view;name=OptionParser"><code>OptionParser</code></a> インスタンスが返り、そして、<code>OptionParser#order!</code> はマニュアルによると、</p>
 <blockquote>
 <p>与えられた argv を順番にパースします。 オプションではないコマンドの引数(下の例で言うと somefile)に出会うと、パースを中断します。 ブロックが与えられている場合は、パースを中断せずに 引数をブロックに渡してブロックを評価し、パースを継続します。argv を返します。</p>
 <p><!-- raw HTML omitted -->order! は与えられた argv を破壊的にパースします。 argv からオプションがすべて取り除かれます。<!-- raw HTML omitted --></p>
@@ -138,13 +144,15 @@ end
 
  end if Mysql.client_version &gt;= 40100
 +Test::Unit::AutoRunner.run(false, nil, ARGV.dup)
-</code></pre><p>これでテストも実行できるはず &hellip;</p>
+</code></pre>
+<p>これでテストも実行できるはず &hellip;</p>
 <pre><code>% ruby ./test.rb localhost root
 Loaded suite ./test
 Started
 ....................................................................FF...........................................
 Finished in 0.32177 seconds.
-</code></pre><p>通った！&hellip;</p>
+</code></pre>
+<p>通った！&hellip;</p>
 <pre><code>1) Failure:
 test_fetch_double(TC_MysqlStmt2) [./test.rb:920]:
 &lt;-1.79769313486232e+308&gt; and
@@ -156,7 +164,8 @@ test_fetch_double_unsigned(TC_MysqlStmt2) [./test.rb:937]:
 &lt;1.79769313486232e+308&gt; and
 &lt;1.79769313486232e+308&gt; expected to be within
 &lt;2.22044604925031e-16&gt; of each other.
-</code></pre><p>&hellip; と思ったら駄目でした。</p>
+</code></pre>
+<p>&hellip; と思ったら駄目でした。</p>
 <p>うーん、高速化パッチを適用せずにテストしても同じ結果なので、これはまた別の原因だな。
 まあ、浮動小数点関係っぽいので環境依存かもしれん、、てことでスルーしとこう。</p>
 </div>

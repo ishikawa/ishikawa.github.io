@@ -56,16 +56,20 @@ parser.parse '1+2*(3-1)'
 =&gt; 5
 parser.parse '4 * 2.5'
 =&gt; 8
-</code></pre><p>小数を計算させてみると、エラーにはならないものの、計算結果がおかしなことになっている。</p>
+</code></pre>
+<p>小数を計算させてみると、エラーにはならないものの、計算結果がおかしなことになっている。</p>
 <p>実は、この四則演算デモは数値として整数しか解釈しない。そのため、<code>4 * 2.5</code> を計算させたときは、<code>2.5</code> の <code>&quot;.&quot;</code> で解釈をやめてしまい、そこまでの <code>4 * 2</code> を計算して返した、という具合だ。</p>
 <p>ソースコードで数値をパースしている箇所は、</p>
 <pre><code>term = integer.map(&amp;To_i) | char('(') &gt;&gt; lazy{expr} &lt;&lt; char(')')
-</code></pre><p>どうみても、この行の左半分なので、ここを <a href="http://jparsec.codehaus.org/rparsec/api/">API リファレンス</a>を参考に、</p>
+</code></pre>
+<p>どうみても、この行の左半分なので、ここを <a href="http://jparsec.codehaus.org/rparsec/api/">API リファレンス</a>を参考に、</p>
 <pre><code>term = number.map(&amp;To_f) | char('(') &gt;&gt; lazy{expr} &lt;&lt; char(')')
-</code></pre><p>こう書き換えれば動く。</p>
+</code></pre>
+<p>こう書き換えれば動く。</p>
 <pre><code>parser.parse '4 * 2.5'
 =&gt; 10.0
-</code></pre></div>
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

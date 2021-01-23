@@ -54,9 +54,11 @@
 <h3 id="svnssh-で-22-番以外のポートを使いたいとき">svn+ssh で 22 番以外のポートを使いたいとき</h3>
 <p>これは別に Xcode に限った話じゃないけど、<code>svn+ssh</code> プロトコルで 22 番以外のポートを使う場合は、環境変数 <code>SVN_SSH</code> で <code>ssh</code> プログラムの引数に指定します。</p>
 <pre><code>export SVN_SSH=&quot;ssh -p 12345&quot;
-</code></pre><p>環境変数を <code>export</code> したターミナルで、そのまま <code>.xcodeproj</code> を開けばいいです。</p>
+</code></pre>
+<p>環境変数を <code>export</code> したターミナルで、そのまま <code>.xcodeproj</code> を開けばいいです。</p>
 <pre><code>open ./Example.xcodeproj
-</code></pre><h3 id="それでもパスフレーズ入力できないとき">それでも、パスフレーズ入力できないとき</h3>
+</code></pre>
+<h3 id="それでもパスフレーズ入力できないとき">それでも、パスフレーズ入力できないとき</h3>
 <p>上の方法で Xcode 起動して、SCM を有効にしても、パスフレーズの入力画面などがでず、<code>Permission denied</code> で怒られてしまうことがある &hellip; というか、僕がまさにそれ。</p>
 <p>このときは、<a href="http://www.sshkeychain.org/">SSHKeychain</a> を使って、パスフレーズ入力を横取りすることで動くようになった。</p>
 </div>

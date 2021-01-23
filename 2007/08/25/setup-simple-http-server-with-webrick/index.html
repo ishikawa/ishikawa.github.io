@@ -51,13 +51,15 @@
       <div class="content"><p>サイトの HTML や CSS を自分のパソコン上で編集するとき、不便に感じるのは画像や外部 CSS ファイルの指定方法の違いだ。</p>
 <p>サイト上の HTML や CSS では、たとえば、</p>
 <pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/stylesheets/application.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot; charset=&quot;utf-8&quot; /&gt;
-</code></pre><p>とか、</p>
+</code></pre>
+<p>とか、</p>
 <pre><code>div#header div.logo h1 {
   width: 250px;
   height: 50px;
   background: url(/images/logo.png) no-repeat center center;
 }
-</code></pre><p>になっているのに、自分のパソコン上で編集するときには、これらを</p>
+</code></pre>
+<p>になっているのに、自分のパソコン上で編集するときには、これらを</p>
 <pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;./stylesheets/application.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot; charset=&quot;utf-8&quot; /&gt;
 
 ...
@@ -67,7 +69,8 @@ div#header div.logo h1 {
   height: 50px;
   background: url(./images/logo.png) no-repeat center center;
 }
-</code></pre><p>いちいち、相対パスに変換しなくてはいけないのだ。面倒だし、誤って別の箇所を削ってしまったり、一部だけ変更し忘れるなんてことがないとも限らない。</p>
+</code></pre>
+<p>いちいち、相対パスに変換しなくてはいけないのだ。面倒だし、誤って別の箇所を削ってしまったり、一部だけ変更し忘れるなんてことがないとも限らない。</p>
 <h3 id="変更しなくても済むように">変更しなくても済むように</h3>
 <p>こういうときは、ローカルに HTTP サーバを用意すると便利だ。</p>
 <p>ローカルに HTTP サーバを用意して、そこで編集中のサイトを表示させるようにすれば、画像や外部 CSS ファイルのパスを実際のサイトのものから書き換えなくても、正常に表示できるようになる。</p>
@@ -88,7 +91,8 @@ end
 
 webrick :DocumentRoot =&gt; '/path/to/your/document/root',
         :Port =&gt; 5001
-</code></pre><p>強調部分がサーバを設定する箇所になる。実際にサーバを実行する環境に合わせて書き換えてほしい。</p>
+</code></pre>
+<p>強調部分がサーバを設定する箇所になる。実際にサーバを実行する環境に合わせて書き換えてほしい。</p>
 <ul>
 <li><strong>:DocumentRoot</strong> 編集する HTML や CSS の置かれたディレクトリのルートディレクトリへのパス</li>
 <li><strong>:Port</strong> サーバを起動するポート番号（普通はこのままでよい）。</li>
@@ -98,7 +102,8 @@ webrick :DocumentRoot =&gt; '/path/to/your/document/root',
 [2007-08-25 17:01:45] INFO  WEBrick 1.3.1
 [2007-08-25 17:01:45] INFO  ruby 1.8.6 (2007-03-13) [i686-darwin8.9.1]
 [2007-08-25 17:01:45] INFO  WEBrick::HTTPServer#start: pid=446 port=5001
-</code></pre><p>そうして、ブラウザから <code>http://localhost:5001/</code> にアクセスすれば、ローカルで編集中のサイトが表示されるはずだ。</p>
+</code></pre>
+<p>そうして、ブラウザから <code>http://localhost:5001/</code> にアクセスすれば、ローカルで編集中のサイトが表示されるはずだ。</p>
 <p>また、サーバを終了させたいときはサーバを起動しているターミナルのウインドウで、<strong>Control + C</strong> で終了させることができる。</p>
 </div>
     </article>

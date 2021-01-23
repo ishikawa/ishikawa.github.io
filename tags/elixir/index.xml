@@ -16,7 +16,7 @@
       <guid>https://metareal.blog/post/2020/03/26/elixir-import-overrides-previous-import/</guid>
       <description>この記事は以前に Qiita で公開した記事です。
 Elixir の import/2 を同じモジュールにたいして複数回実行すると、最後に実行したものが優先される。
-iex(1)&amp;gt; import List List iex(2)&amp;gt; first([1]) 1 iex(3)&amp;gt; import List, only: [flatten: 1] List iex(4)&amp;gt; first([1]) ** (CompileError) iex:4: undefined function first/1 上記の例では、iex(1) で import List したときには参照できていた List.first/1 が、iex(4) の import List, only: [flatten: 1] のあとでは参照できなくなっている。
+iex(1)&amp;gt; import List List iex(2)&amp;gt; first([1]) 1 iex(3)&amp;gt; import List, only: [flatten: 1] List iex(4)&amp;gt; first([1]) ** (CompileError) iex:4: undefined function first/1  上記の例では、iex(1) で import List したときには参照できていた List.first/1 が、iex(4) の import List, only: [flatten: 1] のあとでは参照できなくなっている。
 この挙動を知らずに失敗した話 Phoenix のコントローラーで「認証済みのユーザーが conn にあれば処理を続行、そうでなければエラー」という処理が頻発するので、次のようなモジュールを書いた。
 defmodule AuthUserAction do defmacro __using__(_opts) do quote do import Plug.Conn import Phoenix.Controller, only: [json: 2, action_name: 1] def action(conn, _) do with {:ok, user_id} &amp;lt;- Map.</description>
     </item>
@@ -32,7 +32,7 @@ defmodule AuthUserAction do defmacro __using__(_opts) do quote do import Plug.Co
 既存の手法 Elixir の ExUnit は標準の Unit Testing ライブラリとして非常によく出来ているが、残念ながら Parameterized test の仕組みは用意されていない。
 KazuCocoa/ex_parameterized を試してみたこともあるのだが、記法が変則的（こうなる理由も分かる）なのと、パラメータを評価する部分で動かないコードがあるので採用を見送っている。
 いま採用している手法 結局、いろいろ試した末、いまはこのようなコードに落ち着いている。
-# 1. The helper functions for the test module. To make it possible to import # this helper module in the test module, define this module outside the context that uses it. defmodule MyTest.Helpers do @spec fake_params(Enumrable.t()) :: map def fake_params(override \\ %{}) do %{ country: &amp;#34;jp&amp;#34;, phone_number: Faker.</description>
+# 1. The helper functions for the test module. To make it possible to import # this helper module in the test module, define this module outside the context that uses it. defmodule MyTest.Helpers do @spec fake_params(Enumrable.t()) :: map def fake_params(override \\ %{}) do %{ country: &amp;quot;jp&amp;quot;, phone_number: Faker.</description>
     </item>
     
     <item>
@@ -42,8 +42,8 @@ KazuCocoa/ex_parameterized を試してみたこともあるのだが、記法�
       
       <guid>https://metareal.blog/post/2016/09/gzip-compression-in-cowboy/</guid>
       <description>Phoenix framework でレスポンスの GZip 圧縮を有効にするには Cowboy に compress: true を渡すように、 Phoenix.Endpoint を設定する。
-config :example_app, ExampleApp.Endpoint, http: [port: 4040, compress: true], debug_errors: true, code_reloader: true, check_origin: false, watchers: [] HTTP リクエストを送るときに Accept-Encoding ヘッダーを設定する (curl コマンドなら --compressed オプション)
-Accept-Encoding: gzip, deflate また、レスポンス・ボディのサイズが 300 バイトを超えていない場合も GZip 圧縮されないようだ。
+config :example_app, ExampleApp.Endpoint, http: [port: 4040, compress: true], debug_errors: true, code_reloader: true, check_origin: false, watchers: []  HTTP リクエストを送るときに Accept-Encoding ヘッダーを設定する (curl コマンドなら --compressed オプション)
+Accept-Encoding: gzip, deflate  また、レスポンス・ボディのサイズが 300 バイトを超えていない場合も GZip 圧縮されないようだ。
  https://github.com/ninenines/cowboy/commit/01f57ad65d7c75fb455f48e354bb3a328c472ce4#diff-2db000a0dd01503e2f022387f23413cbR942  </description>
     </item>
     
@@ -55,10 +55,10 @@ Accept-Encoding: gzip, deflate また、レスポンス・ボディのサイズ�
       <guid>https://metareal.blog/post/2015/09/elixir-ctags/</guid>
       <description>最近、Atom エディタを使っているが、シンボルの定義場所に移動するための Go to Declaration コマンドを動作させるためには ctags でインデックスしておく必要がある。
  atom/symbols-view  ただ、2015年9月の現時点では Elixir がサポートされていないようなので、自分で追加してやる必要がある。
-% ctags --version Exuberant Ctags 5.8, Copyright (C) 1996-2009 Darren Hiebert Compiled: Mar 16 2015, 23:48:18 ... Optional compiled features: +wildcards, +regex ctags はコマンドラインオプションで新しい言語を定義できる。毎回指定するのが面倒な場合は、 $HOME/.ctags からオプションを読み込んでくれるようだ。
+% ctags --version Exuberant Ctags 5.8, Copyright (C) 1996-2009 Darren Hiebert Compiled: Mar 16 2015, 23:48:18 ... Optional compiled features: +wildcards, +regex  ctags はコマンドラインオプションで新しい言語を定義できる。毎回指定するのが面倒な場合は、 $HOME/.ctags からオプションを読み込んでくれるようだ。
  Exuberant Ctags: Adding support for a new language  とりあえず、defmodule によるモジュール定義を読み込めるようにしてみよう。
---langdef=Elixir --langmap=Elixir:.ex.exs --regex-elixir=/^[ \t]*defmodule[ \t]+([a-zA-Z0-9_.]+)/\1/m,modules/ ctags を実行して、生成された tags ファイルを確認する。
-% ctags lib/elixir/lib/task.ex % cat tags !_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;&amp;#34; to lines/ .</description>
+--langdef=Elixir --langmap=Elixir:.ex.exs --regex-elixir=/^[ \t]*defmodule[ \t]+([a-zA-Z0-9_.]+)/\1/m,modules/  ctags を実行して、生成された tags ファイルを確認する。
+% ctags lib/elixir/lib/task.ex % cat tags !_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;&amp;quot; to lines/ .</description>
     </item>
     
   </channel>

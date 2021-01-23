@@ -49,9 +49,11 @@
       <div class="content"><p>Rails アプリのコードカヴァレッジに <a href="http://eigenclass.org/hiki.rb?rcov">rcov</a> を使ってみた。面倒な設定も必要なく、そこそこの速度でカヴァレッジを測定できるので便利だ。異常系のテスト洩れ確認に重宝している。</p>
 <p>Rails アプリなので、test ディレクトリ以下のテストコードを実行したいわけだが、</p>
 <pre><code>rcov test/*/*_test.rb
-</code></pre><p>このように、シェルのワイルドカード指定では再帰的に深いディレクトリを扱うことができない（zsh なら <code>**</code> でいいね）。こういう場合は find, xargs を組み合わせればいい。</p>
+</code></pre>
+<p>このように、シェルのワイルドカード指定では再帰的に深いディレクトリを扱うことができない（zsh なら <code>**</code> でいいね）。こういう場合は find, xargs を組み合わせればいい。</p>
 <pre><code>find test -name '*_test.rb' -print | xargs rcov --aggregate log/coverage/aggregate.info
-</code></pre><p>rcov は <code>--aggregate</code> オプションで指定されたファイルに実行結果を保存し、次回実行時に利用することができる。ファイル数が多いと xargs はコマンドを複数回実行するので、結果が上書きされないように <code>--aggregate</code> オプションを指定するようにしよう。</p>
+</code></pre>
+<p>rcov は <code>--aggregate</code> オプションで指定されたファイルに実行結果を保存し、次回実行時に利用することができる。ファイル数が多いと xargs はコマンドを複数回実行するので、結果が上書きされないように <code>--aggregate</code> オプションを指定するようにしよう。</p>
 </div>
     </article>
 

@@ -62,24 +62,28 @@ checking for rl_completion_matches in -lreadline... no
 ...
 % find . -name readline.so
 # readline.so が出来ていない
-</code></pre><p>ヒストリ機能やキャレット移動のショートカットが使えないのは、やはり不便だ。これはなんとかしたい。</p>
+</code></pre>
+<p>ヒストリ機能やキャレット移動のショートカットが使えないのは、やはり不便だ。これはなんとかしたい。</p>
 <h3 id="macports-で-gnu-readline-ライブラリをインストール">MacPorts で GNU Readline ライブラリをインストール</h3>
 <p>まずは <a href="http://tiswww.case.edu/php/chet/readline/rltop.html">GNU Readline</a> ライブラリをインストールしよう。<a href="http://www.macports.org/">MacPorts</a> を利用するのが簡単だろう。</p>
 <pre><code>% sudo port install readline
-</code></pre><p><code>/opt/local/lib</code> 以下にインストールされる。</p>
+</code></pre>
+<p><code>/opt/local/lib</code> 以下にインストールされる。</p>
 <pre><code>% l /opt/local/lib/libreadline.*
 -r-xr-xr-x   2 root  admin  448300 Nov 13  2006 /opt/local/lib/libreadline.5.1.dylib
 lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.5.dylib -&gt; libreadline.5.1.dylib
 -rw-r--r--   2 root  admin  574188 Nov 13  2006 /opt/local/lib/libreadline.a
 lrwxr-xr-x   1 root  admin      21 Nov 13  2006 /opt/local/lib/libreadline.dylib -&gt; libreadline.5.1.dylib
-</code></pre><h3 id="gnu-readline-ライブラリの場所を指定して-python-をビルド">GNU Readline ライブラリの場所を指定して Python をビルド</h3>
+</code></pre>
+<h3 id="gnu-readline-ライブラリの場所を指定して-python-をビルド">GNU Readline ライブラリの場所を指定して Python をビルド</h3>
 <p>あとは新しくインストールされたライブラリの場所を指定して、Python をビルドしなおすだけだ。</p>
 <pre><code>% CPPFLAGS=-I/opt/local/include LDFLAGS=-L/opt/local/lib ./configure
 % make
 % find . -name readline.so
 ./build/lib.macosx-10.3-i386-2.5/readline.so
 % sudo make install
-</code></pre><p>こうしてビルドした Python のインタプリタでは、ヒストリ機能やキャレット移動のショートカットが有効になっている。</p>
+</code></pre>
+<p>こうしてビルドした Python のインタプリタでは、ヒストリ機能やキャレット移動のショートカットが有効になっている。</p>
 </div>
     </article>
 

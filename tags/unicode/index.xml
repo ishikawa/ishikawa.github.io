@@ -20,7 +20,7 @@
  \p{property-name} \p{^property-name}（否定） \P{property-name}（否定）  もっとも、実際に試したわけではないので、現状の Ruby 1.9 で上記のような使い方ができるのかは分からない。
 Ruby 1.8 結局、Ruby 1.8 では平仮名に相当するコードポイントの範囲を直接、正規表現で指定してやるのが簡単そうだ。
 Unicode Character Database の Block.txt によると平仮名（Hiragana）の範囲は 0x3040 から 0x309f なので、Ruby リファレンスマニュアルの FAQ「10.7 SJISの機種依存コード84BF から 889Fまでを空白に置き換えたいのですが」を参考に正規表現を書いてみる（ただし、UTF-8 限定）。
-/#{&amp;quot;[#{[0x3040].pack(&#39;U&#39;)}-#{[0x309f].pack(&#39;U&#39;)}]&amp;quot;}/u コードポイントから UTF-8 リテラル文字列への変換に Array#pack を利用しているため読みづらくなっている。もっといい方法があるのかもしれない。
+/#{&amp;quot;[#{[0x3040].pack(&#39;U&#39;)}-#{[0x309f].pack(&#39;U&#39;)}]&amp;quot;}/u  コードポイントから UTF-8 リテラル文字列への変換に Array#pack を利用しているため読みづらくなっている。もっといい方法があるのかもしれない。
 参考  Unicode Regular Expressions 鬼車  </description>
     </item>
     

@@ -61,34 +61,38 @@
         </ul>
       </div>
       <div class="content"><p>It&rsquo;s time for code reading. Today, I read the functions <code>dump()</code> and <code>print()</code> which dump IR code and are implemented in <a href="http://llvm.org/doxygen/classllvm_1_1Module.html">llvm::Module</a> which I had been curious about it for a while. Notice, the referenced code base is <a href="http://llvm.org/releases/download.html#3.1">LLVM 3.1</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">/// Print the module to an output stream with an optional
-</span><span style="color:#75715e">/// AssemblyAnnotationWriter.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print</span>(raw_ostream <span style="color:#f92672">&amp;</span>OS, AssemblyAnnotationWriter <span style="color:#f92672">*</span>AAW) <span style="color:#66d9ef">const</span>;
+<pre><code class="language-c++">/// Print the module to an output stream with an optional
+/// AssemblyAnnotationWriter.
+void print(raw_ostream &amp;OS, AssemblyAnnotationWriter *AAW) const;
 
-<span style="color:#75715e">/// Dump the module to stderr (for debugging).
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dump</span>() <span style="color:#66d9ef">const</span>;
-</code></pre></div><p>Both functions are instance methods of <code>llvm::Module</code>, but the implementation code is in <code>lib/VMCore/AsmWriter.cpp</code> which also contains other debug functions, not in <code>lib/VMCore/Module.cpp</code>. First of all, I should set about reading the function  <code>llvm::Module::print</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> Module<span style="color:#f92672">::</span>print(raw_ostream <span style="color:#f92672">&amp;</span>ROS, AssemblyAnnotationWriter <span style="color:#f92672">*</span>AAW) <span style="color:#66d9ef">const</span> {
-  SlotTracker <span style="color:#a6e22e">SlotTable</span>(<span style="color:#66d9ef">this</span>);
-  formatted_raw_ostream <span style="color:#a6e22e">OS</span>(ROS);
-  AssemblyWriter <span style="color:#a6e22e">W</span>(OS, SlotTable, <span style="color:#66d9ef">this</span>, AAW);
-  W.printModule(<span style="color:#66d9ef">this</span>);
+/// Dump the module to stderr (for debugging).
+void dump() const;
+</code></pre>
+<p>Both functions are instance methods of <code>llvm::Module</code>, but the implementation code is in <code>lib/VMCore/AsmWriter.cpp</code> which also contains other debug functions, not in <code>lib/VMCore/Module.cpp</code>. First of all, I should set about reading the function  <code>llvm::Module::print</code>.</p>
+<pre><code class="language-c++">void Module::print(raw_ostream &amp;ROS, AssemblyAnnotationWriter *AAW) const {
+  SlotTracker SlotTable(this);
+  formatted_raw_ostream OS(ROS);
+  AssemblyWriter W(OS, SlotTable, this, AAW);
+  W.printModule(this);
 }
-</code></pre></div><h2 id="llvmmoduleprint">llvm::Module::print</h2>
+</code></pre>
+<h2 id="llvmmoduleprint">llvm::Module::print</h2>
 <p>The class <code>AssemblyWriter</code> is defined in unnamed namespace in <code>lib/VMCore/AsmWriter.cpp</code>. It can print various LLVM types in a stream. Take a quick look at the function, then you can get the overall gist.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> AssemblyWriter<span style="color:#f92672">::</span>printModule(<span style="color:#66d9ef">const</span> Module <span style="color:#f92672">*</span>M) {
-  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>M<span style="color:#f92672">-&gt;</span>getModuleIdentifier().empty() <span style="color:#f92672">&amp;&amp;</span>
-      <span style="color:#75715e">// Don&#39;t print the ID if it will start a new line (which would
-</span><span style="color:#75715e"></span>      <span style="color:#75715e">// require a comment char before it).
-</span><span style="color:#75715e"></span>      M<span style="color:#f92672">-&gt;</span>getModuleIdentifier().find(<span style="color:#e6db74">&#39;\n&#39;</span>) <span style="color:#f92672">==</span> std<span style="color:#f92672">::</span>string<span style="color:#f92672">::</span>npos)
-    Out <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;; ModuleID = &#39;&#34;</span> <span style="color:#f92672">&lt;&lt;</span> M<span style="color:#f92672">-&gt;</span>getModuleIdentifier() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+<pre><code class="language-c++">void AssemblyWriter::printModule(const Module *M) {
+  if (!M-&gt;getModuleIdentifier().empty() &amp;&amp;
+      // Don't print the ID if it will start a new line (which would
+      // require a comment char before it).
+      M-&gt;getModuleIdentifier().find('\n') == std::string::npos)
+    Out &lt;&lt; &quot;; ModuleID = '&quot; &lt;&lt; M-&gt;getModuleIdentifier() &lt;&lt; &quot;'\n&quot;;
 ...
 }
-</code></pre></div><h2 id="llvmmoduledump">llvm::Module::dump</h2>
+</code></pre>
+<h2 id="llvmmoduledump">llvm::Module::dump</h2>
 <p>Next, let&rsquo;s look at the function <code>llvm::Module::dump</code> also defined in <code>lib/VMCore/AsmWriter.cpp</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// Module::dump() - Allow printing of Modules from the debugger.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> Module<span style="color:#f92672">::</span>dump() <span style="color:#66d9ef">const</span> { print(dbgs(), <span style="color:#ae81ff">0</span>); }
-</code></pre></div><p>Easy enough. It just call the <code>llvm::Module::print</code> with arguments:</p>
+<pre><code class="language-c++">// Module::dump() - Allow printing of Modules from the debugger.
+void Module::dump() const { print(dbgs(), 0); }
+</code></pre>
+<p>Easy enough. It just call the <code>llvm::Module::print</code> with arguments:</p>
 <ul>
 <li><em>#1</em> a return value of <code>dbgs()</code> as <code>raw_ostream</code></li>
 <li><em>#2</em> <code>0</code> will be interpreted as a null pointer <code>AssemblyAnnotationWriter*</code></li>
@@ -96,63 +100,67 @@
 <p>So, what about a return value of <code>dbgs()</code>?</p>
 <h2 id="llvmdbgs">llvm::dbgs</h2>
 <p>The declaration of <code>llvm::dbgs</code> is in the file <code>include/llvm/Support/Debug.h</code>. It&rsquo;s a function which returns an output stream for debugging.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">/// dbgs() - This returns a reference to a raw_ostream for debugging
-</span><span style="color:#75715e">/// messages.  If debugging is disabled it returns errs().  Use it
-</span><span style="color:#75715e">/// like: dbgs() &lt;&lt; &#34;foo&#34; &lt;&lt; &#34;bar&#34;;
-</span><span style="color:#75715e"></span>raw_ostream <span style="color:#f92672">&amp;</span>dbgs();
-</code></pre></div><p>The function implementation is in the file <code>lib/Support/Debug.cpp</code>. It switches its implementation whether <code>NDEBUG</code> is <em>undefined</em> or not.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// All Debug.h functionality is a no-op in NDEBUG mode.
-</span><span style="color:#75715e"></span><span style="color:#75715e">#ifndef NDEBUG
-</span><span style="color:#75715e"></span><span style="color:#75715e">/// dbgs - Return a circular-buffered debug stream.
-</span><span style="color:#75715e"></span>raw_ostream <span style="color:#f92672">&amp;</span>llvm<span style="color:#f92672">::</span>dbgs() {
+<pre><code class="language-c++">/// dbgs() - This returns a reference to a raw_ostream for debugging
+/// messages.  If debugging is disabled it returns errs().  Use it
+/// like: dbgs() &lt;&lt; &quot;foo&quot; &lt;&lt; &quot;bar&quot;;
+raw_ostream &amp;dbgs();
+</code></pre>
+<p>The function implementation is in the file <code>lib/Support/Debug.cpp</code>. It switches its implementation whether <code>NDEBUG</code> is <em>undefined</em> or not.</p>
+<pre><code class="language-c++">// All Debug.h functionality is a no-op in NDEBUG mode.
+#ifndef NDEBUG
+/// dbgs - Return a circular-buffered debug stream.
+raw_ostream &amp;llvm::dbgs() {
 ...
 }
 ...
-<span style="color:#75715e">#else
-</span><span style="color:#75715e"></span><span style="color:#75715e">// Avoid &#34;has no symbols&#34; warning.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">namespace</span> llvm {
-  <span style="color:#75715e">/// dbgs - Return errs().
-</span><span style="color:#75715e"></span>  raw_ostream <span style="color:#f92672">&amp;</span>dbgs() {
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">errs</span>();
+#else
+// Avoid &quot;has no symbols&quot; warning.
+namespace llvm {
+  /// dbgs - Return errs().
+  raw_ostream &amp;dbgs() {
+    return errs();
   }
 }
 
-<span style="color:#75715e">#endif
-</span></code></pre></div><p>When <code>NDEBUG</code> is defined (no debug mode), <code>dbgs()</code> function just returns a raw_ostream
+#endif
+</code></pre>
+<p>When <code>NDEBUG</code> is defined (no debug mode), <code>dbgs()</code> function just returns a raw_ostream
 instance which points to standard error.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#ifndef STDERR_FILENO
-</span><span style="color:#75715e"># define STDERR_FILENO 2
-</span><span style="color:#75715e">#endif
-</span><span style="color:#75715e"></span>...
-<span style="color:#75715e">/// errs() - This returns a reference to a raw_ostream for standard error.
-</span><span style="color:#75715e">/// Use it like: errs() &lt;&lt; &#34;foo&#34; &lt;&lt; &#34;bar&#34;;
-</span><span style="color:#75715e"></span>raw_ostream <span style="color:#f92672">&amp;</span>llvm<span style="color:#f92672">::</span>errs() {
-  <span style="color:#75715e">// Set standard error to be unbuffered by default.
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">static</span> raw_fd_ostream <span style="color:#a6e22e">S</span>(STDERR_FILENO, false, true);
-  <span style="color:#66d9ef">return</span> S;
+<pre><code class="language-c++">#ifndef STDERR_FILENO
+# define STDERR_FILENO 2
+#endif
+...
+/// errs() - This returns a reference to a raw_ostream for standard error.
+/// Use it like: errs() &lt;&lt; &quot;foo&quot; &lt;&lt; &quot;bar&quot;;
+raw_ostream &amp;llvm::errs() {
+  // Set standard error to be unbuffered by default.
+  static raw_fd_ostream S(STDERR_FILENO, false, true);
+  return S;
 }
-</code></pre></div><p>But the opposite has a more complicated implementation.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">/// dbgs - Return a circular-buffered debug stream.
-</span><span style="color:#75715e"></span>raw_ostream <span style="color:#f92672">&amp;</span>llvm<span style="color:#f92672">::</span>dbgs() {
-  <span style="color:#75715e">// Do one-time initialization in a thread-safe way.
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">dbgstream</span> {
+</code></pre>
+<p>But the opposite has a more complicated implementation.</p>
+<pre><code class="language-c++">/// dbgs - Return a circular-buffered debug stream.
+raw_ostream &amp;llvm::dbgs() {
+  // Do one-time initialization in a thread-safe way.
+  static struct dbgstream {
     circular_raw_ostream strm;
 
-    dbgstream() <span style="color:#f92672">:</span>
-        strm(errs(), <span style="color:#e6db74">&#34;*** Debug Log Output ***</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,
-             (<span style="color:#f92672">!</span>EnableDebugBuffering <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>DebugFlag) <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span> DebugBufferSize) {
-      <span style="color:#66d9ef">if</span> (EnableDebugBuffering <span style="color:#f92672">&amp;&amp;</span> DebugFlag <span style="color:#f92672">&amp;&amp;</span> DebugBufferSize <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>)
-        <span style="color:#75715e">// TODO: Add a handler for SIGUSER1-type signals so the user can
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">// force a debug dump.
-</span><span style="color:#75715e"></span>        sys<span style="color:#f92672">::</span>AddSignalHandler(<span style="color:#f92672">&amp;</span>debug_user_sig_handler, <span style="color:#ae81ff">0</span>);
-      <span style="color:#75715e">// Otherwise we&#39;ve already set the debug stream buffer size to
-</span><span style="color:#75715e"></span>      <span style="color:#75715e">// zero, disabling buffering so it will output directly to errs().
-</span><span style="color:#75715e"></span>    }
+    dbgstream() :
+        strm(errs(), &quot;*** Debug Log Output ***\n&quot;,
+             (!EnableDebugBuffering || !DebugFlag) ? 0 : DebugBufferSize) {
+      if (EnableDebugBuffering &amp;&amp; DebugFlag &amp;&amp; DebugBufferSize != 0)
+        // TODO: Add a handler for SIGUSER1-type signals so the user can
+        // force a debug dump.
+        sys::AddSignalHandler(&amp;debug_user_sig_handler, 0);
+      // Otherwise we've already set the debug stream buffer size to
+      // zero, disabling buffering so it will output directly to errs().
+    }
   } thestrm;
 
-  <span style="color:#66d9ef">return</span> thestrm.strm;
+  return thestrm.strm;
 }
-</code></pre></div><p>It returns a <code>circular_raw_ostream</code> which internally uses standard error stream. The stream is
+</code></pre>
+<p>It returns a <code>circular_raw_ostream</code> which internally uses standard error stream. The stream is
 initialized in the constructor of a <code>struct dbgstream</code>. The struct is declared with <code>static</code>, so
 it is statically allocated and its constructor is invoked exactly once. The constructor does not
 initialize a stream but also set a signal handler.</p>

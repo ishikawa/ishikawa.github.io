@@ -54,12 +54,14 @@
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
 )
-</code></pre><p>デフォルトではこのような設定になっている。上から三つは問題ないだろう。名前からだいたいの機能は想像できるはずだし、おそらくあなたは間違っていない。</p>
+</code></pre>
+<p>デフォルトではこのような設定になっている。上から三つは問題ないだろう。名前からだいたいの機能は想像できるはずだし、おそらくあなたは間違っていない。</p>
 <pre><code>MIDDLEWARE_CLASSES = (
     ...
     'django.middleware.doc.XViewMiddleware',
 )
-</code></pre><p>問題はこれだ。<code>XViewMiddleware</code> ——名前だけでは、どんな働きをするのか見当もつかない。</p>
+</code></pre>
+<p>問題はこれだ。<code>XViewMiddleware</code> ——名前だけでは、どんな働きをするのか見当もつかない。</p>
 <h3 id="xviewmiddleware-を試す">XViewMiddleware を試す</h3>
 <p>まずはドキュメントを読んでみようか。<a href="http://www.djangoproject.com/documentation/middleware/#django-middleware-doc-xviewmiddleware">XViewMiddleware のドキュメント</a>（<a href="http://michilu.com/django/doc-ja/middleware/#django-middleware-doc-xviewmiddleware">和訳</a>）によると、</p>
 <blockquote>
@@ -77,7 +79,8 @@
 <pre><code>INTERNAL_IPS = (
     '127.0.0.1',
 )
-</code></pre><p>HEAD リクエストは <code>curl</code> コマンドなどで送信することができる。<a href="/2008/05/20/porting-weblog-to-google-app-engine/">このブログも Django で書かれている</a>ので試してみた（ローカルの開発環境で、だが）。</p>
+</code></pre>
+<p>HEAD リクエストは <code>curl</code> コマンドなどで送信することができる。<a href="/2008/05/20/porting-weblog-to-google-app-engine/">このブログも Django で書かれている</a>ので試してみた（ローカルの開発環境で、だが）。</p>
 <p>結果は以下のようになる。</p>
 <pre><code>% curl --head http://127.0.0.1:8000/
 HTTP/1.0 200 OK
@@ -89,11 +92,13 @@ Content-Type: text/html; charset=utf-8
 Content-Language: ja-jp
 Cache-Control: no-cache
 content-length: 0
-</code></pre><p><strong>X-View: weblog.views.archive</strong> という行に注目してほしい。これが <code>XViewMiddleware</code> のすべて、 <code>X-View</code> ヘッダである。</p>
+</code></pre>
+<p><strong>X-View: weblog.views.archive</strong> という行に注目してほしい。これが <code>XViewMiddleware</code> のすべて、 <code>X-View</code> ヘッダである。</p>
 <h3 id="x-view-ヘッダの利用">X-View ヘッダの利用</h3>
 <p>もう一度、<code>X-View</code> ヘッダを見てみよう。</p>
 <pre><code>X-View: weblog.views.archive
-</code></pre><p>お気づきだろうか。そう。これは View のパスである。</p>
+</code></pre>
+<p>お気づきだろうか。そう。これは View のパスである。</p>
 <p>つまり、さきほどの例でいえば、</p>
 <ul>
 <li><code>http://127.0.0.1:8000/</code> に HEAD リクエストを送信し、</li>

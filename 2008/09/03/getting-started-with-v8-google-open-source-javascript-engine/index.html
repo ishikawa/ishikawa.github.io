@@ -78,9 +78,11 @@ v8 のガベージコレクションの特徴は以下のとおりである：</
 <pre><code>% cd Developer/Workspace/JavaScript/
 % svn checkout http://v8.googlecode.com/svn/trunk/ v8
 % cd v8/
-</code></pre><p>ビルドには <a href="http://www.scons.org/">SCons</a> というビルドツールが必要だ。<a href="http://www.macports.org/">MacPorts</a> でインストールしておこう。</p>
+</code></pre>
+<p>ビルドには <a href="http://www.scons.org/">SCons</a> というビルドツールが必要だ。<a href="http://www.macports.org/">MacPorts</a> でインストールしておこう。</p>
 <pre><code>% sudo port install scons
-</code></pre><p>ビルドオプションは、<code>scons --help</code> で確認できる。</p>
+</code></pre>
+<p>ビルドオプションは、<code>scons --help</code> で確認できる。</p>
 <pre><code>% scons --help
 scons: Reading SConscript files ...
 scons: done reading SConscript files.
@@ -91,13 +93,15 @@ mode: compilation mode (debug, release)
 
 sample: build sample (shell, process)
 ...
-</code></pre><p>とりあえず試したいだけなので、デフォルトの設定でビルドしてみようか。</p>
+</code></pre>
+<p>とりあえず試したいだけなので、デフォルトの設定でビルドしてみようか。</p>
 <pre><code>% scons
 scons: Reading SConscript files ...
 scons: done reading SConscript files.
 scons: Building targets ...
 ...
-</code></pre><p>同じディレクトリに <code>libv8.a</code> というライブラリができたはずだ。</p>
+</code></pre>
+<p>同じディレクトリに <code>libv8.a</code> というライブラリができたはずだ。</p>
 <h3 id="簡単な-c-プログラムで使ってみよう">簡単な C++ プログラムで使ってみよう</h3>
 <p>他の C++ プログラムに組み込んで使うことを念頭に開発されているのも、v8 の特徴だ。プロジェクト・サイトにある <a href="http://code.google.com/apis/v8/get_started.html">Hello World プログラム</a>よりは実用的なプログラムで感触をつかんでみよう。</p>
 <p>以下は、標準入力から受け取ったプログラムを構文解析して実行、結果を標準出力に書き出すプログラムだ（Gist にもアップしておいた。<a href="http://gist.github.com/8559">gist:8559</a>）。</p>
@@ -145,9 +149,11 @@ int main(int argc, const char **argv) {
   std::cout &lt;&lt; *ascii &lt;&lt; std::endl;
   return 0;
 }
-</code></pre><p>このプログラムは gcc で次のようにコンパイルする。<code>V8_HOME</code> 環境変数には v8 をチェックアウトしたディレクトリを設定してほしい。</p>
+</code></pre>
+<p>このプログラムは gcc で次のようにコンパイルする。<code>V8_HOME</code> 環境変数には v8 をチェックアウトしたディレクトリを設定してほしい。</p>
 <pre><code>% g++ -I${V8_HOME}/include -L${V8_HOME} -lv8 -o simple_v8_shell simple_v8_shell.cc
-</code></pre><p>実行例：</p>
+</code></pre>
+<p>実行例：</p>
 <pre><code>% ./simple_v8_shell
 'Hello, ' + 'World!'
 Hello, World!
@@ -160,7 +166,8 @@ var fib = function(n) {
 }
 fib(10)
 55
-</code></pre><h3 id="最後に">最後に</h3>
+</code></pre>
+<h3 id="最後に">最後に</h3>
 <p>現時点では、v8 が実際のところどれだけのものなのか、確証をもって言えることは多くない。しかし、v8 の登場で強く感じたことがふたつある。</p>
 <p>まず、JavaScript エンジンの実装は <a href="http://www.mozilla-japan.org/projects/tamarin/">Tamarin</a> (Adobe/Mozilla)、<a href="http://webkit.org/blog/189/announcing-squirrelfish/">SquirrelFish</a> (Apple)、そして、今回の <a href="http://code.google.com/p/v8/">v8</a> (Google) &hellip; 強豪たちとホットな技術がひしめく戦場になりつつある。手の出尽くした感があるブラウザ競争とは異なり、この戦場はまさに「未開のフロンティア」だろう。</p>
 <p>また、ここ数年で多くのプログラマに浸透した動的言語だが、これから数年のうちに、今度は<strong>動的言語の効率的な実装</strong>もプログラマ一般に浸透していくのではないか、という思いを強くした。</p>

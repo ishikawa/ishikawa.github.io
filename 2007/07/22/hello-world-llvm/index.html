@@ -56,11 +56,13 @@ define i32 @main() {
   call i32 @puts(i8 * %cast210)
   ret i32 0
 }
-</code></pre><p>バイトコードにコンパイルして実行。</p>
+</code></pre>
+<p>バイトコードにコンパイルして実行。</p>
 <pre><code>% llvm-as -f hello.ll
 % lli hello.bc
 Hello world!
-</code></pre><p>まあ、プログラム自体は <a href="http://llvm.org/docs/LangRef.html">LLVM Assembly Language Reference Manual</a> からの抜粋なわけだが。</p>
+</code></pre>
+<p>まあ、プログラム自体は <a href="http://llvm.org/docs/LangRef.html">LLVM Assembly Language Reference Manual</a> からの抜粋なわけだが。</p>
 </div>
     </article>
 

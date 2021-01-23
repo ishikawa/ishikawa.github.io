@@ -16,8 +16,8 @@
       <guid>https://metareal.blog/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/</guid>
       <description>最近、業務でレガシーコード（要するにテストが一切ないコード1）の改善を担当する機会があった。だいたいのステップとして以下のような改善を行なった。
  パッケージ管理として Poetry の導入 pytest によるテストの追加 CI によるテストの自動化 必要なコードの改修とリファクタリング  特に、2 のステップでは pytest のフィクスチャ機能が非常に便利で、ダミーデータの生成から外部リソースアクセスのモックまで幅広く利用させてもらった。たとえば、Web API アクセスのモックには requests-mock を利用したのだが、
-import pytest import requests_mock as requests_mock_module @pytest.fixture def requests_mock(): with requests_mock_module.Mocker() as m: yield m @pytest.fixture def user_api_response(): def response(user_id): return { &amp;#34;id&amp;#34;: user_id, &amp;#34;name&amp;#34;: &amp;#34;dummy&amp;#34;, &amp;#34;updated_at&amp;#34;: fake_iso8601(), &amp;#34;created_at&amp;#34;: fake_iso8601() } return response このような Python コードを conftest.py として保存しておけば、任意のユニットテストで以下のように Web API アクセスをモックできる。
-def test_web_api(requests_mock, user_api_response): # Web API アクセスのモック requests_mock.get( f&amp;#39;https://api.example.com/users/{user_id}&amp;#39;, json=user_api_response(user_id)) # テスト対象の関数を呼び出す get_user() また、pytest ではユーザー独自のフィクスチャを定義できるだけでなく、組み込みのフィクスチャも提供されている、ということをはじめて知った。いままで、あまり真面目にドキュメントを読んでいなかったので&amp;hellip;。</description>
+import pytest import requests_mock as requests_mock_module @pytest.fixture def requests_mock(): with requests_mock_module.Mocker() as m: yield m @pytest.fixture def user_api_response(): def response(user_id): return { &amp;quot;id&amp;quot;: user_id, &amp;quot;name&amp;quot;: &amp;quot;dummy&amp;quot;, &amp;quot;updated_at&amp;quot;: fake_iso8601(), &amp;quot;created_at&amp;quot;: fake_iso8601() } return response  このような Python コードを conftest.py として保存しておけば、任意のユニットテストで以下のように Web API アクセスをモックできる。
+def test_web_api(requests_mock, user_api_response): # Web API アクセスのモック requests_mock.get( f&#39;https://api.example.com/users/{user_id}&#39;, json=user_api_response(user_id)) # テスト対象の関数を呼び出す get_user()  また、pytest ではユーザー独自のフィクスチャを定義できるだけでなく、組み込みのフィクスチャも提供されている、ということをはじめて知った。いままで、あまり真面目にドキュメントを読んでいなかったので&amp;hellip;。</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@ def test_web_api(requests_mock, user_api_response): # Web API アクセスのモ
       
       <guid>https://metareal.blog/2010/01/31/python-shared-instance-closure/</guid>
       <description>実際にはシングルトンではなくて、共有インスタンスを返すメソッドを実装する、ってだけなんだけど。
-class A(object): @staticmethod def shared(): instance = A() A.shared = staticmethod(lambda: instance) return instance  共有インスタンスとなるオブジェクトを生成し、レキシカル変数にバインドする このオブジェクトを返す無名関数で、元の関数 shared を置き換える  何が嬉しいかというと、共有インスタンスを参照するための変数（今回の場合は instance）を関数外から不可視にできること。変数のスコープが必要以上に広いと不安になります。実行時に遅延インスタンス化されるのが嫌なら、クラス定義の直後に一度呼び出すなりすればいいと思う。
+class A(object): @staticmethod def shared(): instance = A() A.shared = staticmethod(lambda: instance) return instance   共有インスタンスとなるオブジェクトを生成し、レキシカル変数にバインドする このオブジェクトを返す無名関数で、元の関数 shared を置き換える  何が嬉しいかというと、共有インスタンスを参照するための変数（今回の場合は instance）を関数外から不可視にできること。変数のスコープが必要以上に広いと不安になります。実行時に遅延インスタンス化されるのが嫌なら、クラス定義の直後に一度呼び出すなりすればいいと思う。
 gist:290628 に doctest とか追加したものを置いてあります。</description>
     </item>
     
@@ -55,8 +55,8 @@ import os os.environ[&#39;DJANGO_SETTINGS_MODULE&#39;] = &#39;settings&#39; from
       <description>約一年ぶりに Sphinx を最新版に&amp;hellip;しようとしたら色々苦労したので、変更点や手順をメモとして残しておく。
 Sphinx 0.6.2 &amp;amp; Jinja2 2.1.1 easy_install でインストールしようとしたが、Jinja2 のセットアップ・スクリプトがうまく動いていないらしく、Jinja2 に依存している Sphinx もインストールできない。原因を調べる気力はないので、ソースコードからビルドしてインストールすることにした。
 まずは Jinja2 2.1.1 をビルドしてインストール。
-% curl -LO http://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.1.1.tar.gz % tar xvzf Jinja2-2.1.1.tar.gz % cd Jinja2-2.1.1 % sudo python setup.py install つづいて Sphinx 0.6.2
-% curl -LO http://pypi.python.org/packages/source/S/Sphinx/Sphinx-0.6.2.tar.gz % tar xvzf Sphinx-0.6.2.tar.gz % cd Sphinx-0.6.2 % sudo python setup.py install sphinx.builder Sphinx 0.6.2 では sphinx.builder が非推奨扱いになっていた (changeset:254e0ff435e8)。
+% curl -LO http://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.1.1.tar.gz % tar xvzf Jinja2-2.1.1.tar.gz % cd Jinja2-2.1.1 % sudo python setup.py install  つづいて Sphinx 0.6.2
+% curl -LO http://pypi.python.org/packages/source/S/Sphinx/Sphinx-0.6.2.tar.gz % tar xvzf Sphinx-0.6.2.tar.gz % cd Sphinx-0.6.2 % sudo python setup.py install  sphinx.builder Sphinx 0.6.2 では sphinx.builder が非推奨扱いになっていた (changeset:254e0ff435e8)。
 Running Sphinx v0.6.2 docs/ja/source/../../sphinxext/__init__.py:1: DeprecationWarning: The sphinx.builder module is deprecated; please import builders from the respective sphinx.</description>
     </item>
     
@@ -68,7 +68,7 @@ Running Sphinx v0.6.2 docs/ja/source/../../sphinxext/__init__.py:1: DeprecationW
       <guid>https://metareal.blog/2008/09/25/disassembling-python-import-statements-take2/</guid>
       <description>前回の記事への追記が長くなりそうなので、新しい記事にまとめました。
 import と import as  import &amp;lt;module&amp;gt; と import &amp;lt;module&amp;gt; as &amp;lt;name&amp;gt; では、どのようなバイトコードにコンパイルされるか、つまり、実行時の振る舞いが微妙に異なることに注意しよう。
-&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os.path&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os.path) 9 STORE_NAME 1 (os) 12 LOAD_CONST 1 (None) 15 RETURN_VALUE &amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os.path as os_path&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os.path) 9 LOAD_ATTR 1 (path) 12 STORE_NAME 2 (os_path) 15 LOAD_CONST 1 (None) 18 RETURN_VALUE 前者では IMPORT_NAME os.</description>
+&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os.path&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os.path) 9 STORE_NAME 1 (os) 12 LOAD_CONST 1 (None) 15 RETURN_VALUE &amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os.path as os_path&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os.path) 9 LOAD_ATTR 1 (path) 12 STORE_NAME 2 (os_path) 15 LOAD_CONST 1 (None) 18 RETURN_VALUE  前者では IMPORT_NAME os.</description>
     </item>
     
     <item>
@@ -79,8 +79,8 @@ import と import as  import &amp;lt;module&amp;gt; と import &amp;lt;module&am
       <guid>https://metareal.blog/2008/09/25/disassembling-python-import-statements/</guid>
       <description>Python Reference Manual の 6.12 The import statement を参考に、さまざまな形式の import 文を dis モジュールで disassemble してみた。
 import &amp;hellip; まずは、もっとも単純な import ...
-&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os) 9 STORE_NAME 0 (os) 12 LOAD_CONST 1 (None) 15 RETURN_VALUE IMPORT_NAME で import するモジュールが指定されていることが分かる。では、as を使って別名をつけるとどうなるだろうか。
-&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os as os2&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os) 9 STORE_NAME 1 (os2) 12 LOAD_CONST 1 (None) 15 RETURN_VALUE STORE_NAME の引数が os から os2 に変わった。つまり、登録するシンボル名は STORE_NAME で指定されるということだろう。</description>
+&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os) 9 STORE_NAME 0 (os) 12 LOAD_CONST 1 (None) 15 RETURN_VALUE  IMPORT_NAME で import するモジュールが指定されていることが分かる。では、as を使って別名をつけるとどうなるだろうか。
+&amp;gt;&amp;gt;&amp;gt; dis.disassemble(compile(&#39;import os as os2&#39;, &#39;&#39;, &#39;exec&#39;)) 1 0 LOAD_CONST 0 (-1) 3 LOAD_CONST 1 (None) 6 IMPORT_NAME 0 (os) 9 STORE_NAME 1 (os2) 12 LOAD_CONST 1 (None) 15 RETURN_VALUE  STORE_NAME の引数が os から os2 に変わった。つまり、登録するシンボル名は STORE_NAME で指定されるということだろう。</description>
     </item>
     
     <item>
@@ -91,7 +91,7 @@ import &amp;hellip; まずは、もっとも単純な import ...
       <guid>https://metareal.blog/2008/08/04/propertylist-parser-for-python/</guid>
       <description>Python でプロパティリストを読み込み、オブジェクトに変換するライブラリ plist_parser を書いた。GitHub で公開している。Python 2.4 以降で動作確認済み。ただし、対応するフォーマットは XML のみで、書き込みにも対応していない。
 使い方は至って単純だ。たとえば、以下のプロパティリストは iTunes Music Library.xml から一部抜粋したものだが、
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.0//EN&amp;quot; &amp;quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;quot;&amp;gt; &amp;lt;plist version=&amp;quot;1.0&amp;quot;&amp;gt; &amp;lt;dict&amp;gt; &amp;lt;key&amp;gt;Track ID&amp;lt;/key&amp;gt; &amp;lt;integer&amp;gt;4154&amp;lt;/integer&amp;gt; &amp;lt;key&amp;gt;Artist&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;Megadeth&amp;lt;/string&amp;gt; &amp;lt;key&amp;gt;Name&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;Architecture Of Aggression&amp;lt;/string&amp;gt; &amp;lt;key&amp;gt;Date Added&amp;lt;/key&amp;gt; &amp;lt;date&amp;gt;2008-06-23T12:20:17Z&amp;lt;/date&amp;gt; &amp;lt;/dict&amp;gt; &amp;lt;/plist&amp;gt; このプロパティリストが music.xml という名前で保存されているとして、このファイルを読み込んでオブジェクトに変換するコードは以下のとおり。
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.0//EN&amp;quot; &amp;quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;quot;&amp;gt; &amp;lt;plist version=&amp;quot;1.0&amp;quot;&amp;gt; &amp;lt;dict&amp;gt; &amp;lt;key&amp;gt;Track ID&amp;lt;/key&amp;gt; &amp;lt;integer&amp;gt;4154&amp;lt;/integer&amp;gt; &amp;lt;key&amp;gt;Artist&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;Megadeth&amp;lt;/string&amp;gt; &amp;lt;key&amp;gt;Name&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;Architecture Of Aggression&amp;lt;/string&amp;gt; &amp;lt;key&amp;gt;Date Added&amp;lt;/key&amp;gt; &amp;lt;date&amp;gt;2008-06-23T12:20:17Z&amp;lt;/date&amp;gt; &amp;lt;/dict&amp;gt; &amp;lt;/plist&amp;gt;  このプロパティリストが music.xml という名前で保存されているとして、このファイルを読み込んでオブジェクトに変換するコードは以下のとおり。
 from plist_parser import XmlPropertyListParser, \ PropertyListParseError f = open(&#39;music.plist&#39;) try: print XmlPropertyListParser().parse(f) # =&amp;gt; # { # &#39;Date Added&#39;: datetime.datetime(2008, 6, 23, 12, 20, 17), # &#39;Track ID&#39;: 4154, # &#39;Name&#39;: &#39;Architecture Of Aggression&#39;, # &#39;Artist&#39;: &#39;Megadeth&#39; # } except PropertyListParseError: raise finally: f.</description>
     </item>
     
@@ -136,8 +136,8 @@ def resolve(path, urlconf=None): return get_resolver(urlconf).resolve(path) def 
       
       <guid>https://metareal.blog/2008/04/14/python-markdown-1-7-with-django/</guid>
       <description>Python Markdown の最新版である 1.7 を Django で使うと、日本語など ASCII 以外の文字で UnicodeDecodeError が発生する。
-MARKDOWN-CRITICAL: &amp;quot;UnicodeDecodeError: Markdown only accepts unicode or ascii input.&amp;quot; すでにチケットも登録されているが、とりあえず古いバージョンに戻すのがよさそう。1.6b はバグで同様のエラーが出るようなので、1.6a にしよう。
-% sudo easy_install markdown==1.6a 蛇足だが、この問題を調べている途中で見つけた。python-markdown2 という、別の Markdown ライブラリも存在するようだ。</description>
+MARKDOWN-CRITICAL: &amp;quot;UnicodeDecodeError: Markdown only accepts unicode or ascii input.&amp;quot;  すでにチケットも登録されているが、とりあえず古いバージョンに戻すのがよさそう。1.6b はバグで同様のエラーが出るようなので、1.6a にしよう。
+% sudo easy_install markdown==1.6a  蛇足だが、この問題を調べている途中で見つけた。python-markdown2 という、別の Markdown ライブラリも存在するようだ。</description>
     </item>
     
     <item>
@@ -168,7 +168,7 @@ def force_unicode(s, encoding=&#39;utf-8&#39;, strings_only=False, errors=&#39;s
       <description>Mac OS X では GNU の Readline ライブラリがインストールには含まれておらず、Readline 互換の Libedit というライブラリへのシンボリックリンクとなっている（こうなっている理由はライセンス上の問題からだと思われる。GNU の Readline ライブラリは GPL で、Libedit は BSD ライセンスだ）。
 しかし、これが原因で Readline 対応のプログラムがコンパイルできない、コンパイルできてもヒストリ機能などが使えない、といった問題がしばしば起こる。
 Python は後者の例で、configure スクリプトはちゃんと readline ライブラリを認識し make も問題なく通るのだが、実際には Readline ライブラリが無効になったバイナリがインストールされてしまう。
-% ./configure ... checking for readline in -lreadline... yes checking for rl_callback_handler_install in -lreadline... yes checking for rl_pre_input_hook in -lreadline... yes checking for rl_completion_matches in -lreadline... no ... % make ... % find . -name readline.so # readline.so が出来ていない ヒストリ機能やキャレット移動のショートカットが使えないのは、やはり不便だ。これはなんとかしたい。</description>
+% ./configure ... checking for readline in -lreadline... yes checking for rl_callback_handler_install in -lreadline... yes checking for rl_pre_input_hook in -lreadline... yes checking for rl_completion_matches in -lreadline... no ... % make ... % find . -name readline.so # readline.so が出来ていない  ヒストリ機能やキャレット移動のショートカットが使えないのは、やはり不便だ。これはなんとかしたい。</description>
     </item>
     
     <item>
@@ -179,9 +179,9 @@ Python は後者の例で、configure スクリプトはちゃんと readline �
       <guid>https://metareal.blog/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</guid>
       <description>最近 Python を 2.5.2 にアップデートして同じ作業を繰り返したことと、Apple によるロケール周りの変更点を Python 2.5.1 にも適用するのときはパッチの適用方法について言及がなかったこともあり、そのへんも含めて手順をまとめておく。
 まずは Python 2.5.2 をダウンロードし展開。
- % curl -LO http://www.python.org/ftp/python/2.5.2/Python-2.5.2.tar.bz2 % tar xjf Python-2.5.2.tar.bz2 Apple によるロケール周りの変更点を Python 2.5.1 にも適用するで公開したパッチをあてる。
- % curl -LO http://www.metareal.org/wp-content/uploads/2007/09/python251_apple_locale.txt % cd Python-2.5.2 % patch -p2 -d . &amp;lt; ../python251_apple_locale.txt 最後の patch コマンドによりパッチを適用している。-p2 オプションの指定をしないとパッチがうまく適用されないので注意。あとは通常どおり confgure, make すればいい。
- % ./configure % make % sudo make install 2.5.3 がリリースされたら、また同じパターンで記事が一本できるな。
+ % curl -LO http://www.python.org/ftp/python/2.5.2/Python-2.5.2.tar.bz2 % tar xjf Python-2.5.2.tar.bz2  Apple によるロケール周りの変更点を Python 2.5.1 にも適用するで公開したパッチをあてる。
+ % curl -LO http://www.metareal.org/wp-content/uploads/2007/09/python251_apple_locale.txt % cd Python-2.5.2 % patch -p2 -d . &amp;lt; ../python251_apple_locale.txt  最後の patch コマンドによりパッチを適用している。-p2 オプションの指定をしないとパッチがうまく適用されないので注意。あとは通常どおり confgure, make すればいい。
+ % ./configure % make % sudo make install  2.5.3 がリリースされたら、また同じパターンで記事が一本できるな。
 【追記】こうしてインストールされた Python インタプリタではヒストリ機能などが有効になっていないかもしれない。その場合は Mac の Python をビルドするときに GNU Readline ライブラリを有効にするをどうぞ。</description>
     </item>
     
@@ -213,7 +213,7 @@ Mac OS X に標準でパッケージングされている Python Apple Developer
       <description>（追記）この記事に載せているパッチよりも Apple によるロケール周りの変更点を Python 2.5.1 にも適用するのパッチを使った方がよさそうです。Mac OS X 標準の Python との互換性があります。
 TracInstall に従って、Mac OS X で Trac を動かそうとしている。以前試したときは頓挫したのだが、今回は Python を含むすべてのライブラリを一からインストールして、じっくりやってみることにした。
 とりあえず、tracd を起動するところまでは問題なくいったのだけれど、URL にアクセスしてみると早速こんなエラーが。
-Traceback (most recent call last): File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 406, in dispatch_request dispatcher.dispatch(req) File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 207, in dispatch populate_hdf(req.hdf, self.env, req) File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 77, in populate_hdf &#39;time&#39;: format_datetime(), File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/util/datefmt.py&amp;quot;, line 65, in format_datetime return unicode(text, encoding, &#39;replace&#39;) LookupError: unknown encoding: X-MAC-JAPANESE じっくりやってみる、と書いた矢先にくじけそうになりましたが、諦めずに原因を追ってみますね。
+Traceback (most recent call last): File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 406, in dispatch_request dispatcher.dispatch(req) File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 207, in dispatch populate_hdf(req.hdf, self.env, req) File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 77, in populate_hdf &#39;time&#39;: format_datetime(), File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/util/datefmt.py&amp;quot;, line 65, in format_datetime return unicode(text, encoding, &#39;replace&#39;) LookupError: unknown encoding: X-MAC-JAPANESE  じっくりやってみる、と書いた矢先にくじけそうになりましたが、諦めずに原因を追ってみますね。
 その前に、今回試したバージョンは、
  Python 2.</description>
     </item>
@@ -227,7 +227,7 @@ Traceback (most recent call last): File &amp;quot;/path/to/trac/lib/python2.5/si
       <description>作業メモや備忘録を残しておくためのシステムがほしくて、MoinMoin を自宅サーバの Mac OS X にインストールした。
 ブログだとやっぱり時系列で流れちゃうし、書き殴りのメモとかは公開しづらいしね。MoinMoin はページごとのパーミッションを制御できるなど、今回の用途にはぴったり。
 ただし、バージョン 1.5.7 はそのままだと Mac OS X では動かなかった。
-UnboundLocalError: local variable &#39;File&#39; referenced before assignment こんなエラーが出てしまう。
+UnboundLocalError: local variable &#39;File&#39; referenced before assignment  こんなエラーが出てしまう。
 ここに書かれている通り、util/filesys.py を修正すると動くようになった。</description>
     </item>
     
@@ -255,9 +255,9 @@ Important warning: The default value is evaluated only once. This makes a differ
       <guid>https://metareal.blog/2007/01/01/install-python-25/</guid>
       <description>冬休み。お勉強の一環として Python を考えている。
 現時点の最新版は 2.5、一方、Mac OS X Tiger に標準インストールされているのは 2.3.2。 というわけでダウンロードページから Python 2.5 のソースコードをダウンロードして、インストール。
-% curl -O http://www.python.org/ftp/python/2.5/Python-2.5.tgz % tar xvzf Python-2.5.tgz % cd Python-2.5 % ./configure % make % sudo make install 特に問題なくインストールできた。
-% python -V Python 2.5 お約束通り、Hello, World で幕開け。
-% python Python 2.5 (r25:51908, Jan 1 2007, 17:41:26) [GCC 4.0.1 (Apple Computer, Inc. build 5367)] on darwin Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&amp;quot; or &amp;quot;license&amp;quot; for more information. &amp;gt;&amp;gt;&amp;gt; print &amp;quot;Hello, World!</description>
+% curl -O http://www.python.org/ftp/python/2.5/Python-2.5.tgz % tar xvzf Python-2.5.tgz % cd Python-2.5 % ./configure % make % sudo make install  特に問題なくインストールできた。
+% python -V Python 2.5  お約束通り、Hello, World で幕開け。
+% python Python 2.5 (r25:51908, Jan 1 2007, 17:41:26) [GCC 4.0.1 (Apple Computer, Inc. build 5367)] on darwin Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&amp;quot; or &amp;quot;license&amp;quot; for more information.</description>
     </item>
     
   </channel>

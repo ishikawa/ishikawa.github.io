@@ -56,29 +56,35 @@
 <pre><code>% tar xvzf opencv-1.0.0.tar.gz
 % mkdir build
 % cd build/
-</code></pre><p><code>libjpeg</code> や <code>libpng</code> がないと JPEG, PNG 画像を扱えないので、<a href="http://darwinports.opendarwin.org/">DarwanPorts</a> でいれたものを使うように <code>configure</code></p>
+</code></pre>
+<p><code>libjpeg</code> や <code>libpng</code> がないと JPEG, PNG 画像を扱えないので、<a href="http://darwinports.opendarwin.org/">DarwanPorts</a> でいれたものを使うように <code>configure</code></p>
 <pre><code>% ../configure CPPFLAGS=&quot;-I/opt/local/include&quot; LDFLAGS=&quot;-L/opt/local/lib&quot;
 % make
-</code></pre><p>案の定、エラーがでる。</p>
+</code></pre>
+<p>案の定、エラーがでる。</p>
 <pre><code>collect2: ld returned 1 exit status
 make[4]: *** [_cv.la] Error 1
 make[3]: *** [all-recursive] Error 1
 make[2]: *** [all-recursive] Error 1
 make[1]: *** [all-recursive] Error 1
 make: *** [all] Error 2
-</code></pre><p>なんか、python のラッパー周辺が原因っぽいので外してコンパイル。</p>
+</code></pre>
+<p>なんか、python のラッパー周辺が原因っぽいので外してコンパイル。</p>
 <pre><code>% ../configure --without-swig --without-python CPPFLAGS=&quot;-I/opt/local/include&quot; LDFLAGS=&quot;-L/opt/local/lib&quot;
 % make
 % sudo make install
-</code></pre><p>無事成功。</p>
+</code></pre>
+<p>無事成功。</p>
 <h3 id="サンプルプログラムを試す">サンプル・プログラムを試す</h3>
 <p>サンプル・プログラムをコンパイルするために、<code>pkg-config</code> の探索パスを追加しておく。</p>
 <pre><code>export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:/usr/local/lib/pkgconfig
-</code></pre><p>あとは <code>samples/c</code> ディレクトリで <code>build_all.sh</code> を実行すれば、すべてのサンプル・プログラムをコンパイルしてくれる。</p>
+</code></pre>
+<p>あとは <code>samples/c</code> ディレクトリで <code>build_all.sh</code> を実行すれば、すべてのサンプル・プログラムをコンパイルしてくれる。</p>
 <pre><code>% cd samples/c
 % chmod u+x ./build_all.sh
 % ./build_all.sh
-</code></pre><p>Mac OS X 向けに Carbon で作られているので、動作も良好。</p>
+</code></pre>
+<p>Mac OS X 向けに Carbon で作られているので、動作も良好。</p>
 </div>
     </article>
 

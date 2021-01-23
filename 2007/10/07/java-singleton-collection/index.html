@@ -51,13 +51,16 @@
 <pre><code>List&lt;String&gt; list = new ArrayList&lt;String&gt;();
 list.add(&quot;element&quot;);
 doSomething(list);
-</code></pre><p>だが、この方法は変換に一時変数が必要になり不格好だ。</p>
+</code></pre>
+<p>だが、この方法は変換に一時変数が必要になり不格好だ。</p>
 <h3 id="arraysaslist-を使う方法">Arrays.asList を使う方法</h3>
 <p>この変換は <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#asList%28T...%29"><code>Arrays.asList</code></a> を使うことで簡単にできる。</p>
 <pre><code>doSomething(Arrays.asList(new String[]{&quot;element&quot;}));
-</code></pre><p>要素がひとつだけの配列をリストに変換する、と捉え直すわけだ。そして、Java 1.5 から <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#asList%28T...%29"><code>Arrays.asList</code></a> は配列ではなく可変長引数をとるようになったので、更に簡単に書ける。</p>
+</code></pre>
+<p>要素がひとつだけの配列をリストに変換する、と捉え直すわけだ。そして、Java 1.5 から <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html#asList%28T...%29"><code>Arrays.asList</code></a> は配列ではなく可変長引数をとるようになったので、更に簡単に書ける。</p>
 <pre><code>doSomething(Arrays.asList(&quot;element&quot;));
-</code></pre><h3 id="collectiossingleton-系メソッド">Collectios.singleton 系メソッド</h3>
+</code></pre>
+<h3 id="collectiossingleton-系メソッド">Collectios.singleton 系メソッド</h3>
 <p><code>Arrays.asList</code> ではリスト以外のコレクションには変換できない上、要素がひとつだけのコレクションのために配列を用意しているため、まだまだメモリ的に非効率だ。</p>
 <p>実は <a href=""><code>java.util.Collections</code></a> にはこうした用途に使えるメソッドがすでに用意されている。</p>
 <ul>
@@ -69,7 +72,8 @@ doSomething(list);
 <pre><code>Set&lt;String&gt; set = Collections.singleton(&quot;element&quot;);
 List&lt;String&gt; list = Collections.singletonList(&quot;element&quot;);
 Map&lt;String, String&gt; map = Collections.singletonMap(&quot;key&quot;, &quot;value&quot;)
-</code></pre><p>また、変換後のコレクションには、要素をインスタンス変数として直接もつ独自のコレクション・クラスを利用しているため、メモリ効率も一番良い。</p>
+</code></pre>
+<p>また、変換後のコレクションには、要素をインスタンス変数として直接もつ独自のコレクション・クラスを利用しているため、メモリ効率も一番良い。</p>
 </div>
     </article>
 

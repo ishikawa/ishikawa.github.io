@@ -50,7 +50,8 @@
       </div>
       <div class="content"><p>PostgreSQL 7.4.18 で以下のようなエラーが出力されるようになった。</p>
 <pre><code>ERROR:  22P05: character 0xe28094 of encoding &quot;UNICODE&quot; has no equivalent in &quot;EUC_JP&quot;
-</code></pre><p><a href="http://jdbc.postgresql.org/">PostgreSQL の JDBC ドライバ</a>はバックエンド (PostgreSQL) のバージョンが 7.3 以降の場合、接続時に必ず <code>set client_encoding = &quot;UNICODE&quot;</code> を発行する。</p>
+</code></pre>
+<p><a href="http://jdbc.postgresql.org/">PostgreSQL の JDBC ドライバ</a>はバックエンド (PostgreSQL) のバージョンが 7.3 以降の場合、接続時に必ず <code>set client_encoding = &quot;UNICODE&quot;</code> を発行する。</p>
 <p>以下は <a href="http://cvs.pgfoundry.org/cgi-bin/cvsweb.cgi/jdbc/pgjdbc/org/postgresql/jdbc1/Attic/AbstractJdbc1Connection.java?only_with_tag=REL7_4">org/postgresql/jdbc1/Attic/AbstractJdbc1Connection.java</a> の 509 行目から抜粋。</p>
 <pre><code>if (haveMinimumServerVersion(&quot;7.3&quot;))
 {
@@ -61,7 +62,8 @@
   encoding = Encoding.getEncoding(&quot;UNICODE&quot;, null);
 
 }
-</code></pre><p>また、<a href="http://www.postgresql.org/docs/7.4/static/release-7-4-13.html">PostgreSQL 7.4.13 からは変換できないバイト列をすべてエラー扱いする</a>ようになった。</p>
+</code></pre>
+<p>また、<a href="http://www.postgresql.org/docs/7.4/static/release-7-4-13.html">PostgreSQL 7.4.13 からは変換できないバイト列をすべてエラー扱いする</a>ようになった。</p>
 <p>そのため、データベース側のエンコーディングに UNICODE (UTF-8) 以外を使用している場合（ここではエラーからも分かるように、EUC-JP にしていた）、往々にしてこのエラーが起こるようだ。</p>
 <p>回避策としては、データベース側のエンコーディングも UNICODE (UTF-8) にしてしまえば、PostgreSQL のコード変換を使用しないのでエラーは起こらなくなる。可能なら、これが一番よさそうだ。</p>
 </div>

@@ -70,26 +70,31 @@
 <p><code>$FLEX_HOME/bin</code> を <code>PATH</code> に追加する</p>
 <pre><code>% adt -version
 adt version &quot;1.5.0.7220&quot;
-</code></pre><p>Alchemy のディレクトリに移動し、<code>config</code> プログラムを実行する</p>
+</code></pre>
+<p>Alchemy のディレクトリに移動し、<code>config</code> プログラムを実行する</p>
 <pre><code>% cd Developer/System/Flash/alchemy-darwin-v0.4a/
 % ./config
-</code></pre><p><code>config</code> プログラムで生成された <code>alchemy-setup</code> をシェルの起動時に読み込むようにする：</p>
+</code></pre>
+<p><code>config</code> プログラムで生成された <code>alchemy-setup</code> をシェルの起動時に読み込むようにする：</p>
 <pre><code>source /Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/alchemy-setup
-</code></pre><p>また、<code>alchemy-setup</code> は <strong>PATH を変更する前</strong>に読み込むらしい。そして、次に、<code>${ALCHEMY_HOME}/achacks</code> を <code>PATH</code> に追加する。最終的には以下のようになる：</p>
+</code></pre>
+<p>また、<code>alchemy-setup</code> は <strong>PATH を変更する前</strong>に読み込むらしい。そして、次に、<code>${ALCHEMY_HOME}/achacks</code> を <code>PATH</code> に追加する。最終的には以下のようになる：</p>
 <pre><code># Flash, Flex, Alchemy ...
 source /Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/alchemy-setup
 PATH=${PATH}:/Users/ishikawa/Developer/System/Flash/flex_sdk_3/bin
 PATH=${PATH}:${ALCHEMY_HOME}/achacks
 ...
 export PATH
-</code></pre><h3 id="サンプルを試す">サンプルを試す</h3>
+</code></pre>
+<h3 id="サンプルを試す">サンプルを試す</h3>
 <p>では、同梱されているサンプルを試してみよう：</p>
 <pre><code>% cd $ALCHEMY_HOME/samples/stringecho
 % which gcc
 /usr/bin/gcc
 % alc-on; which gcc
 /Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/achacks/gcc
-</code></pre><p>まず、<code>alc-on</code> を実行すると、<code>gcc</code> が Alchemy 独自のものに切り替わるのが分かると思う。そして、<code>samples/stringecho</code> にあるファイルは以下の通り：</p>
+</code></pre>
+<p>まず、<code>alc-on</code> を実行すると、<code>gcc</code> が Alchemy 独自のものに切り替わるのが分かると思う。そして、<code>samples/stringecho</code> にあるファイルは以下の通り：</p>
 <ul>
 <li>as3/EchoTest.as</li>
 <li>readme.txt</li>
@@ -100,23 +105,29 @@ export PATH
 WARNING: While resolving call to function 'main' arguments were dropped!
 ...
 464.achacks.swf, 362566 bytes written
-</code></pre><p>WARNING はとりあえず無視で。コンパイルの結果、<code>stringecho.swc</code> が出来た。
+</code></pre>
+<p>WARNING はとりあえず無視で。コンパイルの結果、<code>stringecho.swc</code> が出来た。
 そして、as3 ディレクトリにある <code>EchoTest.as</code> が <code>stringecho.swc</code> を使う AS3 のプログラムである。EchoTest.as を覗いてみると、</p>
 <pre><code>import cmodule.stringecho.CLibInit;
-</code></pre><p>という <code>import</code> 文があり、これがコンパイルされた C プログラムを参照しているのだと分かる。また、<code>trace()</code> を使って文字列を出力している：</p>
+</code></pre>
+<p>という <code>import</code> 文があり、これがコンパイルされた C プログラムを参照しているのだと分かる。また、<code>trace()</code> を使って文字列を出力している：</p>
 <pre><code>trace(lib.echo(&quot;foo&quot;));
-</code></pre><p>では、この <code>EchoTest.as</code> を <code>mxmlc</code> でコンパイルしよう：</p>
+</code></pre>
+<p>では、この <code>EchoTest.as</code> を <code>mxmlc</code> でコンパイルしよう：</p>
 <pre><code>% mxmlc -library-path+=stringecho.swc --target-player=10.0.0 as3/EchoTest.as
 Loading configuration file /Users/ishikawa/Developer/System/Flash/flex_sdk_3/frameworks/flex-config.xml
 /Users/ishikawa/Developer/System/Flash/alchemy-darwin-v0.4a/samples/stringecho/as3/EchoTest.swf (142882 bytes)
-</code></pre><p>ここで思い出してほしい。このプログラムは <code>trace()</code> で文字列を出力するだけのプログラムだった。なので、<a href="http://www.adobe.com/support/flashplayer/downloads.html">デバッグ版の Flash Player 10</a> でログが出力されるように、<a href="http://livedocs.adobe.com/flex/3/html/help.html?content=logging_04.html#179436">mm.cfg でログを出力するように設定</a>しておこう。</p>
+</code></pre>
+<p>ここで思い出してほしい。このプログラムは <code>trace()</code> で文字列を出力するだけのプログラムだった。なので、<a href="http://www.adobe.com/support/flashplayer/downloads.html">デバッグ版の Flash Player 10</a> でログが出力されるように、<a href="http://livedocs.adobe.com/flex/3/html/help.html?content=logging_04.html#179436">mm.cfg でログを出力するように設定</a>しておこう。</p>
 <pre><code>% cat &amp;gt; /Library/Application\ Support/Macromedia/mm.cfg
 ErrorReportingEnable=1
 TraceOutputFileEnable=1
-</code></pre><p>Mac OS X の場合、<code>mm.cfg</code> を置く場所は <code>~/mm.cfg</code> でもいいようなことがコメントにはあるけど、出来れば、<code>~/Library/Application Support/Macromedia/mm.cfg</code> も見てくれないだろうか。それはともかく、ログファイルは <code>~/Library/Preferences/Macromedia/Flash Player/Logs/</code> に <code>flashlog.txt</code> という名前で保存される。</p>
+</code></pre>
+<p>Mac OS X の場合、<code>mm.cfg</code> を置く場所は <code>~/mm.cfg</code> でもいいようなことがコメントにはあるけど、出来れば、<code>~/Library/Application Support/Macromedia/mm.cfg</code> も見てくれないだろうか。それはともかく、ログファイルは <code>~/Library/Preferences/Macromedia/Flash Player/Logs/</code> に <code>flashlog.txt</code> という名前で保存される。</p>
 <p>Console.app からログを確認できるように、<code>~/Library/Logs</code> にシンボリックリンクを作成しておこう：</p>
 <pre><code>% ln -s ~/Library/Preferences/Macromedia/Flash\ Player/Logs/flashlog.txt ~/Library/Logs/
-</code></pre><p>やっとデバッグの準備が整った。デバッグ用 Flash Player で <code>EchoTest.swf</code> を開き、<code>flashlog.txt</code> に <strong>foo</strong> という文字列が書き込まれれば成功だ。Alchemy でコンパイルしたプログラムが無事、動作していることになる。</p>
+</code></pre>
+<p>やっとデバッグの準備が整った。デバッグ用 Flash Player で <code>EchoTest.swf</code> を開き、<code>flashlog.txt</code> に <strong>foo</strong> という文字列が書き込まれれば成功だ。Alchemy でコンパイルしたプログラムが無事、動作していることになる。</p>
 <h3 id="参考情報">参考情報</h3>
 <ul>
 <li><a href="http://labs.adobe.com/wiki/index.php/Alchemy:FAQ">Alchemy:FAQ - Adobe Labs</a></li>

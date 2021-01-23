@@ -19,7 +19,7 @@
 Evernote: Mac クライアント プログラミング関係の話題をノートにまとめていると、興味深いページへのリンクを多く埋め込むことになる。ノートの編集は Mac のクライアントで行うことが多いのだが、この作業がけっこう面倒だ：
  Safari で開いているページのタイトルをコピーして、Evernote クライアントにペースト コピーしたタイトルを選択 リンクを追加するためのシートを表示 Safari で開いているページの URL をコピーして、Evernote クライアントにペースト OK ボタンをクリック  この手順を毎回、繰り返さなければならない。慣れれば無意識に出来るような単純作業ではあるが、単純作業なら自動化した方がいい。
 AppleScript Mac で自動化といえば AppleScript の出番なのだが、残念ながら Mac 向け Evernote クライアントの AppleScript 対応は今回の要件には不十分である。そのため、今回は System Events による GUI スクリプティングにより、上記手順のキー操作やボタンクリックをエミュレートすることにした。
--- EvernoteCopyLink.applescript -- Copy title and URL in the front most window of Safari to Evernote with link -- Author: Takanori Ishikawa on copyLinkToEvernote(theTitle, theURL) tell application &amp;#34;System Events&amp;#34; -- copy &amp;amp;amp; paste set the clipboard to theTitle as text keystroke &amp;#34;v&amp;#34; using command down tell process &amp;#34;Evernote&amp;#34; -- Select pasted text -- Note 1: &amp;#39;ASCII character 28&amp;#39; means &amp;#39;move left&amp;#39;.</description>
+-- EvernoteCopyLink.applescript -- Copy title and URL in the front most window of Safari to Evernote with link -- Author: Takanori Ishikawa on copyLinkToEvernote(theTitle, theURL) tell application &amp;quot;System Events&amp;quot; -- copy &amp;amp;amp; paste set the clipboard to theTitle as text keystroke &amp;quot;v&amp;quot; using command down tell process &amp;quot;Evernote&amp;quot; -- Select pasted text -- Note 1: &#39;ASCII character 28&#39; means &#39;move left&#39;.</description>
     </item>
     
     <item>
@@ -30,7 +30,7 @@ AppleScript Mac で自動化といえば AppleScript の出番なのだが、残
       <guid>https://metareal.blog/2008/08/04/propertylist-parser-for-python/</guid>
       <description>Python でプロパティリストを読み込み、オブジェクトに変換するライブラリ plist_parser を書いた。GitHub で公開している。Python 2.4 以降で動作確認済み。ただし、対応するフォーマットは XML のみで、書き込みにも対応していない。
 使い方は至って単純だ。たとえば、以下のプロパティリストは iTunes Music Library.xml から一部抜粋したものだが、
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.0//EN&amp;quot; &amp;quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;quot;&amp;gt; &amp;lt;plist version=&amp;quot;1.0&amp;quot;&amp;gt; &amp;lt;dict&amp;gt; &amp;lt;key&amp;gt;Track ID&amp;lt;/key&amp;gt; &amp;lt;integer&amp;gt;4154&amp;lt;/integer&amp;gt; &amp;lt;key&amp;gt;Artist&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;Megadeth&amp;lt;/string&amp;gt; &amp;lt;key&amp;gt;Name&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;Architecture Of Aggression&amp;lt;/string&amp;gt; &amp;lt;key&amp;gt;Date Added&amp;lt;/key&amp;gt; &amp;lt;date&amp;gt;2008-06-23T12:20:17Z&amp;lt;/date&amp;gt; &amp;lt;/dict&amp;gt; &amp;lt;/plist&amp;gt; このプロパティリストが music.xml という名前で保存されているとして、このファイルを読み込んでオブジェクトに変換するコードは以下のとおり。
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.0//EN&amp;quot; &amp;quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;quot;&amp;gt; &amp;lt;plist version=&amp;quot;1.0&amp;quot;&amp;gt; &amp;lt;dict&amp;gt; &amp;lt;key&amp;gt;Track ID&amp;lt;/key&amp;gt; &amp;lt;integer&amp;gt;4154&amp;lt;/integer&amp;gt; &amp;lt;key&amp;gt;Artist&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;Megadeth&amp;lt;/string&amp;gt; &amp;lt;key&amp;gt;Name&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;Architecture Of Aggression&amp;lt;/string&amp;gt; &amp;lt;key&amp;gt;Date Added&amp;lt;/key&amp;gt; &amp;lt;date&amp;gt;2008-06-23T12:20:17Z&amp;lt;/date&amp;gt; &amp;lt;/dict&amp;gt; &amp;lt;/plist&amp;gt;  このプロパティリストが music.xml という名前で保存されているとして、このファイルを読み込んでオブジェクトに変換するコードは以下のとおり。
 from plist_parser import XmlPropertyListParser, \ PropertyListParseError f = open(&#39;music.plist&#39;) try: print XmlPropertyListParser().parse(f) # =&amp;gt; # { # &#39;Date Added&#39;: datetime.datetime(2008, 6, 23, 12, 20, 17), # &#39;Track ID&#39;: 4154, # &#39;Name&#39;: &#39;Architecture Of Aggression&#39;, # &#39;Artist&#39;: &#39;Megadeth&#39; # } except PropertyListParseError: raise finally: f.</description>
     </item>
     
@@ -43,7 +43,7 @@ from plist_parser import XmlPropertyListParser, \ PropertyListParseError f = ope
       <description>Mac OS X では GNU の Readline ライブラリがインストールには含まれておらず、Readline 互換の Libedit というライブラリへのシンボリックリンクとなっている（こうなっている理由はライセンス上の問題からだと思われる。GNU の Readline ライブラリは GPL で、Libedit は BSD ライセンスだ）。
 しかし、これが原因で Readline 対応のプログラムがコンパイルできない、コンパイルできてもヒストリ機能などが使えない、といった問題がしばしば起こる。
 Python は後者の例で、configure スクリプトはちゃんと readline ライブラリを認識し make も問題なく通るのだが、実際には Readline ライブラリが無効になったバイナリがインストールされてしまう。
-% ./configure ... checking for readline in -lreadline... yes checking for rl_callback_handler_install in -lreadline... yes checking for rl_pre_input_hook in -lreadline... yes checking for rl_completion_matches in -lreadline... no ... % make ... % find . -name readline.so # readline.so が出来ていない ヒストリ機能やキャレット移動のショートカットが使えないのは、やはり不便だ。これはなんとかしたい。</description>
+% ./configure ... checking for readline in -lreadline... yes checking for rl_callback_handler_install in -lreadline... yes checking for rl_pre_input_hook in -lreadline... yes checking for rl_completion_matches in -lreadline... no ... % make ... % find . -name readline.so # readline.so が出来ていない  ヒストリ機能やキャレット移動のショートカットが使えないのは、やはり不便だ。これはなんとかしたい。</description>
     </item>
     
     <item>
@@ -54,9 +54,9 @@ Python は後者の例で、configure スクリプトはちゃんと readline �
       <guid>https://metareal.blog/2008/04/02/fixup-python-locale-problems-by-apple-darwin-patch-for-2-5-2/</guid>
       <description>最近 Python を 2.5.2 にアップデートして同じ作業を繰り返したことと、Apple によるロケール周りの変更点を Python 2.5.1 にも適用するのときはパッチの適用方法について言及がなかったこともあり、そのへんも含めて手順をまとめておく。
 まずは Python 2.5.2 をダウンロードし展開。
- % curl -LO http://www.python.org/ftp/python/2.5.2/Python-2.5.2.tar.bz2 % tar xjf Python-2.5.2.tar.bz2 Apple によるロケール周りの変更点を Python 2.5.1 にも適用するで公開したパッチをあてる。
- % curl -LO http://www.metareal.org/wp-content/uploads/2007/09/python251_apple_locale.txt % cd Python-2.5.2 % patch -p2 -d . &amp;lt; ../python251_apple_locale.txt 最後の patch コマンドによりパッチを適用している。-p2 オプションの指定をしないとパッチがうまく適用されないので注意。あとは通常どおり confgure, make すればいい。
- % ./configure % make % sudo make install 2.5.3 がリリースされたら、また同じパターンで記事が一本できるな。
+ % curl -LO http://www.python.org/ftp/python/2.5.2/Python-2.5.2.tar.bz2 % tar xjf Python-2.5.2.tar.bz2  Apple によるロケール周りの変更点を Python 2.5.1 にも適用するで公開したパッチをあてる。
+ % curl -LO http://www.metareal.org/wp-content/uploads/2007/09/python251_apple_locale.txt % cd Python-2.5.2 % patch -p2 -d . &amp;lt; ../python251_apple_locale.txt  最後の patch コマンドによりパッチを適用している。-p2 オプションの指定をしないとパッチがうまく適用されないので注意。あとは通常どおり confgure, make すればいい。
+ % ./configure % make % sudo make install  2.5.3 がリリースされたら、また同じパターンで記事が一本できるな。
 【追記】こうしてインストールされた Python インタプリタではヒストリ機能などが有効になっていないかもしれない。その場合は Mac の Python をビルドするときに GNU Readline ライブラリを有効にするをどうぞ。</description>
     </item>
     
@@ -68,7 +68,7 @@ Python は後者の例で、configure スクリプトはちゃんと readline �
       <guid>https://metareal.blog/2007/12/09/install-ffmpeg-using-macports/</guid>
       <description>動画の変換がやりたくて Mac に ffmpeg をインストールした。そのときのメモ。
 MacPorts でインストールするのがよさげ。variants のおかげで、H.264 や AAC を有効にするのも簡単だ。
-% sudo port install x264 % sudo port install faac % sudo port install faad2 % sudo port install a52dec % sudo port install ffmpeg +faac +faad +a52 +x264 関連するライブラリを先にインストールして、+faac のように指定してやるだけ。</description>
+% sudo port install x264 % sudo port install faac % sudo port install faad2 % sudo port install a52dec % sudo port install ffmpeg +faac +faad +a52 +x264  関連するライブラリを先にインストールして、+faac のように指定してやるだけ。</description>
     </item>
     
     <item>
@@ -81,7 +81,7 @@ MacPorts でインストールするのがよさげ。variants のおかげで�
 この方法でデータベースを VACUUM すると、Mail.app で問題が起こるようだ。Mail.app を起動中に cron が実行されるとメールを送信できない、下書き保存できない、などの問題があった。というわけで、この方法は使わないか、問題が起こらないように改良する必要がある。
 「Mail.app を vacuum して高速化」や「iGTD も vacuum すると速くなる」でも書いたように、Mac のアプリケーションのいくつかは、ターミナルから VACUUM ANALYZE という SQL を実行することで高速に動作するようになる。
 しかし、このコマンドを毎回手動で実行するのは面倒なので、自動化することにした。自動化、といっても大層なものではなく crontab にコマンドを書いておき、毎日実行されるようにしただけ。
-% **crontab -e** 0 15 * * * sqlite3 ~/Library/Application\ Support/iGTD/iGTD.sql &amp;quot;vacuum analyze&amp;quot; &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 0 15 * * * sqlite3 ~/Library/Mail/Envelope\ Index &amp;quot;vacuum analyze&amp;quot; &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 sqlite コマンドを直接書いているので見苦しいが、別スクリプトにした場合の管理を考えると面倒だった。ここでは標準エラー出力を /dev/null に捨てている（ただし、アプリケーションがデータベースをロックしていると、VACUUM ANALYZE は &amp;ldquo;database is locked&amp;rdquo; というエラーで即座に終了する）。</description>
+% **crontab -e** 0 15 * * * sqlite3 ~/Library/Application\ Support/iGTD/iGTD.sql &amp;quot;vacuum analyze&amp;quot; &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 0 15 * * * sqlite3 ~/Library/Mail/Envelope\ Index &amp;quot;vacuum analyze&amp;quot; &amp;gt; /dev/null 2&amp;gt;&amp;amp;1  sqlite コマンドを直接書いているので見苦しいが、別スクリプトにした場合の管理を考えると面倒だった。ここでは標準エラー出力を /dev/null に捨てている（ただし、アプリケーションがデータベースをロックしていると、VACUUM ANALYZE は &amp;ldquo;database is locked&amp;rdquo; というエラーで即座に終了する）。</description>
     </item>
     
     <item>
@@ -93,7 +93,7 @@ MacPorts でインストールするのがよさげ。variants のおかげで�
       <description>日々の ToDo 管理には iGTD を愛用している。だが、最近、目に見えて動作が重くなってしまった。
 おそらく、完了したタスクも削除されることはなく、ずっと溜まっているのが原因だろう。iGTD は内部のデータベースとして SQLite を使っているので、Mail.app を vacuum して高速化と同じ方法で高速化できる。
 VACUUM ANALYZE 手順は簡単で、ターミナルから以下のコマンドを実行するだけだ（iGTD が起動中なら終了する必要があるかもしれない）。
-% sqlite3 ~/Library/Application\ Support/iGTD/iGTD.sql &amp;quot;vacuum analyze&amp;quot; このコマンドはデータベースから不要な領域を回収し、統計情報を更新することで実行速度を向上させる。これだけで体感的にはかなり速くなった。
+% sqlite3 ~/Library/Application\ Support/iGTD/iGTD.sql &amp;quot;vacuum analyze&amp;quot;  このコマンドはデータベースから不要な領域を回収し、統計情報を更新することで実行速度を向上させる。これだけで体感的にはかなり速くなった。
 参考  SQLite Query Language: ANALYZE SQLite Query Language: VACUUM  </description>
     </item>
     
@@ -135,9 +135,9 @@ Mac OS X に標準でパッケージングされている Python Apple Developer
       
       <guid>https://metareal.blog/2007/08/23/optimize-the-apple-mail-app-database/</guid>
       <description>SQLite の vacuum コマンドで Mail.app を高速化する。ターミナルで、
-% cd ~/Library/Mail/; sqlite3 Envelope\ Index &amp;quot;vacuum;&amp;quot; Automator で自動化する Mail Vacuum なんてのもある。
+% cd ~/Library/Mail/; sqlite3 Envelope\ Index &amp;quot;vacuum;&amp;quot;  Automator で自動化する Mail Vacuum なんてのもある。
 個人的には、以下のような AppleScript を、
-tell application &amp;quot;Terminal&amp;quot; activate do script &amp;quot;cd ~/Library/Mail/; sqlite3 Envelope\\ Index \&amp;quot;vacuum;\&amp;quot;&amp;quot; end tell Optimize Mail.app.scpt として保存し、QuickSilver から実行できるようにしている。</description>
+tell application &amp;quot;Terminal&amp;quot; activate do script &amp;quot;cd ~/Library/Mail/; sqlite3 Envelope\\ Index \&amp;quot;vacuum;\&amp;quot;&amp;quot; end tell  Optimize Mail.app.scpt として保存し、QuickSilver から実行できるようにしている。</description>
     </item>
     
     <item>
@@ -207,7 +207,7 @@ Web アプリケーションにも利点はある。たとえば、Remember The 
       <description>（追記）この記事に載せているパッチよりも Apple によるロケール周りの変更点を Python 2.5.1 にも適用するのパッチを使った方がよさそうです。Mac OS X 標準の Python との互換性があります。
 TracInstall に従って、Mac OS X で Trac を動かそうとしている。以前試したときは頓挫したのだが、今回は Python を含むすべてのライブラリを一からインストールして、じっくりやってみることにした。
 とりあえず、tracd を起動するところまでは問題なくいったのだけれど、URL にアクセスしてみると早速こんなエラーが。
-Traceback (most recent call last): File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 406, in dispatch_request dispatcher.dispatch(req) File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 207, in dispatch populate_hdf(req.hdf, self.env, req) File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 77, in populate_hdf &#39;time&#39;: format_datetime(), File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/util/datefmt.py&amp;quot;, line 65, in format_datetime return unicode(text, encoding, &#39;replace&#39;) LookupError: unknown encoding: X-MAC-JAPANESE じっくりやってみる、と書いた矢先にくじけそうになりましたが、諦めずに原因を追ってみますね。
+Traceback (most recent call last): File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 406, in dispatch_request dispatcher.dispatch(req) File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 207, in dispatch populate_hdf(req.hdf, self.env, req) File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/web/main.py&amp;quot;, line 77, in populate_hdf &#39;time&#39;: format_datetime(), File &amp;quot;/path/to/trac/lib/python2.5/site-packages/trac/util/datefmt.py&amp;quot;, line 65, in format_datetime return unicode(text, encoding, &#39;replace&#39;) LookupError: unknown encoding: X-MAC-JAPANESE  じっくりやってみる、と書いた矢先にくじけそうになりましたが、諦めずに原因を追ってみますね。
 その前に、今回試したバージョンは、
  Python 2.</description>
     </item>
@@ -251,7 +251,7 @@ Traceback (most recent call last): File &amp;quot;/path/to/trac/lib/python2.5/si
       
       <guid>https://metareal.blog/2007/05/31/open-current-directory-in-finder/</guid>
       <description>Terminal で作業中のディレクトリを Finder で表示させたいときがある。そういうときは、
-% open . </description>
+% open .  </description>
     </item>
     
     <item>
@@ -273,7 +273,7 @@ Traceback (most recent call last): File &amp;quot;/path/to/trac/lib/python2.5/si
       <guid>https://metareal.blog/2007/03/28/launch-screen-saver-from-quicksilver/</guid>
       <description>わたしは不器用なので、スクリーンセイバーをホットコーナーから起動しようとするたびに失敗する（スクリーンセイバーが起動したとたんに、微妙にマウスを動かしてしまって、起動が解除されてしまう）。
 QuickSilver から起動できたら便利だなと思って、スクリーンセイバーを起動する AppleScript を書いて、~/Library/Scripts/ に置いてある。
-tell application &amp;quot;Finder&amp;quot; open application file &amp;quot;/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app&amp;quot; as POSIX file end tell ホットキーにも登録してみたが、いちいち QuickSilver を起動してタイプする方が性にあっているようだ。</description>
+tell application &amp;quot;Finder&amp;quot; open application file &amp;quot;/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app&amp;quot; as POSIX file end tell  ホットキーにも登録してみたが、いちいち QuickSilver を起動してタイプする方が性にあっているようだ。</description>
     </item>
     
     <item>
@@ -284,9 +284,9 @@ tell application &amp;quot;Finder&amp;quot; open application file &amp;quot;/Sys
       <guid>https://metareal.blog/2007/03/27/opencv-on-mac-os-x-tiger/</guid>
       <description>物体認識もできる画像処理ライブラリ OpenCV 1.0.0 を Mac OS X 10.4 にてコンパイルしてみた。
 OpenCV のインストール まずは、SourceForge から opencv-1.0.0.tar.gz をダウンロードして解凍。
-% tar xvzf opencv-1.0.0.tar.gz % mkdir build % cd build/ libjpeg や libpng がないと JPEG, PNG 画像を扱えないので、DarwanPorts でいれたものを使うように configure
-% ../configure CPPFLAGS=&amp;quot;-I/opt/local/include&amp;quot; LDFLAGS=&amp;quot;-L/opt/local/lib&amp;quot; % make 案の定、エラーがでる。
-collect2: ld returned 1 exit status make[4]: *** [_cv.la] Error 1 make[3]: *** [all-recursive] Error 1 make[2]: *** [all-recursive] Error 1 make[1]: *** [all-recursive] Error 1 make: *** [all] Error 2 なんか、python のラッパー周辺が原因っぽいので外してコンパイル。</description>
+% tar xvzf opencv-1.0.0.tar.gz % mkdir build % cd build/  libjpeg や libpng がないと JPEG, PNG 画像を扱えないので、DarwanPorts でいれたものを使うように configure
+% ../configure CPPFLAGS=&amp;quot;-I/opt/local/include&amp;quot; LDFLAGS=&amp;quot;-L/opt/local/lib&amp;quot; % make  案の定、エラーがでる。
+collect2: ld returned 1 exit status make[4]: *** [_cv.la] Error 1 make[3]: *** [all-recursive] Error 1 make[2]: *** [all-recursive] Error 1 make[1]: *** [all-recursive] Error 1 make: *** [all] Error 2  なんか、python のラッパー周辺が原因っぽいので外してコンパイル。</description>
     </item>
     
   </channel>

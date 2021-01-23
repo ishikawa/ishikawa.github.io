@@ -17,7 +17,7 @@
       <description>日々の ToDo 管理には iGTD を愛用している。だが、最近、目に見えて動作が重くなってしまった。
 おそらく、完了したタスクも削除されることはなく、ずっと溜まっているのが原因だろう。iGTD は内部のデータベースとして SQLite を使っているので、Mail.app を vacuum して高速化と同じ方法で高速化できる。
 VACUUM ANALYZE 手順は簡単で、ターミナルから以下のコマンドを実行するだけだ（iGTD が起動中なら終了する必要があるかもしれない）。
-% sqlite3 ~/Library/Application\ Support/iGTD/iGTD.sql &amp;quot;vacuum analyze&amp;quot; このコマンドはデータベースから不要な領域を回収し、統計情報を更新することで実行速度を向上させる。これだけで体感的にはかなり速くなった。
+% sqlite3 ~/Library/Application\ Support/iGTD/iGTD.sql &amp;quot;vacuum analyze&amp;quot;  このコマンドはデータベースから不要な領域を回収し、統計情報を更新することで実行速度を向上させる。これだけで体感的にはかなり速くなった。
 参考  SQLite Query Language: ANALYZE SQLite Query Language: VACUUM  </description>
     </item>
     

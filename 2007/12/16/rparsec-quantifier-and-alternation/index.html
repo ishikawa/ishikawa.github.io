@@ -57,14 +57,17 @@
 <p>正規表現でいうところの選択も用意されている。このためのメソッドは <code>|</code> なので、見た目は正規表現と似通っている。</p>
 <p>たとえば、以下のコードは、</p>
 <pre><code>number | word
-</code></pre><p>数値、または一般的な識別子を解釈するためのパーサになる。</p>
+</code></pre>
+<p>数値、または一般的な識別子を解釈するためのパーサになる。</p>
 <p>また、文法要素のグループ化は簡単で、通常の Ruby プログラムと同じく括弧で囲めばよい。たとえば、空白区切りの数値、または識別子を解釈するためのパーサは以下のように書ける。</p>
 <pre><code>parser = ((number | word) &lt;&lt; whitespace.many_).many
 parser.parse(&quot;123 abc 56.7&quot;) =&gt; [&quot;123&quot;, &quot;abc&quot;, &quot;56.7&quot;]
-</code></pre><p><a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000022"><code>Parser#delimited</code></a> を使って、もっと直感的に書くこともできる。</p>
+</code></pre>
+<p><a href="http://jparsec.codehaus.org/rparsec/api/classes/Parser.html#M000022"><code>Parser#delimited</code></a> を使って、もっと直感的に書くこともできる。</p>
 <pre><code>parser = (number | word).delimited(whitespaces)
 parser.parse(&quot;123 abc 56.7&quot;) =&gt; [&quot;123&quot;, &quot;abc&quot;, &quot;56.7&quot;]
-</code></pre></div>
+</code></pre>
+</div>
     </article>
 
     <nav class="pagination">

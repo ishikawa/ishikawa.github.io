@@ -49,7 +49,8 @@
       <div class="content"><p>ふと気になって書いてみた。</p>
 <p>カレントディレクトリ以下の .java ファイルを、ファイル名の長さでソートするスクリプト。</p>
 <pre><code>% find . -name &quot;*.java&quot; -exec basename -s .java {} \; | ruby -ne '$_.chomp!; puts &quot;#{$_.size} #{$_}&quot;' | sort -n
-</code></pre><p><a href="http://jruby.codehaus.org/">JRuby</a> だとこんな感じ。</p>
+</code></pre>
+<p><a href="http://jruby.codehaus.org/">JRuby</a> だとこんな感じ。</p>
 <pre><code>3 Dir
 3 Pwd
 4 Glob
@@ -62,7 +63,8 @@
 32 OSEnvironmentReaderFromApacheAnt
 34 OSEnvironmentReaderFromRuntimeExec
 40 OSEnvironmentReaderFromJava5SystemGetenv
-</code></pre><p>左側の数字がファイル名の文字数だ。つまり、一番長いファイル名（クラス名）は <code>OSEnvironmentReaderFromJava5SystemGetenv</code> で 40 文字。</p>
+</code></pre>
+<p>左側の数字がファイル名の文字数だ。つまり、一番長いファイル名（クラス名）は <code>OSEnvironmentReaderFromJava5SystemGetenv</code> で 40 文字。</p>
 <p>ちなみに、いま仕事で関わっているプロジェクトでは 37 文字が最長だった。負けた。</p>
 </div>
     </article>

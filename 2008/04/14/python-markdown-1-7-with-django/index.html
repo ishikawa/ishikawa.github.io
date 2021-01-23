@@ -50,9 +50,11 @@
       </div>
       <div class="content"><p><a href="http://www.freewisdom.org/projects/python-markdown/">Python Markdown</a> の最新版である 1.7 を <a href="http://www.djangoproject.com/">Django</a> で使うと、日本語など ASCII 以外の文字で UnicodeDecodeError が発生する。</p>
 <pre><code>MARKDOWN-CRITICAL: &quot;UnicodeDecodeError: Markdown only accepts unicode or ascii  input.&quot;
-</code></pre><p>すでに<a href="http://code.djangoproject.com/ticket/6387">チケットも登録されている</a>が、とりあえず古いバージョンに戻すのがよさそう。<a href="http://code.djangoproject.com/ticket/5663#comment:1">1.6b はバグで同様のエラーが出る</a>ようなので、1.6a にしよう。</p>
+</code></pre>
+<p>すでに<a href="http://code.djangoproject.com/ticket/6387">チケットも登録されている</a>が、とりあえず古いバージョンに戻すのがよさそう。<a href="http://code.djangoproject.com/ticket/5663#comment:1">1.6b はバグで同様のエラーが出る</a>ようなので、1.6a にしよう。</p>
 <pre><code>% sudo easy_install markdown==1.6a
-</code></pre><p>蛇足だが、この問題を調べている途中で見つけた。<a href="http://code.google.com/p/python-markdown2/">python-markdown2</a> という、別の Markdown ライブラリも存在するようだ。</p>
+</code></pre>
+<p>蛇足だが、この問題を調べている途中で見つけた。<a href="http://code.google.com/p/python-markdown2/">python-markdown2</a> という、別の Markdown ライブラリも存在するようだ。</p>
 </div>
     </article>
 
