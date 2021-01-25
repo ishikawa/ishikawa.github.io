@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sat, 23 Jan 2021 04:30:17 +0000</lastBuildDate><atom:link href="https://metareal.blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Jan 2021 23:26:14 +0000</lastBuildDate><atom:link href="https://metareal.blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ecto の Migration をテストする</title>
+      <link>https://metareal.blog/post/2021/01/25/how-to-test-custom-ecto-migration/</link>
+      <pubDate>Mon, 25 Jan 2021 23:26:14 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2021/01/25/how-to-test-custom-ecto-migration/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
     <item>
       <title>Elixir 1.11 の mix --no-start オプションと Logger</title>
       <link>https://metareal.blog/post/2021/01/23/unexpected-debug-log-on-elixir-1-11/</link>
