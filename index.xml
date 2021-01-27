@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Mon, 25 Jan 2021 23:26:14 +0000</lastBuildDate><atom:link href="https://metareal.blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Jan 2021 00:08:22 +0000</lastBuildDate><atom:link href="https://metareal.blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jest-Expo でも Random と Crypto が動いてほしい</title>
+      <link>https://metareal.blog/post/2021/01/27/how-to-make-expo-random-and-crypto-work-in-jest/</link>
+      <pubDate>Wed, 27 Jan 2021 00:08:22 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2021/01/27/how-to-make-expo-random-and-crypto-work-in-jest/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
     <item>
       <title>Ecto の Migration をテストする</title>
       <link>https://metareal.blog/post/2021/01/25/how-to-test-custom-ecto-migration/</link>
