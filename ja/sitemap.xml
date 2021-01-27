@@ -55,6 +55,16 @@
   <url>
     <loc>https://metareal.blog/post/2021/01/19/elixir-v11-exports-dependencies/</loc>
     <lastmod>2021-01-19T09:30:21+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://metareal.blog/en/post/2021/01/19/elixir-v11-exports-dependencies/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://metareal.blog/post/2021/01/19/elixir-v11-exports-dependencies/"
+                />
   </url>
   
   <url>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+  <body>
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <title>Exports dependencies in Elixir 1.11</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://metareal.blog/en/post/2021/01/19/elixir-v11-exports-dependencies/">
+  
+	  
+	  <link rel="alternate" hreflang="ja" href="https://metareal.blog/post/2021/01/19/elixir-v11-exports-dependencies/" title="日本語">
+	  
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="METAREAL" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/main.css">
+
+  
+  <link rel="stylesheet" href="https://metareal.blog/css/application.min.056dc003036eeb885f8c40348a02ac0502b9377900fd40a17df2a0d04510fb5c.css">
+  
+  
+  <link rel="stylesheet" href="https://metareal.blog/css/application.en.min.21ab326a83267ebe98d87e8ecdf4aa6172f08deba822eb68ef6d3d61cf79746b.css">
+  <link rel="stylesheet" href="/css/highlight/solarized_light.css">
+  <script src="/js/vendor/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KCSJFQHE6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8KCSJFQHE6');
+  </script>
+  
+</head>
+ 
+	<nav class="languages">
+		<a href="/">Home</a><span class="separator"> | </span>
+  Read this article in » 
+	
+		<a href="https://metareal.blog/post/2021/01/19/elixir-v11-exports-dependencies/">日本語</a>
+	
+	</nav>
+
+
+
+
+    <article>
+      <h1>Exports dependencies in Elixir 1.11</h1>
+      <div class="metadata">
+        <p class="date">2021/01/19 9:30am</p>
+        <ul class="tags">
+          
+          <li>elixir</li>
+          
+        </ul>
+      </div>
+      <div class="content"><p>Last year, in October 2020, <a href="https://elixir-lang.org/blog/2020/10/06/elixir-v1-11-0-released/">Elixir 1.11 was released</a> 🎉 I looked at one of the compiler improvements, <em>Exports dependencies</em>, including its behavior.</p>
+<h2 id="how-the-exports-dependencies-improves-compilation">How the &ldquo;<em>Exports dependencies&rdquo;</em> improves compilation?</h2>
+<p>Prior to Elixir 1.11, if <code>module A</code> depends on <code>module B</code> by <code>import</code> or <code>require</code>, <code>module B</code> was considered as <em>Compile time dependencies</em> of <code>module A</code>.</p>
+<p>Since Elixir 1.11, if <code>module A</code> uses only the public interface of <code>module B</code> (struct or public functions) is now <em>Exports dependencies</em>, and there is no need to recompile <code>module A</code> unless the public interface  of <code>module B</code> changes. <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>This will reduce the number of files that need to be recompiled when the source code is changed, shortening the &ldquo;fix - build - run&rdquo; cycle. This is great because the compilation time required for a build is an important indicator that directly affects development productivity.</p>
+<h2 id="try-exports-dependencies-in-example">Try Exports dependencies in example</h2>
+<p>You can get an idea about Exports dependencies from coding an example. Consider the two modules below. <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<pre><code class="language-elixir:moduleA.ex">defmodule ElixirV11.ModuleA do
+  alias ElixirV11.ModuleB
+
+  import ModuleB, only: [fetch_name: 1]
+
+  def hello(%ModuleB{} = m) do
+    case fetch_name(m) do
+      {:ok, name} -&gt;
+        IO.puts(&quot;Hello, #{name}!&quot;)
+
+      :error -&gt;
+        IO.puts(&quot;Who?&quot;)
+    end
+  end
+end
+</code></pre>
+<pre><code class="language-elixir:moduleB.ex">defmodule ElixirV11.ModuleB do
+  defstruct name: nil
+
+  def new(name), do: %__MODULE__{name: name}
+
+  def fetch_name(%__MODULE__{name: nil}), do: :error
+  def fetch_name(%__MODULE__{name: name}), do: {:ok, name}
+end
+</code></pre>
+<p>ModuleA depends on the struct and <code>fetch_name/1</code> functions of ModuleB. This is why <code>import ModuleB, only: [fetch_name: 1]</code> in <code>moduleA.ex</code> was <em>Compile time dependencies</em> before Elixir 1.10. However, since these two are public interfaces, starting with Elixir 1.11, they will be <em>Exports dependencies</em>.</p>
+<p>So, when you change <code>moduleB.ex</code>, you need to recompile <code>moduleA.ex</code> in Elixir 1.10, but not in Elixir 1.11.</p>
+<pre><code class="language-bash"># Elixir 1.10
+$ touch lib/moduleB.ex    
+$ mix compile --verbose
+Compiling 1 file (.ex)
+Compiled lib/moduleB.ex
+Compiled lib/moduleA.ex
+
+# Elixir 1.11
+$ touch lib/moduleB.ex 
+$ mix compile --verbose
+Compiling 1 file (.ex)
+Compiled lib/moduleB.ex
+</code></pre>
+<p>Let&rsquo;s change the implementation of <code>ModuleB</code> without changing the public interface.</p>
+<pre><code class="language-elixir:moduleB.ex">defmodule ElixirV11.ModuleB do
+  defstruct name: 1
+
+  def new(name), do: %__MODULE__{name: check_name!(name)}
+
+  def fetch_name(%__MODULE__{name: nil}), do: :error
+  def fetch_name(%__MODULE__{name: name}), do: {:ok, name}
+
+  defp check_name!(%__MODULE__{name: name}) when is_binary(name), do: name
+end
+</code></pre>
+<p>Added a private function called <code>check_name!/1</code> and changed it to be used in <code>new/1</code>. Since this does not change the public interface, it should not need to be recompiled.</p>
+<pre><code class="language-bash"># Elixir 1.10
+$ mix compile --verbose
+Compiling 1 file (.ex)
+Compiled lib/moduleB.ex
+Compiled lib/moduleA.ex
+
+# Elixir 1.11
+$ mix compile --verbose
+Compiling 1 file (.ex)
+Compiled lib/moduleB.ex
+</code></pre>
+<p>As expected, <code>ModuleA</code> do not need to be compiled in Elixir 1.11.</p>
+<h2 id="exports-dependencies-in-a-real-project">Exports dependencies in a real project</h2>
+<p><a href="https://github.com/elixir-lang/elixir/commit/9a6db666a107b42c1242cf727eafe7638674f3cc">The commit</a> says as follows:</p>
+<blockquote>
+<p>making imports more feasible for large projects.</p>
+</blockquote>
+<p>As this commit says, it will be easy to use <code>import/2</code> in large projects.</p>
+<p>In fact, in the project I&rsquo;m working on now, I changed the modules that manipulate Repo, which is imported at various points, to find out the number of files that are recompiled.</p>
+<ul>
+<li><strong>Elixir 1.10</strong> - 48</li>
+<li><strong>Elixir 1.11</strong> - 14</li>
+</ul>
+<p>The number of recompiled files had decreased dramatically 🎉</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>However, if you are using macros, it will be Compile time dependencies. This is explained in detail in <strong>Dependencies types</strong> on the <a href="https://hexdocs.pm/mix/Mix.Tasks.Xref.html">mix xref</a> page. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>The change to the compiler is probably this. <a href="https://github.com/elixir-lang/elixir/commit/9a6db666a107b42c1242cf727eafe7638674f3cc">Do not make requires/imports compile-time dependencies · elixir-lang/elixir@9a6db66</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</div>
+    </article>
+
+    <nav class="pagination">
+      <ul>
+         
+        <li class="prev">
+          <a href="https://metareal.blog/en/post/2021/01/16/setup-jest-for-expo-typescript-project/">Testing Expo apps with Jest in TypeScript</a
+          ><i class="fa fa-angle-right"></i>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <footer>
+  <ul class="about">
+    <li class="mail"><a href="mailto:takanori.ishikawa@gmail.com"><span class='symbol'>&#xe224;</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/takanori_is"><span class='symbol'>&#xe286;</span></a></li>
+    <li class="github"><a href="https://github.com/ishikawa"><span class='symbol'>&#xe237;</span></a></li>
+  </ul>
+  <h2><a href="/en">METAREAL</a></h2>
+  <p class="copyright">copyright &copy; 2006-Present Takanori Ishikawa</p>
+</footer>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  var all = MathJax.Hub.getAllJax(), i;
+  for(i = 0; i &lt; all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  </body>
+</html>

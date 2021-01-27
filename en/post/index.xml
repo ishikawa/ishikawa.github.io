@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sat, 16 Jan 2021 08:57:09 +0000</lastBuildDate><atom:link href="https://metareal.blog/en/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Jan 2021 09:30:21 +0000</lastBuildDate><atom:link href="https://metareal.blog/en/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exports dependencies in Elixir 1.11</title>
+      <link>https://metareal.blog/en/post/2021/01/19/elixir-v11-exports-dependencies/</link>
+      <pubDate>Tue, 19 Jan 2021 09:30:21 +0000</pubDate>
+      
+      <guid>https://metareal.blog/en/post/2021/01/19/elixir-v11-exports-dependencies/</guid>
+      <description>Last year, in October 2020, Elixir 1.11 was released 🎉 I looked at one of the compiler improvements, Exports dependencies, including its behavior.
+How the &amp;ldquo;Exports dependencies&amp;rdquo; improves compilation? Prior to Elixir 1.11, if module A depends on module B by import or require, module B was considered as Compile time dependencies of module A.
+Since Elixir 1.11, if module A uses only the public interface of module B (struct or public functions) is now Exports dependencies, and there is no need to recompile module A unless the public interface of module B changes.</description>
+    </item>
+    
     <item>
       <title>Testing Expo apps with Jest in TypeScript</title>
       <link>https://metareal.blog/en/post/2021/01/16/setup-jest-for-expo-typescript-project/</link>
