@@ -67,7 +67,8 @@
 <p>This will reduce the number of files that need to be recompiled when the source code is changed, shortening the &ldquo;fix - build - run&rdquo; cycle. This is great because the compilation time required for a build is an important indicator that directly affects development productivity.</p>
 <h2 id="try-exports-dependencies-in-example">Try Exports dependencies in example</h2>
 <p>You can get an idea about Exports dependencies from coding an example. Consider the two modules below. <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
-<pre><code class="language-elixir:moduleA.ex">defmodule ElixirV11.ModuleA do
+<p><code>moduleA.ex</code></p>
+<pre><code class="language-elixir">defmodule ElixirV11.ModuleA do
   alias ElixirV11.ModuleB
 
   import ModuleB, only: [fetch_name: 1]
@@ -83,7 +84,8 @@
   end
 end
 </code></pre>
-<pre><code class="language-elixir:moduleB.ex">defmodule ElixirV11.ModuleB do
+<p><code>moduleB.ex</code></p>
+<pre><code class="language-elixir">defmodule ElixirV11.ModuleB do
   defstruct name: nil
 
   def new(name), do: %__MODULE__{name: name}
@@ -108,7 +110,8 @@ Compiling 1 file (.ex)
 Compiled lib/moduleB.ex
 </code></pre>
 <p>Let&rsquo;s change the implementation of <code>ModuleB</code> without changing the public interface.</p>
-<pre><code class="language-elixir:moduleB.ex">defmodule ElixirV11.ModuleB do
+<p><code>moduleB.ex</code></p>
+<pre><code class="language-elixir">defmodule ElixirV11.ModuleB do
   defstruct name: 1
 
   def new(name), do: %__MODULE__{name: check_name!(name)}

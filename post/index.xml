@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Wed, 27 Jan 2021 00:08:22 +0000</lastBuildDate><atom:link href="https://metareal.blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Feb 2021 14:28:27 +0000</lastBuildDate><atom:link href="https://metareal.blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Expo と React Navigation で Twitter のようなスライドメニューを作る</title>
+      <link>https://metareal.blog/post/2021/02/01/build-slide-menu-with-expo-and-react-navigation/</link>
+      <pubDate>Mon, 01 Feb 2021 14:28:27 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2021/02/01/build-slide-menu-with-expo-and-react-navigation/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
     <item>
       <title>Jest-Expo でも Random と Crypto が動いてほしい</title>
       <link>https://metareal.blog/post/2021/01/27/how-to-make-expo-random-and-crypto-work-in-jest/</link>
