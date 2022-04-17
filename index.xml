@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 22 Jun 2021 22:58:40 +0000</lastBuildDate><atom:link href="https://metareal.blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Apr 2022 23:42:33 +0000</lastBuildDate><atom:link href="https://metareal.blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Clap の Derive API で列挙型のコマンドラインオプションを実装する</title>
+      <link>https://metareal.blog/post/2022/04/17/rust-clap-derive-api-arg-enum/</link>
+      <pubDate>Sun, 17 Apr 2022 23:42:33 +0000</pubDate>
+      
+      <guid>https://metareal.blog/post/2022/04/17/rust-clap-derive-api-arg-enum/</guid>
+      <description>この記事はこちらで公開しています。</description>
+    </item>
+    
     <item>
       <title>あの日見た匿名ライフタイム</title>
       <link>https://metareal.blog/post/2021/06/22/anonymous-lifetime-the-lifetime-we-saw-that-day/</link>
