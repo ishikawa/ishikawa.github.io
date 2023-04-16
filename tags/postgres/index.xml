@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>postgres on METAREAL</title>
-    <link>https://metareal.blog/tags/postgres/</link>
+    <link>https://ishikawa.github.io/tags/postgres/</link>
     <description>Recent content in postgres on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Wed, 19 Dec 2007 07:18:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Dec 2007 07:18:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PostgreSQL で使われていないインデックスを調べる</title>
-      <link>https://metareal.blog/2007/12/18/postgresql-looking-for-unused-indexes/</link>
+      <link>https://ishikawa.github.io/2007/12/18/postgresql-looking-for-unused-indexes/</link>
       <pubDate>Wed, 19 Dec 2007 07:18:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/12/18/postgresql-looking-for-unused-indexes/</guid>
+      <guid>https://ishikawa.github.io/2007/12/18/postgresql-looking-for-unused-indexes/</guid>
       <description>PostgreSQL で使われていないインデックスを調べる方法について。いつも忘れるのでこちらにも書く。
 統計情報の収集 まずは、インデックスの使用状況を統計情報として残すよう、PostgreSQL の設定ファイル postgresql.conf で以下の変数を true にする。
  stats_start_collector stats_row_level  各々の詳細についてはリンク先の PostgreSQL ドキュメントを参照してほしい。
@@ -26,10 +26,10 @@ select indexrelname, idx_scan, idx_tup_read, idx_tup_fetch from pg_stat_user_ind
     
     <item>
       <title>PostgreSQL 7.4 の JDBC ドライバをビルド</title>
-      <link>https://metareal.blog/2007/12/12/building-postgresql-7-4-jdbc-driver/</link>
+      <link>https://ishikawa.github.io/2007/12/12/building-postgresql-7-4-jdbc-driver/</link>
       <pubDate>Wed, 12 Dec 2007 03:59:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/12/12/building-postgresql-7-4-jdbc-driver/</guid>
+      <guid>https://ishikawa.github.io/2007/12/12/building-postgresql-7-4-jdbc-driver/</guid>
       <description>PostgreSQL 7.4.13 以降で起こる異なるエンコーディング間の変換エラーがいまだに尾を引いている。
 悩んだ末、JDBC ドライバのソースコードを読むだけではなく、実際にビルドして動作を確認してみた方がいいだろう、ということになった。JDBC ドライバにパッチを当てて問題を回避することも視野に入れている。できれば、やりたくないけれど&amp;hellip;。
 PostgreSQL 7.4 の JDBC ドライバをビルドするために必要な手順は、おおまかに分けると以下のようになる。
@@ -42,10 +42,10 @@ major=7 minor=4 fullversion=7.4.5 edition=JDBC3 def_pgport=5432 enable_debug=no 
     
     <item>
       <title>PostgreSQL 7.4.13 以降、異なるエンコーディングでの変換エラー</title>
-      <link>https://metareal.blog/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</link>
+      <link>https://ishikawa.github.io/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</link>
       <pubDate>Mon, 10 Dec 2007 09:54:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</guid>
+      <guid>https://ishikawa.github.io/2007/12/10/postgresql-rejects-invalidly-encoded-multibyte-character/</guid>
       <description>PostgreSQL 7.4.18 で以下のようなエラーが出力されるようになった。
 ERROR: 22P05: character 0xe28094 of encoding &amp;quot;UNICODE&amp;quot; has no equivalent in &amp;quot;EUC_JP&amp;quot;  PostgreSQL の JDBC ドライバはバックエンド (PostgreSQL) のバージョンが 7.3 以降の場合、接続時に必ず set client_encoding = &amp;quot;UNICODE&amp;quot; を発行する。
 以下は org/postgresql/jdbc1/Attic/AbstractJdbc1Connection.java の 509 行目から抜粋。
@@ -54,10 +54,10 @@ if (haveMinimumServerVersion(&amp;quot;7.3&amp;quot;)) { BaseResultSet acRset = 
     
     <item>
       <title>PostgreSQL 7.4 のインデックスと smallint と JDBC</title>
-      <link>https://metareal.blog/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</link>
+      <link>https://ishikawa.github.io/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</link>
       <pubDate>Fri, 03 Aug 2007 05:41:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</guid>
+      <guid>https://ishikawa.github.io/2007/08/02/postgresql-7-4-smallint-with-index-and-jdbc/</guid>
       <description>PostgreSQL 7.4 のマニュアル「8.1.1. 整数データ型」には以下のような記述がある。
  注意: インデックスが付けられた smallint あるいは bigint の列がテーブルにある場合、システムがそのインデックスを使用しようとした時に問題を引き起こすことがあります。 例えば句が次のような形式の場合、
 &amp;hellip; WHERE smallint_column = 42
@@ -73,20 +73,20 @@ PostgreSQL 側で、実際に発行されている SQL をログに記録して�
     
     <item>
       <title>PostgreSQL 7.4 を Intel Mac にインストールする方法</title>
-      <link>https://metareal.blog/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</link>
+      <link>https://ishikawa.github.io/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</link>
       <pubDate>Wed, 25 Jul 2007 04:24:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</guid>
+      <guid>https://ishikawa.github.io/2007/07/24/postgresql-7-4-11-compilation-failed-on-mac-intel/</guid>
       <description>理由あって PostgreSQL 7.4 を Mac OS X にインストールすることになった。早速、ダウンロードページから手に入る中で最新の 7.4.17 をダウンロードしてインストールしようとするも、エラーが出てコンパイルできない。
 % ./configure % make ... gcc -no-cpp-precomp -O2 -fno-strict-aliasing -Wall -Wmissing-prototypes -Wmissing-declarations -I../../../../src/include -c -o xlog.o xlog.c In file included from ../../../../src/include/storage/spin.h:50, from xlog.c:35: ../../../../src/include/storage/s_lock.h:543:2: error: #error **PostgreSQL does not have native spinlock support on this platform. To continue the compilation, rerun configure using --disable-spinlocks. However, performance will be poor. Please report this to pgsql-bugs@postgresql.org.** In file included from ../../../../src/include/storage/spin.h:50, from xlog.</description>
     </item>
     
     <item>
       <title>空文字列で検索すると PostgreSQL のインデックスが効かない</title>
-      <link>https://metareal.blog/2007/02/19/query-with-empty-string-cause-full-table-scan/</link>
+      <link>https://ishikawa.github.io/2007/02/19/query-with-empty-string-cause-full-table-scan/</link>
       <pubDate>Tue, 20 Feb 2007 03:53:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/02/19/query-with-empty-string-cause-full-table-scan/</guid>
+      <guid>https://ishikawa.github.io/2007/02/19/query-with-empty-string-cause-full-table-scan/</guid>
       <description>きちんと調べたわけじゃないけど、PostgreSQL で空文字列で検索するとインデックスが効かない気がする。
 具体的には、こういうやつ。
 select * from table where column = &#39;&#39;;  table の column にインデックスがあっても、explain してみると Seq Scan になってしまう。

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>test on METAREAL</title>
-    <link>https://metareal.blog/tags/test/</link>
+    <link>https://ishikawa.github.io/tags/test/</link>
     <description>Recent content in test on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sat, 25 Apr 2020 19:47:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/test/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Apr 2020 19:47:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/test/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>レガシコードの改善に役立つ pytest の便利なフィクスチャ</title>
-      <link>https://metareal.blog/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/</link>
+      <link>https://ishikawa.github.io/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/</link>
       <pubDate>Sat, 25 Apr 2020 19:47:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/</guid>
+      <guid>https://ishikawa.github.io/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/</guid>
       <description>最近、業務でレガシーコード（要するにテストが一切ないコード1）の改善を担当する機会があった。だいたいのステップとして以下のような改善を行なった。
  パッケージ管理として Poetry の導入 pytest によるテストの追加 CI によるテストの自動化 必要なコードの改修とリファクタリング  特に、2 のステップでは pytest のフィクスチャ機能が非常に便利で、ダミーデータの生成から外部リソースアクセスのモックまで幅広く利用させてもらった。たとえば、Web API アクセスのモックには requests-mock を利用したのだが、
 import pytest import requests_mock as requests_mock_module @pytest.fixture def requests_mock(): with requests_mock_module.Mocker() as m: yield m @pytest.fixture def user_api_response(): def response(user_id): return { &amp;quot;id&amp;quot;: user_id, &amp;quot;name&amp;quot;: &amp;quot;dummy&amp;quot;, &amp;quot;updated_at&amp;quot;: fake_iso8601(), &amp;quot;created_at&amp;quot;: fake_iso8601() } return response  このような Python コードを conftest.py として保存しておけば、任意のユニットテストで以下のように Web API アクセスをモックできる。

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>bookmark on METAREAL</title>
-    <link>https://metareal.blog/tags/bookmark/</link>
+    <link>https://ishikawa.github.io/tags/bookmark/</link>
     <description>Recent content in bookmark on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 23 Feb 2010 23:26:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/bookmark/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Feb 2010 23:26:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/bookmark/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Google Bookmark が快適すぎる</title>
-      <link>https://metareal.blog/2010/02/23/google-bookmark-makes-me-feel-so-good/</link>
+      <link>https://ishikawa.github.io/2010/02/23/google-bookmark-makes-me-feel-so-good/</link>
       <pubDate>Tue, 23 Feb 2010 23:26:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2010/02/23/google-bookmark-makes-me-feel-so-good/</guid>
+      <guid>https://ishikawa.github.io/2010/02/23/google-bookmark-makes-me-feel-so-good/</guid>
       <description>Google Bookmark を使いはじめた。シンプルながら快適な使い心地で気に入っている。
  とにかく、ブックマーク編集画面が開くまでが速い ブックマーク先のページも含めて全文検索が可能  ソーシャル要素は考えず、純粋に「ブックマーク」という行為を突き詰めていくと、上記二点が非常に重要であることが分かると思う。
 ちなみに、ブックマークレットにはGoogleブックマークに追加するブックマークレット（メモ欄対応版）で配布されているものを別窓で開くようにして使わせてもらっている。感謝。

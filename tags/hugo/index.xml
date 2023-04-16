@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>hugo on METAREAL</title>
-    <link>https://metareal.blog/tags/hugo/</link>
+    <link>https://ishikawa.github.io/tags/hugo/</link>
     <description>Recent content in hugo on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 21 Jun 2015 14:43:15 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Jun 2015 14:43:15 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ブログを Hugo に移行した</title>
-      <link>https://metareal.blog/post/migrate-to-hugo/</link>
+      <link>https://ishikawa.github.io/post/migrate-to-hugo/</link>
       <pubDate>Sun, 21 Jun 2015 14:43:15 +0900</pubDate>
       
-      <guid>https://metareal.blog/post/migrate-to-hugo/</guid>
+      <guid>https://ishikawa.github.io/post/migrate-to-hugo/</guid>
       <description>すでに4年半近くの時が経過したが、ひさしぶりの投稿だ。Google AppEngine (Python + Django) で動かしていた自作ブログエンジンを Hugo に移行している。
 Go で実装されているおかげでもあるのだろうが、サイトの生成スピードが速い。組み込みサーバには、ファイルの変更を検知してサイトを更新する機能が備わっているので、ストレスなく記事を書くことができる。ブラウザのリロードも不要。
 URL を記事ごとに指定可能なのは助かった。デフォルトだと /post/title/ のような URL になるのだが、古い記事は /YYYY/MM/DD/title/ という形式で URL を決めていたので、そのままだと URL が変わってしまう。記事中の YAML (Front Matter) で URL を上書きしてやることで、URL を変えずにすんだ。

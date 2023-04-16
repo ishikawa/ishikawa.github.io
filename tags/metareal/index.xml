@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>metareal on METAREAL</title>
-    <link>https://metareal.blog/tags/metareal/</link>
+    <link>https://ishikawa.github.io/tags/metareal/</link>
     <description>Recent content in metareal on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 17 Jul 2007 10:31:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/metareal/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Jul 2007 10:31:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/metareal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>YUI の fonts.css だと pre &gt; code がでっかくなっちゃうね</title>
-      <link>https://metareal.blog/2007/07/17/yui-fonts-css-bigger-pre-code/</link>
+      <link>https://ishikawa.github.io/2007/07/17/yui-fonts-css-bigger-pre-code/</link>
       <pubDate>Tue, 17 Jul 2007 10:31:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/07/17/yui-fonts-css-bigger-pre-code/</guid>
+      <guid>https://ishikawa.github.io/2007/07/17/yui-fonts-css-bigger-pre-code/</guid>
       <description>Yahoo! UI Library (YUI) の fonts.css では pre と code を次のようにスタイルづけしている。
 /** * Bump up !IE to get to 13px equivalent */ pre, code {font:115% monospace;*font-size:100%;}  要するに、
  等幅フォント IE では font-size:100% それ以外は font-size:115%  ってことなんだが、このブログみたいにサンプルコードとかを pre 要素と code 要素でマークアップしている場合は IE 以外でフォントが大きくなってしまう（font-size:115% が二回適用される）。
@@ -26,10 +26,10 @@ code { font-size: 100%; }  とかしてしまった方がいいかも（この�
     
     <item>
       <title>&#34;Summer of &#39;69&#34; とか聴きながらブログをリニューアルしてみた</title>
-      <link>https://metareal.blog/2007/06/09/summer-of-2007/</link>
+      <link>https://ishikawa.github.io/2007/06/09/summer-of-2007/</link>
       <pubDate>Sun, 10 Jun 2007 03:58:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/06/09/summer-of-2007/</guid>
+      <guid>https://ishikawa.github.io/2007/06/09/summer-of-2007/</guid>
       <description>6 月。最近、暑くなりましたね。初夏。向暑。
 暑くて、でも、じめじめしてて、何もやる気が起きないので、気分転換にブログを涼しげにしてみました。当初はリンクの色を爽やかに明るい水色、画像もいままでの苔の写真から色に合わせてペンギンにするだけのつもりだったのですが、やりだすと気になる部分がちょこちょこ出てきて、結局、手を入れた箇所は以下の通り。
  行間を広くした    いままでも広かったけど、更に広く line-height: 1.6 にした 「Lucky bag::blog: line-height の値には単位なしが良いとされる理由」を読んでからは単位を指定しないようにしている    タイトルを目立つようにした    素人臭い text-shadow は削除 フォントを大きく、はっきりした色に    コメント投稿欄など、英語だったものを日本語化 プロフィールと連絡先を明記  あと、「夏」といえば、懐かしかったので貼っておきますね。
@@ -38,10 +38,10 @@ http://www.youtube.com/watch?v=ZpucUihZ4HE</description>
     
     <item>
       <title>AirMac Extreme</title>
-      <link>https://metareal.blog/2007/05/27/meet-the-airmac-extreme/</link>
+      <link>https://ishikawa.github.io/2007/05/27/meet-the-airmac-extreme/</link>
       <pubDate>Sun, 27 May 2007 10:22:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/05/27/meet-the-airmac-extreme/</guid>
+      <guid>https://ishikawa.github.io/2007/05/27/meet-the-airmac-extreme/</guid>
       <description>家の無線 LAN を AirMac Express から AirMac Extreme に変えてみた。特にこれといった動機はなくて、単に新しいモノを試してみたかっただけなんだけど、AirTunes 機能がないのは参ったなあ。おかげで iPod Hi-Fi が宝の持ち腐れ。どうするかは考え中。
 これのブログを動かしているサーバも無線でつないでいるので（LAN ケーブルだと邪魔）、しばらくのあいだ、サーバが停まったままだった。AirMac Extreme で無線 LAN をはじめるのは簡単なのだけど、NAT やらを設定するのが面倒臭かった次第。
 しかし、通信範囲広いね。Skype で会話しながら実験してみたけど、家から出て 2 ブロック先くらいまでは行けた。</description>
@@ -49,10 +49,10 @@ http://www.youtube.com/watch?v=ZpucUihZ4HE</description>
     
     <item>
       <title>Mac OS X では MoinMoin が UnboundLocalError で動かない</title>
-      <link>https://metareal.blog/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</link>
+      <link>https://ishikawa.github.io/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</link>
       <pubDate>Mon, 09 Apr 2007 02:52:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</guid>
+      <guid>https://ishikawa.github.io/2007/04/08/moinmoin-on-macosx-failed-unboundlocalerror/</guid>
       <description>作業メモや備忘録を残しておくためのシステムがほしくて、MoinMoin を自宅サーバの Mac OS X にインストールした。
 ブログだとやっぱり時系列で流れちゃうし、書き殴りのメモとかは公開しづらいしね。MoinMoin はページごとのパーミッションを制御できるなど、今回の用途にはぴったり。
 ただし、バージョン 1.5.7 はそのままだと Mac OS X では動かなかった。
@@ -62,10 +62,10 @@ UnboundLocalError: local variable &#39;File&#39; referenced before assignment  �
     
     <item>
       <title>理想の &lt;title&gt; をもとめて</title>
-      <link>https://metareal.blog/2007/01/08/looking-for-loving-title-element/</link>
+      <link>https://ishikawa.github.io/2007/01/08/looking-for-loving-title-element/</link>
       <pubDate>Tue, 09 Jan 2007 07:28:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/01/08/looking-for-loving-title-element/</guid>
+      <guid>https://ishikawa.github.io/2007/01/08/looking-for-loving-title-element/</guid>
       <description>WordPress のインストール直後は タグを出力するテンプレートは以下のようになっていた。
 &amp;lt;title&amp;gt;&amp;lt;?php bloginfo(&#39;name&#39;); ?&amp;gt; &amp;lt;?php if ( is_single() ) { ?&amp;gt; &amp;amp;raquo; Blog Archive &amp;lt;?php } ?&amp;gt; &amp;lt;?php wp_title(); ?&amp;gt;&amp;lt;/title&amp;gt;  これだと記事のタイトルは「ブログ名 » Blog Archive » 記事タイトル」のようになる。これを「記事タイトル - ブログ名」にしたくて、
 &amp;lt;title&amp;gt;&amp;lt;?php wp_title(&#39; &#39;); if (wp_title(&#39; &#39;, false)) echo &#39; - &#39;; bloginfo(&#39;name&#39;); ?&amp;gt;&amp;lt;/title&amp;gt;  というテンプレートをいままでは使っていた。
@@ -77,10 +77,10 @@ UnboundLocalError: local variable &#39;File&#39; referenced before assignment  �
     
     <item>
       <title>ホームページをとりあえず設置</title>
-      <link>https://metareal.blog/2007/01/01/metareal-org-is-coming/</link>
+      <link>https://ishikawa.github.io/2007/01/01/metareal-org-is-coming/</link>
       <pubDate>Mon, 01 Jan 2007 01:58:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/01/01/metareal-org-is-coming/</guid>
+      <guid>https://ishikawa.github.io/2007/01/01/metareal-org-is-coming/</guid>
       <description>このブログは weblog.metareal.org で運営しているわけだけれども、いままで metareal.org は 404 Not Found のままだった。
 さすがにこのままだと不味い、というか気持ち悪いので、metareal.org も用意した。デザインはちょっとまえに流行った Web 2.0 カラーで（もしかして、もう古い？）。</description>
     </item>

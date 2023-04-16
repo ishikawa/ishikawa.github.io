@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>css on METAREAL</title>
-    <link>https://metareal.blog/tags/css/</link>
+    <link>https://ishikawa.github.io/tags/css/</link>
     <description>Recent content in css on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sat, 24 Nov 2007 02:58:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Nov 2007 02:58:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ruby の CSS パーサはどこですか？</title>
-      <link>https://metareal.blog/2007/11/23/looking-for-ruby-css-parser/</link>
+      <link>https://ishikawa.github.io/2007/11/23/looking-for-ruby-css-parser/</link>
       <pubDate>Sat, 24 Nov 2007 02:58:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/11/23/looking-for-ruby-css-parser/</guid>
+      <guid>https://ishikawa.github.io/2007/11/23/looking-for-ruby-css-parser/</guid>
       <description>「Ruby で書かれた CSS パーサを探しています」メモ。
 Ruby CSS Parser 最近 RubyForge に登録されたばかりのプロジェクト
  gem install css_parser で試してみる いきなり、ドキュメントと実際の挙動が違う。 CssParser::Parser#load_file! というメソッドはなくて CssParser::Parser#load_uri! とりあえずローカルファイルを読み込む方法がないようだ W3C のスタイルシートで試してみたがエラー まだ実用ではない、ということだろう  csspool W3C で公開されている CSS パーサのための共通 API SAC（和訳）の Ruby による実装。
@@ -22,10 +22,10 @@ Ruby CSS Parser 最近 RubyForge に登録されたばかりのプロジェク�
     
     <item>
       <title>IE でリンクをクリックするとフォントサイズが小さくなる</title>
-      <link>https://metareal.blog/2007/08/08/hit-a-link-and-font-away/</link>
+      <link>https://ishikawa.github.io/2007/08/08/hit-a-link-and-font-away/</link>
       <pubDate>Wed, 08 Aug 2007 10:15:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/08/08/hit-a-link-and-font-away/</guid>
+      <guid>https://ishikawa.github.io/2007/08/08/hit-a-link-and-font-away/</guid>
       <description>ひさしぶりに Windows IE 6 でブログの確認をしていたら妙なことに気がついた。リンクをクリックすると、一瞬、クリックしたリンクのフォントサイズが小さくなるのだ。
 図解入りバージョン ひさしぶりに Windows IE 6 でブログの確認をしていたら妙なことに気がついた。
 
@@ -39,10 +39,10 @@ Ruby CSS Parser 最近 RubyForge に登録されたばかりのプロジェク�
     
     <item>
       <title>YUI の fonts.css だと pre &gt; code がでっかくなっちゃうね</title>
-      <link>https://metareal.blog/2007/07/17/yui-fonts-css-bigger-pre-code/</link>
+      <link>https://ishikawa.github.io/2007/07/17/yui-fonts-css-bigger-pre-code/</link>
       <pubDate>Tue, 17 Jul 2007 10:31:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/07/17/yui-fonts-css-bigger-pre-code/</guid>
+      <guid>https://ishikawa.github.io/2007/07/17/yui-fonts-css-bigger-pre-code/</guid>
       <description>Yahoo! UI Library (YUI) の fonts.css では pre と code を次のようにスタイルづけしている。
 /** * Bump up !IE to get to 13px equivalent */ pre, code {font:115% monospace;*font-size:100%;}  要するに、
  等幅フォント IE では font-size:100% それ以外は font-size:115%  ってことなんだが、このブログみたいにサンプルコードとかを pre 要素と code 要素でマークアップしている場合は IE 以外でフォントが大きくなってしまう（font-size:115% が二回適用される）。

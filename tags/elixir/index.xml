@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>elixir on METAREAL</title>
-    <link>https://metareal.blog/tags/elixir/</link>
+    <link>https://ishikawa.github.io/tags/elixir/</link>
     <description>Recent content in elixir on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Thu, 26 Mar 2020 00:00:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/elixir/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 Mar 2020 00:00:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/elixir/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Elixir の import/2 は最後のものが優先される</title>
-      <link>https://metareal.blog/post/2020/03/26/elixir-import-overrides-previous-import/</link>
+      <link>https://ishikawa.github.io/post/2020/03/26/elixir-import-overrides-previous-import/</link>
       <pubDate>Thu, 26 Mar 2020 00:00:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/post/2020/03/26/elixir-import-overrides-previous-import/</guid>
+      <guid>https://ishikawa.github.io/post/2020/03/26/elixir-import-overrides-previous-import/</guid>
       <description>この記事は以前に Qiita で公開した記事です。
 Elixir の import/2 を同じモジュールにたいして複数回実行すると、最後に実行したものが優先される。
 iex(1)&amp;gt; import List List iex(2)&amp;gt; first([1]) 1 iex(3)&amp;gt; import List, only: [flatten: 1] List iex(4)&amp;gt; first([1]) ** (CompileError) iex:4: undefined function first/1  上記の例では、iex(1) で import List したときには参照できていた List.first/1 が、iex(4) の import List, only: [flatten: 1] のあとでは参照できなくなっている。
@@ -23,10 +23,10 @@ defmodule AuthUserAction do defmacro __using__(_opts) do quote do import Plug.Co
     
     <item>
       <title>Elixir で Parameterized test</title>
-      <link>https://metareal.blog/post/2019/12/09/parameterized-tests-in-elixir/</link>
+      <link>https://ishikawa.github.io/post/2019/12/09/parameterized-tests-in-elixir/</link>
       <pubDate>Mon, 09 Dec 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/post/2019/12/09/parameterized-tests-in-elixir/</guid>
+      <guid>https://ishikawa.github.io/post/2019/12/09/parameterized-tests-in-elixir/</guid>
       <description>この記事は以前に Qiita で公開した記事です。
 ユニットテストの現場では、一部のパラメータだけが異なるコピペが見過ごされがちで、コードを保守する立場にとってはテスト対象のコードよりも頭が痛い存在だ。こういうテストは異なるパラメータのパターンのみを記述して、他のコードは使いまわしたい。いわゆる Parameterized test というやつである。
 既存の手法 Elixir の ExUnit は標準の Unit Testing ライブラリとして非常によく出来ているが、残念ながら Parameterized test の仕組みは用意されていない。
@@ -37,10 +37,10 @@ KazuCocoa/ex_parameterized を試してみたこともあるのだが、記法�
     
     <item>
       <title>Phoenix (Cowboy) の Gzip 圧縮サポート</title>
-      <link>https://metareal.blog/post/2016/09/gzip-compression-in-cowboy/</link>
+      <link>https://ishikawa.github.io/post/2016/09/gzip-compression-in-cowboy/</link>
       <pubDate>Sun, 25 Sep 2016 14:47:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/post/2016/09/gzip-compression-in-cowboy/</guid>
+      <guid>https://ishikawa.github.io/post/2016/09/gzip-compression-in-cowboy/</guid>
       <description>Phoenix framework でレスポンスの GZip 圧縮を有効にするには Cowboy に compress: true を渡すように、 Phoenix.Endpoint を設定する。
 config :example_app, ExampleApp.Endpoint, http: [port: 4040, compress: true], debug_errors: true, code_reloader: true, check_origin: false, watchers: []  HTTP リクエストを送るときに Accept-Encoding ヘッダーを設定する (curl コマンドなら --compressed オプション)
 Accept-Encoding: gzip, deflate  また、レスポンス・ボディのサイズが 300 バイトを超えていない場合も GZip 圧縮されないようだ。
@@ -49,10 +49,10 @@ Accept-Encoding: gzip, deflate  また、レスポンス・ボディのサイズ
     
     <item>
       <title>ctags に Elixir を追加する</title>
-      <link>https://metareal.blog/post/2015/09/elixir-ctags/</link>
+      <link>https://ishikawa.github.io/post/2015/09/elixir-ctags/</link>
       <pubDate>Fri, 25 Sep 2015 11:09:31 +0900</pubDate>
       
-      <guid>https://metareal.blog/post/2015/09/elixir-ctags/</guid>
+      <guid>https://ishikawa.github.io/post/2015/09/elixir-ctags/</guid>
       <description>最近、Atom エディタを使っているが、シンボルの定義場所に移動するための Go to Declaration コマンドを動作させるためには ctags でインデックスしておく必要がある。
  atom/symbols-view  ただ、2015年9月の現時点では Elixir がサポートされていないようなので、自分で追加してやる必要がある。
 % ctags --version Exuberant Ctags 5.8, Copyright (C) 1996-2009 Darren Hiebert Compiled: Mar 16 2015, 23:48:18 ... Optional compiled features: +wildcards, +regex  ctags はコマンドラインオプションで新しい言語を定義できる。毎回指定するのが面倒な場合は、 $HOME/.ctags からオプションを読み込んでくれるようだ。

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>jupyter on METAREAL</title>
-    <link>https://metareal.blog/tags/jupyter/</link>
+    <link>https://ishikawa.github.io/tags/jupyter/</link>
     <description>Recent content in jupyter on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 14 Apr 2019 00:00:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Apr 2019 00:00:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Jupyter で unzip の進捗状況を表示</title>
-      <link>https://metareal.blog/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</link>
+      <link>https://ishikawa.github.io/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</link>
       <pubDate>Sun, 14 Apr 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</guid>
+      <guid>https://ishikawa.github.io/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</guid>
       <description>この記事は以前、Qiita に投稿したものです。
   公開データセットとか、やたらとファイル数が多い zip ファイルをノートブックで unzip すると、出力が多すぎて UI のパフォーマンスが急激に劣化する。
 !unzip /home/data/large_dataset.zip -d /home/data/ Archive: /home/data/large_dataset.zip inflating: /home/data/large_dataset/1/1900_753325_0060.png inflating: /home/data/large_dataset/1/1900_754949_0023.png inflating: /home/data/large_dataset/1/1900_758495_0075.png inflating: /home/data/large_dataset/1/1900_761460_0029.png inflating: /home/data/large_dataset/1/1900_766994_0030.png inflating: /home/data/large_dataset/1/1900_776319_0015.png ... (More 80K lines)  かといって、/dev/null にリダイレクトしたり、-q オプションを指定して出力そのものをなくしてしまうと、本当に解凍処理が進んでいるのか分からなくて不安になる。

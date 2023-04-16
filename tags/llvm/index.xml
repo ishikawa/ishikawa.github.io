@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>llvm on METAREAL</title>
-    <link>https://metareal.blog/tags/llvm/</link>
+    <link>https://ishikawa.github.io/tags/llvm/</link>
     <description>Recent content in llvm on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Mon, 14 Jan 2013 00:00:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/llvm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Jan 2013 00:00:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/llvm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Code Reading: Dump and Print Function in llvm::Module Class</title>
-      <link>https://metareal.blog/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</link>
+      <link>https://ishikawa.github.io/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</link>
       <pubDate>Mon, 14 Jan 2013 00:00:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</guid>
+      <guid>https://ishikawa.github.io/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</guid>
       <description>LLVM 3.1 のソースコードから、llvm::Module の IR 出力用関数のソースコードを読んだ。
 /// Print the module to an output stream with an optional /// AssemblyAnnotationWriter. void print(raw_ostream &amp;amp;OS, AssemblyAnnotationWriter *AAW) const; /// Dump the module to stderr (for debugging). void dump() const;  実装は lib/VMCore/Module.cpp ではなく、他の IR 出力用関数とともに lib/VMCore/AsmWriter.cpp にまとめられている。まずは llvm::Module::print を見てみよう。
 void Module::print(raw_ostream &amp;amp;ROS, AssemblyAnnotationWriter *AAW) const { SlotTracker SlotTable(this); formatted_raw_ostream OS(ROS); AssemblyWriter W(OS, SlotTable, this, AAW); W.printModule(this); }  llvm::Module::print AssemblyWriter は lib/VMCore/AsmWriter.cpp の無名ネームスペースに定義されているクラスであり、llvm 内のさまざまな型をストリームに出力する関数を提供している。AssemblyWriter::printModule のコードをざっと眺めてみれば、やっていることの想像はつくだろう。</description>
@@ -21,10 +21,10 @@ void Module::print(raw_ostream &amp;amp;ROS, AssemblyAnnotationWriter *AAW) cons
     
     <item>
       <title>LLVM 2.8 の C API 差分をチェックしてはじめて気づいたけど、2.8...</title>
-      <link>https://metareal.blog/2010/12/05/1291551820/</link>
+      <link>https://ishikawa.github.io/2010/12/05/1291551820/</link>
       <pubDate>Sun, 05 Dec 2010 09:23:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2010/12/05/1291551820/</guid>
+      <guid>https://ishikawa.github.io/2010/12/05/1291551820/</guid>
       <description>LLVM 2.8 の C API 差分をチェックしてはじめて気づいたけど、2.8 からは Union Type がなくなったみたい。
  The LLVM IR &amp;lsquo;Union&amp;rsquo; feature was removed. While this is a desirable feature for LLVM IR to support, the existing implementation was half baked and barely useful. We&amp;rsquo;d really like anyone interested to resurrect the work and finish it for a future release.
   LLVM 2.8 Release Notes | Major Changes and Removed Features [LLVMdev] Union type, is it really used or necessary?</description>
@@ -32,10 +32,10 @@ void Module::print(raw_ostream &amp;amp;ROS, AssemblyAnnotationWriter *AAW) cons
     
     <item>
       <title>C/C&#43;&#43; のコードを ActionScript に変換する Adobe Alchemy を試す</title>
-      <link>https://metareal.blog/2008/12/09/adobe-alchemy-first-impression/</link>
+      <link>https://ishikawa.github.io/2008/12/09/adobe-alchemy-first-impression/</link>
       <pubDate>Tue, 09 Dec 2008 08:34:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/12/09/adobe-alchemy-first-impression/</guid>
+      <guid>https://ishikawa.github.io/2008/12/09/adobe-alchemy-first-impression/</guid>
       <description>Adobe Labs の研究プロジェクト、コードネーム Alchemy を試してみた。同プロジェクトについては、すでに多くの方が書かれており、今更な感もあるが、以前に紹介記事を書いていることだし、備忘録も兼ねて残しておく。
 Alchemy について Alchemy プロジェクトで配布されているツールを使うと、C/C++ コードで記述されたプログラムを ActionScript Virtual Machine (AVM2) で動作するように変換できる（AVM2 については Adobe ActionScript Virtual Machine 2 (AVM2) Overview (PDF, 400K) を参照）。
 これはつまり、既存の C/C++ プログラムが Flash Player や AIR 上で動作することを意味している。また、C/C++ プログラムのコンパイルには LLVM を利用しており、そこで生成された中間コードが ActionScript 3.0 のソースコードに変換される（そのままバイトコードには変換しない）。その後、生成された ActionScript コードが Alchemy 独自の ActionScript コンパイラで ActionScript Byte Code (ABC) にコンパイルされるようだ。
@@ -44,10 +44,10 @@ Alchemy について Alchemy プロジェクトで配布されているツール
     
     <item>
       <title>C 言語で書かれたソフトウェアが Flash で動くようになるかもしれない</title>
-      <link>https://metareal.blog/2008/07/06/running-legacy-applications-on-flash-player/</link>
+      <link>https://ishikawa.github.io/2008/07/06/running-legacy-applications-on-flash-player/</link>
       <pubDate>Sun, 06 Jul 2008 09:35:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/07/06/running-legacy-applications-on-flash-player/</guid>
+      <guid>https://ishikawa.github.io/2008/07/06/running-legacy-applications-on-flash-player/</guid>
       <description>lucille development blog 経由。
 Running C and Python Code on The Web によると、Adobe の Scott Petersen 氏が大変興味深いツールを開発中のようだ。このツールを使うと、C 言語で書かれたソフトウェアを Flash Player で実行できるようになる。また、このツールはオープンソースで公開されるとのこと。
 LLVM, Tamarin ソフトウェアを Flash Player で実行可能な形式に変換するためには、ソフトウェアのソースコードが必要になる。変換の手順は以下のとおり。
@@ -60,10 +60,10 @@ Mozilla で行われたデモでは、Quake や、C 言語で書かれたエミ�
     
     <item>
       <title>LLVM で Hello, World</title>
-      <link>https://metareal.blog/2007/07/22/hello-world-llvm/</link>
+      <link>https://ishikawa.github.io/2007/07/22/hello-world-llvm/</link>
       <pubDate>Sun, 22 Jul 2007 10:23:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/07/22/hello-world-llvm/</guid>
+      <guid>https://ishikawa.github.io/2007/07/22/hello-world-llvm/</guid>
       <description>LLVM で Hello, World プログラム。
 @.LC0 = internal constant [13 x i8] c&amp;quot;Hello world!\00&amp;quot; declare i32 @puts(i8 *) define i32 @main() { %cast210 = getelementptr [13 x i8]* @.LC0, i64 0, i64 0 call i32 @puts(i8 * %cast210) ret i32 0 }  バイトコードにコンパイルして実行。
 % llvm-as -f hello.ll % lli hello.bc Hello world!  まあ、プログラム自体は LLVM Assembly Language Reference Manual からの抜粋なわけだが。</description>
@@ -71,10 +71,10 @@ Mozilla で行われたデモでは、Quake や、C 言語で書かれたエミ�
     
     <item>
       <title>LLVM で Hello, World の puts 関数</title>
-      <link>https://metareal.blog/2007/07/22/hello-world-llvm-and-runtime-libraries/</link>
+      <link>https://ishikawa.github.io/2007/07/22/hello-world-llvm-and-runtime-libraries/</link>
       <pubDate>Sun, 22 Jul 2007 02:06:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/07/22/hello-world-llvm-and-runtime-libraries/</guid>
+      <guid>https://ishikawa.github.io/2007/07/22/hello-world-llvm-and-runtime-libraries/</guid>
       <description>前回のように簡単なプログラムでも、実際に書いてみると疑問が湧いてくる。
 まず、文字列を出力している puts 関数。こいつの実体はどこにあるんだろう？ C のプログラムなら、リンカが標準ライブラリをこっそりリンクしている、という結末になるのだが&amp;hellip;。検索してみると、やはり、同じように疑問をもった人がいるようで、lli が実行時のライブラリとして標準 C ライブラリを利用しているらしい。
 ということは printf なんかも使えるはずだよね。

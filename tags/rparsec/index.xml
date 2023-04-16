@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>rparsec on METAREAL</title>
-    <link>https://metareal.blog/tags/rparsec/</link>
+    <link>https://ishikawa.github.io/tags/rparsec/</link>
     <description>Recent content in rparsec on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Sun, 16 Dec 2007 11:10:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/rparsec/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Dec 2007 11:10:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/rparsec/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>rparsec での繰り返しと選択</title>
-      <link>https://metareal.blog/2007/12/16/rparsec-quantifier-and-alternation/</link>
+      <link>https://ishikawa.github.io/2007/12/16/rparsec-quantifier-and-alternation/</link>
       <pubDate>Sun, 16 Dec 2007 11:10:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/12/16/rparsec-quantifier-and-alternation/</guid>
+      <guid>https://ishikawa.github.io/2007/12/16/rparsec-quantifier-and-alternation/</guid>
       <description>rparsec では文法要素の繰り返しを指定する方法が複数用意されている。
 繰り返し まずは「RParsec の many と many_ の違い」でも解説した many と many_ があり、これで m 回以上の繰り返しを指定できる（正規表現でいう *, +, {n,}）。
 repeat, repeat_ は m 回以上、最大 n 回の繰り返しを指定できる（正規表現でいえば {m,n}）。また、some, some_ では最大 n 回の繰り返しを指定できる（正規表現でいえば {0,n}。実際のところ、some は min 引数に 0 を指定して、repeat を呼び出しているにすぎない）。
@@ -27,10 +27,10 @@ parser = ((number | word) &amp;lt;&amp;lt; whitespace.many_).many parser.parse(&
     
     <item>
       <title>rparsec の四則演算デモを浮動小数点に対応させる</title>
-      <link>https://metareal.blog/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</link>
+      <link>https://ishikawa.github.io/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</link>
       <pubDate>Fri, 14 Dec 2007 10:05:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</guid>
+      <guid>https://ishikawa.github.io/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</guid>
       <description>rparsec の四則演算デモを試しているうちに、整数による演算しかできないことに気づくことと思う。
 四則演算デモが calculator.rb にあるとして、
 require &#39;calculator.rb&#39; parser = Calculator.new.parser parser.parse &#39;1+2*(3-1)&#39; =&amp;gt; 5 parser.parse &#39;4 * 2.5&#39; =&amp;gt; 8  小数を計算させてみると、エラーにはならないものの、計算結果がおかしなことになっている。
@@ -43,10 +43,10 @@ parser.parse &#39;4 * 2.5&#39; =&amp;gt; 10.0  </description>
     
     <item>
       <title>RParsec の many と many_ の違い</title>
-      <link>https://metareal.blog/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</link>
+      <link>https://ishikawa.github.io/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</link>
       <pubDate>Thu, 13 Dec 2007 09:09:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</guid>
+      <guid>https://ishikawa.github.io/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</guid>
       <description>前回の四則演算デモで真っ先に目を引いたのは many_ という奇妙な名前のメソッドだった。
 delim = whitespace.many_  他にもっと注目すべきところがあるだろうと言われそうだが、非公開の関数か一時変数のようなメソッドが公開 API の一部というのに驚いた。
 また、many_ は Parser クラスのメソッドだが、このクラスには他にも many というメソッドが用意されている。
@@ -60,10 +60,10 @@ irb(main):007:0&amp;gt; whitespace.many.parse(&amp;quot;&amp;quot;) =&amp;gt; []
     
     <item>
       <title>Ruby によるパーサ・コンビネータ rparsec</title>
-      <link>https://metareal.blog/2007/12/11/studying-rparsec-introduction/</link>
+      <link>https://ishikawa.github.io/2007/12/11/studying-rparsec-introduction/</link>
       <pubDate>Tue, 11 Dec 2007 10:52:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/12/11/studying-rparsec-introduction/</guid>
+      <guid>https://ishikawa.github.io/2007/12/11/studying-rparsec-introduction/</guid>
       <description>Java による parsec の実装 JParsec を Ruby に移植した rparsec を勉強中。
  rparsec overview rparsec RDoc  パーサ・コンビネータ Parsec、パーサ・コンビネータについては「最強のパーザー、Parser Combinator - 純粋関数型雑記帳」が参考になる。
 Yacc や Bison などのコンパイラ・コンパイラと比較したときのパーサ・コンビネータの強味としては、

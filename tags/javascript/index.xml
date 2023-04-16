@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>javascript on METAREAL</title>
-    <link>https://metareal.blog/tags/javascript/</link>
+    <link>https://ishikawa.github.io/tags/javascript/</link>
     <description>Recent content in javascript on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Wed, 24 Dec 2008 01:06:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Dec 2008 01:06:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WEB&#43;DB PRESS Vol.48</title>
-      <link>https://metareal.blog/2008/12/24/web-db-press-vol48/</link>
+      <link>https://ishikawa.github.io/2008/12/24/web-db-press-vol48/</link>
       <pubDate>Wed, 24 Dec 2008 01:06:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/12/24/web-db-press-vol48/</guid>
+      <guid>https://ishikawa.github.io/2008/12/24/web-db-press-vol48/</guid>
       <description>古谷楽人氏より WEB+DB PRESS Vol.48 (amazon.co.jp) を献本いただきました。ありがとうございます。わたしは当雑誌、というか雑誌全般の熱心な読者ではないのですが（ごめんなさい）、ひさしぶりの技術系雑誌を楽しく読ませてもらいました。
 WEB+DB PRESS Vol.48 で氏は「[最速]JavaScript エンジン徹底比較」と題して、最近のブラウザ事情に聡いプログラマなら気になるであろう、最新 JavaScript エンジンの比較と検証記事を執筆されています。以下では、記事内容の簡単な紹介と一読した感想などを書いていきます。
 [最速]JavaScript エンジン徹底比較 （ここから文体をいつもどおりに戻して&amp;hellip;）記事は三章から構成されており、それぞれの章題は：
@@ -25,10 +25,10 @@ WEB+DB PRESS Vol.48 で氏は「[最速]JavaScript エンジン徹底比較」�
     
     <item>
       <title>Google Chrome に搭載されたオープンソースの JavaScript エンジン &#34;v8&#34; を試す</title>
-      <link>https://metareal.blog/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</link>
+      <link>https://ishikawa.github.io/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</link>
       <pubDate>Wed, 03 Sep 2008 09:28:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</guid>
+      <guid>https://ishikawa.github.io/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</guid>
       <description>その発表から世間を騒がせた、Google の Web ブラウザ Chrome が遂に公開された。
 Mac ユーザなうえに、日々の Web ブラウジングは Safari と iPhone で満足していることもあり、Chrome 自体への興味は薄い。しかし、オープンソースの JavaScript エンジンも独自開発している、となると話は別だ。しかも、Strongtalk や HotSpot Java VM の開発者が関わっている、というのだから俄然興味が湧いてくる（参考記事）。
 Google が開発、公開している JavaScript 処理系は、その名も v8。
@@ -44,10 +44,10 @@ v8 では hidden class という実装テクニックを用いることにより
     
     <item>
       <title>Flickr の JSON フィードで自作ブログパーツ</title>
-      <link>https://metareal.blog/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</link>
+      <link>https://ishikawa.github.io/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</link>
       <pubDate>Sun, 15 Jun 2008 10:09:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</guid>
+      <guid>https://ishikawa.github.io/2008/06/15/display-flickr-photos-on-your-website-using-json-feed-api/</guid>
       <description>写真を撮るのが好きじゃない。
 カメラは荷物になるし、壊れやすいから気をつかう。いざ撮影になると、バッグから取り出して、電源ボタンを押す、レンズを向ける、ピントを合わせて、と面倒だ。衆人環視の中、うんうん唸りながらシャッターを切るのも粋じゃない。
 では、何が楽しくて写真を撮るのかといえば、補正が楽しい。Photoshop Elements の自動補正がよく出来ていて、何も考えずにボタンを押していくだけで、それなりの見栄えになってくれる。これは楽しい（ただし、たまに自力で補正に挑戦しても、自動補正の方がキレイで気分が悪い）。
@@ -62,10 +62,10 @@ var b_txt = &#39;&#39;; b_txt+= &#39;&amp;lt;div class=&amp;quot;flickr_badge_im
     
     <item>
       <title>280Slides in Objective-J</title>
-      <link>https://metareal.blog/2008/06/06/280slides-in-objective-j/</link>
+      <link>https://ishikawa.github.io/2008/06/06/280slides-in-objective-j/</link>
       <pubDate>Fri, 06 Jun 2008 12:42:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/06/06/280slides-in-objective-j/</guid>
+      <guid>https://ishikawa.github.io/2008/06/06/280slides-in-objective-j/</guid>
       <description>280Slides という Web サービスがすごい。
  Dru’s Blog » New Web Site in Objective-C via Javascript New 280 Slides Web Site translates Objective-C to Javascript | reddit  Keynote 風のプレゼンテーションツールとしての UI も素晴らしいが、圧巻なのは、その実装技術。
 「どんな JavaScript や Flash を使ってるんだ？」と思うだろう。さあ、FireBug なり Safari の Web インスペクタなりで、ページに読み込まれているスクリプトを確認してみよう。その大半が馴染みのない拡張子 .j であることに驚くに違いない。
@@ -76,10 +76,10 @@ Objective-J 試しに DocumentController.j を覗いてみようか。
     
     <item>
       <title>JavaScript ベンチマーク SunSpider 0.9</title>
-      <link>https://metareal.blog/2007/12/19/new-javascript-benchmark-sunspider/</link>
+      <link>https://ishikawa.github.io/2007/12/19/new-javascript-benchmark-sunspider/</link>
       <pubDate>Thu, 20 Dec 2007 08:28:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/12/19/new-javascript-benchmark-sunspider/</guid>
+      <guid>https://ishikawa.github.io/2007/12/19/new-javascript-benchmark-sunspider/</guid>
       <description>WebKit の開発者たちは素晴らしいレンダリング・エンジンだけではなく、Drosera や Web Inspector などの Web 開発者向けツールも提供してきたが、今度は JavaScript ベンチマークをリリースしたようだ。
 このベンチマークはJavaScript 言語のコアに絞ったベンチマークを提供しており、これまでの、Web 開発者が使うツールというよりは言語処理系開発者向けのツールといえる。
 SunSpider 0.9 このベンチマークは Surfin’ Safari のブログ上で公開がアナウンスされている。
@@ -89,20 +89,20 @@ SunSpider 0.9 このベンチマークは Surfin’ Safari のブログ上で公
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API（目次）</title>
-      <link>https://metareal.blog/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</link>
+      <link>https://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</link>
       <pubDate>Mon, 24 Sep 2007 12:10:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</guid>
+      <guid>https://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-toc/</guid>
       <description>Prototype 1.6.0 RC の変更点、特にイベント周りの API の変更についてまとめた記事のインデックス。
  Event.observe で登録したコールバックの this イベントオブジェクトの拡張 Event.stopObserving で複数のイベント登録を解除できるようになった カスタム・イベント クロスブラウザな DOMContentLoaded イベント  </description>
     </item>
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API (4)</title>
-      <link>https://metareal.blog/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</link>
+      <link>https://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</link>
       <pubDate>Mon, 24 Sep 2007 12:02:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</guid>
+      <guid>https://ishikawa.github.io/2007/09/23/prototype-1-6-0-event-overhaul-release-take-4/</guid>
       <description>Prototype 1.6.0 RC のイベント API について紹介するシリーズも今回が最後。
 カスタム・イベント あらかじめ定義された組み込みのイベント click や submit 以外にも、ユーザーが好きなイベントを発生させることができるようになった。
 たとえば、こんな HTML があるとして、
@@ -115,10 +115,10 @@ document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... })  従来�
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API (3)</title>
-      <link>https://metareal.blog/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</link>
+      <link>https://ishikawa.github.io/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</link>
       <pubDate>Sat, 22 Sep 2007 09:28:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</guid>
+      <guid>https://ishikawa.github.io/2007/09/22/prototype-1-6-0-event-overhaul-release-take-3/</guid>
       <description>Prototype 1.6.0 RC イベント API の進化、更なるつづき。
 Event.stopObserving で複数のイベント登録を解除できるようになった イベントのコールバック関数は Event.observe や Element#observe で登録し、
  Event.stopObserving Element#stopObserving  で登録を解除できる。
@@ -131,10 +131,10 @@ Event.stopObserving(&#39;signinForm&#39;, &#39;submit&#39;, checkForm);  とし�
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API (2)</title>
-      <link>https://metareal.blog/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</link>
+      <link>https://ishikawa.github.io/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</link>
       <pubDate>Fri, 21 Sep 2007 05:41:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</guid>
+      <guid>https://ishikawa.github.io/2007/09/21/prototype-1-6-0-event-overhaul-release-take-2/</guid>
       <description>随分と間が空いてしまった。前回の記事 Prototype 1.6.0 で大きく進化したイベント API に引き続き、Prototype 1.6.0 RC で導入された、イベント API の変更点を見ていく。
 イベントオブジェクトの拡張 これまでも、たとえば $() から返された DOM 要素は Element.extend で色々と便利なメソッドが追加されていたが、1.6.0 からはイベントのコールバックに渡されるイベントオブジェクトでも Event.extend されるようになった。
 これからはコールバック関数でこんなふうに書ける。
@@ -145,10 +145,10 @@ function onClickListener(event) { if (event.isLeftClick()) { ... } }  また、I
     
     <item>
       <title>WebKit のブラウザ判定と iPhone、そして iPod touch</title>
-      <link>https://metareal.blog/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</link>
+      <link>https://ishikawa.github.io/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</link>
       <pubDate>Sun, 09 Sep 2007 05:05:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</guid>
+      <guid>https://ishikawa.github.io/2007/09/08/webkit-detect-script-for-iphone-and-ipod-touch/</guid>
       <description>Prototype 1.6.0 のブラウザ判定と iPhone では、
  prototype.js には 1.5.1 から、各種ブラウザを判定するための Prototype.Browser が定義されている。
  として prototype.js のブラウザ判定コードを紹介した。iPhone を含む WebKit ベースのブラウザも判別できる。
@@ -160,10 +160,10 @@ WebKitDetect.isWebKit = function isWebKit() { return RegExp(&amp;quot; AppleWebK
     
     <item>
       <title>Prototype 1.6.0 で大きく進化したイベント API</title>
-      <link>https://metareal.blog/2007/09/02/prototype-1-6-0-event-overhaul-release/</link>
+      <link>https://ishikawa.github.io/2007/09/02/prototype-1-6-0-event-overhaul-release/</link>
       <pubDate>Sun, 02 Sep 2007 09:55:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/09/02/prototype-1-6-0-event-overhaul-release/</guid>
+      <guid>https://ishikawa.github.io/2007/09/02/prototype-1-6-0-event-overhaul-release/</guid>
       <description>Prototype 1.6.0 RC にはいくつもの変更点がある。
 特に イベント周りの API で顕著だ。Event.observe メソッドなど、お馴染みの API が大幅に手を加えられている。
 Event.observe で登録したコールバックの this いままで Event.observe でコールバック関数を登録するときは、コールバックが呼ばれたときの this を固定するため（と、引数に event が確実に渡ってくるように）、
@@ -177,10 +177,10 @@ var element = $(&#39;mybutton&#39;); Event.observe(element, &#39;click&#39;, onC
     
     <item>
       <title>Prototype 1.6.0 のブラウザ判定と iPhone </title>
-      <link>https://metareal.blog/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</link>
+      <link>https://ishikawa.github.io/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</link>
       <pubDate>Sat, 01 Sep 2007 08:30:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</guid>
+      <guid>https://ishikawa.github.io/2007/09/01/prototype-1-6-0-has-detection-for-iphone/</guid>
       <description>prototype.js には 1.5.1 から、各種ブラウザを判定するための Prototype.Browser が定義されている。
 var Prototype = { ... Browser: { IE: !!(window.attachEvent &amp;amp;&amp;amp; !window.opera), Opera: !!window.opera, WebKit: navigator.userAgent.indexOf(&#39;AppleWebKit/&#39;) &amp;gt; -1, Gecko: navigator.userAgent.indexOf(&#39;Gecko&#39;) &amp;gt; -1 &amp;amp;&amp;amp; navigator.userAgent.indexOf(&#39;KHTML&#39;) == -1, ...  使い方は一目瞭然だろう。
 たとえば Internet Explorer の場合は Prototype.Browser.IE が、Safari など WebKit を利用しているブラウザでは Prototype.Browser.WebKit が true になる。
@@ -191,10 +191,10 @@ var Prototype = { Version: &#39;1.6.0_rc0&#39;, Browser: { IE: !!(window.attachE
     
     <item>
       <title>Prototype 1.6.0 と DOMContentLoaded</title>
-      <link>https://metareal.blog/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</link>
+      <link>https://ishikawa.github.io/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</link>
       <pubDate>Wed, 22 Aug 2007 05:32:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</guid>
+      <guid>https://ishikawa.github.io/2007/08/22/prototype-1-6-0-features-dom-content-loaded-event/</guid>
       <description>Prototype 1.6.0 のリリース候補版が公開されたようだ。
  Prototype JavaScript framework: Prototype 1.6.0 release candidate Riding Rails: Prototype 1.6.0 release candidate  変更点が多い。目を引くものとしては、クラスの継承がサポートされた。新しい Class.create では親クラスを指定できる。いままでは Object.extend によるコピーで擬似的な継承をしていただけなので、これは嬉しいかもしれない。
 クロスブラウザな DOMContentLoaded イベント また、「window.onload 前でも DOM 処理が可能なら通知してくれる domready.js」という記事でも書いた、DOMContentLoaded がサポートされた。
@@ -204,10 +204,10 @@ document.observe(&amp;quot;contentloaded&amp;quot;, function() { ... })  従来�
     
     <item>
       <title>prototype.js の $$ 関数で CSS 風に DOM プログラミング</title>
-      <link>https://metareal.blog/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</link>
+      <link>https://ishikawa.github.io/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</link>
       <pubDate>Sun, 15 Jul 2007 11:56:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</guid>
+      <guid>https://ishikawa.github.io/2007/07/15/css-like-dom-programming-with-prototype-get-elements-by-selector/</guid>
       <description>prototype.js の $$ 関数（実際の処理は Selector.findChildElements）は CSS セレクタを受け取り、セレクタにマッチする要素を配列で返してくれる。
 var links = $$(&#39;#contents a&#39;);  だが、単純にひとつのセレクタだけではなくて、複数のセレクタを引数に渡したり、CSS と同じく、カンマ区切りで複数指定することもできる（結果は重複要素のない配列となって返ってくる）。
 var links = $$(&amp;quot;#contents a&amp;quot;, &amp;quot;#footer .items a&amp;quot;);  このコードは、こう書くこともできる。
@@ -219,10 +219,10 @@ Event.domReady.add(function() { // Select initial first responder when the windo
     
     <item>
       <title>window.onload 前でも DOM 処理が可能なら通知してくれる domready.js</title>
-      <link>https://metareal.blog/2007/07/10/domready-js-cross-browser-ondomcontentloaded/</link>
+      <link>https://ishikawa.github.io/2007/07/10/domready-js-cross-browser-ondomcontentloaded/</link>
       <pubDate>Tue, 10 Jul 2007 12:42:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/07/10/domready-js-cross-browser-ondomcontentloaded/</guid>
+      <guid>https://ishikawa.github.io/2007/07/10/domready-js-cross-browser-ondomcontentloaded/</guid>
       <description>DOM 読み込み完了のタイミングで、任意の関数を実行できるようにする JavaScript ライブラリを書いてみた。
  domready.js  mootools の同様の機能を基にしていて、単体として使いやすいように外部ライブラリへの依存性をなくし、prototype.js とも併用できるようにしたもの。
 現状、手元の環境では以下のブラウザで動作確認済み。
@@ -236,10 +236,10 @@ Event.domReady.add(function() { ... });  他のイベントと登録方法が異
     
     <item>
       <title>script.aculo.us の InPlaceEditor で submitOnBlur だと Safari が落ちる</title>
-      <link>https://metareal.blog/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</link>
+      <link>https://ishikawa.github.io/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</link>
       <pubDate>Fri, 06 Jul 2007 10:57:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</guid>
+      <guid>https://ishikawa.github.io/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</guid>
       <description>script.aculo.us の InPlaceEditor を試している。
 設定でカスタマイズできる部分がけっこうある割に、必要なものがなかったりして（特にコールバック系）微妙に使いづらいんだが、Safari だと不意にクラッシュする、という問題もあったり。
 色々調べてみると、どうやら submitOnBlur を設定して、フォーカスリング（テキストフィールドのフォーカス時に、フィールドの周囲に出る青い線）をクリックするとお亡くなりになるらしい。
@@ -248,10 +248,10 @@ Event.domReady.add(function() { ... });  他のイベントと登録方法が異
     
     <item>
       <title>JavaScript でコードを色づけしてくれるライブラリ google-code-prettify</title>
-      <link>https://metareal.blog/2007/06/15/google-code-prettify-syntax-highlighter-written-in-javascript/</link>
+      <link>https://ishikawa.github.io/2007/06/15/google-code-prettify-syntax-highlighter-written-in-javascript/</link>
       <pubDate>Fri, 15 Jun 2007 09:08:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/06/15/google-code-prettify-syntax-highlighter-written-in-javascript/</guid>
+      <guid>https://ishikawa.github.io/2007/06/15/google-code-prettify-syntax-highlighter-written-in-javascript/</guid>
       <description>Ruby のコードを色づけしてくれる Syntax を試しているうちに、このブログでもコードの色づけ（いわゆるシンタックス・ハイライト。はてなダイアリーのスーパー pre 記法みたいなやつね）をやってみたくなった。
 誰でも普段は、エディタで色づけされたコードを見慣れてるわけで、やっぱり黒べったりは読みづらいといえば読みづらい。
 JavaScript によるコード色づけ ただ、このブログは WordPress で動作している。
@@ -266,10 +266,10 @@ google-code-prettify 使い方は README を読めば問題ないと思う。こ
     
     <item>
       <title>Google の検索履歴を記録する JavaScript を読んでみた</title>
-      <link>https://metareal.blog/2007/03/31/reading-google-search-history-javascript/</link>
+      <link>https://ishikawa.github.io/2007/03/31/reading-google-search-history-javascript/</link>
       <pubDate>Sun, 01 Apr 2007 04:59:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/03/31/reading-google-search-history-javascript/</guid>
+      <guid>https://ishikawa.github.io/2007/03/31/reading-google-search-history-javascript/</guid>
       <description>Google 検索履歴では、検索クエリーの履歴だけではなく、検索結果で実際にどのページをクリックしたか、も記録している。
 検索結果ページのソースコードを読んでみると、履歴の保存は JavaScript で行われているようだ。
 改行やインデントを加えて読みやすくしたソースコードを基に、履歴を保存する処理や興味深い部分を紹介する。
@@ -283,10 +283,10 @@ window.asq = function(d,a,f,g,k,l,m) { if (window.XMLHttpRequest) { var c = wind
     
     <item>
       <title>JSON はみんなが思ってるほど安全ではない</title>
-      <link>https://metareal.blog/2007/03/08/json-is-not-as-safe-as-people-think-it-is/</link>
+      <link>https://ishikawa.github.io/2007/03/08/json-is-not-as-safe-as-people-think-it-is/</link>
       <pubDate>Thu, 08 Mar 2007 09:33:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/03/08/json-is-not-as-safe-as-people-think-it-is/</guid>
+      <guid>https://ishikawa.github.io/2007/03/08/json-is-not-as-safe-as-people-think-it-is/</guid>
       <description>del.icio.us 経由で今日読んだ記事。
 JSON is not as safe as people think it is - Joe Walker&amp;rsquo;s Blog http://getahead.org/blog/joe/2007/03/05/ json_is_not_as_safe_as_people_think_it_is.html
 script による CSRF と JavaScript のハック的手法を組み合わせることで、たとえログイン必須にしている JSON データであっても盗まれるかもしれない、という話。
@@ -298,10 +298,10 @@ script による CSRF と JavaScript のハック的手法を組み合わせる�
     
     <item>
       <title>Firefox の &lt;canvas&gt; 要素バグ</title>
-      <link>https://metareal.blog/2006/12/22/firefox-canvas-bug/</link>
+      <link>https://ishikawa.github.io/2006/12/22/firefox-canvas-bug/</link>
       <pubDate>Sat, 23 Dec 2006 02:47:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2006/12/22/firefox-canvas-bug/</guid>
+      <guid>https://ishikawa.github.io/2006/12/22/firefox-canvas-bug/</guid>
       <description>Firefox の &amp;lt;canvas&amp;gt; 要素で width, height 属性を指定せず、スタイルシートで width, height を指定すると、JavaScript での描画で座標がおかしくなる。Firefox 2.0.0.1 で確認。
 width, height 属性を指定すれば大丈夫。</description>
     </item>

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>unicode on METAREAL</title>
-    <link>https://metareal.blog/tags/unicode/</link>
+    <link>https://ishikawa.github.io/tags/unicode/</link>
     <description>Recent content in unicode on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Mon, 19 Nov 2007 02:31:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/unicode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Nov 2007 02:31:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/unicode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ruby で平仮名にマッチする正規表現</title>
-      <link>https://metareal.blog/2007/11/18/ruby-needs-unicode-regular-expressions/</link>
+      <link>https://ishikawa.github.io/2007/11/18/ruby-needs-unicode-regular-expressions/</link>
       <pubDate>Mon, 19 Nov 2007 02:31:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/11/18/ruby-needs-unicode-regular-expressions/</guid>
+      <guid>https://ishikawa.github.io/2007/11/18/ruby-needs-unicode-regular-expressions/</guid>
       <description>Ruby 1.8 系で平仮名にマッチする正規表現を書きたい。
 正規表現で Unicode ブロックが使えれば楽なのだが、残念ながら Ruby 1.8 ではサポートされていない。
 鬼車 ちなみに 1.9 で搭載される予定の鬼車では、以下のような形式で Unicode ブロックやカテゴリを指定できるようだ（参考：鬼車 正規表現 Version 5.6.0）。

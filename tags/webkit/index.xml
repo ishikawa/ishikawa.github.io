@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>webkit on METAREAL</title>
-    <link>https://metareal.blog/tags/webkit/</link>
+    <link>https://ishikawa.github.io/tags/webkit/</link>
     <description>Recent content in webkit on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Wed, 24 Dec 2008 01:06:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/webkit/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Dec 2008 01:06:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/webkit/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WEB&#43;DB PRESS Vol.48</title>
-      <link>https://metareal.blog/2008/12/24/web-db-press-vol48/</link>
+      <link>https://ishikawa.github.io/2008/12/24/web-db-press-vol48/</link>
       <pubDate>Wed, 24 Dec 2008 01:06:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/12/24/web-db-press-vol48/</guid>
+      <guid>https://ishikawa.github.io/2008/12/24/web-db-press-vol48/</guid>
       <description>古谷楽人氏より WEB+DB PRESS Vol.48 (amazon.co.jp) を献本いただきました。ありがとうございます。わたしは当雑誌、というか雑誌全般の熱心な読者ではないのですが（ごめんなさい）、ひさしぶりの技術系雑誌を楽しく読ませてもらいました。
 WEB+DB PRESS Vol.48 で氏は「[最速]JavaScript エンジン徹底比較」と題して、最近のブラウザ事情に聡いプログラマなら気になるであろう、最新 JavaScript エンジンの比較と検証記事を執筆されています。以下では、記事内容の簡単な紹介と一読した感想などを書いていきます。
 [最速]JavaScript エンジン徹底比較 （ここから文体をいつもどおりに戻して&amp;hellip;）記事は三章から構成されており、それぞれの章題は：
@@ -25,10 +25,10 @@ WEB+DB PRESS Vol.48 で氏は「[最速]JavaScript エンジン徹底比較」�
     
     <item>
       <title>JavaScript ベンチマーク SunSpider 0.9</title>
-      <link>https://metareal.blog/2007/12/19/new-javascript-benchmark-sunspider/</link>
+      <link>https://ishikawa.github.io/2007/12/19/new-javascript-benchmark-sunspider/</link>
       <pubDate>Thu, 20 Dec 2007 08:28:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/12/19/new-javascript-benchmark-sunspider/</guid>
+      <guid>https://ishikawa.github.io/2007/12/19/new-javascript-benchmark-sunspider/</guid>
       <description>WebKit の開発者たちは素晴らしいレンダリング・エンジンだけではなく、Drosera や Web Inspector などの Web 開発者向けツールも提供してきたが、今度は JavaScript ベンチマークをリリースしたようだ。
 このベンチマークはJavaScript 言語のコアに絞ったベンチマークを提供しており、これまでの、Web 開発者が使うツールというよりは言語処理系開発者向けのツールといえる。
 SunSpider 0.9 このベンチマークは Surfin’ Safari のブログ上で公開がアナウンスされている。

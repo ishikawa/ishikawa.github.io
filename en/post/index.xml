@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on METAREAL</title>
-    <link>https://metareal.blog/en/post/</link>
+    <link>https://ishikawa.github.io/en/post/</link>
     <description>Recent content in Posts on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 19 Jan 2021 09:30:21 +0000</lastBuildDate><atom:link href="https://metareal.blog/en/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Jan 2021 09:30:21 +0000</lastBuildDate><atom:link href="https://ishikawa.github.io/en/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Exports dependencies in Elixir 1.11</title>
-      <link>https://metareal.blog/en/post/2021/01/19/elixir-v11-exports-dependencies/</link>
+      <link>https://ishikawa.github.io/en/post/2021/01/19/elixir-v11-exports-dependencies/</link>
       <pubDate>Tue, 19 Jan 2021 09:30:21 +0000</pubDate>
       
-      <guid>https://metareal.blog/en/post/2021/01/19/elixir-v11-exports-dependencies/</guid>
+      <guid>https://ishikawa.github.io/en/post/2021/01/19/elixir-v11-exports-dependencies/</guid>
       <description>Last year, in October 2020, Elixir 1.11 was released 🎉 I looked at one of the compiler improvements, Exports dependencies, including its behavior.
 How the &amp;ldquo;Exports dependencies&amp;rdquo; improves compilation? Prior to Elixir 1.11, if module A depends on module B by import or require, module B was considered as Compile time dependencies of module A.
 Since Elixir 1.11, if module A uses only the public interface of module B (struct or public functions) is now Exports dependencies, and there is no need to recompile module A unless the public interface of module B changes.</description>
@@ -21,10 +21,10 @@ Since Elixir 1.11, if module A uses only the public interface of module B (struc
     
     <item>
       <title>Testing Expo apps with Jest in TypeScript</title>
-      <link>https://metareal.blog/en/post/2021/01/16/setup-jest-for-expo-typescript-project/</link>
+      <link>https://ishikawa.github.io/en/post/2021/01/16/setup-jest-for-expo-typescript-project/</link>
       <pubDate>Sat, 16 Jan 2021 08:57:09 +0000</pubDate>
       
-      <guid>https://metareal.blog/en/post/2021/01/16/setup-jest-for-expo-typescript-project/</guid>
+      <guid>https://ishikawa.github.io/en/post/2021/01/16/setup-jest-for-expo-typescript-project/</guid>
       <description>Recently I&amp;rsquo;ve been working on a new project with Expo and React Native 🙂
 I want to test my Expo project with Jest. Basically, you can follow Testing with Jest - Expo Documentation, but in the case of TypeScript, you have to change some settings in following points:
  Jest configuration for Expo project in TypeScript Writing Jest configuration file with TypeScript  First, let me show what the version. of Expo in my machine.</description>
@@ -32,30 +32,30 @@ I want to test my Expo project with Jest. Basically, you can follow Testing with
     
     <item>
       <title>Useful pytest fixtures to help you improve legacy code</title>
-      <link>https://metareal.blog/en/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/</link>
+      <link>https://ishikawa.github.io/en/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/</link>
       <pubDate>Sat, 25 Apr 2020 19:47:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/en/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/</guid>
+      <guid>https://ishikawa.github.io/en/post/2020/04/25/useful-pytest-fixtures-to-help-you-improve-legacy-code/</guid>
       <description>Recently, I had the opportunity to work on improving legacy code &amp;ndash; in short, code that has no testing at all1. The following improvements were made by me as rough steps.
  Adding Poetry as package manager. Adding tests with pytest. Running tests automatically on CI. Necessary code modifications and refactoring.  In particular, in step 2, the fixture feature of pytest was very useful, and I used it extensively, from generating dummy data to mocking external resource access.</description>
     </item>
     
     <item>
       <title>Elixir import/2 overrides a previously declared import/2</title>
-      <link>https://metareal.blog/en/post/2020/03/26/elixir-import-overrides-previous-import/</link>
+      <link>https://ishikawa.github.io/en/post/2020/03/26/elixir-import-overrides-previous-import/</link>
       <pubDate>Thu, 26 Mar 2020 00:00:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/en/post/2020/03/26/elixir-import-overrides-previous-import/</guid>
+      <guid>https://ishikawa.github.io/en/post/2020/03/26/elixir-import-overrides-previous-import/</guid>
       <description>Elixir has import/2 form that imports some symbols in the current scope from other modules. It overrides previously declared import/2. Let me show an example:
 iex(1)&amp;gt; import List List iex(2)&amp;gt; first([1]) 1 iex(3)&amp;gt; import List, only: [flatten: 1] List iex(4)&amp;gt; first([1]) ** (CompileError) iex:4: undefined function first/1  In the above example, you can see List.first/1 which was available at iex(3) is undefined after import List, only: [flatten: 1] at iex(4).</description>
     </item>
     
     <item>
       <title>Parameterized tests in Elixir</title>
-      <link>https://metareal.blog/en/post/2019/12/09/parameterized-tests-in-elixir/</link>
+      <link>https://ishikawa.github.io/en/post/2019/12/09/parameterized-tests-in-elixir/</link>
       <pubDate>Mon, 09 Dec 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/en/post/2019/12/09/parameterized-tests-in-elixir/</guid>
+      <guid>https://ishikawa.github.io/en/post/2019/12/09/parameterized-tests-in-elixir/</guid>
       <description>It&amp;rsquo;s a note about my idiomatic way to write parameterized tests in Elixir.
 These days, most developers know the DRY principle, they heard it over and over again in their professional life. So they carefully craft and refactor their production code to make it follows the principle.
 Furthermore, if you are one of 21-century software developers, you may realize the value of Unit testing and it should be your daily life friend.</description>
@@ -63,10 +63,10 @@ Furthermore, if you are one of 21-century software developers, you may realize t
     
     <item>
       <title>How to show progress bar while unzipping tons of files</title>
-      <link>https://metareal.blog/en/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</link>
+      <link>https://ishikawa.github.io/en/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</link>
       <pubDate>Sun, 14 Apr 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/en/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</guid>
+      <guid>https://ishikawa.github.io/en/post/2019/04/14/how-to-show-progress-bar-while-unzipping-tons-of-files/</guid>
       <description>The original article is here.
   In the machine learning field, there is plenty of public dataset for model training. Usually, such a dataset is provided as a zip archive file, so we can just download it, unarchive it with our good old friend unzip:
 $ unzip /home/data/large_dataset.zip  But if you are working in Jupyter notebook, simple unzip command might hurt your screen with too much output and you’ll soon notice the performance of frontend UI is decreasing as the output increasing.</description>
@@ -74,10 +74,10 @@ $ unzip /home/data/large_dataset.zip  But if you are working in Jupyter notebook
     
     <item>
       <title>Gzip compression in Phoenix framework</title>
-      <link>https://metareal.blog/en/post/2016/09/gzip-compression-in-cowboy/</link>
+      <link>https://ishikawa.github.io/en/post/2016/09/gzip-compression-in-cowboy/</link>
       <pubDate>Sun, 25 Sep 2016 14:47:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/en/post/2016/09/gzip-compression-in-cowboy/</guid>
+      <guid>https://ishikawa.github.io/en/post/2016/09/gzip-compression-in-cowboy/</guid>
       <description>To compress HTTP response body from a web application powered by Phoenix framework, you have to make Phoenix.Endpoint pass compress: true property to Cowboy. In your config.exs:
 config :example_app, ExampleApp.Endpoint, http: [port: 4040, compress: true], debug_errors: true, code_reloader: true, check_origin: false, watchers: []  When you send a HTTP request, include Accept-Encoding header. if you use the curl command, it has the option --compressed.
 Accept-Encoding: gzip, deflate  However it seems that Cowboy, which is the HTTP server used in Phoenix framework, doesn&amp;rsquo;t compress response body if its size is smaller than 300 bytes.</description>
@@ -85,10 +85,10 @@ Accept-Encoding: gzip, deflate  However it seems that Cowboy, which is the HTTP 
     
     <item>
       <title>Aliasing Traits</title>
-      <link>https://metareal.blog/en/post/2015/07/rust-trait-alias/</link>
+      <link>https://ishikawa.github.io/en/post/2015/07/rust-trait-alias/</link>
       <pubDate>Sun, 26 Jul 2015 10:10:37 +0900</pubDate>
       
-      <guid>https://metareal.blog/en/post/2015/07/rust-trait-alias/</guid>
+      <guid>https://ishikawa.github.io/en/post/2015/07/rust-trait-alias/</guid>
       <description>(2020-04-04) Trait alias was finally introduced in the RFC 1733.
 Rust&amp;rsquo;s traits and its bound syntax gets longer and longer as you add associated types or specify multiple trait bounds with the + syntax.
 struct A&amp;lt;T: Iterator&amp;lt;Item=char&amp;gt;&amp;gt; { ... }  On the other hand, ordinaly types can be aliased with type keyword, however it can not be used for traits.
@@ -97,10 +97,10 @@ type CharIterator = Iterator&amp;lt;Item=char&amp;gt;; // ERROR: note: `type` al
     
     <item>
       <title>Code Reading: Dump and Print Function in llvm::Module Class</title>
-      <link>https://metareal.blog/en/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</link>
+      <link>https://ishikawa.github.io/en/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</link>
       <pubDate>Mon, 14 Jan 2013 00:00:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/en/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</guid>
+      <guid>https://ishikawa.github.io/en/2013/01/14/code-reading-dump-and-print-function-in-llvm-module-class/</guid>
       <description>It&amp;rsquo;s time for code reading. Today, I read the functions dump() and print() which dump IR code and are implemented in llvm::Module which I had been curious about it for a while. Notice, the referenced code base is LLVM 3.1.
 /// Print the module to an output stream with an optional /// AssemblyAnnotationWriter. void print(raw_ostream &amp;amp;OS, AssemblyAnnotationWriter *AAW) const; /// Dump the module to stderr (for debugging). void dump() const;  Both functions are instance methods of llvm::Module, but the implementation code is in lib/VMCore/AsmWriter.</description>
     </item>

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>google on METAREAL</title>
-    <link>https://metareal.blog/tags/google/</link>
+    <link>https://ishikawa.github.io/tags/google/</link>
     <description>Recent content in google on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 23 Feb 2010 23:26:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/google/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Feb 2010 23:26:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/google/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Google Bookmark が快適すぎる</title>
-      <link>https://metareal.blog/2010/02/23/google-bookmark-makes-me-feel-so-good/</link>
+      <link>https://ishikawa.github.io/2010/02/23/google-bookmark-makes-me-feel-so-good/</link>
       <pubDate>Tue, 23 Feb 2010 23:26:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2010/02/23/google-bookmark-makes-me-feel-so-good/</guid>
+      <guid>https://ishikawa.github.io/2010/02/23/google-bookmark-makes-me-feel-so-good/</guid>
       <description>Google Bookmark を使いはじめた。シンプルながら快適な使い心地で気に入っている。
  とにかく、ブックマーク編集画面が開くまでが速い ブックマーク先のページも含めて全文検索が可能  ソーシャル要素は考えず、純粋に「ブックマーク」という行為を突き詰めていくと、上記二点が非常に重要であることが分かると思う。
 ちなみに、ブックマークレットにはGoogleブックマークに追加するブックマークレット（メモ欄対応版）で配布されているものを別窓で開くようにして使わせてもらっている。感謝。
@@ -22,20 +22,20 @@ javascript:var%20u=encodeURIComponent(location.href);var%20ti=encodeURIComponent
     
     <item>
       <title>Go</title>
-      <link>https://metareal.blog/2009/11/11/go-vim/</link>
+      <link>https://ishikawa.github.io/2009/11/11/go-vim/</link>
       <pubDate>Wed, 11 Nov 2009 10:29:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2009/11/11/go-vim/</guid>
+      <guid>https://ishikawa.github.io/2009/11/11/go-vim/</guid>
       <description>Io と並んで、自らの検索能力が試される名前の Go ですが、実用性と簡潔さを兼ねそなえた言語設計は好感がもてます。
 % cd $GOROOT % ls misc/vim/ go.vim % cp misc/vim/go.vim ~/.vim/syntax/ % cat &amp;amp;gt; ~/.vim/ftdetect/go.vim au BufRead,BufNewFile *.go set filetype=go  今日はここまで。</description>
     </item>
     
     <item>
       <title>Google Chrome に搭載されたオープンソースの JavaScript エンジン &#34;v8&#34; を試す</title>
-      <link>https://metareal.blog/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</link>
+      <link>https://ishikawa.github.io/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</link>
       <pubDate>Wed, 03 Sep 2008 09:28:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</guid>
+      <guid>https://ishikawa.github.io/2008/09/03/getting-started-with-v8-google-open-source-javascript-engine/</guid>
       <description>その発表から世間を騒がせた、Google の Web ブラウザ Chrome が遂に公開された。
 Mac ユーザなうえに、日々の Web ブラウジングは Safari と iPhone で満足していることもあり、Chrome 自体への興味は薄い。しかし、オープンソースの JavaScript エンジンも独自開発している、となると話は別だ。しかも、Strongtalk や HotSpot Java VM の開発者が関わっている、というのだから俄然興味が湧いてくる（参考記事）。
 Google が開発、公開している JavaScript 処理系は、その名も v8。
@@ -51,10 +51,10 @@ v8 では hidden class という実装テクニックを用いることにより
     
     <item>
       <title>Google の検索履歴を記録する JavaScript を読んでみた</title>
-      <link>https://metareal.blog/2007/03/31/reading-google-search-history-javascript/</link>
+      <link>https://ishikawa.github.io/2007/03/31/reading-google-search-history-javascript/</link>
       <pubDate>Sun, 01 Apr 2007 04:59:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/03/31/reading-google-search-history-javascript/</guid>
+      <guid>https://ishikawa.github.io/2007/03/31/reading-google-search-history-javascript/</guid>
       <description>Google 検索履歴では、検索クエリーの履歴だけではなく、検索結果で実際にどのページをクリックしたか、も記録している。
 検索結果ページのソースコードを読んでみると、履歴の保存は JavaScript で行われているようだ。
 改行やインデントを加えて読みやすくしたソースコードを基に、履歴を保存する処理や興味深い部分を紹介する。
@@ -68,10 +68,10 @@ window.asq = function(d,a,f,g,k,l,m) { if (window.XMLHttpRequest) { var c = wind
     
     <item>
       <title>Google のリダイレクタ</title>
-      <link>https://metareal.blog/2007/02/07/google-redirector/</link>
+      <link>https://ishikawa.github.io/2007/02/07/google-redirector/</link>
       <pubDate>Thu, 08 Feb 2007 01:15:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/02/07/google-redirector/</guid>
+      <guid>https://ishikawa.github.io/2007/02/07/google-redirector/</guid>
       <description>社内の開発合宿行ったり、そこで風邪もらったりしているうちに、すっかりブログの更新から遠のいてしまった。ぼちぼち復活。
 2ちゃんねるではリファラ隠しのために、いわゆる ttp リンクや http://ime.nu/ などのリダイレクタが利用されている。リダイレクタという名前は勝手に使ってるだけで、正式なものか分からないけど、URL の末尾やパラメータに別の URL を指定すると、その URL にリダイレクトしてくれるページのこと。
 もっとも、http://ime.nu/ のように、あいだに警告ページを挟んでリンクを表示する（実際にはリダイレクトしない）ページもリダイレクタと呼んでいる。

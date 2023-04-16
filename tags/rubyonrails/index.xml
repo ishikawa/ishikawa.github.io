@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>rubyonrails on METAREAL</title>
-    <link>https://metareal.blog/tags/rubyonrails/</link>
+    <link>https://ishikawa.github.io/tags/rubyonrails/</link>
     <description>Recent content in rubyonrails on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Fri, 18 Apr 2008 07:41:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/rubyonrails/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 18 Apr 2008 07:41:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/rubyonrails/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ruby-openid でログの出力先を変更する</title>
-      <link>https://metareal.blog/2008/04/18/ruby-openid-util-logger/</link>
+      <link>https://ishikawa.github.io/2008/04/18/ruby-openid-util-logger/</link>
       <pubDate>Fri, 18 Apr 2008 07:41:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/04/18/ruby-openid-util-logger/</guid>
+      <guid>https://ishikawa.github.io/2008/04/18/ruby-openid-util-logger/</guid>
       <description>ruby-openid は Ruby の OpenID ライブラリだが、そのままだとログの出力先が標準エラー出力に向けられている。これでは何かと困ることもあるだろう（たとえば、ユニットテストの結果に ruby-openid のデバッグ出力が混じって鬱陶しい、とか）。
 幸い OpenID::Util モジュールに、内部で使われているロガーを変更するためのメソッドが用意されている。以下のようにすれば、Rails 標準のロガーに置き換えることが可能だ。
 # ruby-openid の Logger を Rails 標準のもので置き換える OpenID::Util.logger = RAILS_DEFAULT_LOGGER  RAILS_DEFAULT_LOGGER 定数など、Rails のロガー周りについては Wiki のまとめが参考になる。</description>
@@ -21,10 +21,10 @@
     
     <item>
       <title>find | xargs rcov</title>
-      <link>https://metareal.blog/2008/02/17/find-xargs-rcov/</link>
+      <link>https://ishikawa.github.io/2008/02/17/find-xargs-rcov/</link>
       <pubDate>Sun, 17 Feb 2008 09:55:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/02/17/find-xargs-rcov/</guid>
+      <guid>https://ishikawa.github.io/2008/02/17/find-xargs-rcov/</guid>
       <description>Rails アプリのコードカヴァレッジに rcov を使ってみた。面倒な設定も必要なく、そこそこの速度でカヴァレッジを測定できるので便利だ。異常系のテスト洩れ確認に重宝している。
 Rails アプリなので、test ディレクトリ以下のテストコードを実行したいわけだが、
 rcov test/*/*_test.rb  このように、シェルのワイルドカード指定では再帰的に深いディレクトリを扱うことができない（zsh なら ** でいいね）。こういう場合は find, xargs を組み合わせればいい。
@@ -33,10 +33,10 @@ find test -name &#39;*_test.rb&#39; -print | xargs rcov --aggregate log/coverage
     
     <item>
       <title>Mime::Type の register メソッドで定義される定数</title>
-      <link>https://metareal.blog/2008/02/15/rails-mime-type-register/</link>
+      <link>https://ishikawa.github.io/2008/02/15/rails-mime-type-register/</link>
       <pubDate>Fri, 15 Feb 2008 08:10:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/02/15/rails-mime-type-register/</guid>
+      <guid>https://ishikawa.github.io/2008/02/15/rails-mime-type-register/</guid>
       <description>Mime::Type.register は、登録された Mime::Type ではなく拡張子の配列を返す、という謎の挙動になっている。
 Mime::Type.register &amp;quot;image/jpeg&amp;quot;, :jpeg, [], [&amp;quot;jpg&amp;quot;, &amp;quot;pjpeg&amp;quot;] # =&amp;gt; [&amp;quot;jpeg&amp;quot;, &amp;quot;jpg&amp;quot;, &amp;quot;pjpeg&amp;quot;]  そのため、登録された Mime::Type を参照するには、改めて Mime::Type.lookup する。
 Mime::Type.lookup(&amp;quot;image/jpeg&amp;quot;) # =&amp;gt; #&amp;lt;Mime::Type:0x30601dc @string=&amp;quot;image/jpeg&amp;quot;, @synonyms=[], @symbol=:jpeg&amp;gt;  しかし、この方法は &amp;quot;image/jpeg&amp;quot; を二ヶ所にハードコードしてしまう。
@@ -46,20 +46,20 @@ Mime::JPEG # =&amp;gt; #&amp;lt;Mime::Type:0x30601dc @string=&amp;quot;image/jpe
     
     <item>
       <title>ActiveRecord::Base.with_failsave (2)</title>
-      <link>https://metareal.blog/2008/02/13/activerecord-base-with-failsave-take2/</link>
+      <link>https://ishikawa.github.io/2008/02/13/activerecord-base-with-failsave-take2/</link>
       <pubDate>Thu, 14 Feb 2008 08:12:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/02/13/activerecord-base-with-failsave-take2/</guid>
+      <guid>https://ishikawa.github.io/2008/02/13/activerecord-base-with-failsave-take2/</guid>
       <description>実際に ActiveRecord::Base.with_failsave でテストを書いているうちに、いくつか使い勝手の悪い部分が見つかった。というわけで、すこし改良。
 class ActiveRecord::Base def create_or_update_with_fail; false end alias_method :create_or_update_without_fail, :create_or_update # ブロックが与えられた場合はブロックを実行し、そのあいだは save! や save が必ず失敗する # # ActiveRecord::Base.with_failsave do # ... # end # # また、サブクラスのみに適用することもできる。 # # SomethingModel.with_failsave do # ... # end def self.with_failsave # ActiveRecord::Base のサブクラスで呼び出された場合は alias_method によって、 # サブクラス側にも create_or_update が定義されてしまうためか、再度の alias_method による # 定義の差し替えだけでは元の挙動に戻らない。そのため、ensure 節で remove_method している。 subclass = !private_instance_methods(false).include?(&amp;quot;create_or_update&amp;quot;) alias_method :create_or_update, :create_or_update_with_fail yield ensure alias_method :create_or_update, :create_or_update_without_fail remove_method :create_or_update if subclass end end  変更点はふたつ。</description>
     </item>
     
     <item>
       <title>ActiveRecord::Base.with_failsave</title>
-      <link>https://metareal.blog/2008/02/12/activerecord-base-with_failsave/</link>
+      <link>https://ishikawa.github.io/2008/02/12/activerecord-base-with_failsave/</link>
       <pubDate>Wed, 13 Feb 2008 04:28:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/02/12/activerecord-base-with_failsave/</guid>
+      <guid>https://ishikawa.github.io/2008/02/12/activerecord-base-with_failsave/</guid>
       <description>failmalloc の精神で、必ず失敗する ActiveRecord::Base#save を書いてみた。
 class ActiveRecord::Base def create_or_update_with_fail; false end alias_method :create_or_update_without_fail, :create_or_update # ブロックが与えられた場合はブロックを実行し、そのあいだは save! や save が必ず失敗する # # ActiveRecord::Base.with_failsave do # ... # end # def self.with_failsave alias_method :create_or_update, :create_or_update_with_fail yield alias_method :create_or_update, :create_or_update_without_fail end end  テストコードで以下のように使うのが目的
 assert_nothing_raised{ model.save! } ActiveRecord::Base.with_failsave do assert_raise(ActiveRecord::RecordNotSaved){ model.save! } end  これで例外処理コードのカバレッジも稼げるよ！</description>
@@ -67,10 +67,10 @@ assert_nothing_raised{ model.save! } ActiveRecord::Base.with_failsave do assert_
     
     <item>
       <title>Rails の Migration で MySQL の型を指定する</title>
-      <link>https://metareal.blog/2008/02/06/using-mysql-data-types-in-rails-migration/</link>
+      <link>https://ishikawa.github.io/2008/02/06/using-mysql-data-types-in-rails-migration/</link>
       <pubDate>Thu, 07 Feb 2008 08:37:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/02/06/using-mysql-data-types-in-rails-migration/</guid>
+      <guid>https://ishikawa.github.io/2008/02/06/using-mysql-data-types-in-rails-migration/</guid>
       <description>たとえば、こんな感じの Migration を考えてみる。
 class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pepsies do |t| t.column :coke, :string, :limit =&amp;gt; 64 t.column :jolt, :integer t.column :created_at, :datetime t.column :updated_at, :datetime end end def self.down drop_table :addresses end end  Rails 2.0 の sexy migration ではこんなふうにも書けるんだけど、個人的に馴染まないので今回はスルー。
 class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pepsies do |t| t.string :coke, :limit =&amp;gt; 64 t.integer :jolt t.timestamps end end def self.down drop_table :addresses end end  rake db:migrate したときの CREATE TABLE はこうなる。</description>
@@ -78,19 +78,19 @@ class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pep
     
     <item>
       <title>Rails 2.0 で追加された Migration 関連の Rake タスク</title>
-      <link>https://metareal.blog/2008/01/31/rails-2-0-migration-related-rake-tasks/</link>
+      <link>https://ishikawa.github.io/2008/01/31/rails-2-0-migration-related-rake-tasks/</link>
       <pubDate>Fri, 01 Feb 2008 03:08:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/01/31/rails-2-0-migration-related-rake-tasks/</guid>
+      <guid>https://ishikawa.github.io/2008/01/31/rails-2-0-migration-related-rake-tasks/</guid>
       <description>db:migrate:reset   DROP DATABASE して db:migrate 毎回、VERSION=0 とか指定していたので、こういうのが欲しかった 問答無用で DEFAULT CHARACTER SET &#39;utf8&#39; な気もするが&amp;hellip;   db:migrate:redo [STEP=n]   STEP で指定した数だけ遡って db:migrate をやりなおす STEP のデフォルトは 1   </description>
     </item>
     
     <item>
       <title>Rails で MySQL を使うときの注意点</title>
-      <link>https://metareal.blog/2007/07/24/notes-on-rubyonrails-with-mysql/</link>
+      <link>https://ishikawa.github.io/2007/07/24/notes-on-rubyonrails-with-mysql/</link>
       <pubDate>Tue, 24 Jul 2007 09:29:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/07/24/notes-on-rubyonrails-with-mysql/</guid>
+      <guid>https://ishikawa.github.io/2007/07/24/notes-on-rubyonrails-with-mysql/</guid>
       <description>Rails のブログでも取り上げられていた、&amp;quot;Rubyisms - MySQL-dump&amp;quot; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。
 Rubyisms - MySQL-dump http://mysqldump.azundris.com/archives/72-Rubyisms.html
 &amp;ldquo;select *&amp;rdquo; が多すぎる ActiveRecord は、特に何も指定しないと select * で、すべてのカラムを取ってくる。SQL は動的に生成されて、どのカラムが存在するかチェックしているので、スキームが変更されても大丈夫。
@@ -102,10 +102,10 @@ Rubyisms - MySQL-dump http://mysqldump.azundris.com/archives/72-Rubyisms.html
     
     <item>
       <title>script.aculo.us の InPlaceEditor で submitOnBlur だと Safari が落ちる</title>
-      <link>https://metareal.blog/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</link>
+      <link>https://ishikawa.github.io/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</link>
       <pubDate>Fri, 06 Jul 2007 10:57:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</guid>
+      <guid>https://ishikawa.github.io/2007/07/06/inplace-editor-with-submit-on-blur-enabled-crashes-safari/</guid>
       <description>script.aculo.us の InPlaceEditor を試している。
 設定でカスタマイズできる部分がけっこうある割に、必要なものがなかったりして（特にコールバック系）微妙に使いづらいんだが、Safari だと不意にクラッシュする、という問題もあったり。
 色々調べてみると、どうやら submitOnBlur を設定して、フォーカスリング（テキストフィールドのフォーカス時に、フィールドの周囲に出る青い線）をクリックするとお亡くなりになるらしい。
@@ -114,10 +114,10 @@ Rubyisms - MySQL-dump http://mysqldump.azundris.com/archives/72-Rubyisms.html
     
     <item>
       <title>Rails の便利メソッド h, html_escape は ERB:Util にあった</title>
-      <link>https://metareal.blog/2007/06/30/htmlescape-in-erb-util/</link>
+      <link>https://ishikawa.github.io/2007/06/30/htmlescape-in-erb-util/</link>
       <pubDate>Sun, 01 Jul 2007 07:03:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/06/30/htmlescape-in-erb-util/</guid>
+      <guid>https://ishikawa.github.io/2007/06/30/htmlescape-in-erb-util/</guid>
       <description>Ruby on Rails のテンプレートでしょっちゅうお世話になる h メソッド。
 &amp;lt; や &amp;amp; といった、HTML にはそのまま書けない文字を実体参照に置き換えてくれるメソッドだが、これをコントローラーから使いたいときがある。たとえば、Ajax のレスポンスで ad-hoc に HTML 片を返してしまいたいときとか、けっこうあるんじゃないか。
 しかし、そのままではコントローラーから使うことはできない。
@@ -130,10 +130,10 @@ module ActionView module Helpers #:nodoc: # Use these methods to generate HTML t
     
     <item>
       <title>Mac OS X Tiger に Ruby on Rails をインストール</title>
-      <link>https://metareal.blog/2006/12/27/rubyonrails-on-macosx-tiger/</link>
+      <link>https://ishikawa.github.io/2006/12/27/rubyonrails-on-macosx-tiger/</link>
       <pubDate>Thu, 28 Dec 2006 12:26:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2006/12/27/rubyonrails-on-macosx-tiger/</guid>
+      <guid>https://ishikawa.github.io/2006/12/27/rubyonrails-on-macosx-tiger/</guid>
       <description>さて、次は Ruby on Rails のインストールだ。
 RubyGems がインストール済みなら、これはもう簡単。
 % sudo gem install rails --include-dependencies Bulk updating Gem source index for: http://gems.rubyforge.org Successfully installed rails-1.1.6 Successfully installed rake-0.7.1 ...  こんだけ。</description>
@@ -141,10 +141,10 @@ RubyGems がインストール済みなら、これはもう簡単。
     
     <item>
       <title>Mac OS X Tiger に RubyGems をインストール</title>
-      <link>https://metareal.blog/2006/12/27/rubygems-on-macosx-tiger/</link>
+      <link>https://ishikawa.github.io/2006/12/27/rubygems-on-macosx-tiger/</link>
       <pubDate>Thu, 28 Dec 2006 12:02:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2006/12/27/rubygems-on-macosx-tiger/</guid>
+      <guid>https://ishikawa.github.io/2006/12/27/rubygems-on-macosx-tiger/</guid>
       <description>Mac OS X Tiger 上に Ruby on Rails の開発環境を構築している。
 Ruby on Rails は Ruby のパッケージ管理システムである RubyGems でインストールできるので、まずは RubyGems をインストールしてみよう。
 RubyGems のマニュアルから &amp;ldquo;3. Installing RubyGems&amp;rdquo; の手順通りに進めていく。
@@ -155,10 +155,10 @@ RubyForge から最新版をダウンロード。現時点での最新版は 0.9
     
     <item>
       <title>Mac OS X  Tiger に Ruby on Rails の環境を構築する</title>
-      <link>https://metareal.blog/2006/12/27/rubyonrails-on-macosx-tiger-links/</link>
+      <link>https://ishikawa.github.io/2006/12/27/rubyonrails-on-macosx-tiger-links/</link>
       <pubDate>Thu, 28 Dec 2006 01:32:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2006/12/27/rubyonrails-on-macosx-tiger-links/</guid>
+      <guid>https://ishikawa.github.io/2006/12/27/rubyonrails-on-macosx-tiger-links/</guid>
       <description>Mac OS X Tiger (Intel) に Ruby on Rails によるアプリケーション開発環境を構築するための手順まとめ。
  Mac OS X Tiger に Ruby をインストール Mac OS X Tiger に RubyGems をインストール Mac OS X Tiger に Ruby on Rails をインストール Mac OS X Tiger に MySQL 5.0.27 をインストール MySQL をインストールしたあとの作業 Mac OS X に MySQL/Ruby をインストール + 高速化パッチ MySQL/Ruby の test.rb が失敗する理由と対策  </description>
     </item>

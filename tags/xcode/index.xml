@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>xcode on METAREAL</title>
-    <link>https://metareal.blog/tags/xcode/</link>
+    <link>https://ishikawa.github.io/tags/xcode/</link>
     <description>Recent content in xcode on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Tue, 21 Aug 2007 05:24:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/xcode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Aug 2007 05:24:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/xcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Xcode でプロジェクトの名前を変更したくなったら</title>
-      <link>https://metareal.blog/2007/08/21/rename-xcode-project/</link>
+      <link>https://ishikawa.github.io/2007/08/21/rename-xcode-project/</link>
       <pubDate>Tue, 21 Aug 2007 05:24:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/08/21/rename-xcode-project/</guid>
+      <guid>https://ishikawa.github.io/2007/08/21/rename-xcode-project/</guid>
       <description>Xcode でプロジェクトの名前を変えたくなった。
 だが、簡単にはいかない。変更箇所が散在している。面倒くさい。以下に手順をまとめてみる。
 プロジェクト・ファイル名の変更  Finder で Xcode のプロジェクト・ディレクトリの名前を変更する .xcodeproj ファイルの名前を変更する  ターゲットの変更  Xcode でターゲット名を変更する ターゲットエディタの「ビルド」パネルを表示し、「PRODUCT」で検索して表示される「プロダクト名」を変更 「PREFIX」で検索して表示されるプレフィックスヘッダのパスにアプリケーション名が含まれているなら変更。 プレフィックスヘッダの名前も、この機会に prefix.pch とかアプリケーション名に依存しない名前にしてしまうのもアリ  ソースコードの変更  クラス名の先頭にアプリケーション名の頭文字とか使ってたら悲惨 Finder でソースファイル名を変更すると、Xocde 上でのリンクがなくなってしまう .nib ファイルから参照されている場合はそちらも変更する必要が これもアプリケーション名に依存しないようにしておけばいいんだけど、それはそれで。  プロパティ設定の変更  ターゲットエディタの「プロパティ」パネルを表示 識別子にアプリケーション名が含まれているなら変更する 主要クラスとかも変える必要があれば変更する  これくらいかな。他にあるかもしれんけど。あとはプロジェクトをクリーンして再ビルド。
@@ -22,10 +22,10 @@
     
     <item>
       <title>Xcode で Subversion を利用するときのトラブルシューティング</title>
-      <link>https://metareal.blog/2007/06/19/xcode-subversion-troubleshooting/</link>
+      <link>https://ishikawa.github.io/2007/06/19/xcode-subversion-troubleshooting/</link>
       <pubDate>Tue, 19 Jun 2007 09:44:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/06/19/xcode-subversion-troubleshooting/</guid>
+      <guid>https://ishikawa.github.io/2007/06/19/xcode-subversion-troubleshooting/</guid>
       <description>Xcode の SCM 連携機能は、すくなくとも Eclipse なんかに比べると貧弱で、実作業ではコマンドラインで svn を使っている。
 それでも一度は試しておきたい、と試してみたときの、あまり一般的ではないトラブルシューティングを覚え書き。
 svn+ssh で 22 番以外のポートを使いたいとき これは別に Xcode に限った話じゃないけど、svn+ssh プロトコルで 22 番以外のポートを使う場合は、環境変数 SVN_SSH で ssh プログラムの引数に指定します。
@@ -36,10 +36,10 @@ open ./Example.xcodeproj  それでも、パスフレーズ入力できないと
     
     <item>
       <title>Xcode プロジェクトを Subversion 管理する</title>
-      <link>https://metareal.blog/2007/06/17/subversion-primer-for-xcode-projects/</link>
+      <link>https://ishikawa.github.io/2007/06/17/subversion-primer-for-xcode-projects/</link>
       <pubDate>Mon, 18 Jun 2007 03:35:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/06/17/subversion-primer-for-xcode-projects/</guid>
+      <guid>https://ishikawa.github.io/2007/06/17/subversion-primer-for-xcode-projects/</guid>
       <description>Apple の提供する開発環境 Xcode で作成したプロジェクトを Subversion 管理する手順。基本的に「Rails のプロジェクトを Subversion で管理する」の Xcode 版。
 リポジトリの場所を決める まずは、リポジトリのルート URL を決めて、これを環境変数に設定しよう。以降はこの変数を使うことで、長々とした URL をタイプする手間が省ける。
 % SVN_REPO=svn+ssh://svn.example.com/projects/Example  もちろん、実際の URL は自分で使うものに置き換えてほしい。

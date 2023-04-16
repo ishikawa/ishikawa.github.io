@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ruby on METAREAL</title>
-    <link>https://metareal.blog/tags/ruby/</link>
+    <link>https://ishikawa.github.io/tags/ruby/</link>
     <description>Recent content in ruby on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Thu, 22 Sep 2016 19:26:18 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Sep 2016 19:26:18 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FileUtils in Rakefile</title>
-      <link>https://metareal.blog/post/2016/09/fileutils-in-rakefile/</link>
+      <link>https://ishikawa.github.io/post/2016/09/fileutils-in-rakefile/</link>
       <pubDate>Thu, 22 Sep 2016 19:26:18 +0900</pubDate>
       
-      <guid>https://metareal.blog/post/2016/09/fileutils-in-rakefile/</guid>
+      <guid>https://ishikawa.github.io/post/2016/09/fileutils-in-rakefile/</guid>
       <description>いつまでたっても Rakefile の書き方を覚える気になれないのだが、Rakefile では FileUtils が インクルードされており cp や mkdir_p といったメソッドが使える。
 mkdir_p &amp;quot;dir1/dir2&amp;quot;  また、いくつかの拡張がされており、コマンドの実行が失敗したときに例外が投げられたり、sh メソッドという Kernel.system にように外部コマンドを呼び出すメソッドが追加されている。
  Rakeのshで外部コマンドを実行する - Qiita rake/file_utils.rb at master · ruby/rake  </description>
@@ -21,10 +21,10 @@ mkdir_p &amp;quot;dir1/dir2&amp;quot;  また、いくつかの拡張がされ�
     
     <item>
       <title>Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった</title>
-      <link>https://metareal.blog/2010/12/16/ffi-requires-ruby-version-1-9-2/</link>
+      <link>https://ishikawa.github.io/2010/12/16/ffi-requires-ruby-version-1-9-2/</link>
       <pubDate>Thu, 16 Dec 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://metareal.blog/2010/12/16/ffi-requires-ruby-version-1-9-2/</guid>
+      <guid>https://ishikawa.github.io/2010/12/16/ffi-requires-ruby-version-1-9-2/</guid>
       <description>Ruby-FFI 1.0.0 からは Ruby 1.9.2 以降が必要になった。
 % sudo gem1.8 install ffi Password: ERROR: Error installing ffi: ffi requires Ruby version &amp;gt;= 1.9.2  そのため、Ruby 1.8 向けの gem をインストールするときはバージョン 0.6.3 を指定する。
 % sudo gem1.8 install ffi --version &amp;quot;= 0.6.3&amp;quot; Password: Building native extensions. This could take a while... Successfully installed ffi-0.6.3 1 gem installed Installing ri documentation for ffi-0.6.3... Installing RDoc documentation for ffi-0.6.3...  </description>
@@ -32,10 +32,10 @@ mkdir_p &amp;quot;dir1/dir2&amp;quot;  また、いくつかの拡張がされ�
     
     <item>
       <title>Ruby FFI のメモリ管理についてメモ</title>
-      <link>https://metareal.blog/2010/12/11/1292077318/</link>
+      <link>https://ishikawa.github.io/2010/12/11/1292077318/</link>
       <pubDate>Sat, 11 Dec 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://metareal.blog/2010/12/11/1292077318/</guid>
+      <guid>https://ishikawa.github.io/2010/12/11/1292077318/</guid>
       <description>Ruby FFI のメモリ管理についてメモ。FFI::MemoryPointer で確保したメモリを自分で破棄する場合は、autorelease を false にする。
 error = FFI::MemoryPointer.new(:pointer) ... C.LLVMDisposeMessage(error) error.autorelease=false  そうしないと、FFI::MemoryPointer は GC 時に確保したメモリを破棄しようとする (MemoryPointer.c#L138) ので、たとえば Mac OS X では以下のようなエラーが出る。
 ruby(891,0x7fff70874ca0) malloc: *** error for object 0x102e8fb10: pointer being freed was not allocated *** set a breakpoint in malloc_error_break to debug  エラー処理とかでは割と忘れがちかもしれない。</description>
@@ -43,10 +43,10 @@ ruby(891,0x7fff70874ca0) malloc: *** error for object 0x102e8fb10: pointer being
     
     <item>
       <title>ruby-openid でログの出力先を変更する</title>
-      <link>https://metareal.blog/2008/04/18/ruby-openid-util-logger/</link>
+      <link>https://ishikawa.github.io/2008/04/18/ruby-openid-util-logger/</link>
       <pubDate>Fri, 18 Apr 2008 07:41:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/04/18/ruby-openid-util-logger/</guid>
+      <guid>https://ishikawa.github.io/2008/04/18/ruby-openid-util-logger/</guid>
       <description>ruby-openid は Ruby の OpenID ライブラリだが、そのままだとログの出力先が標準エラー出力に向けられている。これでは何かと困ることもあるだろう（たとえば、ユニットテストの結果に ruby-openid のデバッグ出力が混じって鬱陶しい、とか）。
 幸い OpenID::Util モジュールに、内部で使われているロガーを変更するためのメソッドが用意されている。以下のようにすれば、Rails 標準のロガーに置き換えることが可能だ。
 # ruby-openid の Logger を Rails 標準のもので置き換える OpenID::Util.logger = RAILS_DEFAULT_LOGGER  RAILS_DEFAULT_LOGGER 定数など、Rails のロガー周りについては Wiki のまとめが参考になる。</description>
@@ -54,20 +54,20 @@ ruby(891,0x7fff70874ca0) malloc: *** error for object 0x102e8fb10: pointer being
     
     <item>
       <title>Array#product For Ruby 1.8</title>
-      <link>https://metareal.blog/2008/02/16/array-product-for-ruby-1-8/</link>
+      <link>https://ishikawa.github.io/2008/02/16/array-product-for-ruby-1-8/</link>
       <pubDate>Sun, 17 Feb 2008 07:07:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/02/16/array-product-for-ruby-1-8/</guid>
+      <guid>https://ishikawa.github.io/2008/02/16/array-product-for-ruby-1-8/</guid>
       <description>Ruby 1.9 には配列同士の組み合わせを列挙する Array#product があるらしいのだが、Ruby 1.8 でも使いたくなったので実装してみた。
 class Array # Array#product # ------------- # Returns the cartesian product of the receiver and the arrays given as arguments. # # Usage: # [1, 2, 3].product([4, 5]) # =&amp;gt; [[1, 4], [1, 5], [2, 4], [2, 5], [3, 4], [3, 5]] # [1, 2].product([1, 2]) # =&amp;gt; [[1, 1], [1, 2], [2, 1], [2, 2]] # [1, 2].product([3, 4],[5, 6]) # =&amp;gt; [[1, 3, 5], [1, 3, 6], [1, 4, 5], [1, 4, 6], # # [2, 3, 5], [2, 3, 6], [2, 4, 5], [2, 4, 6]] # [1, 2].</description>
     </item>
     
     <item>
       <title>rparsec での繰り返しと選択</title>
-      <link>https://metareal.blog/2007/12/16/rparsec-quantifier-and-alternation/</link>
+      <link>https://ishikawa.github.io/2007/12/16/rparsec-quantifier-and-alternation/</link>
       <pubDate>Sun, 16 Dec 2007 11:10:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/12/16/rparsec-quantifier-and-alternation/</guid>
+      <guid>https://ishikawa.github.io/2007/12/16/rparsec-quantifier-and-alternation/</guid>
       <description>rparsec では文法要素の繰り返しを指定する方法が複数用意されている。
 繰り返し まずは「RParsec の many と many_ の違い」でも解説した many と many_ があり、これで m 回以上の繰り返しを指定できる（正規表現でいう *, +, {n,}）。
 repeat, repeat_ は m 回以上、最大 n 回の繰り返しを指定できる（正規表現でいえば {m,n}）。また、some, some_ では最大 n 回の繰り返しを指定できる（正規表現でいえば {0,n}。実際のところ、some は min 引数に 0 を指定して、repeat を呼び出しているにすぎない）。
@@ -81,10 +81,10 @@ parser = ((number | word) &amp;lt;&amp;lt; whitespace.many_).many parser.parse(&
     
     <item>
       <title>rparsec の四則演算デモを浮動小数点に対応させる</title>
-      <link>https://metareal.blog/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</link>
+      <link>https://ishikawa.github.io/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</link>
       <pubDate>Fri, 14 Dec 2007 10:05:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</guid>
+      <guid>https://ishikawa.github.io/2007/12/14/floating-point-arithmetic-of-rparsec-calculator-demo/</guid>
       <description>rparsec の四則演算デモを試しているうちに、整数による演算しかできないことに気づくことと思う。
 四則演算デモが calculator.rb にあるとして、
 require &#39;calculator.rb&#39; parser = Calculator.new.parser parser.parse &#39;1+2*(3-1)&#39; =&amp;gt; 5 parser.parse &#39;4 * 2.5&#39; =&amp;gt; 8  小数を計算させてみると、エラーにはならないものの、計算結果がおかしなことになっている。
@@ -97,10 +97,10 @@ parser.parse &#39;4 * 2.5&#39; =&amp;gt; 10.0  </description>
     
     <item>
       <title>RParsec の many と many_ の違い</title>
-      <link>https://metareal.blog/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</link>
+      <link>https://ishikawa.github.io/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</link>
       <pubDate>Thu, 13 Dec 2007 09:09:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</guid>
+      <guid>https://ishikawa.github.io/2007/12/13/what-is-the-difference-between-many-and-many_-of-rparsec/</guid>
       <description>前回の四則演算デモで真っ先に目を引いたのは many_ という奇妙な名前のメソッドだった。
 delim = whitespace.many_  他にもっと注目すべきところがあるだろうと言われそうだが、非公開の関数か一時変数のようなメソッドが公開 API の一部というのに驚いた。
 また、many_ は Parser クラスのメソッドだが、このクラスには他にも many というメソッドが用意されている。
@@ -114,10 +114,10 @@ irb(main):007:0&amp;gt; whitespace.many.parse(&amp;quot;&amp;quot;) =&amp;gt; []
     
     <item>
       <title>Ruby によるパーサ・コンビネータ rparsec</title>
-      <link>https://metareal.blog/2007/12/11/studying-rparsec-introduction/</link>
+      <link>https://ishikawa.github.io/2007/12/11/studying-rparsec-introduction/</link>
       <pubDate>Tue, 11 Dec 2007 10:52:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/12/11/studying-rparsec-introduction/</guid>
+      <guid>https://ishikawa.github.io/2007/12/11/studying-rparsec-introduction/</guid>
       <description>Java による parsec の実装 JParsec を Ruby に移植した rparsec を勉強中。
  rparsec overview rparsec RDoc  パーサ・コンビネータ Parsec、パーサ・コンビネータについては「最強のパーザー、Parser Combinator - 純粋関数型雑記帳」が参考になる。
 Yacc や Bison などのコンパイラ・コンパイラと比較したときのパーサ・コンビネータの強味としては、
@@ -129,10 +129,10 @@ rparsec のインストール 普通に RubyForge で gem がホスティング�
     
     <item>
       <title>Ruby で16進数表記の整数を UTF-8 文字列として出力する</title>
-      <link>https://metareal.blog/2007/12/10/packing-integer-into-utf8-sequence-bytes/</link>
+      <link>https://ishikawa.github.io/2007/12/10/packing-integer-into-utf8-sequence-bytes/</link>
       <pubDate>Mon, 10 Dec 2007 10:16:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/12/10/packing-integer-into-utf8-sequence-bytes/</guid>
+      <guid>https://ishikawa.github.io/2007/12/10/packing-integer-into-utf8-sequence-bytes/</guid>
       <description>前回の記事「PostgreSQL 7.4.13 以降、異なるエンコーディングでの変換エラー」でも書いたように、PostgreSQL で以下のようなエラーが出るようになった。
 ERROR: 22P05: character 0xe28094 of encoding &amp;quot;UNICODE&amp;quot; has no equivalent in &amp;quot;EUC_JP&amp;quot;  では、character 0xe28094 とは、どの文字なのか。
 PostgreSQL では UNICODE という名前のエンコーディングは UTF-8 のことなので、Ruby の Array#pack を使えば、0xe28094 という16進数表記の整数を UTF-8 文字列に変換できる。
@@ -141,10 +141,10 @@ ruby -e &#39;puts [ARGV[0]].pack(&amp;quot;H*&amp;quot;)&#39; &amp;quot;e28094&a
     
     <item>
       <title>Ruby の CSS パーサはどこですか？</title>
-      <link>https://metareal.blog/2007/11/23/looking-for-ruby-css-parser/</link>
+      <link>https://ishikawa.github.io/2007/11/23/looking-for-ruby-css-parser/</link>
       <pubDate>Sat, 24 Nov 2007 02:58:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/11/23/looking-for-ruby-css-parser/</guid>
+      <guid>https://ishikawa.github.io/2007/11/23/looking-for-ruby-css-parser/</guid>
       <description>「Ruby で書かれた CSS パーサを探しています」メモ。
 Ruby CSS Parser 最近 RubyForge に登録されたばかりのプロジェクト
  gem install css_parser で試してみる いきなり、ドキュメントと実際の挙動が違う。 CssParser::Parser#load_file! というメソッドはなくて CssParser::Parser#load_uri! とりあえずローカルファイルを読み込む方法がないようだ W3C のスタイルシートで試してみたがエラー まだ実用ではない、ということだろう  csspool W3C で公開されている CSS パーサのための共通 API SAC（和訳）の Ruby による実装。
@@ -153,10 +153,10 @@ Ruby CSS Parser 最近 RubyForge に登録されたばかりのプロジェク�
     
     <item>
       <title>Ruby で平仮名にマッチする正規表現</title>
-      <link>https://metareal.blog/2007/11/18/ruby-needs-unicode-regular-expressions/</link>
+      <link>https://ishikawa.github.io/2007/11/18/ruby-needs-unicode-regular-expressions/</link>
       <pubDate>Mon, 19 Nov 2007 02:31:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/11/18/ruby-needs-unicode-regular-expressions/</guid>
+      <guid>https://ishikawa.github.io/2007/11/18/ruby-needs-unicode-regular-expressions/</guid>
       <description>Ruby 1.8 系で平仮名にマッチする正規表現を書きたい。
 正規表現で Unicode ブロックが使えれば楽なのだが、残念ながら Ruby 1.8 ではサポートされていない。
 鬼車 ちなみに 1.9 で搭載される予定の鬼車では、以下のような形式で Unicode ブロックやカテゴリを指定できるようだ（参考：鬼車 正規表現 Version 5.6.0）。
@@ -169,10 +169,10 @@ Unicode Character Database の Block.txt によると平仮名（Hiragana）の�
     
     <item>
       <title>Ruby で外部プログラムの標準エラー出力を得る方法</title>
-      <link>https://metareal.blog/2007/10/09/capture-stderr-of-external-program-into-ruby-string/</link>
+      <link>https://ishikawa.github.io/2007/10/09/capture-stderr-of-external-program-into-ruby-string/</link>
       <pubDate>Wed, 10 Oct 2007 06:37:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/10/09/capture-stderr-of-external-program-into-ruby-string/</guid>
+      <guid>https://ishikawa.github.io/2007/10/09/capture-stderr-of-external-program-into-ruby-string/</guid>
       <description>Ruby で外部プログラムを実行するにはバッククォート文字列がもっとも簡単だ。
 s = `command`  こうすると command コマンドを実行し、標準出力の結果を返り値で受け取ることができる。
 だが、標準エラーへの出力を得るには別の手段を用いなくてはいけない。
@@ -183,10 +183,10 @@ require &#39;open3&#39; Open3.popen3(&amp;quot;command&amp;quot;) do |stdin, std
     
     <item>
       <title>Ruby の String#to_i と組み込み関数の Integer() は違う</title>
-      <link>https://metareal.blog/2007/10/06/ruby-to-i-and-integer-function/</link>
+      <link>https://ishikawa.github.io/2007/10/06/ruby-to-i-and-integer-function/</link>
       <pubDate>Sat, 06 Oct 2007 10:37:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/10/06/ruby-to-i-and-integer-function/</guid>
+      <guid>https://ishikawa.github.io/2007/10/06/ruby-to-i-and-integer-function/</guid>
       <description>文字列から数値への変換に String.to_i を使っていると、思わぬ問題に出くわすことがある。
 Ruby リファレンスマニュアルには、
  整数とみなせない文字があればそこまでを変換対象とします。変換対象が 空文字列であれば 0 を返します。
@@ -202,10 +202,10 @@ irb(main):001:0&amp;gt; Integer(&amp;quot;10fixnum&amp;quot;) ArgumentError: inv
     
     <item>
       <title>今日の Ruby 落とし穴</title>
-      <link>https://metareal.blog/2007/09/11/ruby-pitfall-today/</link>
+      <link>https://ishikawa.github.io/2007/09/11/ruby-pitfall-today/</link>
       <pubDate>Wed, 12 Sep 2007 06:31:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/09/11/ruby-pitfall-today/</guid>
+      <guid>https://ishikawa.github.io/2007/09/11/ruby-pitfall-today/</guid>
       <description>Ruby の落とし穴には載っていないようなので。
 def def foo # ... end  上記スクリプトは SyntaxError にならない（def がふたつあるのに注意）。
 しかし、実際にメソッド foo を呼び出そうとすると、
@@ -216,10 +216,10 @@ p [1, 2, 3].map do |v| v + 1 end  このコードは意図通りに動作しな�
     
     <item>
       <title>Ruby の Mongrel でお手軽 HTTP サーバ</title>
-      <link>https://metareal.blog/2007/08/30/setup-simple-http-server-with-mongrel/</link>
+      <link>https://ishikawa.github.io/2007/08/30/setup-simple-http-server-with-mongrel/</link>
       <pubDate>Thu, 30 Aug 2007 10:25:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/08/30/setup-simple-http-server-with-mongrel/</guid>
+      <guid>https://ishikawa.github.io/2007/08/30/setup-simple-http-server-with-mongrel/</guid>
       <description>先日、やっつけスクリプトのサーバ部分に Mongrel を使ってみたんだけど、Rails で使う以外だとドキュメント少ないのね。
 とりあえず、Ruby の Webrick でお手軽 HTTP サーバの Mongrel 版はこんな感じ。
 #!/usr/local/bin/ruby require &#39;rubygems&#39; require &#39;mongrel&#39; def mongrel(config = {}) server = Mongrel::HttpServer.new(&#39;localhost&#39;, config[:Port]) server.register(&amp;quot;/&amp;quot;, Mongrel::DirHandler.new(config[:DocumentRoot])) server.run.join end mongrel :DocumentRoot =&amp;gt; &#39;/Users/ishikawa/Sites/spotwide&#39;, :Port =&amp;gt; 5001  まあ、これくらいなら API ドキュメント眺めたら書ける（というか載ってる）けど。</description>
@@ -227,10 +227,10 @@ p [1, 2, 3].map do |v| v + 1 end  このコードは意図通りに動作しな�
     
     <item>
       <title>Ruby の Webrick でお手軽 HTTP サーバ</title>
-      <link>https://metareal.blog/2007/08/25/setup-simple-http-server-with-webrick/</link>
+      <link>https://ishikawa.github.io/2007/08/25/setup-simple-http-server-with-webrick/</link>
       <pubDate>Sun, 26 Aug 2007 02:12:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/08/25/setup-simple-http-server-with-webrick/</guid>
+      <guid>https://ishikawa.github.io/2007/08/25/setup-simple-http-server-with-webrick/</guid>
       <description>サイトの HTML や CSS を自分のパソコン上で編集するとき、不便に感じるのは画像や外部 CSS ファイルの指定方法の違いだ。
 サイト上の HTML や CSS では、たとえば、
 &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/stylesheets/application.css&amp;quot; type=&amp;quot;text/css&amp;quot; media=&amp;quot;screen&amp;quot; charset=&amp;quot;utf-8&amp;quot; /&amp;gt;  とか、
@@ -242,10 +242,10 @@ div#header div.logo h1 { width: 250px; height: 50px; background: url(/images/log
     
     <item>
       <title>rake コマンドで環境変数を設定する</title>
-      <link>https://metareal.blog/2007/07/08/setting-environment-variables-through-rake-command/</link>
+      <link>https://ishikawa.github.io/2007/07/08/setting-environment-variables-through-rake-command/</link>
       <pubDate>Sun, 08 Jul 2007 09:47:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/07/08/setting-environment-variables-through-rake-command/</guid>
+      <guid>https://ishikawa.github.io/2007/07/08/setting-environment-variables-through-rake-command/</guid>
       <description>Rake のユーザーガイドには書かれているのに、rake --help では出てこないようなのでメモ。
 Rake では rake コマンドのオプションに name=value と指定することで環境変数を指定できる。
 % rake [options ...] [VAR=VALUE] [targets ...]  環境変数はタスクから ENV 定数で参照できるので、コマンドオプションでてっとりばやく動作を切り替えたいときなんかは重宝するかもしれない。
@@ -254,10 +254,10 @@ Rake では rake コマンドのオプションに name=value と指定するこ
     
     <item>
       <title>Rails の便利メソッド h, html_escape は ERB:Util にあった</title>
-      <link>https://metareal.blog/2007/06/30/htmlescape-in-erb-util/</link>
+      <link>https://ishikawa.github.io/2007/06/30/htmlescape-in-erb-util/</link>
       <pubDate>Sun, 01 Jul 2007 07:03:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/06/30/htmlescape-in-erb-util/</guid>
+      <guid>https://ishikawa.github.io/2007/06/30/htmlescape-in-erb-util/</guid>
       <description>Ruby on Rails のテンプレートでしょっちゅうお世話になる h メソッド。
 &amp;lt; や &amp;amp; といった、HTML にはそのまま書けない文字を実体参照に置き換えてくれるメソッドだが、これをコントローラーから使いたいときがある。たとえば、Ajax のレスポンスで ad-hoc に HTML 片を返してしまいたいときとか、けっこうあるんじゃないか。
 しかし、そのままではコントローラーから使うことはできない。
@@ -270,10 +270,10 @@ module ActionView module Helpers #:nodoc: # Use these methods to generate HTML t
     
     <item>
       <title>Ruby の Time.parse で文字列を Time に変換するときのエラーチェック</title>
-      <link>https://metareal.blog/2007/06/21/error-checking-in-ruby-time-parsing/</link>
+      <link>https://ishikawa.github.io/2007/06/21/error-checking-in-ruby-time-parsing/</link>
       <pubDate>Fri, 22 Jun 2007 04:52:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/06/21/error-checking-in-ruby-time-parsing/</guid>
+      <guid>https://ishikawa.github.io/2007/06/21/error-checking-in-ruby-time-parsing/</guid>
       <description>Ruby では、文字列から Time オブジェクト への変換には、time ライブラリ によって拡張される Time.parse を使う。
 require &amp;quot;time&amp;quot; Time.parse(&amp;quot;2007/6/21 19:23&amp;quot;) # =&amp;gt; Thu Jun 21 19:23:00 +0900 2007  Time.parse は内部的に ParseDate.parsedate を利用しているので、さまざまなフォーマットをサポートしており、それなりに便利だ。逆に、サポートされていないフォーマットの文字列を変換するときは、事前に正規表現で変換するなどの泥臭い作業になる。
 Time.parse(&amp;quot;Sat Aug 28 21:45:09 1999&amp;quot;) # =&amp;gt; Sat Aug 28 21:45:09 +0900 1999 Time.parse(&amp;quot;08/28/1999&amp;quot;) # =&amp;gt; Sat Aug 28 00:00:00 +0900 1999  他にも問題がある。
@@ -285,10 +285,10 @@ Time.parse のマニュアルによると、
     
     <item>
       <title>JavaScript でコードを色づけしてくれるライブラリ google-code-prettify</title>
-      <link>https://metareal.blog/2007/06/15/google-code-prettify-syntax-highlighter-written-in-javascript/</link>
+      <link>https://ishikawa.github.io/2007/06/15/google-code-prettify-syntax-highlighter-written-in-javascript/</link>
       <pubDate>Fri, 15 Jun 2007 09:08:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/06/15/google-code-prettify-syntax-highlighter-written-in-javascript/</guid>
+      <guid>https://ishikawa.github.io/2007/06/15/google-code-prettify-syntax-highlighter-written-in-javascript/</guid>
       <description>Ruby のコードを色づけしてくれる Syntax を試しているうちに、このブログでもコードの色づけ（いわゆるシンタックス・ハイライト。はてなダイアリーのスーパー pre 記法みたいなやつね）をやってみたくなった。
 誰でも普段は、エディタで色づけされたコードを見慣れてるわけで、やっぱり黒べったりは読みづらいといえば読みづらい。
 JavaScript によるコード色づけ ただ、このブログは WordPress で動作している。
@@ -303,10 +303,10 @@ google-code-prettify 使い方は README を読めば問題ないと思う。こ
     
     <item>
       <title>Ruby の拡張ライブラリ開発では RSTRING_PTR, RSTRING_LEN が 1.8.6 から使える</title>
-      <link>https://metareal.blog/2007/06/14/ruby-extension-struct-rstring-macros/</link>
+      <link>https://ishikawa.github.io/2007/06/14/ruby-extension-struct-rstring-macros/</link>
       <pubDate>Thu, 14 Jun 2007 10:33:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/06/14/ruby-extension-struct-rstring-macros/</guid>
+      <guid>https://ishikawa.github.io/2007/06/14/ruby-extension-struct-rstring-macros/</guid>
       <description>最近、Ruby の拡張ライブラリを書いている。
 Ruby 1.9 からは Array や String の短いものが struct RObject の構造体に埋め込まれるようになった。そのため、struct RString が変更されており、struct RString の C 文字列や文字（バイト）数にアクセスする従来の直接的な方法、
 char *p = RSTRING(s)-&amp;gt;ptr; long len = RSTRING(s)-&amp;gt;len;  は 1.9 の環境ではコンパイルできなくなっている。
@@ -321,10 +321,10 @@ ruby.h
     
     <item>
       <title>ruby 1.8.6 と fastthread</title>
-      <link>https://metareal.blog/2007/03/28/ruby-1-8-6-and-fastthread/</link>
+      <link>https://ishikawa.github.io/2007/03/28/ruby-1-8-6-and-fastthread/</link>
       <pubDate>Thu, 29 Mar 2007 08:42:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/03/28/ruby-1-8-6-and-fastthread/</guid>
+      <guid>https://ishikawa.github.io/2007/03/28/ruby-1-8-6-and-fastthread/</guid>
       <description>新しい MacBook に Mongrel をインストールした。
 % sudo gem install mongrel  そうすると、依存関係にある fastthread という gem が気になってしかたない。
 検索してみると、「Mongrelと依存関係のあるfastthreadって？」というそのものズバリの記事があって、そういや前にも読んだぞ、この記事、てへ、とか思っていると、どうやら ruby 1.8.6 には取り込まれているらしい。
@@ -334,10 +334,10 @@ ruby.h
     
     <item>
       <title>Python と Ruby、デフォルト引数の評価の違い</title>
-      <link>https://metareal.blog/2007/01/04/python-and-ruby-evaluation-of-default-arguments/</link>
+      <link>https://ishikawa.github.io/2007/01/04/python-and-ruby-evaluation-of-default-arguments/</link>
       <pubDate>Fri, 05 Jan 2007 03:52:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/01/04/python-and-ruby-evaluation-of-default-arguments/</guid>
+      <guid>https://ishikawa.github.io/2007/01/04/python-and-ruby-evaluation-of-default-arguments/</guid>
       <description>Python のチュートリアルで勉強している。
 その中の 4.7.1 Default Argument Values に、気になる記述があった。
  The default values are evaluated at the point of function definition in the defining scope
@@ -350,10 +350,10 @@ Important warning: The default value is evaluated only once. This makes a differ
     
     <item>
       <title>SSL で自己証明書を使用している URL には open-uri でアクセスできない</title>
-      <link>https://metareal.blog/2006/12/29/open-uri-with-self-signed-certificate/</link>
+      <link>https://ishikawa.github.io/2006/12/29/open-uri-with-self-signed-certificate/</link>
       <pubDate>Fri, 29 Dec 2006 11:38:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2006/12/29/open-uri-with-self-signed-certificate/</guid>
+      <guid>https://ishikawa.github.io/2006/12/29/open-uri-with-self-signed-certificate/</guid>
       <description>Ruby の open-uri って、SSL で自己証明書を使用している URL には使えないのね。あっさり、certificate verify failed (OpenSSL::SSL::SSLError) とか OpenSSL で弾かれる。
 「なんかオプションとかないのかね？」とリファレンスマニュアルを探してみるが、どうにもそれらしいものが見つからない。
 ソースコードを読んでみると、やはり、検証方法は OpenSSL::SSL::VERIFY_PEER 固定のようだ。 open-uri.rb の 228 行目。
@@ -363,10 +363,10 @@ def OpenURI.open_http(buf, target, proxy, options) # :nodoc: ... http = klass.ne
     
     <item>
       <title>MySQL/Ruby の test.rb が失敗する理由と対策</title>
-      <link>https://metareal.blog/2006/12/28/reason-of-mysql-ruby-test-failure/</link>
+      <link>https://ishikawa.github.io/2006/12/28/reason-of-mysql-ruby-test-failure/</link>
       <pubDate>Thu, 28 Dec 2006 10:07:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2006/12/28/reason-of-mysql-ruby-test-failure/</guid>
+      <guid>https://ishikawa.github.io/2006/12/28/reason-of-mysql-ruby-test-failure/</guid>
       <description>前回書いた、MySQL/Ruby の test.rb が失敗する原因を調査する。
 まずは、実行結果の出力を調べてみよう。 すべてのテストが失敗しているため長いので、最初のテスト結果のみ抜粋する。
 % ruby ./test.rb localhost root newpass ... 1) Failure: test_connect(TC_Mysql) [./test.rb:39]: Exception raised: Class: &amp;lt;Mysql::Error&amp;gt; **Message: &amp;lt;&amp;quot;Access denied for user &#39;ishikawa&#39;@&#39;localhost&#39; (using password: NO)&amp;quot;&amp;gt;** ---Backtrace--- ./test.rb:39:in `connect&#39; ./test.rb:39:in `test_connect&#39; ./test.rb:39:in `test_connect&#39; ...  MySQL のエラーで &amp;ldquo;Access denied for user &amp;lsquo;ishikawa&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; (using password: NO)&amp;quot;と出力されているので、これは単なるアクセス制御の問題だ。
@@ -377,10 +377,10 @@ def OpenURI.open_http(buf, target, proxy, options) # :nodoc: ... http = klass.ne
     
     <item>
       <title>Mac OS X に MySQL/Ruby をインストール &#43; 高速化パッチ</title>
-      <link>https://metareal.blog/2006/12/27/mysql-bindings-on-macosx-tiger/</link>
+      <link>https://ishikawa.github.io/2006/12/27/mysql-bindings-on-macosx-tiger/</link>
       <pubDate>Thu, 28 Dec 2006 03:14:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2006/12/27/mysql-bindings-on-macosx-tiger/</guid>
+      <guid>https://ishikawa.github.io/2006/12/27/mysql-bindings-on-macosx-tiger/</guid>
       <description>長かった Ruby on Rails 環境構築シリーズもやっと終盤です。
 Ruby から MySQL につなぐためのバインディングである MySQL/Ruby をインストールすれば、Ruby on Rails の開発環境構築は一段落。
 なお、同様のバインディングである Ruby/MySQL もあり、こちらは Ruby で書かれているためコンパイルが不要。MySQL/Ruby とも、ほぼ互換性がある。ただ、今回はパフォーマンス優先でいきたいと思う。
@@ -392,10 +392,10 @@ Ruby から MySQL につなぐためのバインディングである MySQL/Ruby
     
     <item>
       <title>Mac OS X Tiger に Ruby をインストール</title>
-      <link>https://metareal.blog/2006/12/27/ruby-p12-on-macosx-tiger/</link>
+      <link>https://ishikawa.github.io/2006/12/27/ruby-p12-on-macosx-tiger/</link>
       <pubDate>Thu, 28 Dec 2006 01:43:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2006/12/27/ruby-p12-on-macosx-tiger/</guid>
+      <guid>https://ishikawa.github.io/2006/12/27/ruby-p12-on-macosx-tiger/</guid>
       <description>Mac OS X Tiger に標準にバンドルされている ruby は irb でヒストリー機能が利用できない、など使い勝手が悪い上、脆弱性も修正されていないバージョンなので、最新版をソースからインストールする。
 なお、古いバージョンの Ruby に存在する脆弱性については以下を参照（最新版では修正済み）。
  CGIライブラリのDoS脆弱性について もう一つのCGIライブラリのDoS脆弱性について  まずは、脆弱性を修正するパッチを適用した最新版のソースコードをダウンロードして展開。

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mysql on METAREAL</title>
-    <link>https://metareal.blog/tags/mysql/</link>
+    <link>https://ishikawa.github.io/tags/mysql/</link>
     <description>Recent content in mysql on METAREAL</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <copyright>copyright © 2006-Present Takanori Ishikawa.</copyright>
-    <lastBuildDate>Thu, 07 Feb 2008 08:37:00 +0900</lastBuildDate><atom:link href="https://metareal.blog/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Feb 2008 08:37:00 +0900</lastBuildDate><atom:link href="https://ishikawa.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rails の Migration で MySQL の型を指定する</title>
-      <link>https://metareal.blog/2008/02/06/using-mysql-data-types-in-rails-migration/</link>
+      <link>https://ishikawa.github.io/2008/02/06/using-mysql-data-types-in-rails-migration/</link>
       <pubDate>Thu, 07 Feb 2008 08:37:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2008/02/06/using-mysql-data-types-in-rails-migration/</guid>
+      <guid>https://ishikawa.github.io/2008/02/06/using-mysql-data-types-in-rails-migration/</guid>
       <description>たとえば、こんな感じの Migration を考えてみる。
 class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pepsies do |t| t.column :coke, :string, :limit =&amp;gt; 64 t.column :jolt, :integer t.column :created_at, :datetime t.column :updated_at, :datetime end end def self.down drop_table :addresses end end  Rails 2.0 の sexy migration ではこんなふうにも書けるんだけど、個人的に馴染まないので今回はスルー。
 class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pepsies do |t| t.string :coke, :limit =&amp;gt; 64 t.integer :jolt t.timestamps end end def self.down drop_table :addresses end end  rake db:migrate したときの CREATE TABLE はこうなる。</description>
@@ -21,10 +21,10 @@ class CreatePepsi &amp;lt; ActiveRecord::Migration def self.up create_table :pep
     
     <item>
       <title>InnoDB の AUTO_INCREMENT とロック</title>
-      <link>https://metareal.blog/2007/10/08/scalability-issue-with-innodb-auto-increment-column/</link>
+      <link>https://ishikawa.github.io/2007/10/08/scalability-issue-with-innodb-auto-increment-column/</link>
       <pubDate>Tue, 09 Oct 2007 12:29:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/10/08/scalability-issue-with-innodb-auto-increment-column/</guid>
+      <guid>https://ishikawa.github.io/2007/10/08/scalability-issue-with-innodb-auto-increment-column/</guid>
       <description>きっかけは MySQL Users Conference Japan 2007 の講演資料「新ストレージエンジン Falcon のアーキテクチャ詳細技術解説」だった。
 Falcon とは MySQL 6.0 で搭載予定の新しいストレージエンジンである。
  MySQL AB :: Falcon Storage Engine Guide MySQLの新ストレージエンジン Falcon 徹底リサーチ | マイコミジャーナル  この講演資料で Falcon が InnoDB より優れている点として、
@@ -40,10 +40,10 @@ MySQL 5.</description>
     
     <item>
       <title>Rails で MySQL を使うときの注意点</title>
-      <link>https://metareal.blog/2007/07/24/notes-on-rubyonrails-with-mysql/</link>
+      <link>https://ishikawa.github.io/2007/07/24/notes-on-rubyonrails-with-mysql/</link>
       <pubDate>Tue, 24 Jul 2007 09:29:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2007/07/24/notes-on-rubyonrails-with-mysql/</guid>
+      <guid>https://ishikawa.github.io/2007/07/24/notes-on-rubyonrails-with-mysql/</guid>
       <description>Rails のブログでも取り上げられていた、&amp;quot;Rubyisms - MySQL-dump&amp;quot; が面白かったので、特に興味深かった一時テーブルまわりの要約を載せてみる。要約、というか読みながら書いたメモそのまんまですが。
 Rubyisms - MySQL-dump http://mysqldump.azundris.com/archives/72-Rubyisms.html
 &amp;ldquo;select *&amp;rdquo; が多すぎる ActiveRecord は、特に何も指定しないと select * で、すべてのカラムを取ってくる。SQL は動的に生成されて、どのカラムが存在するかチェックしているので、スキームが変更されても大丈夫。
@@ -55,10 +55,10 @@ Rubyisms - MySQL-dump http://mysqldump.azundris.com/archives/72-Rubyisms.html
     
     <item>
       <title>Mac OS X  Tiger に MySQL 5.0.27 をインストール</title>
-      <link>https://metareal.blog/2006/12/27/mysql-on-macosx-tiger/</link>
+      <link>https://ishikawa.github.io/2006/12/27/mysql-on-macosx-tiger/</link>
       <pubDate>Thu, 28 Dec 2006 12:54:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2006/12/27/mysql-on-macosx-tiger/</guid>
+      <guid>https://ishikawa.github.io/2006/12/27/mysql-on-macosx-tiger/</guid>
       <description>Ruby on Rails で開発するアプリケーションのバックエンドだが、データベースには MySQL を使用するつもりなので、これもインストールしてやる。
 MySQL 5.0 のダウンロードページには、Mac OS X 向けのバイナリも配布されているので、通常はこちらを使うのがよさそうだ。
 まあ、コンパイルも楽しいので、今回は自前でソースコードからインストールしてみる。
@@ -69,10 +69,10 @@ CC=gcc CFLAGS=&amp;quot;-O3 -fno-omit-frame-pointer&amp;quot; CXX=gcc \ CXXFLAGS
     
     <item>
       <title>MySQL/Ruby の test.rb が失敗する理由と対策</title>
-      <link>https://metareal.blog/2006/12/28/reason-of-mysql-ruby-test-failure/</link>
+      <link>https://ishikawa.github.io/2006/12/28/reason-of-mysql-ruby-test-failure/</link>
       <pubDate>Thu, 28 Dec 2006 10:07:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2006/12/28/reason-of-mysql-ruby-test-failure/</guid>
+      <guid>https://ishikawa.github.io/2006/12/28/reason-of-mysql-ruby-test-failure/</guid>
       <description>前回書いた、MySQL/Ruby の test.rb が失敗する原因を調査する。
 まずは、実行結果の出力を調べてみよう。 すべてのテストが失敗しているため長いので、最初のテスト結果のみ抜粋する。
 % ruby ./test.rb localhost root newpass ... 1) Failure: test_connect(TC_Mysql) [./test.rb:39]: Exception raised: Class: &amp;lt;Mysql::Error&amp;gt; **Message: &amp;lt;&amp;quot;Access denied for user &#39;ishikawa&#39;@&#39;localhost&#39; (using password: NO)&amp;quot;&amp;gt;** ---Backtrace--- ./test.rb:39:in `connect&#39; ./test.rb:39:in `test_connect&#39; ./test.rb:39:in `test_connect&#39; ...  MySQL のエラーで &amp;ldquo;Access denied for user &amp;lsquo;ishikawa&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; (using password: NO)&amp;quot;と出力されているので、これは単なるアクセス制御の問題だ。
@@ -83,10 +83,10 @@ CC=gcc CFLAGS=&amp;quot;-O3 -fno-omit-frame-pointer&amp;quot; CXX=gcc \ CXXFLAGS
     
     <item>
       <title>Mac OS X に MySQL/Ruby をインストール &#43; 高速化パッチ</title>
-      <link>https://metareal.blog/2006/12/27/mysql-bindings-on-macosx-tiger/</link>
+      <link>https://ishikawa.github.io/2006/12/27/mysql-bindings-on-macosx-tiger/</link>
       <pubDate>Thu, 28 Dec 2006 03:14:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2006/12/27/mysql-bindings-on-macosx-tiger/</guid>
+      <guid>https://ishikawa.github.io/2006/12/27/mysql-bindings-on-macosx-tiger/</guid>
       <description>長かった Ruby on Rails 環境構築シリーズもやっと終盤です。
 Ruby から MySQL につなぐためのバインディングである MySQL/Ruby をインストールすれば、Ruby on Rails の開発環境構築は一段落。
 なお、同様のバインディングである Ruby/MySQL もあり、こちらは Ruby で書かれているためコンパイルが不要。MySQL/Ruby とも、ほぼ互換性がある。ただ、今回はパフォーマンス優先でいきたいと思う。
@@ -98,10 +98,10 @@ Ruby から MySQL につなぐためのバインディングである MySQL/Ruby
     
     <item>
       <title>MySQL をインストールしたあとの作業</title>
-      <link>https://metareal.blog/2006/12/27/mysql-post-installation/</link>
+      <link>https://ishikawa.github.io/2006/12/27/mysql-post-installation/</link>
       <pubDate>Thu, 28 Dec 2006 02:49:00 +0900</pubDate>
       
-      <guid>https://metareal.blog/2006/12/27/mysql-post-installation/</guid>
+      <guid>https://ishikawa.github.io/2006/12/27/mysql-post-installation/</guid>
       <description>初期化 MySQL のインストールが完了したら、マニュアル通り、インストール後の作業を進めていく。
 mysql_install_db でデータ格納ディレクトリとアカウントを初期化する。
 % cd /usr/local/mysql/ % sudo chown -R mysql:mysql /usr/local/mysql % sudo bin/mysql_install_db --user=mysql  データベースを起動。
